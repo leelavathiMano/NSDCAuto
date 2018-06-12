@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.RegistrationPage;
+import com.nsdc.testConfig.DatabaseConnection;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class UserRegistrationValidationsSC_01 extends TestConfiguration
@@ -21,6 +22,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
     @Test(dataProvider="registrationData")
     public void userRegistrationValidationsTC_01(String userType, String spocName, String email, String mobile, String reEnterSPOC, String reEnterEmail, String reEnterMobile, String emailOTP, String mobileOTP, String reEnterEmailOTP, String reEnterMobileOTP) throws Exception
     {
+    	//DatabaseConnection.deleteTrainingPartner(email);
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
@@ -41,12 +43,14 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Please Enter Valid Data for mobile']")).getText(), "Please Enter Valid Data for mobile");
         rp.clickRegister();
         rp.enterMobile(mobile);
+        Thread.sleep(2000);
         rp.clickRegister();
         
         rp.enterEmailOTP(emailOTP);
         rp.enterMobileOTP(mobileOTP);
         rp.enterEmailOTP(reEnterEmailOTP);
         Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Please Enter Valid Data for Email OTP']")).getText(), "Please Enter Valid Data for Email OTP");
+        Thread.sleep(2000);
         rp.clickVerify();
         rp.enterEmailOTP(emailOTP);
         rp.enterMobileOTP(reEnterMobileOTP);
@@ -55,7 +59,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
         rp.enterMobileOTP(mobileOTP);
         Thread.sleep(2000);
         rp.clickVerify();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the UserName and Password to the registered email address please login with those credentials.");
     }
 }

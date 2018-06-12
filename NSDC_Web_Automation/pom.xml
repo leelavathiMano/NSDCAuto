@@ -55,6 +55,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>RegressionSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>ComponentSuite.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

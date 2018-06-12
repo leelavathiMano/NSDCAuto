@@ -24,7 +24,7 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
     @Test(dataProvider="registrationData")
     public void userRegistrationTC_01(String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP) throws Exception
     {
-        DatabaseConnection.deleteTrainingPartner(email);
+        //DatabaseConnection.deleteTrainingPartner(email);
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
