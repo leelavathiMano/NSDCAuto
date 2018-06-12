@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="54788" started-at="2018-06-12T06:37:13Z" finished-at="2018-06-12T06:38:08Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="54788" started-at="2018-06-12T06:37:13Z" finished-at="2018-06-12T06:38:08Z">
+      <class name="com.nsdc.regressionTest.TrainingPartnerProfileSC_02">
+        <test-method status="PASS" signature="preSuite()[pri:0, instance:com.nsdc.regressionTest.TrainingPartnerProfileSC_02@5442a311]" name="preSuite" is-config="true" duration-ms="104" started-at="2018-06-12T06:37:13Z" finished-at="2018-06-12T06:37:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preSuite -->
+        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.regressionTest.TrainingPartnerProfileSC_02@5442a311]" name="precondition" is-config="true" duration-ms="4871" started-at="2018-06-12T06:37:13Z" finished-at="2018-06-12T06:37:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="PASS" signature="governmentTpRegistrationTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.regressionTest.TrainingPartnerProfileSC_02@5442a311]" name="governmentTpRegistrationTC_01" duration-ms="49676" started-at="2018-06-12T06:37:18Z" data-provider="tpProfileData" finished-at="2018-06-12T06:38:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Training Partner]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TP SPOC Name]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[tpspoc24@test.com]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[7128767926]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[999999]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[999999]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Training Partner Organisation]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Government]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[2018]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[/Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/UploadFiles/Image.png]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[87898678981]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[https://www.nsdcindia.org/]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[TP CEO Head]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[tpceo@test.com]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[8787878456]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[#301-306, World Mark 1, West Wing, Aerocity]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[Near airport]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[110037]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[ANDAMAN AND NICOBAR ISLANDS]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[NICOBARS]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[Car Nicobar]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[Andaman and Nicobar Islands, India]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[A]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[Incorporation Certificate]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[/Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/UploadFiles/Image.png]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- governmentTpRegistrationTC_01 -->
+        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.regressionTest.TrainingPartnerProfileSC_02@5442a311]" name="postcondition" is-config="true" duration-ms="113" started-at="2018-06-12T06:38:08Z" finished-at="2018-06-12T06:38:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=governmentTpRegistrationTC_01 status=SUCCESS method=TrainingPartnerProfileSC_02.governmentTpRegistrationTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.regressionTest.TrainingPartnerProfileSC_02@5442a311] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postcondition -->
+      </class> <!-- com.nsdc.regressionTest.TrainingPartnerProfileSC_02 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
