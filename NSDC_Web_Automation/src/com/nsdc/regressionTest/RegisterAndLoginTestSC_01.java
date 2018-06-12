@@ -76,7 +76,7 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, password);
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "Invalid UserName or Password");
+        Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "username or password invalid");
     }
     
     @Test

@@ -31,6 +31,16 @@ public class RegistrationPage
     private WebElement usernameLabel;
     @FindBy(xpath="//button[contains(text(),'Go to Login')]")
     private WebElement goToLoginButton;
+    @FindBy(xpath="//input[@name='oldpassword']")
+    private WebElement oldPasswordTextbox;
+    @FindBy(xpath="//input[@name='newpassword']")
+    private WebElement newPasswordTextbox;
+    @FindBy(xpath="//input[@name='confirmPassword']")
+    private WebElement confirmPasswordTextbox;
+    @FindBy(xpath="//button[contains(text(),'Reset & Re-login')]")
+    private WebElement resetAndReloginButton;
+    @FindBy(xpath="//button[text()='OK']")
+    private WebElement confirmationOkButton;
     
     public RegistrationPage(WebDriver driver)
     {
@@ -86,6 +96,31 @@ public class RegistrationPage
     public void clickVerify()
     {
         verifyButton.click();
+    }
+    
+    public void enterOldPassword(String oldPassword)
+    {
+        oldPasswordTextbox.sendKeys(oldPassword);
+    }
+    
+    public void enterNewPassword(String newPassword)
+    {
+        newPasswordTextbox.sendKeys(newPassword);
+    }
+    
+    public void enterConfirmPassword(String confirmPassword)
+    {
+        confirmPasswordTextbox.sendKeys(confirmPassword);
+    }
+    
+    public void clickResetResubmit()
+    {
+        resetAndReloginButton.click();
+    }
+    
+    public void clickConfirmationOkMessage()
+    {
+        confirmationOkButton.click();
     }
     
 }
