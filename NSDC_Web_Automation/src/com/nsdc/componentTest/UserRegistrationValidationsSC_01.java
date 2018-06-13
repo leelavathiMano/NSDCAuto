@@ -22,7 +22,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
     @Test(dataProvider="registrationData")
     public void userRegistrationValidationsTC_01(String userType, String spocName, String email, String mobile, String reEnterSPOC, String reEnterEmail, String reEnterMobile, String emailOTP, String mobileOTP, String reEnterEmailOTP, String reEnterMobileOTP) throws Exception
     {
-    	//DatabaseConnection.deleteTrainingPartner(email);
+    	DatabaseConnection.deleteTrainingPartner(email);
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();

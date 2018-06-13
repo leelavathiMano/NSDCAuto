@@ -26,7 +26,7 @@ public class TrainingPartnerProfileSC_02 extends TestConfiguration
     @Test(dataProvider="tpProfileData")
     public void governmentTpRegistrationTC_01(String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile) throws Exception
     {
-        //DatabaseConnection.deleteTrainingPartner(email);
+        DatabaseConnection.deleteTrainingPartner(email);
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();

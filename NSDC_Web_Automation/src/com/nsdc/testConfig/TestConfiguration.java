@@ -41,32 +41,32 @@ public class TestConfiguration
         String url = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 1);
         String osType = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 2);
         
-        if (browsername.equals("Chrome") || osType.equals("Mac OS"))
+        if (browsername.equals("Chrome") && osType.equals("Mac OS"))
         {
             System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Mac-OS/chromedriver");
             driver = new ChromeDriver();
         }
-        else if (browsername.equals("Firefox") || osType.equals("Mac OS"))
+        else if (browsername.equals("Firefox") && osType.equals("Mac OS"))
         {
             System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Mac-OS/geckodriver");
             driver = new FirefoxDriver();
         }
-        else if (browsername.equals("Chrome") || osType.equals("Windows"))
+        else if (browsername.equals("Chrome") && osType.equals("Windows"))
         {
             System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Windows/chromedriver.exe");
             driver = new FirefoxDriver();
         }
-        else if (browsername.equals("Firefox") || osType.equals("Windows"))
+        else if (browsername.equals("Firefox") && osType.equals("Windows"))
         {
             System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Windows/geckodriver.exe");
             driver = new FirefoxDriver();
         }
-        else if (browsername.equals("Chrome") || osType.equals("Ubuntu"))
+        else if (browsername.equals("Chrome") && osType.equals("Ubuntu"))
         {
             System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Linux/chromedriver");
             driver = new FirefoxDriver();
         }
-        else if (browsername.equals("Firefox") || osType.equals("Ubuntu"))
+        else if (browsername.equals("Firefox") && osType.equals("Ubuntu"))
         {
             System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Linux/geckodriver");
             driver = new FirefoxDriver();
