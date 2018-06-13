@@ -20,7 +20,7 @@ public class TrainingPartnerProfileSC_02 extends TestConfiguration
     @DataProvider
     public Object[][] tpProfileData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/TestData-Regression.xls", "TPProfileSC02TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/TP-TestData-Regression.xls", "TPProfileSC02TC01");
     }
     
     @Test(dataProvider="tpProfileData")

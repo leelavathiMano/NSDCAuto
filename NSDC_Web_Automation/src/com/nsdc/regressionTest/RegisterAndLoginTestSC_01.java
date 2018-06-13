@@ -18,7 +18,7 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
     @DataProvider
     public Object[][] registrationData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/TestData-Regression.xls", "RegisterSC01TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/TP-TestData-Regression.xls", "RegisterSC01TC01");
     }
     
     @Test(dataProvider="registrationData")
@@ -46,7 +46,7 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
     @DataProvider
     public Object[][] loginSuccess()
     {
-        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/TestData-Regression.xls", "LoginPassSC01TC02");
+        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/TP-TestData-Regression.xls", "LoginPassSC01TC02");
     }
     
     @Test(dataProvider="loginSuccess")
@@ -64,7 +64,7 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
     @DataProvider
     public Object[][] loginFailure()
     {
-        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/TestData-Regression.xls", "LoginFailureSC01TC03");
+        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/TP-TestData-Regression.xls", "LoginFailureSC01TC03");
     }
     
     @Test(dataProvider="loginFailure")

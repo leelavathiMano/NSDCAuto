@@ -16,7 +16,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
 	@DataProvider
     public Object[][] registrationData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/TestData-Validations.xls", "RegisterValidationsSC01TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/TP-TestData-Validations.xls", "RegisterValidationsSC01TC01");
     }
     
     @Test(dataProvider="registrationData")
