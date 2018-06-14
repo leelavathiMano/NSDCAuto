@@ -5,8 +5,9 @@
     <classes>
       <class name="com.nsdc.regressionTest.RegisterAndLoginTestSC_01">
         <methods>
+          <include name="verifyLoginSuccessTC_02" invocation-numbers="0 1"/>
+          <include name="LoginFailWithoutEnteringCredentialsTC_04"/>
           <include name="precondition"/>
-          <include name="userRegistrationTC_01" invocation-numbers="0"/>
           <include name="postcondition"/>
           <include name="preSuite"/>
         </methods>
