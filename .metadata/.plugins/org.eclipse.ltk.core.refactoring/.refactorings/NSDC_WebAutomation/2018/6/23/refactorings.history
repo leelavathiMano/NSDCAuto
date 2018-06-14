@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;NSDC_WebAutomation&apos;&#x0A;- Original project: &apos;NSDC_WebAutomation&apos;&#x0A;- Original elements:&#x0A;     NSDC_WebAutomation/src/main/java&#x0A;     NSDC_WebAutomation/src/test/java&#x0A;     src" description="Delete elements" element1="src" element2="/src\/test\/java" element3="/src\/main\/java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1528357778709" subPackages="false" version="1.0"/>
+</session>

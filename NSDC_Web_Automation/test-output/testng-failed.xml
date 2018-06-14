@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nsdc.componentTest.UserRegistrationValidationsSC_01">
+      <class name="com.nsdc.regressionTest.RegisterAndLoginTestSC_01">
         <methods>
-          <include name="userRegistrationValidationsTC_01" invocation-numbers="0"/>
           <include name="precondition"/>
+          <include name="userRegistrationTC_01" invocation-numbers="0"/>
           <include name="postcondition"/>
           <include name="preSuite"/>
         </methods>
-      </class> <!-- com.nsdc.componentTest.UserRegistrationValidationsSC_01 -->
+      </class> <!-- com.nsdc.regressionTest.RegisterAndLoginTestSC_01 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

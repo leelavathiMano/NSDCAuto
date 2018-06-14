@@ -19,6 +19,7 @@ import com.nsdc.generic.ZipFolder;
 public class TestConfiguration
 {
     public WebDriver driver;
+    
     @BeforeSuite
     public void preSuite() throws Exception
     {
@@ -39,7 +40,7 @@ public class TestConfiguration
     {
         String browsername = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 0);
         String url = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 1);
-        String osType = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 2);
+        String osType = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 2);   
         
         if (browsername.equals("Chrome") && osType.equals("Mac OS"))
         {
@@ -74,7 +75,7 @@ public class TestConfiguration
         
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get(url);
+        driver.get(url);     
     }
     
     @AfterMethod

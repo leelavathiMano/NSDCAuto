@@ -1,0 +1,23 @@
+package com.nsdc.regressionTest;
+
+import org.openqa.selenium.WebDriver;
+
+public class Wait
+{
+	public static void main(String[] args)
+	{
+		WebDriver driver = new chromedriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://www.google.com");
+		driver.findElement(By.id("lst-ib")).sendKeys("Java", Keys.ENTER);
+		driver.findElement(By.partialLinkText("Free Java Software")).click();
+		WebDriverWait wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.titleContains("Download"));
+		String title=driver.getTitle();
+		System.out.println(title);
+		driver.close();
+
+	}
+
+}

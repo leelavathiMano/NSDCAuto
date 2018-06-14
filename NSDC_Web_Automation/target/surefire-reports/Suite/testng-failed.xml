@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]">
+  <test thread-count="5" verbose="0" name="Test(failed)">
+    <classes>
+      <class name="com.nsdc.regressionTest.TrainingPartnerProfileSC_02">
+        <methods>
+          <include name="governmentTpRegistrationTC_01" invocation-numbers="0"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="preSuite"/>
+        </methods>
+      </class> <!-- com.nsdc.regressionTest.TrainingPartnerProfileSC_02 -->
+      <class name="com.nsdc.regressionTest.RegisterAndLoginTestSC_01">
+        <methods>
+          <include name="verifyLoginFailureTC_03" invocation-numbers="0"/>
+          <include name="LoginFailWithoutEnteringCredentialsTC_04"/>
+          <include name="precondition"/>
+          <include name="postcondition"/>
+          <include name="preSuite"/>
+        </methods>
+      </class> <!-- com.nsdc.regressionTest.RegisterAndLoginTestSC_01 -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
