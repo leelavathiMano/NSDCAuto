@@ -31,11 +31,30 @@ public class TrainingPartnerRegistrationPage
     @FindBy(xpath="//input[@ng-reflect-name='emailOfHead']")
     private WebElement emailOfCeoTextBox;
     @FindBy(xpath="//input[@ng-reflect-name='mobileOfHead']")
-    private WebElement mobileNumberOfCeoTextBox;
+    private WebElement mobileNumberOfCeoTextBox;   
     @FindBy(xpath="//label[@class='m-checkbox m-checkbox--default']")
     private WebElement authorizedSignatoryCheckBox;
-    @FindBy(xpath="(//button[@class='btn btn-next'])[2]")
-    private WebElement saveButton1;
+    
+    @FindBy(xpath="(//button[text()='Add Another Signatory Details'])[1]")
+    private WebElement addAnotherSignatoryDetailsButton1;
+    @FindBy(xpath="(//input[@name='auth-signatory-email'])[2]")
+    private WebElement authorizedSignatoryNameTextbox1;
+    @FindBy(xpath="(//input[@name='CEO-email'])[3]")
+    private WebElement authorizedSignatoryEmailTextbox1;
+    @FindBy(xpath="(//input[@name='auth-sigatory-mobile'])[2]")
+    private WebElement authorizedSignatoryMobileTextbox1;
+    
+    @FindBy(xpath="(//button[text()='Add Another Signatory Details'])[2]")
+    private WebElement addAnotherSignatoryDetailsButton2;
+    @FindBy(xpath="(//input[@name='auth-signatory-email'])[3]")
+    private WebElement authorizedSignatoryNameTextbox2;
+    @FindBy(xpath="(//input[@name='CEO-email'])[4]")
+    private WebElement authorizedSignatoryEmailTextbox2;
+    @FindBy(xpath="(//input[@name='auth-sigatory-mobile'])[3]")
+    private WebElement authorizedSignatoryMobileTextbox2;
+    
+    @FindBy(xpath="//button[contains(text(),'Save & Next')]")
+    private WebElement saveAndNextButton;
     @FindBy(xpath="(//button[@class='btn btn-outline-info'])")
     private WebElement saveAsDraftButton1;
     @FindBy(xpath="//textarea[@id='m_autosize_1']")
@@ -50,18 +69,60 @@ public class TrainingPartnerRegistrationPage
     private WebElement districtDropDownList;
     @FindBy(xpath="//select[@name='tehsil']")
     private WebElement tehsilDropDownList;
+    @FindBy(xpath="//select[@name='villlage']")
+    private WebElement cityDropDownList;
     @FindBy(xpath="//input[@id='search_places']")
     private WebElement geoLocationTextBoxTextBox;
     @FindBy(xpath="//select[@ng-reflect-name='parliamentaryConstituency']")
     private WebElement parliamentaryConstituencyDropdownList;
     @FindBy(xpath="//select[@ng-reflect-name='addressProof']")
     private WebElement addressProofDropDownList;
-    @FindBy(xpath="(//button[@class='btn btn-next'])[3]")
-    private WebElement saveButton2;
+    
+    @FindBy(xpath="//input[@name='account-number']")
+    private WebElement panTextbox;
+    @FindBy(xpath="(//input[@id='customFile'])[1]")
+    private WebElement browseButton1;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+    private WebElement uploadButton1;
+    @FindBy(xpath="//input[@placeholder='Enter GST Account Number']")
+    private WebElement gstTextbox;
+    @FindBy(xpath="(//input[@id='customFile'])[2]")
+    private WebElement browseButton2;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+    private WebElement uploadButton2;
+    
+    @FindBy(xpath="//input[@placeholder='Enter Aadhaar number']")
+    private WebElement aadharNumberTextbox;
+    
+    @FindBy(xpath="(//input[@placeholder='Enter Annual Turnover'])[1]")
+    private WebElement annualTurnOverTextbox1;
+    @FindBy(xpath="(//input[@id='customFile'])[3]")
+    private WebElement browseButton3;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
+    private WebElement uploadButton3;
+    
+    @FindBy(xpath="(//input[@placeholder='Enter Annual Turnover'])[2]")
+    private WebElement annualTurnOverTextbox2;
+    @FindBy(xpath="(//input[@id='customFile'])[4]")
+    private WebElement browseButton4;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
+    private WebElement uploadButton4;
+    
+    @FindBy(xpath="(//input[@placeholder='Enter Annual Turnover'])[3]")
+    private WebElement annualTurnOverTextbox3;
+    @FindBy(xpath="(//input[@id='customFile'])[5]")
+    private WebElement browseButton5;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+    private WebElement uploadButton5;   
+    
     @FindBy(xpath="//label[@class='m-checkbox m-checkbox--default']")
     private WebElement iAgreeCheckBox;
-    @FindBy(xpath="//button[text()='Save & Continue']")
+    @FindBy(xpath="//button[text()='Save & Continue to Payment']")
+    private WebElement saveAndContinueToPaymentButton;
+    @FindBy(xpath="//button[contains(text(),'Save & Continue')]")
     private WebElement saveAndContinueButton;
+    @FindBy(xpath="//button[text()='OK']")
+    private WebElement paymentOKButton;
     @FindBy(xpath="//button[(text()='Logout')]")
     private WebElement logOutButton;
     @FindBy(xpath="//button[(text()='Download Submitted Form')]")
@@ -133,9 +194,55 @@ public class TrainingPartnerRegistrationPage
         authorizedSignatoryCheckBox.click();
     }
     
-    public void clickSaveButton1()
+    public void clickAddAnotherSignatoryDetails1()
     {
-        saveButton1.click();
+        addAnotherSignatoryDetailsButton1.click();
+    }
+    
+    public void enterAuthorizedSignatoryName1(String authorized_Signatory_Name)
+    {
+    	authorizedSignatoryNameTextbox1.clear();
+        authorizedSignatoryNameTextbox1.sendKeys(authorized_Signatory_Name);
+    }
+    
+    public void enterAuthorizedSignatoryEmail1(String authorized_Signatory_Email)
+    {
+    	authorizedSignatoryEmailTextbox1.clear();
+        authorizedSignatoryEmailTextbox1.sendKeys(authorized_Signatory_Email);
+    }
+    
+    public void enterAuthorizedSignatoryMobile1(String authorized_Signatory_Mobile)
+    {
+    	authorizedSignatoryMobileTextbox1.clear();
+        authorizedSignatoryMobileTextbox1.sendKeys(authorized_Signatory_Mobile);
+    }
+    
+    public void clickAddAnotherSignatoryDetails2()
+    {
+        addAnotherSignatoryDetailsButton2.click();
+    }
+    
+    public void enterAuthorizedSignatoryName2(String authorized_Signatory_Name)
+    {
+    	authorizedSignatoryNameTextbox2.clear();
+        authorizedSignatoryNameTextbox2.sendKeys(authorized_Signatory_Name);
+    }
+    
+    public void enterAuthorizedSignatoryEmail2(String authorized_Signatory_Email)
+    {
+    	authorizedSignatoryEmailTextbox2.clear();
+        authorizedSignatoryEmailTextbox2.sendKeys(authorized_Signatory_Email);
+    }
+    
+    public void enterAuthorizedSignatoryMobile2(String authorized_Signatory_Mobile)
+    {
+    	authorizedSignatoryMobileTextbox2.clear();
+        authorizedSignatoryMobileTextbox2.sendKeys(authorized_Signatory_Mobile);
+    }
+    
+    public void clickSaveAndNextButton()
+    {
+    	saveAndNextButton.click();
     }
     
     public void clickSaveAsDraftButton1()
@@ -176,6 +283,11 @@ public class TrainingPartnerRegistrationPage
         SelectDropDownList.selectDropDownListByVisibleText(tehsilDropDownList, tehsil);
     }
     
+    public void selectCity(String city)
+    {
+        SelectDropDownList.selectDropDownListByVisibleText(cityDropDownList, city);
+    }    
+    
     public void enterGeoLocation(String geo_Location) throws Exception
     {
         geoLocationTextBoxTextBox.clear();
@@ -194,14 +306,105 @@ public class TrainingPartnerRegistrationPage
         SelectDropDownList.selectDropDownListByVisibleText(addressProofDropDownList, address_proof);
     }
     
-    public void clickSaveButton2()
+    public void enterPANNumber(String pan_Number)
     {
-        saveButton2.click();
+    	panTextbox.clear();
+    	panTextbox.sendKeys(pan_Number);
+    }
+    
+    public void clickBrowseButton1()
+    {
+    	browseButton1.click();
+    }
+    
+    public void clickUploadButton1()
+    {
+    	uploadButton1.click();
+    }
+    
+    public void enterGSTAccountNumber(String gst_Number)
+    {
+    	gstTextbox.clear();
+    	gstTextbox.sendKeys(gst_Number);
+    }
+    
+    public void clickBrowseButton2()
+    {
+    	browseButton2.click();
+    }
+    
+    public void clickUploadButton2()
+    {
+    	uploadButton2.click();
+    }
+    
+    public void clickBrowseButton3()
+    {
+    	browseButton3.click();
+    }
+    
+    public void clickUploadButton3()
+    {
+    	uploadButton3.click();
+    }
+    
+    public void clickBrowseButton4()
+    {
+    	browseButton4.click();
+    }
+    
+    public void clickUploadButton4()
+    {
+    	uploadButton4.click();
+    }
+    
+    public void clickBrowseButton5()
+    {
+    	browseButton5.click();
+    }
+    
+    public void clickUploadButton5()
+    {
+    	uploadButton5.click();
+    }
+    
+    public void enterAadharNumber(String aadhar_Number)
+    {
+    	aadharNumberTextbox.clear();
+    	aadharNumberTextbox.sendKeys(aadhar_Number);
+    }
+    
+    public void enterAnnualTurnOver1(String turnover1)
+    {
+    	annualTurnOverTextbox1.clear();
+    	annualTurnOverTextbox1.sendKeys(turnover1);
+    }
+    
+    public void enterAnnualTurnOver2(String turnover2)
+    {
+    	annualTurnOverTextbox2.clear();
+    	annualTurnOverTextbox2.sendKeys(turnover2);
+    }
+    
+    public void enterAnnualTurnOver3(String turnover3)
+    {
+    	annualTurnOverTextbox3.clear();
+    	annualTurnOverTextbox3.sendKeys(turnover3);
     }
     
     public void clickIAgreeCheckBox()
     {
         iAgreeCheckBox.click();
+    }
+    
+    public void clickSaveAndContinueToPaymentButton()
+    {
+    	saveAndContinueToPaymentButton.click();
+    }
+    
+    public void clickPaymentOkButton()
+    {
+        paymentOKButton.click();
     }
     
     public void clickSaveAndContinueButton()

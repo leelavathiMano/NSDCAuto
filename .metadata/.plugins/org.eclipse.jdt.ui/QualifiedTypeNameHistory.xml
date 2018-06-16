@@ -25,7 +25,6 @@
 <fullyQualifiedTypeName name="java.awt.Robot"/>
 <fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
-<fullyQualifiedTypeName name="com.nsdc.generic.UploadFile"/>
 <fullyQualifiedTypeName name="java.awt.event.InputEvent"/>
 <fullyQualifiedTypeName name="com.nsdc.regressionTest.RegisterAndLoginTestSC_01"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -45,4 +44,6 @@
 <fullyQualifiedTypeName name="com.nsdc.testConfig.TestConfiguration"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
 <fullyQualifiedTypeName name="com.nsdc.testConfig.DatabaseConnection"/>
+<fullyQualifiedTypeName name="com.nsdc.generic.ReadWriteData"/>
+<fullyQualifiedTypeName name="com.nsdc.generic.UploadFile"/>
 </qualifiedTypeNameHistroy>

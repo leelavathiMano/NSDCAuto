@@ -18,11 +18,11 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
     @DataProvider
     public Object[][] registrationData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/TP-TestData-Regression.xls", "RegisterSC01TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/UserRegistration-Workflow.xls", "RegisterSC01TC01");
     }
     
     @Test(dataProvider="registrationData")
-    public void userRegistrationTC_01(String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP) throws Exception
+    public void userRegistrationTC_01(String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword) throws Exception
     {
         //DatabaseConnection.deleteTrainingPartner(email);
         Thread.sleep(2000);
@@ -40,31 +40,38 @@ public class RegisterAndLoginTestSC_01 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickVerify();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the UserName and Password to the registered email address please login with those credentials.");
-    }
-    
-    @DataProvider
-    public Object[][] loginSuccess()
-    {
-        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/TP-TestData-Regression.xls", "LoginPassSC01TC02");
-    }
-    
-    @Test(dataProvider="loginSuccess")
-    public void verifyLoginSuccessTC_02(String username, String password) throws Exception
-    {
-        Thread.sleep(2000);
-        LoginPage lp = new LoginPage(driver);
-        lp.clickLogin();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the userName and Password to the registered email address please login with those credentials.");
+        
+        String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
+        rp.clickGoToLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
-        elp.performlogin(username, password);
+        elp.performlogin(username, "ekaushal");
+        Thread.sleep(2000);
+        rp.enterOldPassword(oldPassword);
+        rp.enterNewPassword(newPassword);
+        rp.enterConfirmPassword(confirmPassword);
+        rp.clickResetResubmit();
+        Thread.sleep(2000);
+        rp.clickConfirmationOkMessage();
+        
+        elp.performlogin(username, confirmPassword);
         Thread.sleep(4000);
-        Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome']")).getText(), username);
+        
+        if(userType.equals("Training Partner") || userType.equals("Candidate"))
+        {
+        	Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome']")).getText(), username);
+        }  
+        else if(userType.equals("Trainer") || userType.equals("Assessor"))
+        {
+        	Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__username']")).getText(), username);
+        }
+        
     }
     
     @DataProvider
     public Object[][] loginFailure()
     {
-        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/TP-TestData-Regression.xls", "LoginFailureSC01TC03");
+        return ReadMultipleDataFromExcel.getLoginCredentials("./TestData/UserRegistration-Workflow.xls", "LoginFailureSC01TC02");
     }
     
     @Test(dataProvider="loginFailure")

@@ -16,7 +16,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
 	@DataProvider
     public Object[][] registrationData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/TP-TestData-Validations.xls", "RegisterValidationsSC01TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/UserRegistration-Validations.xls", "RegisterValidationsSC01TC01");
     }
     
     @Test(dataProvider="registrationData")
@@ -60,7 +60,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickVerify();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the UserName and Password to the registered email address please login with those credentials.");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the userName and Password to the registered email address please login with those credentials.");
     }
 }
 

@@ -21,16 +21,19 @@ public class RegistrationPage
     private WebElement mobileTextbox;
     @FindBy(xpath="//button[contains(text(),'Register')]")
     private WebElement registerButton;
+    
     @FindBy(xpath="//input[@name='eOTP']")
     private WebElement emailOTPTextbox;
     @FindBy(xpath="//input[@name='mOTP']")
     private WebElement mobileOTPTextbox;
     @FindBy(xpath="//button[contains(text(),'Verify')]")
     private WebElement verifyButton;
+    
     @FindBy(xpath="//span[@class='text-bold']")
     private WebElement usernameLabel;
     @FindBy(xpath="//button[contains(text(),'Go to Login')]")
     private WebElement goToLoginButton;
+    
     @FindBy(xpath="//input[@name='oldpassword']")
     private WebElement oldPasswordTextbox;
     @FindBy(xpath="//input[@name='newpassword']")
@@ -39,6 +42,7 @@ public class RegistrationPage
     private WebElement confirmPasswordTextbox;
     @FindBy(xpath="//button[contains(text(),'Reset & Re-login')]")
     private WebElement resetAndReloginButton;
+    
     @FindBy(xpath="//button[text()='OK']")
     private WebElement confirmationOkButton;
     
@@ -100,16 +104,19 @@ public class RegistrationPage
     
     public void enterOldPassword(String oldPassword)
     {
+    	oldPasswordTextbox.clear();
         oldPasswordTextbox.sendKeys(oldPassword);
     }
     
     public void enterNewPassword(String newPassword)
     {
+    	newPasswordTextbox.clear();
         newPasswordTextbox.sendKeys(newPassword);
     }
     
     public void enterConfirmPassword(String confirmPassword)
     {
+    	confirmPasswordTextbox.clear();
         confirmPasswordTextbox.sendKeys(confirmPassword);
     }
     

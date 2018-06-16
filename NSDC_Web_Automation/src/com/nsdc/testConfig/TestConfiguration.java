@@ -38,9 +38,9 @@ public class TestConfiguration
     @BeforeMethod
     public void precondition()
     {
-        String browsername = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 0);
-        String url = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 1);
-        String osType = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 2);   
+        String browsername = ReadWriteData.getData("./TestData/Configurations.xls", "Config", 1, 0);
+        String url = ReadWriteData.getData("./TestData/Configurations.xls", "Config", 1, 1);
+        String osType = ReadWriteData.getData("./TestData/Configurations.xls", "Config", 1, 2);   
         
         if (browsername.equals("Chrome") && osType.equals("Mac OS"))
         {

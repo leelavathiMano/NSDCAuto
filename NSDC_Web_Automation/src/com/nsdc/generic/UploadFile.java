@@ -10,16 +10,18 @@ import java.io.File;
 public class UploadFile
 {
     
-    public static void upload(String filePath) throws Exception
+    public static void upload(String fileName) throws Exception
     {
-    	File file = new File(filePath);
+    	String workingDir = System.getProperty("user.dir");
+    	
+    	File file = new File(workingDir+"/UploadFiles/"+fileName);
         
         StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
         
         Robot robot = new Robot();
              
-        String osType = ReadWriteData.getData("./TestData/TestData-Config.xls", "Config", 1, 2);
+        String osType = ReadWriteData.getData("./TestData/Configurations.xls", "Config", 1, 2);
         
         if (osType.equals("Windows"))
         {

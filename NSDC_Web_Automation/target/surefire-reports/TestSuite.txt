@@ -1,28 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 210.531 s <<< FAILURE! - in TestSuite
-LoginFailWithoutEnteringCredentialsTC_04(com.nsdc.regressionTest.RegisterAndLoginTestSC_01)  Time elapsed: 2.618 s  <<< FAILURE!
-org.openqa.selenium.ElementClickInterceptedException: 
-Element <button id="m_login_signin_submit" class="btn btn-focus m-btn--pill btn-login"> is not clickable at point (350,524.9499969482422) because another element <div class="blockUI blockOverlay"> obscures it
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'Shashanks-MacBook-Pro.local', ip: 'fe80:0:0:0:830:ecb7:c3d2:6d19%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.5', java.version: '1.8.0_151'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 60.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 86939, moz:profile: /var/folders/9t/jp1lycb932s..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: MAC, platformName: MAC, platformVersion: 17.6.0, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 6e4676b1-8321-be46-808e-5f99e702689c
-	at com.nsdc.regressionTest.RegisterAndLoginTestSC_01.LoginFailWithoutEnteringCredentialsTC_04(RegisterAndLoginTestSC_01.java:89)
-
-verifyLoginFailureTC_03(com.nsdc.regressionTest.RegisterAndLoginTestSC_01)  Time elapsed: 7.053 s  <<< FAILURE!
-java.lang.AssertionError: expected [username or password invalid] but found [Invalid UserName or Password]
-	at com.nsdc.regressionTest.RegisterAndLoginTestSC_01.verifyLoginFailureTC_03(RegisterAndLoginTestSC_01.java:79)
-
-governmentTpRegistrationTC_01(com.nsdc.regressionTest.TrainingPartnerProfileSC_02)  Time elapsed: 25.249 s  <<< FAILURE!
-org.openqa.selenium.ElementClickInterceptedException: 
-Element <select id="exampleSelect1" class="form-control m-input ng-untouched ng-pristine ng-invalid" name=""> is not clickable at point (1073.8583374023438,339.25) because another element <div class="blockUI blockOverlay"> obscures it
-Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
-System info: host: 'Shashanks-MacBook-Pro.local', ip: 'fe80:0:0:0:830:ecb7:c3d2:6d19%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.5', java.version: '1.8.0_151'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 60.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 87108, moz:profile: /var/folders/9t/jp1lycb932s..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: MAC, platformName: MAC, platformVersion: 17.6.0, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
-Session ID: 1c65ec85-a0e5-e244-9615-32b5359385b8
-	at com.nsdc.regressionTest.TrainingPartnerProfileSC_02.governmentTpRegistrationTC_01(TrainingPartnerProfileSC_02.java:60)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 43.51 s - in TestSuite
