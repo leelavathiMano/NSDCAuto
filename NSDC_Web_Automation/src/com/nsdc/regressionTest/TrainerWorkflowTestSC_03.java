@@ -25,8 +25,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     @Test(dataProvider="registrationData")
     public void trainerRegistrationTC_01(String userType, String name, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String jobRole_sector1, String jobRole_subSector1, String jobRole1, String jobRole_sector2, String jobRole_subSector2, String jobRole2, String preferred_state1, String preferred_city1, String preferred_district1, String preferred_state2, String preferred_city2, String preferred_district2, String preferred_state3, String preferred_city3, String preferred_district3) throws Exception
     {
-    	//DatabaseConnection.deleteTrainer(email);
-    	Thread.sleep(2000);
+        //DatabaseConnection.deleteTrainer(email);
+        Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
         RegistrationPage rp = new RegistrationPage(driver);
@@ -64,11 +64,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         
         if(language.equals("Kannada,English,Hindi"))
         {
-        	 trainer.selectAllLanguages();
+            trainer.selectAllLanguages();
         }
         else
         {
-        	trainer.selectAnyKnownLanguage(language);
+            trainer.selectAnyKnownLanguage(language);
         }
         
         trainer.selectReligion(religion);
@@ -76,32 +76,32 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         
         if(disability.equals("Not Applicable"))
         {
-        	trainer.selectDisability(disability);
+            trainer.selectDisability(disability);
         }
         else
-        {	
-        	trainer.selectDisability(disability);
-    		trainer.clickOnBrowseForUploadDisabilityDocument();
-    		Thread.sleep(2000);
-    		UploadFile.upload(disabilityFile);
-    		Thread.sleep(2000);
-    		trainer.clickOnUploadButtonForUploadDisabilityDocument();
-    		Thread.sleep(4000);
+        {
+            trainer.selectDisability(disability);
+            trainer.clickOnBrowseForUploadDisabilityDocument();
+            Thread.sleep(2000);
+            UploadFile.upload(disabilityFile);
+            Thread.sleep(2000);
+            trainer.clickOnUploadButtonForUploadDisabilityDocument();
+            Thread.sleep(4000);
         }
         
         String aadharPan = aadhaarOrPAN.toLowerCase();
         
         if(aadharPan.equals("aadhaar"))
         {
-        	trainer.clickOnAadharNumberRadioButton();
+            trainer.clickOnAadharNumberRadioButton();
             trainer.enterAadharNumber(idNumber);
             trainer.clickOnValidateAadharNumber();
         }
         else if(aadharPan.equals("pan"))
         {
-        	trainer.clickOnPanNumberRadioButton();
-        	trainer.enterPanNumber(idNumber);
-        	trainer.clickOnBrowseFileButtonForUploadPanDocument();
+            trainer.clickOnPanNumberRadioButton();
+            trainer.enterPanNumber(idNumber);
+            trainer.clickOnBrowseFileButtonForUploadPanDocument();
             Thread.sleep(2000);
             UploadFile.upload(uploadPanDocument);
             Thread.sleep(2000);
@@ -118,11 +118,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         
         if(applicant_Category.equals("Trainer,Master Trainer"))
         {
-        	trainer.selectAllApplicantCategory();
+            trainer.selectAllApplicantCategory();
         }
         else if(applicant_Category.equals("Trainer") || applicant_Category.equals("Master Trainer"))
         {
-        	trainer.selectAnyApplicantCategory(applicant_Category);
+            trainer.selectAnyApplicantCategory(applicant_Category);
         }
         Thread.sleep(2000);
         trainer.clickOnSaveAndContinue();
@@ -141,56 +141,56 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         
         if(education1.equals("Not Applicable"))
         {
-        	trainer.selectEducationAttained(education1);
+            trainer.selectEducationAttained(education1);
         }
         else
         {
-        	trainer.selectEducationAttained(education1);
-        	trainer.enterDetailsOfEducation(edu_details1);
-        	trainer.clickOnBrowseForUploadEducationProofDocument();
-	        Thread.sleep(2000);
-	        UploadFile.upload(edu_document2);
-	        Thread.sleep(2000);
-	        trainer.clickOnUploadForUploadEducationProofDocument();
-	        Thread.sleep(4000);
-        	trainer.clickOnAddEducationDetailsButton();
-        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education1+"')]")).getText(), education1);
-        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText(), edu_details1);
-        	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[1]")).getText(), "yes");   
+            trainer.selectEducationAttained(education1);
+            trainer.enterDetailsOfEducation(edu_details1);
+            trainer.clickOnBrowseForUploadEducationProofDocument();
+            Thread.sleep(2000);
+            UploadFile.upload(edu_document2);
+            Thread.sleep(2000);
+            trainer.clickOnUploadForUploadEducationProofDocument();
+            Thread.sleep(4000);
+            trainer.clickOnAddEducationDetailsButton();
+            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education1+"')]")).getText(), education1);
+            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText(), edu_details1);
+            Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[1]")).getText(), "yes");
         }
         if(education2.equals("Not Applicable"))
         {
-        	trainer.selectEducationAttained(education2);
+            trainer.selectEducationAttained(education2);
         }
         else
         {
-	        trainer.selectEducationAttained(education2);
-	        trainer.enterDetailsOfEducation(edu_details2);
-	        trainer.clickOnBrowseForUploadEducationProofDocument();
-	        Thread.sleep(2000);
-	        UploadFile.upload(edu_document2);
-	        Thread.sleep(2000);
-	        trainer.clickOnUploadForUploadEducationProofDocument();
-	        Thread.sleep(4000);
-	        trainer.clickOnAddEducationDetailsButton();
-	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education2+"')]")).getText(), education2);
-	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
-	        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
+            trainer.selectEducationAttained(education2);
+            trainer.enterDetailsOfEducation(edu_details2);
+            trainer.clickOnBrowseForUploadEducationProofDocument();
+            Thread.sleep(2000);
+            UploadFile.upload(edu_document2);
+            Thread.sleep(2000);
+            trainer.clickOnUploadForUploadEducationProofDocument();
+            Thread.sleep(4000);
+            trainer.clickOnAddEducationDetailsButton();
+            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education2+"')]")).getText(), education2);
+            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
+            Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
         }
         if(education2.equals("Not Applicable"))
         {
-        	trainer.selectEducationAttained(education2);
+            trainer.selectEducationAttained(education2);
         }
         else
         {
-	        trainer.selectEducationAttained(education3);
-	        trainer.enterDetailsOfEducation(edu_details3);
-	        Thread.sleep(2000);
-	        trainer.clickOnAddEducationDetailsButton();
-	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText(), education3);
-	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details3+"')]")).getText(), edu_details3);
-	        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'no')])[1]")).getText(), "no");	        
-	        trainer.deleteThirdEducationDetails(); 
+            trainer.selectEducationAttained(education3);
+            trainer.enterDetailsOfEducation(edu_details3);
+            Thread.sleep(2000);
+            trainer.clickOnAddEducationDetailsButton();
+            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText(), education3);
+            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details3+"')]")).getText(), edu_details3);
+            Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'no')])[1]")).getText(), "no");
+            trainer.deleteThirdEducationDetails();
         }
         
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector1);
@@ -239,14 +239,14 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnAddIndustrialExperienceDetails();
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
-        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");        
+        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
         if(education1.equals("Not Applicable") || education2.equals("Not Applicable") || education3.equals("Not Applicable"))
         {
-        	trainer.deleteThirdIndustrialExperienceDetailsWithoutEducationDetail();
+            trainer.deleteThirdIndustrialExperienceDetailsWithoutEducationDetail();
         }
         else
         {
-        	trainer.deleteThirdIndustrialExperienceDetails();
+            trainer.deleteThirdIndustrialExperienceDetails();
         }
         
         trainer.selectRelevantSectorForTrainingExperience(training_sector1);
@@ -295,12 +295,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[5]")).getText(), "Yes");
         if(education1.equals("Not Applicable") || education2.equals("Not Applicable") || education3.equals("Not Applicable"))
         {
-        	trainer.deleteThirdTrainingExperienceWithoutEducationDetails();
+            trainer.deleteThirdTrainingExperienceWithoutEducationDetails();
         }
         else
         {
-        	trainer.deleteThirdTrainingExperienceDetails();
-        }       
+            trainer.deleteThirdTrainingExperienceDetails();
+        }
         
         trainer.clickOnBrowseForCurriculumVitaeOrResume();
         Thread.sleep(2000);

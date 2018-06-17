@@ -161,7 +161,7 @@ public class TrainerRegistrationPage
     private WebElement submitButton;
     @FindBy(xpath="//button[text()='Logout']")
     private WebElement logOutButton;
-    		
+    
     public TrainerRegistrationPage(WebDriver driver)
     {
         this.driver = driver;
@@ -353,7 +353,7 @@ public class TrainerRegistrationPage
     
     public void deleteThirdEducationDetails()
     {
-    	deleteThirdEducationDetailsButton.click();
+        deleteThirdEducationDetailsButton.click();
     }
     
     public void selectRelevantSectorForIndustrialExperience(String industrial_sector)
@@ -400,12 +400,12 @@ public class TrainerRegistrationPage
     
     public void deleteThirdIndustrialExperienceDetailsWithoutEducationDetail()
     {
-    	deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton.click();
+        deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton.click();
     }
     
     public void deleteThirdIndustrialExperienceDetails()
     {
-    	deleteThirdIndustrialExperienceDetailsButton.click();
+        deleteThirdIndustrialExperienceDetailsButton.click();
     }
     
     public void selectRelevantSectorForTrainingExperience(String training_sector)
@@ -446,12 +446,12 @@ public class TrainerRegistrationPage
     
     public void deleteThirdTrainingExperienceWithoutEducationDetails()
     {
-    	deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton.click();
+        deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton.click();
     }
     
     public void deleteThirdTrainingExperienceDetails()
     {
-    	deleteThirdTrainingExperienceDetailsButton.click();
+        deleteThirdTrainingExperienceDetailsButton.click();
     }
     
     public void clickOnBrowseForCurriculumVitaeOrResume()
@@ -522,12 +522,12 @@ public class TrainerRegistrationPage
     public void clickOnDeleteThirdPreferredLocation()
     {
         thirdPreferredLocation_DeleteButton.click();
-    }  
+    }
     
     public void clickIAgreeCheckbox()
     {
         iAgreeCheckbox.click();
-    }  
+    }
     
     public void clickSubmitButton()
     {
