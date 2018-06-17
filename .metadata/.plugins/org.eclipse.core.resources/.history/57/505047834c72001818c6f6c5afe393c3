@@ -1,0 +1,287 @@
+package com.nsdc.regressionTest;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.EnterLoginPage;
+import com.nsdc.pages.LoginPage;
+import com.nsdc.pages.RegistrationPage;
+import com.nsdc.pages.TrainerRegistrationPage;
+import com.nsdc.testConfig.TestConfiguration;
+
+public class TrainerRegistrationTestSC_03 extends TestConfiguration
+{
+    @DataProvider
+    public Object[][] registrationData()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Trainer-Workflow.xls", "TrainerRegistrationSC03TC01");
+    }
+    
+    @Test(dataProvider="registrationData")
+    public void trainerRegistrationTC_01(String userType, String name, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String jobRole_sector, String jobRole_subSector, String jobRole, String preferred_state, String preferred_city, String preferred_district) throws Exception
+    {
+       /* Thread.sleep(2000);
+        LoginPage lp = new LoginPage(driver);
+        lp.clickRegister();
+        RegistrationPage rp = new RegistrationPage(driver);
+        rp.selectDropdownList(userType);
+        rp.enterSPOCName(name);
+        rp.enterEmail(email);
+        rp.enterMobile(mobile);
+        rp.clickRegister();
+        Thread.sleep(2000);
+        rp.enterEmailOTP(emailOTP);
+        rp.enterMobileOTP(mobileOTP);
+        Thread.sleep(2000);
+        rp.clickVerify();
+        Thread.sleep(2000);
+        
+        String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
+        rp.clickGoToLogin();
+        EnterLoginPage elp = new EnterLoginPage(driver);
+        elp.performlogin(username, "ekaushal");
+        Thread.sleep(2000);
+        rp.enterOldPassword(oldPassword);
+        rp.enterNewPassword(newPassword);
+        rp.enterConfirmPassword(confirmPassword);
+        rp.clickResetResubmit();
+        Thread.sleep(2000);
+        rp.clickConfirmationOkMessage();
+        
+        elp.performlogin(username, confirmPassword);
+        Thread.sleep(4000);*/
+        LoginPage lp = new LoginPage(driver);
+        lp.clickLogin();
+        EnterLoginPage elp = new EnterLoginPage(driver);
+        elp.performlogin("TR135", "Test123@");
+        Thread.sleep(4000);
+        
+        TrainerRegistrationPage trainer = new TrainerRegistrationPage(driver);
+        //Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
+        trainer.selectGender(gender);
+        trainer.selectDateOfBirth(dob);
+        
+        if(language.equals("Kannada,English,Hindi"))
+        {
+        	 trainer.selectAllLanguages();
+        }
+        else
+        {
+        	trainer.selectAnyKnownLanguage(language);
+        }
+        
+        trainer.selectReligion(religion);
+        trainer.selectCategory(category);
+        
+        if(disability.equals("Not Applicable"))
+        {
+        	trainer.selectDisability(disability);
+        }
+        else
+        {	
+        	trainer.selectDisability(disability);
+    		trainer.clickOnBrowseForUploadDisabilityDocument();
+    		Thread.sleep(2000);
+    		UploadFile.upload(disabilityFile);
+    		Thread.sleep(2000);
+    		trainer.clickOnUploadButtonForUploadDisabilityDocument();
+    		Thread.sleep(3000);
+        }
+        
+        String aadharPan = aadhaarOrPAN.toLowerCase();
+        
+        if(aadharPan.equals("aadhaar"))
+        {
+        	trainer.clickOnAadharNumberRadioButton();
+            trainer.enterAadharNumber(idNumber);
+            trainer.clickOnValidateAadharNumber();
+        }
+        else if(aadharPan.equals("pan"))
+        {
+        	trainer.clickOnPanNumberRadioButton();
+        	trainer.enterPanNumber(idNumber);
+        	trainer.clickOnBrowseFileButtonForUploadPanDocument();
+            Thread.sleep(2000);
+            UploadFile.upload(uploadPanDocument);
+            Thread.sleep(2000);
+            trainer.clickOnUploadButtonToUploadPan();
+            Thread.sleep(3000);
+        }
+        
+        trainer.clickOnBrowseFileButtonToUploadPhoto();
+        Thread.sleep(2000);
+        UploadFile.upload(photoFile);
+        Thread.sleep(2000);
+        trainer.clickOnUploadButtonToUploadPhoto();
+        Thread.sleep(3000);
+        
+        if(applicant_Category.equals("Trainer,Master Trainer"))
+        {
+        	trainer.selectAllApplicantCategory();
+        }
+        else if(applicant_Category.equals("Trainer") || applicant_Category.equals("Master Trainer"))
+        {
+        	trainer.selectAnyApplicantCategory(applicant_Category);
+        }
+        Thread.sleep(2000);
+        trainer.clickOnSaveAndContinue();
+        
+        //Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
+        //Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
+        trainer.enterApplicantAddress(address);
+        trainer.enterNearbyLandmark(landmark);
+        trainer.enterPincode(pincode);
+        trainer.selectStateOrUnionTerritory(state);
+        trainer.selectDistrictOrCity(city);
+        trainer.selectTehsilOrMandal(mandal);
+        trainer.selectParliamentaryConstituency(parliamentaryConstituency);
+        Thread.sleep(2000);
+        trainer.clickOnSaveAndContinue();
+        
+        if(education1.equals("Not Applicable"))
+        {
+        	trainer.selectEducationAttained(education1);
+        }
+        else
+        {
+        	trainer.selectEducationAttained(education1);
+        	trainer.enterDetailsOfEducation(edu_details1);
+        	trainer.clickOnBrowseForUploadEducationProofDocument();
+	        Thread.sleep(2000);
+	        UploadFile.upload(edu_document2);
+	        Thread.sleep(2000);
+	        trainer.clickOnUploadForUploadEducationProofDocument();
+	        Thread.sleep(3000);
+        	trainer.clickOnAddEducationDetailsButton();
+        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education1+"')]")).getText(), education1);
+        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText(), edu_details1);
+        	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[1]")).getText(), "yes");   
+        }
+        if(education2.equals("Not Applicable"))
+        {
+        	trainer.selectEducationAttained(education2);
+        }
+        else
+        {
+	        trainer.selectEducationAttained(education2);
+	        trainer.enterDetailsOfEducation(edu_details2);
+	        trainer.clickOnBrowseForUploadEducationProofDocument();
+	        Thread.sleep(2000);
+	        UploadFile.upload(edu_document2);
+	        Thread.sleep(2000);
+	        trainer.clickOnUploadForUploadEducationProofDocument();
+	        Thread.sleep(3000);
+	        trainer.clickOnAddEducationDetailsButton();
+	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education2+"')]")).getText(), education2);
+	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
+	        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
+        }
+        if(education2.equals("Not Applicable"))
+        {
+        	trainer.selectEducationAttained(education2);
+        }
+        else
+        {
+	        trainer.selectEducationAttained(education3);
+	        trainer.enterDetailsOfEducation(edu_details3);
+	        Thread.sleep(2000);
+	        trainer.clickOnAddEducationDetailsButton();
+	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText(), education3);
+	        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details3+"')]")).getText(), edu_details3);
+	        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'no')])[1]")).getText(), "no");
+	        
+	        trainer.deleteThirdEducationDetails(); 
+        }
+        
+        trainer.selectRelevantSectorForIndustrialExperience(industrial_sector1);
+        trainer.selectYearsForIndustrialExperience(industrial_years1);
+        trainer.selectMonthsForIndustrialExperience(industrial_months1);
+        trainer.enterDetailsOfIndustrialExperience(industrialExperienceDetails1);
+        trainer.enterDetailsOfIndustriesForIndustrialExperienceTextBox(industriesDetails1);
+        trainer.clickOnBrowseForIndustrialExperienceProofDocument();
+        Thread.sleep(2000);
+        UploadFile.upload(industrialDocument1);
+        Thread.sleep(2000);
+        trainer.clickOnUploadForIndustrialExperienceProofDocument();
+        Thread.sleep(3000);
+        trainer.clickOnAddIndustrialExperienceDetails();
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector1+"')]")).getText(), industrial_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails1+"')]")).getText(), industrialExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Yes')]")).getText(), "Yes");
+        
+        trainer.selectRelevantSectorForIndustrialExperience(industrial_sector2);
+        trainer.selectYearsForIndustrialExperience(industrial_years2);
+        trainer.selectMonthsForIndustrialExperience(industrial_months2);
+        trainer.enterDetailsOfIndustrialExperience(industrialExperienceDetails2);
+        trainer.enterDetailsOfIndustriesForIndustrialExperienceTextBox(industriesDetails2);
+        trainer.clickOnBrowseForIndustrialExperienceProofDocument();
+        Thread.sleep(2000);
+        UploadFile.upload(industrialDocument2);
+        Thread.sleep(2000);
+        trainer.clickOnUploadForIndustrialExperienceProofDocument();
+        Thread.sleep(3000);
+        trainer.clickOnAddIndustrialExperienceDetails();
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector2+"')]")).getText(), industrial_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails2+"')]")).getText(), industrialExperienceDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Yes')]")).getText(), "Yes");
+        
+        trainer.selectRelevantSectorForIndustrialExperience(industrial_sector3);
+        trainer.selectYearsForIndustrialExperience(industrial_years3);
+        trainer.selectMonthsForIndustrialExperience(industrial_months3);
+        trainer.enterDetailsOfIndustrialExperience(industrialExperienceDetails3);
+        trainer.enterDetailsOfIndustriesForIndustrialExperienceTextBox(industriesDetails3);
+        trainer.clickOnBrowseForIndustrialExperienceProofDocument();
+        Thread.sleep(2000);
+        UploadFile.upload(industrialDocument3);
+        Thread.sleep(2000);
+        trainer.clickOnUploadForIndustrialExperienceProofDocument();
+        Thread.sleep(3000);
+        trainer.clickOnAddIndustrialExperienceDetails();
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Yes')]")).getText(), "Yes");
+        
+        trainer.selectRelevantSectorForTrainingExperience(training_sector1);
+        trainer.selectyearsForTrainingExperience(trainingExperienceYears1);
+        trainer.selectMonthsForTrainingExperience(trainingExperienceMonths1);
+        trainer.enterTrainingExperienceDetails(trainingExperienceDetails1);
+        trainer.clickOnBrowseForTrainingExperienceProofDocument();
+        Thread.sleep(2000);
+        UploadFile.upload(trainingDocument1);
+        Thread.sleep(2000);
+        trainer.clickOnUploadForTrainingExperienceProofDocument();
+        trainer.clickOnAddTrainingExperienceDetails();
+        //Assert.assertEquals(driver.findElement(By.xpath("//div[div/h3[contains(text(),'Added Training')]]/table/tbody/tr/td[1]")).getText(), 1);
+        //Assert.assertEquals(driver.findElement(By.xpath("//div[div/h3[contains(text(),'Added Training')]]/table/tbody/tr/td[2]")).getText(), training_sector);
+        //Assert.assertEquals(driver.findElement(By.xpath("//div[div/h3[contains(text(),'Added Training')]]/table/tbody/tr/td[3]")).getText(), trainingExperienceDetails);
+        //Assert.assertEquals(driver.findElement(By.xpath("//div[div/h3[contains(text(),'Added Training')]]/table/tbody/tr/td[4]")).getText(), trainingExperienceYears +"years"+ trainingExperienceMonths +"months");
+        //Assert.assertEquals(driver.findElement(By.xpath("//div[div/h3[contains(text(),'Added Training')]]/table/tbody/tr/td[5]")).getText(), "Yes");
+        
+        trainer.clickOnBrowseForCurriculumVitaeOrResume();
+        Thread.sleep(2000);
+        UploadFile.upload(resume);
+        Thread.sleep(2000);
+        trainer.clickOnUploadForCurriculumVitaeOrResume();
+        trainer.clickOnSaveAndContinue();
+        Thread.sleep(2000);
+        trainer.clickOn_PreferredJobRole();
+        Thread.sleep(2000);
+        trainer.selectSectorForJobRole(jobRole_sector);
+        trainer.selectSubSectorForJobRole(jobRole_subSector);
+        trainer.select_JobRole(jobRole);
+        trainer.clickOnAddForPreferredJobRole();
+        Thread.sleep(2000);
+        trainer.clickOn_AddPreferredLocation();
+        Thread.sleep(2000);
+        trainer.selectPreferredStateOrUnionTerritory(preferred_state);
+        trainer.selectPreferredDistrictOrCity(preferred_city);
+        trainer.selectPreferredSubDistrictOrTehsil(preferred_district);
+        trainer.clickOnAddForPreferredLocation();
+    }
+    
+}
+

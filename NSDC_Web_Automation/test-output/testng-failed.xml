@@ -3,14 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nsdc.regressionTest.TrainingPartnerProfileSC_02">
+      <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01">
         <methods>
-          <include name="governmentTpRegistrationTC_01" invocation-numbers="1"/>
           <include name="precondition"/>
           <include name="postcondition"/>
+          <include name="verifyLoginFailureTC_03" invocation-numbers="0"/>
+          <include name="LoginFailWithoutEnteringCredentialsTC_04"/>
           <include name="preSuite"/>
         </methods>
-      </class> <!-- com.nsdc.regressionTest.TrainingPartnerProfileSC_02 -->
+      </class> <!-- com.nsdc.regressionTest.RegistrationAndLoginTestSC_01 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

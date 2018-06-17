@@ -9,6 +9,7 @@
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
 			<item value="sendKeys"/>
+			<item value="Thread.sleep(3000)"/>
 			<item value="clickbrowseButton"/>
 			<item value="broswe"/>
 			<item value="broswer"/>
@@ -18,6 +19,7 @@
 			<item value=";"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Thread.sleep(4000)"/>
 			<item value="clickBrowseButton"/>
 			<item value="browse"/>
 			<item value=""/>

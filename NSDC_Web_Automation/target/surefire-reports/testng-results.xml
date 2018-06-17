@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="42591" started-at="2018-06-16T13:23:12Z" finished-at="2018-06-16T13:23:54Z">
+  <suite name="Suite" duration-ms="48037" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:59:24Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="42591" started-at="2018-06-16T13:23:12Z" finished-at="2018-06-16T13:23:54Z">
-      <class name="com.nsdc.componentTest.UserRegistrationValidationsSC_01">
-        <test-method status="PASS" signature="preSuite()[pri:0, instance:com.nsdc.componentTest.UserRegistrationValidationsSC_01@694e1548]" name="preSuite" is-config="true" duration-ms="210" started-at="2018-06-16T13:23:11Z" finished-at="2018-06-16T13:23:12Z">
+    <test name="Test" duration-ms="48037" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:59:24Z">
+      <class name="com.nsdc.ValidationTest.UserRegistrationValidationsSC_01">
+        <test-method status="PASS" signature="preSuite()[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="preSuite" is-config="true" duration-ms="146" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:58:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- preSuite -->
-        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.componentTest.UserRegistrationValidationsSC_01@694e1548]" name="precondition" is-config="true" duration-ms="22023" started-at="2018-06-16T13:23:12Z" finished-at="2018-06-16T13:23:34Z">
+        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="precondition" is-config="true" duration-ms="6952" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:58:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- precondition -->
-        <test-method status="PASS" signature="userRegistrationValidationsTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.componentTest.UserRegistrationValidationsSC_01@694e1548]" name="userRegistrationValidationsTC_01" duration-ms="20279" started-at="2018-06-16T13:23:34Z" data-provider="registrationData" finished-at="2018-06-16T13:23:54Z">
+        <test-method status="PASS" signature="userRegistrationValidationsTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="userRegistrationValidationsTC_01" duration-ms="40829" started-at="2018-06-17T20:58:43Z" data-provider="registrationData" finished-at="2018-06-17T20:59:24Z">
           <params>
             <param index="0">
               <value>
@@ -29,7 +29,7 @@
             </param>
             <param index="2">
               <value>
-                <![CDATA[tpspoc017@test.com]]>
+                <![CDATA[tpspoc018@test.com]]>
               </value>
             </param>
             <param index="3">
@@ -72,22 +72,52 @@
                 <![CDATA[84676]]>
               </value>
             </param>
+            <param index="11">
+              <value>
+                <![CDATA[ekaushal]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[ekaushal1234]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[test@1234]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[test]]>
+              </value>
+            </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- userRegistrationValidationsTC_01 -->
-        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.componentTest.UserRegistrationValidationsSC_01@694e1548]" name="postcondition" is-config="true" duration-ms="112" started-at="2018-06-16T13:23:54Z" finished-at="2018-06-16T13:23:54Z">
+        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="postcondition" is-config="true" duration-ms="143" started-at="2018-06-17T20:59:24Z" finished-at="2018-06-17T20:59:24Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=userRegistrationValidationsTC_01 status=SUCCESS method=UserRegistrationValidationsSC_01.userRegistrationValidationsTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.componentTest.UserRegistrationValidationsSC_01@694e1548] output={null}]]]>
+                <![CDATA[[TestResult name=userRegistrationValidationsTC_01 status=SUCCESS method=UserRegistrationValidationsSC_01.userRegistrationValidationsTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postcondition -->
-      </class> <!-- com.nsdc.componentTest.UserRegistrationValidationsSC_01 -->
+      </class> <!-- com.nsdc.ValidationTest.UserRegistrationValidationsSC_01 -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

@@ -75,7 +75,7 @@ public class TestConfiguration
         
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get(url);     
+        driver.get(url);
     }
     
     @AfterMethod
