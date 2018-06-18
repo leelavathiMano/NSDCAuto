@@ -1,6 +1,6 @@
 */target/**
-/.metadata/
-/.recommenders/
+*/.metadata/**
+*/.recommenders/**
 
 # Compiled class file
 *.class
