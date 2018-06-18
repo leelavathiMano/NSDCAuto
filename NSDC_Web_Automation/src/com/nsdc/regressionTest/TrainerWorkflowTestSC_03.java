@@ -358,6 +358,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(2000);
         trainer.clickSubmitButton();
         Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("//h2[text()='Thank You']")).getText(), "Thank You");
         trainer.clickLogOutButton();
         Thread.sleep(2000);
         

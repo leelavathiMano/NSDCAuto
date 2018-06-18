@@ -47,5 +47,11 @@ public class DatabaseConnection
         DatabaseConnection.deleteUserFromDB("users", "email", fieldValue);
         DatabaseConnection.deleteUserFromDB("trainer", "email", fieldValue);
     }
+    
+    public static void deleteAssessor(String fieldValue)
+    {
+        DatabaseConnection.deleteUserFromDB("users", "email", fieldValue);
+        DatabaseConnection.deleteUserFromDB("assessor", "email", fieldValue);
+    }
 }
 

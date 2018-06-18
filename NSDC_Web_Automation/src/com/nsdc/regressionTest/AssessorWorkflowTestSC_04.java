@@ -4,15 +4,17 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AssessorRegistrationPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.RegistrationPage;
+import com.nsdc.testConfig.DatabaseConnection;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class AssessorWorkflowTestSC_4 extends TestConfiguration
+public class AssessorWorkflowTestSC_04 extends TestConfiguration
 {
     @DataProvider
     public Object[][] registrationData()
@@ -23,7 +25,7 @@ public class AssessorWorkflowTestSC_4 extends TestConfiguration
     @Test(dataProvider="registrationData")
     public void assessorRegistrationTC_01(String userType, String name, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String jobRole_sector1, String jobRole_subSector1, String jobRole1, String jobRole_sector2, String jobRole_subSector2, String jobRole2, String preferred_state1, String preferred_city1, String preferred_district1, String preferred_state2, String preferred_city2, String preferred_district2, String preferred_state3, String preferred_city3, String preferred_district3) throws Exception
     {
-        //DatabaseConnection.deleteassessor(email);
+        //DatabaseConnection.deleteAssessor(email);
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
@@ -359,6 +361,7 @@ public class AssessorWorkflowTestSC_4 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//h2[text()='Thank You']")).getText(), "Thank You");
         assessor.clickLogOutButton();
         Thread.sleep(2000);
+        
         Assert.assertEquals(driver.findElement(By.xpath("//li[text()='Login']")).getText(), "Login");
     }
     
