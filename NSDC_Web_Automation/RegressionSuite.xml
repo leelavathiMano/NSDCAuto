@@ -6,6 +6,7 @@
       <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
       <class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
       <class name="com.nsdc.regressionTest.TrainerWorkflowTestSC_03"/>
+      <class name="com.nsdc.regressionTest.AssessorWorkflowTestSC_04"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
