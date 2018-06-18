@@ -1,0 +1,33 @@
+package com.nsdc.regressionTest;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class A {
+	public static void main(String[] args) throws Exception{
+		System.setProperty("webdriver.gecko.driver","E://geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("https://www.google.com");
+		driver.switchTo().activeElement().sendKeys("facebook");
+		driver.switchTo().activeElement().sendKeys(Keys.ENTER);
+		List<WebElement> elements = driver.findElements(By.xpath("//a"));
+		System.out.println("Total links is "+elements.size());
+		Iterator<WebElement> i1=elements.iterator();
+		while(i1.hasNext()){
+			WebElement ele1=i1.next();
+			String name=ele1.getText();
+			System.out.println("Elements name is "+name);
+			driver.close();
+		}
+	}
+}

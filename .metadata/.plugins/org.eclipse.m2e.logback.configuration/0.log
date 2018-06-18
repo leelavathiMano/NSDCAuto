@@ -15454,3 +15454,330 @@ org.eclipse.core.runtime.CoreException: Launch configuration RegisterAndLoginTes
 2018-06-18 02:33:13,993 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
 2018-06-18 02:33:13,994 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-06-18 02:33:13,994 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 02:41:56,801 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-18 02:42:01,962 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 02:42:01,963 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 02:42:01,966 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 02:42:01,966 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 02:43:59,252 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 02:43:59,252 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 02:43:59,253 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 02:43:59,253 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:21:36,973 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-18 11:21:42,574 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:21:42,575 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:21:42,579 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:21:42,579 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:40:02,384 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:40:02,385 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:40:02,387 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:40:02,387 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:40:23,125 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:40:23,126 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:40:23,127 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:40:23,127 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:41:04,567 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:41:04,567 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:41:04,568 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:41:04,569 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:44:06,977 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:06,978 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:44:06,979 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:06,979 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:44:12,744 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:12,745 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:44:12,746 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:12,746 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:44:33,996 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:33,996 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:44:33,997 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:33,997 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:44:52,236 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:52,236 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:44:52,239 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:52,239 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:44:58,508 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:58,508 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:44:58,509 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:44:58,510 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:45:42,086 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:45:42,090 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:45:42,096 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:45:42,096 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:45:47,817 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:45:47,817 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:45:47,818 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:45:47,818 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:46:00,248 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:46:00,249 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:46:00,252 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:46:00,252 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:46:21,731 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:46:21,732 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:46:21,733 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:46:21,733 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:47:04,209 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:47:04,210 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:47:04,210 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:47:04,210 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:47:39,821 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:47:39,822 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:47:39,833 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:47:39,834 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:47:47,029 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:47:47,029 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:47:47,031 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:47:47,032 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:49:27,143 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:49:27,144 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:49:27,145 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:49:27,145 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:49:54,438 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:49:54,440 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:49:54,441 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:49:54,441 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:49:57,302 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:49:57,302 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:49:57,303 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:49:57,303 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:50:07,100 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:07,101 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:50:07,104 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:07,104 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:50:23,812 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:23,812 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:50:23,813 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:23,813 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:50:38,523 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:38,523 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:50:38,524 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:38,525 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:50:50,625 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:50,625 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:50:50,626 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:50,626 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:50:55,999 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:56,000 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:50:56,001 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:50:56,001 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:51:41,934 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:51:41,935 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:51:41,936 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:51:41,936 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:51:51,163 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:51:51,163 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:51:51,164 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:51:51,164 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:52:02,797 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:52:02,798 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:52:02,799 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:52:02,799 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 11:52:07,723 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:52:07,724 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 11:52:07,724 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 11:52:07,724 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:17:46,810 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:17:46,815 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:17:46,817 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:17:46,818 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:18:44,912 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:18:44,912 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:18:44,914 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:18:44,914 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:18:55,898 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:18:55,899 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:18:55,899 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:18:55,900 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:19:13,543 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:19:13,543 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:19:13,544 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:19:13,545 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:19:40,151 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:19:40,151 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:19:40,152 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:19:40,153 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:37:57,871 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:37:57,873 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:37:57,874 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:37:57,874 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:47:11,117 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:47:11,117 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:47:11,118 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:47:11,118 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:48:16,587 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:48:16,587 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:48:16,589 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:48:16,589 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:48:48,148 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:48:48,148 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:48:48,149 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:48:48,150 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 12:57:18,917 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:57:18,918 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 12:57:18,919 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 12:57:18,920 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 13:01:51,670 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:01:51,673 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 13:01:51,681 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:01:51,681 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 13:07:09,740 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:07:09,741 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 13:07:09,741 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:07:09,742 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 13:11:59,207 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:11:59,208 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 13:11:59,213 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:11:59,213 [Worker-51] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 13:12:08,672 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:12:08,672 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 13:12:08,673 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:12:08,674 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 13:12:16,728 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:12:16,728 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 13:12:16,729 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:12:16,729 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 13:18:14,164 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:18:14,165 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 13:18:14,166 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 13:18:14,166 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 14:04:42,768 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-18 14:04:47,244 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 14:04:47,245 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 14:04:47,247 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 14:04:47,247 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 14:07:56,464 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 14:07:56,465 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 14:07:56,467 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 14:07:56,467 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 14:10:58,247 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-18 14:11:03,389 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 14:11:03,390 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 14:11:03,392 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 14:11:03,392 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:03:35,438 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:03:35,440 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:03:35,441 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:03:35,442 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:27:17,369 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:27:17,371 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:27:17,373 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:27:17,373 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:27:18,410 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:27:18,410 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:27:18,412 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:27:18,412 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:27:48,824 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:27:48,825 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:27:48,828 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:27:48,828 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:28:01,759 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:28:01,759 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:28:01,760 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:28:01,760 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:28:41,228 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:28:41,228 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:28:41,229 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:28:41,229 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:52:49,377 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:52:49,385 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:52:49,389 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:52:49,389 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:52:50,443 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:52:50,443 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:52:50,447 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:52:50,447 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:53:09,816 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:53:09,817 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:53:09,830 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:53:09,831 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:56:27,045 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:56:27,046 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:56:27,047 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:56:27,047 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:56:41,274 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:56:41,274 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:56:41,275 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:56:41,275 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:56:56,633 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:56:56,633 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:56:56,635 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:56:56,635 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:57:47,350 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:57:47,351 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:57:47,353 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:57:47,353 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:58:21,834 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:58:21,835 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:58:21,836 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:58:21,837 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 16:58:33,231 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:58:33,231 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 16:58:33,233 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 16:58:33,233 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 17:05:25,809 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:05:25,811 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 17:05:25,812 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:05:25,812 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 17:10:41,003 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:10:41,007 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 17:10:41,009 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:10:41,009 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 17:11:03,813 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:11:03,813 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 17:11:03,814 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:11:03,814 [Worker-83] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 17:53:41,908 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:53:41,910 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 17:53:41,912 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:53:41,912 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 17:56:35,720 [Worker-96] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:56:35,721 [Worker-96] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 17:56:35,722 [Worker-96] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:56:35,722 [Worker-96] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 17:57:26,275 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-18 17:57:30,951 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:57:30,952 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 17:57:30,954 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 17:57:30,955 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:23:26,707 [Worker-139] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-06-18 19:23:27,209 [Worker-139] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: web.automation.nsdc:NSDC_Web_Automation:0.0.1-SNAPSHOT @ /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/pom.xml.
+2018-06-18 19:23:28,059 [Worker-139] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /NSDC_Web_Automation/src/main/java because it overlaps with /NSDC_Web_Automation/src
+2018-06-18 19:23:28,059 [Worker-139] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /NSDC_Web_Automation/src/test/java because it overlaps with /NSDC_Web_Automation/src
+2018-06-18 19:23:28,483 [Worker-139] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2018-06-18 19:23:29,423 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:23:29,423 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:23:29,425 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:23:29,425 [Worker-133] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:38:28,949 [Worker-144] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation
+2018-06-18 19:38:28,954 [Worker-144] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B test
+2018-06-18 19:39:15,846 [Worker-144] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:39:15,846 [Worker-144] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:39:15,849 [Worker-144] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:39:15,849 [Worker-144] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:42:11,311 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-06-18 19:42:17,047 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:42:17,047 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:42:17,050 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:42:17,050 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:46:27,702 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:46:27,705 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:46:27,707 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:46:27,707 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:46:39,464 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: web.automation.nsdc:NSDC_Web_Automation:0.0.1-SNAPSHOT @ /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/pom.xml.
+2018-06-18 19:46:40,122 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:46:40,123 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:46:40,124 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:46:40,125 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:48:15,415 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:48:15,416 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:48:15,418 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:48:15,418 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:48:19,584 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: web.automation.nsdc:NSDC_Web_Automation:0.0.1-SNAPSHOT @ /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/pom.xml.
+2018-06-18 19:48:19,997 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:48:19,997 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:48:19,999 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:48:19,999 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-06-18 19:51:50,132 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:51:50,132 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
+2018-06-18 19:51:50,132 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-06-18 19:51:50,133 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources

@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="48037" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:59:24Z">
+  <suite name="Suite" duration-ms="48141" started-at="2018-06-18T14:17:09Z" finished-at="2018-06-18T14:17:57Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="48037" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:59:24Z">
+    <test name="Test" duration-ms="48141" started-at="2018-06-18T14:17:09Z" finished-at="2018-06-18T14:17:57Z">
       <class name="com.nsdc.ValidationTest.UserRegistrationValidationsSC_01">
-        <test-method status="PASS" signature="preSuite()[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="preSuite" is-config="true" duration-ms="146" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:58:36Z">
+        <test-method status="PASS" signature="preSuite()[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="preSuite" is-config="true" duration-ms="134" started-at="2018-06-18T14:17:08Z" finished-at="2018-06-18T14:17:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- preSuite -->
-        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="precondition" is-config="true" duration-ms="6952" started-at="2018-06-17T20:58:36Z" finished-at="2018-06-17T20:58:43Z">
+        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="precondition" is-config="true" duration-ms="7268" started-at="2018-06-18T14:17:09Z" finished-at="2018-06-18T14:17:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- precondition -->
-        <test-method status="PASS" signature="userRegistrationValidationsTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="userRegistrationValidationsTC_01" duration-ms="40829" started-at="2018-06-17T20:58:43Z" data-provider="registrationData" finished-at="2018-06-17T20:59:24Z">
+        <test-method status="PASS" signature="userRegistrationValidationsTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="userRegistrationValidationsTC_01" duration-ms="40487" started-at="2018-06-18T14:17:16Z" data-provider="registrationData" finished-at="2018-06-18T14:17:56Z">
           <params>
             <param index="0">
               <value>
@@ -106,7 +106,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- userRegistrationValidationsTC_01 -->
-        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="postcondition" is-config="true" duration-ms="143" started-at="2018-06-17T20:59:24Z" finished-at="2018-06-17T20:59:24Z">
+        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.ValidationTest.UserRegistrationValidationsSC_01@694e1548]" name="postcondition" is-config="true" duration-ms="256" started-at="2018-06-18T14:17:56Z" finished-at="2018-06-18T14:17:57Z">
           <params>
             <param index="0">
               <value>
