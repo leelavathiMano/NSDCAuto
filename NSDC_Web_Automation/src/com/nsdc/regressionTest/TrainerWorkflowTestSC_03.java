@@ -318,6 +318,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnAddForPreferredJobRole();
         Thread.sleep(2000);
         trainer.clickOnDeletePreferredJobRole();
+        Thread.sleep(2000);
         trainer.clickOn_PreferredJobRole();
         Thread.sleep(2000);
         trainer.selectSectorForJobRole(jobRole_sector2);
@@ -332,12 +333,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.selectPreferredDistrictOrCity(preferred_city1);
         trainer.selectPreferredSubDistrictOrTehsil(preferred_district1);
         trainer.clickOnAddForPreferredLocation();
+        Thread.sleep(2000);
+        
         trainer.clickOn_AddPreferredLocation();
         Thread.sleep(2000);
         trainer.selectPreferredStateOrUnionTerritory(preferred_state2);
         trainer.selectPreferredDistrictOrCity(preferred_city2);
         trainer.selectPreferredSubDistrictOrTehsil(preferred_district2);
         trainer.clickOnAddForPreferredLocation();
+        Thread.sleep(2000);
+        
         trainer.clickOn_AddPreferredLocation();
         Thread.sleep(2000);
         trainer.selectPreferredStateOrUnionTerritory(preferred_state3);
@@ -348,6 +353,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnDeleteThirdPreferredLocation();
         trainer.clickOnSaveAndContinue();
         
+        Thread.sleep(2000);
         trainer.clickIAgreeCheckbox();
         Thread.sleep(2000);
         trainer.clickSubmitButton();

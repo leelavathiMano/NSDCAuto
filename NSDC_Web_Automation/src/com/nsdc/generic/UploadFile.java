@@ -13,11 +13,6 @@ public class UploadFile
     public static void upload(String fileName) throws Exception
     {
     	String workingDir = System.getProperty("user.dir");
-    	
-    	File file = new File(workingDir+"/UploadFiles/"+fileName);
-        
-        StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
         
         Robot robot = new Robot();
              
@@ -25,6 +20,11 @@ public class UploadFile
         
         if (osType.equals("Windows"))
         {
+        	File file = new File(workingDir+"\\UploadFiles\\"+fileName);
+            
+            StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+            
         	 //Paste the clipboard value
         	
         	robot.keyPress(KeyEvent.VK_CONTROL);
@@ -41,6 +41,11 @@ public class UploadFile
         
         else if (osType.equals("Mac OS"))
         {
+        	File file = new File(workingDir+"/UploadFiles/"+fileName);
+            
+            StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+            
         	//Perform click in middle screen
             
             robot.mouseMove(635, 285);

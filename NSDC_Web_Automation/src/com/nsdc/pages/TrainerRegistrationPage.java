@@ -155,7 +155,7 @@ public class TrainerRegistrationPage
     @FindBy(xpath="(//button[@class='btn'])[4]")
     private WebElement thirdPreferredLocation_DeleteButton;
     
-    @FindBy(xpath="//span[@_ngcontent-c10='']")
+    @FindBy(xpath="//span[@_ngcontent-c12='']")
     private WebElement iAgreeCheckbox;
     @FindBy(xpath="(//button[@class='btn btn-primary'])[1]")
     private WebElement submitButton;
