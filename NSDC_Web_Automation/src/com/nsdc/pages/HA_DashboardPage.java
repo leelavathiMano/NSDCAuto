@@ -10,7 +10,7 @@ public class HA_DashboardPage
 	WebDriver driver;
 	
 	@FindBy(xpath="//div[@routerlink='adding-tc-requests']")
-	private WebElement AddingTCRequestsButton;
+	private WebElement addingTCRequestsButton;
 	
 	public HA_DashboardPage(WebDriver driver)
     {
@@ -20,6 +20,6 @@ public class HA_DashboardPage
 	
 	public void clickOnAddingTCRequest()
 	{
-		AddingTCRequestsButton.click();
+		addingTCRequestsButton.click();
 	}
 }

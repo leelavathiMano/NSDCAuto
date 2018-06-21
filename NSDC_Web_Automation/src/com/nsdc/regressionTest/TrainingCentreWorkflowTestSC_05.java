@@ -6,7 +6,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
-import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AddTrainingCentrePage;
 import com.nsdc.pages.EnterLoginPage;
@@ -15,7 +14,6 @@ import com.nsdc.pages.HA_DashboardPage;
 import com.nsdc.pages.HA_TCViewDetailsPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
-import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.TrainingPartnerDashboardPage;
 import com.nsdc.testConfig.TestConfiguration;
 
@@ -72,13 +70,16 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
             add.clickOnUploadToUploadRecommendationLetter();
             Thread.sleep(2000);
             add.clickOnSaveAndNext();
+            
         }
         else
         {
         	add.selectTrainingCentreType(TC_type);
         	add.clickOnSaveAndNext();
+        	
         }
-
+        
+        Assert.assertEquals(driver.findElement(By.xpath("//p[text()='Add a Training Centre']")).getText(), "Add a Training Centre");
     }
 	
 	@Test(dataProvider="HA_TCApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
@@ -105,6 +106,7 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         
         request.clickOnAction();
         request.clickOnApproveOrReject();
+        Thread.sleep(2000);
         if(review.equals("Approved"))
         {
         	request.selectReviewComments(review);

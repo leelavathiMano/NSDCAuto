@@ -12,7 +12,7 @@ public class HA_AllTCRequestPage
 	WebDriver driver;
 	
 	@FindBy(xpath="//input[@type='text']")
-	private WebElement TCRequest_searchTextBox;
+	private WebElement tcRequest_searchTextBox;
 	@FindBy(css=".btn.m-btn.m-btn--hover-accent.m-btn--icon.m-btn--icon-only.m-btn--pill")
 	private WebElement actionButton;
 	@FindBy(xpath="//a[contains(text(),'View Details')]")
@@ -40,8 +40,8 @@ public class HA_AllTCRequestPage
 	
 	public void enterTCDetailsToSearchTCRequest(String search)
 	{
-		//TCRequest_searchTextBox.clear();
-		TCRequest_searchTextBox.sendKeys(search);
+		tcRequest_searchTextBox.clear();
+		tcRequest_searchTextBox.sendKeys(search);
 	}
 	
 	public void clickOnAction()
