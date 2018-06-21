@@ -15,6 +15,7 @@ import com.nsdc.pages.HA_TCViewDetailsPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.TrainingPartnerDashboardPage;
+import com.nsdc.testConfig.DatabaseConnection;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
@@ -25,21 +26,10 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingCentre-Workflow.xls", "TPAddingTC_SC05TC01");
     }
 	
-	@DataProvider
-    public Object[][] HA_TCApproval_Data()
-    {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingCentre-Workflow.xls", "HA_TCApproval_SC05TC02");
-    }
-	
-	@DataProvider
-    public Object[][] HA_TCViewAndApproval_Data()
-    {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingCentre-Workflow.xls", "HA_TCViewAndApproval_SC05TC03");
-    }
-	
 	@Test(dataProvider="TPAddingTC_Data")
     public void TP_addingTC_TC_01(String TPname, String address, String SPOC_name, String emailAddress, String mobileNo, String TC_type, String state, String scheme, String holdingAgency, String upload_recommendationLetter) throws Exception
     {
+		//DatabaseConnection.deleteTrainingCentre(emailAddress);
 		Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         EnterLoginPage elp = new EnterLoginPage(driver);
@@ -80,6 +70,12 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         }
         
         Assert.assertEquals(driver.findElement(By.xpath("//p[text()='Add a Training Centre']")).getText(), "Add a Training Centre");
+    }
+	
+	@DataProvider
+    public Object[][] HA_TCApproval_Data()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingCentre-Workflow.xls", "HA_TCApproval_SC05TC02");
     }
 	
 	@Test(dataProvider="HA_TCApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
@@ -135,6 +131,12 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         enter.clickLoginToSubmit();
         Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Reset & Re-login')]")).isDisplayed());
 	}
+	
+	@DataProvider
+    public Object[][] HA_TCViewAndApproval_Data()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingCentre-Workflow.xls", "HA_TCViewAndApproval_SC05TC03");
+    }
 	
 	@Test(dataProvider="HA_TCViewAndApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
 	public void HA_viewDetailsAndApprovingTC_TC_03(String TC_name, String address,String SPOC_name, String email, String mobileNo, String type, String state, String schemeAssociated, String HA_assigned, String review, String comment) throws Exception
