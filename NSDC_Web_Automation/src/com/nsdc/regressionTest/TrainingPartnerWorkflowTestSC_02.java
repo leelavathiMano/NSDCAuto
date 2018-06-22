@@ -64,6 +64,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.enterNameOfOrganizationTextBox(name_Of_Organization);
         tprp.selectTypeOfTheOrganization(type_Of_The_Organization);
         tprp.selectYearOfEstablishment(year_Of_Establishment);
+        Thread.sleep(2000);
         tprp.clickBrowseFile();
         Thread.sleep(2000);
         UploadFile.upload(uploadFilePath);
@@ -99,6 +100,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.enterGeoLocation(geo_Location);
         tprp.selectParliamentaryConstituency(parliamentary_constituency);
         tprp.selectAddressProof(address_proof);
+        Thread.sleep(2000);
         tprp.clickBrowseFile();
         Thread.sleep(2000);
         UploadFile.upload(uploadFile);
@@ -111,6 +113,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_PAN);
@@ -118,6 +121,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton2();
             Thread.sleep(2000);
             UploadFile.upload(upload_GST);
@@ -146,6 +150,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
         {
             tprp.enterAadharNumber(aadhar_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             
@@ -168,6 +173,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_PAN);
@@ -175,6 +181,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton2();
             Thread.sleep(2000);
             UploadFile.upload(upload_GST);
@@ -183,6 +190,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
             
             tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(2000);
             tprp.clickBrowseButton3();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
@@ -206,6 +214,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.enterAadharNumber(aadhar_Number);
             
             tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
@@ -227,6 +236,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_PAN);
@@ -234,6 +244,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton2();
             Thread.sleep(2000);
             UploadFile.upload(upload_GST);
@@ -242,6 +253,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
             
             tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(2000);
             tprp.clickBrowseButton3();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
@@ -249,6 +261,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton3();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(2000);
             tprp.clickBrowseButton4();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover2);
@@ -272,6 +285,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.enterAadharNumber(aadhar_Number);
             
             tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
@@ -279,6 +293,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(2000);
             tprp.clickBrowseButton2();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover2);
@@ -300,6 +315,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if((year < 2016) && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_PAN);
@@ -307,6 +323,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(2000);
             tprp.clickBrowseButton2();
             Thread.sleep(2000);
             UploadFile.upload(upload_GST);
@@ -315,6 +332,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
             
             tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(2000);
             tprp.clickBrowseButton3();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
@@ -322,6 +340,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton3();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(2000);
             tprp.clickBrowseButton4();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover2);
@@ -329,6 +348,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton4();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(2000);
             tprp.clickBrowseButton5();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover3);
@@ -352,6 +372,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.enterAadharNumber(aadhar_Number);
             
             tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
@@ -359,6 +380,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(2000);
             tprp.clickBrowseButton2();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover2);
@@ -366,6 +388,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton2();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(2000);
             tprp.clickBrowseButton3();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover3);

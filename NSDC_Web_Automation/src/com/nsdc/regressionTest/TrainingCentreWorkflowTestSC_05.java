@@ -28,14 +28,14 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
     }
 	
 	@Test(dataProvider="TPAddingTC_Data")
-    public void TP_addingTC_TC_01(String TPname, String address, String SPOC_name, String emailAddress, String mobileNo, String TC_type, String state, String scheme, String holdingAgency, String upload_recommendationLetter) throws Exception
+    public void TP_addingTC_TC_01(String tpUsername, String tpPassword, String TPname, String address, String SPOC_name, String emailAddress, String mobileNo, String TC_type, String state, String scheme, String holdingAgency, String upload_recommendationLetter) throws Exception
     {
 		//DatabaseConnection.deleteTrainingCentre(emailAddress);
 		Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         EnterLoginPage elp = new EnterLoginPage(driver);
         lp.clickLogin();
-        elp.performlogin("TP332", "Qwerty@123");
+        elp.performlogin(tpUsername, tpPassword);
         Thread.sleep(4000);
         
         TrainingPartnerDashboardPage dashboard = new TrainingPartnerDashboardPage(driver);
@@ -69,7 +69,7 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         	add.clickOnSaveAndNext();
         	
         }
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//p[text()='Add a Training Centre']")).getText(), "Add a Training Centre");
     }
 	
@@ -80,13 +80,13 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
     }
 	
 	@Test(dataProvider="HA_TCApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
-	public void HA_approvingTC_TC_02(String TC_name, String SPOC_email, String SPOC_mobileNo, String SPOC_name, String review, String comment, String oldPassword, String newPassword, String confirmPassword) throws Exception
+	public void HA_approvingTC_TC_02(String haUsername, String haPassword, String TC_name, String SPOC_email, String SPOC_mobileNo, String SPOC_name, String review, String comment, String oldPassword, String newPassword, String confirmPassword) throws Exception
 	{
 		Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         EnterLoginPage elp = new EnterLoginPage(driver);
         lp.clickLogin();
-        elp.performlogin("HA_000001", "ekaushal");
+        elp.performlogin(haUsername, haPassword);
         Thread.sleep(4000);
         
         HA_DashboardPage dashboard = new HA_DashboardPage(driver);
@@ -137,8 +137,17 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         rp.clickConfirmationOkMessage();
         
         elp.performlogin(TC_Id, confirmPassword);
-        Thread.sleep(4000);
-        Assert.assertEquals(driver.findElement(By.xpath("//a[@class='m-nav__link m-dropdown__toggle']/span[@class='m-topbar__welcome']")).getText(), TC_Id);
+        
+        if(review.equals("Approved"))
+        {
+        	Thread.sleep(2000);
+        	Assert.assertEquals(driver.findElement(By.cssSelector(".m-topbar__username")).getText(), TC_Id);
+        }
+        else
+        {
+            Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "You Application is permanently rejected by Holding Agency");
+        }
+        
 	}
 	
 	@DataProvider
@@ -148,13 +157,13 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
     }
 	
 	@Test(dataProvider="HA_TCViewAndApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
-	public void HA_viewDetailsAndApprovingTC_TC_03(String TC_name, String address,String SPOC_name, String email, String mobileNo, String type, String state, String schemeAssociated, String HA_assigned, String review, String comment, String oldPassword, String newPassword, String confirmPassword) throws Exception
+	public void HA_viewDetailsAndApprovingTC_TC_03(String haUsername, String haPassword, String TC_name, String address,String SPOC_name, String email, String mobileNo, String type, String state, String schemeAssociated, String HA_assigned, String review, String comment, String oldPassword, String newPassword, String confirmPassword) throws Exception
 	{
 		Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         EnterLoginPage elp = new EnterLoginPage(driver);
         lp.clickLogin();
-        elp.performlogin("HA_000001", "ekaushal");
+        elp.performlogin(haUsername, haPassword);
         Thread.sleep(4000);
         
         HA_DashboardPage dashboard = new HA_DashboardPage(driver);
@@ -210,8 +219,16 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         rp.clickConfirmationOkMessage();
         
         elp.performlogin(TC_Id, confirmPassword);
-        Thread.sleep(4000);
-        Assert.assertEquals(driver.findElement(By.xpath("//a[@class='m-nav__link m-dropdown__toggle']/span[@class='m-topbar__welcome']")).getText(), TC_Id);
+        
+        if(review.equals("Approved"))
+        {
+        	Thread.sleep(2000);
+        	Assert.assertEquals(driver.findElement(By.cssSelector(".m-topbar__username")).getText(), TC_Id);
+        }
+        else
+        {
+            Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "You Application is permanently rejected by Holding Agency");
+        }
 
 	}
 
