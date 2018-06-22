@@ -14,6 +14,7 @@ import com.nsdc.pages.HA_DashboardPage;
 import com.nsdc.pages.HA_TCViewDetailsPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
+import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.TrainingPartnerDashboardPage;
 import com.nsdc.testConfig.DatabaseConnection;
 import com.nsdc.testConfig.TestConfiguration;
@@ -68,7 +69,7 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         	add.clickOnSaveAndNext();
         	
         }
-        
+        Thread.sleep(4000);
         Assert.assertEquals(driver.findElement(By.xpath("//p[text()='Add a Training Centre']")).getText(), "Add a Training Centre");
     }
 	
@@ -79,7 +80,7 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
     }
 	
 	@Test(dataProvider="HA_TCApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
-	public void HA_approvingTC_TC_02(String TC_name, String SPOC_email, String SPOC_mobileNo, String SPOC_name, String review, String comment) throws Exception
+	public void HA_approvingTC_TC_02(String TC_name, String SPOC_email, String SPOC_mobileNo, String SPOC_name, String review, String comment, String oldPassword, String newPassword, String confirmPassword) throws Exception
 	{
 		Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
@@ -125,11 +126,19 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         LoginPage login = new LoginPage(driver);
         login.clickLogin();
         Thread.sleep(2000);
-        EnterLoginPage enter = new EnterLoginPage(driver);
-        enter.enterUsername(TC_Id);
-        enter.enterPassword("ekaushal");
-        enter.clickLoginToSubmit();
-        Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Reset & Re-login')]")).isDisplayed());
+        elp.performlogin(TC_Id, "ekaushal");
+        Thread.sleep(2000);
+        RegistrationPage rp = new RegistrationPage(driver);
+        rp.enterOldPassword(oldPassword);
+        rp.enterNewPassword(newPassword);
+        rp.enterConfirmPassword(confirmPassword);
+        rp.clickResetResubmit();
+        Thread.sleep(2000);
+        rp.clickConfirmationOkMessage();
+        
+        elp.performlogin(TC_Id, confirmPassword);
+        Thread.sleep(4000);
+        Assert.assertEquals(driver.findElement(By.xpath("//a[@class='m-nav__link m-dropdown__toggle']/span[@class='m-topbar__welcome']")).getText(), TC_Id);
 	}
 	
 	@DataProvider
@@ -139,7 +148,7 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
     }
 	
 	@Test(dataProvider="HA_TCViewAndApproval_Data", dependsOnMethods="TP_addingTC_TC_01")
-	public void HA_viewDetailsAndApprovingTC_TC_03(String TC_name, String address,String SPOC_name, String email, String mobileNo, String type, String state, String schemeAssociated, String HA_assigned, String review, String comment) throws Exception
+	public void HA_viewDetailsAndApprovingTC_TC_03(String TC_name, String address,String SPOC_name, String email, String mobileNo, String type, String state, String schemeAssociated, String HA_assigned, String review, String comment, String oldPassword, String newPassword, String confirmPassword) throws Exception
 	{
 		Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
@@ -190,11 +199,20 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         LoginPage login = new LoginPage(driver);
         login.clickLogin();
         Thread.sleep(2000);
-        EnterLoginPage enter = new EnterLoginPage(driver);
-        enter.enterUsername(TC_Id);
-        enter.enterPassword("ekaushal");
-        enter.clickLoginToSubmit();
-        Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Reset & Re-login')]")).isDisplayed());
+        elp.performlogin(TC_Id, "ekaushal");
+        Thread.sleep(2000);
+        RegistrationPage rp = new RegistrationPage(driver);
+        rp.enterOldPassword(oldPassword);
+        rp.enterNewPassword(newPassword);
+        rp.enterConfirmPassword(confirmPassword);
+        rp.clickResetResubmit();
+        Thread.sleep(2000);
+        rp.clickConfirmationOkMessage();
+        
+        elp.performlogin(TC_Id, confirmPassword);
+        Thread.sleep(4000);
+        Assert.assertEquals(driver.findElement(By.xpath("//a[@class='m-nav__link m-dropdown__toggle']/span[@class='m-topbar__welcome']")).getText(), TC_Id);
+
 	}
 
 }
