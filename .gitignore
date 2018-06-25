@@ -1,7 +1,3 @@
-*/target/**
-/.metadata/
-/.recommenders/
-
 # Compiled class file
 *.class
 
@@ -19,6 +15,7 @@
 *.war
 *.nar
 *.ear
+*.zip
 *.tar.gz
 *.rar
 
@@ -49,7 +46,7 @@ local.properties
 # CDT-specific (C/C++ Development Tooling)
 .cproject
 
-# CDT- autotools 
+# CDT- autotools
 .autotools
 
 # Java annotation processor (APT)
@@ -73,11 +70,27 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+# Annotation Processing
+.apt_generated/
+
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
 .scala_dependencies
 .worksheet
 
+#Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+#Selenium
 projectFilesBackup/
 *.iws
 .DS_Store
@@ -177,44 +190,3 @@ third_party/py/googlestorage/client_secrets.json
 venv
 venv3
 py/.idea
-
-.ant-targets*
-.classpath
-.gradle
-.idea
-*.iml
-.project
-.settings
-/_eclipse/
-/local.properties
-build
-eclipse-build
-gradle.properties
-ivy*
-javadocs
-kobaltBuild
-lib
-maven-testng-plugin-1.2.jar
-nb-configuration.xml
-out
-src/generated
-target
-test-output
-test-output-tests
-testng.iml
-z_build
-.kobalt
-.DS_Store
-
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
