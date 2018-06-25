@@ -59,5 +59,13 @@ public class DatabaseConnection
         DatabaseConnection.deleteUserFromDB("users", "email", fieldValue);
         DatabaseConnection.deleteUserFromDB("trainingcentre", "spoc.email", fieldValue);
     }
+    
+    public static void deleteUsersCreatedByIA(String fieldValue)
+    {
+        DatabaseConnection.deleteUserFromDB("users", "email", fieldValue);
+        DatabaseConnection.deleteUserFromDB("centreinspector", "email", fieldValue);
+        DatabaseConnection.deleteUserFromDB("desktopassessor", "email", fieldValue);
+        DatabaseConnection.deleteUserFromDB("qualitycontrol", "email", fieldValue);
+    }
 }
 

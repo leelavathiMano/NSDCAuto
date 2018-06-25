@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class HA_AllTCRequestPage 
+public class HoldingAgency_AllTCRequestPage 
 {
 	WebDriver driver;
 	
@@ -32,7 +32,7 @@ public class HA_AllTCRequestPage
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
 	
-	public HA_AllTCRequestPage(WebDriver driver)
+	public HoldingAgency_AllTCRequestPage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);

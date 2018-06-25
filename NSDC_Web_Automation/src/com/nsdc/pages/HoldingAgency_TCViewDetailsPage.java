@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class HA_TCViewDetailsPage 
+public class HoldingAgency_TCViewDetailsPage 
 {
 	WebDriver driver;
 	
@@ -20,7 +20,7 @@ public class HA_TCViewDetailsPage
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
 	
-	public HA_TCViewDetailsPage(WebDriver driver)
+	public HoldingAgency_TCViewDetailsPage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -5,14 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HA_DashboardPage 
+public class HoldingAgency_DashboardPage 
 {
 	WebDriver driver;
 	
 	@FindBy(xpath="//div[@routerlink='adding-tc-requests']")
 	private WebElement addingTCRequestsButton;
 	
-	public HA_DashboardPage(WebDriver driver)
+	public HoldingAgency_DashboardPage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);

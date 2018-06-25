@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class IA_CreateUserPage 
+public class InspectionAgency_CreateUserPage 
 {
 	WebDriver driver;
 	
@@ -36,7 +36,7 @@ public class IA_CreateUserPage
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
 	
-	public IA_CreateUserPage(WebDriver driver)
+	public InspectionAgency_CreateUserPage(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
