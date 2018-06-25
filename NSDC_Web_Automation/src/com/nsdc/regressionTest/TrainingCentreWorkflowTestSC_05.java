@@ -9,9 +9,9 @@ import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AddTrainingCentrePage;
 import com.nsdc.pages.EnterLoginPage;
-import com.nsdc.pages.HA_AllTCRequestPage;
-import com.nsdc.pages.HA_DashboardPage;
-import com.nsdc.pages.HA_TCViewDetailsPage;
+import com.nsdc.pages.HoldingAgency_AllTCRequestPage;
+import com.nsdc.pages.HoldingAgency_DashboardPage;
+import com.nsdc.pages.HoldingAgency_TCViewDetailsPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
@@ -89,10 +89,10 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         elp.performlogin(haUsername, haPassword);
         Thread.sleep(4000);
         
-        HA_DashboardPage dashboard = new HA_DashboardPage(driver);
+        HoldingAgency_DashboardPage dashboard = new HoldingAgency_DashboardPage(driver);
         dashboard.clickOnAddingTCRequest();
         Thread.sleep(2000);
-        HA_AllTCRequestPage request = new HA_AllTCRequestPage(driver);
+        HoldingAgency_AllTCRequestPage request = new HoldingAgency_AllTCRequestPage(driver);
         request.enterTCDetailsToSearchTCRequest(SPOC_email);
         Assert.assertEquals(driver.findElement(By.xpath("//td[@data-field='RecordID']")).getText(), "1");
         Assert.assertEquals(driver.findElement(By.xpath("//td[@data-field='OrderID']")).getText(), TC_name);
@@ -166,10 +166,10 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         elp.performlogin(haUsername, haPassword);
         Thread.sleep(4000);
         
-        HA_DashboardPage dashboard = new HA_DashboardPage(driver);
+        HoldingAgency_DashboardPage dashboard = new HoldingAgency_DashboardPage(driver);
         dashboard.clickOnAddingTCRequest();
         Thread.sleep(2000);
-        HA_AllTCRequestPage request = new HA_AllTCRequestPage(driver);
+        HoldingAgency_AllTCRequestPage request = new HoldingAgency_AllTCRequestPage(driver);
         request.enterTCDetailsToSearchTCRequest(email);
         String TC_Id = driver.findElement(By.xpath("//td[@data-field='ShipName']")).getText();
         request.clickOnAction();
@@ -184,7 +184,7 @@ public class TrainingCentreWorkflowTestSC_05 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.name("state")).getAttribute("value"), state);
         Assert.assertEquals(driver.findElement(By.name("scheme")).getAttribute("value"), schemeAssociated);
         Assert.assertEquals(driver.findElement(By.name("assignedHA")).getAttribute("value"), HA_assigned);
-        HA_TCViewDetailsPage details = new HA_TCViewDetailsPage(driver);
+        HoldingAgency_TCViewDetailsPage details = new HoldingAgency_TCViewDetailsPage(driver);
         if(review.equals("Approved"))
         {
         	details.selectReviewComment(review);
