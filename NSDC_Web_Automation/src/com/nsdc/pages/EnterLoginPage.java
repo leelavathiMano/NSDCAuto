@@ -13,7 +13,7 @@ public class EnterLoginPage
     private WebElement usernameTextbox;
     @FindBy(xpath="//input[@name='password']")
     private WebElement passwordTextbox;
-    @FindBy(xpath="//button[contains(text(),'Sign In')]")
+    @FindBy(xpath="//button[contains(text(),'Login')]")
     private WebElement loginButton;
     
     public EnterLoginPage(WebDriver driver)
