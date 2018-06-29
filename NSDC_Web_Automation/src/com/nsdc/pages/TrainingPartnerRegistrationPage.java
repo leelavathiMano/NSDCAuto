@@ -35,7 +35,7 @@ public class TrainingPartnerRegistrationPage
     @FindBy(xpath="//label[@class='m-checkbox m-checkbox--default']")
     private WebElement authorizedSignatoryCheckBox;
     
-    @FindBy(xpath="(//button[text()='Add Another Signatory Details'])[1]")
+    @FindBy(xpath="(//button[text()='Add Another Authorized Signatory'])[1]")
     private WebElement addAnotherSignatoryDetailsButton1;
     @FindBy(xpath="(//input[@name='auth-signatory-email'])[2]")
     private WebElement authorizedSignatoryNameTextbox1;
@@ -44,7 +44,7 @@ public class TrainingPartnerRegistrationPage
     @FindBy(xpath="(//input[@name='auth-sigatory-mobile'])[2]")
     private WebElement authorizedSignatoryMobileTextbox1;
     
-    @FindBy(xpath="(//button[text()='Add Another Signatory Details'])[2]")
+    @FindBy(xpath="(//button[text()='Add Another Authorized Signatory'])[2]")
     private WebElement addAnotherSignatoryDetailsButton2;
     @FindBy(xpath="(//input[@name='auth-signatory-email'])[3]")
     private WebElement authorizedSignatoryNameTextbox2;
@@ -123,7 +123,7 @@ public class TrainingPartnerRegistrationPage
     private WebElement saveAndContinueButton;
     @FindBy(xpath="//button[text()='OK']")
     private WebElement paymentOKButton;
-    @FindBy(xpath="//button[(text()='Logout')]")
+    @FindBy(xpath="//button[contains(text(),'Logout')]")
     private WebElement logOutButton;
     @FindBy(xpath="//button[(text()='Download Submitted Form')]")
     private WebElement downloadButton;

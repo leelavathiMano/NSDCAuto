@@ -14,6 +14,7 @@ public class InspectionAgency_DashboardPage
 	@FindBy(xpath="//div[@routerlink='view-all-appeal-requests']")
 	private WebElement viewAllAssessmentRequestsButton;
 
+
 	public InspectionAgency_DashboardPage(WebDriver driver)
 	{
 		this.driver = driver;

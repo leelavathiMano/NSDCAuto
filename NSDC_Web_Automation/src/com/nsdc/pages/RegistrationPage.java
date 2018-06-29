@@ -31,7 +31,7 @@ public class RegistrationPage
     
     @FindBy(xpath="//span[@class='text-bold']")
     private WebElement usernameLabel;
-    @FindBy(xpath="//button[contains(text(),'Go to Login')]")
+    @FindBy(xpath="//button[contains(text(),'Login Now')]")
     private WebElement goToLoginButton;
     
     @FindBy(xpath="//input[@name='oldpassword']")

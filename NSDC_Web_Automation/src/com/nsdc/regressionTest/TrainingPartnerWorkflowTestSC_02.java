@@ -7,8 +7,14 @@ import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.DA_Assign_TPRegistrationFormPage;
+import com.nsdc.pages.DA_DashboardPage;
+import com.nsdc.pages.DesktopAssessor_ViewInspectionPage;
 import com.nsdc.pages.EnterLoginPage;
+import com.nsdc.pages.InspectionAgency_DashboardPage;
+import com.nsdc.pages.InspectionAgency_ViewInspectionPage;
 import com.nsdc.pages.LoginPage;
+import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.TrainingPartnerRegistrationPage;
 import com.nsdc.testConfig.DatabaseConnection;
@@ -19,7 +25,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     @DataProvider
     public Object[][] tpProfileData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPProfileSC02TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-WorkflowCopy.xls", "TPProfileSC02TC01");
     }
     
     @Test(dataProvider="tpProfileData")
@@ -98,6 +104,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.selectTehsil(tehsil);
         tprp.selectCity(city);
         tprp.enterGeoLocation(geo_Location);
+        Thread.sleep(2000);
         tprp.selectParliamentaryConstituency(parliamentary_constituency);
         tprp.selectAddressProof(address_proof);
         Thread.sleep(2000);
@@ -106,7 +113,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         UploadFile.upload(uploadFile);
         Thread.sleep(2000);
         tprp.clickUploadFile();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         
         tprp.clickSaveAndNextButton();
         
@@ -416,12 +423,243 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
         }
         
-        tprp.clickDownloadButton();
+        //tprp.clickDownloadButton();
         Thread.sleep(2000);
         tprp.clickLogOutButton();
         Thread.sleep(2000);
         
         Assert.assertEquals(driver.findElement(By.xpath("//li[text()='Login']")).getText(), "Login");
     }
+    
+    @DataProvider
+    public Object[][] tpApproval()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-WorkflowCopy.xls", "TPApprovalSC02TC02");
+    }
+    
+    @Test(dataProvider="tpApproval")
+    public void trainingPartnerApprovalTC_02(String iausername, String password, String searchByKeyword, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
+    {
+    	LoginPage lp = new LoginPage(driver);
+    	lp.clickLogin();
+    	EnterLoginPage elp = new EnterLoginPage(driver);
+    	elp.performlogin(iausername, password);
+    	Thread.sleep(4000);
+    	
+    	InspectionAgency_DashboardPage ia = new InspectionAgency_DashboardPage(driver);
+    	ia.clickOnViewAllAssessmentRequest();
+    	InspectionAgency_ViewInspectionPage ia_vp = new InspectionAgency_ViewInspectionPage(driver);
+    	ia_vp.enterKeywordForSearch(searchByKeyword);
+    	ia_vp.clickOnAction();
+    	ia_vp.clickOnTakeAction();
+    	Thread.sleep(2000);
+    	ia_vp.selectForAssign(assignTo);
+    	ia_vp.selectStatusForRequest(statusForRequest);
+    	ia_vp.clickForAssign();
+    	Thread.sleep(2000);
+    	PostLoginPage plp = new PostLoginPage(driver);
+    	plp.clickOnProfileLogo();
+    	plp.clickOnLogout();
+    	Thread.sleep(2000);
+    	
+    	lp.clickLogin();
+    	elp.performlogin(dausername, Password);
+    	
+    	DA_DashboardPage da = new DA_DashboardPage(driver);
+    	Thread.sleep(5000);
+    	da.clickOnViewAllAssessmentRequest();
+    	Thread.sleep(5000);
+    	DesktopAssessor_ViewInspectionPage da_vp = new DesktopAssessor_ViewInspectionPage(driver);
+    	da_vp.enterKeywordForSearch(searchByKeyword);
+    	String new_tp = driver.findElement(By.xpath("(//td[@class='m-datatable__cell']/span)[1]")).getText(); 
+    	da_vp.clickOnAction();
+    	Thread.sleep(2000);
+    	da_vp.clickOnTakeAction();
+    	Thread.sleep(2000);
+    	DA_Assign_TPRegistrationFormPage da_tpr = new DA_Assign_TPRegistrationFormPage(driver);
+    	Thread.sleep(2000);
+    	String type_Organization = driver.findElement(By.xpath("(//input[@class='form-control m-input ng-untouched ng-pristine'])[2]")).getAttribute("value");
+    	da_tpr.clickOnDownloadAttachedProofDocumentForOrganizationName();
+    	da_tpr.selectReviewCommentsForOrganizationName(nameReview);
+    	da_tpr.selectReviewCommentsForTypeOFOrganization(typeReview);
+    	Thread.sleep(2000);
+    	da_tpr.clickOnDownloadAttachedProofDocumentForAddress();
+    	da_tpr.selectReviewCommentsForAddress(addressReview);
+    	Thread.sleep(2000);
+    	da_tpr.clickForSaveAndContinue();
+    	String establishment_Year = driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value");
+    	int yearOfEstablishment = Integer.parseInt(establishment_Year);
+    	Thread.sleep(2000);
+    	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+    	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);   	
+    	
+    	if(establishment_Year.equals("2018") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+    		Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.selectReviewCommentsForGST(gstReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+    		Thread.sleep(2000);
+    		da_tpr.clickOnDownloadAttachedProofDocumentForProvisionalCertificate();
+    		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+
+        }
+    	
+    	else if(establishment_Year.equals("2017") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+    		Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.selectReviewCommentsForGST(gstReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+         	Thread.sleep(2000);
+       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+
+        }
+    	
+        else if(establishment_Year.equals("2016") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.selectReviewCommentsForGST(gstReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+        	Thread.sleep(2000);
+       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
+        	Thread.sleep(2000);
+        }
+    	
+        else if((yearOfEstablishment < 2016) && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.selectReviewCommentsForGST(gstReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+        	Thread.sleep(2000);
+       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForThirdFinancialYear();
+        	da_tpr.selectReviewCommentForThirdFinancialYear(thirdFinancialYearReview);
+        	Thread.sleep(2000);
+        }
+    	
+        else if(establishment_Year.equals("2018") && type_Organization.equals("Proprietorship"))
+        {
+        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForProvisionalCertificate();
+        	da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+        	
+        }
+    	
+        else if(establishment_Year.equals("2017") && type_Organization.equals("Proprietorship"))
+        {
+        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	Thread.sleep(2000);
+       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+
+        }
+    	
+        else if(establishment_Year.equals("2016") && type_Organization.equals("Proprietorship"))
+        {
+        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	Thread.sleep(2000);
+       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
+        	Thread.sleep(2000);
+        }
+    	
+        else if((yearOfEstablishment < 2016) && type_Organization.equals("Proprietorship"))
+        {
+        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	Thread.sleep(2000);
+       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForThirdFinancialYear();
+        	da_tpr.selectReviewCommentForThirdFinancialYear(thirdFinancialYearReview);
+        	Thread.sleep(2000);
+        }
+    	
+        else if(type_Organization.equals("Government Institute"))
+        {
+        	Thread.sleep(2000);
+        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        }
+
+
+    	Thread.sleep(2000);
+    	da_tpr.clickForSaveAndContinue();
+
+    	da_tpr.clickForFinalStatusBrowseFile();
+    	Thread.sleep(5000);
+    	UploadFile.upload(finalStatusFile);
+    	Thread.sleep(3000);
+    	da_tpr.clickForFinalStatusUploadFile();
+    	Thread.sleep(2000);
+    	da_tpr.clickForSaveAndContinue();
+    	Thread.sleep(2000);
+    	da_tpr.clickForOK();
+    	Thread.sleep(2000);
+     	plp.clickOnProfileLogo();
+    	plp.clickOnLogout();
+    	Thread.sleep(2000);
+    	
+    	
+    	lp.clickLogin();
+    	elp.performlogin(new_tp, tpPassword);
+    	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Add a Training Centre')]")).getText(), "Add a Training Centre");
+    	
+    }
+    
 }
 
