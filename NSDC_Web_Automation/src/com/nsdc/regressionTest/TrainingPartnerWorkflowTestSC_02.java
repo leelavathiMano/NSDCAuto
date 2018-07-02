@@ -25,7 +25,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     @DataProvider
     public Object[][] tpProfileData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-WorkflowCopy.xls", "TPProfileSC02TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPProfileSC02TC01");
     }
     
     @Test(dataProvider="tpProfileData")
@@ -119,6 +119,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
+        	Thread.sleep(2000);
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -156,6 +157,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
         {
+        	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -179,6 +181,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
+        	Thread.sleep(2000);
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -218,6 +221,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Proprietorship"))
         {
+        	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
             
             tprp.enterAnnualTurnOver1(turnover1);
@@ -242,6 +246,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
+        	Thread.sleep(2000);
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -289,6 +294,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Proprietorship"))
         {
+        	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
             
             tprp.enterAnnualTurnOver1(turnover1);
@@ -321,6 +327,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if((year < 2016) && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
+        	Thread.sleep(2000);
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -376,6 +383,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if((year < 2016) && type_Of_The_Organization.equals("Proprietorship"))
         {
+        	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
             
             tprp.enterAnnualTurnOver1(turnover1);
@@ -434,10 +442,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     @DataProvider
     public Object[][] tpApproval()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-WorkflowCopy.xls", "TPApprovalSC02TC02");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPApprovalSC02TC02");
     }
     
-    @Test(dataProvider="tpApproval")
+    @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
     public void trainingPartnerApprovalTC_02(String iausername, String password, String searchByKeyword, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
@@ -490,8 +498,6 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	String establishment_Year = driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value");
     	int yearOfEstablishment = Integer.parseInt(establishment_Year);
     	Thread.sleep(2000);
-    	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
-    	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);   	
     	
     	if(establishment_Year.equals("2018") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
