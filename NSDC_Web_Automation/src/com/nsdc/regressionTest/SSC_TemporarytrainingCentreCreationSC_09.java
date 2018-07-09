@@ -19,7 +19,7 @@ public class SSC_TemporarytrainingCentreCreationSC_09 extends TestConfiguration
 	@DataProvider
 	public Object[][] tTcCreationSC01TC01Data()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSCTemporaryTrainingCentreCreationData.xls","TemporaryTrainingCentreCreationSC01TC01");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","SSC_TemporaryTrainingCentreCreationSC09TC01");
 	}
 	
 	@Test(dataProvider="tTcCreationSC01TC01Data")
@@ -159,7 +159,7 @@ public class SSC_TemporarytrainingCentreCreationSC_09 extends TestConfiguration
 		
 		sscTtCP.clickConfirmation();
 		Thread.sleep(2000);
-		//sscTtCP.clickCreate();
+		sscTtCP.clickCreate();
 		Thread.sleep(2000);
 		Screenshot.takeScreenshot(driver, "justCreatedTrainingCenterIDsuccessfullPopup");
 		sscTtCP.clickOk();
