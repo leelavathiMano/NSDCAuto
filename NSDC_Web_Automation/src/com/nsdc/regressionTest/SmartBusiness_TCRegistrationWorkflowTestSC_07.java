@@ -239,10 +239,20 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_07 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnSecondDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedRefundPercentageOnSecondDNR);
 
     	Thread.sleep(2000);
-    	sdtc.clickForApprove_ReviewComments();
-    	sdtc.enterReviewComments(comments);
+    	if(comments.equals("Approved Successful"))
+    	{
+    		sdtc.clickForApprove_ReviewComments();
+    		sdtc.enterReviewComments(comments);
+    	}
+    	else if(comments.equals("Not Approved"))
+    	{
+    		sdtc.clickForNotApprove_ReviewComments();
+    		sdtc.enterReviewComments(comments);
+    	}
+    	
     	sdtc.clickForSubmit();
     	sdtc.clickOnOK();
+    	
     	Thread.sleep(2000);
     	sad.clickOnSmartAdminProfile();
     	sad.clickOnSmartAdminLogOut();
@@ -354,10 +364,19 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_07 extends TestConfigura
 
     	
     	Thread.sleep(2000);
-    	nstc.clickForApprove_ReviewComment();
-    	nstc.enterReviewComment(reviewComments);
+    	if(reviewComments.equals("Approved Successful"))
+    	{
+    		nstc.clickForApprove_ReviewComment();
+    		nstc.enterReviewComment(reviewComments);
+    	}
+    	else if(reviewComments.equals("Not Approved"))
+    	{
+    		nstc.clickForNotApprove_ReviewComment();
+    		nstc.enterReviewComment(reviewComments);
+    	}
     	nstc.clickForSubmit();
     	nstc.clickOnOK();
+    	
     	Thread.sleep(2000);
     	nsd.clickOnNSDCProfile();
     	nsd.clickOnNSDCLogOut();

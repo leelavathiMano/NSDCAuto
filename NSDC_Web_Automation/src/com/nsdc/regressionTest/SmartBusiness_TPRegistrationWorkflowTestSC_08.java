@@ -28,6 +28,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_08 extends TestConfigura
 	public void smartBusinessTPRuleSetupTC_01(String sbUsername, String sbPassword, String registrationFee, String registrationFeeAmount, String unBlockingFee, String unBlockingFeeAmount, String gregistrationFee, String gregistrationFeeAmount, String gunBlockingFee, String gunBlockingFeeAmount, String blockAttemptNumber, String durationOfBlock, String daysForDesktopAssessment) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
+		Thread.sleep(2000);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sbUsername, sbPassword);
@@ -83,6 +84,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_08 extends TestConfigura
 		sbtp.clickOnSubmit();
 		sbtp.clickOnOK();
 		
+		Thread.sleep(2000);
 		sbd.clickOnSmartBusiness1Profile();
 		sbd.clickOnSmartBusinessLogOut();
 		
@@ -103,7 +105,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_08 extends TestConfigura
 		elp.performlogin(sdUsername, sdPassword);
 		
 		SmartAdmin_DashboardPage sad = new SmartAdmin_DashboardPage(driver);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		sad.clickReviewTPRegistrationSetUp();
 		
 		SmartAdmin_TPFormReviewPage sdtp = new SmartAdmin_TPFormReviewPage(driver);
@@ -150,11 +152,21 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_08 extends TestConfigura
 
 		
 		Thread.sleep(2000);
-		sdtp.clickOnApproved_ReviewComments();
-		sdtp.enterReviewComments(comments);
+		if(comments.equals("Approved Successful"))
+		{
+			sdtp.clickOnApproved_ReviewComments();
+			sdtp.enterReviewComments(comments);
+		}
+		else if(comments.equals("Not Approved"))
+		{
+			Thread.sleep(2000);
+			sdtp.clickOnNotApproved_ReviewComments();
+			sdtp.enterReviewComments(comments);
+		}
 		sdtp.clickForSubmit();
 		sdtp.clickOnOK();
 		
+		Thread.sleep(2000);
 		sad.clickOnSmartAdminProfile();
 		sad.clickOnSmartAdminLogOut();
 		
@@ -175,7 +187,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_08 extends TestConfigura
 		elp.performlogin(nsdcUsername, nsdcPassword);
 		
 		NSDCAdmin_DashboardPage nsd = new NSDCAdmin_DashboardPage(driver);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		nsd.clickForReviewTPRegistrationSetup();
 		
 		NSDC_TPFormReviewPage nstp = new NSDC_TPFormReviewPage(driver);
@@ -221,8 +233,17 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_08 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='noOfDaysToCompleteDesktopAssessment']")).getAttribute("value"), expectedNSDCdaysForDesktopAssessment);
 
 		Thread.sleep(2000);
-		nstp.clickForApproved_ReviewComment();
-		nstp.enterReviewComment(reviewcomments);
+		if(reviewcomments.equals("Approved Successful"))
+		{
+			nstp.clickForApproved_ReviewComment();
+			nstp.enterReviewComment(reviewcomments);
+		}
+		else if(reviewcomments.equals("Not Approved"))
+		{
+			Thread.sleep(2000);
+			nstp.clickForNotApproved_ReviewComment();
+			nstp.enterReviewComment(reviewcomments);
+		}
 		nstp.clickForSubmit();
 		nstp.clickOnOK();
 		
