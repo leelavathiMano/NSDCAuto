@@ -13,16 +13,16 @@ import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_TemporaryTraningCentrePage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class SSC_TemporarytrainingCentreCreationSC_09 extends TestConfiguration
+public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 {
 	
 	@DataProvider
-	public Object[][] tTcCreationSC01TC01Data()
+	public Object[][] sscTemporaryTrainingCentreCreationData()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSCTemporaryTrainingCentreCreationData.xls","TemporaryTrainingCentreCreationSC01TC01");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","SSC_TemporaryTrainingCentreCreationSC09TC01");
 	}
 	
-	@Test(dataProvider="tTcCreationSC01TC01Data")
+	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
 	public void createTemporaryTraningCentreSC09TC01(String sscUsername,String sscPassword,String trainingCentreName, String addressLine, String landmark, String pincode, String villageTownCity, String state, String district, String subDistrict, String trainingCentreCapacity, String contactPersonName, String contactPersonEmail, String contactPersonMobileNumber, String singlePointOfContactPersonName, String singlePointOfContactPersonEmail, String singlePointOfContactPersonMobileNumber,String trainingCentreAvailability,String sector1,String subSector1,String jobRole1,String sector2 ,String subSector2,String jobRole2a,String jobRole2b,String sector3,String subSector3,String jobRole3a,String jobRole3b,String jobRole3c) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
@@ -159,8 +159,7 @@ public class SSC_TemporarytrainingCentreCreationSC_09 extends TestConfiguration
 		
 		sscTtCP.clickConfirmation();
 		Thread.sleep(2000);
-		//sscTtCP.clickCreate();
-		Thread.sleep(2000);
+		sscTtCP.clickCreate();
 		Screenshot.takeScreenshot(driver, "justCreatedTrainingCenterIDsuccessfullPopup");
 		sscTtCP.clickOk();
 		Thread.sleep(2000);
