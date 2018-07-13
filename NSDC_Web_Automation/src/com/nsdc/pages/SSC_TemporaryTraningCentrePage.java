@@ -39,10 +39,6 @@ public class SSC_TemporaryTraningCentrePage
 	private WebElement singlePointOfContactPersonEmailTextBox;
 	@FindBy(xpath="(//input[@placeholder='Enter Mobile Number'])[2]")
 	private WebElement singlePointOfContactPersonMobileNumberTextBox;
-	@FindBy(xpath="//div[label[input[@formcontrolname='isOpenForAllSSC']]][1]")
-	private WebElement availabilityOfTrainingCentreRadioButton1;
-	@FindBy(xpath="//div[label[input[@formcontrolname='isOpenForAllSSC']]][2]")
-	private WebElement availabilityOfTrainingCentreRadioButton2;
 	@FindBy(xpath="//button[contains(text(),'Add Sub Sector and Job Role')]")
 	private WebElement addSubsectorAndJobRoleButton;
 	@FindBy(xpath="//select[@formcontrolname='sector']")
@@ -50,7 +46,7 @@ public class SSC_TemporaryTraningCentrePage
 	@FindBy(xpath="//select[@formcontrolname='subSector']")
 	private WebElement subSectorDropdownList;
 	@FindBy(xpath="//select[@formcontrolname='jobRole']")
-	private WebElement jobRoleDropdownList;
+	private WebElement jobRoleMultiselectDropdownList;
 	@FindBy(xpath="(//button[contains(text(),'Add')])[2]")
 	private WebElement addButton;
 	//added sector and job role delete button
@@ -144,14 +140,6 @@ public class SSC_TemporaryTraningCentrePage
 		singlePointOfContactPersonMobileNumberTextBox.clear();
 		singlePointOfContactPersonMobileNumberTextBox.sendKeys(singlePointOfContactPersonMobileNumber);
 	}
-	public void clickOnlyForThisSectorSkillCouncil()
-	{
-		availabilityOfTrainingCentreRadioButton1.click();
-	}
-	public void clickOpenForAllSectorSkillCouncil()
-	{
-		availabilityOfTrainingCentreRadioButton2.click();
-	}
 	public void clickAddSubsectorAndJobRoleButton()
 	{
 		addSubsectorAndJobRoleButton.click();
@@ -166,7 +154,7 @@ public class SSC_TemporaryTraningCentrePage
 	}
 	public void selectJobRole(String jobRole)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList,jobRole);
+		SelectDropDownList.selectDropDownListByVisibleText(jobRoleMultiselectDropdownList,jobRole);
 		
 	}
 	
