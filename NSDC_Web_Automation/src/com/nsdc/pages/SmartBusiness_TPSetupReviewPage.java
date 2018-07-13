@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -115,14 +116,15 @@ public class SmartBusiness_TPSetupReviewPage
 	{
 		desktopAssessmentComplitionInDaysTextbox.clear();
 		desktopAssessmentComplitionInDaysTextbox.sendKeys(daysForDesktopAssessment);
+		desktopAssessmentComplitionInDaysTextbox.sendKeys(Keys.TAB);
 	}
 	
 	public void clickOnEffectiveDate()
 	{
-		effectiveDateTextbox.click();
+		effectiveDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER);
 	}
 	
-	public void clickOnCornerOfDateField()
+	/*public void clickOnCornerOfDateField()
 	{
 		cornerOfDateButton.click();
 	}
@@ -130,7 +132,7 @@ public class SmartBusiness_TPSetupReviewPage
 	public void clickOnLastDate()
 	{
 		lastDateButton.click();
-	}
+	}*/
 	
 	public void clickOnCalenderIcon()
 	{

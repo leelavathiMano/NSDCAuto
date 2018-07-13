@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.DA_Assign_TPRegistrationFormPage;
 import com.nsdc.pages.DA_DashboardPage;
@@ -52,6 +53,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(2000);
         
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
+        //ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner-WorkflowCopy.xls", "TPProfileSC02TC01", i, 6, username);
         rp.clickGoToLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, "ekaushal");
@@ -106,6 +108,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.enterGeoLocation(geo_Location);
         Thread.sleep(2000);
         tprp.selectParliamentaryConstituency(parliamentary_constituency);
+        Thread.sleep(2000);
         tprp.selectAddressProof(address_proof);
         Thread.sleep(2000);
         tprp.clickBrowseFile();
@@ -159,6 +162,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
+            tprp.clickToVerifyAadharNumber();
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
             Thread.sleep(2000);
@@ -223,7 +227,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
-            
+            tprp.clickToVerifyAadharNumber();
+            Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -296,7 +301,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
-            
+            tprp.clickToVerifyAadharNumber();
+            Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -385,7 +391,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	Thread.sleep(2000);
             tprp.enterAadharNumber(aadhar_Number);
-            
+            tprp.clickToVerifyAadharNumber();
+            Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
             tprp.clickBrowseButton1();
@@ -445,7 +452,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPApprovalSC02TC02");
     }
     
-    @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
+    @Test(dataProvider="tpApproval")
     public void trainingPartnerApprovalTC_02(String iausername, String password, String searchByKeyword, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
@@ -457,6 +464,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	InspectionAgency_DashboardPage ia = new InspectionAgency_DashboardPage(driver);
     	ia.clickOnViewAllAssessmentRequest();
     	InspectionAgency_ViewInspectionPage ia_vp = new InspectionAgency_ViewInspectionPage(driver);
+    	Thread.sleep(2000);
     	ia_vp.enterKeywordForSearch(searchByKeyword);
     	ia_vp.clickOnAction();
     	ia_vp.clickOnTakeAction();
@@ -490,7 +498,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	da_tpr.clickOnDownloadAttachedProofDocumentForOrganizationName();
     	da_tpr.selectReviewCommentsForOrganizationName(nameReview);
     	da_tpr.selectReviewCommentsForTypeOFOrganization(typeReview);
-    	Thread.sleep(2000);
+    	Thread.sleep(8000);
     	da_tpr.clickOnDownloadAttachedProofDocumentForAddress();
     	da_tpr.selectReviewCommentsForAddress(addressReview);
     	Thread.sleep(2000);
