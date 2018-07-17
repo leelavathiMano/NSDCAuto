@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class FilePreview
 {
-	public void closeWindow(WebDriver driver)
+	public static void closeWindow(WebDriver driver)
 	{
 		Set<String> windows = driver.getWindowHandles();
         Iterator <String> it  = windows.iterator();
