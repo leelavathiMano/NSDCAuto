@@ -7,12 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class DA_Assign_TPRegistrationFormPage 
+
+public class DA_Assign_TPRegistrationFormPage
 {
+	
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="(//button[contains(text(),'Download Attached Proof Document')])[1]")
+	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[1]")
 	private WebElement attachedProofDocument_NameOfOrganization_DownloadButton;
 	@FindBy(xpath="//select[@formcontrolname='nameOfOrganisationReview']")
 	private WebElement reviewComments_NameOfOrganizationDropDownList;
@@ -22,7 +24,7 @@ public class DA_Assign_TPRegistrationFormPage
 	private WebElement reviewComments_TypeOfOrganizationDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='typeOfOrganisationComment']")
 	private WebElement additionalComment_TypeOfOrganizationTextbox;
-	@FindBy(xpath="(//button[contains(text(),'Download Attached Proof Document')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[2]")
 	private WebElement attachedProofDocument_Address_DownloadButton;
 	@FindBy(xpath="//select[@formcontrolname='addressReview']")
 	private WebElement reviewComment_AddressDropDownList;
@@ -43,37 +45,37 @@ public class DA_Assign_TPRegistrationFormPage
 	private WebElement pANReviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='panComment']")
 	private WebElement pAN_AdditionalCommentTextbox;
-	@FindBy(xpath="(//button[contains(text(),'Download Attached Proof Document')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[2]")
 	private WebElement gST_AttachedProofDocument_DownloadButton;
 	@FindBy(xpath="//select[@formcontrolname='gstReview']")
 	private WebElement gST_ReviewCommentsDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='gstComment']")
 	private WebElement gST_AdditionalCommentTextbox;
-	@FindBy(xpath="//div[label[contains(text(),'Year of Establishment')]]/div/app-file-download/button[text()='Download Attached Proof Document']")
+	@FindBy(xpath="//div[label[contains(text(),'Year of Establishment')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
 	private WebElement establishmentYear_AttachedProofDocument_DownloadButton;
 	@FindBy(xpath="//select[@formcontrolname='yearOfEstablishReview']")
 	private WebElement establishmentYear_reviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='yearOfEstablishComment']")
 	private WebElement establishmentYear_AdditionalCommentTextbox;
-	@FindBy(xpath="//div[label[contains(text(),'Provisional Certificate:')]]/div/app-file-download/button[text()='Download Attached Proof Document']")
+	@FindBy(xpath="//div[label[contains(text(),'Provisional Certificate:')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
 	private WebElement provisionalCertificate_AttachedProofDocument_DownloadButton;
 	@FindBy(xpath="//select[@formcontrolname='provisionalReview']")
 	private WebElement provisionalCertificate_reviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='provisionalComment']")
 	private WebElement provisionalCertificate_AdditionalCommentTextbox;
-	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2017-2018')]]/div/app-file-download/button[text()='Download Attached Proof Document']")
+	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2017-2018')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
 	private WebElement financialYearFirst_AttachedProofDocument_DownloadButton;
 	@FindBy(xpath="(//select[@ng-reflect-name='financialYearReview'])[1]")
 	private WebElement financialYearFirst_reviewCommentDropDownList;
 	@FindBy(xpath="(//textarea[@ng-reflect-name='financialYearComment'])[1]")
 	private WebElement financialYearFirst_AdditionalCommentTextbox;
-	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2016-2017')]]/div/app-file-download/button[text()='Download Attached Proof Document']")
+	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2016-2017')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
 	private WebElement financialYearSecond_AttachedProofDocument_DownloadButton;
 	@FindBy(xpath="(//select[@ng-reflect-name='financialYearReview'])[2]")
 	private WebElement financialYearSecond_reviewCommentDropDownList;
 	@FindBy(xpath="(//textarea[@ng-reflect-name='financialYearComment'])[2]")
 	private WebElement financialYearSecond_AdditionalCommentTextbox;
-	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2015-2016')]]/div/app-file-download/button[text()='Download Attached Proof Document']")
+	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2015-2016')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
 	private WebElement financialYearThird_AttachedProofDocument_DownloadButton;
 	@FindBy(xpath="(//select[@ng-reflect-name='financialYearReview'])[3]")
 	private WebElement financialYearThird_reviewCommentDropDownList;
@@ -95,6 +97,7 @@ public class DA_Assign_TPRegistrationFormPage
 	private WebElement finalStatus_UploadFileButton;
 	@FindBy(css=".swal2-confirm.btn.btn-success.m-btn.m-btn--custom")
 	private WebElement okButton;
+	
 
 	public DA_Assign_TPRegistrationFormPage(WebDriver driver)
     {
@@ -106,6 +109,7 @@ public class DA_Assign_TPRegistrationFormPage
 	{
 		attachedProofDocument_NameOfOrganization_DownloadButton.click();
 	}
+	
 	public void selectReviewCommentsForOrganizationName(String reviewComments)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(reviewComments_NameOfOrganizationDropDownList, reviewComments);
@@ -314,3 +318,4 @@ public class DA_Assign_TPRegistrationFormPage
 	}
 
 }
+
