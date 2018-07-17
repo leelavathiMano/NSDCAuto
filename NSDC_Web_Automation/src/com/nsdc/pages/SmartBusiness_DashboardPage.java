@@ -16,7 +16,7 @@ public class SmartBusiness_DashboardPage
 	private WebElement tpRegistrationButton;
 	@FindBy(xpath="//span[contains(text(),'SmartBusiness_1')]")
 	private WebElement smart_Business_1Button;
-	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	@FindBy(xpath="//button[contains(text(),'Logout')]")
 	private WebElement logOutButton;
 	
 	public SmartBusiness_DashboardPage(WebDriver driver)

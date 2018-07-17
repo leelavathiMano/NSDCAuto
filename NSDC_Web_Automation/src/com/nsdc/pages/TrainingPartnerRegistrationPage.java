@@ -93,6 +93,8 @@ public class TrainingPartnerRegistrationPage
     
     @FindBy(xpath="//input[@placeholder='Enter Aadhaar number']")
     private WebElement aadharNumberTextbox;
+    @FindBy(xpath="//button[contains(text(),'Verify')]")
+    private WebElement verifyAadharNumberButton;
     
     @FindBy(xpath="(//input[@placeholder='Enter Annual Turnover'])[1]")
     private WebElement annualTurnOverTextbox1;
@@ -372,6 +374,11 @@ public class TrainingPartnerRegistrationPage
     {
     	aadharNumberTextbox.clear();
     	aadharNumberTextbox.sendKeys(aadhar_Number);
+    }
+    
+    public void clickToVerifyAadharNumber()
+    {
+    	verifyAadharNumberButton.click();
     }
     
     public void enterAnnualTurnOver1(String turnover1)

@@ -22,7 +22,7 @@ public class NSDCAdmin_DashboardPage
 	private WebElement oKButton;
 	@FindBy(xpath="//span[contains(text(),'NSDCADMIN1')]")
 	private WebElement nSDCAdminProfileButton;
-	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	@FindBy(xpath="//button[contains(text(),'Logout')]")
 	private WebElement nSDCLogOutButton;
 	
 	public NSDCAdmin_DashboardPage(WebDriver driver)

@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -233,14 +234,15 @@ public class SmartBusiness_TCSetupReviewPage
 	{
 		refundPercentageOnSecondDNRTextbox.clear();
 		refundPercentageOnSecondDNRTextbox.sendKeys(refundPercentageOnSecondDNR);
+		refundPercentageOnSecondDNRTextbox.sendKeys(Keys.TAB);
 	}
 	
 	public void clickForEffectiveDate()
 	{
-		effectiveDateTextbox.click();
+		effectiveDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER);
 	}
 	
-	public void clickOnCornerOfDateField()
+	/*public void clickOnCornerOfDateField()
 	{
 		cornerOfDateButton.click();
 	}
@@ -248,7 +250,7 @@ public class SmartBusiness_TCSetupReviewPage
 	public void clickOnLastDate()
 	{
 		lastDateButton.click();
-	}
+	}*/
 	
 	public void clickOnCalenderIconButton()
 	{

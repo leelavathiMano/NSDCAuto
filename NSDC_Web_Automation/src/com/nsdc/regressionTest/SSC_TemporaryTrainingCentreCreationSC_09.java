@@ -1,6 +1,7 @@
 package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -23,7 +24,7 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
-	public void createTemporaryTraningCentreSC09TC01(String sscUsername,String sscPassword,String trainingCentreName, String addressLine, String landmark, String pincode, String villageTownCity, String state, String district, String subDistrict, String trainingCentreCapacity, String contactPersonName, String contactPersonEmail, String contactPersonMobileNumber, String singlePointOfContactPersonName, String singlePointOfContactPersonEmail, String singlePointOfContactPersonMobileNumber,String trainingCentreAvailability,String sector1,String subSector1,String jobRole1,String sector2 ,String subSector2,String jobRole2a,String jobRole2b,String sector3,String subSector3,String jobRole3a,String jobRole3b,String jobRole3c) throws Exception
+	public void createTemporaryTraningCentreSC09TC01(String sscUsername,String sscPassword,String trainingCentreName, String addressLine, String landmark, String pincode, String villageTownCity, String state, String district, String subDistrict, String trainingCentreCapacity, String contactPersonName, String contactPersonEmail, String contactPersonMobileNumber, String singlePointOfContactPersonName, String singlePointOfContactPersonEmail, String singlePointOfContactPersonMobileNumber,String expectedSector,String subSector1,String jobRole1,String subSector2,String jobRole2a,String jobRole2b,String subSector3,String jobRole3a,String jobRole3b,String jobRole3c) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
@@ -65,17 +66,12 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		Thread.sleep(2000);
 		sscTtCP.enterSinglePointOfContactPersonMobileNumber(singlePointOfContactPersonMobileNumber);
 		Thread.sleep(2000);
-		//availability of training centre
-		if(trainingCentreAvailability.equals("Only For This Sector Skill Council"))
-		{
-			sscTtCP.clickOnlyForThisSectorSkillCouncil();
-			Thread.sleep(6000);
-			//adding 3 SubSector&Job Roles
+		//adding 3 SubSector&Job Roles
 			for(int i=0;i<3;i++)
 			{
 				sscTtCP.clickAddSubsectorAndJobRoleButton();
 				Thread.sleep(4000);
-				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='form-group m-form__group row']/div[3]")).getText(),sector1);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='form-group m-form__group row']/div[3]")).getText(),expectedSector);
 				Thread.sleep(4000);
 				if(i==0)
 				{
@@ -84,7 +80,6 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 					sscTtCP.selectJobRole(jobRole1);
 					sscTtCP.clickAddButton();
 					Thread.sleep(4000);
-					Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='isOpenForAllSSC'])[1]")).isEnabled(), false);
 				}
 				else if(i==1)
 				{
@@ -106,63 +101,25 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 					Thread.sleep(4000);
 				}
 			}
-		}
-		
-		else if(trainingCentreAvailability.equals("Open For All Sector Skill Council"))
-		{
-			sscTtCP.clickOpenForAllSectorSkillCouncil();
-			Thread.sleep(6000);
-			//adding 3 SubSector&Job Roles
-			for(int i=0;i<3;i++)
-			{
-				sscTtCP.clickAddSubsectorAndJobRoleButton();
-				Thread.sleep(4000);
-				
-				if(i==0)
-				{
-					sscTtCP.selectSector(sector1);
-					Thread.sleep(4000);
-					sscTtCP.selectSubSector(subSector1);
-					Thread.sleep(6000);
-					sscTtCP.selectJobRole(jobRole1);
-					sscTtCP.clickAddButton();
-					Thread.sleep(4000);
-					Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='isOpenForAllSSC'])[1]")).isEnabled(), false);
-				}
-				else if(i==1)
-				{
-					sscTtCP.selectSector(sector2);
-					Thread.sleep(4000);
-					sscTtCP.selectSubSector(subSector2);
-					Thread.sleep(6000);
-					sscTtCP.selectJobRole(jobRole2a);
-					sscTtCP.selectJobRole(jobRole2b);
-					sscTtCP.clickAddButton();
-					Thread.sleep(4000);
-					Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='isOpenForAllSSC'])[1]")).isEnabled(), false);
-				}
-				else if(i==2)
-				{
-					sscTtCP.selectSector(sector3);
-					Thread.sleep(4000);
-					sscTtCP.selectSubSector(subSector3);
-					Thread.sleep(6000);
-					sscTtCP.selectJobRole(jobRole3a);
-					sscTtCP.selectJobRole(jobRole3b);
-					sscTtCP.selectJobRole(jobRole3c);
-					sscTtCP.clickAddButton();
-					Thread.sleep(4000);
-					Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='isOpenForAllSSC'])[1]")).isEnabled(), false);
-				}
-			}
-		}
 		
 		sscTtCP.clickConfirmation();
 		Thread.sleep(2000);
 		sscTtCP.clickCreate();
+		Thread.sleep(4000);
+		//This assertion is based on the diffrence in url while creating temporary training centre and after successfull creation of temporary training centre
+		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc", "TRAINING CENTRE NOT CREATED : Usually becoz of duplicate SPOC Email and Mobile Number, Please check the SSC_Temporary Training Centre Creation Test Data file");
 		Screenshot.takeScreenshot(driver, "justCreatedTrainingCenterIDsuccessfullPopup");
+		String createdTCID=driver.findElement(By.id("swal2-title")).getText();
+		System.out.println(createdTCID);
+/*      getting created TC_ID and Writing into Excel
+		String[] parts=createdTCID.split(" ");
+		Sring trainingCentreID=parts[parts.length-1];
+		System.out.println(trainingCentreID);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","Sheet2",1,0, trainingCentreID);
+*/	
+		Thread.sleep(6000);
 		sscTtCP.clickOk();
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);

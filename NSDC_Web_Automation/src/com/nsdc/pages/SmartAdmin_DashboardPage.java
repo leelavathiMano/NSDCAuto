@@ -24,7 +24,7 @@ public class SmartAdmin_DashboardPage
 	private WebElement oKButton;
 	@FindBy(xpath="//span[contains(text(),'SmartAdmin2')]")
 	private WebElement smartAdminButton;
-	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	@FindBy(xpath="//button[contains(text(),'Logout')]")
 	private WebElement logoutButton;
 	
 	

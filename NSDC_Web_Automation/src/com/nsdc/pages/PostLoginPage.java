@@ -11,7 +11,7 @@ public class PostLoginPage
 	
 	@FindBy(xpath="//li[@data-dropdown-toggle='click']")
 	private WebElement profileLogoButton;
-	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	@FindBy(xpath="//button[contains(text(),'Logout')]")
 	private WebElement logoutButton;
 	
 	public PostLoginPage(WebDriver driver)

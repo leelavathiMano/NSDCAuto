@@ -9,7 +9,7 @@ public class LoginPage
 {
     WebDriver driver;
     
-    @FindBy(xpath="//li[text()='Login']")
+    @FindBy(xpath="//li[@routerlink='login']")
     private WebElement loginButton;
     @FindBy(xpath="//li[text()='Register']")
     private WebElement registerButton;
