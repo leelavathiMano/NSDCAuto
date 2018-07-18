@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class QP_NOS_Model_CurriculumPage 
+public class SSC_QPNOS_Model_CurriculumPage 
 {
 	WebDriver driver;
 	
@@ -18,7 +18,7 @@ public class QP_NOS_Model_CurriculumPage
 	@FindBy(xpath="(//div[@class='m-widget17__item'])[4]")
 	private WebElement viewAllNOSs_Tab;
 	
-	public QP_NOS_Model_CurriculumPage(WebDriver driver)
+	public SSC_QPNOS_Model_CurriculumPage(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

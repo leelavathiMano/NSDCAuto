@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class QP_AddCompulsoryNOSsPage 
+public class SSC_QP_AddCompulsoryNOSsPage 
 {
 	WebDriver driver;
 	@FindBy(xpath="//button[contains(text(),'Save & Continue to Assessment Criteria')]")
@@ -44,7 +44,7 @@ public class QP_AddCompulsoryNOSsPage
 	@FindBy(xpath="(//div[@class='card nav-link'])[3]")
 	private WebElement addedOptions_Tab;
 	
-	public QP_AddCompulsoryNOSsPage(WebDriver driver)
+	public SSC_QP_AddCompulsoryNOSsPage(WebDriver driver)
 	{
 		this.driver = driver;
         PageFactory.initElements(driver, this);

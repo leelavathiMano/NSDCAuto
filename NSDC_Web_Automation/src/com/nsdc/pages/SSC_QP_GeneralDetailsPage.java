@@ -7,13 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class QP_GeneralDetailsPage 
+public class SSC_QP_GeneralDetailsPage 
 {
 	WebDriver driver;
-	@FindBy(css=".btn.dropdown-toggle.btn-default")
+	@FindBy(xpath="//select[@formcontrolname='countryDesc']")
 	private WebElement countryOfOriginDropDownList;
-	@FindBy(xpath="//a/span[contains(text(),'India')]")
-	private WebElement countryText;
 	@FindBy(xpath="//select[@formcontrolname='subSectorName']")
 	private WebElement subSectorDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='occupationDesc']")
@@ -31,17 +29,17 @@ public class QP_GeneralDetailsPage
 	@FindBy(xpath="//textarea[@formcontrolname='personalAttrs']")
 	private WebElement personalAttributesTextBox;
 	
-	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 1 for Job')]]/div/select[@formcontrolname='minEduQualDesc']")
-	private WebElement minimumEducationQualification1ForJob_DropDownList;
-	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 1 for Job')]]/div/input[@formcontrolname='minSpecialization']")
+	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 1')]]/div/select[@formcontrolname='minEduQualDesc']")
+	private WebElement minimumEducationQualification1_DropDownList;
+	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 1')]]/div/input[@formcontrolname='minSpecialization']")
 	private WebElement qualificationSpecialization1_TextBox;
-	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 2 for Job')]]/div/select[@formcontrolname='minEduQualDesc']")
-	private WebElement minimumEducationQualification2ForJob_DropDownList;
-	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 2 for Job')]]/div/input[@formcontrolname='minSpecialization']")
+	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 2')]]/div/select[@formcontrolname='minEduQualDesc']")
+	private WebElement minimumEducationQualification2_DropDownList;
+	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 2')]]/div/input[@formcontrolname='minSpecialization']")
 	private WebElement qualificationSpecialization2_TextBox;
-	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 3 for Job')]]/div/select[@formcontrolname='minEduQualDesc']")
-	private WebElement minimumEducationQualification3ForJob_DropDownList;
-	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 3 for Job')]]/div/input[@formcontrolname='minSpecialization']")
+	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 3')]]/div/select[@formcontrolname='minEduQualDesc']")
+	private WebElement minimumEducationQualification3_DropDownList;
+	@FindBy(xpath="//div[label[contains(text(),'Minimum Education Qualification 3')]]/div/input[@formcontrolname='minSpecialization']")
 	private WebElement qualificationSpecialization3_TextBox;
 	
 	@FindBy(xpath="//select[@formcontrolname='maxEduQualDesc']")
@@ -66,16 +64,16 @@ public class QP_GeneralDetailsPage
 	
 	@FindBy(xpath="//textarea[@formcontrolname='perfCriteria']")
 	private WebElement remarksTextBox;
+	@FindBy(xpath="//select[@formcontrolname='ctgryDesc']")
+	private WebElement costCommonNormsCategoryDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='bucketDesc']")
 	private WebElement bucketDropDownList;
-	@FindBy(xpath="//div[label[contains(text(),'Technical/Non Technical')]]/div/select[@formcontrolname='paramDesc']")
+	@FindBy(xpath="//div[label[contains(text(),'Technical/Non-Technical')]]/div/select[@formcontrolname='paramDesc']")
 	private WebElement technicalOrNonTechnicalDropDownList;
 	@FindBy(xpath="//div[label[contains(text(),'Manufacturing/Services')]]/div/select[@formcontrolname='paramDesc']")
 	private WebElement manufacturingOrServicesDropDownList;
 	@FindBy(xpath="//div[label[contains(text(),'Organized/Unorganized')]]/div/select[@formcontrolname='paramDesc']")
 	private WebElement organizedOrUnorganizedDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='version']")
-	private WebElement QP_VersionTextBox;
 	@FindBy(xpath="//input[@type='file']")
 	private WebElement QP_Image_BrowseButton;
 	@FindBy(xpath="//button[contains(text(),'Upload')]")
@@ -85,16 +83,15 @@ public class QP_GeneralDetailsPage
 	@FindBy(xpath="//button[contains(text(),'Save As Draft')]")
 	private WebElement saveAsDraftButton;
 	
-	public QP_GeneralDetailsPage(WebDriver driver)
+	public SSC_QP_GeneralDetailsPage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 	
-	public void selectCountryOfOrigin()
+	public void selectCountryOfOrigin(String country)
 	{
-		countryOfOriginDropDownList.click();
-		countryText.click();
+		SelectDropDownList.selectDropDownListByVisibleText(countryOfOriginDropDownList, country);
 	}
 	
 	public void selectSubSector(String subSector)
@@ -147,7 +144,7 @@ public class QP_GeneralDetailsPage
 	
 	public void selectMinimumEducationQualification1ForJob(String qualification1)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationQualification1ForJob_DropDownList, qualification1);
+		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationQualification1_DropDownList, qualification1);
 	}
 	
 	public void enterQualificationSpecialization1ForJob(String job1_specialization)
@@ -158,7 +155,7 @@ public class QP_GeneralDetailsPage
 	
 	public void selectMinimumEducationQualification2ForJob(String qualification2)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationQualification2ForJob_DropDownList, qualification2);
+		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationQualification2_DropDownList, qualification2);
 	}
 	
 	public void enterQualificationSpecialization2ForJob(String job2_specialization)
@@ -169,7 +166,7 @@ public class QP_GeneralDetailsPage
 	
 	public void selectMinimumEducationQualification3ForJob(String qualification3)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationQualification3ForJob_DropDownList, qualification3);
+		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationQualification3_DropDownList, qualification3);
 	}
 	
 	public void enterQualificationSpecialization3ForJob(String job3_specialization)
@@ -239,6 +236,11 @@ public class QP_GeneralDetailsPage
 		remarksTextBox.sendKeys(remarks);
 	}
 	
+	public void selectCostCommonNormsCategory(String normsCategory)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(costCommonNormsCategoryDropDownList, normsCategory);
+	}
+	
 	public void selectBucket(String bucket)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(bucketDropDownList, bucket);
@@ -257,12 +259,6 @@ public class QP_GeneralDetailsPage
 	public void selectOrganizedOrUnorganized(String org)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(organizedOrUnorganizedDropDownList, org);
-	}
-	
-	public void enterQP_Version(String version)
-	{
-		QP_VersionTextBox.clear();
-		QP_VersionTextBox.sendKeys(version);
 	}
 	
 	public void clickOnBrowseForQP_image()
