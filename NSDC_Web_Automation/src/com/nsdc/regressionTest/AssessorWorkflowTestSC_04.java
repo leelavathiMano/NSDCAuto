@@ -1,29 +1,35 @@
 package com.nsdc.regressionTest;
 
+import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.AssessorMyProfilePage;
 import com.nsdc.pages.AssessorRegistrationPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
+import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.testConfig.DatabaseConnection;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class AssessorWorkflowTestSC_04 extends TestConfiguration
 {
-    @DataProvider
+	@DataProvider
     public Object[][] registrationData()
     {
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/assessor-Workflow.xls", "AssessorRegistrationSC04TC01");
     }
     
     @Test(dataProvider="registrationData")
-    public void assessorRegistrationTC_01(String userType, String name, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String jobRole_sector1, String jobRole_subSector1, String jobRole1, String jobRole_sector2, String jobRole_subSector2, String jobRole2, String preferred_state1, String preferred_city1, String preferred_district1, String preferred_state2, String preferred_city2, String preferred_district2, String preferred_state3, String preferred_city3, String preferred_district3) throws Exception
+    public void assessorRegistrationTC_01(String serialNum,String createdAssessorID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String jobRole_sector1, String jobRole_subSector1, String jobRole1, String jobRole_sector2, String jobRole_subSector2, String jobRole2, String preferred_state1, String preferred_city1, String preferred_district1, String preferred_state2, String preferred_city2, String preferred_district2, String preferred_state3, String preferred_city3, String preferred_district3) throws Exception
     {
         //DatabaseConnection.deleteAssessor(email);
         Thread.sleep(2000);
@@ -34,6 +40,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         rp.enterSPOCName(name);
         rp.enterEmail(email);
         rp.enterMobile(mobile);
+        rp.clickIagree();
         rp.clickRegister();
         Thread.sleep(2000);
         rp.enterEmailOTP(emailOTP);
@@ -41,6 +48,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickVerify();
         Thread.sleep(2000);
+        String createdAssessor=driver.findElement(By.xpath("//div[@class='m-login__signin']/h3/span")).getText();
+        ReadWriteData.setExcelData("./TestData/Workflow/assessor-Workflow.xls", "AssessorRegistrationSC04TC01", Integer.parseInt(serialNum), 1, createdAssessor);
         
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
         rp.clickGoToLogin();
@@ -74,7 +83,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.selectReligion(religion);
         assessor.selectCategory(category);
         
-        if(disability.equals("Not Applicable"))
+        if(disability.equals("None"))
         {
             assessor.selectDisability(disability);
         }
@@ -96,6 +105,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             assessor.clickOnAadharNumberRadioButton();
             assessor.enterAadharNumber(idNumber);
             assessor.clickOnValidateAadharNumber();
+            Thread.sleep(2000);
+            Assert.assertEquals(driver.findElement(By.xpath("//div[@formgroupname='aadhaarIdentity']/div/span")).getText(), "Verified");
         }
         else if(aadharPan.equals("pan"))
         {
@@ -104,11 +115,11 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             assessor.clickOnBrowseFileButtonForUploadPanDocument();
             Thread.sleep(2000);
             UploadFile.upload(uploadPanDocument);
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             assessor.clickOnUploadButtonToUploadPan();
             Thread.sleep(4000);
         }
-        
+        Thread.sleep(2000);
         assessor.clickOnBrowseFileButtonToUploadPhoto();
         Thread.sleep(2000);
         UploadFile.upload(photoFile);
@@ -149,7 +160,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             assessor.enterDetailsOfEducation(edu_details1);
             assessor.clickOnBrowseForUploadEducationProofDocument();
             Thread.sleep(2000);
-            UploadFile.upload(edu_document2);
+            UploadFile.upload(edu_document1);
             Thread.sleep(2000);
             assessor.clickOnUploadForUploadEducationProofDocument();
             Thread.sleep(4000);
@@ -177,9 +188,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
             Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
         }
-        if(education2.equals("Not Applicable"))
+        if(education3.equals("Not Applicable"))
         {
-            assessor.selectEducationAttained(education2);
+            assessor.selectEducationAttained(education3);
         }
         else
         {
@@ -324,6 +335,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.selectSectorForJobRole(jobRole_sector2);
         assessor.selectSubSectorForJobRole(jobRole_subSector2);
         assessor.select_JobRole(jobRole2);
+        Thread.sleep(2000);
         assessor.clickOnAddForPreferredJobRole();
         Thread.sleep(2000);
         
@@ -364,6 +376,124 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         
         Assert.assertEquals(driver.findElement(By.xpath("//li[text()='Login']")).getText(), "Login");
     }
+       
+    @DataProvider
+    public Object[][] assessorMyProfileVerificationData()
+    {
+    	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorMyProfileVerificationSC04TC02");
+    }
+    @Test(dataProvider="assessorMyProfileVerificationData")//,dependsOnMethods="assessorRegistrationTC_01")
+    public void assessorMyProfileVerificationTC_02(String assessorUserName, String assessorPassword, String expectedNameOfApplicant, String expectedGender, String expectedDateOfBirth, String expectedLanguages, String expectedReligion, String expectedCategory, String expectedDisability, String expectedAadharNumVerificationStatus, String fileName, String expectedApplicantCategory, String expectedMobileNum, String expectedEmail, String expectedAddress,String expectedNearbyLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedParlimentaryConstituency, String expectedEducationAttainedType1, String expectedDetailsOfEducation1, String expectedProofOfDocPresence1,String expectedEducationAttainedType2, String expectedDetailsOfEducation2, String expectedEducationProofOfDocPresence2,String expectedEducationAttainedType3, String expectedDetailsOfEducation3, String expectedEducationProofOfDocPresence3, String expectedIndustrialRelevantSector1, String expectedIndustrialExperienceDetails1, String expectedTotalYearsOfIndusrialExperience1,String expectedTotalMonthsOfIndustrialExperience1, String expectedIndustrialProofDocPresence1,String expectedIndustrialRelevantSector2, String expectedIndustrialExperienceDetails2, String expectedTotalYearsOfIndusrialExperience2,String expectedTotalMonthsOfIndustrialExperience2, String expectedIndustrialProofDocPresence2,String expectedIndustrialRelevantSector3, String expectedIndustrialExperienceDetails3, String expectedTotalYearsOfIndusrialExperience3,String expectedTotalMonthsOfIndustrialExperience3, String expectedIndustrialProofDocPresence3, String expectedTrainingRelevantSector1, String expectedTrainingExperienceDetails1, String expectedTotalYearsOfTrainingExperience1,String expectedTotalMonthsOfTrainingExperience1, String expectedTrainingDocPresence1,String expectedTrainingRelevantSector2, String expectedTrainingExperienceDetails2, String expectedTotalYearsOfTrainingExperience2,String expectedTotalMonthsOfTrainingExperience2, String expectedTrainingDocPresence2,String expectedTrainingRelevantSector3, String expectedTrainingExperienceDetails3, String expectedTotalYearsOfTrainingExperience3,String expectedTotalMonthsOfTrainingExperience3, String expectedTrainingDocPresence3,String currriculumVitaeFile) throws Exception
+    {
+    	LoginPage lp=new LoginPage(driver);
+    	lp.clickLogin();
+    	EnterLoginPage elp=new EnterLoginPage(driver);
+    	elp.performlogin(assessorUserName, assessorPassword);
+    	Thread.sleep(2000);
+    	AssessorMyProfilePage aMpP=new AssessorMyProfilePage(driver);
+    	aMpP.clickProfile();
+    	Thread.sleep(2000);
+    	Assert.assertEquals(aMpP.getNameOfTheApplicant(),expectedNameOfApplicant);
+    	Assert.assertEquals(aMpP.getGenderOfApplicant(), expectedGender);
+    	Assert.assertEquals(aMpP.getDateOfBirth(), expectedDateOfBirth);
+    	Select select1=new Select(driver.findElement(By.xpath("//div[label[contains(text(),'Languages Known:')]]/div/select")));
+		List<WebElement> selectedLanguages=select1.getAllSelectedOptions();
+		if(selectedLanguages.size()==1)
+		{
+			String selectedLanguage1=selectedLanguages.get(0).getText();
+			Assert.assertEquals(selectedLanguage1, expectedLanguages);
+		}
+		else if(selectedLanguages.size()==2)
+		{
+			String selectedLanguage1=selectedLanguages.get(0).getText();
+	    	String selectedLanguage2=selectedLanguages.get(1).getText();
+	    	Assert.assertEquals((selectedLanguage1+","+selectedLanguage2), expectedLanguages);
+		}
+		else if(selectedLanguages.size()==3)
+		{
+			String selectedLanguage1=selectedLanguages.get(0).getText();
+	    	String selectedLanguage2=selectedLanguages.get(1).getText();
+	    	String selectedLanguage3=selectedLanguages.get(2).getText();
+	    	Assert.assertEquals((selectedLanguage1+","+selectedLanguage2+","+selectedLanguage3), expectedLanguages);
+		}
+		
+		Assert.assertEquals(aMpP.getReligion(), expectedReligion);
+    	Assert.assertEquals(aMpP.getCategory(), expectedCategory);
+    	Assert.assertEquals(aMpP.getDisability(), expectedDisability);
+    	Assert.assertEquals(aMpP.getAadharNumVerificationStatus(), expectedAadharNumVerificationStatus);
+    	Thread.sleep(2000);
+    	aMpP.clickBrowseFile();
+    	Thread.sleep(2000);
+    	UploadFile.upload(fileName);
+    	Thread.sleep(2000);
+    	aMpP.clickUploadfile();
+    	Thread.sleep(4000);
+    	Select select2=new Select(driver.findElement(By.xpath("//div[label[contains(text(),'Select Applicant Category:')]]/div/select")));
+    	List<WebElement> selectedApplicantCategories=select2.getAllSelectedOptions();
+    	if(selectedApplicantCategories.size()==1)
+    	{
+    		Assert.assertEquals(selectedApplicantCategories.get(0).getText(), expectedApplicantCategory);
+    	}
+    	else if(selectedApplicantCategories.size()==2)
+    	{
+    		Assert.assertEquals(selectedApplicantCategories.get(0).getText()+","+selectedApplicantCategories.get(1).getText(), expectedApplicantCategory);
+    	}
+    	
+    	aMpP.clickSaveChanges1();
+    	//Assessor Contact and Address verification
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("window.scrollBy(0,-1000)","");
+    	Thread.sleep(2000);
+    	aMpP.clickContactAndAddress();
+    	Thread.sleep(4000);
+    	Assert.assertEquals(aMpP.getMobileNumOfApplicant(), expectedMobileNum);
+    	Assert.assertEquals(aMpP.getEmailOfApplicant(), expectedEmail);
+    	Assert.assertEquals(aMpP.getAddressOfApplicant(), expectedAddress);
+    	Assert.assertEquals(aMpP.getNearByLandMark(), expectedNearbyLandmark);
+    	Assert.assertEquals(aMpP.getPincode(), expectedPincode);
+    	Assert.assertEquals(aMpP.getState(), expectedState);
+    	Assert.assertEquals(aMpP.getDistrict(), expectedDistrict);
+    	Assert.assertEquals(aMpP.getTehsil(), expectedTehsil);
+    	Assert.assertEquals(aMpP.getParlimentaryConstituency(), expectedParlimentaryConstituency);
+    	//Education & Work verification
+    	Thread.sleep(2000);
+    	aMpP.clickEducationAndWork();
+    	Thread.sleep(2000);
+    	Assert.assertEquals(aMpP.getEducationAttainedType(), expectedEducationAttainedType1);
+    	Assert.assertEquals(aMpP.getDetailsOfEducation(), expectedDetailsOfEducation1);
+    	Assert.assertEquals(aMpP.getProofDocumentPresence(), expectedProofOfDocPresence1);
+    	Assert.assertEquals(aMpP.getIndustrialRelaventSector(), expectedIndustrialRelevantSector1);
+    	Assert.assertEquals(aMpP.getIndustrialExperienceDetails(), expectedIndustrialExperienceDetails1);
+    	Assert.assertEquals(aMpP.getTotalIndustrialExperience(), expectedTotalYearsOfIndusrialExperience1+" "+"Year"+" "+expectedTotalMonthsOfIndustrialExperience1+" "+"months");
+    	Assert.assertEquals(aMpP.getIndustrialExperienceProofDocPresence(), expectedIndustrialProofDocPresence1);
+    	Assert.assertEquals(aMpP.getTrainingRelaventSector(), expectedTrainingRelevantSector1);
+    	
+    	Assert.assertEquals(aMpP.getTrainingExperienceDetails(), expectedTrainingExperienceDetails1);
+    	Assert.assertEquals(aMpP.getTotalTrainingExperience(), expectedTotalYearsOfTrainingExperience1+" "+"Year"+" "+expectedTotalMonthsOfTrainingExperience1+" "+"months");
+    	Assert.assertEquals(aMpP.getTrainingProofDocPresence(), expectedTrainingDocPresence1);
+    	Thread.sleep(2000);
+    	aMpP.clickCurriculumVitaeBrowse();
+    	Thread.sleep(2000);
+    	UploadFile.upload(currriculumVitaeFile);
+    	Thread.sleep(2000);
+    	aMpP.clickCurriculumVitaeUpload();
+    	Thread.sleep(4000);
+    	aMpP.clickSaveChanges2();
+    	Thread.sleep(2000);
+    	js.executeScript("window.scrollBy(0,-1000)","");
+    	Thread.sleep(2000);
+    	aMpP.clickMyAssociations();
+    	Thread.sleep(2000);
+    	Assert.assertEquals(driver.findElement(By.xpath("//div[@class='m-datatable__body']/span")).getText(), "No Associations with any Assessment Agency is found");
+    	System.out.println("verification of assessor profile against assesor registration data is successful");
+    	PostLoginPage plp=new PostLoginPage(driver);
+    	plp.clickOnProfileLogo();
+    	Thread.sleep(2000);
+    	plp.clickOnLogout();
+    	Thread.sleep(2000);
+    	
+   }
+  
     
 }
 

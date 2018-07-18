@@ -35,7 +35,7 @@ public class AssessorRegistrationPage
     private WebElement aadhaarNumberRadioButton;
     @FindBy(xpath="//input[@placeholder='Enter Aadhaar Number']")
     private WebElement aadhaarNumberTextBox;
-    @FindBy(xpath="//button[contains(text(),'Validate')]")
+    @FindBy(xpath="//button[contains(text(),'Verify')]")
     private WebElement validateButton;
     @FindBy(xpath="(//label[@class='m-radio'])[2]")
     private WebElement panNumberRadioButton;
@@ -107,11 +107,11 @@ public class AssessorRegistrationPage
     
     @FindBy(xpath="(//select[@title='Select the Relevant Sector'])[2]")
     private WebElement trainingExperience_relevantSectorDropDownList;
-    @FindBy(xpath="(//select[@formcontrolname='years'])[2]")
+    @FindBy(xpath="//select[@formcontrolname='years']")
     private WebElement trainingExperience_TotalYearsOfExperienceDropDownList;
-    @FindBy(xpath="(//select[@formcontrolname='months'])[2]")
+    @FindBy(xpath="//select[@formcontrolname='months']")
     private WebElement trainingExperience_TotalMonthsOfExperienceDropDownList;
-    @FindBy(xpath="(//input[@placeholder='Enter Details of the experience in the relevant Sector'])[2]")
+    @FindBy(xpath="(//input[@formcontrolname='details'])[2]")
     private WebElement trainingExperience_detailsOfExperienceTextBox;
     @FindBy(xpath="//div[div/h3[contains(text(),'Training Experience')]]/div/div/div/app-upload-file/div/div/div/div/input[@id='customFile']")
     private WebElement trainingExperienceProofDocument_browseButton;
@@ -137,7 +137,7 @@ public class AssessorRegistrationPage
     private WebElement jobRoleSubSectorDropDownList;
     @FindBy(xpath="//div[div/label[contains(text(),'Select Job Role')]]/div/div/select[@formcontrolname='jobRole']")
     private WebElement jobRoleDropDownList;
-    @FindBy(xpath="(//div/button[contains(text(),'Add')])[4]")
+    @FindBy(xpath="(//button[contains(text(),'Add')])[4]")
     private WebElement jobRole_addButton;
     
     @FindBy(xpath="//button[contains(text(),'Add Preferred Location')]")
@@ -148,7 +148,7 @@ public class AssessorRegistrationPage
     private WebElement preferredDistrictOrCityDropDownList;
     @FindBy(xpath="//div[label[contains(text(),'Sub-District/ Tehsil:')]]/div/div/select[@formcontrolname='subDistrict']")
     private WebElement preferredSubDistrictOrTehsilDropDownList;
-    @FindBy(xpath="(//div/button[contains(text(),'Add')])[3]")
+    @FindBy(xpath="(//button[contains(text(),'Add')])[3]")
     private WebElement preferredLocation_addButton;
     @FindBy(xpath="(//button[@class='btn'])[1]")
     private WebElement preferredJobRole_DeleteButton;
