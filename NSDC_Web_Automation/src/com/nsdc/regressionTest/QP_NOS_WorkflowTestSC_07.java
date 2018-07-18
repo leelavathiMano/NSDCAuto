@@ -49,6 +49,7 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         
         SSC_DashboardPage dashboard = new SSC_DashboardPage(driver);
         dashboard.clickOn_QP_NOS_ModelCurriculum();
+        Thread.sleep(2000);
         SSC_QPNOS_Model_CurriculumPage model = new SSC_QPNOS_Model_CurriculumPage(driver);
         model.clickOn_CreateNOS();
         SSC_NOS_GeneralDetailsPage details = new SSC_NOS_GeneralDetailsPage(driver);
