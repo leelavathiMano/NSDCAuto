@@ -19,6 +19,8 @@ public class RegistrationPage
     private WebElement emailTextbox;
     @FindBy(xpath="//input[@name='mobile']")
     private WebElement mobileTextbox;
+    @FindBy(xpath="//label[input[@formcontrolname='changeStatusChecked']]/span")
+    private WebElement iAgreeCheckbox;
     @FindBy(xpath="//button[contains(text(),'Register')]")
     private WebElement registerButton;
     
@@ -73,6 +75,10 @@ public class RegistrationPage
     {
         mobileTextbox.clear();
         mobileTextbox.sendKeys(mobile);
+    }
+    public void clickIagree()
+    {
+    	iAgreeCheckbox.click();
     }
     
     public void clickRegister()
