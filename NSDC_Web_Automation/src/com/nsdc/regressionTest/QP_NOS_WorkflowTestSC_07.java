@@ -52,6 +52,8 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         Thread.sleep(2000);
         SSC_QPNOS_Model_CurriculumPage model = new SSC_QPNOS_Model_CurriculumPage(driver);
         model.clickOn_CreateNOS();
+        Thread.sleep(2000);
+
         SSC_NOS_GeneralDetailsPage details = new SSC_NOS_GeneralDetailsPage(driver);
         Assert.assertEquals(driver.findElement(By.name("sectorName")).getAttribute("value"), NOS_sector);
         details.selectSubSector(NOS_subSector);
