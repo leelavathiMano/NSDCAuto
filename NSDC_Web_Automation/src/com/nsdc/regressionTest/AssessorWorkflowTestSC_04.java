@@ -25,7 +25,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	@DataProvider
     public Object[][] registrationData()
     {
-        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/assessor-Workflow.xls", "AssessorRegistrationSC04TC01");
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorRegistrationSC04TC01");
     }
     
     @Test(dataProvider="registrationData")
@@ -380,7 +380,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     @DataProvider
     public Object[][] assessorMyProfileVerificationData()
     {
-    	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorMyProfileVerificationSC04TC02");
+    	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Assessor-Workflow.xls", "ProfileVerificationSC04TC02");
     }
     @Test(dataProvider="assessorMyProfileVerificationData")//,dependsOnMethods="assessorRegistrationTC_01")
     public void assessorMyProfileVerificationTC_02(String assessorUserName, String assessorPassword, String expectedNameOfApplicant, String expectedGender, String expectedDateOfBirth, String expectedLanguages, String expectedReligion, String expectedCategory, String expectedDisability, String expectedAadharNumVerificationStatus, String fileName, String expectedApplicantCategory, String expectedMobileNum, String expectedEmail, String expectedAddress,String expectedNearbyLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedParlimentaryConstituency, String expectedEducationAttainedType1, String expectedDetailsOfEducation1, String expectedProofOfDocPresence1,String expectedEducationAttainedType2, String expectedDetailsOfEducation2, String expectedEducationProofOfDocPresence2,String expectedEducationAttainedType3, String expectedDetailsOfEducation3, String expectedEducationProofOfDocPresence3, String expectedIndustrialRelevantSector1, String expectedIndustrialExperienceDetails1, String expectedTotalYearsOfIndusrialExperience1,String expectedTotalMonthsOfIndustrialExperience1, String expectedIndustrialProofDocPresence1,String expectedIndustrialRelevantSector2, String expectedIndustrialExperienceDetails2, String expectedTotalYearsOfIndusrialExperience2,String expectedTotalMonthsOfIndustrialExperience2, String expectedIndustrialProofDocPresence2,String expectedIndustrialRelevantSector3, String expectedIndustrialExperienceDetails3, String expectedTotalYearsOfIndusrialExperience3,String expectedTotalMonthsOfIndustrialExperience3, String expectedIndustrialProofDocPresence3, String expectedTrainingRelevantSector1, String expectedTrainingExperienceDetails1, String expectedTotalYearsOfTrainingExperience1,String expectedTotalMonthsOfTrainingExperience1, String expectedTrainingDocPresence1,String expectedTrainingRelevantSector2, String expectedTrainingExperienceDetails2, String expectedTotalYearsOfTrainingExperience2,String expectedTotalMonthsOfTrainingExperience2, String expectedTrainingDocPresence2,String expectedTrainingRelevantSector3, String expectedTrainingExperienceDetails3, String expectedTotalYearsOfTrainingExperience3,String expectedTotalMonthsOfTrainingExperience3, String expectedTrainingDocPresence3,String currriculumVitaeFile) throws Exception
