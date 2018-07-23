@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SSCDashboardPage
+public class SSC_AllBatchesPage
 {
 	WebDriver driver;
 	
@@ -15,7 +15,7 @@ public class SSCDashboardPage
 	private WebElement allBatchesCard;
 	
 	
-	public SSCDashboardPage(WebDriver driver)
+	public SSC_AllBatchesPage(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);	

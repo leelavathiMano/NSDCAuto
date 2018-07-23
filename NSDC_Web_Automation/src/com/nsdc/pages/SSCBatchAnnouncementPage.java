@@ -44,6 +44,8 @@ public class SSCBatchAnnouncementPage
 	private WebElement createBatchButton;
 	@FindBy(xpath="//a[text()='Cancel']")
 	private WebElement cancelButton;
+	@FindBy(xpath="//button[text()='OK']")
+	private WebElement okBatchIDButton;
 	@FindBy(xpath="//select[@formcontrolname=\"state\"]")
     private WebElement stateDropDownList;
 	@FindBy(xpath="//select[@ng-reflect-name=\"district\"]")
@@ -52,6 +54,8 @@ public class SSCBatchAnnouncementPage
     private WebElement subDistrictDropDownList;
 	@FindBy(xpath="//button[contains(text(),'Search')]")
 	private WebElement searchButton;
+	@FindBy(xpath="//a[contains(text(),'»')]")
+	private WebElement lastPageButton;
 	@FindBy(xpath="//input[@placeholder='Search by keyword']")
 	private WebElement searchByKeywordTextBox;
 	@FindBy(xpath="//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")
@@ -64,9 +68,10 @@ public class SSCBatchAnnouncementPage
 	private WebElement assignButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
-	
-	
-	
+	@FindBy(xpath="//img[@class='m--img-rounded m--marginless m--img-centered']")
+	private WebElement logoutLogoButton;
+	@FindBy(xpath="//button[contains(text(),'Logout')]")
+	private WebElement logoutButton;
 	
 	public SSCBatchAnnouncementPage(WebDriver driver)
 	{
@@ -139,6 +144,10 @@ public class SSCBatchAnnouncementPage
 	{
 		cancelButton.click();
 	}
+	public void clickOkBatchIdButton()
+	{
+		okBatchIDButton.click();
+	}
 	
 	public void selectStateDropDownList(String state)
 	{
@@ -161,6 +170,12 @@ public class SSCBatchAnnouncementPage
 		searchButton.click();
 	}
 	 
+	public void clickLastPageButton() throws Exception
+	{
+		lastPageButton.click();
+		Thread.sleep(3000);
+		lastPageButton.click();
+	}
 	
 	public void enterTrainingCentreID(String training_Centre_Id) throws Exception
 	{
@@ -186,6 +201,14 @@ public class SSCBatchAnnouncementPage
 	public void clickOkButton()
 	{
 		okButton.click();
+	}
+	public void clickLogoutLogoButton()
+	{
+		logoutLogoButton.click();
+	}
+	public void clickLogoutButton()
+	{
+		logoutButton.click();
 	}
 	
 	
