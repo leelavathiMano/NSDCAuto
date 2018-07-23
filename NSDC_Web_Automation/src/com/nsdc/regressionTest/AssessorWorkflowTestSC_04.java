@@ -75,6 +75,10 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.selectAllLanguages();
         }
+        else if(language.equals("Kannada,Hindi"))
+        {
+        	assessor.selectTwoKnownLanguages();
+        }
         else
         {
             assessor.selectAnyKnownLanguage(language);
@@ -150,7 +154,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         assessor.clickOnSaveAndContinue();
         
-        if(education1.equals("Not Applicable"))
+        if(education1.equals("Uneducated"))
         {
             assessor.selectEducationAttained(education1);
         }
@@ -169,7 +173,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText(), edu_details1);
             Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[1]")).getText(), "yes");
         }
-        if(education2.equals("Not Applicable"))
+        if(education2.equals("Uneducated"))
         {
             assessor.selectEducationAttained(education2);
         }
@@ -188,7 +192,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
             Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
         }
-        if(education3.equals("Not Applicable"))
+        if(education3.equals("Uneducated"))
         {
             assessor.selectEducationAttained(education3);
         }
@@ -203,7 +207,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'no')])[1]")).getText(), "no");
             assessor.deleteThirdEducationDetails();
         }
-        
         assessor.selectRelevantSectorForIndustrialExperience(industrial_sector1);
         assessor.selectYearsForIndustrialExperience(industrial_years1);
         assessor.selectMonthsForIndustrialExperience(industrial_months1);
@@ -219,7 +222,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector1+"')]")).getText(), industrial_sector1);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails1+"')]")).getText(), industrialExperienceDetails1);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[1]")).getText(), "Yes");
-        
         assessor.selectRelevantSectorForIndustrialExperience(industrial_sector2);
         assessor.selectYearsForIndustrialExperience(industrial_years2);
         assessor.selectMonthsForIndustrialExperience(industrial_months2);
@@ -235,7 +237,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector2+"')]")).getText(), industrial_sector2);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails2+"')]")).getText(), industrialExperienceDetails2);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[2]")).getText(), "Yes");
-        
         assessor.selectRelevantSectorForIndustrialExperience(industrial_sector3);
         assessor.selectYearsForIndustrialExperience(industrial_years3);
         assessor.selectMonthsForIndustrialExperience(industrial_months3);
@@ -251,7 +252,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
-        if(education1.equals("Not Applicable") || education2.equals("Not Applicable") || education3.equals("Not Applicable"))
+        if(education1.equals("Uneducated") || education2.equals("Uneducated") || education3.equals("Uneducated"))
         {
             assessor.deleteThirdIndustrialExperienceDetailsWithoutEducationDetail();
         }
@@ -259,8 +260,18 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.deleteThirdIndustrialExperienceDetails();
         }
-        
-        assessor.selectRelevantSectorForTrainingExperience(training_sector1);
+        int totalIndustrialMonths=((Integer.parseInt(industrial_years1)+Integer.parseInt(industrial_years2))*12)+Integer.parseInt(industrial_months1)+Integer.parseInt(industrial_months2);
+      	int finalIndustrialMonths=totalIndustrialMonths%12;
+    	int finalIndustrialYears=(totalIndustrialMonths-finalIndustrialMonths)/12;
+    	if(finalIndustrialMonths==0)
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),":"+finalIndustrialYears+" Years Total Industrial Experience");
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),":"+finalIndustrialYears+" Years "+finalIndustrialMonths+" months Total Industrial Experience");
+    	}
+    	assessor.selectRelevantSectorForTrainingExperience(training_sector1);
         assessor.selectyearsForTrainingExperience(trainingExperienceYears1);
         assessor.selectMonthsForTrainingExperience(trainingExperienceMonths1);
         assessor.enterTrainingExperienceDetails(trainingExperienceDetails1);
@@ -274,37 +285,35 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector1+"')]")).getText(), training_sector1);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails1+"')]")).getText(), trainingExperienceDetails1);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
-        
-        assessor.selectRelevantSectorForTrainingExperience(training_sector1);
-        assessor.selectyearsForTrainingExperience(trainingExperienceYears1);
-        assessor.selectMonthsForTrainingExperience(trainingExperienceMonths1);
-        assessor.enterTrainingExperienceDetails(trainingExperienceDetails1);
+        assessor.selectRelevantSectorForTrainingExperience(training_sector2);
+        assessor.selectyearsForTrainingExperience(trainingExperienceYears2);
+        assessor.selectMonthsForTrainingExperience(trainingExperienceMonths2);
+        assessor.enterTrainingExperienceDetails(trainingExperienceDetails2);
         assessor.clickOnBrowseForTrainingExperienceProofDocument();
         Thread.sleep(2000);
-        UploadFile.upload(trainingDocument1);
+        UploadFile.upload(trainingDocument2);
         Thread.sleep(2000);
         assessor.clickOnUploadForTrainingExperienceProofDocument();
         Thread.sleep(4000);
         assessor.clickOnAddTrainingExperienceDetails();
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector1+"')]")).getText(), training_sector1);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails1+"')]")).getText(), trainingExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector2+"')]")).getText(), training_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails2+"')]")).getText(), trainingExperienceDetails2);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[4]")).getText(), "Yes");
-        
-        assessor.selectRelevantSectorForTrainingExperience(training_sector1);
-        assessor.selectyearsForTrainingExperience(trainingExperienceYears1);
-        assessor.selectMonthsForTrainingExperience(trainingExperienceMonths1);
-        assessor.enterTrainingExperienceDetails(trainingExperienceDetails1);
+        assessor.selectRelevantSectorForTrainingExperience(training_sector3);
+        assessor.selectyearsForTrainingExperience(trainingExperienceYears3);
+        assessor.selectMonthsForTrainingExperience(trainingExperienceMonths3);
+        assessor.enterTrainingExperienceDetails(trainingExperienceDetails3);
         assessor.clickOnBrowseForTrainingExperienceProofDocument();
         Thread.sleep(2000);
-        UploadFile.upload(trainingDocument1);
+        UploadFile.upload(trainingDocument3);
         Thread.sleep(2000);
         assessor.clickOnUploadForTrainingExperienceProofDocument();
         Thread.sleep(4000);
         assessor.clickOnAddTrainingExperienceDetails();
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector1+"')]")).getText(), training_sector1);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails1+"')]")).getText(), trainingExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector3+"')]")).getText(), training_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails3+"')]")).getText(), trainingExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[5]")).getText(), "Yes");
-        if(education1.equals("Not Applicable") || education2.equals("Not Applicable") || education3.equals("Not Applicable"))
+        if(education1.equals("Uneducated") || education2.equals("Uneducated") || education3.equals("Uneducated"))
         {
             assessor.deleteThirdTrainingExperienceWithoutEducationDetails();
         }
@@ -312,7 +321,17 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.deleteThirdTrainingExperienceDetails();
         }
-        
+        int totalTrainingMonths=((Integer.parseInt(trainingExperienceYears1)+Integer.parseInt(trainingExperienceYears2))*12)+Integer.parseInt(trainingExperienceMonths1)+Integer.parseInt(trainingExperienceMonths2);
+      	int finalTrainingMonths=totalTrainingMonths%12;
+    	int finalTrainingYears=(totalTrainingMonths-finalTrainingMonths)/12;
+    	if(finalTrainingMonths==0)
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),":"+finalTrainingYears+" Years Total Industrial Experience");
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),":"+finalTrainingYears+" Years "+finalTrainingMonths+" months Total Industrial Experience");
+    	}
         assessor.clickOnBrowseForCurriculumVitaeOrResume();
         Thread.sleep(2000);
         UploadFile.upload(resume);
@@ -320,7 +339,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.clickOnUploadForCurriculumVitaeOrResume();
         Thread.sleep(4000);
         assessor.clickOnSaveAndContinue();
-        
         assessor.clickOn_PreferredJobRole();
         Thread.sleep(2000);
         assessor.selectSectorForJobRole(jobRole_sector1);
@@ -338,7 +356,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         assessor.clickOnAddForPreferredJobRole();
         Thread.sleep(2000);
-        
         assessor.clickOn_AddPreferredLocation();
         Thread.sleep(2000);
         assessor.selectPreferredStateOrUnionTerritory(preferred_state1);
@@ -346,7 +363,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.selectPreferredSubDistrictOrTehsil(preferred_district1);
         assessor.clickOnAddForPreferredLocation();
         Thread.sleep(2000);
-        
         assessor.clickOn_AddPreferredLocation();
         Thread.sleep(2000);
         assessor.selectPreferredStateOrUnionTerritory(preferred_state2);
@@ -354,7 +370,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.selectPreferredSubDistrictOrTehsil(preferred_district2);
         assessor.clickOnAddForPreferredLocation();
         Thread.sleep(2000);
-        
         assessor.clickOn_AddPreferredLocation();
         Thread.sleep(2000);
         assessor.selectPreferredStateOrUnionTerritory(preferred_state3);
@@ -364,7 +379,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         assessor.clickOnDeleteThirdPreferredLocation();
         assessor.clickOnSaveAndContinue();
-        
         Thread.sleep(2000);
         assessor.clickIAgreeCheckbox();
         Thread.sleep(2000);
@@ -373,7 +387,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//h2[text()='Thank You']")).getText(), "Thank You");
         assessor.clickLogOutButton();
         Thread.sleep(2000);
-        
         Assert.assertEquals(driver.findElement(By.xpath("//li[text()='Login']")).getText(), "Login");
     }
        
@@ -382,8 +395,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     {
     	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Assessor-Workflow.xls", "ProfileVerificationSC04TC02");
     }
-    @Test(dataProvider="assessorMyProfileVerificationData")//,dependsOnMethods="assessorRegistrationTC_01")
-    public void assessorMyProfileVerificationTC_02(String assessorUserName, String assessorPassword, String expectedNameOfApplicant, String expectedGender, String expectedDateOfBirth, String expectedLanguages, String expectedReligion, String expectedCategory, String expectedDisability, String expectedAadharNumVerificationStatus, String fileName, String expectedApplicantCategory, String expectedMobileNum, String expectedEmail, String expectedAddress,String expectedNearbyLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedParlimentaryConstituency, String expectedEducationAttainedType1, String expectedDetailsOfEducation1, String expectedProofOfDocPresence1,String expectedEducationAttainedType2, String expectedDetailsOfEducation2, String expectedEducationProofOfDocPresence2,String expectedEducationAttainedType3, String expectedDetailsOfEducation3, String expectedEducationProofOfDocPresence3, String expectedIndustrialRelevantSector1, String expectedIndustrialExperienceDetails1, String expectedTotalYearsOfIndusrialExperience1,String expectedTotalMonthsOfIndustrialExperience1, String expectedIndustrialProofDocPresence1,String expectedIndustrialRelevantSector2, String expectedIndustrialExperienceDetails2, String expectedTotalYearsOfIndusrialExperience2,String expectedTotalMonthsOfIndustrialExperience2, String expectedIndustrialProofDocPresence2,String expectedIndustrialRelevantSector3, String expectedIndustrialExperienceDetails3, String expectedTotalYearsOfIndusrialExperience3,String expectedTotalMonthsOfIndustrialExperience3, String expectedIndustrialProofDocPresence3, String expectedTrainingRelevantSector1, String expectedTrainingExperienceDetails1, String expectedTotalYearsOfTrainingExperience1,String expectedTotalMonthsOfTrainingExperience1, String expectedTrainingDocPresence1,String expectedTrainingRelevantSector2, String expectedTrainingExperienceDetails2, String expectedTotalYearsOfTrainingExperience2,String expectedTotalMonthsOfTrainingExperience2, String expectedTrainingDocPresence2,String expectedTrainingRelevantSector3, String expectedTrainingExperienceDetails3, String expectedTotalYearsOfTrainingExperience3,String expectedTotalMonthsOfTrainingExperience3, String expectedTrainingDocPresence3,String currriculumVitaeFile) throws Exception
+    @Test(dataProvider="assessorMyProfileVerificationData",dependsOnMethods="assessorRegistrationTC_01")
+    public void assessorMyProfileVerificationTC_02(String assessorUserName, String assessorPassword, String expectedNameOfApplicant, String expectedGender, String expectedDateOfBirth, String expectedLanguages, String expectedReligion, String expectedCategory, String expectedDisability, String expectedAadharNumVerificationStatus, String fileName, String expectedApplicantCategory, String expectedMobileNum, String expectedEmail, String expectedAddress,String expectedNearbyLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedParlimentaryConstituency, String expectedEducationAttainedType1, String expectedDetailsOfEducation1, String expectedEducationProofOfDocPresence1,String expectedEducationAttainedType2, String expectedDetailsOfEducation2, String expectedEducationProofOfDocPresence2,String expectedEducationAttainedType3, String expectedDetailsOfEducation3, String expectedEducationProofOfDocPresence3, String expectedIndustrialRelevantSector1, String expectedIndustrialExperienceDetails1, String expectedTotalYearsOfIndusrialExperience1,String expectedTotalMonthsOfIndustrialExperience1, String expectedIndustrialProofDocPresence1,String expectedIndustrialRelevantSector2, String expectedIndustrialExperienceDetails2, String expectedTotalYearsOfIndusrialExperience2,String expectedTotalMonthsOfIndustrialExperience2, String expectedIndustrialProofDocPresence2,String expectedIndustrialRelevantSector3, String expectedIndustrialExperienceDetails3, String expectedTotalYearsOfIndusrialExperience3,String expectedTotalMonthsOfIndustrialExperience3, String expectedIndustrialProofDocPresence3, String expectedTrainingRelevantSector1, String expectedTrainingExperienceDetails1, String expectedTotalYearsOfTrainingExperience1,String expectedTotalMonthsOfTrainingExperience1, String expectedTrainingDocPresence1,String expectedTrainingRelevantSector2, String expectedTrainingExperienceDetails2, String expectedTotalYearsOfTrainingExperience2,String expectedTotalMonthsOfTrainingExperience2, String expectedTrainingDocPresence2,String expectedTrainingRelevantSector3, String expectedTrainingExperienceDetails3, String expectedTotalYearsOfTrainingExperience3,String expectedTotalMonthsOfTrainingExperience3, String expectedTrainingDocPresence3,String currriculumVitaeFile) throws Exception
     {
     	LoginPage lp=new LoginPage(driver);
     	lp.clickLogin();
@@ -416,11 +429,10 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	    	String selectedLanguage3=selectedLanguages.get(2).getText();
 	    	Assert.assertEquals((selectedLanguage1+","+selectedLanguage2+","+selectedLanguage3), expectedLanguages);
 		}
-		
 		Assert.assertEquals(aMpP.getReligion(), expectedReligion);
     	Assert.assertEquals(aMpP.getCategory(), expectedCategory);
     	Assert.assertEquals(aMpP.getDisability(), expectedDisability);
-    	Assert.assertEquals(aMpP.getAadharNumVerificationStatus(), expectedAadharNumVerificationStatus);
+    	//Assert.assertEquals(aMpP.getAadharNumVerificationStatus(), expectedAadharNumVerificationStatus);
     	Thread.sleep(2000);
     	aMpP.clickBrowseFile();
     	Thread.sleep(2000);
@@ -459,18 +471,63 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	aMpP.clickEducationAndWork();
     	Thread.sleep(2000);
-    	Assert.assertEquals(aMpP.getEducationAttainedType(), expectedEducationAttainedType1);
-    	Assert.assertEquals(aMpP.getDetailsOfEducation(), expectedDetailsOfEducation1);
-    	Assert.assertEquals(aMpP.getProofDocumentPresence(), expectedProofOfDocPresence1);
-    	Assert.assertEquals(aMpP.getIndustrialRelaventSector(), expectedIndustrialRelevantSector1);
-    	Assert.assertEquals(aMpP.getIndustrialExperienceDetails(), expectedIndustrialExperienceDetails1);
-    	Assert.assertEquals(aMpP.getTotalIndustrialExperience(), expectedTotalYearsOfIndusrialExperience1+" "+"Year"+" "+expectedTotalMonthsOfIndustrialExperience1+" "+"months");
-    	Assert.assertEquals(aMpP.getIndustrialExperienceProofDocPresence(), expectedIndustrialProofDocPresence1);
-    	Assert.assertEquals(aMpP.getTrainingRelaventSector(), expectedTrainingRelevantSector1);
-    	
-    	Assert.assertEquals(aMpP.getTrainingExperienceDetails(), expectedTrainingExperienceDetails1);
-    	Assert.assertEquals(aMpP.getTotalTrainingExperience(), expectedTotalYearsOfTrainingExperience1+" "+"Year"+" "+expectedTotalMonthsOfTrainingExperience1+" "+"months");
-    	Assert.assertEquals(aMpP.getTrainingProofDocPresence(), expectedTrainingDocPresence1);
+    	 if(expectedEducationAttainedType1.equals("Uneducated") && expectedEducationAttainedType2.equals("Uneducated"))
+         {
+            Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table table-striped'])[1]/tbody")).getText(), "No records found");
+         }
+    	 else
+    	 {
+    		Assert.assertEquals(aMpP.getEducationAttainedType1(), expectedEducationAttainedType1);
+    	    Assert.assertEquals(aMpP.getDetailsOfEducation1(), expectedDetailsOfEducation1);
+    	    Assert.assertEquals(aMpP.getEducationProofDocument1Presence(), expectedEducationProofOfDocPresence1);
+    	    //Education Record 2
+    	    Assert.assertEquals(aMpP.getEducationAttainedType2(), expectedEducationAttainedType2);
+    	    Assert.assertEquals(aMpP.getDetailsOfEducation2(), expectedDetailsOfEducation2);
+    	    Assert.assertEquals(aMpP.getEducationProofDocument2Presence(), expectedEducationProofOfDocPresence2);
+    	 }
+    	//Industrial Records
+    	int totalIndustrialMonths=((Integer.parseInt(expectedTotalYearsOfIndusrialExperience1)+Integer.parseInt(expectedTotalYearsOfIndusrialExperience2))*12)+Integer.parseInt(expectedTotalMonthsOfIndustrialExperience1)+Integer.parseInt(expectedTotalMonthsOfIndustrialExperience2);
+       	int finalIndustrialMonths=totalIndustrialMonths%12;
+     	int finalIndustrialYears=(totalIndustrialMonths-finalIndustrialMonths)/12;
+     	if(finalIndustrialMonths==0)
+     	{
+     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),finalIndustrialYears+" years Total Training Experience");
+     	}
+     	else
+     	{
+     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),finalIndustrialYears+" years "+finalIndustrialMonths+" months Total Training Experience");	
+     	}
+     	Assert.assertEquals(aMpP.getIndustrialRelaventSector1(), expectedIndustrialRelevantSector1);
+       	Assert.assertEquals(aMpP.getIndustrialExperienceDetails1(), expectedIndustrialExperienceDetails1);
+    	Assert.assertEquals(aMpP.getTotalIndustrialExperience1(), expectedTotalYearsOfIndusrialExperience1+" "+"Year"+" "+expectedTotalMonthsOfIndustrialExperience1+" "+"months");
+    	Assert.assertEquals(aMpP.getIndustrialExperienceProofDoc1Presence(), expectedIndustrialProofDocPresence1);
+    	//industrial record 2
+    	Assert.assertEquals(aMpP.getIndustrialRelaventSector2(), expectedIndustrialRelevantSector2);
+       	Assert.assertEquals(aMpP.getIndustrialExperienceDetails2(), expectedIndustrialExperienceDetails2);
+    	Assert.assertEquals(aMpP.getTotalIndustrialExperience2(), expectedTotalYearsOfIndusrialExperience2+" "+"Year"+" "+expectedTotalMonthsOfIndustrialExperience2+" "+"months");
+    	Assert.assertEquals(aMpP.getIndustrialExperienceProofDoc2Presence(), expectedIndustrialProofDocPresence2);
+    	//Training Records
+    	int totalTrainingMonths=((Integer.parseInt(expectedTotalYearsOfTrainingExperience1)+Integer.parseInt(expectedTotalYearsOfTrainingExperience2))*12)+Integer.parseInt(expectedTotalMonthsOfTrainingExperience1)+Integer.parseInt(expectedTotalMonthsOfTrainingExperience2);
+       	int finalTrainingMonths=totalTrainingMonths%12;
+     	int finalTrainingYears=(totalTrainingMonths-finalTrainingMonths)/12;
+     	if(finalTrainingMonths==0)
+     	{
+     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),finalTrainingYears+" Years Total Training Experience");
+     	}
+     	else
+     	{
+     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),finalTrainingYears+" Years "+finalTrainingMonths+" months Total Training Experience");
+     	}
+     	
+    	Assert.assertEquals(aMpP.getTrainingRelaventSector1(), expectedTrainingRelevantSector1);
+    	Assert.assertEquals(aMpP.getTrainingExperienceDetails1(), expectedTrainingExperienceDetails1);
+    	Assert.assertEquals(aMpP.getTotalTrainingExperience1(), expectedTotalYearsOfTrainingExperience1+" "+"Year"+" "+expectedTotalMonthsOfTrainingExperience1+" "+"months");
+    	Assert.assertEquals(aMpP.getTrainingProofDoc1Presence(), expectedTrainingDocPresence1);
+    	//training record 2
+    	Assert.assertEquals(aMpP.getTrainingRelaventSector2(), expectedTrainingRelevantSector2);
+    	Assert.assertEquals(aMpP.getTrainingExperienceDetails2(), expectedTrainingExperienceDetails2);
+    	Assert.assertEquals(aMpP.getTotalTrainingExperience2(), expectedTotalYearsOfTrainingExperience2+" "+"Year"+" "+expectedTotalMonthsOfTrainingExperience2+" "+"months");
+    	Assert.assertEquals(aMpP.getTrainingProofDoc2Presence(), expectedTrainingDocPresence2);
     	Thread.sleep(2000);
     	aMpP.clickCurriculumVitaeBrowse();
     	Thread.sleep(2000);
@@ -485,7 +542,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	aMpP.clickMyAssociations();
     	Thread.sleep(2000);
     	Assert.assertEquals(driver.findElement(By.xpath("//div[@class='m-datatable__body']/span")).getText(), "No Associations with any Assessment Agency is found");
-    	System.out.println("verification of assessor profile against assesor registration data is successful");
+    	
     	PostLoginPage plp=new PostLoginPage(driver);
     	plp.clickOnProfileLogo();
     	Thread.sleep(2000);
@@ -493,7 +550,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	
    }
-  
     
 }
 

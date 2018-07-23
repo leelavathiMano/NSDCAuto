@@ -5,10 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AssessorMyProfilePage
+public class TrainerMyProfilePage
 {
 	WebDriver driver;
-	
 	@FindBy(xpath="(//a[@class='m-menu__link m-menu__toggle'])[3]")
 	//@FindBy(linkText="My Profile ")
 	private WebElement myProfileLink;
@@ -145,8 +144,7 @@ public class AssessorMyProfilePage
 	@FindBy(xpath="//button[text()='Search & Apply']")
 	private WebElement searchAndAppluButton;
 	
-	
-	public AssessorMyProfilePage(WebDriver driver)
+	public TrainerMyProfilePage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -351,4 +349,5 @@ public class AssessorMyProfilePage
 		myAssociationsLink.click();
 	}
 	
+
 }

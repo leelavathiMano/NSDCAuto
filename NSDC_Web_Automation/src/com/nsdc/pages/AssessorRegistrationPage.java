@@ -111,7 +111,7 @@ public class AssessorRegistrationPage
     private WebElement trainingExperience_TotalYearsOfExperienceDropDownList;
     @FindBy(xpath="//select[@formcontrolname='months']")
     private WebElement trainingExperience_TotalMonthsOfExperienceDropDownList;
-    @FindBy(xpath="(//input[@formcontrolname='details'])[2]")
+    @FindBy(xpath="//input[@placeholder='Enter Details of the experience in the relevant Sector']")
     private WebElement trainingExperience_detailsOfExperienceTextBox;
     @FindBy(xpath="//div[div/h3[contains(text(),'Training Experience')]]/div/div/div/app-upload-file/div/div/div/div/input[@id='customFile']")
     private WebElement trainingExperienceProofDocument_browseButton;
@@ -186,11 +186,17 @@ public class AssessorRegistrationPage
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, language);
     }
     
+    public void selectTwoKnownLanguages()
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
+    	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
+    }
+    
     public void selectAllLanguages()
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
-        SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "English");
+        SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
     }
     
     public void selectReligion(String religion)
