@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class NOS_GeneralDetailsPage 
+public class SSC_EditNOSPage 
 {
 	WebDriver driver;
 	@FindBy(xpath="//select[@formcontrolname='subSectorName']")
@@ -39,6 +39,8 @@ public class NOS_GeneralDetailsPage
 	private WebElement performanceCriteria2_TextBox;
 	@FindBy(xpath="//div[label[contains(text(),'3. Performance Criteria')]]/div/input[@formcontrolname='pcDescription']")
 	private WebElement performanceCriteria3_TextBox;
+	@FindBy(xpath="//div[label[contains(text(),'4. Performance Criteria')]]/div/input[@formcontrolname='pcDescription']")
+	private WebElement performanceCriteria4_TextBox;
 	@FindBy(xpath="//button[text()='Previous']")
 	private WebElement previousButton;
 	@FindBy(xpath="//button[text()='Categorise under Elements']")
@@ -55,6 +57,8 @@ public class NOS_GeneralDetailsPage
 	private WebElement element1_groupedPerformanceCriteria2_checkBox;
 	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[1]/div/label[3]/span")
 	private WebElement element1_groupedPerformanceCriteria3_checkBox;
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[1]/div/label[4]/span")
+	private WebElement element1_groupedPerformanceCriteria4_checkBox;
 	
 	@FindBy(xpath="//div[label[contains(text(),'2. Enter the Name of the Element')]]/div/div/input[@formcontrolname='element']")
 	private WebElement nameOfTheElement2_TextBox;
@@ -65,6 +69,8 @@ public class NOS_GeneralDetailsPage
 	private WebElement element2_groupedPerformanceCriteria2_checkBox;
 	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[2]/div/label[3]/span")
 	private WebElement element2_groupedPerformanceCriteria3_checkBox;
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[2]/div/label[4]/span")
+	private WebElement element2_groupedPerformanceCriteria4_checkBox;
 	
 	@FindBy(xpath="//div[label[contains(text(),'3. Enter the Name of the Element')]]/div/div/input[@formcontrolname='element']")
 	private WebElement nameOfTheElement3_TextBox;
@@ -75,30 +81,52 @@ public class NOS_GeneralDetailsPage
 	private WebElement element3_groupedPerformanceCriteria2_checkBox;
 	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[3]/div/label[3]/span")
 	private WebElement element3_groupedPerformanceCriteria3_checkBox;
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[3]/div/label[4]/span")
+	private WebElement element3_groupedPerformanceCriteria4_checkBox;
+	
+	@FindBy(xpath="//div[label[contains(text(),'4. Enter the Name of the Element')]]/div/div/input[@formcontrolname='element']")
+	private WebElement nameOfTheElement4_TextBox;
+	
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[4]/div/label[1]/span")
+	private WebElement element4_groupedPerformanceCriteria1_checkBox;
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[4]/div/label[2]/span")
+	private WebElement element4_groupedPerformanceCriteria2_checkBox;
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[4]/div/label[3]/span")
+	private WebElement element4_groupedPerformanceCriteria3_checkBox;
+	@FindBy(xpath="(//div[label[contains(text(),'Grouped Performance Criterias')]])[4]/div/label[4]/span")
+	private WebElement element4_groupedPerformanceCriteria4_checkBox;
 	
 	@FindBy(xpath="//button[contains(text(),'Add Another Element')]")
 	private WebElement addAnotherElementButton;
 	
-	@FindBy(xpath="//div[label[contains(text(),'1. Knowledge Parameter')]]/div/input[@formcontrolname='knowledgeParam']")
-	private WebElement knowledgeParameter1_TextBox;
-	@FindBy(xpath="//div[label[contains(text(),'2. Knowledge Parameter')]]/div/input[@formcontrolname='knowledgeParam']")
-	private WebElement knowledgeParameter2_TextBox;
-	@FindBy(xpath="//div[label[contains(text(),'3. Knowledge Parameter')]]/div/input[@formcontrolname='knowledgeParam']")
-	private WebElement knowledgeParameter3_TextBox;
-	@FindBy(xpath="//button[text()='Add Another Knowledge Parameter']")
-	private WebElement addAnotherKnowledgeParameterButton;
+	@FindBy(xpath="//div[label[contains(text(),'1. Knowledge and Understanding (KU)')]]/div/input[@formcontrolname='knowledgeParam']")
+	private WebElement knowledgeAndUnderstanding1_TextBox;;
+	@FindBy(xpath="//div[label[contains(text(),'2. Knowledge and Understanding (KU)')]]/div/input[@formcontrolname='knowledgeParam']")
+	private WebElement knowledgeAndUnderstanding2_TextBox;
+	@FindBy(xpath="//div[label[contains(text(),'3. Knowledge and Understanding (KU)')]]/div/input[@formcontrolname='knowledgeParam']")
+	private WebElement knowledgeAndUnderstanding3_TextBox;
+	@FindBy(xpath="//div[label[contains(text(),'4. Knowledge and Understanding (KU)')]]/div/input[@formcontrolname='knowledgeParam']")
+	private WebElement knowledgeAndUnderstanding4_TextBox;
+	
+	@FindBy(xpath="//button[text()='Add Another Knowledge and Understanding (KU)']")
+	private WebElement addAnotherKnowledgeAndUnderstandingButton;
 	@FindBy(xpath="//button[text()='Skip']")
 	private WebElement skipButton;
 	
-	@FindBy(xpath="//div[label[contains(text(),'1. Generic Skills Parameter')]]/div/input[@formcontrolname='skillCrt']")
-	private WebElement genericSkillsParameter1_TextBox;
-	@FindBy(xpath="//div[label[contains(text(),'2. Generic Skills Parameter')]]/div/input[@formcontrolname='skillCrt']")
-	private WebElement genericSkillsParameter2_TextBox;
-	@FindBy(xpath="//div[label[contains(text(),'3. Generic Skills Parameter')]]/div/input[@formcontrolname='skillCrt']")
-	private WebElement genericSkillsParameter3_TextBox;
-	@FindBy(xpath="//button[text()='Add Another Generic Skills Parameter']")
-	private WebElement addAnotherGenericSkillsParameterButton;
+	@FindBy(xpath="//div[label[contains(text(),'1. Generic Skill (GS)')]]/div/input[@formcontrolname='skillCrt']")
+	private WebElement genericSkill1_TextBox;
+	@FindBy(xpath="//div[label[contains(text(),'2. Generic Skill (GS)')]]/div/input[@formcontrolname='skillCrt']")
+	private WebElement genericSkill2_TextBox;
+	@FindBy(xpath="//div[label[contains(text(),'3. Generic Skill (GS)')]]/div/input[@formcontrolname='skillCrt']")
+	private WebElement genericSkill3_TextBox;
+	@FindBy(xpath="//div[label[contains(text(),'4. Generic Skill (GS)')]]/div/input[@formcontrolname='skillCrt']")
+	private WebElement genericSkill4_TextBox;
 	
+	@FindBy(xpath="//button[text()='Add Another Generic Skill (GS)']")
+	private WebElement addAnotherGenericSkillButton;
+	
+	@FindBy(xpath="//b[text()='View all NOSs']")
+	private WebElement viewAllNOSsButton;
 	@FindBy(id="date")
 	private WebElement nextReviewDateTextBox;
 	@FindBy(css=".input-group-text")
@@ -111,52 +139,52 @@ public class NOS_GeneralDetailsPage
 	@FindBy(xpath="//button[text()='Back to Dashboard']")
 	private WebElement backToDashboardButton;
 	
-	public NOS_GeneralDetailsPage(WebDriver driver)
-    {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+	public SSC_EditNOSPage(WebDriver driver)
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 	
-	public void selectSubSector(String subSector)
+	public void reselectSubSector(String subSector)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(subSectorDropDownList, subSector);
 	}
 	
-	public void selectOccupation(String occupation)
+	public void reselectOccupation(String occupation)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(occupationDropDownList, occupation);
 	}
 	
-	public void enterCreditsOrNSQF(String credits)
+	public void editCreditsOrNSQF(String credits)
 	{
 		creditsTextBox.clear();
 		creditsTextBox.sendKeys(credits);
 	}
 	
-	public void selectNSQF_Level(String NSQF_level)
+	public void reselectNSQF_Level(String NSQF_level)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(NSQF_levelDropDownList, NSQF_level);
 	}
 	
-	public void enterNOS_Name(String NOS_name)
+	public void editNOS_Name(String NOS_name)
 	{
 		NOS_nameTextBox.clear();
 		NOS_nameTextBox.sendKeys(NOS_name);
 	}
 	
-	public void enterNOS_version(String NOS_version)
+	public void editNOS_version(String NOS_version)
 	{
 		NOS_versionTextBox.clear();
 		NOS_versionTextBox.sendKeys(NOS_version);
 	}
 	
-	public void enterNOS_description(String NOS_description)
+	public void editNOS_description(String NOS_description)
 	{
 		NOS_descriptionTextBox.clear();
 		NOS_descriptionTextBox.sendKeys(NOS_description);
 	}
 	
-	public void enterNOS_scope(String NOS_scope) 
+	public void editNOS_scope(String NOS_scope) 
 	{
 		NOS_scopeTextBox.clear();
 		NOS_scopeTextBox.sendKeys(NOS_scope);
@@ -172,7 +200,7 @@ public class NOS_GeneralDetailsPage
 		cancelButton.click();
 	}
 	
-	public void enterPerformanceCriteria1(String criteria1)
+	public void editPerformanceCriteria1(String criteria1)
 	{
 		performanceCriteria1_TextBox.clear();
 		performanceCriteria1_TextBox.sendKeys(criteria1);
@@ -183,16 +211,22 @@ public class NOS_GeneralDetailsPage
 		addAnotherPerformanceCriteriaButton.click();
 	}
 	
-	public void enterPerformanceCriteria2(String criteria2) 
+	public void editPerformanceCriteria2(String criteria2) 
 	{
 		performanceCriteria2_TextBox.clear();
 		performanceCriteria2_TextBox.sendKeys(criteria2);
 	}
 	
-	public void enterPerformanceCriteria3(String criteria3) 
+	public void editPerformanceCriteria3(String criteria3) 
 	{
 		performanceCriteria3_TextBox.clear();
 		performanceCriteria3_TextBox.sendKeys(criteria3);
+	}
+	
+	public void editPerformanceCriteria4(String criteria4) 
+	{
+		performanceCriteria4_TextBox.clear();
+		performanceCriteria4_TextBox.sendKeys(criteria4);
 	}
 	
 	public void clickOnPrevious()
@@ -212,7 +246,7 @@ public class NOS_GeneralDetailsPage
 	
 	
 	
-	public void enterNameOfTheElement1(String element1)
+	public void editNameOfTheElement1(String element1)
 	{
 		nameOfTheElement1_TextBox.clear();
 		nameOfTheElement1_TextBox.sendKeys(element1);
@@ -233,7 +267,12 @@ public class NOS_GeneralDetailsPage
 		element1_groupedPerformanceCriteria3_checkBox.click();
 	}
 	
-	public void enterNameOfTheElement2(String element2)
+	public void clickOn_GroupedPerformanceCriteria4ForElement1()
+	{
+		element1_groupedPerformanceCriteria4_checkBox.click();
+	}
+	
+	public void editNameOfTheElement2(String element2)
 	{
 		nameOfTheElement2_TextBox.clear();
 		nameOfTheElement2_TextBox.sendKeys(element2);
@@ -254,7 +293,12 @@ public class NOS_GeneralDetailsPage
 		element2_groupedPerformanceCriteria3_checkBox.click();
 	}
 	
-	public void enterNameOfTheElement3(String element3)
+	public void clickOn_GroupedPerformanceCriteria4ForElement2()
+	{
+		element2_groupedPerformanceCriteria4_checkBox.click();
+	}
+		
+	public void editNameOfTheElement3(String element3)
 	{
 		nameOfTheElement3_TextBox.clear();
 		nameOfTheElement3_TextBox.sendKeys(element3);
@@ -275,32 +319,69 @@ public class NOS_GeneralDetailsPage
 		element3_groupedPerformanceCriteria3_checkBox.click();
 	}
 	
+	public void clickOn_GroupedPerformanceCriteria4ForElement3()
+	{
+		element3_groupedPerformanceCriteria4_checkBox.click();
+	}
+	
+	public void editNameOfTheElement4(String element4)
+	{
+		nameOfTheElement4_TextBox.clear();
+		nameOfTheElement4_TextBox.sendKeys(element4);
+	}
+	
+	public void clickOn_GroupedPerformanceCriteria1ForElement4()
+	{
+		element4_groupedPerformanceCriteria1_checkBox.click();
+	}
+	
+	public void clickOn_GroupedPerformanceCriteria2ForElement4()
+	{
+		element4_groupedPerformanceCriteria2_checkBox.click();
+	}
+	
+	public void clickOn_GroupedPerformanceCriteria3ForElement4()
+	{
+		element4_groupedPerformanceCriteria3_checkBox.click();
+	}
+	
+	public void clickOn_GroupedPerformanceCriteria4ForElement4()
+	{
+		element4_groupedPerformanceCriteria4_checkBox.click();
+	}
+	
 	public void clickOn_addAnotherElement()
 	{
 		addAnotherElementButton.click();
 	}
 	
-	public void enterKnowledgeParameter1(String parameter1)
+	public void editKnowledgeAndUnderstanding1(String parameter1)
 	{
-		knowledgeParameter1_TextBox.clear();
-		knowledgeParameter1_TextBox.sendKeys(parameter1);
+		knowledgeAndUnderstanding1_TextBox.clear();
+		knowledgeAndUnderstanding1_TextBox.sendKeys(parameter1);
 	}
 	
-	public void enterKnowledgeParameter2(String parameter2)
+	public void editKnowledgeAndUnderstanding2(String parameter2)
 	{
-		knowledgeParameter2_TextBox.clear();
-		knowledgeParameter2_TextBox.sendKeys(parameter2);
+		knowledgeAndUnderstanding2_TextBox.clear();
+		knowledgeAndUnderstanding2_TextBox.sendKeys(parameter2);
 	}
 	
-	public void enterKnowledgeParameter3(String parameter3)
+	public void editKnowledgeAndUnderstanding3(String parameter3)
 	{
-		knowledgeParameter3_TextBox.clear();
-		knowledgeParameter3_TextBox.sendKeys(parameter3);
+		knowledgeAndUnderstanding3_TextBox.clear();
+		knowledgeAndUnderstanding3_TextBox.sendKeys(parameter3);
 	}
 	
-	public void clickOnAddAnotherKnowledgeParameter()
+	public void editKnowledgeAndUnderstanding4(String parameter4)
 	{
-		addAnotherKnowledgeParameterButton.click();
+		knowledgeAndUnderstanding4_TextBox.clear();
+		knowledgeAndUnderstanding4_TextBox.sendKeys(parameter4);
+	}
+	
+	public void clickOnAddAnotherKnowledgeAndUnderstanding()
+	{
+		addAnotherKnowledgeAndUnderstandingButton.click();
 	}
 	
 	public void clickOnSkip()
@@ -310,35 +391,45 @@ public class NOS_GeneralDetailsPage
 	
 	
 	
-	public void enterGenericSkillsParameter1(String parameter1)
+	public void editGenericSkill1(String skill1)
 	{
-		genericSkillsParameter1_TextBox.clear();
-		genericSkillsParameter1_TextBox.sendKeys(parameter1);
+		genericSkill1_TextBox.clear();
+		genericSkill1_TextBox.sendKeys(skill1);
 	}
 	
-	public void enterGenericSkillsParameter2(String parameter2)
+	public void editGenericSkill2(String skill2)
 	{
-		genericSkillsParameter2_TextBox.clear();
-		genericSkillsParameter2_TextBox.sendKeys(parameter2);
+		genericSkill2_TextBox.clear();
+		genericSkill2_TextBox.sendKeys(skill2);
 	}
 	
-	public void enterGenericSkillsParameter3(String parameter3)
+	public void editGenericSkill3(String skill3)
 	{
-		genericSkillsParameter3_TextBox.clear();
-		genericSkillsParameter3_TextBox.sendKeys(parameter3);
+		genericSkill3_TextBox.clear();
+		genericSkill3_TextBox.sendKeys(skill3);
 	}
 	
-	public void clickOnAddAnotherGenericSkillsParameter()
+	public void editGenericSkill4(String skill4)
 	{
-		addAnotherGenericSkillsParameterButton.click();
+		genericSkill4_TextBox.clear();
+		genericSkill4_TextBox.sendKeys(skill4);
 	}
 	
+	public void clickOnAddAnotherGenericSkill()
+	{
+		addAnotherGenericSkillButton.click();
+	}
 	
+	public void clickOnViewAllNOSs()
+	{
+		viewAllNOSsButton.click();
+	}
 	
-	public void enterNextReviewDate(String date)
+	public void editNextReviewDate(String date)
 	{
 		nextReviewDateTextBox.clear();
 		nextReviewDateTextBox.sendKeys(date);
+		calendarLogo.click();
 	}
 	
 	public void clickOnCalendarLogo()
@@ -360,4 +451,5 @@ public class NOS_GeneralDetailsPage
 	{
 		backToDashboardButton.click();
 	}
+
 }

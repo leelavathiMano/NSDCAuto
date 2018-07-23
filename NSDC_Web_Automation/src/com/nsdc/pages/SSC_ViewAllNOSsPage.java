@@ -15,8 +15,6 @@ public class SSC_ViewAllNOSsPage
 	private WebElement searchButton;
 	@FindBy(css=".btn.m-btn.m-btn--hover-accent.m-btn--icon.m-btn--icon-only.m-btn--pill")
 	private WebElement actionButton;
-	@FindBy(css=".dropdown-item")
-	private WebElement updateAndResubmitNOS_button;
 	@FindBy(xpath="(//a[@ng-reflect-router-link='../edit-nos,[object Object]'])[1]")
 	private WebElement editNOS_Button;
 	@FindBy(xpath="(//div[@class='dropdown-menu dropdown-menu-right show']/a[@href='javascript:;'])[1]")
@@ -44,10 +42,10 @@ public class SSC_ViewAllNOSsPage
 		actionButton.click();
 	}
 	
-	public void clickOnupdateAndResubmitNOS()
-	{
-		updateAndResubmitNOS_button.click();
-	}
+//	public void clickOnupdateAndResubmitNOS()
+//	{
+//		updateAndResubmitNOS_button.click();
+//	}
 	
 	public void clickOnEditNOS()
 	{
