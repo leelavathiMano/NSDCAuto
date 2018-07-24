@@ -3,6 +3,7 @@ package com.nsdc.regressionTest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,6 +17,7 @@ import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
+import com.nsdc.pages.SSCAllBatchesPage;
 import com.nsdc.pages.SSCBatchAnnouncementPage;
 import com.nsdc.pages.SSCDashboardPage;
 import com.nsdc.pages.TrainerBatchDetailsPage;
@@ -51,13 +53,16 @@ public class SSCBatchCreationTestSC_05 extends TestConfiguration {
 			sbap.selectBatchType(batchType);
 			sbap.selectJobRoleDropDownList(jobRole);
 			sbap.selectBatchSizeDropDownList(batchSize);
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			Calendar c = Calendar.getInstance();    
+			c.add(Calendar.DATE, 15);
+			System.out.println(dateFormat.format(c.getTime()));
 			sbap.enterTrainingFromDate(training_from);
-			//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-			//Date date = new Date();
-			//System.out.println(dateFormat.format(date));
-			//Calendar cal= Calendar.getInstance();
-			//cal.add(Calendar.DATE, 15);
+			LocalDate today = LocalDate.now(); 
+		     System.out.println("\nCurrent Date: "+today);
+		     System.out.println("10 days after today will be "+today.plusDays(15)+"\n");
 			Thread.sleep(3000);
+			sbap.enterTrainingFromDate(training_from);
 			sbap.enterTrainingToDate(training_to);
 			Thread.sleep(3000);
 			sbap.enterAssessmentFromDate(assessment_from);
@@ -244,6 +249,15 @@ public class SSCBatchCreationTestSC_05 extends TestConfiguration {
  		    Thread.sleep(11000);
  			SSCDashboardPage sdp = new SSCDashboardPage(driver);
  			sdp.clickAllBatchesCard();
+ 			SSCAllBatchesPage sabp = new SSCAllBatchesPage(driver);
+ 			Thread.sleep(3000);
+			 String search_By_Keyword = ReadWriteData.getData("./TestData/Workflow/BatchCreation-Workflow.xls", "SSCSC04TC04", 1, 13);
+			 System.out.println(search_By_Keyword);
+ 			sabp.enterSearchByWord(search_By_Keyword);
+ 			Thread.sleep(3000);
+ 			sabp.clickViewBatchButton();
+ 			Thread.sleep(2000);
+ 			sabp.clickAssignMasterTrainerButton();
 			 
 	    }
 	  

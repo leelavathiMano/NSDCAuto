@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.SelectDropDownList;
+
 public class SSCAllBatchesPage
 {
 	WebDriver driver;
@@ -13,6 +15,29 @@ public class SSCAllBatchesPage
 	private WebElement searchByKeywordTextBox;
 	@FindBy(xpath="//i[@class='la la-ellipsis-h']")
 	private WebElement actionButton;
+	@FindBy(xpath="//span[contains(text(),' View Details')]")
+	private WebElement viewBatchDetailsButton;
+	@FindBy(xpath="//span[contains(text(),' Assign Master Trainer')]")
+	private WebElement assignMasterTrainerButton;
+	@FindBy(xpath="//span[contains(text(),' Assign Assessment Agency')]")
+	private WebElement assignAssessmentAgencyButton;
+	@FindBy(xpath="//select[@class='form-control ng-pristine ng-valid ng-touched']")
+	private WebElement assignMasterTrainerDropDownList;
+	@FindBy(xpath="//button[contains(text(),'Assign')]")
+	private WebElement assignButton;
+	@FindBy(xpath="//button[contains(text(),'Yes, assign it!')]")
+	private WebElement assignItButton;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public SSCAllBatchesPage(WebDriver driver)
@@ -29,5 +54,40 @@ public class SSCAllBatchesPage
 	{
 		actionButton.click();
 	}
+	public void clickViewBatchButton()
+	{
+		viewBatchDetailsButton.click();
+	}
+	
+	public void clickAssignMasterTrainerButton()
+	{
+		assignMasterTrainerButton.click();
+	}
+	
+	public void clickAssessmentAgencyButton()
+	{
+		assignAssessmentAgencyButton.click();
+	}
+	
+	public void selectAssignMasterTrainerDropDownList(String assign_MasterTrainer)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(assignMasterTrainerDropDownList, assign_MasterTrainer);
+	}
+	
+	public void clickAssignButton()
+	{
+		assignButton.click();
+	}
+	
+	public void clickAssignItButton()
+	{
+		assignItButton.click();
+	}
+	
+	
+	
+	
+	
+	
 	
 }

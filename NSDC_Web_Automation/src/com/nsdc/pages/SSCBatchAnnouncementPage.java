@@ -14,11 +14,11 @@ public class SSCBatchAnnouncementPage
 	private WebElement createBatchCard;
 	@FindBy(xpath="//select[@ng-reflect-name='subSector']")
 	private WebElement subSectorDropDownList;
-	@FindBy(xpath="//select[@ng-reflect-name=\"batchType\"]")
+	@FindBy(xpath="//select[@ng-reflect-name='batchType']")
 	private WebElement batchTypeDropDownList;
-	@FindBy(xpath="//select[@ng-reflect-name=\"jobRole\"]")
+	@FindBy(xpath="//select[@ng-reflect-name='jobRole']")
 	private WebElement jobRoleDropDownList;
-	@FindBy(xpath="//select[@ng-reflect-name=\"batchSize\"]")
+	@FindBy(xpath="//select[@ng-reflect-name='batchSize']")
 	private WebElement batchSizeDropDownList;
 	@FindBy(id="startDate")
 	private WebElement trainingFromTextBox;
@@ -46,11 +46,11 @@ public class SSCBatchAnnouncementPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okBatchIDButton;
-	@FindBy(xpath="//select[@formcontrolname=\"state\"]")
+	@FindBy(xpath="//select[@formcontrolname='state']")
     private WebElement stateDropDownList;
-	@FindBy(xpath="//select[@ng-reflect-name=\"district\"]")
+	@FindBy(xpath="//select[@ng-reflect-name='district']")
     private WebElement districtDropDownList;
-	@FindBy(xpath="//select[@ng-reflect-name=\"subDistrict\"]")
+	@FindBy(xpath="//select[@ng-reflect-name='subDistrict']")
     private WebElement subDistrictDropDownList;
 	@FindBy(xpath="//button[contains(text(),'Search')]")
 	private WebElement searchButton;
