@@ -34,11 +34,9 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sbUsername, sbPassword);
-		
 		SmartBusiness_DashboardPage sbd = new SmartBusiness_DashboardPage(driver);
 		Thread.sleep(8000);
 		sbd.clickOnTCRegistrationSetup();
-		
 		SmartBusiness_TCSetupReviewPage sbtc = new SmartBusiness_TCSetupReviewPage(driver);
 		if(raccrediationFee.equals("Yes"))
 		{
@@ -123,19 +121,14 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		sbtc.enterRefundPercentageOnFirstDNRIfTCNotReapply(refundPercentageOnFirstDNR);
 		sbtc.enterRefundPercentageOnSecondDNRIfTCNotReapply(refundPercentageOnSecondDNR);
 		sbtc.clickForEffectiveDate();
-		/*sbtc.clickOnCornerOfDateField();
-		sbtc.clickOnLastDate();*/
 		sbtc.clickOnCalenderIconButton();
 		effective_date = driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value");
 		sbtc.clickForSubmit();
 		sbtc.clickForOK();
-		
 		Thread.sleep(2000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
-		
-		
 	}
 	
 	
@@ -152,11 +145,9 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	lp.clickLogin();
     	EnterLoginPage elp = new EnterLoginPage(driver);
     	elp.performlogin(sdUsername, sdPassword);
-    	
     	SmartAdmin_DashboardPage sad = new SmartAdmin_DashboardPage(driver);
     	Thread.sleep(8000);
     	sad.clickForReviewTCRegistrationSetUp();
-    	
     	SmartAdmin_TCCAAFFormReviewPage sdtc = new SmartAdmin_TCCAAFFormReviewPage(driver);
     	Thread.sleep(2000);
     	if(expectedRaccrediationFee.equals("Yes"))
@@ -243,8 +234,8 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnSecondDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedRefundPercentageOnSecondDNR);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
 
-    	Thread.sleep(2000);
-    	if(comments.equals("Approved Successful"))
+    	Thread.sleep(3000);
+    	if(comments.equals("Approved Successfully"))
     	{
     		sdtc.clickForApprove_ReviewComments();
     		sdtc.enterReviewComments(comments);
@@ -254,17 +245,14 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     		sdtc.clickForNotApprove_ReviewComments();
     		sdtc.enterReviewComments(comments);
     	}
-    	
     	sdtc.clickForSubmit();
     	sdtc.clickOnOK();
-    	
     	Thread.sleep(2000);
     	PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
 		
     }
-    
     
     @DataProvider
     public Object[][] tcRuleSetupNSDCApproval()
@@ -279,11 +267,9 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	lp.clickLogin();
     	EnterLoginPage elp = new EnterLoginPage(driver);
     	elp.performlogin(nsdcUsername, nsdcPassword);
-    	
     	NSDCAdmin_DashboardPage nsd = new NSDCAdmin_DashboardPage(driver);
     	Thread.sleep(8000);
     	nsd.clickForReviewTCRegistrationSetup();
-    	
     	NSDC_TCCAAFFormReviewPage nstc = new NSDC_TCCAAFFormReviewPage(driver);
     	Thread.sleep(2000);
     	if(expectedNSDCRaccrediationFee.equals("Yes"))
@@ -369,10 +355,8 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedNSDCRefundPercentageOnFirstDNR);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnSecondDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedNSDCRefundPercentageOnSecondDNR);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
-
-    	
-    	Thread.sleep(2000);
-    	if(reviewComments.equals("Approved Successful"))
+    	Thread.sleep(3000);
+    	if(reviewComments.equals("Approved Successfully"))
     	{
     		nstc.clickForApprove_ReviewComment();
     		nstc.enterReviewComment(reviewComments);
@@ -384,12 +368,10 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	}
     	nstc.clickForSubmit();
     	nstc.clickOnOK();
-    	
     	Thread.sleep(2000);
     	PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
-		
     }
     
 }
