@@ -57,7 +57,7 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TPSPOCChange-Workflow.xls", "TPSPOCChangeSC10TC02");
     }
 	
-	@Test(dataProvider="tpSPOCChangeProfileData")
+	@Test(dataProvider="tpSPOCChangeProfileData", dependsOnMethods="tpSPOCInfoTC_01")
 	public void tpSPOCChangeTC_02(String tPUsername, String tPPassword, String sPOCName, String oldemail, String oldmobileNumber, String spocMobileOTP, String spocEmailOTP, String newSPOCEmail, String newSPOCMobileNumber)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -81,7 +81,7 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 		tps.enterPassword(tPPassword);
 		tps.clickOnVerify();
 		Thread.sleep(2000);
-		tps.enterEmailOTPTextbox(spocMobileOTP);
+		tps.enterMobileOTP(spocMobileOTP);
 		tps.enterEmailOTPTextbox(spocEmailOTP);
 		tps.clickOnVerify();
 		Thread.sleep(2000);

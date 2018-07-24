@@ -30,7 +30,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     }
     
     @Test(dataProvider="tpProfileData")
-    public void tpRegistrationsTC_01(String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional) throws Exception
+    public void tpRegistrationsTC_01(String sno, String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String tpid, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional) throws Exception
     {
         //DatabaseConnection.deleteTrainingPartner(email);
         String year_Establishment = year_Of_Establishment;
@@ -44,6 +44,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         rp.enterSPOCName(spocName);
         rp.enterEmail(email);
         rp.enterMobile(mobile);
+        rp.clickIagree();
         rp.clickRegister();
         Thread.sleep(2000);
         rp.enterEmailOTP(emailOTP);
@@ -53,7 +54,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(2000);
         
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
-        //ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner-WorkflowCopy.xls", "TPProfileSC02TC01", i, 6, username);
+        ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPProfileSC02TC01", Integer.parseInt(sno) , 7, username);
         rp.clickGoToLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, "ekaushal");
@@ -452,7 +453,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPApprovalSC02TC02");
     }
     
-    @Test(dataProvider="tpApproval")
+    @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
     public void trainingPartnerApprovalTC_02(String iausername, String password, String searchByKeyword, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
@@ -482,7 +483,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	elp.performlogin(dausername, Password);
     	
     	DA_DashboardPage da = new DA_DashboardPage(driver);
-    	Thread.sleep(5000);
+    	Thread.sleep(8000);
     	da.clickOnViewAllAssessmentRequest();
     	Thread.sleep(5000);
     	DesktopAssessor_ViewInspectionPage da_vp = new DesktopAssessor_ViewInspectionPage(driver);
@@ -495,11 +496,11 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	DA_Assign_TPRegistrationFormPage da_tpr = new DA_Assign_TPRegistrationFormPage(driver);
     	Thread.sleep(2000);
     	String type_Organization = driver.findElement(By.xpath("(//input[@class='form-control m-input ng-untouched ng-pristine'])[2]")).getAttribute("value");
-    	da_tpr.clickOnDownloadAttachedProofDocumentForOrganizationName();
+    	da_tpr.clickFordisplayPreviewofAttachedProofDocumentForOrganizationName();
     	da_tpr.selectReviewCommentsForOrganizationName(nameReview);
     	da_tpr.selectReviewCommentsForTypeOFOrganization(typeReview);
     	Thread.sleep(8000);
-    	da_tpr.clickOnDownloadAttachedProofDocumentForAddress();
+    	da_tpr.clickForDisplayPreviewofAttachedProofDocumentForAddress();
     	da_tpr.selectReviewCommentsForAddress(addressReview);
     	Thread.sleep(2000);
     	da_tpr.clickForSaveAndContinue();
@@ -510,16 +511,16 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	if(establishment_Year.equals("2018") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
     		Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForPAN();
         	da_tpr.selectReviewCommentForPAN(panReview);
         	Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForGST();
         	da_tpr.selectReviewCommentsForGST(gstReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
     		Thread.sleep(2000);
-    		da_tpr.clickOnDownloadAttachedProofDocumentForProvisionalCertificate();
+    		da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForProvisionalCertificate();
     		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
 
         }
@@ -527,16 +528,16 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	else if(establishment_Year.equals("2017") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
     		Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForPAN();
         	da_tpr.selectReviewCommentForPAN(panReview);
         	Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForGST();
         	da_tpr.selectReviewCommentsForGST(gstReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
          	Thread.sleep(2000);
-       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+       	    da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
 
@@ -545,19 +546,19 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if(establishment_Year.equals("2016") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForPAN();
         	da_tpr.selectReviewCommentForPAN(panReview);
         	Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForGST();
         	da_tpr.selectReviewCommentsForGST(gstReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
         	Thread.sleep(2000);
-       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+       	    da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForSecondFinancialYear();
         	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
         	Thread.sleep(2000);
         }
@@ -565,22 +566,22 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if((yearOfEstablishment < 2016) && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForPAN();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForPAN();
         	da_tpr.selectReviewCommentForPAN(panReview);
         	Thread.sleep(2000);
-        	da_tpr.clickForDownloadAttachedProofDocumentForGST();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForGST();
         	da_tpr.selectReviewCommentsForGST(gstReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
         	Thread.sleep(2000);
-       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+       	    da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForSecondFinancialYear();
         	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForThirdFinancialYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForThirdFinancialYear();
         	da_tpr.selectReviewCommentForThirdFinancialYear(thirdFinancialYearReview);
         	Thread.sleep(2000);
         }
@@ -589,10 +590,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForProvisionalCertificate();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForProvisionalCertificate();
         	da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
         	
         }
@@ -601,10 +602,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+       	    da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
 
@@ -614,13 +615,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+       	    da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForSecondFinancialYear();
         	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
         	Thread.sleep(2000);
         }
@@ -629,16 +630,16 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-       	    da_tpr.clickOnDownloadAttachedProofDocumentForFirstFinancialYear();
+       	    da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForSecondFinancialYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForSecondFinancialYear();
         	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForThirdFinancialYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForThirdFinancialYear();
         	da_tpr.selectReviewCommentForThirdFinancialYear(thirdFinancialYearReview);
         	Thread.sleep(2000);
         }
@@ -646,7 +647,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if(type_Organization.equals("Government Institute"))
         {
         	Thread.sleep(2000);
-        	da_tpr.clickOnDownloadAttachedProofDocumentForEstablishmentYear();
+        	da_tpr.clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         }
 
