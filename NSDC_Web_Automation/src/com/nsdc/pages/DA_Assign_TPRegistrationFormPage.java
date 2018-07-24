@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.FilePreview;
 import com.nsdc.generic.SelectDropDownList;
 
 
@@ -15,7 +16,7 @@ public class DA_Assign_TPRegistrationFormPage
 	WebDriver driver;
 	
 	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[1]")
-	private WebElement attachedProofDocument_NameOfOrganization_DownloadButton;
+	private WebElement attachedProofDocument_NameOfOrganization_PreviewButton;
 	@FindBy(xpath="//select[@formcontrolname='nameOfOrganisationReview']")
 	private WebElement reviewComments_NameOfOrganizationDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='nameOfOrganisationComment']")
@@ -25,7 +26,7 @@ public class DA_Assign_TPRegistrationFormPage
 	@FindBy(xpath="//textarea[@formcontrolname='typeOfOrganisationComment']")
 	private WebElement additionalComment_TypeOfOrganizationTextbox;
 	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[2]")
-	private WebElement attachedProofDocument_Address_DownloadButton;
+	private WebElement attachedProofDocument_Address_PreviewButton;
 	@FindBy(xpath="//select[@formcontrolname='addressReview']")
 	private WebElement reviewComment_AddressDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='addressOfOrganisationComment']")
@@ -39,44 +40,44 @@ public class DA_Assign_TPRegistrationFormPage
 	private WebElement aadharNumberReviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='aadharNumComment']")
 	private WebElement aadharNumber_AdditionalCommentTextbox;
-	@FindBy(xpath="(//button[contains(text(),'Download Attached Proof Document')])[1]")
-	private WebElement attachedProofDocument_PAN_DownloadButton;
+	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[1]")
+	private WebElement attachedProofDocument_PAN_PreviewButton;
 	@FindBy(xpath="//select[@formcontrolname='panReview']")
 	private WebElement pANReviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='panComment']")
 	private WebElement pAN_AdditionalCommentTextbox;
 	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[2]")
-	private WebElement gST_AttachedProofDocument_DownloadButton;
+	private WebElement gST_AttachedProofDocument_PreviewButton;
 	@FindBy(xpath="//select[@formcontrolname='gstReview']")
 	private WebElement gST_ReviewCommentsDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='gstComment']")
 	private WebElement gST_AdditionalCommentTextbox;
 	@FindBy(xpath="//div[label[contains(text(),'Year of Establishment')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
-	private WebElement establishmentYear_AttachedProofDocument_DownloadButton;
+	private WebElement establishmentYear_AttachedProofDocument_PreviewButton;
 	@FindBy(xpath="//select[@formcontrolname='yearOfEstablishReview']")
 	private WebElement establishmentYear_reviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='yearOfEstablishComment']")
 	private WebElement establishmentYear_AdditionalCommentTextbox;
 	@FindBy(xpath="//div[label[contains(text(),'Provisional Certificate:')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
-	private WebElement provisionalCertificate_AttachedProofDocument_DownloadButton;
+	private WebElement provisionalCertificate_AttachedProofDocument_PreviewButton;
 	@FindBy(xpath="//select[@formcontrolname='provisionalReview']")
 	private WebElement provisionalCertificate_reviewCommentDropDownList;
 	@FindBy(xpath="//textarea[@formcontrolname='provisionalComment']")
 	private WebElement provisionalCertificate_AdditionalCommentTextbox;
 	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2017-2018')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
-	private WebElement financialYearFirst_AttachedProofDocument_DownloadButton;
+	private WebElement financialYearFirst_AttachedProofDocument_PreviewButton;
 	@FindBy(xpath="(//select[@ng-reflect-name='financialYearReview'])[1]")
 	private WebElement financialYearFirst_reviewCommentDropDownList;
 	@FindBy(xpath="(//textarea[@ng-reflect-name='financialYearComment'])[1]")
 	private WebElement financialYearFirst_AdditionalCommentTextbox;
 	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2016-2017')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
-	private WebElement financialYearSecond_AttachedProofDocument_DownloadButton;
+	private WebElement financialYearSecond_AttachedProofDocument_PreviewButton;
 	@FindBy(xpath="(//select[@ng-reflect-name='financialYearReview'])[2]")
 	private WebElement financialYearSecond_reviewCommentDropDownList;
 	@FindBy(xpath="(//textarea[@ng-reflect-name='financialYearComment'])[2]")
 	private WebElement financialYearSecond_AdditionalCommentTextbox;
 	@FindBy(xpath="//div[label[contains(text(),'Financial Year: 2015-2016')]]/div/app-file-download/button[text()='Preview Attached Proof Document']")
-	private WebElement financialYearThird_AttachedProofDocument_DownloadButton;
+	private WebElement financialYearThird_AttachedProofDocument_PreviewButton;
 	@FindBy(xpath="(//select[@ng-reflect-name='financialYearReview'])[3]")
 	private WebElement financialYearThird_reviewCommentDropDownList;
 	@FindBy(xpath="(//textarea[@ng-reflect-name='financialYearComment'])[3]")
@@ -105,9 +106,10 @@ public class DA_Assign_TPRegistrationFormPage
         PageFactory.initElements(driver, this);
     }
 	
-	public void clickOnDownloadAttachedProofDocumentForOrganizationName()
+	public void clickFordisplayPreviewofAttachedProofDocumentForOrganizationName()
 	{
-		attachedProofDocument_NameOfOrganization_DownloadButton.click();
+		attachedProofDocument_NameOfOrganization_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentsForOrganizationName(String reviewComments)
@@ -132,9 +134,10 @@ public class DA_Assign_TPRegistrationFormPage
 		additionalComment_TypeOfOrganizationTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickOnDownloadAttachedProofDocumentForAddress()
+	public void clickForDisplayPreviewofAttachedProofDocumentForAddress()
 	{
-		attachedProofDocument_Address_DownloadButton.click();
+		attachedProofDocument_Address_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentsForAddress(String reviewComments)
@@ -169,9 +172,10 @@ public class DA_Assign_TPRegistrationFormPage
 		aadharNumber_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickForDownloadAttachedProofDocumentForPAN()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForPAN()
 	{
-		attachedProofDocument_PAN_DownloadButton.click();
+		attachedProofDocument_PAN_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentForPAN(String reviewComment)
@@ -185,9 +189,10 @@ public class DA_Assign_TPRegistrationFormPage
 		pAN_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickForDownloadAttachedProofDocumentForGST()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForGST()
 	{
-		gST_AttachedProofDocument_DownloadButton.click();
+		gST_AttachedProofDocument_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentsForGST(String reviewComment)
@@ -201,9 +206,10 @@ public class DA_Assign_TPRegistrationFormPage
 		gST_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickOnDownloadAttachedProofDocumentForEstablishmentYear()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForEstablishmentYear() 
 	{
-		establishmentYear_AttachedProofDocument_DownloadButton.click();
+		establishmentYear_AttachedProofDocument_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentForEstablishmentYear(String reviewComment)
@@ -217,9 +223,10 @@ public class DA_Assign_TPRegistrationFormPage
 		establishmentYear_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickOnDownloadAttachedProofDocumentForProvisionalCertificate()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForProvisionalCertificate() 
 	{
-		provisionalCertificate_AttachedProofDocument_DownloadButton.click();
+		provisionalCertificate_AttachedProofDocument_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentForProvisionalCertificate(String reviewComment)
@@ -233,9 +240,10 @@ public class DA_Assign_TPRegistrationFormPage
 		provisionalCertificate_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickOnDownloadAttachedProofDocumentForFirstFinancialYear()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForFirstFinancialYear() 
 	{
-		financialYearFirst_AttachedProofDocument_DownloadButton.click();
+		financialYearFirst_AttachedProofDocument_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentForFirstFinancialYear(String reviewComment)
@@ -249,9 +257,10 @@ public class DA_Assign_TPRegistrationFormPage
 		financialYearFirst_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickOnDownloadAttachedProofDocumentForSecondFinancialYear()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForSecondFinancialYear() 
 	{
-		financialYearSecond_AttachedProofDocument_DownloadButton.click();
+		financialYearSecond_AttachedProofDocument_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentForSecondFinancialYear(String reviewComment)
@@ -265,9 +274,10 @@ public class DA_Assign_TPRegistrationFormPage
 		financialYearSecond_AdditionalCommentTextbox.sendKeys(additionalComment);
 	}
 	
-	public void clickOnDownloadAttachedProofDocumentForThirdFinancialYear()
+	public void clickForDisplayPreviewOfAttachedProofDocumentForThirdFinancialYear() 
 	{
-		financialYearThird_AttachedProofDocument_DownloadButton.click();
+		financialYearThird_AttachedProofDocument_PreviewButton.click();
+		FilePreview.closeWindow(driver);
 	}
 	
 	public void selectReviewCommentForThirdFinancialYear(String reviewComment)
