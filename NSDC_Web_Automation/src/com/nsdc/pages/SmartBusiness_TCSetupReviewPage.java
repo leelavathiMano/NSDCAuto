@@ -242,16 +242,6 @@ public class SmartBusiness_TCSetupReviewPage
 		effectiveDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER);
 	}
 	
-	/*public void clickOnCornerOfDateField()
-	{
-		cornerOfDateButton.click();
-	}
-	
-	public void clickOnLastDate()
-	{
-		lastDateButton.click();
-	}*/
-	
 	public void clickOnCalenderIconButton()
 	{
 		calendericonButton.click();

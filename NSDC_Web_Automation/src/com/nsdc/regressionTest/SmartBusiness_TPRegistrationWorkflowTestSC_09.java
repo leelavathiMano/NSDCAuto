@@ -35,11 +35,9 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sbUsername, sbPassword);
-		
 		SmartBusiness_DashboardPage sbd = new SmartBusiness_DashboardPage(driver);
 		Thread.sleep(5000);
 		sbd.clickOnTPRegistrationSetup();
-		
 		SmartBusiness_TPSetupReviewPage sbtp = new SmartBusiness_TPSetupReviewPage(driver);
 		if(registrationFee.equals("Yes")) 
 		{
@@ -81,18 +79,14 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 		sbtp.enterDurationOfEachBlock(durationOfBlock);
 		sbtp.enterNumberOfDaysForDesktopAssessmentComplition(daysForDesktopAssessment);
 		sbtp.clickOnEffectiveDate();
-		/*sbtp.clickOnCornerOfDateField();
-		sbtp.clickOnLastDate();*/
 		sbtp.clickOnCalenderIcon();
 		effective_date = driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value");
 		sbtp.clickOnSubmit();
 		sbtp.clickOnOK();
-		
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
-		
 	}
 	
 	@DataProvider
@@ -108,11 +102,9 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sdUsername, sdPassword);
-		
 		SmartAdmin_DashboardPage sad = new SmartAdmin_DashboardPage(driver);
 		Thread.sleep(7000);
 		sad.clickReviewTPRegistrationSetUp();
-		
 		SmartAdmin_TPFormReviewPage sdtp = new SmartAdmin_TPFormReviewPage(driver);
 		Thread.sleep(2000);
 		if(expectedregistrationFee.equals("Yes"))
@@ -155,28 +147,24 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='durationOfBlock']")).getAttribute("value"), expecteddurationOfBlock);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='noOfDaysToCompleteDesktopAssessment']")).getAttribute("value"), expecteddaysForDesktopAssessment);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
-
-		
 		Thread.sleep(2000);
-		if(comments.equals("Approved Successful"))
+		if(comments.equals("Approved Successfully"))
 		{
 			sdtp.clickOnApproved_ReviewComments();
 			sdtp.enterReviewComments(comments);
 		}
 		else if(comments.equals("Not Approved"))
 		{
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			sdtp.clickOnNotApproved_ReviewComments();
 			sdtp.enterReviewComments(comments);
 		}
 		sdtp.clickForSubmit();
 		sdtp.clickOnOK();
-		
 		Thread.sleep(2000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
-		
+		plp.clickOnLogout();	
 	}
 	
 	@DataProvider
@@ -192,11 +180,9 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(nsdcUsername, nsdcPassword);
-		
 		NSDCAdmin_DashboardPage nsd = new NSDCAdmin_DashboardPage(driver);
 		Thread.sleep(7000);
 		nsd.clickForReviewTPRegistrationSetup();
-		
 		NSDC_TPFormReviewPage nstp = new NSDC_TPFormReviewPage(driver);
 		Thread.sleep(2000);
 		if(expectedNSDCregistrationFee.equals("Yes"))
@@ -241,26 +227,23 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
 
 		Thread.sleep(2000);
-		if(reviewcomments.equals("Approved Successful"))
+		if(reviewcomments.equals("Approved Successfully"))
 		{
 			nstp.clickForApproved_ReviewComment();
 			nstp.enterReviewComment(reviewcomments);
 		}
 		else if(reviewcomments.equals("Not Approved"))
 		{
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			nstp.clickForNotApproved_ReviewComment();
 			nstp.enterReviewComment(reviewcomments);
 		}
 		nstp.clickForSubmit();
 		nstp.clickOnOK();
-		
 		Thread.sleep(2000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
-		
-		
 	}
 	
 	

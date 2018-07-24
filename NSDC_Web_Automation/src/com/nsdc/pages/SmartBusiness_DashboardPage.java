@@ -15,7 +15,7 @@ public class SmartBusiness_DashboardPage
 	@FindBy(xpath="//div[@routerlink='tpregistrationrules']")
 	private WebElement tpRegistrationButton;
 	@FindBy(xpath="//span[contains(text(),'SmartBusiness_1')]")
-	private WebElement smart_Business_1Button;
+	private WebElement smart_Business1_Button;
 	@FindBy(xpath="//button[contains(text(),'Logout')]")
 	private WebElement logOutButton;
 	
@@ -37,7 +37,7 @@ public class SmartBusiness_DashboardPage
 	
 	public void clickOnSmartBusiness1Profile()
 	{
-		smart_Business_1Button.click();
+		smart_Business1_Button.click();
 	}
 	
 	public void clickOnSmartBusinessLogOut()
