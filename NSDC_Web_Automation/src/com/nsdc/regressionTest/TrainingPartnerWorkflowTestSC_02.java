@@ -49,7 +49,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(2000);
         rp.enterEmailOTP(emailOTP);
         rp.enterMobileOTP(mobileOTP);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         rp.clickVerify();
         Thread.sleep(2000);
         
