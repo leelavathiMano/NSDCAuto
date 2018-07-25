@@ -39,12 +39,6 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
 	{
 	    return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateQPSC07TC02");
 	}
-	
-	@DataProvider
-	public Object[][] editNOS_Data()
-	{
-	    return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/QP_NOS-Workflow.xls", "EditNOS_SC07TC02");
-	}
 	 
 	@Test(dataProvider="createNOS_Data")
     public void createNOS_TC_01(String sNumber, String SSC_username, String SSC_password, String NOS_sector, String NOS_subSector, String occupation, String credits, String NSQF_level, String NOS_name, String NOS_version, String NOS_description, String NOS_scope, String criteria1, String criteria2, String criteria3, String element1, String element2, String element3, String parameter1, String parameter2, String parameter3, String skill1, String skill2, String skill3, String date, String noscode) throws Exception
