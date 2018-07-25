@@ -11,8 +11,14 @@ public class SSC_DashboardPage
 
 	@FindBy(xpath="(//a[@class='m-menu__link m-menu__toggle'])[2]")
 	private WebElement QP_NOS_ModelCurriculumTab;
+	@FindBy(linkText="ToT, ToA, ToMT,ToMA")
+	private WebElement  totToAToMTToMALink;
 	@FindBy(xpath="//span[contains(text(),'Create Exceptional Training Centre')]")
 	private WebElement createTemporaryTrainingCentreButton;
+	@FindBy(xpath="//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")
+	private WebElement createBatchButton;
+	@FindBy(xpath="//strong[text()='All Batches']")
+	private WebElement allBatchesButton;
 	
 	public SSC_DashboardPage(WebDriver driver)
 	{
@@ -24,11 +30,23 @@ public class SSC_DashboardPage
 	{
 		QP_NOS_ModelCurriculumTab.click();
 	}
-	
+	public void clickToTToAToMTToMA()
+	{
+		totToAToMTToMALink.click();
+	}
 	
 	public void clickCreateTemporaryTrainingCentre()
 	{
 		createTemporaryTrainingCentreButton.click();
+	}
+	
+	public void clickCreateBatch()
+	{
+		createBatchButton.click();
+	}
+	public void clickAllBatches()
+	{
+		allBatchesButton.click();
 	}
 
 }
