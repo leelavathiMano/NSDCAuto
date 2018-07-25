@@ -25,14 +25,16 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
     public void userRegistrationTC_01(String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword) throws Exception
     {
         //DatabaseConnection.deleteTrainingPartner(email);
-        Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
+        Thread.sleep(2000);
         lp.clickRegister();
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);
         rp.enterSPOCName(spocName);
         rp.enterEmail(email);
         rp.enterMobile(mobile);
+        rp.clickIagree();
+        Thread.sleep(2000);
         rp.clickRegister();
         Thread.sleep(2000);
         rp.enterEmailOTP(emailOTP);
@@ -40,7 +42,7 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickVerify();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the Username and Password to the registered email address please login with those credentials.");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the Username and Password to the registered email address and mobile Number. Please login with those credentials.");
         
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
         rp.clickGoToLogin();
@@ -56,15 +58,16 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         
         elp.performlogin(username, confirmPassword);
         Thread.sleep(4000);
-        
-        if(userType.equals("Training Partner") || userType.equals("Candidate"))
+        Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
+      
+        /*if(userType.equals("Training Partner") || userType.equals("Candidate"))
         {
-            Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome']")).getText(), username);
+            Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
         }
         else if(userType.equals("Trainer") || userType.equals("Assessor"))
         {
-            Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__username']")).getText(), username);
-        }
+            Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
+        }*/
         
     }
     
@@ -75,7 +78,7 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
     }
     
     @Test(dataProvider="loginFailure")
-    public void verifyLoginFailureTC_03(String username, String password) throws Exception
+    public void verifyLoginFailureTC_02(String username, String password) throws Exception
     {
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
@@ -83,16 +86,17 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, password);
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "username or password invalid");
+        Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "Invalid UserName or Password");
     }
     
     @Test
-    public void LoginFailWithoutEnteringCredentialsTC_04() throws Exception
+    public void LoginFailWithoutEnteringCredentialsTC_03() throws Exception
     {
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
+        Thread.sleep(3000);
         elp.clickLoginToSubmit();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "Username or Password should not be empty");
