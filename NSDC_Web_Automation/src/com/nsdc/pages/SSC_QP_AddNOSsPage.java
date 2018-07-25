@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 public class SSC_QP_AddNOSsPage 
 {
 	WebDriver driver;
+	@FindBy(xpath="//button[contains(text(),'Assessment Criteria')]")
+	private WebElement saveAndContinueToAssessmentCriteriaButton;
 	@FindBy(xpath="//div[@class='card nav-link active show']")
 	private WebElement searchAndLinkNOS_Tab;
 	@FindBy(xpath="//input[@placeholder='Search by NOS Code']")
@@ -70,6 +72,11 @@ public class SSC_QP_AddNOSsPage
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+	
+	public void clickOnSaveAndContinueToAssessmentCriteria()
+	{
+		saveAndContinueToAssessmentCriteriaButton.click();
+	}
 	
 	public void clickOnSearchAndLinkNOS()
 	{
