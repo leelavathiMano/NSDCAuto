@@ -106,7 +106,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 		Thread.sleep(7000);
 		sad.clickReviewTPRegistrationSetUp();
 		SmartAdmin_TPFormReviewPage sdtp = new SmartAdmin_TPFormReviewPage(driver);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		if(expectedregistrationFee.equals("Yes"))
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularRegistrationAmountIsRequired']")).getAttribute("value"), expectedregistrationFee);

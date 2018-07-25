@@ -237,11 +237,13 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	Thread.sleep(3000);
     	if(comments.equals("Approved Successfully"))
     	{
+    		Thread.sleep(3000);
     		sdtc.clickForApprove_ReviewComments();
     		sdtc.enterReviewComments(comments);
     	}
     	else if(comments.equals("Not Approved"))
     	{
+    		Thread.sleep(3000);
     		sdtc.clickForNotApprove_ReviewComments();
     		sdtc.enterReviewComments(comments);
     	}
