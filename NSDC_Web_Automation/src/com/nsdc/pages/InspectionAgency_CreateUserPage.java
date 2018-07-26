@@ -23,13 +23,17 @@ public class InspectionAgency_CreateUserPage
 	private WebElement mobileNumberTextBox;
 	@FindBy(xpath="//input[@formcontrolname='aadhar']")
 	private WebElement aadhaarNumberTextBox;
-	@FindBy(xpath="//input[@formcontrolname='employeeId']")
+	@FindBy(xpath="//button[contains(text(),'Verify')]")
+	private WebElement verifyAadharNumberButton;
+	@FindBy(xpath="//input[@formcontrolname='employeeId']")	
 	private WebElement employeeIdTextBox;
 	@FindBy(id="customFile")
 	private WebElement addressProof_browseButton;
 	@FindBy(css=".btn.btn-outline-success")
 	private WebElement addressProof_uploadButton;
-	@FindBy(css=".btn.btn-next")
+	@FindBy(xpath="//label[input[@formcontrolname='changeStatusChecked']]/span")
+	private WebElement iAgreeCheckBox;
+	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitButton;
 	@FindBy(xpath="//a[contains(text(),'Close')]")
 	private WebElement closeButton;
@@ -76,6 +80,11 @@ public class InspectionAgency_CreateUserPage
 		aadhaarNumberTextBox.sendKeys(aadhar);
 	}
 	
+	public void clickOnVerifyAadhar()
+	{
+		verifyAadharNumberButton.click();
+	}
+	
 	public void enterEmployeeId(String id)
 	{
 		employeeIdTextBox.clear();
@@ -90,6 +99,11 @@ public class InspectionAgency_CreateUserPage
 	public void clickOnUploadForAddressProof()
 	{
 		addressProof_uploadButton.click();
+	}
+	
+	public void clickOnIAgree()
+	{
+		iAgreeCheckBox.click();
 	}
 	
 	public void clickOnSubmit()

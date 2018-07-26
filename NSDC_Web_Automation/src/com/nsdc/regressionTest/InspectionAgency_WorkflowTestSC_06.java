@@ -25,8 +25,8 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
     @Test(dataProvider="createNewUser_Data")
     public void createNewUserTC_01(String IA_username, String IA_password, String type, String name, String email, String mobileNo, String aadhar, String id, String upload_addressProof) throws Exception
     {
-    	DatabaseConnection.deleteUsersCreatedByIA(email);
-        Thread.sleep(2000);
+    	//DatabaseConnection.deleteUsersCreatedByIA(email);
+        //Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         EnterLoginPage elp = new EnterLoginPage(driver);
         lp.clickLogin();
@@ -34,6 +34,7 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         Thread.sleep(4000);
         
         InspectionAgency_DashboardPage dashboard = new InspectionAgency_DashboardPage(driver);
+        Thread.sleep(3000);
         dashboard.clickOnCreateANewUser();
         Thread.sleep(2000);
         InspectionAgency_CreateUserPage user = new InspectionAgency_CreateUserPage(driver);
@@ -42,16 +43,20 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         user.enterEmailAddress(email);
         user.enterMobileNumber(mobileNo);
         user.enterAadhaarNumber(aadhar);
+        user.clickOnVerifyAadhar();
+        Thread.sleep(3000);
         user.enterEmployeeId(id);
         user.clickOnBrowseForAddressProof();
         Thread.sleep(2000);
         UploadFile.upload(upload_addressProof);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         user.clickOnUploadForAddressProof();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
+        user.clickOnIAgree();
+        Thread.sleep(3000);
         user.clickOnSubmit();
         Thread.sleep(2000);
-        Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),'Created Id is')]")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),' has been successfully created')]")).isDisplayed());
         user.clickOnOk();
     }
     
