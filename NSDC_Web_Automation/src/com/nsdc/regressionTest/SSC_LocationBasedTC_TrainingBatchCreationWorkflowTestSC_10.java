@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.pages.EnterLoginPage;
@@ -31,7 +30,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "BatchCreationTestSC10TC01");
 	}
 	
-	@Test(dataProvider="sscLocationBasedTCTrainingBatchCreationWorkflowData",priority=1)
+	@Test(dataProvider="sscLocationBasedTCTrainingBatchCreationWorkflowData")
 	public void sscLocationBasedTCTrainingBatchCreationTC01(String serialNum,String createdBatchIDs,String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String jobRole, String expectedBatchFees, String batchSize, String state, String district, String subDistrict,String actionMenuOptions, String LocationBasedTC_AcceptOrRejectBatch, String remarks) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
@@ -168,7 +167,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		elp.performlogin(trainingCentre, "Qwerty@123");
 		Thread.sleep(2000);
 		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		lTcDp.clickToViewLocationBasedTrainingBatches();
 		Thread.sleep(4000);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -462,7 +461,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 	{
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "AssigningMasterTrainerAndAssessmentAgencySC10TC03");
 	}
-	@Test(dataProvider="sscAssignMasterTrainerAndAssessmentAgencyForBatchData")//,dependsOnMethods="reaasigningLocationBasedTCForAllRejectedBatches")
+	@Test(dataProvider="sscAssignMasterTrainerAndAssessmentAgencyForBatchData",dependsOnMethods="reaasigningLocationBasedTCForAllRejectedBatches")
 	public void sscAssigningMasterTrainerAndAssessmentAgencyForBatch(String sscUserName, String sscPassword, String batchID,String actionsMenuOption, String masterTrainerName, String masterTrainerID, String assessmentAgency) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
@@ -472,7 +471,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		Thread.sleep(2000);
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		PostLoginPage plp=new PostLoginPage(driver);
-		Thread.sleep(10000);
+		Thread.sleep(11000);
 		sscDbP.clickAllBatches();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc/all-batches");
