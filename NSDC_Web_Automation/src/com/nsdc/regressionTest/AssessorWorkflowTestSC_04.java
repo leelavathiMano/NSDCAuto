@@ -117,7 +117,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             assessor.clickOnPanNumberRadioButton();
             assessor.enterPanNumber(idNumber);
             assessor.clickOnBrowseFileButtonForUploadPanDocument();
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             UploadFile.upload(uploadPanDocument);
             Thread.sleep(4000);
             assessor.clickOnUploadButtonToUploadPan();
@@ -260,7 +260,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.deleteThirdIndustrialExperienceDetails();
         }
-        int totalIndustrialMonths=((Integer.parseInt(industrial_years1)+Integer.parseInt(industrial_years2))*12)+Integer.parseInt(industrial_months1)+Integer.parseInt(industrial_months2);
+   /*     int totalIndustrialMonths=((Integer.parseInt(industrial_years1)+Integer.parseInt(industrial_years2))*12)+Integer.parseInt(industrial_months1)+Integer.parseInt(industrial_months2);
       	int finalIndustrialMonths=totalIndustrialMonths%12;
     	int finalIndustrialYears=(totalIndustrialMonths-finalIndustrialMonths)/12;
     	if(finalIndustrialMonths==0)
@@ -270,7 +270,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	else
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),":"+finalIndustrialYears+" Years "+finalIndustrialMonths+" months Total Industrial Experience");
-    	}
+   		}
+   	*/
     	assessor.selectRelevantSectorForTrainingExperience(training_sector1);
         assessor.selectyearsForTrainingExperience(trainingExperienceYears1);
         assessor.selectMonthsForTrainingExperience(trainingExperienceMonths1);
@@ -321,7 +322,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.deleteThirdTrainingExperienceDetails();
         }
-        int totalTrainingMonths=((Integer.parseInt(trainingExperienceYears1)+Integer.parseInt(trainingExperienceYears2))*12)+Integer.parseInt(trainingExperienceMonths1)+Integer.parseInt(trainingExperienceMonths2);
+  /*      int totalTrainingMonths=((Integer.parseInt(trainingExperienceYears1)+Integer.parseInt(trainingExperienceYears2))*12)+Integer.parseInt(trainingExperienceMonths1)+Integer.parseInt(trainingExperienceMonths2);
       	int finalTrainingMonths=totalTrainingMonths%12;
     	int finalTrainingYears=(totalTrainingMonths-finalTrainingMonths)/12;
     	if(finalTrainingMonths==0)
@@ -332,6 +333,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),":"+finalTrainingYears+" Years "+finalTrainingMonths+" months Total Industrial Experience");
     	}
+    */
         assessor.clickOnBrowseForCurriculumVitaeOrResume();
         Thread.sleep(2000);
         UploadFile.upload(resume);

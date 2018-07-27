@@ -110,13 +110,25 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchSizeDropdownLiast, batchSize);
 	}
-	public void selectTrainingStartDate()
+	public void selectTrainingStartDateForNewBatch()
 	{
 		//datePicker.sendKeys(Keys.ARROW_DOWN,Keys.ENTER,Keys.TAB);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date()); 
-		c.add(Calendar.DATE, 16); //after 15 days
+		c.add(Calendar.DATE, 16);
+		String trainingStartDate = sdf.format(c.getTime());
+		trainingStartDateTextField.sendKeys(trainingStartDate);                          
+		
+	}
+	//existing
+	public void selectTrainingStartDateForExistingBatch()
+	{
+		//datePicker.sendKeys(Keys.ARROW_DOWN,Keys.ENTER,Keys.TAB);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date()); 
+		c.add(Calendar.DATE, 16);
 		String trainingStartDate = sdf.format(c.getTime());
 		trainingStartDateTextField.sendKeys(trainingStartDate);                          
 		
@@ -125,12 +137,22 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	{
 		closeTrainingStartDateCalender.click();
 	}
-	public void selectTrainingEndDate()
+	public void selectTrainingEndDateForNewBatch()
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date()); 
-		c.add(Calendar.DATE,25 ); //after 8 days
+		c.add(Calendar.DATE,25 );
+		String trainingEndDate = sdf.format(c.getTime());
+		trainingEndDateTextField.sendKeys(trainingEndDate);   
+	}
+	//existing
+	public void selectTrainingEndDateForExistingBatch()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date()); 
+		c.add(Calendar.DATE,16 );
 		String trainingEndDate = sdf.format(c.getTime());
 		trainingEndDateTextField.sendKeys(trainingEndDate);   
 	}
@@ -138,28 +160,50 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	{
 		closeTrainingEndDateCalender.click();
 	}
-	public void selectAssessmentStartDate()
+	public void selectAssessmentStartDateForNewBatch()
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date()); 
-		c.add(Calendar.DATE,25 ); //after 25 days
+		c.add(Calendar.DATE,25 );
 		String assessmentStartDate = sdf.format(c.getTime());
 		assessmentStartDateTextField.sendKeys(assessmentStartDate);
 	}
+	//existing
+	public void selectAssessmentStartDateForExistingBatch()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date()); 
+		c.add(Calendar.DATE,16 );
+		String assessmentStartDate = sdf.format(c.getTime());
+		assessmentStartDateTextField.sendKeys(assessmentStartDate);
+	}
+	
 	public void clickToCloseAssessmentStartDateCalender()
 	{
 		closeAssessmentStartDateCalender.click();
 	}
-	public void selectAssessmenEndDate()
+	public void selectAssessmenEndDateForNewBatch()
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date()); 
-		c.add(Calendar.DATE,25 ); //after 25 days
+		c.add(Calendar.DATE,25 );
 		String assessmentEndDate = sdf.format(c.getTime());
 		assessmentEndDateTextField.sendKeys(assessmentEndDate);
 	}
+	//existing
+	public void selectAssessmenEndDateForExistingBatch()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date()); 
+		c.add(Calendar.DATE,16 );
+		String assessmentEndDate = sdf.format(c.getTime());
+		assessmentEndDateTextField.sendKeys(assessmentEndDate);
+	}
+	
 	public void clickToCloseAssessmentEndDateCalender()
 	{
 		closeAssessmentEndDateCalender.click();
