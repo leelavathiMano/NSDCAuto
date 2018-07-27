@@ -654,13 +654,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 
     	Thread.sleep(2000);
     	da_tpr.clickForSaveAndContinue();
-
+    	Thread.sleep(3000);
     	da_tpr.clickForFinalStatusBrowseFile();
     	Thread.sleep(5000);
     	UploadFile.upload(finalStatusFile);
     	Thread.sleep(3000);
     	da_tpr.clickForFinalStatusUploadFile();
-    	Thread.sleep(2000);
+    	Thread.sleep(5000);
     	da_tpr.clickForSaveAndContinue();
     	Thread.sleep(2000);
     	da_tpr.clickForOK();
