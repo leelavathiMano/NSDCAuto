@@ -30,7 +30,7 @@ public class NSDC_CreateUserWorkflowTestSC_12 extends TestConfiguration
 		elp.performlogin(username, password);
 		NSDCAdmin_DashboardPage ndp = new NSDCAdmin_DashboardPage(driver);
 		Thread.sleep(5000);
-		ndp.clickOnCreateUser();
+		ndp.clickOnCreateSDMSUser();
 		NSDC_CreateUserPage user = new NSDC_CreateUserPage(driver);
 		Thread.sleep(3000);
 		user.selectBusinessUser(businessUser);
