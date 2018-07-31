@@ -9,13 +9,13 @@ public class SSC_QPNOS_Model_CurriculumPage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="(//div[@class='m-widget17__item'])[1]")
+	@FindBy(xpath="//div[@routerlink='create-qp']")
 	private WebElement createQP_Tab;
-	@FindBy(xpath="(//div[@class='m-widget17__item'])[2]")
+	@FindBy(xpath="//div[@routerlink='view-all-qps']")
 	private WebElement viewAllExistingQP_Tab;
-	@FindBy(xpath="(//div[@class='m-widget17__item'])[3]")
+	@FindBy(xpath="//div[@routerlink='nos-general-details']")
 	private WebElement createNOS_Tab;
-	@FindBy(xpath="(//div[@class='m-widget17__item'])[4]")
+	@FindBy(xpath="//div[@routerlink='view-nos']")
 	private WebElement viewAllNOSs_Tab;
 	
 	public SSC_QPNOS_Model_CurriculumPage(WebDriver driver)
