@@ -138,7 +138,8 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
 
         Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Your National Occupational')]")).getText(), "Your National Occupational Standard is complete and is sent to the Standard Team who will provide their review comments and take final decision on your NOS creating request.");
         Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'At any point of')]")).getText(), "At any point of time you can review the NOS which you have created under \" View all NOSs\"");
-
+        
+        Thread.sleep(2000);
         details.clickOnBackToDashboard();
         Thread.sleep(2000);
         model.clickOn_ViewAllNOSs();
@@ -237,17 +238,17 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         addNOS.enterBriefDescriptionOfTheElective(electiveDescription);
         addNOS.clickOnLinkNOS_LinkToElectives();
         Thread.sleep(2000);
-//        String nos_code3 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 3, 25);
-//        addNOS.enterNOScodeInSearchBox(nos_code3);
-//        addNOS.clickOnSearch();
-//        Thread.sleep(2000);
-//        addNOS.clickOnAction();
-//        addNOS.clickOnLinkToOptions();
-//        Thread.sleep(2000);
-//        addNOS.enterNameOfTheOption(option);
-//        addNOS.enterBriefDescriptionOfTheOption(optionDescription);
-//        addNOS.clickOnLinkNOS_linkToOptions();
-//        Thread.sleep(2000);
+        String nos_code3 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 3, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code3);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkToOptions();
+        Thread.sleep(2000);
+        addNOS.enterNameOfTheOption(option);
+        addNOS.enterBriefDescriptionOfTheOption(optionDescription);
+        addNOS.clickOnLinkNOS_linkToOptions();
+        Thread.sleep(2000);
         addNOS.clickOnSaveAndContinueToAssessmentCriteria();
         Thread.sleep(2000);
         String QP_code = driver.findElement(By.xpath("//input[@formcontrolname='qpCode']")).getText();
