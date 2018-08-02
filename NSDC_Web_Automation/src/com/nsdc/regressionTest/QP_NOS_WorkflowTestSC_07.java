@@ -215,20 +215,42 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         QP.clickOnSaveAndContinue();
         Thread.sleep(2000);
         SSC_QP_AddNOSsPage addNOS = new SSC_QP_AddNOSsPage(driver);
+        
         String nos_code1 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 1, 25);
         addNOS.enterNOScodeInSearchBox(nos_code1);
         addNOS.clickOnSearch();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Awaiting Standards Approval')]")).getText(), "Awaiting Standards Approval");
-        
         addNOS.clickOnAction();
         addNOS.clickOnLinkAsCompulsoryNOSs();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("(//div[@class='modal-header'])[1]")).getText(), "While adding this NOS to the QP, following Sectors(s) will be linked to it.");
         addNOS.clickOnLinkNos_linkAsCompulsoryNOSs();
         Thread.sleep(2000);
+        
         String nos_code2 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 2, 25);
         addNOS.enterNOScodeInSearchBox(nos_code2);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkAsCompulsoryNOSs();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[@class='modal-header'])[1]")).getText(), "While adding this NOS to the QP, following Sectors(s) will be linked to it.");
+        addNOS.clickOnLinkNos_linkAsCompulsoryNOSs();
+        Thread.sleep(2000);
+        
+        String nos_code3 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 3, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code3);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkAsCompulsoryNOSs();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[@class='modal-header'])[1]")).getText(), "While adding this NOS to the QP, following Sectors(s) will be linked to it.");
+        addNOS.clickOnLinkNos_linkAsCompulsoryNOSs();
+        Thread.sleep(2000);
+        /////////////////////////////////////////////////////
+        String nos_code4 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 4, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code4);
         addNOS.clickOnSearch();
         Thread.sleep(2000);
         addNOS.clickOnAction();
@@ -238,8 +260,33 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         addNOS.enterBriefDescriptionOfTheElective(electiveDescription);
         addNOS.clickOnLinkNOS_LinkToElectives();
         Thread.sleep(2000);
-        String nos_code3 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 3, 25);
-        addNOS.enterNOScodeInSearchBox(nos_code3);
+        
+        String nos_code5 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 5, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code5);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkToElectives();
+        Thread.sleep(2000);
+        addNOS.enterNameOfTheElective(elective);
+        addNOS.enterBriefDescriptionOfTheElective(electiveDescription);
+        addNOS.clickOnLinkNOS_LinkToElectives();
+        Thread.sleep(2000);
+        
+        String nos_code6 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 6, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code6);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkToElectives();
+        Thread.sleep(2000);
+        addNOS.enterNameOfTheElective(elective);
+        addNOS.enterBriefDescriptionOfTheElective(electiveDescription);
+        addNOS.clickOnLinkNOS_LinkToElectives();
+        Thread.sleep(2000);
+        ///////////////////////////////////////////
+        String nos_code7 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 7, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code7);
         addNOS.clickOnSearch();
         Thread.sleep(2000);
         addNOS.clickOnAction();
@@ -249,9 +296,37 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         addNOS.enterBriefDescriptionOfTheOption(optionDescription);
         addNOS.clickOnLinkNOS_linkToOptions();
         Thread.sleep(2000);
+        
+        String nos_code8 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 8, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code8);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkToOptions();
+        Thread.sleep(2000);
+        addNOS.enterNameOfTheOption(option);
+        addNOS.enterBriefDescriptionOfTheOption(optionDescription);
+        addNOS.clickOnLinkNOS_linkToOptions();
+        Thread.sleep(2000);
+        
+        String nos_code9 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 9, 25);
+        addNOS.enterNOScodeInSearchBox(nos_code9);
+        addNOS.clickOnSearch();
+        Thread.sleep(2000);
+        addNOS.clickOnAction();
+        addNOS.clickOnLinkToOptions();
+        Thread.sleep(2000);
+        addNOS.enterNameOfTheOption(option);
+        addNOS.enterBriefDescriptionOfTheOption(optionDescription);
+        addNOS.clickOnLinkNOS_linkToOptions();
+        Thread.sleep(2000);
+        ////////////////////////////////////////////////////////////////
         addNOS.clickOnSaveAndContinueToAssessmentCriteria();
         Thread.sleep(2000);
         String QP_code = driver.findElement(By.xpath("//input[@formcontrolname='qpCode']")).getText();
+        
+        System.out.println(QP_code);
+        ReadWriteData.setExcelData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 46, 25, QP_code);
         SSC_QP_AssessmentCriteriaPage criteria = new SSC_QP_AssessmentCriteriaPage(driver);
         criteria.enterguidelinesForAssessment(guidelines);
         
