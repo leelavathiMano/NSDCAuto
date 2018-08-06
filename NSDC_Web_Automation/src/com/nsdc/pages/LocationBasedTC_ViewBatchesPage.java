@@ -30,9 +30,15 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
-	@FindBy(xpath="//button[contains(text(),'Accepted')]")
+	//@FindBy(xpath="//button[contains(text(),'Accepted')]")
+	@FindBy(linkText="Accepted")
 	private WebElement viewAllAcceptedBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'Rejected')]")
+	@FindBy(linkText="Ongoing")
+	private WebElement viewAllOngoingBatchesLink;
+	@FindBy(linkText="Completed")
+	private WebElement viewAllCompletedBatchesLink;
+	//@FindBy(xpath="//button[contains(text(),'Rejected')]")
+	@FindBy(linkText="Rejected")
 	private WebElement viewAllRejectedBatchesButton;
 	public LocationBasedTC_ViewBatchesPage(WebDriver driver)
 	{

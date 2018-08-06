@@ -1,7 +1,6 @@
 package com.nsdc.regressionTest;
 
 import java.util.ArrayList;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -10,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.SelectDropDownList;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LocationBasedTC_DashboardPage;
 import com.nsdc.pages.LocationBasedTC_ViewBatchesPage;
@@ -23,7 +23,6 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends TestConfiguration
 {
-	
 	@DataProvider
 	public Object[][] sscLocationBasedTCTrainingBatchCreationWorkflowData()
 	{
@@ -31,32 +30,40 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 	}
 	
 	@Test(dataProvider="sscLocationBasedTCTrainingBatchCreationWorkflowData")
-	public void sscLocationBasedTCTrainingBatchCreationTC01(String serialNum,String createdBatchIDs,String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String jobRole, String expectedBatchFees, String batchSize, String state, String district, String subDistrict,String actionMenuOptions, String LocationBasedTC_AcceptOrRejectBatch, String remarks) throws Exception
+	public void sscLocationBasedTCTrainingBatchCreationTC01(String serialNum,String createdBatchIDs,String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String jobRole, String expectedBatchFees, String batchSize, String state, String district, String subDistrict,String actionMenuOptions) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(2000);
+		Thread.sleep(10000);
+		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc","Login Unsuccessfull");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
 		Thread.sleep(2000);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
 		sscDbP.clickCreateBatch();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='form-group m-form__group row']/div[2]")).getText(), expectedSector);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 8, expectedSector);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+expectedSector+"')]")).getText(), expectedSector);
 		SSC_LocationBasedTC_TrainingBatchCreationPage sscTbcP=new SSC_LocationBasedTC_TrainingBatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		sscTbcP.selectBatchType(batchType);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 3, batchType);
 		Thread.sleep(2000);
 		sscTbcP.selectJobRole(jobRole);
-		Thread.sleep(2000);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 7, jobRole);
+		Thread.sleep(3000);
 		sscTbcP.isFeesReadOnly();
 		sscTbcP.clickToViewFees();
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 9, expectedBatchFees);
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='batchFees']")).getAttribute("value"), expectedBatchFees);
 		Thread.sleep(2000);
 		sscTbcP.selectBatchSize(batchSize);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 4, batchSize);
 		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New"))
 		{
@@ -91,19 +98,33 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		
 		String expectedTrainingStartDate=driver.findElement(By.xpath("(//input[@id='startDate'])[1]")).getAttribute("value");
 		String expectedTrainingStartDateHipen=expectedTrainingStartDate.replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 5, expectedTrainingStartDateHipen);
 		String expectedTrainingEndDate=driver.findElement(By.xpath("(//input[@id='endDate'])[1]")).getAttribute("value").replaceAll("/", "-");
 		String expectedAssessmentStartDate=driver.findElement(By.xpath("(//input[@id='startDate'])[2]")).getAttribute("value").replaceAll("/", "-");		
 		String expectedAssessmentEndDate=driver.findElement(By.xpath("(//input[@id='endDate'])[2]")).getAttribute("value");
 		String expectedAssessmentEndDateHipen=expectedAssessmentEndDate.replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 6, expectedAssessmentEndDateHipen);
 		
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@formgroupname='batchDates']/div[2]/span")).getText(), expectedTrainingStartDate);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@formgroupname='batchDates']/div[3]/span")).getText(), expectedAssessmentEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@formgroupname='batchDates']/div[1]/span")).getText(), expectedTrainingStartDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@formgroupname='batchDates']/div[2]/span")).getText(), expectedAssessmentEndDate);
 		sscTbcP.clickToCreateBatch();
 		Thread.sleep(2000);
 		String bacthCreationsuccessfulPopupText=driver.findElement(By.xpath("//div[@class='swal2-content']")).getText();
 		String[]parts=bacthCreationsuccessfulPopupText.split(" ");
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "BatchCreationTestSC10TC01",Integer.parseInt(serialNum) , 1, createdBatchID);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 2, createdBatchID);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "ReAssigningTCForRejectedBatchesSC10TC03",Integer.parseInt(serialNum) , 3, createdBatchID);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "AssigningMasterTrainerAndAssessmentAgencySC10TC04",Integer.parseInt(serialNum) , 2, createdBatchID);
+		
+		if(batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Training of Master Assessor"))
+		{
+			ReadWriteData.setExcelData("./TestData/Workflow/Assessor-Workflow.xls","AssessorBatchesForTestSC04TC03",Integer.parseInt(serialNum) , 0, createdBatchID);
+		}
+		else if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer"))
+		{
+			ReadWriteData.setExcelData("./TestData/Workflow/Trainer-Workflow.xls","TrainerBatchesForTestSC03TC03",Integer.parseInt(serialNum) , 0, createdBatchID);
+		}
 		sscTbcP.clickOk();
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
 		sscTbcP.selectState(state);
@@ -111,11 +132,13 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		sscTbcP.selectDistrict(district);
 		Thread.sleep(2000);
 		sscTbcP.selectSubDistrict(subDistrict);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		sscTbcP.clickToSearchAndAssignTrainingCentre();
 		Thread.sleep(2000);
 		//sscTbcP.enterToSearchForTrainingCentreID(trainingCentreID);
 		String trainingCentre=ReadWriteData.getData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls", "SSC_TemporaryTrainingCentreCreationSC09TC01", 1, 3);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls","TrainingCentreAcceptOrRejectBatchesSC10TC02",Integer.parseInt(serialNum) , 0, trainingCentre);
+		String trainingCentreName=ReadWriteData.getData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls", "SSC_TemporaryTrainingCentreCreationSC09TC01", 1, 4);
 		sscTbcP.enterToSearchForTrainingCentreID(trainingCentre);
 		Thread.sleep(4000);
 		sscTbcP.clickActionMenu();
@@ -158,59 +181,132 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			sscTbcP.clickOk();
 			Thread.sleep(2000);
 		}
+		//checking presence of created batches
+		js.executeScript("window.scrollBy(0,200)", "");
+		sscDbP.clickAllBatches();
+		Thread.sleep(2000);
+		SSCAllBatchesPage sscAbP=new SSCAllBatchesPage(driver);
+		sscAbP.enterSearchByWord(createdBatchID);
+		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText().trim(),createdBatchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchType+"')]")).getText().trim(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+expectedTrainingStartDateHipen+"')]")).getText().trim(), expectedTrainingStartDateHipen);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingCentreName+"')]")).getText().trim(), trainingCentreName);
+		Assert.assertEquals(driver.findElement(By.xpath("(//span[contains(text(),'Training Centre')])[1]")).getText().trim(),"Training Centre");
+		sscAbP.clickToViewPendingBatches();
+		Thread.sleep(2000);
+		sscAbP.enterSearchByWord(createdBatchID);
+		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText().trim(),createdBatchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchType+"')]")).getText().trim(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+expectedTrainingStartDateHipen+"')]")).getText().trim(), expectedTrainingStartDateHipen);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingCentreName+"')]")).getText().trim(), trainingCentreName);
+		Assert.assertEquals(driver.findElement(By.xpath("(//span[contains(text(),'Training Centre')])[1]")).getText().trim(),"Training Centre");
+		
+		//before approval from assign TC - Checking assigning of master trainer and assessment agency as it should not happen
+		SSCAllBatchesPage sBp=new SSCAllBatchesPage(driver);
+		Thread.sleep(2000);
+		sBp.clickToViewActionMenuOptions();
+		Thread.sleep(2000);
+		sBp.clicktoSelectViewBatchDetailsOption();
+		Thread.sleep(2000);
+		String masterTrainerName=ReadWriteData.getData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "AssigningMasterTrainerAndAssessmentAgencySC10TC04", 1, 4);
+		sBp.selectMasterTrainerForSEDJobrole(masterTrainerName);
+		Thread.sleep(2000);
+		sBp.clickToAssignMasterTrainer();
+		Thread.sleep(2000);
+		sBp.clickAssignItButton();
+		Thread.sleep(2000);
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@id='toast-container']/div/div")).getText().equals("Can not assign Master Trainer, Batch is pending for approval from Training Centre"), "there is no toast message regarding assigning master trainer before TC Approving the respected batch");
+		Thread.sleep(6000);
+		String assessmentAgency=ReadWriteData.getData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "AssigningMasterTrainerAndAssessmentAgencySC10TC04", 1, 6);
+		SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='form-control ng-untouched ng-pristine ng-valid']")), assessmentAgency);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//span[contains(text(),'Assign')])[2]")).click();
+		Thread.sleep(2000);
+		sBp.clickAssignItButton();
+		Thread.sleep(2000);
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@id='toast-container']/div/div")).getText().equals("Can not assign Assesment Agency, Batch is pending for approval from Training Centre"), "there is no toast message regarding assigning assessment agency before TC Approving the respected batch");
+		Thread.sleep(2000);
+		
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		Thread.sleep(2000);
+	}
+	@DataProvider
+	public Object[][]trainingCentreAcceptOrRejectBatchWorkflowData()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "TrainingCentreAcceptOrRejectBatchesSC10TC02");
+	}
+	@Test(dataProvider="trainingCentreAcceptOrRejectBatchWorkflowData",dependsOnMethods="sscLocationBasedTCTrainingBatchCreationTC01")
+	public void trainingCentreAcceptingOrRejectingBatchesTC02(String trainingCentre,String trainingCentrePassword,String createdBatchID, String batchType, String batchSize, String expectedTrainingStartDateHipen, String expectedAssessmentEndDateHipen, String jobRole, String expectedSector, String expectedBatchFees, String LocationBasedTC_AcceptOrRejectBatch, String remarks) throws Exception
+	{
+		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
-		elp.performlogin(trainingCentre, "Qwerty@123");
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(trainingCentre, trainingCentrePassword);
 		Thread.sleep(2000);
 		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
-		Thread.sleep(10000);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		Thread.sleep(2000);
 		lTcDp.clickToViewLocationBasedTrainingBatches();
 		Thread.sleep(4000);
-		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)","");
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.enterToSearchForBatchID(createdBatchID);
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchType+"')]")).getText(), batchType);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+batchSize+"']")).getText(), batchSize);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+expectedTrainingStartDateHipen+" to "+expectedAssessmentEndDateHipen+"']")).getText(), expectedTrainingStartDateHipen+" to "+expectedAssessmentEndDateHipen);
-		Assert.assertNotSame(driver.findElement(By.xpath("//span[contains(text(),'BATCH CREATED')]")).getText(), "BATCH CREATED");
+		if(driver.findElements(By.tagName("tr")).size()<2)
+		{
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+			Assert.assertFalse(driver.findElements(By.tagName("tr")).size()<2,"Sorry! Batch not found in Newly Assigned Section, may be its already accepted, On-going, Completed, Rejected or it does not exist!!!!! ");		
+		}
+		else
+		{
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchType+"')]")).getText(), batchType);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+batchSize+"']")).getText(), batchSize);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+expectedTrainingStartDateHipen+"')]")).getText(), expectedTrainingStartDateHipen+" to "+expectedAssessmentEndDateHipen);
+			Assert.assertNotSame(driver.findElement(By.xpath("//span[contains(text(),'BATCH CREATED')]")).getText(), "BATCH CREATED");
+		}
 		Thread.sleep(4000);
 		lTcVbP.clikToViewActionMenu();
 		Thread.sleep(2000);
-		ArrayList<WebElement>checkObsenceOfAcceptOrRejectBatchMenuOptions=(ArrayList<WebElement>) driver.findElements(By.xpath("(//div[@class='m-dropdown__content'])[2]/ul/li/a/span"));
-		for(int i=0;i<checkObsenceOfAcceptOrRejectBatchMenuOptions.size();i++)
+		lTcVbP.clikToViewActionMenu();
+		Thread.sleep(2000);
+		ArrayList<WebElement>actionMenuOptions=(ArrayList<WebElement>) driver.findElements(By.xpath("(//div[@class='m-dropdown__content'])[2]/ul/li/a/span"));
+		for(int i=0;i<actionMenuOptions.size();i++)
 		{
-			if(checkObsenceOfAcceptOrRejectBatchMenuOptions.get(i).getText().equals("View Batch Details"))
+			if(actionMenuOptions.get(i).getText().equals("View Batch Details"))
 			{
-				Assert.assertNotEquals(checkObsenceOfAcceptOrRejectBatchMenuOptions.get(i).getText(),"Accept/Reject Batch","its a AcceptOrRejectOption");
+				Assert.assertEquals(actionMenuOptions.get(i).getText(),"View Batch Details","its not a View Batch Details option");
 			}
-			else if(checkObsenceOfAcceptOrRejectBatchMenuOptions.get(i).getText().equals("Accept/Reject Batch"))
+			else if(actionMenuOptions.get(i).getText().equals("Accept/Reject Batch"))
 			{
-				Assert.assertEquals(checkObsenceOfAcceptOrRejectBatchMenuOptions.get(i).getText(),"Accept/Reject Batch","its not a AcceptOrRejectOption");
+				Assert.assertEquals(actionMenuOptions.get(i).getText(),"Accept/Reject Batch","its not a AcceptOrRejectOption");
 			}
-			
 		}
 		lTcVbP.clickToSelectViewBatchDetailsOption();
 		Thread.sleep(2000);
 		//Asserting Batch Details
-		Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+jobRole+"')]")).getText(), jobRole);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+expectedSector+"')]")).getText(), expectedSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+expectedBatchFees+"')]")).getText(), expectedBatchFees);
-		Assert.assertEquals(driver.findElement(By.xpath("(//div[@class='tab-content'])[2]/div[6]/div[2]")).getText(), batchSize);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+batchType+"')]")).getText(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//span/b[contains(text(),'"+jobRole+"')]")).getText(), jobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("//div/b[contains(text(),'"+expectedSector+"')]")).getText(), expectedSector);
+		Assert.assertEquals(driver.findElement(By.xpath("//div/b[contains(text(),'"+expectedBatchFees+"')]")).getText(), expectedBatchFees);
+		Assert.assertEquals(driver.findElement(By.xpath("//div/b[text()='"+batchSize+"']")).getText(), batchSize);
+		Assert.assertEquals(driver.findElement(By.xpath("//div/b[contains(text(),'"+batchType+"')]")).getText(), batchType);
 		lTcVbP.clickToGoToDashboard();
 		Thread.sleep(2000);
+		js.executeScript("window.scrollBy(0,200)","");
 		lTcDp.clickToViewLocationBasedTrainingBatches();
 		Thread.sleep(2000);
 		lTcVbP.enterToSearchForBatchID(createdBatchID);
 		js.executeScript("window.scrollBy(0,200)","");
 		lTcVbP.clikToViewActionMenu();
+		Thread.sleep(2000);
+		lTcVbP.clikToViewActionMenu();
+		Thread.sleep(2000);
 		lTcVbP.clickToSelectAcceptOrRejectBatchOption();
 		Thread.sleep(2000);
 		if(LocationBasedTC_AcceptOrRejectBatch.equalsIgnoreCase("accept"))
@@ -227,45 +323,16 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			Thread.sleep(2000);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
 			lTcVbP.clikToViewActionMenu();
-			checkObsenceOfAcceptOrRejectBatchMenuOptions=(ArrayList<WebElement>) driver.findElements(By.xpath("(//div[@class='m-dropdown__content'])[2]/ul/li/a/span"));
-			for(int i=0;i<checkObsenceOfAcceptOrRejectBatchMenuOptions.size();i++)
+			Thread.sleep(2000);
+			lTcVbP.clikToViewActionMenu();
+			Thread.sleep(2000);
+			actionMenuOptions=(ArrayList<WebElement>) driver.findElements(By.xpath("(//div[@class='m-dropdown__content'])[2]/ul/li/a/span"));
+			for(int i=0;i<actionMenuOptions.size();i++)
 			{
-				Assert.assertNotEquals(checkObsenceOfAcceptOrRejectBatchMenuOptions.get(i).getText(),"Accept/Reject Batch");
+				Assert.assertNotEquals(actionMenuOptions.get(i).getText(),"Accept/Reject Batch");
 			}
 			lTcVbP.clickToSelectViewBatchDetailsOption();	
-			//Again Login As SSC_4 to check For the status of Accepted and Rejected Batches by Location Based TC
-			Thread.sleep(2000);
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(2000);
-			lp.clickLogin();
-			Thread.sleep(2000);
-			elp.performlogin(sscUsername, sscPassword);
-			Thread.sleep(2000);
-			sscDbP.clickAllBatches();
-			Thread.sleep(2000);
-			SSCAllBatchesPage sscAbP=new SSCAllBatchesPage(driver);
-			sscAbP.enterSearchByWord(createdBatchID);
-			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Self')]")).getText(),"Self");
-			sscAbP.clickToViewPendingBatches();
-			Thread.sleep(2000);
-			sscAbP.enterSearchByWord(createdBatchID);
-			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Self')]")).getText(),"Self");
-			sscAbP.clickToViewPublishedBatches();
-			Thread.sleep(2000);
-			sscAbP.enterSearchByWord(createdBatchID);
-			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Self')]")).getText(),"Self");
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(2000);
+			
 		}
 		else if(LocationBasedTC_AcceptOrRejectBatch.equalsIgnoreCase("reject"))
 		{
@@ -278,60 +345,43 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			lTcVbP.clickOk();
 			Thread.sleep(2000);
 			lTcVbP.clickToViewAllRejectedBatches();
+			Thread.sleep(2000);
+			lTcVbP.clickToViewAllRejectedBatches();
 			Thread.sleep(4000);
 			lTcVbP.enterToSearchForBatchID(createdBatchID);
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			lTcVbP.clikToViewActionMenu();
-			checkObsenceOfAcceptOrRejectBatchMenuOptions=(ArrayList<WebElement>) driver.findElements(By.xpath("(//div[@class='m-dropdown__content'])[2]/ul/li/a/span"));
-			for(int i=0;i<checkObsenceOfAcceptOrRejectBatchMenuOptions.size();i++)
+			if(driver.findElements(By.tagName("tr")).size()<2)
 			{
-				Assert.assertNotEquals(checkObsenceOfAcceptOrRejectBatchMenuOptions.get(i).getText(),"Accept/Reject Batch");
+				SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+				Thread.sleep(2000);
+				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
+				lTcVbP.clikToViewActionMenu();
+				actionMenuOptions=(ArrayList<WebElement>) driver.findElements(By.xpath("(//div[@class='m-dropdown__content'])[2]/ul/li/a/span"));
+				for(int i=0;i<actionMenuOptions.size();i++)
+				{
+					Assert.assertNotEquals(actionMenuOptions.get(i).getText(),"Accept/Reject Batch");
+				}
+				lTcVbP.clickToSelectViewBatchDetailsOption();
 			}
-			lTcVbP.clickToSelectViewBatchDetailsOption();
-			//Again Login As SSC_4 to check For the status-Training Centre of Rejected Batches by Location Based TC
-			Thread.sleep(2000);
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(2000);
-			lp.clickLogin();
-			Thread.sleep(2000);
-			elp.performlogin(sscUsername, sscPassword);
-			Thread.sleep(2000);
-			sscDbP.clickAllBatches();
-			Thread.sleep(2000);
-			SSCAllBatchesPage sscAbP=new SSCAllBatchesPage(driver);
-			sscAbP.enterSearchByWord(createdBatchID);
-			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			Assert.assertEquals(driver.findElement(By.xpath("(//span[contains(text(),'Training Centre')])[1]")).getText().trim(),"Training Centre");
-			sscAbP.clickToViewPendingBatches();
-			Thread.sleep(2000);
-			sscAbP.enterSearchByWord(createdBatchID);
-			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Training Centre')]")).getText().trim(),"Training Centre");
-			sscAbP.clickToViewRejectedBatches();
-			Thread.sleep(2000);
-			sscAbP.enterSearchByWord(createdBatchID);
-			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+createdBatchID+"')]")).getText(),createdBatchID);
-			Assert.assertEquals(driver.findElement(By.xpath("(//span[contains(text(),'Training Centre')])[1]")).getText().trim(),"Training Centre");
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(2000);
+			else
+			{
+				System.out.println("Training Centre - "+trainingCentre+"Rejected Batches - No show of rejected batch : "+createdBatchID);
+			}
 		}
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		Thread.sleep(2000);
 	}
 	
 	@DataProvider
 	public Object[][] reAssignLocationBasedTCForBatchesData()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "ReAssigningTCForRejectedBatchesSC10TC02");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "ReAssigningTCForRejectedBatchesSC10TC03");
 	}
-	@Test(dataProvider="reAssignLocationBasedTCForBatchesData",dependsOnMethods="sscLocationBasedTCTrainingBatchCreationTC01")
-	public void reaasigningLocationBasedTCForAllRejectedBatches(String sscUserName, String sscPassword,String batchAcceptOrRejectByLocationBasedTC,String batchID,String reAssignYesOrNo,String reScheduleYesOrNo) throws Exception
+	@Test(dataProvider="reAssignLocationBasedTCForBatchesData",dependsOnMethods="trainingCentreAcceptingOrRejectingBatchesTC02")
+	public void reaasigningLocationBasedTCForAllRejectedBatchesTC03(String sscUserName, String sscPassword,String batchAcceptOrRejectByLocationBasedTC,String batchID,String reAssignYesOrNo,String reScheduleYesOrNo) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
@@ -339,8 +389,11 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUserName, sscPassword);
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc","Login Unsuccessfull");
 		SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
-		Thread.sleep(8000);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		Thread.sleep(2000);
 		sDp.clickAllBatches();
 		Thread.sleep(2000);
 		SSCAllBatchesPage sBp=new SSCAllBatchesPage(driver);
@@ -348,17 +401,19 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		{
 			sBp.clickToViewRejectedBatches();
 			Thread.sleep(2000);
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+			Thread.sleep(2000);
 			sBp.enterSearchByWord(batchID);
 			Thread.sleep(2000);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchID+"')]")).getText(),batchID);
 			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Training Centre')]")).getText().trim(),"Training Centre");
-			sBp.clickActionButton();
+			sBp.clickToViewActionMenuOptions();
 			sBp.clickToReAssignTrainingCentre();
 			Thread.sleep(2000);
 			String reAssignTrainingCentre=ReadWriteData.getData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls", "SSC_TemporaryTrainingCentreCreationSC09TC01", 1, 3);
 			sBp.enterSearchByWord(reAssignTrainingCentre);
 			Thread.sleep(2000);
-			sBp.clickActionButton();
+			sBp.clickToViewActionMenuOptions();
 			Thread.sleep(2000);
 			sBp.clickToAssignBatch();
 			Thread.sleep(2000);
@@ -366,21 +421,16 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			Thread.sleep(2000);
 			sBp.clickOk();
 			Thread.sleep(2000);
-			try 
-			{
-				sBp.clickToViewRejectedBatches();
-				Thread.sleep(2000);
-				sBp.enterSearchByWord(batchID);
-				Thread.sleep(2000);
-				driver.findElements(By.xpath("//td[contains(text(),'"+batchID+"')]")).isEmpty();
-				
-			}catch(Exception e)
-			{
-				System.out.println("Batch ID - "+batchID+"still present in Rejected Section after Re Assignning Training Centre");
-			}
-			
-			Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+batchID+"')]")).isEmpty(), "Batch ID - "+batchID+"still present in Rejected Section after Re Assignning Training Centre");
-			
+			js.executeScript("window.scrollBy(0,200)", "");
+			sDp.clickAllBatches();
+			Thread.sleep(2000);			
+			sBp.clickToViewRejectedBatches();
+			Thread.sleep(2000);
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+			Thread.sleep(2000);
+			sBp.enterSearchByWord(batchID);
+			Thread.sleep(2000);
+			Assert.assertTrue(driver.findElements(By.tagName("tr")).size()<2,"ReassignedTC Batch "+batchID+" should not be listed in Rejected section");
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
@@ -391,16 +441,16 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			elp.performlogin(reAssignTrainingCentre, "Qwerty@123");
 			Thread.sleep(2000);
 			LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
-			Thread.sleep(4000);
+			js.executeScript("window.scrollBy(0,200)","");
 			lTcDp.clickToViewLocationBasedTrainingBatches();
 			Thread.sleep(4000);
-			JavascriptExecutor js=(JavascriptExecutor)driver;
 			js.executeScript("window.scrollBy(0,200)","");
 			LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 			lTcVbP.enterToSearchForBatchID(batchID);
 			Thread.sleep(2000);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchID+"')]")).getText(),batchID);
-			Thread.sleep(4000);
+			lTcVbP.clikToViewActionMenu();
+			Thread.sleep(2000);
 			lTcVbP.clikToViewActionMenu();
 			Thread.sleep(2000);
 			lTcVbP.clickToSelectAcceptOrRejectBatchOption();
@@ -412,6 +462,8 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			lTcVbP.clickOk();
 			Thread.sleep(2000);
 			lTcVbP.clickToViewAllAcceptedBatches();
+			Thread.sleep(2000);
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
 			Thread.sleep(2000);
 			lTcVbP.enterToSearchForBatchID(batchID);
 			Thread.sleep(2000);
@@ -427,11 +479,13 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		{
 			sBp.clickToViewRejectedBatches();
 			Thread.sleep(2000);
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+			Thread.sleep(2000);
 			sBp.enterSearchByWord(batchID);
 			Thread.sleep(2000);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchID+"')]")).getText(),batchID);
 			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Training Centre')]")).getText(),"Training Centre");
-			sBp.clickActionButton();
+			sBp.clickToViewActionMenuOptions();
 			sBp.clickToReSchedueBatch();
 			Thread.sleep(2000);
 			
@@ -439,6 +493,8 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		else if(batchAcceptOrRejectByLocationBasedTC.equalsIgnoreCase("accept") && reAssignYesOrNo.equalsIgnoreCase("no")&&reScheduleYesOrNo.equalsIgnoreCase("no"))
 		{
 			sBp.clickToViewPublishedBatches();
+			Thread.sleep(2000);
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
 			Thread.sleep(2000);
 			sBp.enterSearchByWord(batchID);
 			Thread.sleep(2000);
@@ -459,19 +515,22 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 	@DataProvider
 	public Object[][] sscAssignMasterTrainerAndAssessmentAgencyForBatchData()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "AssigningMasterTrainerAndAssessmentAgencySC10TC03");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls", "AssigningMasterTrainerAndAssessmentAgencySC10TC04");
 	}
-	@Test(dataProvider="sscAssignMasterTrainerAndAssessmentAgencyForBatchData",dependsOnMethods="reaasigningLocationBasedTCForAllRejectedBatches")
-	public void sscAssigningMasterTrainerAndAssessmentAgencyForBatch(String sscUserName, String sscPassword, String batchID,String actionsMenuOption, String masterTrainerName, String masterTrainerID, String assessmentAgency) throws Exception
+	@Test(dataProvider="sscAssignMasterTrainerAndAssessmentAgencyForBatchData")//,dependsOnMethods="reaasigningLocationBasedTCForAllRejectedBatchesTC03")
+	public void sscAssigningMasterTrainerAndAssessmentAgencyForBatchTC04(String sscUserName, String sscPassword, String batchID,String actionsMenuOption, String masterTrainerName, String masterTrainerID, String assessmentAgency) throws Exception
 	{
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUserName, sscPassword);
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc","Login Unsuccessfull");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		PostLoginPage plp=new PostLoginPage(driver);
-		Thread.sleep(11000);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		Thread.sleep(2000);
 		sscDbP.clickAllBatches();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc/all-batches");
@@ -479,15 +538,17 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		Thread.sleep(2000);
 		sBp.clickToViewPublishedBatches();
 		Thread.sleep(2000);
+		SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+		Thread.sleep(2000);
 		sBp.enterSearchByWord(batchID);
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+batchID+"')]")).getText(),batchID);
 		Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Self')]")).getText(),"Self");
-		sBp.clickActionButton();
+		sBp.clickToViewActionMenuOptions();
 		Thread.sleep(2000);
 		if(actionsMenuOption.equalsIgnoreCase("view details"))
 		{
-			sBp.clickViewBatchButton();
+			sBp.clicktoSelectViewBatchDetailsOption();
 			Thread.sleep(4000);
 			sBp.selectMasterTrainerForSEDJobrole(masterTrainerName);
 			Thread.sleep(2000);
@@ -509,9 +570,11 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			Thread.sleep(2000);
 			sBp.clickToGoBack();
 			Thread.sleep(2000);
+			SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@class='btn btn-secondary ng-untouched ng-pristine ng-valid']")), "40");
+			Thread.sleep(2000);
 			sBp.enterSearchByWord(batchID);
 			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[7]/span/span[1]")).getText()+driver.findElement(By.xpath("//td[7]/span/span[2]")).getText(), "Master Trainer,Assessment Agency");
+			Assert.assertEquals(driver.findElement(By.xpath("//td[7]/span[1]")).getText().trim()+driver.findElement(By.xpath("//td[7]/span[2]")).getText().trim(), "Master Trainer,Assessment Agency");
 		}
 		else if(actionsMenuOption.equalsIgnoreCase("assign master trainer"))
 		{
@@ -528,7 +591,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			Thread.sleep(2000);
 			sBp.enterSearchByWord(batchID);
 			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[7]/span/span[1]")).getText(),"Master Trainer");
+			Assert.assertEquals(driver.findElement(By.xpath("//td[7]/span[1]")).getText(),"Master Trainer");
 		}
 		else if(actionsMenuOption.equalsIgnoreCase("assign assessment agency"))
 		{
@@ -545,76 +608,12 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 			Thread.sleep(2000);
 			sBp.enterSearchByWord(batchID);
 			Thread.sleep(2000);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[7]/span/span[1]")).getText(),"Assessment Agency");
+			Assert.assertEquals(driver.findElement(By.xpath("//td[7]/span[1]")).getText(),"Assessment Agency");
 		}
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		Thread.sleep(2000);
-		
-	/*	all displayed batches
-		List<WebElement>batches=(List<WebElement>) driver.findElements(By.xpath("//table[@class='table table-bordered table-margin']/tbody/tr/td"));
-		ArrayList<String>batchIDs = new ArrayList<String>();
-		for(int i=0;i<batches.size();i++)
-		{
-			batchIDs.add(batches.get(i).getText());
-			System.out.println(batches.get(i).getText());
-		}
-		
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,100)","");
-		driver.findElement(By.xpath("(//a[@class='m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle'])[2]")).click();
-	
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//ul[@class='m-nav'])[1]/li[1]")).click();
-		String viewDetailsLink=driver.getCurrentUrl();
-		String[] partss=viewDetailsLink.split("/");
-		String batchID=partss[partss.length-1];
-		System.out.println("selected Batch ID is: "+batchID);
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[3]/tr[1]/td[2]")).getText(),"TP38");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[3]/tr[2]/td[2]")).getText(), "TC_000024");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[3]/tr[4]/td[2]")).getText(), "Sit perferendis deleniti conse");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[3]/tr[5]/td[2]")).getText(), "NICOBARS");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[3]/tr[6]/td[2]")).getText(), "ANDAMAN AND NICOBAR ISLANDS");
-		//Training Centre setails
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[4]/tr[1]/td[2]")).getText(), "vvvvvvv");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[4]/tr[2]/td[2]")).getText(), "4555555555");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[4]/tr[3]/td[2]")).getText(), "cv@gmail.com");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[4]/tr[4]/td[2]")).getText(), "priya");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[4]/tr[5]/td[2]")).getText(), "1234567890");
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[@class='table']/tbody)[4]/tr[6]/td[2]")).getText(), "priya@priya.priya");
-		SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[1]")), "Priya Tripathi");
-		driver.findElement(By.xpath("(//button[@class='btn btn-primary'])[1]")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//button[text()='Yes, assign it!']")).click();
-		Thread.sleep(2000);
-		String assignedMasterTrainerPopupText=driver.findElement(By.id("swal2-content")).getText();
-		String[] parts=assignedMasterTrainerPopupText.split(" ");
-		String assignedMasterTrainerID=parts[parts.length-1];
-		System.out.println("assigned Master Trainer is: "+assignedMasterTrainerID);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
-		SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[2]")), "AA_000001");
-		driver.findElement(By.xpath("(//button[@class='btn btn-primary'])[2]")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//button[text()='Yes, assign it!']")).click();
-		Thread.sleep(2000);
-		String assignedAssessmentAgencyPopupText=driver.findElement(By.id("swal2-content")).getText();
-		String[] parts1=assignedMasterTrainerPopupText.split(" ");
-		String assignedAssessmentAgencyID=parts[parts1.length-1];
-		System.out.println("assigned Assessment Agency is: "+assignedAssessmentAgencyID);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//button[text()='Back']")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//input[@placeholder='Search by keyword']")).sendKeys(batchID);
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//table[@class='table table-bordered table-margin']/tbody/tr[1]/td[7]")).getText(),"Master Trainer, Assessment Agency");
-		PostLoginPage plp=new PostLoginPage(driver);
-		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
-		plp.clickOnLogout();
-		Thread.sleep(2000);
-	*/
 	}
 }
 	

@@ -51,7 +51,8 @@ public class TrainerRegistrationPage
     private WebElement uploadYourPhoto_uploadButton;
     @FindBy(xpath="//select[@formcontrolname='applicantCategory']")
     private WebElement multiSelectDropDownList_ApplicantCategory;
-    @FindBy(xpath="//span[contains(text(),'Save & Continue')]")
+   //@FindBy(xpath="//span[contains(text(),'Save & Continue')]")
+    @FindBy(xpath="//span[contains(text(),'Next')]")
     private WebElement saveAndContinueButton;
     
     @FindBy(xpath="//textarea[@formcontrolname='addressLine1']")

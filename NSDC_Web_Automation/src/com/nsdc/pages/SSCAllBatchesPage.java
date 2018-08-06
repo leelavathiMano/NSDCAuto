@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,12 +15,12 @@ public class SSCAllBatchesPage
 	@FindBy(xpath="//input[@placeholder='Search by keyword']")
 	private WebElement searchByKeywordTextBox;
 	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
-	private WebElement actionButton;
-	@FindBy(xpath="//span[contains(text(),' View Details')]")
-	private WebElement viewBatchDetailsButton;
-	@FindBy(xpath="//span[contains(text(),' Assign Master Trainer')]")
+	private WebElement actionMenu;
+	@FindBy(xpath="//span[contains(text(),'View Details')]")
+	private WebElement viewBatchDetailsOption;
+	@FindBy(xpath="//span[contains(text(),'Assign Master Trainer')]")
 	private WebElement assignMasterTrainerButton;
-	@FindBy(xpath="//span[contains(text(),' Assign Assessment Agency')]")
+	@FindBy(xpath="//span[contains(text(),'Assign Assessment Agency')]")
 	private WebElement assignAssessmentAgencyButton;
 	@FindBy(xpath="//select[@class='form-control ng-pristine ng-valid ng-touched']")
 	private WebElement assignMasterTrainerDropDownList;
@@ -31,21 +32,28 @@ public class SSCAllBatchesPage
 	private WebElement assignButton2;
 	@FindBy(xpath="//button[contains(text(),'Yes, assign it!')]")
 	private WebElement assignItButton;
-	@FindBy(xpath="//button[contains(text(),'Pending')]")
+	//@FindBy(xpath="//button[contains(text(),'Pending')]")
+	@FindBy(linkText="Pending")
 	private WebElement  viewPendingBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'Rejected')]")
+	//@FindBy(xpath="//button[contains(text(),'Rejected')]")
+	@FindBy(linkText="Rejected")
 	private WebElement viewRejectedBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'Rescheduled')]")
+	//@FindBy(xpath="//button[contains(text(),'Rescheduled')]")
+	@FindBy(linkText="Rescheduled")
 	private WebElement viewRescheduledBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'Cancelled')]")
+	//@FindBy(xpath="//button[contains(text(),'Cancelled')]")
+	@FindBy(linkText="Cancelled")
 	private WebElement viewCancelledBatches;
-	@FindBy(xpath="//button[contains(text(),'Published')]")
+	//@FindBy(xpath="//button[contains(text(),'Published')]")
+	@FindBy(linkText="Published")
 	private WebElement viewPublisshedBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'On-going')]")
+	//@FindBy(xpath="//button[contains(text(),'On-going')]")
+	@FindBy(linkText="On-going")
 	private WebElement viewOnGoingBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'Completed')]")
+	//@FindBy(xpath="//button[contains(text(),'Completed')]")
+	@FindBy(linkText="Completed")
 	private WebElement viewCompletedBatchesButton;
-	@FindBy(xpath=" //span[contains(text(),' Re-Assign Training Centre')]")
+	@FindBy(xpath="//span[contains(text(),'Re-Assign Training Centre')]")
 	private WebElement reAssignTrainingCentreOption;
 	@FindBy(xpath=" //span[contains(text(),' Rescheduled Batch')]")
 	private WebElement resheduleBatchOption;
@@ -76,18 +84,25 @@ public class SSCAllBatchesPage
 		PageFactory.initElements(driver, this);	
 	}
 	
-	public void enterSearchByWord(String search_By_Keyword)
+	public void enterSearchByWord(String search_By_Keyword) throws InterruptedException
 	{
 		searchByKeywordTextBox.clear();
-		searchByKeywordTextBox.sendKeys(search_By_Keyword);                               
+		for (int i = 0; i < search_By_Keyword.length(); i++)
+		{
+		        char c = search_By_Keyword.charAt(i);
+		        String s = new StringBuilder().append(c).toString();
+		        searchByKeywordTextBox.sendKeys(s); 
+		        Thread.sleep(2000);
+		}       
+		                         
 	}
-	public void clickActionButton()
+	public void clickToViewActionMenuOptions()
 	{
-		actionButton.click();
+		actionMenu.click();
 	}
-	public void clickViewBatchButton()
+	public void clicktoSelectViewBatchDetailsOption()
 	{
-		viewBatchDetailsButton.click();
+		viewBatchDetailsOption.click();
 	}
 	
 	public void clickAssignMasterTrainerButton()

@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
 
 public class SSC_LocationBasedTC_TrainingBatchCreationPage 
@@ -112,25 +113,11 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	}
 	public void selectTrainingStartDateForNewBatch()
 	{
-		//datePicker.sendKeys(Keys.ARROW_DOWN,Keys.ENTER,Keys.TAB);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE, 16);
-		String trainingStartDate = sdf.format(c.getTime());
-		trainingStartDateTextField.sendKeys(trainingStartDate);                          
-		
+		trainingStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));                          
 	}
-	//existing
 	public void selectTrainingStartDateForExistingBatch()
 	{
-		//datePicker.sendKeys(Keys.ARROW_DOWN,Keys.ENTER,Keys.TAB);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE, 16);
-		String trainingStartDate = sdf.format(c.getTime());
-		trainingStartDateTextField.sendKeys(trainingStartDate);                          
+		trainingStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));                          
 		
 	}
 	public void clickToCloseTrainingStartDateCalender()
@@ -139,22 +126,12 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	}
 	public void selectTrainingEndDateForNewBatch()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE,25 );
-		String trainingEndDate = sdf.format(c.getTime());
-		trainingEndDateTextField.sendKeys(trainingEndDate);   
+		trainingEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));   
 	}
-	//existing
 	public void selectTrainingEndDateForExistingBatch()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE,16 );
-		String trainingEndDate = sdf.format(c.getTime());
-		trainingEndDateTextField.sendKeys(trainingEndDate);   
+	
+		trainingEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));   
 	}
 	public void clickToCloseTrainingEndDateCalender()
 	{
@@ -162,22 +139,12 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	}
 	public void selectAssessmentStartDateForNewBatch()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE,25 );
-		String assessmentStartDate = sdf.format(c.getTime());
-		assessmentStartDateTextField.sendKeys(assessmentStartDate);
+		
+		assessmentStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
 	}
-	//existing
 	public void selectAssessmentStartDateForExistingBatch()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE,16 );
-		String assessmentStartDate = sdf.format(c.getTime());
-		assessmentStartDateTextField.sendKeys(assessmentStartDate);
+		assessmentStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
 	}
 	
 	public void clickToCloseAssessmentStartDateCalender()
@@ -186,22 +153,11 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	}
 	public void selectAssessmenEndDateForNewBatch()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE,25 );
-		String assessmentEndDate = sdf.format(c.getTime());
-		assessmentEndDateTextField.sendKeys(assessmentEndDate);
+		assessmentEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
 	}
-	//existing
 	public void selectAssessmenEndDateForExistingBatch()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE,16 );
-		String assessmentEndDate = sdf.format(c.getTime());
-		assessmentEndDateTextField.sendKeys(assessmentEndDate);
+		assessmentEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
 	}
 	
 	public void clickToCloseAssessmentEndDateCalender()
