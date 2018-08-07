@@ -1,15 +1,11 @@
 package com.nsdc.pages;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
 
 public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
@@ -100,21 +96,11 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void enterBatchStartDate()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date()); 
-		c.add(Calendar.DATE, 16); //after 15 days
-		String batchStartDate = sdf.format(c.getTime());
-		batchStartDateTextbox.sendKeys(batchStartDate);
+		batchStartDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
 	}
 	public void enterBatchEndDate()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date());
-		c.add(Calendar.DATE, 56);
-		String batchEndDate = sdf.format(c.getTime());
-		batchEndDateTextbox.sendKeys(batchEndDate);
+		batchEndDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
 	}
 	public void clickToCloseBatchStartDateCalender()
 	{

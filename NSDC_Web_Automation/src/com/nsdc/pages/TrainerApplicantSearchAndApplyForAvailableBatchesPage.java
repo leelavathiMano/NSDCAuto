@@ -100,7 +100,7 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void enterBatchEndDate()
 	{
-		batchEndDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(56));
+		batchEndDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
 		
 	}
 	public void clickToCloseBatchStartDateCalender()
