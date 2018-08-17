@@ -329,7 +329,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationWorkflowTestSC_10 extends 
 		plp.clickOnLogout();
 		Thread.sleep(2000);
 	}
-	
+	//Batch Rejection flow
 	@DataProvider
 	public Object[][] locationBasedTrainingCentreBatchRejectionData()
 	{
