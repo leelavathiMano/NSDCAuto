@@ -262,35 +262,12 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         addNOS.clickOnLinkNOS_LinkToElectives();
         Thread.sleep(2000);
         
+        ///////////////////////////////////////////
         String nos_code5 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 5, 25);
         addNOS.enterNOScodeInSearchBox(nos_code5);
         addNOS.clickOnSearch();
         Thread.sleep(2000);
         addNOS.clickOnAction();
-        addNOS.clickOnLinkToElectives();
-        Thread.sleep(2000);
-        addNOS.enterNameOfTheElective(elective);
-        addNOS.enterBriefDescriptionOfTheElective(electiveDescription);
-        addNOS.clickOnLinkNOS_LinkToElectives();
-        Thread.sleep(2000);
-        
-        String nos_code6 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 6, 25);
-        addNOS.enterNOScodeInSearchBox(nos_code6);
-        addNOS.clickOnSearch();
-        Thread.sleep(2000);
-        addNOS.clickOnAction();
-        addNOS.clickOnLinkToElectives();
-        Thread.sleep(2000);
-        addNOS.enterNameOfTheElective(elective);
-        addNOS.enterBriefDescriptionOfTheElective(electiveDescription);
-        addNOS.clickOnLinkNOS_LinkToElectives();
-        Thread.sleep(2000);
-        ///////////////////////////////////////////
-        String nos_code7 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 7, 25);
-        addNOS.enterNOScodeInSearchBox(nos_code7);
-        addNOS.clickOnSearch();
-        Thread.sleep(2000);
-        addNOS.clickOnAction();
         addNOS.clickOnLinkToOptions();
         Thread.sleep(2000);
         addNOS.enterNameOfTheOption(option);
@@ -298,29 +275,6 @@ public class QP_NOS_WorkflowTestSC_07 extends TestConfiguration
         addNOS.clickOnLinkNOS_linkToOptions();
         Thread.sleep(2000);
         
-        String nos_code8 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 8, 25);
-        addNOS.enterNOScodeInSearchBox(nos_code8);
-        addNOS.clickOnSearch();
-        Thread.sleep(2000);
-        addNOS.clickOnAction();
-        addNOS.clickOnLinkToOptions();
-        Thread.sleep(2000);
-        addNOS.enterNameOfTheOption(option);
-        addNOS.enterBriefDescriptionOfTheOption(optionDescription);
-        addNOS.clickOnLinkNOS_linkToOptions();
-        Thread.sleep(2000);
-        
-        String nos_code9 = ReadWriteData.getData("./TestData/Workflow/QP_NOS-Workflow.xls", "CreateNOSSC07TC01", 9, 25);
-        addNOS.enterNOScodeInSearchBox(nos_code9);
-        addNOS.clickOnSearch();
-        Thread.sleep(2000);
-        addNOS.clickOnAction();
-        addNOS.clickOnLinkToOptions();
-        Thread.sleep(2000);
-        addNOS.enterNameOfTheOption(option);
-        addNOS.enterBriefDescriptionOfTheOption(optionDescription);
-        addNOS.clickOnLinkNOS_linkToOptions();
-        Thread.sleep(2000);
         ////////////////////////////////////////////////////////////////
         addNOS.clickOnSaveAndContinueToAssessmentCriteria();
         Thread.sleep(2000);
