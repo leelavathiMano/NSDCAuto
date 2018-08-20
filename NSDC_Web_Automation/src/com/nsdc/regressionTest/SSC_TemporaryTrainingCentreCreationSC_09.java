@@ -32,8 +32,9 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		Thread.sleep(12000);
+		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc","Login Unsuccessfull");
+		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickCreateTemporaryTrainingCentre();
 		Thread.sleep(4000);
 		SSC_TemporaryTraningCentrePage sscTtCP=new SSC_TemporaryTraningCentrePage(driver);
