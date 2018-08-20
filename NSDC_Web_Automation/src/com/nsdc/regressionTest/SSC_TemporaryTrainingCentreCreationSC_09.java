@@ -22,7 +22,6 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 	public Object[][] sscTemporaryTrainingCentreCreationData()
 	{
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","SSC_TemporaryTrainingCentreCreationSC09TC01");
-		
 	}
 	
 	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
@@ -33,7 +32,8 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
 		Thread.sleep(12000);
-		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc","Login Unsuccessfull");
+		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
+		Assert.assertEquals(driver.getCurrentUrl(), configuredURL+"/ssc","Login Unsuccessfull");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickCreateTemporaryTrainingCentre();
 		Thread.sleep(4000);
@@ -106,13 +106,12 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 			}
 
 		 }
-		
 		sscTtCP.clickConfirmation();
 		Thread.sleep(2000);
 		sscTtCP.clickCreate();
 		Thread.sleep(4000);
 		//This assertion is based on the difference in url while creating temporary training centre and after successfull creation of temporary training centre
-		Assert.assertEquals(driver.getCurrentUrl(), "http://13.232.121.96/ssc", "TRAINING CENTRE NOT CREATED : Usually becoz of duplicate SPOC Email and Mobile Number, Please check the SSC_Temporary Training Centre Creation Test Data file");
+		Assert.assertEquals(driver.getCurrentUrl(), configuredURL+"/ssc", "TRAINING CENTRE NOT CREATED : Usually becoz of duplicate SPOC Email and Mobile Number, Please check the SSC_Temporary Training Centre Creation Test Data file");
 		Screenshot.takeScreenshot(driver, "justCreatedTrainingCenterIDsuccessfullPopup");
 		String createdTCID=driver.findElement(By.id("swal2-title")).getText();
 		//getting created TC_ID and Writing into Excel
@@ -120,6 +119,7 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		String trainingCentreID=parts[parts.length-1];
 		int sNum=Integer.parseInt(serialNo);
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","SSC_TemporaryTrainingCentreCreationSC09TC01",sNum,3, trainingCentreID);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls","LocationBasedTC-BatchRejectionSC10TC03",1,11, trainingCentreID);
 		Thread.sleep(6000);
 		sscTtCP.clickOk();
 		Thread.sleep(6000);
@@ -133,8 +133,9 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		elp.performlogin(trainingCentreID, "ekaushal");
 		Thread.sleep(2000);
 		RegistrationPage rp = new RegistrationPage(driver);
+		//plz do not change passwords, as this will affect other test cases
 		rp.enterOldPassword("ekaushal");
-		rp.enterNewPassword("Qwerty@123");
+		rp.enterNewPassword("Qwerty@123"); 
 		rp.enterConfirmPassword("Qwerty@123");
 		rp.clickResetResubmit();
 		Thread.sleep(2000);
