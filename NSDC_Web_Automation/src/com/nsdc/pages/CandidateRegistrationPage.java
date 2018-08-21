@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,7 +29,7 @@ public class CandidateRegistrationPage
 	private WebElement selectYearButton;
 	@FindBy(xpath="//span[contains(text(),'Feb')]")
 	private WebElement selectMonthButton;
-	@FindBy(xpath="//td[contains(text(),'2')]")
+	@FindBy(xpath="//td[contains(text(),'18')]")
 	private WebElement selectDateButton;
 	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calenderIconButton;
@@ -46,18 +47,31 @@ public class CandidateRegistrationPage
 	private WebElement StateDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='districtDetailsObj']")
 	private WebElement districtDropDownList;
+	@FindBy(xpath="//input[@placeholder='Enter Area Name']")
+	private WebElement geoTagTextbox;
 	@FindBy(xpath="//select[@formcontrolname='sectorObj']")
 	private WebElement sectorDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='subSectorObj']")
 	private WebElement subSectorDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='jobRole']")
 	private WebElement jobRoleDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='associatedPragramName']")
+	private WebElement associateProgramNameDropDownList;
+	@FindBy(xpath="//input[@id='customFile']")
+	private WebElement profliePicture_BrowseFileButton;
+	@FindBy(xpath="//select[@formcontrolname='cioType']")
+	private WebElement cioTypeDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='cioName']")
+	private WebElement cioNameDropDownList;
+	@FindBy(xpath="//label[a[contains(text(),'Privacy Policy')]]/span")
+	private WebElement iAgreeCheckBox;
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Close')]")
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement oKButton;
+	
 	
 	
 	
@@ -89,10 +103,10 @@ public class CandidateRegistrationPage
 	{
 		Thread.sleep(4000);
 		dobTextbox.click();
-		dob_YearButton.click();
-		selectYearFieldButton.click();
-		selectYearButton.click();
-		selectMonthButton.click();
+		//dob_YearButton.click();
+		//selectYearFieldButton.click();
+		//selectYearButton.click();
+		//selectMonthButton.click();
 		selectDateButton.click();
 		calenderIconButton.click();
 	}
@@ -135,6 +149,14 @@ public class CandidateRegistrationPage
 		SelectDropDownList.selectDropDownListByVisibleText(districtDropDownList, district);
 	}
 	
+	public void enterGeoTag(String geoTag)throws Exception
+	{
+		geoTagTextbox.clear();
+		geoTagTextbox.sendKeys(geoTag);
+		Thread.sleep(3000);
+		geoTagTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+	}
+	
 	public void selectForSector(String sector)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
@@ -148,6 +170,31 @@ public class CandidateRegistrationPage
 	public void selectCandidate_JobRole(String jobRole)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropDownList, jobRole);
+	}
+	
+	public void selectAssociateProgramName(String associateProgram)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(associateProgramNameDropDownList, associateProgram);
+	}
+	
+	public void clickOnUploadProfilePicture()
+	{
+		profliePicture_BrowseFileButton.click();
+	}
+	
+	public void selectCIOType(String cioType)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(cioTypeDropDownList, cioType);
+	}
+	
+	public void selectCIOName(String cioName)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(cioNameDropDownList, cioName);
+	}
+	
+	public void clickOnIAgree()
+	{
+		iAgreeCheckBox.click();
 	}
 	
 	public void clickForSubmit()

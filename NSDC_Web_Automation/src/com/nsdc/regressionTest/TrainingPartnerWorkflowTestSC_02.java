@@ -49,7 +49,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(2000);
         rp.enterEmailOTP(emailOTP);
         rp.enterMobileOTP(mobileOTP);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         rp.clickVerify();
         Thread.sleep(2000);
         
@@ -463,6 +463,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	Thread.sleep(4000);
     	
     	InspectionAgency_DashboardPage ia = new InspectionAgency_DashboardPage(driver);
+    	Thread.sleep(5000);
     	ia.clickOnViewAllAssessmentRequest();
     	InspectionAgency_ViewInspectionPage ia_vp = new InspectionAgency_ViewInspectionPage(driver);
     	Thread.sleep(2000);
