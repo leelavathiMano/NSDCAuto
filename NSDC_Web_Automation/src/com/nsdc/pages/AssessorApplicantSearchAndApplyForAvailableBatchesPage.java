@@ -55,11 +55,17 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
+	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
+	private WebElement applicantDashboardLink;
 	
 	public AssessorApplicantSearchAndApplyForAvailableBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
+	}
+	public void clickToGoToApplicantDashboard()
+	{
+		applicantDashboardLink.click();
 	}
 	public void selectState(String state)
 	{

@@ -76,9 +76,9 @@ public class SSCAllBatchesPage
 	//@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[2]")
 	@FindBy(xpath="(//select)[2]")
 	private WebElement viewDetailsAssignAssessmentAgencyDropdownList;
-	@FindBy(xpath="(//select)[2]")
+	@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[1]")
 	private WebElement assignOnlyMasterTrainerOptionDropdownList;
-	@FindBy(xpath="(//select)[3]")
+	@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[2]")
 	private WebElement assignOnlyAssessmentAgencyOptionDropdownList;
 	@FindBy(xpath="//button[contains(text(),'Back')]")
 	private WebElement backButton;

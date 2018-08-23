@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -174,12 +175,16 @@ public class AssessorRegistrationPage
         SelectDropDownList.selectDropDownListByVisibleText(genderDropDownList, gender);
     }
     
-    public void selectDateOfBirth(String dob) throws Exception
+    public void selectDateOfBirth() throws Exception
     {
-        dobTextBox.clear();
-        dobTextBox.sendKeys(dob);
-        Thread.sleep(2000);
+        //dobTextBox.clear();
+        //dobTextBox.sendKeys(dob);
+    	dobTextBox.click();
+    	Thread.sleep(2000);
+    	driver.findElement(By.xpath("(//div[@class='datepicker-days']/table/tbody/tr/td[text()='1'])[1]")).click();
+    	Thread.sleep(2000);
         calendarButton.click();
+        Thread.sleep(2000);
     }
     
     public void selectAnyKnownLanguage(String language)

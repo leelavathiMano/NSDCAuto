@@ -27,13 +27,14 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
 	public void createTemporaryTraningCentreSC09TC01(String serialNo,String sscUsername, String sscPassword, String tempTcId, String trainingCentreName, String addressLine, String landmark, String pincode, String villageTownCity, String state, String district, String subDistrict, String trainingCentreCapacity, String contactPersonName, String contactPersonEmail, String contactPersonMobileNumber, String singlePointOfContactPersonName, String singlePointOfContactPersonEmail, String singlePointOfContactPersonMobileNumber,String expectedSector,String subSector1,String jobRole1,String subSector2,String jobRole2a,String jobRole2b,String subSector3,String jobRole3a,String jobRole3b,String jobRole3c) throws Exception
 	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
 		Thread.sleep(12000);
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
-		Assert.assertEquals(driver.getCurrentUrl(), configuredURL+"/ssc","Login Unsuccessfull");
+		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","Login Unsuccessfull");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickCreateTemporaryTrainingCentre();
 		Thread.sleep(4000);
@@ -69,49 +70,23 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		Thread.sleep(2000);
 		sscTtCP.enterSinglePointOfContactPersonMobileNumber(singlePointOfContactPersonMobileNumber);
 		Thread.sleep(2000);
-		//adding 3 SubSectors & Job Roles
-		for(int i=0;i<3;i++)
-		{
-			sscTtCP.clickAddSubsectorAndJobRoleButton();
-			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='form-group m-form__group row']/div[3]")).getText(),expectedSector);
-			Thread.sleep(4000);
-			if(i==0)
-			{
-				//Assert.assertTrue(sscTtCP.selectSubSector(subSector1),"this subsector not present");
-				sscTtCP.selectSubSector(subSector1);
-				Thread.sleep(6000);
-				sscTtCP.selectJobRole(jobRole1);
-				sscTtCP.clickAddButton();
-				Thread.sleep(4000);
-			}
-			else if(i==1)
-			{
-				sscTtCP.selectSubSector(subSector2);
-				Thread.sleep(6000);
-				sscTtCP.selectJobRole(jobRole2a);
-				sscTtCP.selectJobRole(jobRole2b);
-				sscTtCP.clickAddButton();
-				Thread.sleep(4000);
-			}
-			else if(i==2)
-			{
-				sscTtCP.selectSubSector(subSector3);
-				Thread.sleep(6000);
-				sscTtCP.selectJobRole(jobRole3a);
-				sscTtCP.selectJobRole(jobRole3b);
-				sscTtCP.selectJobRole(jobRole3c);
-				sscTtCP.clickAddButton();
-				Thread.sleep(4000);
-			}
-
-		 }
+		//adding SubSectors & Job Roles
+		sscTtCP.clickAddSubsectorAndJobRoleButton();
+		Thread.sleep(4000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='form-group m-form__group row']/div[3]")).getText(),expectedSector);
+		Thread.sleep(4000);
+		//Assert.assertTrue(sscTtCP.selectSubSector(subSector1),"this subsector not present");
+		sscTtCP.selectSubSector(subSector1);
+		Thread.sleep(6000);
+		sscTtCP.selectJobRole(jobRole1);
+		sscTtCP.clickAddButton();
+		Thread.sleep(4000);
 		sscTtCP.clickConfirmation();
 		Thread.sleep(2000);
 		sscTtCP.clickCreate();
 		Thread.sleep(4000);
 		//This assertion is based on the difference in url while creating temporary training centre and after successfull creation of temporary training centre
-		Assert.assertEquals(driver.getCurrentUrl(), configuredURL+"/ssc", "TRAINING CENTRE NOT CREATED : Usually becoz of duplicate SPOC Email and Mobile Number, Please check the SSC_Temporary Training Centre Creation Test Data file");
+		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc", "TRAINING CENTRE NOT CREATED : Usually becoz of duplicate SPOC Email and Mobile Number, Please check the SSC_Temporary Training Centre Creation Test Data file");
 		Screenshot.takeScreenshot(driver, "justCreatedTrainingCenterIDsuccessfullPopup");
 		String createdTCID=driver.findElement(By.id("swal2-title")).getText();
 		//getting created TC_ID and Writing into Excel

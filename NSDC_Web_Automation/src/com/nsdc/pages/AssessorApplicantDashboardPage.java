@@ -9,7 +9,7 @@ public class AssessorApplicantDashboardPage
 {
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
-	private WebElement applicantDashboardMenuLink;
+	private WebElement applicantDashboardLink;
 	@FindBy(xpath="//span[contains(text(),'Search for available batches')]")
 	private WebElement searchAndApplyForAvailableBatchesButton;
 	@FindBy(xpath="//span[contains(text(),'View Batches')]")
@@ -22,7 +22,7 @@ public class AssessorApplicantDashboardPage
 	}
 	public void clickToGetApplicantDashboard()
 	{
-		applicantDashboardMenuLink.click();
+		applicantDashboardLink.click();
 	}
 	public void clickSearchAndApplyforAvailableBatches()
 	{
