@@ -25,7 +25,7 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="candidateProfileData")
-	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String parliamentryConstituency, String subDistrict, String villageORCity, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
+	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String subDistrict, String villageORCity, String parliamentryConstituency, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		//lp.clickLogin();
@@ -49,17 +49,35 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		Thread.sleep(3000);
 		crp.selectState_Location(state);
 		crp.selectDistrict_Location(district);
+		crp.enterGeoTag(district);
 		crp.selectForSector(sector);
 		crp.selectForSubSector(subSector);
 		crp.selectCandidate_JobRole(jobRole);
-		Thread.sleep(5000);
-		crp.clickForSubmit();
+		crp.selectAssociateProgramName(associateProgram);
+		if(associateProgram.equals("Counselling"))
+		{
+			crp.clickOnUploadProfilePicture();
+			Thread.sleep(3000);
+			UploadFile.upload(profilePicture);
+			Thread.sleep(3000);
+			crp.selectCIOType(cioType);
+			crp.selectCIOName(cioName);
+			crp.clickOnIAgree();
+			Thread.sleep(5000);
+			crp.clickForSubmit();
+		}
+		else
+		{
+			crp.clickOnIAgree();
+			Thread.sleep(5000);
+			crp.clickForSubmit();
+		}
 		String username = driver.findElement(By.xpath("(//h2/b)[1]")).getText();
 		candidateID = username.replace("Candidate Id - ", "");
-		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 14, candidateID);
+		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 18, candidateID);
 		String password = driver.findElement(By.xpath("(//h2/b)[2]")).getText();
 		passwordID = password.replace("Password - ", "");
-		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 15, passwordID);
+		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 19, passwordID);
 		crp.clickOnOK();
 		
 		EnterLoginPage elp = new EnterLoginPage(driver);
@@ -109,6 +127,13 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 			UploadFile.upload(upload_DisablityFile);
 			Thread.sleep(3000);
 			cpp.clickOnUploadFileForDisblitySupportingDocument();
+			Thread.sleep(5000);
+			cpp.clickOnSaveAndNext();
+		}
+		else 
+		{
+			Thread.sleep(5000);
+			cpp.clickOnSaveAndNext();
 		}
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
@@ -119,9 +144,9 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='pinCode'])[1]")).getAttribute("value"), pincode);
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[1]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[1]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
-		cpp.selectPermanent_ParliamentryConstituency(parliamentryConstituency);
 		cpp.selectPermanent_SubDistrict(subDistrict);
 		cpp.selectPermanent_VillageOrCity(villageORCity);
+		cpp.selectPermanent_ParliamentryConstituency(parliamentryConstituency);
 		cpp.clickOnSameAsPermanentAddressCheckBox();
 		Assert.assertEquals(driver.findElement(By.xpath("(//textarea[@formcontrolname='address1'])[2]")).getAttribute("value"), address);
 		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='pinCode'])[2]")).getAttribute("value"), pincode);
@@ -172,7 +197,7 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		Thread.sleep(3000);
 		//Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='sectorObj']")).getText(), sector);
 		//Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='subSectorObj']")), subSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='jobRole']")).getAttribute("value").substring(3).replace(" ", ""), jobRole.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='jobRole']")).getAttribute("value").substring(3).replace(" ", "").replace(":", ""), jobRole.replace(" ", ""));
 		Thread.sleep(3000);
 		cpp.clickOnAddAnotherPrefrences();
 		cpp.selectSecond_Sector(secondSector);
