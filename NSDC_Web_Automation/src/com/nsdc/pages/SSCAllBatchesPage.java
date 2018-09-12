@@ -37,25 +37,18 @@ public class SSCAllBatchesPage
 	private WebElement assignButton2;
 	@FindBy(xpath="//button[contains(text(),'Yes, assign it!')]")
 	private WebElement assignItButton;
-	//@FindBy(xpath="//button[contains(text(),'Pending')]")
 	@FindBy(linkText="Pending")
 	private WebElement  viewPendingBatchesButton;
-	//@FindBy(xpath="//button[contains(text(),'Rejected')]")
 	@FindBy(linkText="Rejected")
 	private WebElement viewRejectedBatchesButton;
-	//@FindBy(xpath="//button[contains(text(),'Rescheduled')]")
 	@FindBy(linkText="Rescheduled")
 	private WebElement viewRescheduledBatchesButton;
-	//@FindBy(xpath="//button[contains(text(),'Cancelled')]")
 	@FindBy(linkText="Cancelled")
 	private WebElement viewCancelledBatches;
-	//@FindBy(xpath="//button[contains(text(),'Published')]")
 	@FindBy(linkText="Published")
 	private WebElement viewPublisshedBatchesButton;
-	//@FindBy(xpath="//button[contains(text(),'On-going')]")
 	@FindBy(linkText="On-going")
 	private WebElement viewOnGoingBatchesButton;
-	//@FindBy(xpath="//button[contains(text(),'Completed')]")
 	@FindBy(linkText="Completed")
 	private WebElement viewCompletedBatchesButton;
 	@FindBy(xpath="//span[contains(text(),'Re-Assign Training Centre')]")
@@ -70,10 +63,8 @@ public class SSCAllBatchesPage
 	private WebElement assignMasterTrainerOption;
 	@FindBy(xpath="//span[contains(text(),'Assign Assessment Agency')]")
 	private WebElement assignAssessmentAgencyOption;
-	//@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[1]")
 	@FindBy(xpath="(//select)[1]")
 	private WebElement viewDetailsAssignMasterTrainerDropdownList;
-	//@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[2]")
 	@FindBy(xpath="(//select)[2]")
 	private WebElement viewDetailsAssignAssessmentAgencyDropdownList;
 	@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[1]")
@@ -82,9 +73,9 @@ public class SSCAllBatchesPage
 	private WebElement assignOnlyAssessmentAgencyOptionDropdownList;
 	@FindBy(xpath="//button[contains(text(),'Back')]")
 	private WebElement backButton;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
+	@FindBy(xpath="(//button/spans[contains(text(),'Assign')])[1]")
 	private WebElement sedAssignButton1;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
+	@FindBy(xpath="(//button/span[contains(text(),'Assign')])[2]")
 	private WebElement sedAssignButton2;
 	//Verifying Applied Trainer Batch applicants from SSC End after TC Approval
 	@FindBy(xpath="//button[contains(text(),'Enrolled Candidates')]")
@@ -94,27 +85,27 @@ public class SSCAllBatchesPage
 	@FindBy(xpath="//input[@placeholder='Search by keyword']")
 	private WebElement searchForAppliedApplicantTextField;
 	@FindBy(xpath="//button[contains(text(),'erify & Approve')]")
-	private WebElement verifyAndApproveTrainerBatchApplicantButton;
+	private WebElement verifyAndApproveBatchApplicantButton;
 	@FindBy(linkText="Personal Information")
-	private WebElement personalInformationOfTrainerBatchApplicantSectionLink;
+	private WebElement personalInformationOfBatchApplicantSectionLink;
 	@FindBy(partialLinkText="Contact")
-	private WebElement contactAndAddressOfTrainerBatchApplicantSectionLink;
+	private WebElement contactAndAddressOfBatchApplicantSectionLink;
 	@FindBy(linkText="Education & Work")
-	private WebElement educationAndWorkOfTrainerBatchApplicantSectionLink;
+	private WebElement educationAndWorkOfBatchApplicantSectionLink;
 	@FindBy(xpath="(//button[@class='close'])[1]")
-	private WebElement closeTrainerBatchApplicantVerificationPageButton;
+	private WebElement closeBatchApplicantVerificationPageButton;
 	@FindBy(xpath="(//button[text()='Download'])[1]")
 	private WebElement disabilityDocumentDownloadButton;
 	@FindBy(xpath="//button[contains(text(),'Approve Candidate')]")
-	private WebElement approveTrainerBatchApplicantButton;
+	private WebElement approveBatchApplicantButton;
 	@FindBy(xpath="//button[contains(text(),'Reject Candidate')]")
-	private WebElement rejectTrainerBatchApplicantButton;
+	private WebElement rejectBatchApplicantButton;
 	@FindBy(xpath="//textarea[@name='remarks']")
 	private WebElement reasonForRejectingCandidateTextarea;
 	@FindBy(linkText="View Details")
-	private WebElement viewDetailsOfEnrolledTrainerBatchApplicantLink;
+	private WebElement viewDetailsOfEnrolledBatchApplicantLink;
 	@FindBy(xpath="(//button[contains(text(),'Reject Candidate')])[2]")
-	private WebElement rejectingTrainerBatchApplicantFinalButton;
+	private WebElement rejectingBatchApplicantFinalButton;
 	@FindBy(xpath="(//a/span[2])[3]")
 	private WebElement toTtoAtoMTtoMADashboardLink;
 	@FindBy(xpath="//input[@placeholder='Search by keyword']")
@@ -122,8 +113,24 @@ public class SSCAllBatchesPage
 	@FindBy(xpath="//button[contains(text(),'Search')]")
 	private WebElement searchButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
-	private WebElement cancelButton;		
-	
+	private WebElement cancelButton;	
+	@FindBy(xpath="//span[contains(text(),'Re-Assign Master Trainer')]")
+	private WebElement reAssignMasterTrainerActionMenuOption;
+	@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[1]")
+	private WebElement reAssignMasterTrainerDropdownList;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
+	private WebElement reAssignSelectedMasterTrainerButton;
+	@FindBy(xpath="//span[contains(text(),'Re-Assign Assessment Agency')]")
+	private WebElement reAssignAssessmentAgencyActionMenuOption;
+	@FindBy(xpath="(//select[@class='form-control ng-untouched ng-pristine ng-valid'])[2]")
+	private WebElement reAssignAssessmentAgencyDropdownList;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
+	private WebElement reAssignSelectedAssessmentAgencyButton;
+	@FindBy(xpath="(//button/span[contains(text(),'Change')])[1]")
+	private WebElement changeAssignedMasterTrainerButton;
+	@FindBy(xpath="(//button/span[contains(text(),'Change')])[2]")
+	private WebElement changeAssignedAssessmentAgencyButton;
+			
 	public SSCAllBatchesPage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -133,6 +140,10 @@ public class SSCAllBatchesPage
 	{
 		searchByIDTextBox.clear();
 		searchByIDTextBox.sendKeys(batchID);
+	}
+	public void clickToSearch()
+	{
+		searchButton.click();
 	}
 	public void clickToCancel()
 	{
@@ -148,10 +159,6 @@ public class SSCAllBatchesPage
 	{
 		searchForTrainingCentreTextBox.clear();
 		searchForTrainingCentreTextBox.sendKeys(trainingCentreID);
-	}
-	public void clickToSearch()
-	{
-		searchButton.click();
 	}
 	public void clickToViewActionMenuOptions()
 	{
@@ -289,27 +296,27 @@ public class SSCAllBatchesPage
 		searchForAppliedApplicantTextField.clear();
 		searchForAppliedApplicantTextField.sendKeys(batchApplicant);
 	}
-	public void clickToVerifyAndApproveTrainerBatchApplicant()
+	public void clickToVerifyAndApproveBatchApplicant()
 	{
-		verifyAndApproveTrainerBatchApplicantButton.click();
+		verifyAndApproveBatchApplicantButton.click();
 	}
-	public void clickToViewPersonalInformationOfTrainerBatchApplicant()
+	public void clickToViewPersonalInformationOfBatchApplicant()
 	{
-		personalInformationOfTrainerBatchApplicantSectionLink.click();
+		personalInformationOfBatchApplicantSectionLink.click();
 	}
-	public void clickToViewConatctAndAddressOfTrainerBatchApplicant()
+	public void clickToViewConatctAndAddressOfBatchApplicant()
 	{
-		contactAndAddressOfTrainerBatchApplicantSectionLink.click();
+		contactAndAddressOfBatchApplicantSectionLink.click();
 	}
-	public void clickToViewEducationAndWorkOfTrainerBatchApplicant()
+	public void clickToViewEducationAndWorkOfBatchApplicant()
 	{
-		educationAndWorkOfTrainerBatchApplicantSectionLink.click();
+		educationAndWorkOfBatchApplicantSectionLink.click();
 	}
-	public void clickToCloseTrainerBatchApplicantVerificationPage()
+	public void clickToCloseBatchApplicantVerificationPage()
 	{
-		closeTrainerBatchApplicantVerificationPageButton.click();
+		closeBatchApplicantVerificationPageButton.click();
 	}
-	public void clickToViewOrDownloadDisabilityDocumentOfTrainerBatchApplicant() throws InterruptedException
+	public void clickToViewOrDownloadDisabilityDocumentOfBatchApplicant() throws InterruptedException
 	{
 		disabilityDocumentDownloadButton.click();
 		Thread.sleep(2000);
@@ -317,33 +324,33 @@ public class SSCAllBatchesPage
 		act.sendKeys(Keys.CONTROL,"w");
 		Thread.sleep(2000);
 	}
-	public void clickToApproveTrainerBatchApplicant()
+	public void clickToApproveBatchApplicant()
 	{
-		approveTrainerBatchApplicantButton.click();
+		approveBatchApplicantButton.click();
 	}
-	public void clickToRejectTrainerBatchApplicant()
+	public void clickToRejectBatchApplicant()
 	{
-		rejectTrainerBatchApplicantButton.click();
+		rejectBatchApplicantButton.click();
 	}
-	public void enterReasonForRejectingTrainerBatchApplicant(String reasonForRejectingTrainerBatchApplicant)
+	public void enterReasonForRejectingBatchApplicant(String reasonForRejectingTrainerBatchApplicant)
 	{
 		reasonForRejectingCandidateTextarea.clear();
 		reasonForRejectingCandidateTextarea.sendKeys(reasonForRejectingTrainerBatchApplicant);
 	}
-	public void clickToRejectTrainerBatchApplicantFinal()
+	public void clickToRejectBatchApplicantFinal()
 	{
-		rejectingTrainerBatchApplicantFinalButton.click();
+		rejectingBatchApplicantFinalButton.click();
 	}
-	public void clickToViewDetailsOfEnrolledTrainerBatchApplicant()
+	public void clickToViewDetailsOfEnrolledBatchApplicant()
 	{
-		viewDetailsOfEnrolledTrainerBatchApplicantLink.click();
+		viewDetailsOfEnrolledBatchApplicantLink.click();
 	}
-	public void verifyingPersonalInformationOfTrainerBatchApplicant(String name, String gender, String language, String religion, String category, String disability)
+	public void verifyingPersonalInformationOfBatchApplicant(String name, String gender, String dob, String language, String religion, String category, String disability)
 	{
 		//verifying personal information of trainer batch applicant
 		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+name+"')]")).getText().trim(), name);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+gender+"')]")).getText().trim(), gender);
-		//Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+assessorDateOfBirth+"')]")).getText().trim(), assessorDateOfBirth);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+dob+"')]")).getText().trim(), dob);
 		if(language.equalsIgnoreCase("Kannada,English,Hindi"))
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Kannada')]")).getText().replaceAll(" ", "")+driver.findElement(By.xpath("//span[contains(text(),'English')]")).getText().replaceAll(" ", "")+driver.findElement(By.xpath("//span[contains(text(),'Hindi')]")).getText().replaceAll(" ", ""), language);
@@ -368,7 +375,7 @@ public class SSCAllBatchesPage
 		}
 		
 	}
-	public void verifyingConatctAndAddressOfTrainerBatchApplicant(String mobile, String email, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency)
+	public void verifyingConatctAndAddressOfBatchApplicant(String mobile, String email, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency)
 	{
 		
 		//verifying Contact and Address of trainer batch applicant
@@ -382,7 +389,7 @@ public class SSCAllBatchesPage
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Tehsil/ Mandal:')]]/div")).getText().trim(), mandal);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Parliamentary Constituency:')]]/div")).getText().trim(), parliamentaryConstituency);
 	}
-	public void verifyingEducationAndWorkOfTrainerBatchApplicant(String education1, String edu_details1, String education2, String edu_details2, String education3, String industrial_sector1, String industrialExperienceDetails1, String industrial_years1, String industrial_months1, String industrial_sector2, String industrialExperienceDetails2, String industrial_years2, String industrial_months2, String training_sector1, String trainingExperienceDetails1, String trainingExperienceYears1, String trainingExperienceMonths1, String training_sector2, String trainingExperienceDetails2, String trainingExperienceYears2, String trainingExperienceMonths2)
+	public void verifyingEducationAndWorkOfBatchApplicant(String education1, String edu_details1, String education2, String edu_details2, String education3, String industrial_sector1, String industrialExperienceDetails1, String industrial_years1, String industrial_months1, String industrial_sector2, String industrialExperienceDetails2, String industrial_years2, String industrial_months2, String training_sector1, String trainingExperienceDetails1, String trainingExperienceYears1, String trainingExperienceMonths1, String training_sector2, String trainingExperienceDetails2, String trainingExperienceYears2, String trainingExperienceMonths2)
 	{
 		//verifying Education and Work Details of Trainer batch applicant
 		
@@ -431,6 +438,38 @@ public class SSCAllBatchesPage
 	public void clickToGoTotoTtoAtoMTtoMADashboard()
 	{
 		toTtoAtoMTtoMADashboardLink.click();
+	}
+	public void clickToChooseReAssignMasterTrainerOption()
+	{
+		reAssignMasterTrainerActionMenuOption.click();
+	}
+	public void selectReAssignMasterTrainer(String masterTrainer)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(reAssignMasterTrainerDropdownList, masterTrainer);
+	}
+	public void clickToReassignSelectedMasterTrainer()
+	{
+		reAssignSelectedMasterTrainerButton.click();
+	}
+	public void clickToChooseReAssignAssessmentAgencyOption()
+	{
+		reAssignAssessmentAgencyActionMenuOption.click();
+	}
+	public void selectReAssignAssignAssessmentAgency(String assessmentAgency)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(reAssignAssessmentAgencyDropdownList, assessmentAgency);
+	}
+	public void clickToReassignSelectedAssignAssessmentAgency()
+	{
+		reAssignSelectedAssessmentAgencyButton.click();
+	}
+	public void clickToChangeAssignedMasterTrainer()
+	{
+		changeAssignedMasterTrainerButton.click();
+	}
+	public void clickToChangeAssignedAssessmentAgency()
+	{
+		changeAssignedAssessmentAgencyButton.click();
 	}
 }	
 	

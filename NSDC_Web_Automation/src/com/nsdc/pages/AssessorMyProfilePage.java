@@ -5,12 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.SelectDropDownList;
+
 public class AssessorMyProfilePage
 {
 	WebDriver driver;
 	
 	@FindBy(xpath="(//a[@class='m-menu__link m-menu__toggle'])[3]")
-	//@FindBy(linkText="My Profile ")
 	private WebElement myProfileLink;
 	@FindBy(xpath="//span[@class='m-card-profile__name']")
 	private WebElement profileNameText;
@@ -36,15 +37,17 @@ public class AssessorMyProfilePage
 	private WebElement categoryTextBox;
 	@FindBy(xpath="//div[label[contains(text(),'Disability (If Any):')]]/div/input")
 	private WebElement disabiltyIfAnyTextBox;
-	@FindBy(xpath="//div[label[contains(text(),'AADHAAR Number:')]]/div/label")
+	@FindBy(xpath="//div[label[contains(text(),'aadhar')]]/div/label")
 	private WebElement aadharNumberVerificationStatusText;
+	@FindBy(xpath="//div[label[contains(text(),'PAN')]]/div/label")
+	private WebElement panNumberVerificationStatusText;
 	@FindBy(xpath="(//input[@id='customFile'])[1]")
 	private WebElement browseFilebutton1;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement uploadButton1;
 	@FindBy(xpath="//div[label[contains(text(),'Select Applicant Category:')]]/div/select")
 	private WebElement applicantCategoryMultiSelectDropdown;
-	@FindBy(xpath="(//button[contains(text(),'v')])[1]")
+	@FindBy(xpath="(//button[contains(text(),'Save changes')])[1]")
 	private WebElement saveChangesButton1;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[1]")
 	private WebElement cancelButton1;
@@ -68,83 +71,79 @@ public class AssessorMyProfilePage
 	private WebElement parlimentoryConstituencyTextBox;
 	//Education
 	@FindBy(xpath="(//button[contains(text(),'Add')])[1]")
-	private WebElement addButton1;
-	@FindBy(xpath="(//table)[1]/tbody/tr/td[2]")
-	private WebElement educationAttainedType1TableElement;
-	@FindBy(xpath="(//table)[1]/tbody/tr/td[3]")
-	private WebElement detailsOfEducation1TableElement;
-	@FindBy(xpath="(//table)[1]/tbody/tr/td[4]")
-	private WebElement educationProofDocument1TableElement;
-	@FindBy(xpath="(//i[@title='remove'])[1]")
-	private WebElement removeIcon1;
-	//Education 2nd record
-	@FindBy(xpath="(//table)[1]/tbody/tr[2]/td[2]")
-	private WebElement educationAttainedType2TableElement;
-	@FindBy(xpath="(//table)[1]/tbody/tr[2]/td[3]")
-	private WebElement detailsOfEducation2TableElement;
-	@FindBy(xpath="(//table)[1]/tbody/tr[2]/td[4]")
-	private WebElement educationProofDocument2TableElement;
-	@FindBy(xpath="(//i[@title='remove'])[2]")
-	private WebElement removeIcon2;
-	//Industrial
+	private WebElement addEducationDetailsButton;
+	@FindBy(xpath="//select[@formcontrolname='education']")
+	private WebElement educationAttainedDropdownList;	
+	@FindBy(xpath="(//input[@formcontrolname='details'])[1]")
+	private WebElement	detailsOfEducationTextfield;	
+	@FindBy(xpath="(//input[@id='customFile'])[3]")
+	private WebElement educationProofDocBrowseButton;	
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
+	private WebElement educationProofDocUploadButton;
+	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
+	private WebElement educationDetailsSaveAndSubmitButton;
+	@FindBy(xpath="(//button[contains(text(),'Close')])[1]")
+	private WebElement educationDetailsCloseButton;
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[3]")
+	private WebElement deleteAddedThirdEducationDetailsButton;
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[1]")
+	private WebElement deleteAddedFirstEducationDetailsButton;
+	//Industrial Experience Details Record
 	@FindBy(xpath="(//button[contains(text(),'Add')])[2]")
-	private WebElement addButton2;
-	@FindBy(xpath="(//table)[2]/tbody/tr/td[2]")
-	private WebElement industrialRelevantSector1TableElement;
-	@FindBy(xpath="(//table)[2]/tbody/tr/td[3]")
-	private WebElement detailsOfIndustrialExperience1TableElement;
-	@FindBy(xpath="(//table)[2]/tbody/tr/td[4]")
-	private WebElement totalIndustrialExperience1TableElement;
-	@FindBy(xpath="(//table)[2]/tbody/tr/td[5]")
-	private WebElement industrialProofDocument1TableElement;
-	@FindBy(xpath="(//i[@title='remove'])[2]")
-	private WebElement removeIcon3;
-	//industrial records 2
-	@FindBy(xpath="(//table)[2]/tbody/tr[2]/td[2]")
-	private WebElement industrialRelevantSector2TableElement;
-	@FindBy(xpath="(//table)[2]/tbody/tr[2]/td[3]")
-	private WebElement detailsOfIndustrialExperience2TableElement;
-	@FindBy(xpath="(//table)[2]/tbody/tr[2]/td[4]")
-	private WebElement totalIndustrialExperience2TableElement;
-	@FindBy(xpath="(//table)[2]/tbody/tr[2]/td[5]")
-	private WebElement industrialProofDocument2TableElement;
-	@FindBy(xpath="(//i[@title='remove'])[2]")
-	private WebElement removeIcon4;
-	//Training
+	private WebElement addIndustrilExperienceDetailsButton;
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[1]")
+	private WebElement indutrySectorDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='years'])[1]")
+	private WebElement industryYearsDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='months'])[1]")
+	private WebElement indutryMonthsDropdownList;
+	@FindBy(xpath="(//input[@formcontrolname='details'])[2]")
+	private WebElement industryExperienceDetailsTextfield;
+	@FindBy(xpath="(//input[@id='customFile'])[4]")
+	private WebElement industrialExperienceProofDocBrowseButton;	
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
+	private WebElement industrialExperienceProofDocUploadButton;
+	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[2]")
+	private WebElement industrialExperienceDetailsSaveAndSubmitButton;
+	@FindBy(xpath="(//button[contains(text(),'Close')])[2]")
+	private WebElement industrialExperienceDetailsCloseButton;
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[3]")
+	private WebElement deleteAddedThirdtIndustrialExperienceRecordInCaseOfUneducatedButton;
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[5]")
+	private WebElement deleteAddedThirdIndustrialExperienceDetailsButton;
+	//Training Details Record
 	@FindBy(xpath="(//button[contains(text(),'Add')])[3]")
-	private WebElement addButton3;
-	@FindBy(xpath="(//table)[3]/tbody/tr/td[2]")
-	private WebElement trainingRelevantSector1TableElement;
-	@FindBy(xpath="(//table)[3]/tbody/tr/td[3]")
-	private WebElement detailsOfTrainingExperience1TableElement;
-	@FindBy(xpath="(//table)[3]/tbody/tr/td[4]")
-	private WebElement totalTrainingExperience1TableElement;
-	@FindBy(xpath="(//table)[3]/tbody/tr/td[5]")
-	private WebElement trainingProofDocument1TableElement;
-	@FindBy(xpath="(//i[@title='remove'])[3]")
-	private WebElement removeIcon5;
-	//training record 2
-	@FindBy(xpath="(//table)[3]/tbody/tr[2]/td[2]")
-	private WebElement trainingRelevantSector2TableElement;
-	@FindBy(xpath="(//table)[3]/tbody/tr[2]/td[3]")
-	private WebElement detailsOfTrainingExperience2TableElement;
-	@FindBy(xpath="(//table)[3]/tbody/tr[2]/td[4]")
-	private WebElement totalTrainingExperience2TableElement;
-	@FindBy(xpath="(//table)[3]/tbody/tr[2]/td[5]")
-	private WebElement trainingProofDocument2TableElement;
-	@FindBy(xpath="(//i[@title='remove'])[3]")
-	private WebElement removeIcon6;
+	private WebElement addTrainingExperienceDetailsButton;
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[2]")
+	private WebElement trainingSectorDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='years'])[2]")
+	private WebElement trainingYearsDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='months'])[2]")
+	private WebElement trainingMonthsDropdownList;
+	@FindBy(xpath="(//input[@formcontrolname='details'])[3]")
+	private WebElement trainingExperienceDetailsTextfield;
+	@FindBy(xpath="(//input[@id='customFile'])[5]")
+	private WebElement trainingExperienceProofDocBrowseButton;	
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+	private WebElement trainingExperienceProofDocUploadButton;
+	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[3]")
+	private WebElement trainingExperienceDetailsSaveAndSubmitButton;
+	@FindBy(xpath="(//button[contains(text(),'Close')])[3]")
+	private WebElement trainingExperienceDetailsCloseButton;
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[7]")
+	private WebElement deleteAddedThirdTrainingExperienceDetailsButton;
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[5]")
+	private WebElement deleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducatedButton;
 	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement curriculumVitaeBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
 	private WebElement curriculumVitaeUploadButton;
-	@FindBy(xpath="(//button[contains(text(),'v')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Save changes')])[2]")
 	private WebElement saveChangesButton2;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
 	private WebElement cancelButton2;
 	@FindBy(xpath="//button[text()='Search & Apply']")
 	private WebElement searchAndAppluButton;
-	
 	
 	public AssessorMyProfilePage(WebDriver driver)
 	{
@@ -182,6 +181,10 @@ public class AssessorMyProfilePage
 	public String getAadharNumVerificationStatus()
 	{
 		return aadharNumberVerificationStatusText.getText();
+	}
+	public String getPanNumVerificationStatus()
+	{
+		return panNumberVerificationStatusText.getText();
 	}
 	public void clickBrowseFile()
 	{
@@ -241,99 +244,6 @@ public class AssessorMyProfilePage
 	{
 		educationAndWorkLink.click();
 	}
-	public String getEducationAttainedType1()
-	{
-		return educationAttainedType1TableElement.getText();
-	}
-	public String getDetailsOfEducation1()
-	{
-		return detailsOfEducation1TableElement.getText();
-	}
-	public String getEducationProofDocument1Presence()
-	{
-		return educationProofDocument1TableElement.getText();
-	}
-	//education record 2
-	public String getEducationAttainedType2()
-	{
-		return educationAttainedType2TableElement.getText();
-	}
-	public String getDetailsOfEducation2()
-	{
-		return detailsOfEducation2TableElement.getText();
-	}
-	public String getEducationProofDocument2Presence()
-	{
-		return educationProofDocument2TableElement.getText();
-	}
-	
-	public String getIndustrialRelaventSector1()
-	{
-		return industrialRelevantSector1TableElement.getText();
-	}
-	public String getIndustrialExperienceDetails1()
-	{
-		return detailsOfIndustrialExperience1TableElement.getText();
-	}
-	public String getTotalIndustrialExperience1()
-	{
-		return totalIndustrialExperience1TableElement.getText();
-	}
-	public String getIndustrialExperienceProofDoc1Presence()
-	{
-		return industrialProofDocument1TableElement.getText();
-	}
-	
-	//industrial record 2
-	public String getIndustrialRelaventSector2()
-	{
-		return industrialRelevantSector2TableElement.getText();
-	}
-	public String getIndustrialExperienceDetails2()
-	{
-		return detailsOfIndustrialExperience2TableElement.getText();
-	}
-	public String getTotalIndustrialExperience2()
-	{
-		return totalIndustrialExperience2TableElement.getText();
-	}
-	public String getIndustrialExperienceProofDoc2Presence()
-	{
-		return industrialProofDocument1TableElement.getText();
-	}
-	public String getTrainingRelaventSector1()
-	{
-		return trainingRelevantSector1TableElement.getText();
-	}
-	public String getTrainingExperienceDetails1()
-	{
-		return detailsOfTrainingExperience1TableElement.getText();
-	}
-	public String getTotalTrainingExperience1()
-	{
-		return totalTrainingExperience1TableElement.getText();
-	}
-	public String getTrainingProofDoc1Presence()
-	{
-		return trainingProofDocument1TableElement.getText();
-	}
-	//training record 2
-	public String getTrainingRelaventSector2()
-	{
-		return trainingRelevantSector2TableElement.getText();
-	}
-	public String getTrainingExperienceDetails2()
-	{
-		return detailsOfTrainingExperience2TableElement.getText();
-	}
-	public String getTotalTrainingExperience2()
-	{
-		return totalTrainingExperience2TableElement.getText();
-	}
-	public String getTrainingProofDoc2Presence()
-	{
-		return trainingProofDocument2TableElement.getText();
-	}
 	public void clickCurriculumVitaeBrowse()
 	{
 		curriculumVitaeBrowseButton.click();
@@ -350,5 +260,131 @@ public class AssessorMyProfilePage
 	{
 		myAssociationsLink.click();
 	}
-	
+	public void clickToAddEducationDetails()
+	{
+		addEducationDetailsButton.click();
+	}
+	public void selectEducationAttained(String educationAttained)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(educationAttainedDropdownList, educationAttained);
+	}
+	public void enterDetailsOfEducation(String attainedEducationDetails)
+	{
+		detailsOfEducationTextfield.clear();
+		detailsOfEducationTextfield.sendKeys(attainedEducationDetails);
+	}
+	public void clickToBrowseForEducationProofDocument()
+	{
+		educationProofDocBrowseButton.click();
+	}
+	public void clickToUploadSelectedEducationProofDoc()
+	{
+		educationProofDocUploadButton.click();
+	}
+	public void clickToSubmitEducationDetails()
+	{
+		educationDetailsSaveAndSubmitButton.click();
+	}
+	public void clickToCloseAddEducationDetailsForm()
+	{
+		educationDetailsCloseButton.click();
+	}
+	public void clickToDeleteThirdEducationDetailsRecord()
+	{
+		deleteAddedThirdEducationDetailsButton.click();
+	}
+	public void clickToDeleteAddedFirstEducationDetailsRecord()
+	{
+		deleteAddedFirstEducationDetailsButton.click();
+	}
+	public void clickToAddIndustrialExperienceDetails()
+	{
+		addIndustrilExperienceDetailsButton.click();
+	}
+	public void selectIndustrialSector()
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(indutrySectorDropdownList, "Apparel");
+	}
+	public void selectIndustrialYears()
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(industryYearsDropdownList, "0");
+	}
+	public void selectIndustrialMonths()
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(indutryMonthsDropdownList, "11");
+	}
+	public void enterDetailsOfIndustrialExperience()
+	{
+		industryExperienceDetailsTextfield.clear();
+		industryExperienceDetailsTextfield.sendKeys("Industrial Experience in Apparel Sector");
+	}
+	public void clickToBrowseForIndustrilExperienceProofDocument()
+	{
+		industrialExperienceProofDocBrowseButton.click();
+	}
+	public void clickToUploadSelectedIndustrialExperienceProofDoc()
+	{
+		industrialExperienceProofDocUploadButton.click();
+	}
+	public void clickToSubmitIndustrialExperienceDetails()
+	{
+		industrialExperienceDetailsSaveAndSubmitButton.click();
+	}
+	public void clickToCloseAddIndustrialExperienceDetailsForm()
+	{
+		industrialExperienceDetailsCloseButton.click();
+	}
+	public void clickToDeleteThirdIndustrialExperienceDetailsRecord()
+	{
+		deleteAddedThirdIndustrialExperienceDetailsButton.click();
+	}
+	public void clickToDeleteAddedThirdIndustrialExperienceDetailsRecordInCaseOfUneducated()
+	{
+		deleteAddedThirdtIndustrialExperienceRecordInCaseOfUneducatedButton.click();
+	}
+	public void clickToAddTrainingExperienceDetails()
+	{
+		addTrainingExperienceDetailsButton.click();
+	}
+	public void selectTrainingSector()
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(trainingSectorDropdownList, "Apparel");
+	}
+	public void selectTrainingYears()
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(trainingYearsDropdownList, "0");
+	}
+	public void selectTrainingMonths()
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(trainingMonthsDropdownList, "11");
+	}
+	public void enterDetailsOfTrainingExperience()
+	{
+		trainingExperienceDetailsTextfield.clear();
+		trainingExperienceDetailsTextfield.sendKeys("Training Experience in Apparel Sector");
+	}
+	public void clickToBrowseForTrainingExperienceProofDocument()
+	{
+		trainingExperienceProofDocBrowseButton.click();
+	}
+	public void clickToUploadSelectedTrainingExperienceProofDoc()
+	{
+		trainingExperienceProofDocUploadButton.click();
+	}
+	public void clickToSubmitTrainingExperienceDetails()
+	{
+		trainingExperienceDetailsSaveAndSubmitButton.click();
+	}
+	public void clickToCloseAddTrainingExperienceDetailsForm()
+	{
+		trainingExperienceDetailsCloseButton.click();
+	}
+	public void clickToDeleteThirdTrainingExperienceDetailsRecord()
+	{
+		deleteAddedThirdTrainingExperienceDetailsButton.click();
+	}
+	public void clickToDeleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducated()
+	{
+		deleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducatedButton.click();
+	}
 }

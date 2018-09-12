@@ -12,20 +12,20 @@ import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.SSC_DashboardPage;
-import com.nsdc.pages.SSC_TemporaryTraningCentrePage;
+import com.nsdc.pages.SSC_LocationBasedTraningCentreCreationPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
+public class SSC_LocationBasedTrainingCentreCreationWorkflowSC_09 extends TestConfiguration
 {
 	
 	@DataProvider
 	public Object[][] sscTemporaryTrainingCentreCreationData()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","SSC_TemporaryTrainingCentreCreationSC09TC01");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC_LocationBasedTrainingCentreCreation-Workflow.xls","LocationBasedTC-Creation");
 	}
 	
 	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
-	public void createTemporaryTraningCentreSC09TC01(String serialNo,String sscUsername, String sscPassword, String tempTcId, String trainingCentreName, String addressLine, String landmark, String pincode, String villageTownCity, String state, String district, String subDistrict, String trainingCentreCapacity, String contactPersonName, String contactPersonEmail, String contactPersonMobileNumber, String singlePointOfContactPersonName, String singlePointOfContactPersonEmail, String singlePointOfContactPersonMobileNumber,String expectedSector,String subSector1,String jobRole1,String subSector2,String jobRole2a,String jobRole2b,String subSector3,String jobRole3a,String jobRole3b,String jobRole3c) throws Exception
+	public void createTemporaryTraningCentreTC_01(String serialNo,String sscUsername, String sscPassword, String tempTcId, String trainingCentreName, String addressLine, String landmark, String pincode, String villageTownCity, String state, String district, String subDistrict, String trainingCentreCapacity, String contactPersonName, String contactPersonEmail, String contactPersonMobileNumber, String singlePointOfContactPersonName, String singlePointOfContactPersonEmail, String singlePointOfContactPersonMobileNumber,String expectedSector,String subSector1,String jobRole1,String subSector2,String jobRole2a,String jobRole2b,String subSector3,String jobRole3a,String jobRole3b,String jobRole3c) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -38,7 +38,7 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickCreateTemporaryTrainingCentre();
 		Thread.sleep(4000);
-		SSC_TemporaryTraningCentrePage sscTtCP=new SSC_TemporaryTraningCentrePage(driver);
+		SSC_LocationBasedTraningCentreCreationPage sscTtCP=new SSC_LocationBasedTraningCentreCreationPage(driver);
 		sscTtCP.enterTrainingCentreNameTextBox(trainingCentreName);
 		Thread.sleep(2000);
 		sscTtCP.enterAdressLine(addressLine);
@@ -75,7 +75,6 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='form-group m-form__group row']/div[3]")).getText(),expectedSector);
 		Thread.sleep(4000);
-		//Assert.assertTrue(sscTtCP.selectSubSector(subSector1),"this subsector not present");
 		sscTtCP.selectSubSector(subSector1);
 		Thread.sleep(6000);
 		sscTtCP.selectJobRole(jobRole1);
@@ -85,16 +84,16 @@ public class SSC_TemporaryTrainingCentreCreationSC_09 extends TestConfiguration
 		Thread.sleep(2000);
 		sscTtCP.clickCreate();
 		Thread.sleep(4000);
+		Assert.assertTrue(driver.findElements(By.xpath("//div[@id='toast-container']/div/div")).size()==0, "OMG!!! Toast Message Present, May be because of Duplicate Email or Mobile!!! ");
 		//This assertion is based on the difference in url while creating temporary training centre and after successfull creation of temporary training centre
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc", "TRAINING CENTRE NOT CREATED : Usually becoz of duplicate SPOC Email and Mobile Number, Please check the SSC_Temporary Training Centre Creation Test Data file");
+		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc", "TRAINING CENTRE NOT CREATED : May be something went wrong!!! ");
 		Screenshot.takeScreenshot(driver, "justCreatedTrainingCenterIDsuccessfullPopup");
 		String createdTCID=driver.findElement(By.id("swal2-title")).getText();
 		//getting created TC_ID and Writing into Excel
 		String[] parts=createdTCID.split(" ");
 		String trainingCentreID=parts[parts.length-1];
 		int sNum=Integer.parseInt(serialNo);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC_TemporaryTrainingCentreCreationData.xls","SSC_TemporaryTrainingCentreCreationSC09TC01",sNum,3, trainingCentreID);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-LocationBasedTC-TrainingBatchCreationWorkflowData.xls","LocationBasedTC-BatchRejectionSC10TC03",1,11, trainingCentreID);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC_LocationBasedTrainingCentreCreation-Workflow.xls","LocationBasedTC-Creation",sNum,3, trainingCentreID);
 		Thread.sleep(6000);
 		sscTtCP.clickOk();
 		Thread.sleep(6000);

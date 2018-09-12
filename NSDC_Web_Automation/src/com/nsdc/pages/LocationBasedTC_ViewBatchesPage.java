@@ -9,10 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import com.sun.corba.se.spi.orbutil.fsm.Action;
-
-import sun.swing.SwingAccessor.KeyStrokeAccessor;
-
 public class LocationBasedTC_ViewBatchesPage
 {
 	WebDriver driver;
@@ -61,25 +57,25 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement verifyAndApproveTrainerBatchApplicantButton;
 	//trainer batch applicant verification page elements
 	@FindBy(linkText="Personal Information")
-	private WebElement personalInformationOfTrainerBatchApplicantSectionLink;
+	private WebElement personalInformationOfBatchApplicantSectionLink;
 	@FindBy(partialLinkText="Contact")
-	private WebElement contactAndAddressOfTrainerBatchApplicantSectionLink;
+	private WebElement contactAndAddressOfBatchApplicantSectionLink;
 	@FindBy(linkText="Education & Work")
-	private WebElement educationAndWorkOfTrainerBatchApplicantSectionLink;
+	private WebElement educationAndWorkOfBatchApplicantSectionLink;
 	@FindBy(xpath="(//button[@class='close'])[1]")
-	private WebElement closeTrainerBatchApplicantVerificationPageButton;
+	private WebElement closeBatchApplicantVerificationPageButton;
 	@FindBy(xpath="(//button[text()='Download'])[1]")
 	private WebElement disabilityDocumentDownloadButton;
 	@FindBy(xpath="//button[contains(text(),'Approve Candidate')]")
-	private WebElement approveTrainerBatchApplicantButton;
+	private WebElement approveBatchApplicantButton;
 	@FindBy(xpath="//button[contains(text(),'Reject Candidate')]")
-	private WebElement rejectTrainerBatchApplicantButton;
+	private WebElement rejectBatchApplicantButton;
 	@FindBy(xpath="//textarea[@name='remarks']")
 	private WebElement reasonForRejectingCandidateTextarea;
 	@FindBy(linkText="View Details")
-	private WebElement viewDetailsOfEnrolledTrainerBatchApplicantLink;
+	private WebElement viewDetailsOfEnrolledBatchApplicantLink;
 	@FindBy(xpath="(//button[contains(text(),'Reject Candidate')])[2]")
-	private WebElement rejectingTrainerBatchApplicantFinalButton;
+	private WebElement rejectingBatchApplicantFinalButton;
 			
 	public LocationBasedTC_ViewBatchesPage(WebDriver driver)
 	{
@@ -158,27 +154,27 @@ public class LocationBasedTC_ViewBatchesPage
 		searchForAppliedApplicantTextField.clear();
 		searchForAppliedApplicantTextField.sendKeys(batchApplicant);
 	}
-	public void clickToVerifyAndApproveTrainerBatchApplicant()
+	public void clickToVerifyAndApproveBatchApplicant()
 	{
 		verifyAndApproveTrainerBatchApplicantButton.click();
 	}
-	public void clickToViewPersonalInformationOfTrainerBatchApplicant()
+	public void clickToViewPersonalInformationOfBatchApplicant()
 	{
-		personalInformationOfTrainerBatchApplicantSectionLink.click();
+		personalInformationOfBatchApplicantSectionLink.click();
 	}
-	public void clickToViewConatctAndAddressOfTrainerBatchApplicant()
+	public void clickToViewConatctAndAddressOfBatchApplicant()
 	{
-		contactAndAddressOfTrainerBatchApplicantSectionLink.click();
+		contactAndAddressOfBatchApplicantSectionLink.click();
 	}
-	public void clickToViewEducationAndWorkOfTrainerBatchApplicant()
+	public void clickToViewEducationAndWorkOfBatchApplicant()
 	{
-		educationAndWorkOfTrainerBatchApplicantSectionLink.click();
+		educationAndWorkOfBatchApplicantSectionLink.click();
 	}
-	public void clickToCloseTrainerBatchApplicantVerificationPage()
+	public void clickToCloseBatchApplicantVerificationPage()
 	{
-		closeTrainerBatchApplicantVerificationPageButton.click();
+		closeBatchApplicantVerificationPageButton.click();
 	}
-	public void clickToViewOrDownloadDisabilityDocumentOfTrainerBatchApplicant() throws InterruptedException
+	public void clickToViewOrDownloadDisabilityDocumentOfBatchApplicant() throws InterruptedException
 	{
 		disabilityDocumentDownloadButton.click();
 		Thread.sleep(2000);
@@ -186,33 +182,33 @@ public class LocationBasedTC_ViewBatchesPage
 		act.sendKeys(Keys.CONTROL,"w");
 		Thread.sleep(2000);
 	}
-	public void clickToApproveTrainerBatchApplicant()
+	public void clickToApproveBatchApplicant()
 	{
-		approveTrainerBatchApplicantButton.click();
+		approveBatchApplicantButton.click();
 	}
-	public void clickToRejectTrainerBatchApplicant()
+	public void clickToRejectBatchApplicant()
 	{
-		rejectTrainerBatchApplicantButton.click();
+		rejectBatchApplicantButton.click();
 	}
-	public void enterReasonForRejectingTrainerBatchApplicant(String reasonForRejectingTrainerBatchApplicant)
+	public void enterReasonForRejectingBatchApplicant(String reasonForRejectingTrainerBatchApplicant)
 	{
 		reasonForRejectingCandidateTextarea.clear();
 		reasonForRejectingCandidateTextarea.sendKeys(reasonForRejectingTrainerBatchApplicant);
 	}
-	public void clickToRejectTrainerBatchApplicantFinal()
+	public void clickToRejectBatchApplicantFinal()
 	{
-		rejectingTrainerBatchApplicantFinalButton.click();
+		rejectingBatchApplicantFinalButton.click();
 	}
-	public void clickToViewDetailsOfEnrolledTrainerBatchApplicant()
+	public void clickToViewDetailsOfEnrolledBatchApplicant()
 	{
-		viewDetailsOfEnrolledTrainerBatchApplicantLink.click();
+		viewDetailsOfEnrolledBatchApplicantLink.click();
 	}
-	public void verifyingPersonalInformationOfTrainerBatchApplicant(String name, String gender, String language, String religion, String category, String disability)
+	public void verifyingPersonalInformationOfBatchApplicant(String name, String gender, String dob, String language, String religion, String category, String disability)
 	{
 		//verifying personal information of trainer batch applicant
 		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+name+"')]")).getText().trim(), name);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+gender+"')]")).getText().trim(), gender);
-		//Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+assessorDateOfBirth+"')]")).getText().trim(), assessorDateOfBirth);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'"+dob+"')]")).getText().trim(), dob);
 		if(language.equalsIgnoreCase("Kannada,English,Hindi"))
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Kannada')]")).getText().replaceAll(" ", "")+driver.findElement(By.xpath("//span[contains(text(),'English')]")).getText().replaceAll(" ", "")+driver.findElement(By.xpath("//span[contains(text(),'Hindi')]")).getText().replaceAll(" ", ""), language);
@@ -237,7 +233,7 @@ public class LocationBasedTC_ViewBatchesPage
 		}
 		
 	}
-	public void verifyingConatctAndAddressOfTrainerBatchApplicant(String mobile, String email, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency)
+	public void verifyingConatctAndAddressOfBatchApplicant(String mobile, String email, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency)
 	{
 		
 		//verifying Contact and Address of trainer batch applicant
@@ -251,7 +247,7 @@ public class LocationBasedTC_ViewBatchesPage
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Tehsil/ Mandal:')]]/div")).getText().trim(), mandal);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Parliamentary Constituency:')]]/div")).getText().trim(), parliamentaryConstituency);
 	}
-	public void verifyingEducationAndWorkOfTrainerBatchApplicant(String education1, String edu_details1, String education2, String edu_details2, String education3, String industrial_sector1, String industrialExperienceDetails1, String industrial_years1, String industrial_months1, String industrial_sector2, String industrialExperienceDetails2, String industrial_years2, String industrial_months2, String training_sector1, String trainingExperienceDetails1, String trainingExperienceYears1, String trainingExperienceMonths1, String training_sector2, String trainingExperienceDetails2, String trainingExperienceYears2, String trainingExperienceMonths2)
+	public void verifyingEducationAndWorkOfBatchApplicant(String education1, String edu_details1, String education2, String edu_details2, String education3, String industrial_sector1, String industrialExperienceDetails1, String industrial_years1, String industrial_months1, String industrial_sector2, String industrialExperienceDetails2, String industrial_years2, String industrial_months2, String training_sector1, String trainingExperienceDetails1, String trainingExperienceYears1, String trainingExperienceMonths1, String training_sector2, String trainingExperienceDetails2, String trainingExperienceYears2, String trainingExperienceMonths2)
 	{
 		//verifying Education and Work Details of Trainer batch applicant
 		
