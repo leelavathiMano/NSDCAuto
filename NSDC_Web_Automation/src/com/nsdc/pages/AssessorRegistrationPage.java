@@ -100,7 +100,8 @@ public class AssessorRegistrationPage
     private WebElement industrialExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Industrial Experience')]]/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement industrialExperienceProofDocument_uploadButton;
-    @FindBy(xpath="//button[text()='Add Industrial Experience Details']")
+    //@FindBy(xpath="//button[text()='Add Industrial Experience Details']")
+    @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddIndustrialExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[3]")
     private WebElement deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton;
@@ -119,7 +120,8 @@ public class AssessorRegistrationPage
     private WebElement trainingExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Training Experience')]]/div/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement trainingExperienceProofDocument_uploadButton;
-    @FindBy(xpath="//button[text()='Add Training Experience Details']")
+    //@FindBy(xpath="//button[text()='Add Training Experience Details']")
+    @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddTrainingExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[5]")
     private WebElement deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton;

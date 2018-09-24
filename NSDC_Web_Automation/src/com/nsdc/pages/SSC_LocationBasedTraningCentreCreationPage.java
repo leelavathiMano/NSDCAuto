@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.nsdc.generic.SelectDropDownList;
 
-public class SSC_TemporaryTraningCentrePage
+public class SSC_LocationBasedTraningCentreCreationPage
 {
 	WebDriver driver;
 	@FindBy(xpath="//input[@formcontrolname='trainingCentreName']")
@@ -51,7 +51,6 @@ public class SSC_TemporaryTraningCentrePage
 	private WebElement addButton;
 	//added sector and job role delete button
 	
-
 	@FindBy(xpath="//div[label[input[@formcontrolname='confirmation']]]")
 	private WebElement confirmationCheckBox;
 	@FindBy(xpath="//button[contains(text(),'Create')]")
@@ -63,7 +62,7 @@ public class SSC_TemporaryTraningCentrePage
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
 	
-	public SSC_TemporaryTraningCentrePage(WebDriver driver)
+	public SSC_LocationBasedTraningCentreCreationPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver,this);

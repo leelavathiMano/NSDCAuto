@@ -52,10 +52,8 @@ public class TrainerRegistrationPage
     private WebElement uploadYourPhoto_uploadButton;
     @FindBy(xpath="//select[@formcontrolname='applicantCategory']")
     private WebElement multiSelectDropDownList_ApplicantCategory;
-   //@FindBy(xpath="//span[contains(text(),'Save & Continue')]")
     @FindBy(xpath="//span[contains(text(),'Next')]")
     private WebElement saveAndContinueButton;
-    
     @FindBy(xpath="//textarea[@formcontrolname='addressLine1']")
     private WebElement applicantAddressTextBox;
     @FindBy(xpath="//input[@formcontrolname='landmark']")
@@ -72,7 +70,6 @@ public class TrainerRegistrationPage
     private WebElement parliamentaryConstituencyDropDownList;
     @FindBy(css=".btn.btn-secondary.m-btn.m-btn--custom.m-btn--icon")
     private WebElement backButton;
-    
     @FindBy(xpath="//select[@formcontrolname='education']")
     private WebElement educationAttainedDropDownList;
     @FindBy(xpath="//input[@placeholder='Enter the details of the above selected education type']")
@@ -85,7 +82,6 @@ public class TrainerRegistrationPage
     private WebElement clickToAddEducationDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[3]")
     private WebElement deleteThirdEducationDetailsButton;
-    
     @FindBy(xpath="(//select[@title='Select the Relevant Sector'])[1]")
     private WebElement industrialExperience_relevantSectorDropDownList;
     @FindBy(xpath="(//select[@formcontrolname='years'])[1]")
@@ -100,13 +96,12 @@ public class TrainerRegistrationPage
     private WebElement industrialExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Industrial Experience')]]/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement industrialExperienceProofDocument_uploadButton;
-    @FindBy(xpath="//button[text()='Add Industrial Experience Details']")
+    @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddIndustrialExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[3]")
     private WebElement deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[5]")
     private WebElement deleteThirdIndustrialExperienceDetailsButton;
-    
     @FindBy(xpath="(//select[@title='Select the Relevant Sector'])[2]")
     private WebElement trainingExperience_relevantSectorDropDownList;
     @FindBy(xpath="//select[@formcontrolname='years']")
@@ -119,18 +114,17 @@ public class TrainerRegistrationPage
     private WebElement trainingExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Training Experience')]]/div/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement trainingExperienceProofDocument_uploadButton;
-    @FindBy(xpath="//button[text()='Add Training Experience Details']")
+    //@FindBy(xpath="//button[text()='Add Training Experience Details']")
+    @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddTrainingExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[5]")
     private WebElement deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[7]")
     private WebElement deleteThirdTrainingExperienceDetailsButton;
-    
     @FindBy(xpath="//div[div/h3[contains(text(),'Curriculum Vitae / Resume Details')]]/div/div/app-upload-file/div/div/div/div/input[@id='customFile']")
     private WebElement curriculumVitaeOrResume_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Curriculum Vitae / Resume Details')]]/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement curriculumVitaeOrResume_uploadButton;
-    
     @FindBy(xpath="//button[contains(text(),'Add Preferred Job Role')]")
     private WebElement addPreferredJobRoleButton;
     @FindBy(xpath="//div[div/label[contains(text(),'Select Sector')]]/div/div/select[@formcontrolname='sector']")
@@ -141,7 +135,6 @@ public class TrainerRegistrationPage
     private WebElement jobRoleDropDownList;
     @FindBy(xpath="(//button[contains(text(),'Add')])[4]")
     private WebElement jobRole_addButton;
-    
     @FindBy(xpath="//button[contains(text(),'Add Preferred Location')]")
     private WebElement addPreferredLocationButton;
     @FindBy(xpath="//div[label[contains(text(),'State/ Union Territory:')]]/div/div/select[@ng-reflect-name='state']")
@@ -156,7 +149,6 @@ public class TrainerRegistrationPage
     private WebElement preferredJobRole_DeleteButton;
     @FindBy(xpath="(//button[@class='btn'])[4]")
     private WebElement thirdPreferredLocation_DeleteButton;
-    
     @FindBy(xpath="//span[@_ngcontent-c12='']")
     private WebElement iAgreeCheckbox;
     @FindBy(xpath="(//button[@class='btn btn-primary'])[1]")

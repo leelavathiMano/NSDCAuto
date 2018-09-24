@@ -1,11 +1,14 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
+import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
 
 public class SSC_LocationBasedTC_TrainingBatchCreationPage 
@@ -49,7 +52,7 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
-	//serching for available location based training centre
+	//search for available location based training centre
 	@FindBy(xpath="//input[@class='form-control ng-untouched ng-pristine']")
 	private WebElement batchNameReadOnlyTextField;
 	@FindBy(xpath="//select[@formcontrolname='state']")
@@ -105,15 +108,13 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchSizeDropdownLiast, batchSize);
 	}
-	public void selectTrainingStartDateForNewBatch()
+	public void selectTrainingStartDateForNewBatch() throws InterruptedException
 	{
-		//trainingStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));        date fields cannot be edited     
 		trainingStartDateTextField.click();
 		trainingStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
 	}
-	public void selectTrainingStartDateForExistingBatch()
+	public void selectTrainingStartDateForExistingBatch() 
 	{
-		//trainingStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));   
 		trainingStartDateTextField.click();
 		trainingStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
 		
@@ -122,15 +123,13 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	{
 		closeTrainingStartDateCalender.click();
 	}
-	public void selectTrainingEndDateForNewBatch()
+	public void selectTrainingEndDateForNewBatch() throws InterruptedException 
 	{
-		//trainingEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25)); 
 		trainingEndDateTextField.click();
 		trainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.ENTER);
 	}
 	public void selectTrainingEndDateForExistingBatch()
 	{	
-		//trainingEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16)); 
 		trainingEndDateTextField.click();
 		trainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
 	}
@@ -140,14 +139,12 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	}
 	public void selectAssessmentStartDateForNewBatch()
 	{		
-		//assessmentStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
 		assessmentStartDateTextField.click();
 		assessmentStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.ENTER);
 		
 	}
 	public void selectAssessmentStartDateForExistingBatch()
 	{
-		//assessmentStartDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
 		assessmentStartDateTextField.click();
 		assessmentStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
 	}
@@ -158,13 +155,11 @@ public class SSC_LocationBasedTC_TrainingBatchCreationPage
 	}
 	public void selectAssessmenEndDateForNewBatch()
 	{
-		//assessmentEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
 		assessmentEndDateTextField.click();
 		assessmentEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.ENTER);
 	}
-	public void selectAssessmenEndDateForExistingBatch()
+	public void selectAssessmenEndDateForExistingBatch() 
 	{
-		//assessmentEndDateTextField.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
 		assessmentEndDateTextField.click();
 		assessmentEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
 	}
