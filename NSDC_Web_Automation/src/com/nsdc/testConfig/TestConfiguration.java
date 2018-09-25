@@ -56,7 +56,7 @@ public class TestConfiguration
         }
         else if (browsername.equals("Chrome") && osType.equals("Windows"))
         {
-            System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Windows/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Windows/chromedriver.exe");
             driver = new ChromeDriver();
         }
         else if (browsername.equals("Firefox") && osType.equals("Windows"))
@@ -66,7 +66,7 @@ public class TestConfiguration
         }
         else if (browsername.equals("Chrome") && osType.equals("Ubuntu"))
         {
-            System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Linux/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Linux/chromedriver");
             driver = new ChromeDriver();
         }
         else if (browsername.equals("Firefox") && osType.equals("Ubuntu"))
