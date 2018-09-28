@@ -1,11 +1,13 @@
 package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.generic.ReadWriteData;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.NSDCAdmin_DashboardPage;
@@ -28,7 +30,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     }
 	
 	@Test(dataProvider="smartBusinessTCRegistrationRuleSetUpData")
-	public void smartBusinessTCRuleSetupTC_01(String sbUsername, String sbPassword, String raccrediationFee, String raccrediationFeeAmount, String rcontinuousMonitoringFee, String rconinuousMonitoringFeeAmount, String runBlockingFee, String runBlockingFeeAmount, String raffiliationFee, String raffiliationFeeAmount, String gaccrediationFee, String gaccrediationFeeAmount, String gcontinuousMonitoringFee, String gconinuousMonitoringFeeAmount, String gunBlockingFee, String gunBlockingFeeAmount, String gaffiliationFee, String gaffiliationFeeAmount, String blockedAttemptAllowedNumber, String durationOfBlock, String advanceInspectionNotification, String onSiteInspection, String daysForReplyBackOnAssessment, String refundPercentageForOneweek, String refundPercentageForThreeWeek, String refundPercentageOnInspectionDate, String refundPercentageOnFirstDNR, String refundPercentageOnSecondDNR) throws Exception
+	public void smartBusinessTCRuleSetupTC_01(String sno, String sbUsername, String sbPassword, String raccrediationFee, String raccrediationFeeAmount, String rcontinuousMonitoringFee, String rconinuousMonitoringFeeAmount, String runBlockingFee, String runBlockingFeeAmount, String raffiliationFee, String raffiliationFeeAmount, String gaccrediationFee, String gaccrediationFeeAmount, String gcontinuousMonitoringFee, String gconinuousMonitoringFeeAmount, String gunBlockingFee, String gunBlockingFeeAmount, String gaffiliationFee, String gaffiliationFeeAmount, String first_TCType, String first_AccrediationFee, String first_AccreditationFeeAmount, String first_ContinuousMonitoringFee, String first_ContinousMonitoringFeeAmount, String first_UNBlockingFee, String first_UnblockingFeeAmount, String first_AffiliationFee, String first_AffiliationFeeAmount, String second_TCType, String second_AccrediationFee, String second_AccreditationFeeAmount, String second_ContinuousMonitoringFee, String second_ContinousMonitoringFeeAmount, String second_UNBlockingFee, String second_UnblockingFeeAmount, String second_AffiliationFee, String second_AffiliationFeeAmount, String third_TCType, String third_AccrediationFee, String third_AccreditationFeeAmount, String third_ContinuousMonitoringFee, String third_ContinousMonitoringFeeAmount, String third_UNBlockingFee, String third_UnblockingFeeAmount, String third_AffiliationFee, String third_AffiliationFeeAmount, String blockedAttemptAllowedNumber, String durationOfBlock, String advanceInspectionNotification, String onSiteInspection, String daysForReplyBackOnAssessment, String refundPercentageForOneweek, String refundPercentageForThreeWeek, String refundPercentageOnInspectionDate, String refundPercentageOnFirstDNR, String refundPercentageOnSecondDNR, String effective_date) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -110,6 +112,154 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		{
 			sbtc.selectForGovernmentTCAffiliationFeePerJobRole(gaffiliationFee);
 		}
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("scroll(900, 0)");
+		Thread.sleep(3000);
+		sbtc.clickOnAddAnotherTrainingCentreType();
+		Thread.sleep(3000);
+		sbtc.enterTrainingCentreType(first_TCType);
+		if(first_AccrediationFee.equals("Yes"))
+		{
+			sbtc.selectFirst_TCAccrediationFee(first_AccrediationFee);
+			Thread.sleep(3000);
+			sbtc.enterAccrediatationFeeAmount(first_AccreditationFeeAmount);
+		}
+		else
+		{
+			sbtc.selectFirst_TCAccrediationFee(first_AccrediationFee);
+		}
+		if(first_ContinuousMonitoringFee.equals("Yes"))
+		{
+			sbtc.selectFirst_TCContinuousMonitoringFee(first_ContinuousMonitoringFee);
+			Thread.sleep(3000);
+			sbtc.enterContinousMonitoringFeeAmount(first_ContinousMonitoringFeeAmount);
+		}
+		else
+		{
+			sbtc.selectFirst_TCContinuousMonitoringFee(first_ContinuousMonitoringFee);			
+		}
+		if(first_UNBlockingFee.equals("Yes"))
+		{
+			sbtc.selectFirst_TCUNBlockingFee(first_UNBlockingFee);
+			Thread.sleep(3000);
+			sbtc.enterUnblockingFeeAmount(first_UnblockingFeeAmount);
+		}
+		else
+		{
+			sbtc.selectFirst_TCUNBlockingFee(first_UNBlockingFee);			
+		}
+		if(first_AffiliationFee.equals("Yes"))
+		{
+			sbtc.selectFirst_TCAffiliationFeePerJobRole(first_AffiliationFee);
+			Thread.sleep(3000);
+			sbtc.enterAffiliationFeeAmount(first_AffiliationFeeAmount);
+		}
+		else
+		{
+			sbtc.selectFirst_TCAffiliationFeePerJobRole(first_AffiliationFee);			
+		}
+		Thread.sleep(3000);
+		sbtc.clickOnSaveAndSubmit();
+		JavascriptExecutor jvs = (JavascriptExecutor) driver;
+		jvs.executeScript("scroll(900,0)");
+		Thread.sleep(3000);
+		sbtc.clickOnAddAnotherTrainingCentreType();
+		Thread.sleep(3000);
+		sbtc.enterTrainingCentreType(second_TCType);
+		if(second_AccrediationFee.equals("Yes"))
+		{
+			sbtc.selectSecond_TCAccrediationFee(second_AccrediationFee);
+			Thread.sleep(3000);
+			sbtc.enterAccrediatationFeeAmount(second_AccreditationFeeAmount);
+		}
+		else
+		{
+			sbtc.selectSecond_TCAccrediationFee(second_AccrediationFee);
+		}
+		if(second_ContinuousMonitoringFee.equals("Yes"))
+		{
+			sbtc.selectSecond_TCContinuousMonitoringFee(second_ContinuousMonitoringFee);
+			Thread.sleep(3000);
+			sbtc.enterContinousMonitoringFeeAmount(second_ContinousMonitoringFeeAmount);
+		}
+		else
+		{
+			sbtc.selectSecond_TCContinuousMonitoringFee(second_ContinuousMonitoringFee);		
+		}
+		if(second_UNBlockingFee.equals("Yes"))
+		{
+			sbtc.selectSecond_TCUNBlockingFee(second_UNBlockingFee);
+			Thread.sleep(3000);
+			sbtc.enterUnblockingFeeAmount(second_UnblockingFeeAmount);
+		}
+		else
+		{
+			sbtc.selectSecond_TCUNBlockingFee(second_UNBlockingFee);		
+		}
+		if(second_AffiliationFee.equals("Yes"))
+		{
+			sbtc.selectSecond_TCAffiliationFeePerJobRole(second_AffiliationFee);
+			Thread.sleep(3000);
+			sbtc.enterAffiliationFeeAmount(second_AffiliationFeeAmount);
+		}
+		else
+		{
+			sbtc.selectSecond_TCAffiliationFeePerJobRole(second_AffiliationFee);		
+		}
+		Thread.sleep(3000);
+		sbtc.clickOnSaveAndSubmit();
+		JavascriptExecutor jsx = (JavascriptExecutor) driver;
+		jsx.executeScript("scroll(900,0)");
+		Thread.sleep(3000);
+		sbtc.clickOnAddAnotherTrainingCentreType();
+		Thread.sleep(3000);
+		sbtc.enterTrainingCentreType(third_TCType);
+		if(third_AccrediationFee.equals("Yes"))
+		{
+			sbtc.selectThird_TCAccrediationFee(third_AccrediationFee);
+			Thread.sleep(3000);
+			sbtc.enterAccrediatationFeeAmount(third_AccreditationFeeAmount);
+		}
+		else
+		{
+			sbtc.selectThird_TCAccrediationFee(third_AccrediationFee);
+		}
+		if(third_ContinuousMonitoringFee.equals("Yes"))
+		{
+			sbtc.selectThird_TCContinuousMonitoringFee(third_ContinuousMonitoringFee);
+			Thread.sleep(3000);
+			sbtc.enterContinousMonitoringFeeAmount(third_ContinousMonitoringFeeAmount);
+		}
+		else
+		{
+			sbtc.selectThird_TCContinuousMonitoringFee(third_ContinuousMonitoringFee);	
+		}
+		if(third_UNBlockingFee.equals("Yes"))
+		{
+			sbtc.selectThird_TCUNBlockingFee(third_UNBlockingFee);
+			Thread.sleep(3000);
+			sbtc.enterUnblockingFeeAmount(third_UnblockingFeeAmount);
+		}
+		else
+		{
+			sbtc.selectThird_TCUNBlockingFee(third_UNBlockingFee);
+		}
+		if(third_AffiliationFee.equals("Yes"))
+		{
+			sbtc.selectThird_TCAffiliationFeePerJobRole(third_AffiliationFee);
+			Thread.sleep(3000);
+			sbtc.enterAffiliationFeeAmount(third_AffiliationFeeAmount);
+		}
+		else
+		{
+			sbtc.selectThird_TCAffiliationFeePerJobRole(third_AffiliationFee);	
+		}
+		Thread.sleep(3000);
+		sbtc.clickOnSaveAndSubmit();
+		Thread.sleep(3000);
+		sbtc.clickOnThird_TCType_Remove();
+		Thread.sleep(3000);
+		
 		sbtc.enterNumberOfBlockedAttemptsAllowedForTC(blockedAttemptAllowedNumber);
 		sbtc.enterDurationOfEachBlockForTC(durationOfBlock);
 		sbtc.enterAdvanceInspectionNotificationInDaysForTC(advanceInspectionNotification);
@@ -120,12 +270,20 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		sbtc.enterRefundPercentageForCentreInspectionRefusalOnInspectionDate(refundPercentageOnInspectionDate);
 		sbtc.enterRefundPercentageOnFirstDNRIfTCNotReapply(refundPercentageOnFirstDNR);
 		sbtc.enterRefundPercentageOnSecondDNRIfTCNotReapply(refundPercentageOnSecondDNR);
+		Thread.sleep(2000);
 		sbtc.clickForEffectiveDate();
 		sbtc.clickOnCalenderIconButton();
 		effective_date = driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value");
+		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCRuleSC08TC01", Integer.parseInt(sno), 56, effective_date);
+		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC02", Integer.parseInt(sno), 47, effective_date);
+		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC03", Integer.parseInt(sno), 38, effective_date);
+		Thread.sleep(3000);
 		sbtc.clickForSubmit();
+		Thread.sleep(3000);
+		sbtc.clickOnYes();
+		Thread.sleep(3000);
 		sbtc.clickForOK();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
@@ -138,90 +296,165 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC02");
     }
     
-    @Test(dataProvider="tcRuleSetupSmartAdminApproval", dependsOnMethods="smartBusinessTCRuleSetupTC_01")
-    public void smartBusinessTCRuleApprovalTC_02(String sdUsername, String sdPassword, String expectedRaccrediationFee, String expectedRaccrediationFeeAmount, String expectedRcontinuousMonitoringFee, String expectedRconinuousMonitoringFeeAmount, String expectedRunBlockingFee, String expectedRunBlockingFeeAmount, String expectedRaffiliationFee, String expectedRaffiliationFeeAmount, String expectedGaccrediationFee, String expectedGaccrediationFeeAmount, String expectedGcontinuousMonitoringFee, String expectedGconinuousMonitoringFeeAmount, String expectedGunBlockingFee, String expectedGunBlockingFeeAmount, String expectedGaffiliationFee, String expectedGaffiliationFeeAmount, String expectedBlockedAttemptAllowedNumber, String expectedDurationOfBlock, String expectedAdvanceInspectionNotification, String expectedOnSiteInspection, String expectedDaysForReplyBackOnAssessment, String expectedRefundPercentageForOneweek, String expectedRefundPercentageForThreeWeek, String expectedRefundPercentageOnInspectionDate, String expectedRefundPercentageOnFirstDNR, String expectedRefundPercentageOnSecondDNR, String comments) throws Exception
+    @Test(dataProvider="tcRuleSetupSmartAdminApproval")
+    public void smartBusinessTCRuleApprovalTC_02(String sno, String sdUsername, String sdPassword, String expectedRaccrediationFee, String expectedRaccrediationFeeAmount, String expectedRcontinuousMonitoringFee, String expectedRconinuousMonitoringFeeAmount, String expectedRunBlockingFee, String expectedRunBlockingFeeAmount, String expectedRaffiliationFee, String expectedRaffiliationFeeAmount, String expectedGaccrediationFee, String expectedGaccrediationFeeAmount, String expectedGcontinuousMonitoringFee, String expectedGconinuousMonitoringFeeAmount, String expectedGunBlockingFee, String expectedGunBlockingFeeAmount, String expectedGaffiliationFee, String expectedGaffiliationFeeAmount, String first_TCType, String expectedFirst_AccrediationFee, String expectedFirst_AccreditationFeeAmount, String expectedFirst_ContinuousMonitoringFee, String expectedFirst_ContinousMonitoringFeeAmount, String expectedFirst_UNBlockingFee, String expectedFirst_UnblockingFeeAmount, String expectedFirst_AffiliationFee, String expectedFirst_AffiliationFeeAmount, String second_TCType, String expectedSecond_AccrediationFee, String expectedSecond_AccreditationFeeAmount, String expectedSecond_ContinuousMonitoringFee, String expectedSecond_ContinousMonitoringFeeAmount, String expectedSecond_UNBlockingFee, String expectedSecond_UnblockingFeeAmount, String expectedSecond_AffiliationFee, String expectedSecond_AffiliationFeeAmount, String expectedBlockedAttemptAllowedNumber, String expectedDurationOfBlock, String expectedAdvanceInspectionNotification, String expectedOnSiteInspection, String expectedDaysForReplyBackOnAssessment, String expectedRefundPercentageForOneweek, String expectedRefundPercentageForThreeWeek, String expectedRefundPercentageOnInspectionDate, String expectedRefundPercentageOnFirstDNR, String expectedRefundPercentageOnSecondDNR, String effective_date, String comments) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
     	EnterLoginPage elp = new EnterLoginPage(driver);
     	elp.performlogin(sdUsername, sdPassword);
     	SmartAdmin_DashboardPage sad = new SmartAdmin_DashboardPage(driver);
-    	Thread.sleep(8000);
+    	Thread.sleep(10000);
     	sad.clickForReviewTCRegistrationSetUp();
     	SmartAdmin_TCCAAFFormReviewPage sdtc = new SmartAdmin_TCCAAFFormReviewPage(driver);
     	Thread.sleep(2000);
     	if(expectedRaccrediationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAccredationAmountIsRequired']")).getAttribute("value"), expectedRaccrediationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtAccredationAmount']")).getAttribute("value"), expectedRaccrediationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[1]")).getAttribute("value"), expectedRaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedRaccrediationFeeAmount);
     	}
     	else if(expectedRaccrediationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAccredationAmountIsRequired']")).getAttribute("value"), expectedRaccrediationFee);	
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[1]")).getAttribute("value"), expectedRaccrediationFee);	
     	}
     	if(expectedRcontinuousMonitoringFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedRcontinuousMonitoringFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtContinuousMonitoringAmount']")).getAttribute("value"), expectedRconinuousMonitoringFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[1]")).getAttribute("value"), expectedRcontinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedRconinuousMonitoringFeeAmount);
     	}
     	else if(expectedRcontinuousMonitoringFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedRcontinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[1]")).getAttribute("value"), expectedRcontinuousMonitoringFee);
     	}
     	if(expectedRunBlockingFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtUnblockingAmountIsRequired']")).getAttribute("value"), expectedRunBlockingFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtUnblockingAmount']")).getAttribute("value"), expectedRunBlockingFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[1]")).getAttribute("value"), expectedRunBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedRunBlockingFeeAmount);
     	}
     	else if(expectedRunBlockingFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtUnblockingAmountIsRequired']")).getAttribute("value"), expectedRunBlockingFee);		
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[1]")).getAttribute("value"), expectedRunBlockingFee);		
     	}
     	if(expectedRaffiliationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAffilationAmountIsRequired']")).getAttribute("value"), expectedRaffiliationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtAffilationAmount']")).getAttribute("value"), expectedRaffiliationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[1]")).getAttribute("value"), expectedRaffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedRaffiliationFeeAmount);
     	}
     	else if(expectedRaffiliationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAffilationAmountIsRequired']")).getAttribute("value"), expectedRaffiliationFee);   		
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[1]")).getAttribute("value"), expectedRaffiliationFee);   		
     	}
     	if(expectedGaccrediationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAccredationAmountIsRequired']")).getAttribute("value"), expectedGaccrediationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularAccredationAmount']")).getAttribute("value"), expectedGaccrediationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[2]")).getAttribute("value"), expectedGaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedGaccrediationFeeAmount);
     	}
     	else if(expectedGaccrediationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAccredationAmountIsRequired']")).getAttribute("value"), expectedGaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[2]")).getAttribute("value"), expectedGaccrediationFee);
     	}
     	if(expectedGcontinuousMonitoringFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedGcontinuousMonitoringFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularContinuousMonitoringAmount']")).getAttribute("value"), expectedGconinuousMonitoringFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[2]")).getAttribute("value"), expectedGcontinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedGconinuousMonitoringFeeAmount);
     	}
     	else if(expectedGcontinuousMonitoringFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedGcontinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[2]")).getAttribute("value"), expectedGcontinuousMonitoringFee);
     	}
     	if(expectedGunBlockingFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularUnblockingAmountIsRequired']")).getAttribute("value"), expectedGunBlockingFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularUnblockingAmount']")).getAttribute("value"), expectedGunBlockingFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[2]")).getAttribute("value"), expectedGunBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedGunBlockingFeeAmount);
     	}
     	else if(expectedGunBlockingFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularUnblockingAmountIsRequired']")).getAttribute("value"), expectedGunBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[2]")).getAttribute("value"), expectedGunBlockingFee);
     	}
     	if(expectedGaffiliationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAffilationAmountIsRequired']")).getAttribute("value"), expectedGaffiliationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularAffilationAmount']")).getAttribute("value"), expectedGaffiliationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[2]")).getAttribute("value"), expectedGaffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedGaffiliationFeeAmount);
     	}
     	else if(expectedGaffiliationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAffilationAmountIsRequired']")).getAttribute("value"), expectedGaffiliationFee);	
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[2]")).getAttribute("value"), expectedGaffiliationFee);	
     	}
+    	if(expectedFirst_AccrediationFee.equals("Yes")) 
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedFirst_AccreditationFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AccrediationFee);   		
+    	}
+    	if(expectedFirst_ContinuousMonitoringFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_ContinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedFirst_ContinousMonitoringFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_ContinuousMonitoringFee);   		
+    	}
+    	if(expectedFirst_UNBlockingFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_UNBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedFirst_UnblockingFeeAmount);    		
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_UNBlockingFee);
+    	}
+    	if(expectedFirst_AffiliationFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedFirst_AffiliationFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AffiliationFee);   		
+    	}
+    	if(expectedSecond_AccrediationFee.equals("Yes")) 
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'4. Training Centre Type "+second_TCType+"')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedSecond_AccreditationFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AccrediationFee);   		
+    	}
+    	if(expectedSecond_ContinuousMonitoringFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_ContinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'4. Training Centre Type "+second_TCType+"')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedSecond_ContinousMonitoringFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_ContinuousMonitoringFee);   		
+    	}
+    	if(expectedSecond_UNBlockingFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_UNBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'4. Training Centre Type "+second_TCType+"')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedSecond_UnblockingFeeAmount);    		
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_UNBlockingFee);
+    	}
+    	if(expectedSecond_AffiliationFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'4. Training Centre Type "+second_TCType+"')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedSecond_AffiliationFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AffiliationFee);   		
+    	}
+    	Thread.sleep(3000);
+    	sdtc.clickOnSecond_TCType_Remove();
+    	Thread.sleep(3000);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='noOfBlockAttempts']")).getAttribute("value"), expectedBlockedAttemptAllowedNumber);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='durationOfBlock']")).getAttribute("value"), expectedDurationOfBlock);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='noOfDaysInAdvanceInspectionDateNotifications']")).getAttribute("value"), expectedAdvanceInspectionNotification);
@@ -232,7 +465,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='percentageOnRefusalOfCenterInspection2']")).getAttribute("value"), expectedRefundPercentageOnInspectionDate);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedRefundPercentageOnFirstDNR);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnSecondDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedRefundPercentageOnSecondDNR);
-    	Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
+    	//Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
 
     	Thread.sleep(3000);
     	if(comments.equals("Approved Successfully"))
@@ -247,9 +480,13 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     		sdtc.clickForNotApprove_ReviewComments();
     		sdtc.enterReviewComments(comments);
     	}
+    	Thread.sleep(3000);
     	sdtc.clickForSubmit();
+    	Thread.sleep(3000);
+    	sdtc.clickOnYes();
+    	Thread.sleep(3000);
     	sdtc.clickOnOK();
-    	Thread.sleep(2000);
+    	Thread.sleep(3000);
     	PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
@@ -262,8 +499,8 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC03");
     }
     
-    @Test(dataProvider="tcRuleSetupNSDCApproval", dependsOnMethods="smartBusinessTCRuleApprovalTC_02")
-    public void smartBusinessTCRuleApprovalTC_03(String nsdcUsername, String nsdcPassword, String expectedNSDCRaccrediationFee, String expectedNSDCRaccrediationFeeAmount, String expectedNSDCRcontinuousMonitoringFee, String expectedNSDCRconinuousMonitoringFeeAmount, String expectedNSDCRunBlockingFee, String expectedNSDCRunBlockingFeeAmount, String expectedNSDCRaffiliationFee, String expectedNSDCRaffiliationFeeAmount, String expectedNSDCGaccrediationFee, String expectedNSDCGaccrediationFeeAmount, String expectedNSDCGcontinuousMonitoringFee, String expectedNSDCGconinuousMonitoringFeeAmount, String expectedNSDCGunBlockingFee, String expectedNSDCGunBlockingFeeAmount, String expectedNSDCGaffiliationFee, String expectedNSDCGaffiliationFeeAmount, String expectedNSDCBlockedAttemptAllowedNumber, String expectedNSDCDurationOfBlock, String expectedNSDCAdvanceInspectionNotification, String expectedNSDCOnSiteInspection, String expectedNSDCDaysForReplyBackOnAssessment, String expectedNSDCRefundPercentageForOneweek, String expectedNSDCRefundPercentageForThreeWeek, String expectedNSDCRefundPercentageOnInspectionDate, String expectedNSDCRefundPercentageOnFirstDNR, String expectedNSDCRefundPercentageOnSecondDNR, String reviewComments) throws Exception
+    @Test(dataProvider="tcRuleSetupNSDCApproval")
+    public void smartBusinessTCRuleApprovalTC_03(String sno, String nsdcUsername, String nsdcPassword, String expectedNSDCRaccrediationFee, String expectedNSDCRaccrediationFeeAmount, String expectedNSDCRcontinuousMonitoringFee, String expectedNSDCRconinuousMonitoringFeeAmount, String expectedNSDCRunBlockingFee, String expectedNSDCRunBlockingFeeAmount, String expectedNSDCRaffiliationFee, String expectedNSDCRaffiliationFeeAmount, String expectedNSDCGaccrediationFee, String expectedNSDCGaccrediationFeeAmount, String expectedNSDCGcontinuousMonitoringFee, String expectedNSDCGconinuousMonitoringFeeAmount, String expectedNSDCGunBlockingFee, String expectedNSDCGunBlockingFeeAmount, String expectedNSDCGaffiliationFee, String expectedNSDCGaffiliationFeeAmount, String first_TCType, String expectedNSDCFirst_AccrediationFee, String expectedNSDCFirst_AccreditationFeeAmount, String expectedNSDCFirst_ContinuousMonitoringFee, String expectedNSDCFirst_ContinousMonitoringFeeAmount, String expectedNSDCFirst_UNBlockingFee, String expectedNSDCFirst_UnblockingFeeAmount, String expectedNSDCFirst_AffiliationFee, String expectedNSDCFirst_AffiliationFeeAmount, String expectedNSDCBlockedAttemptAllowedNumber, String expectedNSDCDurationOfBlock, String expectedNSDCAdvanceInspectionNotification, String expectedNSDCOnSiteInspection, String expectedNSDCDaysForReplyBackOnAssessment, String expectedNSDCRefundPercentageForOneweek, String expectedNSDCRefundPercentageForThreeWeek, String expectedNSDCRefundPercentageOnInspectionDate, String expectedNSDCRefundPercentageOnFirstDNR, String expectedNSDCRefundPercentageOnSecondDNR, String effective_date, String reviewComments) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
@@ -276,76 +513,115 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	Thread.sleep(2000);
     	if(expectedNSDCRaccrediationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAccredationAmountIsRequired']")).getAttribute("value"), expectedNSDCRaccrediationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtAccredationAmount']")).getAttribute("value"), expectedNSDCRaccrediationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedNSDCRaccrediationFeeAmount);
     	}
     	else if(expectedNSDCRaccrediationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAccredationAmountIsRequired']")).getAttribute("value"), expectedNSDCRaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRaccrediationFee);
     	}
     	if(expectedNSDCRcontinuousMonitoringFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedNSDCRcontinuousMonitoringFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtContinuousMonitoringAmount']")).getAttribute("value"), expectedNSDCRconinuousMonitoringFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRcontinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedNSDCRconinuousMonitoringFeeAmount);
     	}
     	else if(expectedNSDCRcontinuousMonitoringFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedNSDCRcontinuousMonitoringFee);	
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRcontinuousMonitoringFee);	
     	}
     	if(expectedNSDCRunBlockingFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtUnblockingAmountIsRequired']")).getAttribute("value"), expectedNSDCRunBlockingFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtUnblockingAmount']")).getAttribute("value"), expectedNSDCRunBlockingFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRunBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedNSDCRunBlockingFeeAmount);
     	}
     	else if(expectedNSDCRunBlockingFee.equals("No"))
     	{
-        	Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtUnblockingAmountIsRequired']")).getAttribute("value"), expectedNSDCRunBlockingFee);    		
+        	Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRunBlockingFee);    		
     	}
     	if(expectedNSDCRaffiliationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAffilationAmountIsRequired']")).getAttribute("value"), expectedNSDCRaffiliationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='govtAffilationAmount']")).getAttribute("value"), expectedNSDCRaffiliationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRaffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedNSDCRaffiliationFeeAmount);
     	}
     	else if(expectedNSDCRaffiliationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='govtAffilationAmountIsRequired']")).getAttribute("value"), expectedNSDCRaffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRaffiliationFee);
     	}
     	if(expectedNSDCGaccrediationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAccredationAmountIsRequired']")).getAttribute("value"), expectedNSDCGaccrediationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularAccredationAmount']")).getAttribute("value"), expectedNSDCGaccrediationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedNSDCGaccrediationFeeAmount);
     	}
     	else if(expectedNSDCGaccrediationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAccredationAmountIsRequired']")).getAttribute("value"), expectedNSDCGaccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGaccrediationFee);
     	}
     	if(expectedNSDCGcontinuousMonitoringFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedNSDCGcontinuousMonitoringFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularContinuousMonitoringAmount']")).getAttribute("value"), expectedNSDCGconinuousMonitoringFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGcontinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedNSDCGconinuousMonitoringFeeAmount);
     	}
     	else if(expectedNSDCGcontinuousMonitoringFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularContinuousMonitoringAmountIsRequired']")).getAttribute("value"), expectedNSDCGcontinuousMonitoringFee); 		
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGcontinuousMonitoringFee); 		
     	}
     	if(expectedNSDCGunBlockingFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularUnblockingAmountIsRequired']")).getAttribute("value"), expectedNSDCGunBlockingFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularUnblockingAmount']")).getAttribute("value"), expectedNSDCGunBlockingFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGunBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedNSDCGunBlockingFeeAmount);
     	}
     	else if(expectedNSDCGunBlockingFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularUnblockingAmountIsRequired']")).getAttribute("value"), expectedNSDCGunBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGunBlockingFee);
     	}
     	if(expectedNSDCGaffiliationFee.equals("Yes"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAffilationAmountIsRequired']")).getAttribute("value"), expectedNSDCGaffiliationFee);
-    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='regularAffilationAmount']")).getAttribute("value"), expectedNSDCGaffiliationFeeAmount);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGaffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedNSDCGaffiliationFeeAmount);
     	}
     	else if(expectedNSDCGaffiliationFee.equals("No"))
     	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='regularAffilationAmountIsRequired']")).getAttribute("value"), expectedNSDCGaffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGaffiliationFee);
     	}
+    	if(expectedNSDCFirst_AccrediationFee.equals("Yes")) 
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AccrediationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='accredationAmount']")).getAttribute("value"), expectedNSDCFirst_AccreditationFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AccrediationFee);   		
+    	}
+    	if(expectedNSDCFirst_ContinuousMonitoringFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_ContinuousMonitoringFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='continuousMonitoringAmount']")).getAttribute("value"), expectedNSDCFirst_ContinousMonitoringFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_ContinuousMonitoringFee);   		
+    	}
+    	if(expectedNSDCFirst_UNBlockingFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_UNBlockingFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='unblockingAmount']")).getAttribute("value"), expectedNSDCFirst_UnblockingFeeAmount);    		
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='unblockingAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_UNBlockingFee);
+    	}
+    	if(expectedNSDCFirst_AffiliationFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AffiliationFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='affilationAmount']")).getAttribute("value"), expectedNSDCFirst_AffiliationFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AffiliationFee);   		
+    	}
+    	Thread.sleep(3000);
+    	nstc.clickOnFirst_TCType_Remove();
+    	Thread.sleep(3000);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='noOfBlockAttempts']")).getAttribute("value"), expectedNSDCBlockedAttemptAllowedNumber);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='durationOfBlock']")).getAttribute("value"), expectedNSDCDurationOfBlock);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='noOfDaysInAdvanceInspectionDateNotifications']")).getAttribute("value"), expectedNSDCAdvanceInspectionNotification);
@@ -368,7 +644,11 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     		nstc.clickForNotApprove_ReviewComment();
     		nstc.enterReviewComment(reviewComments);
     	}
+    	Thread.sleep(3000);
     	nstc.clickForSubmit();
+    	Thread.sleep(3000);
+    	nstc.clickOnYes();
+    	Thread.sleep(3000);
     	nstc.clickOnOK();
     	Thread.sleep(2000);
     	PostLoginPage plp = new PostLoginPage(driver);

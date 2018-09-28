@@ -10,11 +10,11 @@ public class NSDCAdmin_DashboardPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//div[@class='m-widget17__items m-widget17__items-col1 clickable']")
+	@FindBy(xpath="//div[p[contains(text(),'SDMS User Management')]]")
 	private WebElement createUserButton;
 	@FindBy(xpath="//div[@routerlink='tcregistrationrules']")
 	private WebElement tcRegistrationButton;
-	@FindBy(xpath="//div[@routerlink='tpregistrationrules']")
+	@FindBy(xpath="//div[@ng-reflect-router-link='tpregistrationrules']")
 	private WebElement tpRegistrationButton;
 	@FindBy(xpath="//div[@class='m-widget17__items m-widget17__items-col4 clickable']")
 	private WebElement schemeApproval_SOButton;

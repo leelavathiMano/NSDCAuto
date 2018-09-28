@@ -21,6 +21,10 @@ public class SmartAdmin_AllSDMSUserPage
 	private WebElement fullName_UserDetailsTextbox;
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitbutton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement yesButton;
+	@FindBy(xpath="//button[text()='Cancel']")
+	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement closeButton;
 	@FindBy(xpath="//button[text()='OK']")
@@ -58,6 +62,16 @@ public class SmartAdmin_AllSDMSUserPage
 	public void clickOnSubmit()
 	{
 		submitbutton.click();
+	}
+	
+	public void clickOnYes()
+	{
+		yesButton.click();
+	}
+	
+	public void clickOnCancel()
+	{
+		cancelButton.click();
 	}
 	
 	public void clickOnClose()

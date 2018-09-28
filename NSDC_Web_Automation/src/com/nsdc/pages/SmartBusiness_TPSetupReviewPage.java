@@ -12,22 +12,75 @@ public class SmartBusiness_TPSetupReviewPage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="//select[@formcontrolname='regularRegistrationAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='registrationAmountIsRequired'])[1]")
 	private WebElement regularTPRegistrationFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='regularRegistrationAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='registrationAmount'])[1]")
 	private WebElement regularTPRegistrationFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='regularUnblockingAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[1]")
 	private WebElement regularTPUNBlockingFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='regularUnblockingAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[1]")
 	private WebElement regularTPUNBlockingFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='govtRegistrationAmountIsRequired']")
+	
+	@FindBy(xpath="(//select[@formcontrolname='registrationAmountIsRequired'])[2]")
 	private WebElement governmentTPRegistrationFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='govtRegistrationAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='registrationAmount'])[2]")
 	private WebElement governmentTPRegistrationFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='govtUnblockingAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[2]")
 	private WebElement governmentTPUNBlockingFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='govtUnblockingAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[2]")
 	private WebElement governmentTPUNBlockingFeeAmountTextbox;
+	@FindBy(xpath="//a[contains(text(),'Add Another Training Partner Type')]")
+	private WebElement addAnotherTrainingPartnerTypeButton;
+	
+	@FindBy(xpath="//input[@formcontrolname='type']")
+	private WebElement tpTypeTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='registrationAmountIsRequired'])[3]")
+	private WebElement first_TPRegistrationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='registrationAmount'])[3]")
+	private WebElement first_TPRegistrationFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[3]")
+	private WebElement first_TPUNBlockingFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[3]")
+	private WebElement first_TPUNBlockingFeeAmountTextbox;
+	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	private WebElement saveAndSubmitButton;
+	@FindBy(xpath="//button[contains(text(),'Close')]")
+	private WebElement closeButton;
+	
+	@FindBy(xpath="(//select[@formcontrolname='registrationAmountIsRequired'])[4]")
+	private WebElement second_TPRegistrationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='registrationAmount'])[4]")
+	private WebElement second_TPRegistrationFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[4]")
+	private WebElement second_TPUNBlockingFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[4]")
+	private WebElement second_TPUNBlockingFeeAmountTextbox;
+	
+	@FindBy(xpath="(//select[@formcontrolname='registrationAmountIsRequired'])[5]")
+	private WebElement third_TPRegistrationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='registrationAmount'])[4]")
+	private WebElement third_TPRegistrationFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[5]")
+	private WebElement third_TPUNBlockingFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[4]")
+	private WebElement third_TPUNBlockingFeeAmountTextbox;
+	
+	@FindBy(xpath="//input[@placeholder='Amount']")
+	private WebElement registrationFeeAmountTextbox;
+	@FindBy(xpath="//input[@placeholder='Amount ']")
+	private WebElement unblockingFeeAmountTextbox;
+	
+	@FindBy(xpath="(//a[text()='Remove Training Partner Type'])[1]")
+	private WebElement first_RemoveTPTypeButton;
+	@FindBy(xpath="(//a[text()='Remove Training Partner Type'])[2]")
+	private WebElement second_RemoveTPTypeButton;
+	@FindBy(xpath="(//a[text()='Remove Training Partner Type'])[3]")
+	private WebElement third_RemoveTPTypeButton;
+	@FindBy(xpath="(//a[text()='Remove Training Partner Type'])[4]")
+	private WebElement fourth_RemoveTPTypeButton;
+	@FindBy(xpath="(//a[text()='Remove Training Partner Type'])[5]")
+	private WebElement fifth_RemoveTPTypeButton;
+	
 	@FindBy(xpath="//input[@formcontrolname='noOfBlockAttempts']")
 	private WebElement numberOfBlockAttemptsAllowedForTPTextbox;
 	@FindBy(xpath="//input[@formcontrolname='durationOfBlock']")
@@ -45,6 +98,10 @@ public class SmartBusiness_TPSetupReviewPage
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelForSubmitButton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement yesButton;
+	@FindBy(xpath="//button[text()='Cancel']")
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement oKButton;
@@ -100,6 +157,131 @@ public class SmartBusiness_TPSetupReviewPage
 		governmentTPUNBlockingFeeAmountTextbox.sendKeys(unBlockingFeeAmount);
 	}
 	
+	public void clickOnAddAnotherTP()throws Exception
+	{
+		Thread.sleep(3000);
+		addAnotherTrainingPartnerTypeButton.click();
+	}
+	
+	public void enterTrainingPartnerType(String tpType)
+	{
+		tpTypeTextbox.clear();
+		tpTypeTextbox.sendKeys(tpType);
+	}
+	
+	public void selectFirst_TPRegistrationFee(String first_RegistrationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(first_TPRegistrationFeeDropDownList, first_RegistrationFee);
+	}
+	
+	public void enterFirst_TPRegistrationFeeAmount(String first_RegistrationFeeAmount)
+	{
+		first_TPRegistrationFeeAmountTextbox.clear();
+		first_TPRegistrationFeeAmountTextbox.sendKeys(first_RegistrationFeeAmount);
+	}
+	
+	public void selectFirst_TPUNBlockingFee(String first_UNBlockingFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(first_TPUNBlockingFeeDropDownList, first_UNBlockingFee);
+	}
+	
+	public void enterFirst_TPUNBlockingFeeAmount(String first_UNBlockingFeeAmount)
+	{
+		first_TPUNBlockingFeeAmountTextbox.clear();
+		first_TPUNBlockingFeeAmountTextbox.sendKeys(first_UNBlockingFeeAmount);
+	}
+	
+	public void clickOnSaveAndSubmit()
+	{
+		saveAndSubmitButton.click();
+	}
+	
+	public void clickOnClose()
+	{
+		closeButton.click();
+	}
+	
+	public void selectSecond_TPRegistrationFee(String second_RegistrationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(second_TPRegistrationFeeDropDownList, second_RegistrationFee);
+	}
+	
+	public void enterSecond_TPRegistrationFeeAmount(String second_RegistrationFeeAmount)
+	{
+		second_TPRegistrationFeeAmountTextbox.clear();
+		second_TPRegistrationFeeAmountTextbox.sendKeys(second_RegistrationFeeAmount);
+	}
+	
+	public void selectSecond_TPUNBlockingFee(String second_UNBlockingFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(second_TPUNBlockingFeeDropDownList, second_UNBlockingFee);
+	}
+	
+	public void enterSecond_TPUNBlockingFeeAmount(String second_UNBlockingFeeAmount)
+	{
+		second_TPUNBlockingFeeAmountTextbox.clear();
+		second_TPUNBlockingFeeAmountTextbox.sendKeys(second_UNBlockingFeeAmount);
+	}
+	
+	public void selectThird_TPRegistrationFee(String third_RegistrationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(third_TPRegistrationFeeDropDownList, third_RegistrationFee);
+	}
+	
+	public void enterThird_TPRegistrationFeeAmount(String third_RegistrationFeeAmount)
+	{
+		third_TPRegistrationFeeAmountTextbox.clear();
+		third_TPRegistrationFeeAmountTextbox.sendKeys(third_RegistrationFeeAmount);
+	}
+	
+	public void selectThird_TPUNBlockingFee(String third_UNBlockingFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(third_TPUNBlockingFeeDropDownList, third_UNBlockingFee);
+	}
+	
+	public void enterThird_TPUNBlockingFeeAmount(String third_UNBlockingFeeAmount)
+	{
+		third_TPUNBlockingFeeAmountTextbox.clear();
+		third_TPUNBlockingFeeAmountTextbox.sendKeys(third_UNBlockingFeeAmount);
+	}
+	
+	public void enterRegistrationFeeAmount(String registrationFeeAmount)
+	{
+		registrationFeeAmountTextbox.clear();
+		registrationFeeAmountTextbox.sendKeys(registrationFeeAmount);
+	}
+	
+	public void enterUnblockingFeeAmount(String unblockingFeeAmount)
+	{
+		unblockingFeeAmountTextbox.clear();
+		unblockingFeeAmountTextbox.sendKeys(unblockingFeeAmount);
+	}
+	
+	public void clickOnFirst_RemoveTrainingPartnerType()
+	{
+		first_RemoveTPTypeButton.click();
+	}
+	
+	public void clickOnSecond_RemoveTrainingPartnerType()
+	{
+		second_RemoveTPTypeButton.click();
+	}
+	
+	public void clickOnThird_RemoveTrainingPartnerType()
+	{
+		third_RemoveTPTypeButton.click();
+	}
+	
+	public void clickOnFourth_RemoveTrainingPartnerType()
+	{
+		fourth_RemoveTPTypeButton.click();
+	}
+	
+	public void clickOnFifth_RemoveTrainingPartnerType()
+	{
+		fifth_RemoveTPTypeButton.click();
+	}
+		
 	public void enterNumberOfBlockAttemptAllowedForTP(String blockAttemptNumber)
 	{
 		numberOfBlockAttemptsAllowedForTPTextbox.clear();
@@ -131,6 +313,16 @@ public class SmartBusiness_TPSetupReviewPage
 	public void clickOnSubmit()
 	{
 		submitButton.click();
+	}
+	
+	public void clickOnCancelForSubmit()
+	{
+		cancelForSubmitButton.click();
+	}
+	
+	public void clickOnYes()
+	{
+		yesButton.click();
 	}
 	
 	public void clickOnCancel()

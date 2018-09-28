@@ -23,6 +23,10 @@ public class SmartAdmin_CreateUserPage
 	private WebElement submitButton;
 	@FindBy(xpath="//span[contains(text(),'Close')]")
 	private WebElement closeButton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement yesButton;
+	@FindBy(xpath="//button[text()='Cancel']")
+	private WebElement cancelButton;
 	
 	public SmartAdmin_CreateUserPage(WebDriver driver)
     {
@@ -61,6 +65,16 @@ public class SmartAdmin_CreateUserPage
 	public void clickOnClose()
 	{
 		closeButton.click();
+	}
+	
+	public void clickOnYes()
+	{
+		yesButton.click();
+	}
+	
+	public void clickOnCancel()
+	{
+		cancelButton.click();
 	}
 
 }

@@ -19,9 +19,23 @@ public class NSDC_TCCAAFFormReviewPage
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelForSubmitButton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement yesButton;
+	@FindBy(xpath="//button[text()='Cancel']")
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement oKButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[1]")
+	private WebElement regular_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[2]")
+	private WebElement gov_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[3]")
+	private WebElement first_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[4]")
+	private WebElement second_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[5]")
+	private WebElement third_TC_RemoveButton;
 	
 	public NSDC_TCCAAFFormReviewPage(WebDriver driver)
     {
@@ -50,7 +64,17 @@ public class NSDC_TCCAAFFormReviewPage
 		submitButton.click();
 	}
 	
-	public void clickForCancel()
+	public void clickOnCancelForSubmit()
+	{
+		cancelForSubmitButton.click();
+	}
+	
+	public void clickOnYes()
+	{
+		yesButton.click();
+	}
+	
+	public void clickOnCancel()
 	{
 		cancelButton.click();
 	}
@@ -58,6 +82,31 @@ public class NSDC_TCCAAFFormReviewPage
 	public void clickOnOK()
 	{
 		oKButton.click();
+	}
+	
+	public void clickOnRegular_TCType_Remove()
+	{
+		regular_TC_RemoveButton.click();
+	}
+	
+	public void clickOnGovernment_TCType_Remove()
+	{
+		gov_TC_RemoveButton.click();
+	}
+	
+	public void clickOnFirst_TCType_Remove()
+	{
+		first_TC_RemoveButton.click();
+	}
+	
+	public void clickOnSecond_TCType_Remove()
+	{
+		second_TC_RemoveButton.click();
+	}
+	
+	public void clickOnThird_TCType_Remove()
+	{
+		third_TC_RemoveButton.click();
 	}
 
 }

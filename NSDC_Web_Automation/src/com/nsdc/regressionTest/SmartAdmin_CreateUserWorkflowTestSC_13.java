@@ -41,10 +41,13 @@ public class SmartAdmin_CreateUserWorkflowTestSC_13 extends TestConfiguration
 		Thread.sleep(3000);
 		user.clickOnSubmit();
 		Thread.sleep(3000);
+		user.clickOnYes();
+		Thread.sleep(3000);
 		sad.clickOnAllSDMSUser();
 		SmartAdmin_AllSDMSUserPage sdmsUser = new SmartAdmin_AllSDMSUserPage(driver);
 		Thread.sleep(3000);
 		sdmsUser.enterSearchByKeyword(fullName);
+		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Active']")).getText(), "Active");
 		PostLoginPage plp = new PostLoginPage(driver);
 		Thread.sleep(5000);
@@ -77,6 +80,9 @@ public class SmartAdmin_CreateUserWorkflowTestSC_13 extends TestConfiguration
 		suser.enterFullName_UserDetails(newName);
 		Thread.sleep(5000);
 		suser.clickOnSubmit();
+		Thread.sleep(3000);
+		suser.clickOnYes();
+		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),'User Updated successfully')]")).getText(), "User Updated successfully");
 		PostLoginPage plp = new PostLoginPage(driver);
 		Thread.sleep(5000);
@@ -106,7 +112,9 @@ public class SmartAdmin_CreateUserWorkflowTestSC_13 extends TestConfiguration
 		sasp.enterSearchByKeyword(firstName);
 		Thread.sleep(8000);
 		sasp.clickOnRemove();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
+		sasp.clickOnYes();
+		Thread.sleep(3000);
 		sasp.clickOnOK();
 		Assert.assertEquals(driver.findElement(By.xpath("//div[text()='inactive']")).getText(), "inactive");
 		PostLoginPage plp = new PostLoginPage(driver);

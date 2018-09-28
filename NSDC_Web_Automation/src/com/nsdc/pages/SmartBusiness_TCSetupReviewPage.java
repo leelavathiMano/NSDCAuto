@@ -13,38 +13,119 @@ public class SmartBusiness_TCSetupReviewPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//select[@formcontrolname='govtAccredationAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='accredationAmountIsRequired'])[1]")
 	private WebElement tcRegularAccrediationFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='govtAccredationAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='accredationAmount'])[1]")
 	private WebElement tcRegularAccrediationFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='govtContinuousMonitoringAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[1]")
 	private WebElement tcRegularContinuousMonitoringFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='govtContinuousMonitoringAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='continuousMonitoringAmount'])[1]")
 	private WebElement tcRegularContinuousMonitoringFeeAmountTextbox;
-	@FindBy(xpath="//Select[@formcontrolname='govtUnblockingAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[1]")
 	private WebElement tcRegularUNBlockingFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='govtUnblockingAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[1]")
 	private WebElement tcRegularUNBlockingFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='govtAffilationAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='affilationAmountIsRequired'])[1]")
 	private WebElement tcRegularAffiliationFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='govtAffilationAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='affilationAmount'])[1]")
 	private WebElement tcRegularAffiliationFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='regularAccredationAmountIsRequired']")
+	
+	@FindBy(xpath="(//select[@formcontrolname='accredationAmountIsRequired'])[2]")
 	private WebElement tcGovernmentAccrediationFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='regularAccredationAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='accredationAmount'])[2]")
 	private WebElement tcGovernmentAccrediationFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='regularContinuousMonitoringAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[2]")
 	private WebElement tcGovernmentContinuousMonitoringFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='regularContinuousMonitoringAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='continuousMonitoringAmount'])[2]")
 	private WebElement tcGovernmentContinuousMonitoringFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='regularUnblockingAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[2]")
 	private WebElement tcGovernmentUNBlockingFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='regularUnblockingAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[2]")
 	private WebElement tcGovernmentUNBlockingFeeAmountTextbox;
-	@FindBy(xpath="//select[@formcontrolname='regularAffilationAmountIsRequired']")
+	@FindBy(xpath="(//select[@formcontrolname='affilationAmountIsRequired'])[2]")
 	private WebElement tcGovernmentAffiliationFeeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='regularAffilationAmount']")
+	@FindBy(xpath="(//input[@formcontrolname='affilationAmount'])[2]")
 	private WebElement tcGovernmentAffiliationFeeAmountTextbox;
+	
+	@FindBy(xpath="//a[contains(text(),'Add Another Training Centre Type')]")
+	private WebElement addAnotherTCTypeButton;
+	@FindBy(xpath="//input[@formcontrolname='type']")
+	private WebElement tcTypeTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='accredationAmountIsRequired'])[3]")
+	private WebElement first_TCAccrediationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='accredationAmount'])[3]")
+	private WebElement first_TCAccrediationFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[3]")
+	private WebElement first_TCContinuousMonitoringFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='continuousMonitoringAmount'])[3]")
+	private WebElement first_TCContinuousMonitoringFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[3]")
+	private WebElement first_TCUNBlockingFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[3]")
+	private WebElement first_TCUNBlockingFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='affilationAmountIsRequired'])[3]")
+	private WebElement first_TCAffiliationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='affilationAmount'])[3]")
+	private WebElement first_TCAffiliationFeeAmountTextbox;
+	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	private WebElement saveAndSubmitbutton;
+	@FindBy(xpath="//button[contains(text(),'Close')]")
+	private WebElement closeButton;
+	
+	@FindBy(xpath="(//select[@formcontrolname='accredationAmountIsRequired'])[4]")
+	private WebElement second_TCAccrediationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='accredationAmount'])[4]")
+	private WebElement second_TCAccrediationFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[4]")
+	private WebElement second_TCContinuousMonitoringFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='continuousMonitoringAmount'])[4]")
+	private WebElement second_TCContinuousMonitoringFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[4]")
+	private WebElement second_TCUNBlockingFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[4]")
+	private WebElement second_TCUNBlockingFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='affilationAmountIsRequired'])[4]")
+	private WebElement second_TCAffiliationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='affilationAmount'])[4]")
+	private WebElement second_TCAffiliationFeeAmountTextbox;
+	
+	@FindBy(xpath="(//select[@formcontrolname='accredationAmountIsRequired'])[5]")
+	private WebElement third_TCAccrediationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='accredationAmount'])[5]")
+	private WebElement third_TCAccrediationFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='continuousMonitoringAmountIsRequired'])[5]")
+	private WebElement third_TCContinuousMonitoringFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='continuousMonitoringAmount'])[5]")
+	private WebElement third_TCContinuousMonitoringFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='unblockingAmountIsRequired'])[5]")
+	private WebElement third_TCUNBlockingFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='unblockingAmount'])[5]")
+	private WebElement third_TCUNBlockingFeeAmountTextbox;
+	@FindBy(xpath="(//select[@formcontrolname='affilationAmountIsRequired'])[5]")
+	private WebElement third_TCAffiliationFeeDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='affilationAmount'])[5]")
+	private WebElement third_TCAffiliationFeeAmountTextbox;
+	
+	@FindBy(xpath="//div[label[contains(text(),'Accreditation Fee:')]]//input[@placeholder='Amount']")
+	private WebElement accreditationFeeAmountTextbox;
+	@FindBy(xpath="//div[label[contains(text(),'Continuous Monitoring Fee :')]]//input[@placeholder='Amount']")
+	private WebElement continousMonitoringFeeTextbox;
+	@FindBy(xpath="//div[label[contains(text(),'Un-Blocking Fee:')]]//input[@placeholder='Amount']")
+	private WebElement unblockingFeeAmountTextbox;
+	@FindBy(xpath="//div[label[contains(text(),'Per-Job Role Affiliation Fee :')]]//input[@placeholder='Amount']")
+	private WebElement affiliationFeeAmountTextbox;
+	
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[1]")
+	private WebElement regular_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[2]")
+	private WebElement gov_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[3]")
+	private WebElement first_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[4]")
+	private WebElement second_TC_RemoveButton;
+	@FindBy(xpath="(//a[text()='Remove Training Centre Type'])[5]")
+	private WebElement third_TC_RemoveButton;
+	
 	@FindBy(xpath="//input[@formcontrolname='noOfBlockAttempts']")
 	private WebElement tcblockedAttemptsNumbersAllowedTextbox;
 	@FindBy(xpath="//input[@formcontrolname='durationOfBlock']")
@@ -67,15 +148,15 @@ public class SmartBusiness_TCSetupReviewPage
 	private WebElement refundPercentageOnSecondDNRTextbox;
 	@FindBy(xpath="//input[@placeholder='Pick your Date']")
 	private WebElement effectiveDateTextbox;
-	@FindBy(xpath="(//i[@class='la la-angle-right'])[1]")
-	private WebElement cornerOfDateButton;
-	@FindBy(xpath="//td[@data-date=\"1536364800000\"]")
-	private WebElement lastDateButton;
-	@FindBy(xpath="//span[@class=\"input-group-text\"]")
+	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calendericonButton;
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelForSubmitButton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement yesButton;
+	@FindBy(xpath="//button[text()='Cancel']")
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement oKButton;
@@ -132,7 +213,8 @@ public class SmartBusiness_TCSetupReviewPage
 		tcRegularAffiliationFeeAmountTextbox.clear();
 		tcRegularAffiliationFeeAmountTextbox.sendKeys(affiliationFeeAmount);
 	}
-	    
+	
+	   
 	public void selectForGovernmentTCAccrediationFee(String accrediationFee)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(tcGovernmentAccrediationFeeDropDownList, accrediationFee);
@@ -175,6 +257,208 @@ public class SmartBusiness_TCSetupReviewPage
 	{
 		tcGovernmentAffiliationFeeAmountTextbox.clear();
 		tcGovernmentAffiliationFeeAmountTextbox.sendKeys(affiliationFeeAmount);
+	}
+	
+	public void clickOnAddAnotherTrainingCentreType()
+	{
+		addAnotherTCTypeButton.click();
+	}
+	
+	public void enterTrainingCentreType(String tcType)
+	{
+		tcTypeTextbox.clear();
+		tcTypeTextbox.sendKeys(tcType);
+	}
+	
+	public void selectFirst_TCAccrediationFee(String first_AccrediationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(first_TCAccrediationFeeDropDownList, first_AccrediationFee);
+	}
+	
+	public void enterFirst_TCAccrediationFee(String first_AccrediationFeeAmount)
+	{
+		first_TCAccrediationFeeAmountTextbox.clear();
+		first_TCAccrediationFeeAmountTextbox.sendKeys(first_AccrediationFeeAmount);
+	}
+	
+	public void selectFirst_TCContinuousMonitoringFee(String first_ContinuousMonitoringFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(first_TCContinuousMonitoringFeeDropDownList, first_ContinuousMonitoringFee);
+	}
+	
+	public void enterFirst_TCContinuousMonitoringFee(String first_ConinuousMonitoringFeeAmount)
+	{
+		first_TCContinuousMonitoringFeeAmountTextbox.clear();
+		first_TCContinuousMonitoringFeeAmountTextbox.sendKeys(first_ConinuousMonitoringFeeAmount);
+	}
+	
+	public void selectFirst_TCUNBlockingFee(String first_UNBlockingFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(first_TCUNBlockingFeeDropDownList, first_UNBlockingFee);
+	}
+	
+	public void enterFirst_TCUNBlockingFee(String first_UNBlockingFeeAmount)
+	{
+		first_TCUNBlockingFeeAmountTextbox.clear();
+		first_TCUNBlockingFeeAmountTextbox.sendKeys(first_UNBlockingFeeAmount);
+	}
+	
+	public void selectFirst_TCAffiliationFeePerJobRole(String first_AffiliationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(first_TCAffiliationFeeDropDownList, first_AffiliationFee);
+	}
+	
+	public void enterFirst_TCAffiliationFeePerJobRole(String first_AffiliationFeeAmount)
+	{
+		first_TCAffiliationFeeAmountTextbox.clear();
+		first_TCAffiliationFeeAmountTextbox.sendKeys(first_AffiliationFeeAmount);
+	}
+	
+	public void clickOnSaveAndSubmit()
+	{
+		saveAndSubmitbutton.click();
+	}
+	
+	public void clickOnClose()
+	{
+		closeButton.click();
+	}
+	
+	public void selectSecond_TCAccrediationFee(String second_AccrediationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(second_TCAccrediationFeeDropDownList, second_AccrediationFee);
+	}
+	
+	public void enterSecond_TCAccrediationFee(String second_AccrediationFeeAmount)
+	{
+		second_TCAccrediationFeeAmountTextbox.clear();
+		second_TCAccrediationFeeAmountTextbox.sendKeys(second_AccrediationFeeAmount);
+	}
+	
+	public void selectSecond_TCContinuousMonitoringFee(String second_ContinuousMonitoringFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(second_TCContinuousMonitoringFeeDropDownList, second_ContinuousMonitoringFee);
+	}
+	
+	public void enterSecond_TCContinuousMonitoringFee(String second_ConinuousMonitoringFeeAmount)
+	{
+		second_TCContinuousMonitoringFeeAmountTextbox.clear();
+		second_TCContinuousMonitoringFeeAmountTextbox.sendKeys(second_ConinuousMonitoringFeeAmount);
+	}
+	
+	public void selectSecond_TCUNBlockingFee(String second_UNBlockingFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(second_TCUNBlockingFeeDropDownList, second_UNBlockingFee);
+	}
+	
+	public void enterSecond_TCUNBlockingFee(String second_UNBlockingFeeAmount)
+	{
+		second_TCUNBlockingFeeAmountTextbox.clear();
+		second_TCUNBlockingFeeAmountTextbox.sendKeys(second_UNBlockingFeeAmount);
+	}
+	
+	public void selectSecond_TCAffiliationFeePerJobRole(String second_AffiliationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(second_TCAffiliationFeeDropDownList, second_AffiliationFee);
+	}
+	
+	public void enterSecond_TCAffiliationFeePerJobRole(String second_AffiliationFeeAmount)
+	{
+		second_TCAffiliationFeeAmountTextbox.clear();
+		second_TCAffiliationFeeAmountTextbox.sendKeys(second_AffiliationFeeAmount);
+	}
+	
+	public void selectThird_TCAccrediationFee(String third_AccrediationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(third_TCAccrediationFeeDropDownList, third_AccrediationFee);
+	}
+	
+	public void enterThird_TCAccrediationFee(String third_AccrediationFeeAmount)
+	{
+		third_TCAccrediationFeeAmountTextbox.clear();
+		third_TCAccrediationFeeAmountTextbox.sendKeys(third_AccrediationFeeAmount);
+	}
+	
+	public void selectThird_TCContinuousMonitoringFee(String third_ContinuousMonitoringFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(third_TCContinuousMonitoringFeeDropDownList, third_ContinuousMonitoringFee);
+	}
+	
+	public void enterThird_TCContinuousMonitoringFee(String third_ConinuousMonitoringFeeAmount)
+	{
+		third_TCContinuousMonitoringFeeAmountTextbox.clear();
+		third_TCContinuousMonitoringFeeAmountTextbox.sendKeys(third_ConinuousMonitoringFeeAmount);
+	}
+	
+	public void selectThird_TCUNBlockingFee(String third_UNBlockingFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(third_TCUNBlockingFeeDropDownList, third_UNBlockingFee);
+	}
+	
+	public void enterThird_TCUNBlockingFee(String third_UNBlockingFeeAmount)
+	{
+		third_TCUNBlockingFeeAmountTextbox.clear();
+		third_TCUNBlockingFeeAmountTextbox.sendKeys(third_UNBlockingFeeAmount);
+	}
+	
+	public void selectThird_TCAffiliationFeePerJobRole(String third_AffiliationFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(third_TCAffiliationFeeDropDownList, third_AffiliationFee);
+	}
+	
+	public void enterThird_TCAffiliationFeePerJobRole(String third_AffiliationFeeAmount)
+	{
+		third_TCAffiliationFeeAmountTextbox.clear();
+		third_TCAffiliationFeeAmountTextbox.sendKeys(third_AffiliationFeeAmount);
+	}
+	
+	public void enterAccrediatationFeeAmount(String accreditationFeeAmount)
+	{
+		accreditationFeeAmountTextbox.clear();
+		accreditationFeeAmountTextbox.sendKeys(accreditationFeeAmount);
+	}
+	
+	public void enterContinousMonitoringFeeAmount(String continousMonitoringFeeAmount)
+	{
+		continousMonitoringFeeTextbox.clear();
+		continousMonitoringFeeTextbox.sendKeys(continousMonitoringFeeAmount);
+	}
+	
+	public void enterUnblockingFeeAmount(String unblockingFeeAmount)
+	{
+		unblockingFeeAmountTextbox.clear();
+		unblockingFeeAmountTextbox.sendKeys(unblockingFeeAmount);
+	}
+	
+	public void enterAffiliationFeeAmount(String affiliationFeeAmount)
+	{
+		affiliationFeeAmountTextbox.clear();
+		affiliationFeeAmountTextbox.sendKeys(affiliationFeeAmount);
+	}
+	
+	public void clickOnRegular_TCType_Remove()
+	{
+		regular_TC_RemoveButton.click();
+	}
+	
+	public void clickOnGovernment_TCType_Remove()
+	{
+		gov_TC_RemoveButton.click();
+	}
+	
+	public void clickOnFirst_TCType_Remove()
+	{
+		first_TC_RemoveButton.click();
+	}
+	
+	public void clickOnSecond_TCType_Remove()
+	{
+		second_TC_RemoveButton.click();
+	}
+	
+	public void clickOnThird_TCType_Remove()
+	{
+		third_TC_RemoveButton.click();
 	}
 	
 	public void enterNumberOfBlockedAttemptsAllowedForTC(String blockedAttemptAllowedNumber)
@@ -237,13 +521,15 @@ public class SmartBusiness_TCSetupReviewPage
 		refundPercentageOnSecondDNRTextbox.sendKeys(Keys.TAB);
 	}
 	
-	public void clickForEffectiveDate()
+	public void clickForEffectiveDate()throws Exception
 	{
+		Thread.sleep(2000);
 		effectiveDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER);
 	}
 	
-	public void clickOnCalenderIconButton()
+	public void clickOnCalenderIconButton()throws Exception
 	{
+		Thread.sleep(3000);
 		calendericonButton.click();
 	}
 	
@@ -252,7 +538,17 @@ public class SmartBusiness_TCSetupReviewPage
 		submitButton.click();
 	}
 	
-	public void clickForCancel()
+	public void clickOnCancelForSubmit()
+	{
+		cancelForSubmitButton.click();
+	}
+	
+	public void clickOnYes()
+	{
+		yesButton.click();
+	}
+	
+	public void clickOnCancel()
 	{
 		cancelButton.click();
 	}

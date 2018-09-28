@@ -34,7 +34,7 @@ public class SmartAdmin_DashboardPage
         PageFactory.initElements(driver, this);
     }
 	
-	public void clickOnSDMSCreateUser()
+	public void clickOnCreateUser()
 	{
 		createUserButton.click();
 	}
