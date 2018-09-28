@@ -28,9 +28,9 @@ public class TestConfiguration
         Date d = new Date();
         String date = d.toString().replace(":", "_");
         
-        //String folderToZip = "./target/surefire-reports";
+        String folderToZip = "./target/surefire-reports";
         
-        String folderToZip = "./test-output";
+        //String folderToZip = "./test-output";
         
         String zipName = "./ReportBackup/"+date+".zip";
         
@@ -56,8 +56,8 @@ public class TestConfiguration
         }
         else if (browsername.equals("Chrome") && osType.equals("Windows"))
         {
-            System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Windows/chromedriver.exe");
-            driver = new FirefoxDriver();
+            System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Windows/chromedriver.exe");
+            driver = new ChromeDriver();
         }
         else if (browsername.equals("Firefox") && osType.equals("Windows"))
         {
@@ -66,8 +66,8 @@ public class TestConfiguration
         }
         else if (browsername.equals("Chrome") && osType.equals("Ubuntu"))
         {
-            System.setProperty("webdriver.gecko.driver", "./Browsers-exe/Linux/chromedriver");
-            driver = new FirefoxDriver();
+            System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Linux/chromedriver");
+            driver = new ChromeDriver();
         }
         else if (browsername.equals("Firefox") && osType.equals("Ubuntu"))
         {
@@ -75,7 +75,7 @@ public class TestConfiguration
             driver = new FirefoxDriver();
         }
   
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(url);
     }
@@ -87,8 +87,8 @@ public class TestConfiguration
         {
             Screenshot.takeScreenshot(driver, result.getName());
         }
-        
-        driver.close();
+       
+        	driver.close();       	    	
     }
     
 }
