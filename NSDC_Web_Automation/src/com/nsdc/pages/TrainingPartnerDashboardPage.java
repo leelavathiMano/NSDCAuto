@@ -8,7 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 public class TrainingPartnerDashboardPage 
 {
 	WebDriver driver;
-	
+	@FindBy(linkText="Other - Rozgar Mela")
+	private WebElement otherRozgarMelaLink;
 	@FindBy(xpath="//div[@routerlink='./add-tc']")
 	private WebElement addTrainingCentreButton;
 	@FindBy(xpath="//p[text()='View All Assessment Requests']")
@@ -35,13 +36,21 @@ public class TrainingPartnerDashboardPage
 	private WebElement schemeButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[6]")
 	private WebElement certificationsButton;
+	//TP - Candidates
+	@FindBy(xpath="//p[contains(text(),'My Candidates')]")
+	private WebElement myCandidatesCard;
 	
-	
+
 	public TrainingPartnerDashboardPage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+	
+	public void clickOtherRozgarMela()
+	{
+		otherRozgarMelaLink.click();
+	}
 	
 	public void clickOnAddATrainingCentre()
 	{
@@ -107,5 +116,15 @@ public class TrainingPartnerDashboardPage
 	{
 		certificationsButton.click();
 	}
+	public void clickMyCandidates()
+	{
+		myCandidatesCard.click();
+	}
+}	
+	
 
-}
+	
+
+	
+
+
