@@ -11,7 +11,6 @@ import com.nsdc.generic.SelectDropDownList;
 public class AssessorRegistrationPage 
 {
 	WebDriver driver;
-    
     @FindBy(xpath="//input[@placeholder='Enter full name']")
     private WebElement nameTextbox;
     @FindBy(xpath="//select[@formcontrolname='gender']")
@@ -52,10 +51,8 @@ public class AssessorRegistrationPage
     private WebElement uploadYourPhoto_uploadButton;
     @FindBy(xpath="//select[@formcontrolname='applicantCategory']")
     private WebElement multiSelectDropDownList_ApplicantCategory;
-    //@FindBy(xpath="//span[contains(text(),'Save & Continue')]")
     @FindBy(xpath="//span[contains(text(),'Next')]")
     private WebElement saveAndContinueButton;
-    
     @FindBy(xpath="//textarea[@formcontrolname='addressLine1']")
     private WebElement applicantAddressTextBox;
     @FindBy(xpath="//input[@formcontrolname='landmark']")
@@ -72,7 +69,6 @@ public class AssessorRegistrationPage
     private WebElement parliamentaryConstituencyDropDownList;
     @FindBy(css=".btn.btn-secondary.m-btn.m-btn--custom.m-btn--icon")
     private WebElement backButton;
-    
     @FindBy(xpath="//select[@formcontrolname='education']")
     private WebElement educationAttainedDropDownList;
     @FindBy(xpath="//input[@placeholder='Enter the details of the above selected education type']")
@@ -85,7 +81,6 @@ public class AssessorRegistrationPage
     private WebElement clickToAddEducationDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[3]")
     private WebElement deleteThirdEducationDetailsButton;
-    
     @FindBy(xpath="(//select[@title='Select the Relevant Sector'])[1]")
     private WebElement industrialExperience_relevantSectorDropDownList;
     @FindBy(xpath="(//select[@formcontrolname='years'])[1]")
@@ -100,14 +95,12 @@ public class AssessorRegistrationPage
     private WebElement industrialExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Industrial Experience')]]/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement industrialExperienceProofDocument_uploadButton;
-    //@FindBy(xpath="//button[text()='Add Industrial Experience Details']")
     @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddIndustrialExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[3]")
     private WebElement deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[5]")
     private WebElement deleteThirdIndustrialExperienceDetailsButton;
-    
     @FindBy(xpath="(//select[@title='Select the Relevant Sector'])[2]")
     private WebElement trainingExperience_relevantSectorDropDownList;
     @FindBy(xpath="//select[@formcontrolname='years']")
@@ -120,45 +113,32 @@ public class AssessorRegistrationPage
     private WebElement trainingExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Training Experience')]]/div/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement trainingExperienceProofDocument_uploadButton;
-    //@FindBy(xpath="//button[text()='Add Training Experience Details']")
     @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddTrainingExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[5]")
     private WebElement deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[7]")
     private WebElement deleteThirdTrainingExperienceDetailsButton;
-    
     @FindBy(xpath="//div[div/h3[contains(text(),'Curriculum Vitae / Resume Details')]]/div/div/app-upload-file/div/div/div/div/input[@id='customFile']")
     private WebElement curriculumVitaeOrResume_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Curriculum Vitae / Resume Details')]]/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement curriculumVitaeOrResume_uploadButton;
-    
-    @FindBy(xpath="//button[contains(text(),'Add Preferred Job Role')]")
-    private WebElement addPreferredJobRoleButton;
-    @FindBy(xpath="//div[div/label[contains(text(),'Select Sector')]]/div/div/select[@formcontrolname='sector']")
-    private WebElement jobRoleSectorDropDownList;
-    @FindBy(xpath="//div[div/label[contains(text(),'Select Sub-Sector')]]/div/div/select[@formcontrolname='subSector']")
-    private WebElement jobRoleSubSectorDropDownList;
-    @FindBy(xpath="//div[div/label[contains(text(),'Select Job Role')]]/div/div/select[@formcontrolname='jobRole']")
-    private WebElement jobRoleDropDownList;
-    @FindBy(xpath="(//button[contains(text(),'Add')])[4]")
-    private WebElement jobRole_addButton;
-    
-    @FindBy(xpath="//button[contains(text(),'Add Preferred Location')]")
-    private WebElement addPreferredLocationButton;
-    @FindBy(xpath="//div[label[contains(text(),'State/ Union Territory:')]]/div/div/select[@ng-reflect-name='state']")
-    private WebElement preferredStateOrUnionTerritoryDropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'District/ City:')]]/div/div/select[@formcontrolname='district']")
-    private WebElement preferredDistrictOrCityDropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'Sub-District/ Tehsil:')]]/div/div/select[@formcontrolname='subDistrict']")
-    private WebElement preferredSubDistrictOrTehsilDropDownList;
-    @FindBy(xpath="(//button[contains(text(),'Add')])[3]")
-    private WebElement preferredLocation_addButton;
-    @FindBy(xpath="(//button[@class='btn'])[1]")
-    private WebElement preferredJobRole_DeleteButton;
-    @FindBy(xpath="(//button[@class='btn'])[4]")
-    private WebElement thirdPreferredLocation_DeleteButton;
-    
+    @FindBy(xpath="(//select[@formcontrolname='sector'])[3]")
+    private WebElement preferredSectorDropdownList;
+    @FindBy(xpath="//select[@formcontrolname='subSector']")
+    private WebElement preferredSubSectorDropDownList;
+    @FindBy(xpath="//select[@formcontrolname='jobRole']")
+    private WebElement preferredJobRoleDropDownList;
+    @FindBy(xpath="(//select[@formcontrolname='state'])[2]")
+    private WebElement preferredStateDropdownList;
+    @FindBy(xpath="(//select[@formcontrolname='district'])[2]")
+    private WebElement preferredDistrictDropdownList;
+    @FindBy(xpath="//select[@formcontrolname='subDistrict']")
+    private WebElement preferredSubDistrictDropDownList;
+    @FindBy(xpath="//button[contains(text(),'Add Preferences')]")
+    private WebElement addPreferencesButton;
+    @FindBy(xpath="(//button[i[@class='fa fa-trash-o']])[3]")
+    private WebElement deleteThirdPreferenceButton;
     @FindBy(xpath="//span[@_ngcontent-c12='']")
     private WebElement iAgreeCheckbox;
     @FindBy(xpath="(//button[@class='btn btn-primary'])[1]")
@@ -478,66 +458,38 @@ public class AssessorRegistrationPage
         curriculumVitaeOrResume_uploadButton.click();
     }
     
-    public void clickOn_PreferredJobRole()
+    public void selectPreferredSector(String preferredSector)
     {
-        addPreferredJobRoleButton.click();
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredSectorDropdownList, preferredSector);
     }
-    
-    public void selectSectorForJobRole(String jobRole_sector)
+    public void selectPreferredSubSector(String preferredSubSector)
     {
-        SelectDropDownList.selectDropDownListByVisibleText(jobRoleSectorDropDownList, jobRole_sector);
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredSubSectorDropDownList, preferredSubSector);
     }
-    
-    public void selectSubSectorForJobRole(String jobRole_subSector)
+    public void selectPreferredJobRole(String preferredJobRole)
     {
-        SelectDropDownList.selectDropDownListByVisibleText(jobRoleSubSectorDropDownList, jobRole_subSector);
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredJobRoleDropDownList, preferredJobRole);
     }
-    
-    public void select_JobRole(String jobRole)
+    public void selectPreferredState(String preferredState)
     {
-        SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropDownList, jobRole);
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredStateDropdownList, preferredState);
     }
-    
-    public void clickOnAddForPreferredJobRole()
+    public void selectPreferredDistrict(String preferredDistrict)
     {
-        jobRole_addButton.click();
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredDistrictDropdownList, preferredDistrict);
     }
-    
-    public void clickOn_AddPreferredLocation()
+    public void selectPreferredSubDistrict(String preferredSubDistrict)
     {
-        addPreferredLocationButton.click();
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredSubDistrictDropDownList, preferredSubDistrict);
     }
-    
-    public void selectPreferredStateOrUnionTerritory(String preferred_state)
+    public void clickAddPreferences()
     {
-        SelectDropDownList.selectDropDownListByVisibleText(preferredStateOrUnionTerritoryDropDownList, preferred_state);
+    	addPreferencesButton.click();
     }
-    
-    public void selectPreferredDistrictOrCity(String preferred_city)
+    public void clickToDeleteThirdPreference()
     {
-        SelectDropDownList.selectDropDownListByVisibleText(preferredDistrictOrCityDropDownList, preferred_city);
+    	deleteThirdPreferenceButton.click();
     }
-    
-    public void selectPreferredSubDistrictOrTehsil(String preferred_district)
-    {
-        SelectDropDownList.selectDropDownListByVisibleText(preferredSubDistrictOrTehsilDropDownList, preferred_district);
-    }
-    
-    public void clickOnAddForPreferredLocation()
-    {
-        preferredLocation_addButton.click();
-    }
-    
-    public void clickOnDeletePreferredJobRole()
-    {
-        preferredJobRole_DeleteButton.click();
-    }
-    
-    public void clickOnDeleteThirdPreferredLocation()
-    {
-        thirdPreferredLocation_DeleteButton.click();
-    }
-    
     public void clickIAgreeCheckbox()
     {
         iAgreeCheckbox.click();

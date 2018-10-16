@@ -125,7 +125,7 @@ public class TrainerMyProfilePage
 	private WebElement trainingExperienceProofDocBrowseButton;	
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
 	private WebElement trainingExperienceProofDocUploadButton;
-	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[3]")
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[3]")
 	private WebElement trainingExperienceDetailsSaveAndSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[3]")
 	private WebElement trainingExperienceDetailsCloseButton;
