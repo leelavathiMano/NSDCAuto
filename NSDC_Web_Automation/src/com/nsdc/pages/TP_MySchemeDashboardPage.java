@@ -18,15 +18,15 @@ public class TP_MySchemeDashboardPage
 	private WebElement mySchemeButton;
 	@FindBy(css=".btn.m-btn--pill.btn-primary.tab-color-blue")
 	private WebElement addSchemeButton;
-	@FindBy(xpath="//a[contains(text(),'Approved Schemes')]")
+	@FindBy(xpath="//a[contains(text(),'Approved')]")
 	private WebElement approvedSchemeButton;
-	@FindBy(xpath="//a[contains(text(),'Approval In Progress')]")
+	@FindBy(xpath="//a[contains(text(),'Approval in Progress')]")
 	private WebElement approvalInProgressButton;
-	@FindBy(xpath="//a[contains(text(),'Rejected Schemes')]")
+	@FindBy(xpath="//a[contains(text(),'Rejected')]")
 	private WebElement rejectedSchemeButton;
-	@FindBy(xpath="(//button[contains(text(),'View Details')])[1]")
+	@FindBy(xpath="(//a[contains(text(),'View Scheme Details')])[1]")
 	private WebElement viewDetailsButton;
-	@FindBy(xpath="(//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill'])[1]")
+	@FindBy(xpath="//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")
 	private WebElement actionButton;
 	
 	public TP_MySchemeDashboardPage(WebDriver driver) 

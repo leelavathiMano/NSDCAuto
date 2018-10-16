@@ -26,7 +26,7 @@ public class TrainingPartnerDashboardPage
 	private WebElement addCandidateButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement dashboardButton;
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[2]")
+	@FindBy(xpath="//div[@routerlink='./my-schemes']")
 	private WebElement mySchemesButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[3]")
 	private WebElement accrediationAndAffiliationButton;
@@ -39,7 +39,18 @@ public class TrainingPartnerDashboardPage
 	//TP - Candidates
 	@FindBy(xpath="//p[contains(text(),'My Candidates')]")
 	private WebElement myCandidatesCard;
-	
+	@FindBy(xpath="//div[p[text()='Register Candidates']]")
+	private WebElement registerCandidateButton;
+	@FindBy(xpath="(//label[@class='m-radio'])[1]")
+	private WebElement bulkExcelSheetUploadRadioButton;
+	@FindBy(xpath="(//label[@class='m-radio'])[2]")
+	private WebElement registerIndividualCandidateRadioButton;
+	@FindBy(xpath="//input[@formcontrolname='excelFile']")
+	private WebElement excelFileBrowseButton;
+	@FindBy(xpath="//button[contains(text(),'Close')]")
+	private WebElement closeButton;
+	@FindBy(xpath="//button[contains(text(),'Register')]")
+	private WebElement registerButton;
 
 	public TrainingPartnerDashboardPage(WebDriver driver)
     {
@@ -119,6 +130,33 @@ public class TrainingPartnerDashboardPage
 	public void clickMyCandidates()
 	{
 		myCandidatesCard.click();
+	}
+	
+	public void clickOnRegisterCandidate()
+	{
+		registerCandidateButton.click();
+	}
+	
+	public void clickToChooseBulkExcelSheetUpload()
+	{
+		bulkExcelSheetUploadRadioButton.click();
+	}
+	public void clickToChooseIndividualCandidateRegistration()
+	{
+		registerIndividualCandidateRadioButton.click();
+	}
+	public void clickForExcelFileBrowse()
+	{
+		excelFileBrowseButton.click();
+	}
+	
+	public void clickClose()
+	{
+		closeButton.click();
+	}
+	public void clickRegister()
+	{
+		registerButton.click();
 	}
 }	
 	

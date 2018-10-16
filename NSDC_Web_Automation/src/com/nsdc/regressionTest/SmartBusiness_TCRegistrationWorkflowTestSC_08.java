@@ -465,7 +465,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='percentageOnRefusalOfCenterInspection2']")).getAttribute("value"), expectedRefundPercentageOnInspectionDate);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedRefundPercentageOnFirstDNR);
     	Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='refundOnSecondDNRIfTCDoesnotReapply']")).getAttribute("value"), expectedRefundPercentageOnSecondDNR);
-    	//Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
+    	Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value"), effective_date);
 
     	Thread.sleep(3000);
     	if(comments.equals("Approved Successfully"))

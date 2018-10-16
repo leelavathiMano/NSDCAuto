@@ -3,6 +3,7 @@ package com.nsdc.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -13,6 +14,8 @@ public class TP_FeeBasedProgramPage
 	
 	WebDriver driver;
 	
+	@FindBy(xpath="(//button[@class='close'])[3]")
+	private WebElement closeButton;
 	@FindBy(xpath="//input[@placeholder='Select Start Date']")
 	private WebElement startDateOfProjectTextbox;
 	@FindBy(xpath="(//span[@class='input-group-text'])[1]")
@@ -23,6 +26,8 @@ public class TP_FeeBasedProgramPage
 	private WebElement endDateCalenderButton;
 	@FindBy(xpath="//label[contains(text(),'Duration of the Project:')]")
 	private WebElement projectDurationButton;
+	@FindBy(xpath="//input[@id='projectProposalId']")
+	private WebElement projectProposalIDTextbox;
 	@FindBy(xpath="//input[@placeholder='Enter Project Name']")
 	private WebElement projectNameTextbox;
 	@FindBy(id="proposingOrganisation")
@@ -37,6 +42,8 @@ public class TP_FeeBasedProgramPage
 	private WebElement targetTextbox;
 	@FindBy(id="promoterDetails")
 	private WebElement promoterDetailsTextbox;
+	@FindBy(id="assessmentMode")
+	private WebElement assessmentModeDropDownList;
 	@FindBy(id="sanctionLoanAmount")
 	private WebElement sanctionLoanAmountTextbox;
 	@FindBy(xpath="//select[@ng-reflect-name='moratoriumPeriod']")
@@ -69,13 +76,17 @@ public class TP_FeeBasedProgramPage
 	private WebElement sectorDropDownList;
 	@FindBy(id="proposedTrainingTarget")
 	private WebElement proposedTrainingTargetTextbox;
-	@FindBy(xpath="(//input[@id='customFile'])[5]")
-	private WebElement supportingDocument_AddSector_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
-	private WebElement supportingDocument_AddSector_UploadButton;
-	@FindBy(xpath="(//button[contains(text(),'Cancel')])[3]")
+	@FindBy(xpath="(//input[@id='customFile'])[9]")
+	private WebElement undertakingDocument_AddSector_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[9]")
+	private WebElement undertakingDocument_AddSector_UploadButton;
+	@FindBy(xpath="(//input[@id='customFile'])[10]")
+	private WebElement affiliationCertificate_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[10]")
+	private WebElement affiliationCertificate_UploadFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Cancel')])[4]")
 	private WebElement cancel_AddSectorButton;
-	@FindBy(xpath="(//button[contains(text(),'Add')])[4]")
+	@FindBy(xpath="(//button[contains(text(),'Add')])[5]")
 	private WebElement add_AddSectorButton;
 	@FindBy(xpath="//input[@placeholder='Enter Course Name']")
 	private WebElement courseNameTextbox;
@@ -107,10 +118,32 @@ public class TP_FeeBasedProgramPage
 	private WebElement courseApprovalDocument_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
 	private WebElement courseApprovalDocument_UploadFileButton;
-	@FindBy(xpath="(//button[text()='Add'])[1]")
+	@FindBy(xpath="(//input[@id='customFile'])[5]")
+	private WebElement affiliationCertificateFromSSC_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+	private WebElement affiliationCertificateFromSSC_UploadFileButton;
+	@FindBy(xpath="(//input[@id='customFile'])[6]")
+	private WebElement workOrder_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[6]")
+	private WebElement workOrder_UploadFileButton;
+	@FindBy(xpath="(//input[@id='customFile'])[7]")
+	private WebElement challanOfFeePaid_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[7]")
+	private WebElement challanOfFeePaid_UploadFileButton;
+	@FindBy(xpath="(//input[@id='customFile'])[8]")
+	private WebElement stampPaper_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[8]")
+	private WebElement stampPaper_UploadFileButton;
+	@FindBy(xpath="(//button[text()='Add'])[2]")
 	private WebElement add_AddCourseButton;
-	@FindBy(xpath="(//button[text()='Cancel'])[2]")
+	@FindBy(xpath="(//button[text()='Cancel'])[3]")
 	private WebElement cancel_AddCourseButton;
+	@FindBy(xpath="//select[@formcontrolname='state']")
+	private WebElement state_LocationForTcDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='districts']")
+	private WebElement districts_LocationForTCDropDownList;
+	@FindBy(xpath="(//button[text()='Add'])[1]")
+	private WebElement add_LocationForTCButton;
 	@FindBy(xpath="//button[contains(text(),'Yes, Add Scheme')]")
 	private WebElement addSchemeButton;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[4]")
@@ -127,28 +160,41 @@ public class TP_FeeBasedProgramPage
 		PageFactory.initElements(driver, this);
 	}
 	
+	public void clickOnCloseButton()throws Exception
+	{
+		//Actions act = new Actions(driver);
+		//act.moveToElement(closeButton).click().build().perform();
+		Thread.sleep(3000);
+		closeButton.click();
+	}
 	
 	public void clickOnStartDateOfProject()throws Exception
 	{
+		Thread.sleep(3000);
 		startDateOfProjectTextbox.click();
 		Thread.sleep(2000);
-		startDateOfProjectTextbox.sendKeys(Keys.ENTER, Keys.TAB);
+		startDateOfProjectTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.ESCAPE);
 		//Thread.sleep(5000);
 		//projectDurationButton.click();
+	}
+	
+	public void clickOnProjectDuration()
+	{
+		projectDurationButton.click();
 	}
 	
 	public void clickForNewStartDateOfProject()throws Exception
 	{
 		startDateOfProjectTextbox.click();
 		Thread.sleep(2000);
-		startDateOfProjectTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
+		startDateOfProjectTextbox.sendKeys(Keys.ENTER, Keys.TAB);
 	}
 	
 	public void clickOnEndDateOfProject()throws Exception
 	{
 		endDateOfProjectTextbox.click();
 		Thread.sleep(2000);
-		endDateOfProjectTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
+		endDateOfProjectTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
 		//Thread.sleep(2000);
 		//projectDurationButton.click();
 	}
@@ -158,6 +204,12 @@ public class TP_FeeBasedProgramPage
 		//endDateOfProjectTextbox.click();
 		Thread.sleep(2000);
 		endDateOfProjectTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
+	}
+	
+	public void enterProjectProposalID(String projectID)
+	{
+		projectProposalIDTextbox.clear();
+		projectProposalIDTextbox.sendKeys(projectID);
 	}
 	
 	public void enterNameOfProject(String projectName)
@@ -201,10 +253,20 @@ public class TP_FeeBasedProgramPage
 		promoterDetailsTextbox.sendKeys(promoterDetails);
 	}
 	
+	public void selectAssessmentMode(String assessmentMode)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(assessmentModeDropDownList, assessmentMode);
+	}
+	
 	public void enterSanctionLoanAmount(String loanAmount)
 	{
 		sanctionLoanAmountTextbox.clear();
 		sanctionLoanAmountTextbox.sendKeys(loanAmount);
+	}
+	
+	public void clickOnSanctionLoanAmount()
+	{
+		sanctionLoanAmountTextbox.click();
 	}
 	
 	public void selectMoratoriumPeriod(String moratoriumPeriod)
@@ -283,15 +345,26 @@ public class TP_FeeBasedProgramPage
 		proposedTrainingTargetTextbox.sendKeys(trainingTarget);
 	}
 	
-	public void clickOnSupportingDocumentForAddSector_BrowseButton()
+	public void clickOnUndertakingDocumentForAddSector_Browse()
 	{
-		supportingDocument_AddSector_BrowseFileButton.click();
+		undertakingDocument_AddSector_BrowseFileButton.click();
 	}
 	
-	public void clickOnSupportingDocumentForAddSector_UploadButton()
+	public void clickOnUndertakingDocumentForAddSector_Upload()
 	{
-		supportingDocument_AddSector_UploadButton.click();
+		undertakingDocument_AddSector_UploadButton.click();
 	}
+	
+	public void clickOnAffiliationCertificate_BrowseFile()
+	{
+		affiliationCertificate_BrowseFileButton.click();
+	}
+	
+	public void clickOnAffiliationCertificate_UploadFile()
+	{
+		affiliationCertificate_UploadFileButton.click();
+	}
+	
 	public void clickOnCancel_AddSector()
 	{
 		cancel_AddSectorButton.click();
@@ -302,9 +375,11 @@ public class TP_FeeBasedProgramPage
 		add_AddSectorButton.click();
 	}
 	
-	public void enterCourseName(String courseName)
+	public void enterCourseName(String courseName)throws Exception
 	{
+		
 		courseNameTextbox.clear();
+		Thread.sleep(3000);
 		courseNameTextbox.sendKeys(courseName);
 	}
 	
@@ -384,6 +459,46 @@ public class TP_FeeBasedProgramPage
 		courseApprovalDocument_UploadFileButton.click();
 	}
 	
+	public void clickOnAffiliationCertificate_Course_BrowseFile()
+	{
+		affiliationCertificateFromSSC_BrowseFileButton.click();
+	}
+	
+	public void clickOnAffiliationCertificate_Course_UploadFile()
+	{
+		affiliationCertificateFromSSC_UploadFileButton.click();
+	}
+	
+	public void clickOnWorkOrder_BrowseFile()
+	{
+		workOrder_BrowseFileButton.click();
+	}
+	
+	public void clickOnWorkOrder_UploadFile()
+	{
+		workOrder_UploadFileButton.click();
+	}
+	
+	public void clickOnChallanOfFeePaid_BrowseFile()
+	{
+		challanOfFeePaid_BrowseFileButton.click();
+	}
+	
+	public void clickOnChallanOfFeePaid_UploadFile()
+	{
+		challanOfFeePaid_UploadFileButton.click();
+	}
+	
+	public void clickOnStampPapaer_BrowseFile()
+	{
+		stampPaper_BrowseFileButton.click();
+	}
+	
+	public void clickOnStampPape_UploadFile()
+	{
+		stampPaper_UploadFileButton.click();
+	}
+	
 	public void clickOnAdd_AddCourse()
 	{
 		add_AddCourseButton.click();
@@ -392,6 +507,21 @@ public class TP_FeeBasedProgramPage
 	public void clickOnCancel_AddCourse()
 	{
 		cancel_AddCourseButton.click();
+	}
+	
+	public void selectState_LocationForTC(String state)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(state_LocationForTcDropDownList, state);
+	}
+	
+	public void selectDistricts_LocationForTC(String district)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(districts_LocationForTCDropDownList, district);
+	}
+	
+	public void clickOnAddForLocationOfTC()
+	{
+		add_LocationForTCButton.click();
 	}
 	
 	public void clickOnYes_AddScheme()

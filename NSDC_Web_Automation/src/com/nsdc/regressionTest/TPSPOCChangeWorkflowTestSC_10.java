@@ -29,7 +29,7 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 		elp.performlogin(tpUsername, tpPassword);
 		
 		TrainingPartnerDashboardPage tpd = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(5000);
+		Thread.sleep(12000);
 		tpd.clickOnChangeMySPOC();
 		
 		TP_SPOCChangePage tpsp = new TP_SPOCChangePage(driver);
@@ -71,7 +71,7 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 		elp.performlogin(tPUsername, tPPassword);
 		
 		TrainingPartnerDashboardPage tpd = new  TrainingPartnerDashboardPage(driver);
-		Thread.sleep(5000);
+		Thread.sleep(12000);
 		tpd.clickOnChangeMySPOC();
 		
 		TP_SPOCChangePage tps = new TP_SPOCChangePage(driver);
@@ -87,11 +87,11 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 		tps.enterPassword(tPPassword);
 		Thread.sleep(2000);
 		tps.clickOnVerify();
-		Thread.sleep(2000);
-		tps.enterMobileOTP(spocMobileOTP);
-		tps.enterEmailOTPTextbox(spocEmailOTP);
-		Thread.sleep(2000);
-		tps.clickOnVerify();
+		//Thread.sleep(2000);
+		//tps.enterMobileOTP(spocMobileOTP);
+		//tps.enterEmailOTPTextbox(spocEmailOTP);
+		//Thread.sleep(2000);
+		//tps.clickOnVerify();
 		Thread.sleep(2000);
 
 		if(email.equals(oldemail) || mobileNumber.equals(oldmobileNumber)) 
@@ -99,7 +99,9 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 			//Assert.assertEquals(By.xpath(""), );
 			Thread.sleep(2000);
 			tps.clickOnCancel();
+			Thread.sleep(3000);
 			tps.enterTP_SPOCEmailAddress(newSPOCEmail);
+			Thread.sleep(3000);
 			tps.enterTP_SPOCMobileNumber(newSPOCMobileNumber);
 			Thread.sleep(2000);
 			tps.clickOnSaveAndNext();
@@ -120,7 +122,7 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 		
 		else
 		{
-			tps.enterTP_SPOCEmailAddress(newSPOCEmail);
+			/*tps.enterTP_SPOCEmailAddress(newSPOCEmail);
 			tps.enterTP_SPOCMobileNumber(newSPOCMobileNumber);
 			Thread.sleep(2000);
 			tps.clickOnSaveAndNext();
@@ -128,7 +130,7 @@ public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
 			tps.enterTPIDTextbox(tPUsername);
 			tps.enterPassword(tPPassword);
 			Thread.sleep(2000);
-			tps.clickOnVerify();
+			tps.clickOnVerify();*/
 			tps.enterMobileOTP(spocMobileOTP);
 			tps.enterEmailOTPTextbox(spocEmailOTP);
 			Thread.sleep(2000);

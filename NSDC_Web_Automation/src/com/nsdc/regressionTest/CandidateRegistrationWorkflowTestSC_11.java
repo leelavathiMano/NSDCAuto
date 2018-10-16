@@ -13,6 +13,7 @@ import com.nsdc.pages.Candidate_DashboardPage;
 import com.nsdc.pages.Candidate_ProfilePage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
+import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.testConfig.TestConfiguration;
 
@@ -25,7 +26,7 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="candidateProfileData")
-	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String subDistrict, String villageORCity, String parliamentryConstituency, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
+	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String landmark, String tehsil, String villageORCity, String parliamentryConstituency, String educationName, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		//lp.clickLogin();
@@ -39,8 +40,9 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		crp.enterCandidateFullName(candidateName);
 		Thread.sleep(3000);
 		crp.enterGuardianName(guardianName);
+		Thread.sleep(3000);
 		crp.clickOnDateOfBirthField();
-		String dob = driver.findElement(By.xpath("//input[@formcontrolname='dob']")).getAttribute("value");
+		String dob = driver.findElement(By.xpath("//input[@id='dob']")).getAttribute("value");
 		crp.selectGender(gender);
 		crp.enterCandidateEmailAddress(email);
 		crp.enterCandidateMobileNumber(mobileNumber);
@@ -49,25 +51,29 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		Thread.sleep(3000);
 		crp.selectState_Location(state);
 		crp.selectDistrict_Location(district);
-		crp.enterGeoTag(district);
+		//crp.enterGeoTag(district);
 		crp.selectForSector(sector);
 		crp.selectForSubSector(subSector);
 		crp.selectCandidate_JobRole(jobRole);
 		crp.selectAssociateProgramName(associateProgram);
 		if(associateProgram.equals("Counselling"))
 		{
+			Thread.sleep(3000);
 			crp.clickOnUploadProfilePicture();
 			Thread.sleep(3000);
 			UploadFile.upload(profilePicture);
 			Thread.sleep(3000);
 			crp.selectCIOType(cioType);
 			crp.selectCIOName(cioName);
+			crp.clickOnIntrestedInPMKVYTraining();
 			crp.clickOnIAgree();
 			Thread.sleep(5000);
 			crp.clickForSubmit();
 		}
 		else
 		{
+			Thread.sleep(3000);
+			crp.clickOnIntrestedInPMKVYTraining();
 			crp.clickOnIAgree();
 			Thread.sleep(5000);
 			crp.clickForSubmit();
@@ -96,17 +102,17 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		
 		Candidate_ProfilePage cpp = new Candidate_ProfilePage(driver);
 		cpp.selectNamePrefix(prefix);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='firstName']")).getAttribute("value"), candidateName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='firstName']")).getAttribute("value"), candidateName);
 		Thread.sleep(3000);
 		cpp.clickOnBrowseFileForProfilePicture();
 		Thread.sleep(3000);
 		UploadFile.upload(uploadFilePath);
 		Thread.sleep(3000);
 		cpp.clickOnUploadFileForProfilePicture();
-		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='gender']")).getAttribute("value"), gender);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='dob']")).getAttribute("value"), dob);
+		Assert.assertEquals(driver.findElement(By.xpath("//select[@id='gender']")).getAttribute("value").substring(3), gender);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value"), dob);
 		cpp.selectRelationWithGuardian(guardianRelation);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='guardianName']")).getAttribute("value"), guardianName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='parentName']")).getAttribute("value"), guardianName);
 		cpp.selectAlternateID_Type(idtype);
 		Thread.sleep(4000);
 		cpp.enterAlternateID_Number(idNumber);
@@ -137,67 +143,125 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		}
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobileNumber);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='phone']")).getAttribute("value"), mobileNumber);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='email']")).getAttribute("value"), email);
 		Thread.sleep(3000);
 		cpp.enterPermanent_AddressTextbox(address);
-		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='pinCode'])[1]")).getAttribute("value"), pincode);
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[1]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[1]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
-		cpp.selectPermanent_SubDistrict(subDistrict);
+		cpp.enterPermanent_NearByLandmark(landmark);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@id='pincode'])[1]")).getAttribute("value"), pincode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='state'])[1]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='district'])[1]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
+		Thread.sleep(3000);
+		cpp.selectPermanent_TehsilOrBlock(tehsil);
+		Thread.sleep(2000);
 		cpp.selectPermanent_VillageOrCity(villageORCity);
+		Thread.sleep(2000);
 		cpp.selectPermanent_ParliamentryConstituency(parliamentryConstituency);
+		Thread.sleep(3000);
 		cpp.clickOnSameAsPermanentAddressCheckBox();
-		Assert.assertEquals(driver.findElement(By.xpath("(//textarea[@formcontrolname='address1'])[2]")).getAttribute("value"), address);
-		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='pinCode'])[2]")).getAttribute("value"), pincode);
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[2]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[2]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='parliamentaryConstituency'])[2]")).getAttribute("value").substring(3).replace(" ", ""), parliamentryConstituency.replace(" ", ""));
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='subDistrict'])[2]")).getAttribute("value").substring(3).replace(" ", ""), subDistrict.replace(" ", ""));
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='city'])[2]")).getAttribute("value").substring(3).replace(" ", ""), villageORCity.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//textarea[@id='address1'])[2]")).getAttribute("value"), address);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@id='landmark'])[2]")).getAttribute("value"), landmark);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@id='pincode'])[2]")).getAttribute("value"), pincode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='state'])[2]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='district'])[2]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='tehsil'])[2]")).getAttribute("value").substring(3).replace(" ", ""), tehsil.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='city'])[2]")).getAttribute("value").substring(3).replace(" ", ""), villageORCity.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='parliamentaryConstituency'])[2]")).getAttribute("value").substring(3).replace(" ", ""), parliamentryConstituency.replace(" ", ""));
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
 		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[1]")).getAttribute("value").substring(3).replace(" ", ""), education.replace(" ", ""));
 		Thread.sleep(5000);
-		cpp.selectYearOfPassing(firstPassingYear);
-		cpp.enterSpecialization(firstSpecialization);
-		Thread.sleep(3000);
-		cpp.clickOnBrowseFileForSpecializationSupportDocument();
-		Thread.sleep(3000);
-		UploadFile.upload(firstEducationFile);
-		Thread.sleep(3000);
-		cpp.clickOnUploadFileForSpecializationSupportDocument();
-		Thread.sleep(4000);
+		if(education.equals("Others"))
+		{
+			cpp.enterOthers_EducationName(educationName);
+			cpp.selectYearOfPassing(firstPassingYear);
+			cpp.enterSpecialization(firstSpecialization);
+			Thread.sleep(3000);
+			cpp.clickOnBrowseFileForSpecializationSupportDocument();
+			Thread.sleep(3000);
+			UploadFile.upload(firstEducationFile);
+			Thread.sleep(3000);
+			cpp.clickOnUploadFileForSpecializationSupportDocument();
+			Thread.sleep(4000);
+		}
+		else
+		{
+			cpp.selectYearOfPassing(firstPassingYear);
+			cpp.enterSpecialization(firstSpecialization);
+			Thread.sleep(3000);
+			cpp.clickOnBrowseFileForSpecializationSupportDocument();
+			Thread.sleep(3000);
+			UploadFile.upload(firstEducationFile);
+			Thread.sleep(3000);
+			cpp.clickOnUploadFileForSpecializationSupportDocument();
+			Thread.sleep(4000);
+		}
 		cpp.clickOnAddEducationDetails();
 		cpp.select_SecondEduation(secondEducation);
-		cpp.select_SecondYearOfPassing(secondPassingYear);
-		cpp.enter_SecondSpecialization(secondSpecialization);
-		Thread.sleep(3000);
-		cpp.clickOn_SecondBrowseFileForSpecializationSupportDocument();
-		Thread.sleep(3000);
-		UploadFile.upload(secondEducationFile);
-		Thread.sleep(3000);
-		cpp.clickOn_SecondUploadFileForSpecializationSupportDocument();
-		Thread.sleep(4000);
+		if(secondEducation.equals("Others"))
+		{
+			cpp.enterOthers_EducationName(educationName);
+			cpp.select_SecondYearOfPassing(secondPassingYear);
+			cpp.enter_SecondSpecialization(secondSpecialization);
+			Thread.sleep(3000);
+			cpp.clickOn_SecondBrowseFileForSpecializationSupportDocument();
+			Thread.sleep(3000);
+			UploadFile.upload(secondEducationFile);
+			Thread.sleep(3000);
+			cpp.clickOn_SecondUploadFileForSpecializationSupportDocument();
+			Thread.sleep(4000);
+		}
+		else
+		{
+			cpp.select_SecondYearOfPassing(secondPassingYear);
+			cpp.enter_SecondSpecialization(secondSpecialization);
+			Thread.sleep(3000);
+			cpp.clickOn_SecondBrowseFileForSpecializationSupportDocument();
+			Thread.sleep(3000);
+			UploadFile.upload(secondEducationFile);
+			Thread.sleep(3000);
+			cpp.clickOn_SecondUploadFileForSpecializationSupportDocument();
+			Thread.sleep(4000);
+		}
+		
 		cpp.clickOnAddEducationDetails();
 		Thread.sleep(3000);
 		cpp.select_ThirdEduation(thirdEducation);
-		cpp.select_ThirdYearOfPassing(thirdPassingYear);
-		cpp.enter_ThirdSpecialization(thirdSpecialization);
-		Thread.sleep(3000);
-		cpp.clickOn_ThirdBrowseFileForSpecializationSupportDocument();
-		Thread.sleep(3000);
-		UploadFile.upload(thirdEducationFile);
-		Thread.sleep(3000);
-		cpp.clickOn_ThirdUploadFileForSpecializationSupportDocument();
-		Thread.sleep(5000);
+		if(thirdEducation.equals("Others"))
+		{
+			cpp.enterOthers_EducationName(educationName);
+			cpp.select_ThirdYearOfPassing(thirdPassingYear);
+			cpp.enter_ThirdSpecialization(thirdSpecialization);
+			Thread.sleep(3000);
+			cpp.clickOn_ThirdBrowseFileForSpecializationSupportDocument();
+			Thread.sleep(3000);
+			UploadFile.upload(thirdEducationFile);
+			Thread.sleep(3000);
+			cpp.clickOn_ThirdUploadFileForSpecializationSupportDocument();
+			Thread.sleep(5000);
+		}
+		else
+		{
+			cpp.select_ThirdYearOfPassing(thirdPassingYear);
+			cpp.enter_ThirdSpecialization(thirdSpecialization);
+			Thread.sleep(3000);
+			cpp.clickOn_ThirdBrowseFileForSpecializationSupportDocument();
+			Thread.sleep(3000);
+			UploadFile.upload(thirdEducationFile);
+			Thread.sleep(3000);
+			cpp.clickOn_ThirdUploadFileForSpecializationSupportDocument();
+			Thread.sleep(5000);
+		}
+		Thread.sleep(10000);
 		cpp.clickOnSaveAndNext();
 		cpp.selectFromWhereYouHear(hearFromWhere);
 		Thread.sleep(3000);
-		//Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='sectorObj']")).getText(), sector);
-		//Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='subSectorObj']")), subSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='jobRole']")).getAttribute("value").substring(3).replace(" ", "").replace(":", ""), jobRole.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='sector'])[1]")).getAttribute("value"), sector);
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='subSector'])[1]")).getAttribute("value"), subSector);
+		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='jobRole'])[1]")).getAttribute("value").substring(3).replace(" ", "").replace(":", ""), jobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='jobRole'])[1]")).getAttribute("value"), jobRole);
+
 		Thread.sleep(3000);
 		cpp.clickOnAddAnotherPrefrences();
 		cpp.selectSecond_Sector(secondSector);
@@ -212,11 +276,15 @@ public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
 		Thread.sleep(4000);
-		cpp.clickOn_SecondAgreeAndSave();
+		cpp.clickOnAgreeAndSave();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//h3[contains(text(),'Candidate Registration - Success')]")).getText(), "Candidate Registration - Success");
 		Thread.sleep(3000);
 		cpp.clickOnClose();
+		PostLoginPage plp = new PostLoginPage(driver);
+		Thread.sleep(3000);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();
 					
 	}
 	

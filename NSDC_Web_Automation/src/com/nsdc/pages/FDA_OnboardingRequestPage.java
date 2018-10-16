@@ -18,9 +18,9 @@ public class FDA_OnboardingRequestPage
 	private WebElement tpOrPIAIDDropDownList;
 	@FindBy(xpath="(//select[@name='selectStatus'])[2]")
 	private WebElement tpOrPIANameDropDownList;
-	@FindBy(xpath="(//select[@name='selectStatus'])[3]")
+	@FindBy(xpath="(//select[@name='selectStatus'])[1]")
 	private WebElement typeDropDownList;
-	@FindBy(xpath="(//select[@name='selectStatus'])[4]")
+	@FindBy(xpath="(//select[@name='selectStatus'])[2]")
 	private WebElement statusDropDownList;
 	@FindBy(xpath="//button[text()='Apply']")
 	private WebElement applyButton;
