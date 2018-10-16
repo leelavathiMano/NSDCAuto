@@ -55,7 +55,7 @@ public class CandidateRegistrationPage
 	private WebElement subSectorDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='jobRole']")
 	private WebElement jobRoleDropDownList;
-	@FindBy(xpath="//select[@formcontrolname='associatedPragramName']")
+	@FindBy(xpath="//select[@formcontrolname='associatedProgramName']")
 	private WebElement associateProgramNameDropDownList;
 	@FindBy(xpath="//input[@id='customFile']")
 	private WebElement profliePicture_BrowseFileButton;
@@ -63,6 +63,10 @@ public class CandidateRegistrationPage
 	private WebElement cioTypeDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='cioName']")
 	private WebElement cioNameDropDownList;
+	@FindBy(xpath="(//label[input[@formcontrolname='interestedIn']]/span)[1]")
+	private WebElement pMKVYTrainingRadioButton;
+	@FindBy(xpath="(//label[input[@formcontrolname='interestedIn']]/span)[2]")
+	private WebElement pMKVYTrainingAndPlacementRadioButton;
 	@FindBy(xpath="//label[a[contains(text(),'Privacy Policy')]]/span")
 	private WebElement iAgreeCheckBox;
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
@@ -97,17 +101,20 @@ public class CandidateRegistrationPage
 	{
 		guardianNameTextbox.clear();
 		guardianNameTextbox.sendKeys(guardianName);
+		guardianNameTextbox.sendKeys(Keys.TAB);
 	}
 	
 	public void clickOnDateOfBirthField() throws Exception
 	{
-		Thread.sleep(4000);
-		dobTextbox.click();
+		Thread.sleep(2000);
+		dobTextbox.sendKeys(Keys.ENTER);
 		//dob_YearButton.click();
 		//selectYearFieldButton.click();
 		//selectYearButton.click();
 		//selectMonthButton.click();
-		selectDateButton.click();
+		//Thread.sleep(3000);
+		//selectDateButton.click();
+		Thread.sleep(2000);
 		calenderIconButton.click();
 	}
 	
@@ -190,6 +197,16 @@ public class CandidateRegistrationPage
 	public void selectCIOName(String cioName)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(cioNameDropDownList, cioName);
+	}
+	
+	public void clickOnIntrestedInPMKVYTraining()
+	{
+		pMKVYTrainingRadioButton.click();
+	}
+	
+	public void clcikOnInterestedInPMKVYTrainingAndPlacement()
+	{
+		pMKVYTrainingAndPlacementRadioButton.click();
 	}
 	
 	public void clickOnIAgree()
