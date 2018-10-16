@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.ClearTextUsingBackspace;
 import com.nsdc.generic.SelectDropDownList;
 
 public class TP_FeeBased_AddTrainingCentrePage 
@@ -21,6 +22,10 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement trainingCentreStatusDropDownList;
 	@FindBy(id="ownership")
 	private WebElement centreOwnerShipDropDownList;
+	@FindBy(xpath="(//input[@id='customFile'])[1]")
+	private WebElement franchiseDocuments_BrowseButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	private WebElement franchiseDocuments_UploadButton;
 	@FindBy(xpath="//input[@placeholder='Select Effective Date']")
 	private WebElement tcDuration_StartDateButton;
 	@FindBy(xpath="//input[@placeholder='Select Close Date']")
@@ -79,6 +84,8 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement cityOrVillageDropDownList;
 	@FindBy(id="parliamentaryConstituency")
 	private WebElement parliamentryConstituencyDropDownList;
+	@FindBy(id="search_places")
+	private WebElement geo_LocationTextbox;
 	@FindBy(id="addressProofType")
 	private WebElement addressProofTypeDropDownList;
 	@FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-6']/span)[1]")
@@ -123,32 +130,46 @@ public class TP_FeeBased_AddTrainingCentrePage
     private WebElement spocDesignationTextbox;
     @FindBy(id="landline")
     private WebElement spocLandLineNumberTextbox;
-    @FindBy(xpath="(//input[@id='customFile'])[1]")
+    @FindBy(xpath="//div[label[contains(text(),'Training Room Photos')]]//input[@id='customFile']")
     private WebElement trainingRoomPhotos_BrowseFileButton;
-    @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+    @FindBy(xpath="//div[label[contains(text(),'Training Room Photos')]]//button[contains(text(),'Upload')]")
     private WebElement trainingRoomPhotos_UploadButton;
-    @FindBy(xpath="(//input[@id='customFile'])[2]")
+    @FindBy(xpath="//div[label[contains(text(),'Laboratory Room Photos')]]//input[@id='customFile']")
     private WebElement laboratoryRoomPhotos_BrowseFileButton;
-    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+    @FindBy(xpath="//div[label[contains(text(),'Laboratory Room Photos')]]//button[contains(text(),'Upload')]")
     private WebElement laboratoryRoomPhotos_UploadButton; 
-    @FindBy(xpath="(//input[@id='customFile'])[3]")
+    @FindBy(xpath="//div[label[contains(text(),'Washroom Room Photos')]]//input[@id='customFile']")
     private WebElement washRoomPhotos_BrowseFileButton;
-    @FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
+    @FindBy(xpath="//div[label[contains(text(),'Washroom Room Photos')]]//button[contains(text(),'Upload')]")
     private WebElement washRoomPhotos_UploadFileButton;
-    @FindBy(xpath="(//input[@id='customFile'])[4]")
+    @FindBy(xpath="//div[label[contains(text(),'Cafetaria/Dining Room Photos')]]//input[@id='customFile']")
     private WebElement cafeteriaPhotos_BrowseFileButton;
-    @FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
+    @FindBy(xpath="//div[label[contains(text(),'Cafetaria/Dining Room Photos')]]//button[contains(text(),'Upload')]")
     private WebElement cafeteriaPhotos_UploadFileButton;
-    @FindBy(xpath="//button[contains(text(),'Save')]")
-    private WebElement saveButton;
-    @FindBy(xpath="//button[contains(text(),'Cancel')]")
-    private WebElement cancelButton;
-    @FindBy(xpath="//button[text()='Yes, Add Training Centre']")
-    private WebElement yesAddTrainingCentreButton;
+    @FindBy(xpath="//button[contains(text(),'Add Sector Targets')]")
+    private WebElement addSectorTargetButton;
+    @FindBy(xpath="//select[@id='sector']")
+    private WebElement sectorDropDownList;
+    @FindBy(xpath="//select[@id='course']")
+    private WebElement courseDropDownList;
+    @FindBy(xpath="//input[@id='target']")
+    private WebElement targetTextbox;
+    @FindBy(xpath="//button[text()='Submit']")
+    private WebElement submit_SectorTargetButton;
     @FindBy(xpath="//button[text()='Cancel']")
+    private WebElement cancel_SectorTargetButton;
+    @FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
+    private WebElement submitButton;
+    @FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
+    private WebElement cancelButton;
+    @FindBy(xpath="//button[text()='Yes']")
+    private WebElement yesAddTrainingCentreButton;
+    @FindBy(xpath="(//button[text()='Cancel'])[2]")
     private WebElement cancelAddTrainingCentreButton;
     @FindBy(xpath="//button[text()='OK']")
     private WebElement oKButton;
+    @FindBy(xpath="//button[contains(text(),'Resubmit')]")
+    private WebElement resubmitButton;
 
 	
     public TP_FeeBased_AddTrainingCentrePage(WebDriver driver) 
@@ -174,6 +195,16 @@ public class TP_FeeBased_AddTrainingCentrePage
 		SelectDropDownList.selectDropDownListByVisibleText(centreOwnerShipDropDownList, ownership);
 	}
 	
+	public void clickOnFranchiseDocuments_BrowseFile()
+	{
+		franchiseDocuments_BrowseButton.click();
+	}
+	
+	public void clickOnFranchiseDocuments_UploadFile()
+	{
+		franchiseDocuments_UploadButton.click();
+	}
+	
 	public void clickOnStartDateForTCDuration()
 	{
 		tcDuration_StartDateButton.click();
@@ -191,27 +222,31 @@ public class TP_FeeBased_AddTrainingCentrePage
 		batchesPerDayTextbox.click();
 	}
 	
-	public void enterNumberOfBatchesPerDay(String bathesNumber)
+	public void enterNumberOfBatchesPerDay(String bathesNumber)throws Exception
 	{
-		batchesPerDayTextbox.clear();
+		ClearTextUsingBackspace.clearAll(batchesPerDayTextbox);
+		Thread.sleep(2000);
 		batchesPerDayTextbox.sendKeys(bathesNumber);
 	}
 	
-	public void enterMaximumNoOfStudentPerBatch(String studentNumber)
+	public void enterMaximumNoOfStudentPerBatch(String studentNumber)throws Exception
 	{
-		batchCapacityTextbox.clear();
+		ClearTextUsingBackspace.clearAll(batchCapacityTextbox);
+		Thread.sleep(3000);
 		batchCapacityTextbox.sendKeys(studentNumber);
 	}
 	
-	public void enterAnnualCapacityOfTrainingCentre(String annualCapacity)
+	public void enterAnnualCapacityOfTrainingCentre(String annualCapacity)throws Exception
 	{
-		annualTrainingCentreCapacityTextbox.clear();
+		ClearTextUsingBackspace.clearAll(annualTrainingCentreCapacityTextbox);
+		Thread.sleep(2000);
 		annualTrainingCentreCapacityTextbox.sendKeys(annualCapacity);
 	}
 	
-	public void enterCapacityUtilization(String capacityUtilization)
+	public void enterCapacityUtilization(String capacityUtilization)throws Exception
 	{
-		capacityUtilizationTextbox.clear();
+		ClearTextUsingBackspace.clearAll(capacityUtilizationTextbox);
+		Thread.sleep(2000);
 		capacityUtilizationTextbox.sendKeys(capacityUtilization);
 	}
 	
@@ -220,94 +255,106 @@ public class TP_FeeBased_AddTrainingCentrePage
 		SelectDropDownList.selectDropDownListByVisibleText(governmentTieUpDropDownList, governmentTieUp);
 	}
 	
-	public void enterCentreCapacity(String centreCapacity)
+	public void enterCentreCapacity(String centreCapacity)throws Exception
 	{
-		centreCapacityTextbox.clear();
+		ClearTextUsingBackspace.clearAll(centreCapacityTextbox);
+		Thread.sleep(2000);
 		centreCapacityTextbox.sendKeys(centreCapacity);
 	}
 	
-	public void entreCentreArea(String centreArea)
+	public void entreCentreArea(String centreArea)throws Exception
 	{
-		centreAreaTextbox.clear();
+		ClearTextUsingBackspace.clearAll(centreAreaTextbox);
+		Thread.sleep(2000);
 		centreAreaTextbox.sendKeys(centreArea);
 	}
 	
-	public void enterNumberOfTrainingRooms(String trainingRooms)
+	public void enterNumberOfTrainingRooms(String trainingRooms)throws Exception
 	{
-		trainingRoomNumbersTextbox.clear();
+		ClearTextUsingBackspace.clearAll(trainingRoomNumbersTextbox);
+		Thread.sleep(2000);
 		trainingRoomNumbersTextbox.sendKeys(trainingRooms);
 	}
 	
-	public void enterNumbersOfLabs(String labNumber)
+	public void enterNumbersOfLabs(String labNumber)throws Exception
 	{
-		labNumbersTextbox.clear();
+		ClearTextUsingBackspace.clearAll(labNumbersTextbox);
+		Thread.sleep(2000);
 		labNumbersTextbox.sendKeys(labNumber);
 	}
 	
-	public void enterReceptionAreaSize(String receptionArea)
+	public void enterReceptionAreaSize(String receptionArea)throws Exception
 	{
-		receptionAreaTextbox.clear();
+		ClearTextUsingBackspace.clearAll(receptionAreaTextbox);
+		Thread.sleep(2000);
 		receptionAreaTextbox.sendKeys(receptionArea);
 	}
 	
-	public void enterWaitingAreaCapacity(String waitingArea)
+	public void enterWaitingAreaCapacity(String waitingArea)throws Exception
 	{
-		waitingAreaCapacityTextbox.clear();
+		ClearTextUsingBackspace.clearAll(waitingAreaCapacityTextbox);
+		Thread.sleep(2000);
 		waitingAreaCapacityTextbox.sendKeys(waitingArea);
 	}
 	
-	public void enterNumberOfMaleWashRooms(String maleWashRooms)
+	public void enterNumberOfMaleWashRooms(String maleWashRooms)throws Exception
 	{
-		maleWashRoomNumbersTextbox.clear();
+		ClearTextUsingBackspace.clearAll(maleWashRoomNumbersTextbox);
+		Thread.sleep(2000);
 		maleWashRoomNumbersTextbox.sendKeys(maleWashRooms);
 	}
 	
 	
-	public void enterNumberOfFemaleWashRooms(String femaleWashRooms)
+	public void enterNumberOfFemaleWashRooms(String femaleWashRooms)throws Exception
 	{
-		femaleWashRoomNumbersTextbox.clear();
+		ClearTextUsingBackspace.clearAll(femaleWashRoomNumbersTextbox);
+		Thread.sleep(2000);
 		femaleWashRoomNumbersTextbox.sendKeys(femaleWashRooms);
 	}
 	
-	public void enterNumberOfUnisexWashRooms(String unisexWashRooms)
+	public void enterNumberOfUnisexWashRooms(String unisexWashRooms)throws Exception
 	{
-		unisexWashRoomNumbersTextbox.clear();
+		ClearTextUsingBackspace.clearAll(unisexWashRoomNumbersTextbox);
+		Thread.sleep(2000);
 		unisexWashRoomNumbersTextbox.sendKeys(unisexWashRooms);
 	}
 	
-	public void enterDistanceFromNearestAirport(String airportDistance)
+	public void enterDistanceFromNearestAirport(String airportDistance)throws Exception
 	{
-		distanceFromAirportTextbox.clear();
+		ClearTextUsingBackspace.clearAll(distanceFromAirportTextbox);
+		Thread.sleep(2000);
 		distanceFromAirportTextbox.sendKeys(airportDistance);
 	}
 	
-	public void enterDistanceFromNearestTrainStation(String trainStationDistance)
+	public void enterDistanceFromNearestTrainStation(String trainStationDistance)throws Exception
 	{
-		distanceFromTrainStationTextbox.clear();
+		ClearTextUsingBackspace.clearAll(distanceFromTrainStationTextbox);
+		Thread.sleep(2000);
 		distanceFromTrainStationTextbox.sendKeys(trainStationDistance);
 	}
 	
-	public void enterDistanceFromNearestCityCentre(String cityCentreDistance)
+	public void enterDistanceFromNearestCityCentre(String cityCentreDistance)throws Exception
 	{
-		distanceFromCityCentreTextbox.clear();
+		ClearTextUsingBackspace.clearAll(distanceFromCityCentreTextbox);
+		Thread.sleep(2000);
 		distanceFromCityCentreTextbox.sendKeys(cityCentreDistance);
 	}
 	
 	public void enterAddressOFTC(String tcAddress)
 	{
-		tcAddressTextbox.clear();
+		ClearTextUsingBackspace.clearAll(tcAddressTextbox);
 		tcAddressTextbox.sendKeys(tcAddress);
 	}
 	
 	public void enterNearByLandmark(String landmark)
 	{
-		nearbyLandmarkTextbox.clear();
+		ClearTextUsingBackspace.clearAll(nearbyLandmarkTextbox);
 		nearbyLandmarkTextbox.sendKeys(landmark);
 	}
 	
 	public void enterPincode(String pincode)
 	{
-		pincodeTextbox.clear();
+		ClearTextUsingBackspace.clearAll(pincodeTextbox);
 		pincodeTextbox.sendKeys(pincode);
 	}
 	
@@ -334,6 +381,14 @@ public class TP_FeeBased_AddTrainingCentrePage
 	public void selectParliamentryConstituency(String parliamentryConstituency)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(parliamentryConstituencyDropDownList, parliamentryConstituency);
+	}
+	
+	public void enterGeoLocation(String geoLocation)throws Exception
+	{
+		ClearTextUsingBackspace.clearAll(geo_LocationTextbox);
+		geo_LocationTextbox.sendKeys(geoLocation);
+		Thread.sleep(3000);
+		geo_LocationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
 	}
 	
 	public void selectAddressProofType(String addressProof)
@@ -423,7 +478,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 	
 	 public void clickOnAllFacilitiesCheckBoxes()
 	    {
-		    List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-6']/span"));
+		    List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
 	    	for(int i=0;i<element.size();i++)
 	    	{
 	    		WebElement ele = element.get(i);
@@ -434,31 +489,31 @@ public class TP_FeeBased_AddTrainingCentrePage
 	 
 	 public void enterNameOfSPOC(String spocName)
 	 {
-		 spocNameTextbox.clear();
+		 ClearTextUsingBackspace.clearAll(spocNameTextbox);
 		 spocNameTextbox.sendKeys(spocName);
 	 }
 	 
 	 public void enterEmailAddressOfSPOC(String spocEmail)
 	 {
-		 spocEmailAddressTextbox.clear();
+		 ClearTextUsingBackspace.clearAll(spocEmailAddressTextbox);
 		 spocEmailAddressTextbox.sendKeys(spocEmail);
 	 }
 	 
 	 public void enterMobileNumberOfSPOC(String spocMobile)
 	 {
-		 spocMobileNumberTextbox.clear();
+		 ClearTextUsingBackspace.clearAll(spocMobileNumberTextbox);
 		 spocMobileNumberTextbox.sendKeys(spocMobile);
 	 }
 	 
 	 public void enterDesignationOfSPOC(String spocDesignation)
 	 {
-		 spocDesignationTextbox.clear();
+		 ClearTextUsingBackspace.clearAll(spocDesignationTextbox);
 		 spocDesignationTextbox.sendKeys(spocDesignation);
 	 }
 	 
 	 public void enterLandLineNumberOfSPOC(String spocLandLine)
 	 {
-		 spocLandLineNumberTextbox.clear();
+		 ClearTextUsingBackspace.clearAll(spocLandLineNumberTextbox);
 		 spocLandLineNumberTextbox.sendKeys(spocLandLine);
 	 }
 	 
@@ -502,9 +557,40 @@ public class TP_FeeBased_AddTrainingCentrePage
 		 cafeteriaPhotos_UploadFileButton.click();
 	 }
 	 
-	 public void clickOnSave()
+	 public void clickOnAddSectorTarget()
 	 {
-		 saveButton.click();
+		 addSectorTargetButton.click();
+	 }
+	 
+	 public void selectSector(String sector)
+	 {
+		 SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
+	 }
+	 
+	 public void selectCourse(String course)
+	 {
+		 SelectDropDownList.selectDropDownListByVisibleText(courseDropDownList, course);
+	 }
+	 
+	 public void enterTarget(String target)
+	 {
+		 targetTextbox.clear();
+		 targetTextbox.sendKeys(target);
+	 }
+	 
+	 public void clickOnSubmit_SectorTarget()
+	 {
+		 submit_SectorTargetButton.click();
+	 }
+	 
+	 public void clickOnCancel_SectorTarget()
+	 {
+		 cancel_SectorTargetButton.click();
+	 }
+	 
+	 public void clickOnSubmit()
+	 {
+		 submitButton.click();
 	 }
 	 
 	 public void clickOnCancel()
@@ -525,6 +611,11 @@ public class TP_FeeBased_AddTrainingCentrePage
 	 public void clickOnOK()
 	 {
 		 oKButton.click();
+	 }
+	 
+	 public void clickOnResubmit()
+	 {
+		 resubmitButton.click();
 	 }
 
 }

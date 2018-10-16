@@ -35,14 +35,14 @@ public class TrainingPartnerRegistrationPage
     @FindBy(xpath="//label[@class='m-checkbox m-checkbox--default']")
     private WebElement authorizedSignatoryCheckBox;
     
-    @FindBy(xpath="(//button[text()='Add Another Authorized Signatory'])[1]")
-    private WebElement addAnotherSignatoryDetailsButton1;
-    @FindBy(xpath="(//input[@name='auth-signatory-email'])[2]")
-    private WebElement authorizedSignatoryNameTextbox1;
-    @FindBy(xpath="(//input[@name='CEO-email'])[3]")
-    private WebElement authorizedSignatoryEmailTextbox1;
-    @FindBy(xpath="(//input[@name='auth-sigatory-mobile'])[2]")
-    private WebElement authorizedSignatoryMobileTextbox1;
+    @FindBy(xpath="//button[text()='Add Another Authorized Signatory']")
+    private WebElement addAnotherSignatoryDetailsButton;
+    @FindBy(xpath="//input[@name='auth-signatory-email']")
+    private WebElement authorizedSignatoryNameTextbox;
+    @FindBy(xpath="(//input[@name='CEO-email'])[2]")
+    private WebElement authorizedSignatoryEmailTextbox;
+    @FindBy(xpath="//input[@name='auth-sigatory-mobile']")
+    private WebElement authorizedSignatoryMobileTextbox;
     
     @FindBy(xpath="(//button[text()='Add Another Authorized Signatory'])[2]")
     private WebElement addAnotherSignatoryDetailsButton2;
@@ -52,6 +52,13 @@ public class TrainingPartnerRegistrationPage
     private WebElement authorizedSignatoryEmailTextbox2;
     @FindBy(xpath="(//input[@name='auth-sigatory-mobile'])[3]")
     private WebElement authorizedSignatoryMobileTextbox2;
+    
+    @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[1]")
+    private WebElement delete_First_AuthorizedSignatoryButton;
+    @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[2]")
+    private WebElement delete_Second_AuthorizedSignatoryButton;
+    @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[3]")
+    private WebElement delete_Third_AuthorizedSignatoryButton;
     
     @FindBy(xpath="//button[contains(text(),'Save & Next')]")
     private WebElement saveAndNextButton;
@@ -119,7 +126,7 @@ public class TrainingPartnerRegistrationPage
     
     @FindBy(xpath="//label[@class='m-checkbox m-checkbox--default']")
     private WebElement iAgreeCheckBox;
-    @FindBy(xpath="//button[text()='Save & Continue to Payment']")
+    @FindBy(xpath="//button[text()='Save & Continue']")
     private WebElement saveAndContinueToPaymentButton;
     @FindBy(xpath="//button[contains(text(),'Save & Continue')]")
     private WebElement saveAndContinueButton;
@@ -196,27 +203,27 @@ public class TrainingPartnerRegistrationPage
         authorizedSignatoryCheckBox.click();
     }
     
-    public void clickAddAnotherSignatoryDetails1()
+    public void clickAddAnotherSignatoryDetails()
     {
-        addAnotherSignatoryDetailsButton1.click();
+    	addAnotherSignatoryDetailsButton.click();
     }
     
-    public void enterAuthorizedSignatoryName1(String authorized_Signatory_Name)
+    public void enterAuthorizedSignatoryName(String authorized_Signatory_Name)
     {
-    	authorizedSignatoryNameTextbox1.clear();
-        authorizedSignatoryNameTextbox1.sendKeys(authorized_Signatory_Name);
+    	authorizedSignatoryNameTextbox.clear();
+        authorizedSignatoryNameTextbox.sendKeys(authorized_Signatory_Name);
     }
     
-    public void enterAuthorizedSignatoryEmail1(String authorized_Signatory_Email)
+    public void enterAuthorizedSignatoryEmail(String authorized_Signatory_Email)
     {
-    	authorizedSignatoryEmailTextbox1.clear();
-        authorizedSignatoryEmailTextbox1.sendKeys(authorized_Signatory_Email);
+    	authorizedSignatoryEmailTextbox.clear();
+        authorizedSignatoryEmailTextbox.sendKeys(authorized_Signatory_Email);
     }
     
-    public void enterAuthorizedSignatoryMobile1(String authorized_Signatory_Mobile)
+    public void enterAuthorizedSignatoryMobile(String authorized_Signatory_Mobile)
     {
-    	authorizedSignatoryMobileTextbox1.clear();
-        authorizedSignatoryMobileTextbox1.sendKeys(authorized_Signatory_Mobile);
+    	authorizedSignatoryMobileTextbox.clear();
+        authorizedSignatoryMobileTextbox.sendKeys(authorized_Signatory_Mobile);
     }
     
     public void clickAddAnotherSignatoryDetails2()
@@ -240,6 +247,21 @@ public class TrainingPartnerRegistrationPage
     {
     	authorizedSignatoryMobileTextbox2.clear();
         authorizedSignatoryMobileTextbox2.sendKeys(authorized_Signatory_Mobile);
+    }
+    
+    public void clickOn_Delete_First_AuthorizedSignatory()
+    {
+    	delete_First_AuthorizedSignatoryButton.click();
+    }
+    
+    public void clickOn_Delete_Second_AuthorizedSignatory()
+    {
+    	delete_Second_AuthorizedSignatoryButton.click();
+    }
+    
+    public void clickOn_Delete_Third_AuthorizedSignatory()
+    {
+    	delete_Third_AuthorizedSignatoryButton.click();
     }
     
     public void clickSaveAndNextButton()

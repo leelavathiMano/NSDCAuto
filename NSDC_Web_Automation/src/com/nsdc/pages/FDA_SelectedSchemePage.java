@@ -14,10 +14,18 @@ public class FDA_SelectedSchemePage
 	
 	@FindBy(xpath="//button[text()='Download Signed Termsheet:']")
 	private WebElement downloadSignedTermsheetButton;
-	@FindBy(xpath="//button[text()='Download Signed Proposal:']")
+	@FindBy(xpath="//button[text()='Download Signed Agreement:']")
 	private WebElement downloadSignedProposalButton;
 	@FindBy(xpath="//button[text()='Download Other Supporting Document:']")
 	private WebElement downloadSupportingDocumentButton;
+	@FindBy(xpath="(//button[contains(text(),'View Attached Documents')])[1]")
+	private WebElement viewAttachedDocument_SectorsButton;
+	@FindBy(xpath="(//button[contains(text(),'View Attached Documents')])[2]")
+	private WebElement viewAttachedDocument_CoursesButton;
+	@FindBy(xpath="(//button[contains(text(),'View Attached Documents')])[3]")
+	private WebElement viewAttachedDocument_SecondSectorButton;
+	@FindBy(xpath="(//button[contains(text(),'View Attached Documents')])[4]")
+	private WebElement viewAttachedDocument_SecondCourseButton;
 	@FindBy(xpath="//select[option[contains(text(),'Select Review Comments')]]")
 	private WebElement reviewCommentsDropDownList;
 	@FindBy(xpath="//textarea[@placeholder='Enter review comments here']")
@@ -32,6 +40,10 @@ public class FDA_SelectedSchemePage
 	private WebElement reviewAndEditButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement oKButton;
+	@FindBy(xpath="//select[@formcontrolname='state']")
+	private WebElement stateLocationOfTCDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='districts']")
+	private WebElement districtLocationOfTCDropDownList;
 	
 	public FDA_SelectedSchemePage(WebDriver driver)
     {
@@ -40,21 +52,52 @@ public class FDA_SelectedSchemePage
     }
 	
 	
-	public void clickOnDownloadSignedTermsheet()
+	public void clickOnDownloadSignedTermsheet() throws Exception
 	{
 		downloadSignedTermsheetButton.click();
+		Thread.sleep(5000);
 		FilePreview.closeWindow(driver);
 	}
 	
-	public void clickOnDownloadSignedProposal()
+	public void clickOnDownloadSignedProposal()throws Exception
 	{
 		downloadSignedProposalButton.click();
+		Thread.sleep(5000);
 		FilePreview.closeWindow(driver);
 	}
 	
-	public void clickOnDownloadSupportingDocument()
+	public void clickOnDownloadSupportingDocument()throws Exception
 	{
 		downloadSupportingDocumentButton.click();
+		Thread.sleep(5000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOnSectors_ViewAttachedDocument()throws Exception
+	{
+		viewAttachedDocument_SectorsButton.click();
+		Thread.sleep(5000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOnCourses_ViewAttachedDocument()throws Exception
+	{
+		viewAttachedDocument_CoursesButton.click();
+		Thread.sleep(5000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOnSecondSector_ViewAttachedDocument()throws Exception
+	{
+		viewAttachedDocument_SecondSectorButton.click();
+		Thread.sleep(5000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOnSecondCourses_ViewAttachedDocument()throws Exception
+	{
+		viewAttachedDocument_SecondCourseButton.click();
+		Thread.sleep(5000);
 		FilePreview.closeWindow(driver);
 	}
 	
@@ -92,6 +135,16 @@ public class FDA_SelectedSchemePage
 	public void clickOnOK()
 	{
 		oKButton.click();
+	}
+	
+	public void selectStateLoacationForTC(String state)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(stateLocationOfTCDropDownList, state);
+	}
+	
+	public void selectDistrictLocationForTC(String district)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(districtLocationOfTCDropDownList, district);
 	}
 
 }
