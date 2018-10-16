@@ -12,6 +12,8 @@ public class AssessmentAgencyDashboardPage
 	private WebElement viewBatchesCardText;
 	@FindBy(xpath="(//span[contains(text(),'Associated Assessors')])[1]")
 	private WebElement associatedAssessorsCardText;
+	@FindBy(xpath="//span[contains(text(),'Fee Based Batch Assessment Requests')]")
+	private WebElement feeBasedAssessmentReuestButton;
 	
 	public AssessmentAgencyDashboardPage(WebDriver driver)
 	{
@@ -25,5 +27,10 @@ public class AssessmentAgencyDashboardPage
 	public void clickToViewAllAssociatedAssessors()
 	{
 		associatedAssessorsCardText.click();
+	}
+	
+	public void clickOnFeeBasedAssessmentRequest()
+	{
+		feeBasedAssessmentReuestButton.click();
 	}
 }

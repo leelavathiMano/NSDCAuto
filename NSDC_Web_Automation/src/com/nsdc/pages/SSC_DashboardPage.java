@@ -19,6 +19,8 @@ public class SSC_DashboardPage
 	private WebElement createBatchButton;
 	@FindBy(xpath="//strong[text()='All Batches']")
 	private WebElement allBatchesButton;
+	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
+	private WebElement assessmentsAndCertificationButton;
 	
 	public SSC_DashboardPage(WebDriver driver)
 	{
@@ -47,6 +49,11 @@ public class SSC_DashboardPage
 	public void clickAllBatches()
 	{
 		allBatchesButton.click();
+	}
+	
+	public void clickOnAssessmentsAndCertification()
+	{
+		assessmentsAndCertificationButton.click();
 	}
 
 }
