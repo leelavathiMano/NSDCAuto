@@ -11,84 +11,93 @@ public class Candidate_ProfilePage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+	@FindBy(xpath="//select[@id='namePrefix']")
 	private WebElement candidateNamePrefixDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='firstName']")
+	@FindBy(xpath="//input[@id='firstName']")
 	private WebElement candidateNameTextbox;
 	@FindBy(xpath="(//input[@id='customFile'])[1]")
 	private WebElement profilePicture_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement profilePicture_UploadFileButton;
-	@FindBy(xpath="//select[@formcontrolname='gender']")
+	@FindBy(xpath="//select[@id='gender']")
 	private WebElement selectGenderDropDownList;
-	@FindBy(id="dob")
+	@FindBy(xpath="//input[@placeholder='Select Date of Birth']")
 	private WebElement dobTextbox;
 	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calenderIconButton;
-	@FindBy(xpath="//select[@formcontrolname='relationWithGuardian']")
+	@FindBy(xpath="//select[@id='relationWithGuardian']")
 	private WebElement guardianRelationDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='guardianName']")
+	@FindBy(xpath="//input[@id='parentName']")
 	private WebElement guardianNameTextbox;
-	@FindBy(xpath="//select[@formcontrolname='alternateIdType']")
+	@FindBy(xpath="//select[@id='alternateIdType']")
 	private WebElement alternateID_TypeDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='alternateIdNumber']")
+	@FindBy(xpath="//input[@id='alternateIdNumber']")
 	private WebElement alternateID_NumberTextbox;
 	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement idProofCopy_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
 	private WebElement idProofCopy_UploadFileButton;
-	@FindBy(xpath="//select[@formcontrolname='caste']")
+	@FindBy(xpath="//select[@id='caste']")
 	private WebElement categoryDropDownList;
-	@FindBy(xpath="//select[@formcontrolname='religion']")
+	@FindBy(xpath="//select[@id='religion']")
 	private WebElement religionDropDownList;
-	@FindBy(xpath="//select[@formcontrolname='differentlyAbled']")
+	@FindBy(xpath="//select[@id='differentlyAbled']")
 	private WebElement disablityDropDownList;
-	@FindBy(xpath="//select[@formcontrolname='disabilityCategory']")
+	@FindBy(xpath="//select[@id='disabilityCategory']")
 	private WebElement disablityTypeDropDownList;
 	@FindBy(xpath="(//input[@id='customFile'])[3]")
 	private WebElement supportingDocument_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
 	private WebElement supportingDocument_UploadFileButton;
-	@FindBy(xpath="//span[contains(text(),'Save & Next')]")
+	//@FindBy(xpath="//button[text()='Save & Next']")
+	@FindBy(xpath="//button[contains(text(),'Save &')]")
 	private WebElement saveAndNextButton;
-	@FindBy(xpath="//span[contains(text(),'Save As Draft')]")
+	@FindBy(xpath="//button[contains(text(),'Save As Draft')]")
 	private WebElement saveAsDraftButton;
-	@FindBy(xpath="//input[@formcontrolname='phone']")
+	
+	@FindBy(xpath="//input[@id='phone']")
 	private WebElement mobileNumberTextbox;
-	@FindBy(xpath="//input[@formcontrolname='email']")
+	@FindBy(xpath="//input[@id='email']")
 	private WebElement emailIDTextbox;
-	@FindBy(xpath="(//textarea[@formcontrolname='address1'])[1]")
+	@FindBy(xpath="(//textarea[@id='address1'])[1]")
 	private WebElement permanent_AddressTextbox;
-	@FindBy(xpath="(//input[@formcontrolname='pinCode'])[1]")
+	@FindBy(xpath="(//input[@id='landmark'])[1]")
+	private WebElement permanent_NearByLandmarkTextbox;
+	@FindBy(xpath="(//input[@id='pincode'])[1]")
 	private WebElement permanent_PinCodeTextbox;
-	@FindBy(xpath="(//select[@formcontrolname='state'])[1]")
+	@FindBy(xpath="(//select[@id='state'])[1]")
 	private WebElement permanent_StateDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='district'])[1]")
+	@FindBy(xpath="(//select[@id='district'])[1]")
 	private WebElement permanent_DistrictDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='parliamentaryConstituency'])[1]")
-	private WebElement permanent_ParliamentryConstituencyDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[1]")
+	@FindBy(xpath="(//select[@id='tehsil'])[1]")
 	private WebElement permanent_SubDistrictDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='city'])[1]")
+	@FindBy(xpath="(//select[@id='city'])[1]")
 	private WebElement permanent_VillageORCityDropDownList;
-	@FindBy(css=".m-checkbox.m-checkbox--default")
+	@FindBy(xpath="(//select[@id='parliamentaryConstituency'])[1]")
+	private WebElement permanent_ParliamentryConstituencyDropDownList;
+	@FindBy(xpath="//label[input[@class='ng-untouched ng-pristine ng-valid']]/span")
 	private WebElement sameAsPermanentAddressCheckBox;
-	@FindBy(xpath="(//textarea[@formcontrolname='address1'])[2]")
+	@FindBy(xpath="(//textarea[@id='address1'])[2]")
 	private WebElement communication_AddressTextbox;
-	@FindBy(xpath="(//input[@formcontrolname='pinCode'])[2]")
+	@FindBy(xpath="(//input[@id='landmark'])[2]")
+	private WebElement communication_NearByLandmarkTextbox;
+	@FindBy(xpath="(//input[@id='pincode'])[2]")
 	private WebElement communication_PinCodeTextbox;
-	@FindBy(xpath="(//select[@formcontrolname='state'])[2]")
+	@FindBy(xpath="(//select[@id='state'])[2]")
 	private WebElement communication_StateDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='district'])[2]")
+	@FindBy(xpath="(//select[@id='district'])[2]")
 	private WebElement communication_DistrictDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='parliamentaryConstituency'])[2]")
-	private WebElement communication_ParliamentryConstituencyDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[2]")
+	@FindBy(xpath="(//select[@id='tehsil'])[2]")
 	private WebElement communication_SubDistrictDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='city'])[2]")
+	@FindBy(xpath="(//select[@id='city'])[2]")
 	private WebElement communication_VillageORCityDropDownList;
+	@FindBy(xpath="(//select[@id='parliamentaryConstituency'])[2]")
+	private WebElement communication_ParliamentryConstituencyDropDownList;
+	
 	@FindBy(xpath="(//select[@formcontrolname='education'])[1]")
 	private WebElement educationDropDownList;
+	@FindBy(xpath="//input[@formcontrolname='educationName']")
+	private WebElement educationNameTextbox;
 	@FindBy(xpath="(//select[@formcontrolname='passingYear'])[1]")
 	private WebElement yearOfPassingDropDownList;
 	@FindBy(xpath="(//input[@formcontrolname='specialization'])[1]")
@@ -103,6 +112,8 @@ public class Candidate_ProfilePage
 	private WebElement removeEducationButton;
 	@FindBy(xpath="(//select[@formcontrolname='education'])[2]")
 	private WebElement second_EducationDropDownList;
+	//@FindBy(xpath="(//input[@formcontrolname='educationName'])[2]")
+	//private WebElement second_EducationNameTextbox;
 	@FindBy(xpath="(//select[@formcontrolname='passingYear'])[2]")
 	private WebElement second_YearOfPassingDropDownList;
 	@FindBy(xpath="(//input[@formcontrolname='specialization'])[2]")
@@ -115,6 +126,8 @@ public class Candidate_ProfilePage
 	private WebElement second_RemoveEducationButton;
 	@FindBy(xpath="(//select[@formcontrolname='education'])[3]")
 	private WebElement third_EducationDropDownList;
+	//@FindBy(xpath="(//input[@formcontrolname='educationName'])[3]")
+	//private WebElement third_EducationNameTextbox;
 	@FindBy(xpath="(//select[@formcontrolname='passingYear'])[3]")
 	private WebElement third_YearOfPassingDropDownList;
 	@FindBy(xpath="(//input[@formcontrolname='specialization'])[3]")
@@ -125,27 +138,28 @@ public class Candidate_ProfilePage
 	private WebElement third_SpecializationSupportDocument_UploadFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Remove')])[3]")
 	private WebElement third_RemoveEducationButton;
-	@FindBy(xpath="//select[@formcontrolname='heardFrom']")
+	
+	@FindBy(xpath="//div[label[p[text()='From Where did you']]]//select")
 	private WebElement hearFromWhereDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='sectorObj'])[1]")
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[1]")
 	private WebElement sectorDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='subSectorObj'])[1]")
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[1]")
 	private WebElement subSectorDropDownList;
 	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[1]")
 	private WebElement jobRoleDropDownList;
 	@FindBy(xpath="(//button[contains(text(),'Remove')])[1]")
 	private WebElement remove_PrefrencesButton;
-	@FindBy(xpath="(//select[@formcontrolname='sectorObj'])[2]")
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[2]")
 	private WebElement second_SectorDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='subSectorObj'])[2]")
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[2]")
 	private WebElement second_SubSectorDropDownList;
 	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[2]")
 	private WebElement second_JobRoleDropDownList;
 	@FindBy(xpath="(//button[contains(text(),'Remove')])[2]")
 	private WebElement second_Remove_PrefrencesButton;
-	@FindBy(xpath="(//select[@formcontrolname='sectorObj'])[3]")
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[3]")
 	private WebElement third_SectorDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='subSectorObj'])[3]")
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[3]")
 	private WebElement third_SubSectorDropDownList;
 	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[3]")
 	private WebElement third_JobRoleDropDownList;
@@ -157,8 +171,8 @@ public class Candidate_ProfilePage
 	private WebElement first_AgreeAndSaveButton;
 	@FindBy(xpath="//span[contains(text(),'Previous')]")
 	private WebElement previousButton;
-	@FindBy(xpath="(//span[contains(text(),'Agree & Submit')])[2]")
-	private WebElement second_AgreeAndSaveButton;
+	@FindBy(xpath="//button[contains(text(),'Agree & Submit')]")
+	private WebElement agreeAndSaveButton;
 	@FindBy(xpath="//button[contains(text(),'Close')]")
 	private WebElement closeButton;
 	
@@ -291,6 +305,12 @@ public class Candidate_ProfilePage
 		permanent_AddressTextbox.sendKeys(address);
 	}
 	
+	public void enterPermanent_NearByLandmark(String landmark)
+	{
+		permanent_NearByLandmarkTextbox.clear();
+		permanent_NearByLandmarkTextbox.sendKeys(landmark);
+	}
+	
 	public void enterPermanent_PinCode(String pinCode)
 	{
 		permanent_PinCodeTextbox.clear();
@@ -312,7 +332,7 @@ public class Candidate_ProfilePage
 		SelectDropDownList.selectDropDownListByVisibleText(permanent_ParliamentryConstituencyDropDownList, parliamentryConstituency);
 	}
 	
-	public void selectPermanent_SubDistrict(String subDistrict)
+	public void selectPermanent_TehsilOrBlock(String subDistrict)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(permanent_SubDistrictDropDownList, subDistrict);
 	}
@@ -329,7 +349,14 @@ public class Candidate_ProfilePage
 	
 	public void enterCommunication_Address(String communicationAddress)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(communication_AddressTextbox, communicationAddress);
+		communication_AddressTextbox.clear();
+		communication_AddressTextbox.sendKeys(communicationAddress);
+	}
+	
+	public void enterCommunication_NearByLandmark(String communicationLandmark)
+	{
+		communication_NearByLandmarkTextbox.clear();
+		communication_NearByLandmarkTextbox.sendKeys(communicationLandmark);
 	}
 	
 	public void enterCommunication_PinCode(String communicationPinCode)
@@ -353,9 +380,9 @@ public class Candidate_ProfilePage
 		SelectDropDownList.selectDropDownListByVisibleText(communication_ParliamentryConstituencyDropDownList, communicationParliamentryConstituency);
 	}
 	
-	public void selectCommunication_SubDistrict(String communicationSubDistrict)
+	public void selectCommunication_Tehsil(String communicationTehsil)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(communication_SubDistrictDropDownList, communicationSubDistrict);
+		SelectDropDownList.selectDropDownListByVisibleText(communication_SubDistrictDropDownList, communicationTehsil);
 	}
 	
 	public void selectCommunication_VillageOrCity(String communicationVillageORCity)
@@ -366,6 +393,12 @@ public class Candidate_ProfilePage
 	public void selectEduation(String education)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(educationDropDownList, education);
+	}
+	
+	public void enterOthers_EducationName(String educationName)
+	{
+		educationNameTextbox.clear();
+		educationNameTextbox.sendKeys(educationName);
 	}
 		
 	public void selectYearOfPassing(String passingYear)
@@ -404,6 +437,12 @@ public class Candidate_ProfilePage
 		SelectDropDownList.selectDropDownListByVisibleText(second_EducationDropDownList, secondEducation);
 	}
 	
+	/*public void enterOthers_SecondEducationName(String secondEducationName)
+	{
+		second_EducationNameTextbox.clear();
+		second_EducationNameTextbox.sendKeys(secondEducationName);
+	}*/
+	
 	public void enter_SecondSpecialization(String secondSpecialization)
 	{
 		second_SpecializationTextbox.clear();
@@ -434,6 +473,12 @@ public class Candidate_ProfilePage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(third_EducationDropDownList, thirdEducation);
 	}
+	
+	/*public void enterOthers_ThirdEducationName(String thirdEducationName)
+	{
+		third_EducationNameTextbox.clear();
+		third_EducationNameTextbox.sendKeys(thirdEducationName);
+	}*/
 	
 	public void enter_ThirdSpecialization(String thirdSpecialization)
 	{
@@ -541,9 +586,9 @@ public class Candidate_ProfilePage
 		previousButton.click();
 	}
 	
-	public void clickOn_SecondAgreeAndSave()
+	public void clickOnAgreeAndSave()
 	{
-		second_AgreeAndSaveButton.click();
+		agreeAndSaveButton.click();
 	}
 	
 	public void clickOnClose()
