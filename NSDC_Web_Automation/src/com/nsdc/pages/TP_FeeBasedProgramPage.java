@@ -106,7 +106,7 @@ public class TP_FeeBasedProgramPage
 	private WebElement minimumAgeDropDownList;
 	@FindBy(id="minimumEducationRequired")
 	private WebElement minimumEducationRequiredDropDownList;
-	@FindBy(id="courseDurationInDays")
+	@FindBy(id="courseDurationInHours")
 	private WebElement courseDurationTextbox;
 	@FindBy(id="hoursPerDay")
 	private WebElement numberOfHoursTextbox;
