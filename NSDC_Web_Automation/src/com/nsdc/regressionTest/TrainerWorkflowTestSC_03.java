@@ -1,8 +1,8 @@
 package com.nsdc.regressionTest;
 
-//import java.text.SimpleDateFormat;
-//import java.time.LocalDateTime;
-//import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,22 +14,22 @@ import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
-//import com.nsdc.pages.AssessmentAgencyDashboardPage;
-//import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
-//import com.nsdc.pages.AssessorDashboardPage;
-//import com.nsdc.pages.AssessorViewBatchesPage;
+import com.nsdc.pages.AssessmentAgencyDashboardPage;
+import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
+import com.nsdc.pages.AssessorDashboardPage;
+import com.nsdc.pages.AssessorViewBatchesPage;
 import com.nsdc.pages.EnterLoginPage;
-//import com.nsdc.pages.LocationBasedTC_DashboardPage;
-//import com.nsdc.pages.LocationBasedTC_ViewBatchesPage;
+import com.nsdc.pages.LocationBasedTC_DashboardPage;
+import com.nsdc.pages.LocationBasedTC_ViewBatchesPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
-//import com.nsdc.pages.SSC_DashboardPage;
-//import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
-//import com.nsdc.pages.TrainerDashboardPage;
+import com.nsdc.pages.SSC_DashboardPage;
+import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
+import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerMyProfilePage;
 import com.nsdc.pages.TrainerRegistrationPage;
-//import com.nsdc.pages.TrainerViewBatchesPage;
+import com.nsdc.pages.TrainerViewBatchesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class TrainerWorkflowTestSC_03 extends TestConfiguration
@@ -774,7 +774,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	plp.clickOnLogout();
        	Thread.sleep(2000);
     }
-/*
+
     @DataProvider()
     public Object[][] trainerTrainingBatchesData()
     {
