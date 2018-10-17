@@ -114,7 +114,6 @@ public class TrainerRegistrationPage
     private WebElement trainingExperienceProofDocument_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Training Experience')]]/div/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement trainingExperienceProofDocument_uploadButton;
-    //@FindBy(xpath="//button[text()='Add Training Experience Details']")
     @FindBy(xpath="(//button[contains(text(),'Add')])[1]")
     private WebElement clickToAddTrainingExperienceDetailsButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[5]")
@@ -125,30 +124,23 @@ public class TrainerRegistrationPage
     private WebElement curriculumVitaeOrResume_browseButton;
     @FindBy(xpath="//div[div/h3[contains(text(),'Curriculum Vitae / Resume Details')]]/div/div/app-upload-file/div/div/div/div/button[contains(text(),'Upload')]")
     private WebElement curriculumVitaeOrResume_uploadButton;
-    @FindBy(xpath="//button[contains(text(),'Add Preferred Job Role')]")
-    private WebElement addPreferredJobRoleButton;
-    @FindBy(xpath="//div[div/label[contains(text(),'Select Sector')]]/div/div/select[@formcontrolname='sector']")
-    private WebElement jobRoleSectorDropDownList;
-    @FindBy(xpath="//div[div/label[contains(text(),'Select Sub-Sector')]]/div/div/select[@formcontrolname='subSector']")
-    private WebElement jobRoleSubSectorDropDownList;
-    @FindBy(xpath="//div[div/label[contains(text(),'Select Job Role')]]/div/div/select[@formcontrolname='jobRole']")
-    private WebElement jobRoleDropDownList;
-    @FindBy(xpath="(//button[contains(text(),'Add')])[4]")
-    private WebElement jobRole_addButton;
-    @FindBy(xpath="//button[contains(text(),'Add Preferred Location')]")
-    private WebElement addPreferredLocationButton;
-    @FindBy(xpath="//div[label[contains(text(),'State/ Union Territory:')]]/div/div/select[@ng-reflect-name='state']")
-    private WebElement preferredStateOrUnionTerritoryDropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'District/ City:')]]/div/div/select[@formcontrolname='district']")
-    private WebElement preferredDistrictOrCityDropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'Sub-District/ Tehsil:')]]/div/div/select[@formcontrolname='subDistrict']")
-    private WebElement preferredSubDistrictOrTehsilDropDownList;
-    @FindBy(xpath="(//button[contains(text(),'Add')])[3]")
-    private WebElement preferredLocation_addButton;
-    @FindBy(xpath="(//button[@class='btn'])[1]")
-    private WebElement preferredJobRole_DeleteButton;
-    @FindBy(xpath="(//button[@class='btn'])[4]")
-    private WebElement thirdPreferredLocation_DeleteButton;
+    //Preferences JobRole and Location
+    @FindBy(xpath="(//select[@formcontrolname='sector'])[3]")
+    private WebElement preferredSectorDropdownList;
+    @FindBy(xpath="//select[@formcontrolname='subSector']")
+    private WebElement preferredSubSectorDropDownList;
+    @FindBy(xpath="//select[@formcontrolname='jobRole']")
+    private WebElement preferredJobRoleDropDownList;
+    @FindBy(xpath="(//select[@formcontrolname='state'])[2]")
+    private WebElement preferredStateDropdownList;
+    @FindBy(xpath="(//select[@formcontrolname='district'])[2]")
+    private WebElement preferredDistrictDropdownList;
+    @FindBy(xpath="//select[@formcontrolname='subDistrict']")
+    private WebElement preferredSubDistrictDropDownList;
+    @FindBy(xpath="//button[contains(text(),'Add Preferences')]")
+    private WebElement addPreferencesButton;
+    @FindBy(xpath="(//button[i[@class='fa fa-trash-o']])[3]")
+    private WebElement deleteThirdPreferenceButton;
     @FindBy(xpath="//span[@_ngcontent-c12='']")
     private WebElement iAgreeCheckbox;
     @FindBy(xpath="(//button[@class='btn btn-primary'])[1]")
@@ -161,387 +153,295 @@ public class TrainerRegistrationPage
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    
     public void selectGender(String gender)
     {
         SelectDropDownList.selectDropDownListByVisibleText(genderDropDownList, gender);
     }
-    
     public void selectDateOfBirth() throws Exception
     {
-        //dobTextBox.clear();
-        //dobTextBox.sendKeys(dob);
-        dobTextBox.click();
+    	dobTextBox.click();
     	Thread.sleep(2000);
     	driver.findElement(By.xpath("(//div[@class='datepicker-days']/table/tbody/tr/td[text()='1'])[1]")).click();
     	Thread.sleep(2000);
         calendarButton.click();
         Thread.sleep(2000);
     }
-    
     public void selectAnyKnownLanguage(String language)
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, language);
     }
-    
     public void selectTwoKnownLanguages()
     {
     	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
     	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
     }
-    
     public void selectAllLanguages()
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "English");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
     }
-   
-    
     public void selectReligion(String religion)
     {
         SelectDropDownList.selectDropDownListByVisibleText(religionDropDownList, religion);
     }
-    
     public void selectCategory(String category)
     {
         SelectDropDownList.selectDropDownListByVisibleText(categoryDropDownList, category);
     }
-    
     public void selectDisability(String disability)
     {
         SelectDropDownList.selectDropDownListByVisibleText(disabilityDropDownList, disability);
     }
-    
     public void clickOnBrowseForUploadDisabilityDocument()
     {
         disability_BrowseFileButton.click();
     }
-    
     public void clickOnUploadButtonForUploadDisabilityDocument()
     {
         disability_UploadButton.click();
     }
-    
     public void clickOnAadharNumberRadioButton()
     {
         aadhaarNumberRadioButton.click();
     }
-    
     public void enterAadharNumber(String aadhar)
     {
         aadhaarNumberTextBox.clear();
         aadhaarNumberTextBox.sendKeys(aadhar);
     }
-    
     public void clickOnValidateAadharNumber()
     {
         validateButton.click();
     }
-    
     public void clickOnPanNumberRadioButton()
     {
         panNumberRadioButton.click();
     }
-    
     public void enterPanNumber(String PAN_number)
     {
         panNumberTextBox.clear();
         panNumberTextBox.sendKeys(PAN_number);
     }
-    
     public void clickOnBrowseFileButtonForUploadPanDocument()
     {
         panDocument_BrowseFileButton.click();
     }
-    
     public void clickOnUploadButtonToUploadPan()
     {
         panDocument_uploadButton.click();
     }
-    
     public void clickOnBrowseFileButtonToUploadPhoto()
     {
         uploadYourPhoto_browseFileButton.click();
     }
-    
     public void clickOnUploadButtonToUploadPhoto()
     {
         uploadYourPhoto_uploadButton.click();
     }
-    
     public void selectAnyApplicantCategory(String applicant_Category)
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_ApplicantCategory, applicant_Category);
     }
-    
     public void selectAllApplicantCategory()
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_ApplicantCategory, "Master Trainer");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_ApplicantCategory, "Trainer");
-        
     }
-    
     public void clickOnSaveAndContinue()
     {
         saveAndContinueButton.click();
     }
-    
     public void enterApplicantAddress(String address)
     {
         applicantAddressTextBox.clear();
         applicantAddressTextBox.sendKeys(address);
     }
-    
     public void enterNearbyLandmark(String landmark)
     {
         nearbyLandmarkTextBox.clear();
         nearbyLandmarkTextBox.sendKeys(landmark);
     }
-    
     public void enterPincode(String pincode)
     {
         pincodeTextBox.clear();
         pincodeTextBox.sendKeys(pincode);
     }
-    
     public void selectStateOrUnionTerritory(String state)
     {
         SelectDropDownList.selectDropDownListByVisibleText(stateOrUnionTerritoryDropDownList, state);
     }
-    
     public void selectDistrictOrCity(String city)
     {
         SelectDropDownList.selectDropDownListByVisibleText(districtOrCityDropDownList, city);
     }
-    
     public void selectTehsilOrMandal(String mandal)
     {
         SelectDropDownList.selectDropDownListByVisibleText(tehsilOrMandalDropDownList, mandal);
     }
-    
     public void selectParliamentaryConstituency(String parliamentaryConstituency)
     {
         SelectDropDownList.selectDropDownListByVisibleText(parliamentaryConstituencyDropDownList, parliamentaryConstituency);
     }
-    
     public void clickOnBack()
     {
         backButton.click();
     }
-    
     public void selectEducationAttained(String education)
     {
         SelectDropDownList.selectDropDownListByVisibleText(educationAttainedDropDownList, education);
     }
-    
     public void enterDetailsOfEducation(String edu_details)
     {
         detailsOfEducationTextBox.clear();
         detailsOfEducationTextBox.sendKeys(edu_details);
     }
-    
     public void clickOnBrowseForUploadEducationProofDocument()
     {
         educationProofDocument_browseButton.click();
     }
-    
     public void clickOnUploadForUploadEducationProofDocument()
     {
         educationProofDocument_uploadButton.click();
     }
-    
     public void clickOnAddEducationDetailsButton()
     {
         clickToAddEducationDetailsButton.click();
     }
-    
     public void deleteThirdEducationDetails()
     {
         deleteThirdEducationDetailsButton.click();
     }
-    
     public void selectRelevantSectorForIndustrialExperience(String industrial_sector)
     {
         SelectDropDownList.selectDropDownListByVisibleText(industrialExperience_relevantSectorDropDownList, industrial_sector);
     }
-    
     public void selectYearsForIndustrialExperience(String industrial_years)
     {
         SelectDropDownList.selectDropDownListByVisibleText(industrialExperience_TotalYearsOfExperienceDropDownList, industrial_years);
     }
-    
     public void selectMonthsForIndustrialExperience(String industrial_months)
     {
         SelectDropDownList.selectDropDownListByVisibleText(industrialExperience_TotalMonthsOfExperienceDropDownList, industrial_months);
     }
-    
     public void enterDetailsOfIndustrialExperience(String industrialExperienceDetails)
     {
         industrialExperience_detailsOfExperienceTextBox.clear();
         industrialExperience_detailsOfExperienceTextBox.sendKeys(industrialExperienceDetails);
     }
-    
     public void enterDetailsOfIndustriesForIndustrialExperienceTextBox(String industriesDetails)
     {
         industrialExperience_detailsOfIndustriesTextBox.clear();
         industrialExperience_detailsOfIndustriesTextBox.sendKeys(industriesDetails);
     }
-    
     public void clickOnBrowseForIndustrialExperienceProofDocument()
     {
         industrialExperienceProofDocument_browseButton.click();
     }
-    
     public void clickOnUploadForIndustrialExperienceProofDocument()
     {
         industrialExperienceProofDocument_uploadButton.click();
     }
-    
     public void clickOnAddIndustrialExperienceDetails()
     {
         clickToAddIndustrialExperienceDetailsButton.click();
     }
-    
     public void deleteThirdIndustrialExperienceDetailsWithoutEducationDetail()
     {
         deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton.click();
     }
-    
     public void deleteThirdIndustrialExperienceDetails()
     {
         deleteThirdIndustrialExperienceDetailsButton.click();
     }
-    
     public void selectRelevantSectorForTrainingExperience(String training_sector)
     {
         SelectDropDownList.selectDropDownListByVisibleText(trainingExperience_relevantSectorDropDownList, training_sector);
     }
-    
     public void selectyearsForTrainingExperience(String trainingExperienceYears)
     {
         SelectDropDownList.selectDropDownListByVisibleText(trainingExperience_TotalYearsOfExperienceDropDownList, trainingExperienceYears);
     }
-    
     public void selectMonthsForTrainingExperience(String trainingExperienceMonths)
     {
         SelectDropDownList.selectDropDownListByVisibleText(trainingExperience_TotalMonthsOfExperienceDropDownList, trainingExperienceMonths);
     }
-    
     public void enterTrainingExperienceDetails(String trainingExperienceDetails)
     {
         trainingExperience_detailsOfExperienceTextBox.clear();
         trainingExperience_detailsOfExperienceTextBox.sendKeys(trainingExperienceDetails);
     }
-    
     public void clickOnBrowseForTrainingExperienceProofDocument()
     {
         trainingExperienceProofDocument_browseButton.click();
     }
-    
     public void clickOnUploadForTrainingExperienceProofDocument()
     {
         trainingExperienceProofDocument_uploadButton.click();
     }
-    
     public void clickOnAddTrainingExperienceDetails()
     {
         clickToAddTrainingExperienceDetailsButton.click();
     }
-    
     public void deleteThirdTrainingExperienceWithoutEducationDetails()
     {
         deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton.click();
     }
-    
     public void deleteThirdTrainingExperienceDetails()
     {
         deleteThirdTrainingExperienceDetailsButton.click();
     }
-    
     public void clickOnBrowseForCurriculumVitaeOrResume()
     {
         curriculumVitaeOrResume_browseButton.click();
     }
-    
     public void clickOnUploadForCurriculumVitaeOrResume()
     {
         curriculumVitaeOrResume_uploadButton.click();
     }
-    
-    public void clickOn_PreferredJobRole()
+    //Preferences
+    public void selectPreferredSector(String preferredSector)
     {
-        addPreferredJobRoleButton.click();
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredSectorDropdownList, preferredSector);
     }
-    
-    public void selectSectorForJobRole(String jobRole_sector)
+    public void selectPreferredSubSector(String preferredSubSector)
     {
-        SelectDropDownList.selectDropDownListByVisibleText(jobRoleSectorDropDownList, jobRole_sector);
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredSubSectorDropDownList, preferredSubSector);
     }
-    
-    public void selectSubSectorForJobRole(String jobRole_subSector)
+    public void selectPreferredJobRole(String preferredJobRole)
     {
-        SelectDropDownList.selectDropDownListByVisibleText(jobRoleSubSectorDropDownList, jobRole_subSector);
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredJobRoleDropDownList, preferredJobRole);
     }
-    
-    public void select_JobRole(String jobRole)
+    public void selectPreferredState(String preferredState)
     {
-        SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropDownList, jobRole);
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredStateDropdownList, preferredState);
     }
-    
-    public void clickOnAddForPreferredJobRole()
+    public void selectPreferredDistrict(String preferredDistrict)
     {
-        jobRole_addButton.click();
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredDistrictDropdownList, preferredDistrict);
     }
-    
-    public void clickOn_AddPreferredLocation()
+    public void selectPreferredSubDistrict(String preferredSubDistrict)
     {
-        addPreferredLocationButton.click();
+    	SelectDropDownList.selectDropDownListByVisibleText(preferredSubDistrictDropDownList, preferredSubDistrict);
     }
-    
-    public void selectPreferredStateOrUnionTerritory(String preferred_state)
+    public void clickAddPreferences()
     {
-        SelectDropDownList.selectDropDownListByVisibleText(preferredStateOrUnionTerritoryDropDownList, preferred_state);
+    	addPreferencesButton.click();
     }
-    
-    public void selectPreferredDistrictOrCity(String preferred_city)
+    public void clickToDeleteThirdPreference()
     {
-        SelectDropDownList.selectDropDownListByVisibleText(preferredDistrictOrCityDropDownList, preferred_city);
+    	deleteThirdPreferenceButton.click();
     }
-    
-    public void selectPreferredSubDistrictOrTehsil(String preferred_district)
-    {
-        SelectDropDownList.selectDropDownListByVisibleText(preferredSubDistrictOrTehsilDropDownList, preferred_district);
-    }
-    
-    public void clickOnAddForPreferredLocation()
-    {
-        preferredLocation_addButton.click();
-    }
-    
-    public void clickOnDeletePreferredJobRole()
-    {
-        preferredJobRole_DeleteButton.click();
-    }
-    
-    public void clickOnDeleteThirdPreferredLocation()
-    {
-        thirdPreferredLocation_DeleteButton.click();
-    }
-    
     public void clickIAgreeCheckbox()
     {
         iAgreeCheckbox.click();
     }
-    
     public void clickSubmitButton()
     {
         submitButton.click();
     }
-    
     public void clickLogOutButton()
     {
         logOutButton.click();
     }
 }
-
