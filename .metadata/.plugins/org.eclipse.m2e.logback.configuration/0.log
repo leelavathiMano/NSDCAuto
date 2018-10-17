@@ -15781,3 +15781,43 @@ org.eclipse.core.runtime.CoreException: Launch configuration RegisterAndLoginTes
 2018-06-18 19:51:50,132 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/main/resources
 2018-06-18 19:51:50,132 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-06-18 19:51:50,133 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/shashankjha/Documents/Repository/NSDC_Web AutomationTest/nsdcregressiontesting/NSDC_Web_Automation/src/test/resources
+2018-10-16 18:19:00,663 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-10-16 18:19:12,449 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:19:12,462 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:19:12,465 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:19:12,465 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-16 18:19:22,626 [Worker-10] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: web.automation.nsdc:NSDC_Web_Automation:0.0.1-SNAPSHOT @ C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\pom.xml.
+2018-10-16 18:19:24,684 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:19:24,684 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:19:24,686 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:19:24,686 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-16 18:19:29,824 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:19:29,824 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:19:29,826 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:19:29,826 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-16 18:20:48,325 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:20:48,326 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:20:48,339 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:20:48,339 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-16 18:20:56,720 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:20:56,721 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:20:56,725 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:20:56,727 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-16 18:24:33,167 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:24:33,167 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:24:33,169 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:24:33,170 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-16 18:24:52,419 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:24:52,419 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-16 18:24:52,463 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-16 18:24:52,465 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-17 11:10:28,272 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-10-17 11:20:39,926 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: web.automation.nsdc:NSDC_Web_Automation:0.0.1-SNAPSHOT @ C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\pom.xml.
+2018-10-17 11:20:45,509 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-17 11:20:45,509 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-17 11:20:45,513 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-17 11:20:45,513 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
+2018-10-17 11:20:54,741 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-17 11:20:54,741 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\main\resources
+2018-10-17 11:20:54,743 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-10-17 11:20:54,743 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Priya.T\Documents\Repository\NSDC_Web_Automation\nsdcregressiontesting\NSDC_Web_Automation\src\test\resources
