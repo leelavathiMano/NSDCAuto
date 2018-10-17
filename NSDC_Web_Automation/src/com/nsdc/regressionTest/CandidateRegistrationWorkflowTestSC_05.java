@@ -17,7 +17,7 @@ import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class CandidateRegistrationWorkflowTestSC_11 extends TestConfiguration
+public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 {
 	@DataProvider
 	public Object[][] candidateProfileData()

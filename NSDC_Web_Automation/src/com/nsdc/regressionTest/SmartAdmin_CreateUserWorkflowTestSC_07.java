@@ -14,7 +14,7 @@ import com.nsdc.pages.SmartAdmin_CreateUserPage;
 import com.nsdc.pages.SmartAdmin_DashboardPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class SmartAdmin_CreateUserWorkflowTestSC_13 extends TestConfiguration
+public class SmartAdmin_CreateUserWorkflowTestSC_07 extends TestConfiguration
 {
 	@DataProvider
 	public Object[][] createNewUser_Data()

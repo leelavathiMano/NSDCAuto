@@ -15,7 +15,7 @@ import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_LocationBasedTraningCentreCreationPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class SSC_LocationBasedTrainingCentreCreationWorkflowSC_09 extends TestConfiguration
+public class SSC_LocationBasedTrainingCentreCreationWorkflowSC_10 extends TestConfiguration
 {
 	
 	@DataProvider

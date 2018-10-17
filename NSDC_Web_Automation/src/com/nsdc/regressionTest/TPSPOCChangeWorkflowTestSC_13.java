@@ -12,7 +12,7 @@ import com.nsdc.pages.TP_SPOCChangePage;
 import com.nsdc.pages.TrainingPartnerDashboardPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class TPSPOCChangeWorkflowTestSC_10 extends TestConfiguration
+public class TPSPOCChangeWorkflowTestSC_13 extends TestConfiguration
 {
 	@DataProvider
 	public Object[][] tpSPOCProfileData()
