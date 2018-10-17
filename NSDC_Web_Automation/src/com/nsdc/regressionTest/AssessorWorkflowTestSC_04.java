@@ -81,7 +81,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 		}
         Thread.sleep(2000);
         String createdAssessor=driver.findElement(By.xpath("//div[@class='m-login__signin']/h3/span")).getText();
-        ReadWriteData.setExcelData("./TestData/Workflow/assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 1, createdAssessor);
+        ReadWriteData.setExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 1, createdAssessor);
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
         rp.clickGoToLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
@@ -104,7 +104,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.selectDateOfBirth();
         Thread.sleep(4000);
         String selectedDateOfBirth=driver.findElement(By.id("dob")).getAttribute("value");
-        ReadWriteData.setExcelData("./TestData/Workflow/assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 12, selectedDateOfBirth);
+        ReadWriteData.setExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 12, selectedDateOfBirth);
          
         if(language.equals("Kannada,English,Hindi"))
         {
