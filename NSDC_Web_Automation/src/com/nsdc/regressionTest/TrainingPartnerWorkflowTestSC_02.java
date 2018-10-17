@@ -89,7 +89,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.enterMobileNumberOfCeo(mobile_Number_Of_Ceo);
         tprp.clickAuthorizedSignatoryCheckBox();
         
-        Thread.sleep(3000);
+        /*Thread.sleep(3000);
         tprp.enterAuthorizedSignatoryName(authorized_Signatory_Name1);
         tprp.enterAuthorizedSignatoryEmail(authorized_Signatory_Email1);
         tprp.enterAuthorizedSignatoryMobile(authorized_Signatory_Mobile1);
@@ -113,7 +113,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[text()='3']]]//b[text()='"+authorized_Signatory_Email2+"']")).getText(), authorized_Signatory_Email2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[text()='3']]]//b[text()='"+authorized_Signatory_Mobile2+"']")).getText(), authorized_Signatory_Mobile2);
         Thread.sleep(3000);
-        tprp.clickOn_Delete_Third_AuthorizedSignatory();
+        tprp.clickOn_Delete_Third_AuthorizedSignatory();*/
         
         Thread.sleep(3000);
         tprp.clickSaveAndNextButton();
@@ -472,7 +472,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPApprovalSC02TC02");
     }
     
-    @Test(dataProvider="tpApproval")
+    @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
     public void trainingPartnerApprovalTC_02(String srno, String iausername, String password, String tpID, String searchByKeyword, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);

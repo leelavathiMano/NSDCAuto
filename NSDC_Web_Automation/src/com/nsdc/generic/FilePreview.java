@@ -14,7 +14,7 @@ public class FilePreview
         String window1 = it.next();
         String window2 = it.next();
         driver.switchTo().window(window2);
-        driver.quit();
+        driver.close();
         driver.switchTo().window(window1);
 	}
 	
