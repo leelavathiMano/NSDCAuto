@@ -197,7 +197,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTPRuleSC09TC05");
     }
 	
-	@Test(dataProvider="tpRuleSetupSmartAdminApproval")
+	@Test(dataProvider="tpRuleSetupSmartAdminApproval", dependsOnMethods="smartBusinessTPRuleSetupTC_01")
 	public void smartBusinessTPRuleApprovalTC_02(String sno, String sdUsername, String sdPassword,String expectedregistrationFee, String expectedregistrationFeeAmount, String expectedunBlockingFee, String expectedunBlockingFeeAmount, String expectedgregistrationFee, String expectedgregistrationFeeAmount, String expectedgunBlockingFee, String expectedgunBlockingFeeAmount, String firstTP, String expectedFirst_RegistrationFee, String expectedFirst_RegistrationFeeAmount, String expectedFirst_UNBlockingFee, String expectedFirst_UNBlockingFeeAmount, String secondTP, String expectedSecond_RegistrationFee, String expectedSecond_RegistrationFeeAmount, String expectedSecond_UNBlockingFee, String expectedSecond_UNBlockingFeeAmount, String expectedblockAttemptNumber, String expecteddurationOfBlock, String expecteddaysForDesktopAssessment, String effective_Date, String comments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -317,7 +317,7 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTPRuleSC09TC06");
     }
 	
-	@Test(dataProvider="tpRuleSetupNSDCApproval")
+	@Test(dataProvider="tpRuleSetupNSDCApproval", dependsOnMethods="smartBusinessTPRuleApprovalTC_02")
 	public void smartBusinessTPRuleApprovalTC_03(String sno, String nsdcUsername, String nsdcPassword, String expectedNSDCregistrationFee, String expectedNSDCregistrationFeeAmount, String expectedNSDCunBlockingFee, String expectedNSDCunBlockingFeeAmount, String expectedNSDCgregistrationFee, String expectedNSDCgregistrationFeeAmount, String expectedNSDCgunBlockingFee, String expectedNSDCgunBlockingFeeAmount, String firstTP, String expectedNSDCFirst_RegistrationFee, String expectedNSDCFirst_RegistrationFeeAmount, String expectedNSDCFirst_UNBlockingFee, String expectedNSDCFirst_UNBlockingFeeAmount, String expectedNSDCblockAttemptNumber, String expectedNSDCdurationOfBlock, String expectedNSDCdaysForDesktopAssessment, String effective_Date, String reviewcomments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
