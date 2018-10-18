@@ -29,7 +29,7 @@ public class TP_FeeBased_AddCourseToSectorsPage
 	private WebElement minimumAgeDropDownList;
 	@FindBy(id="minimumEducationRequired")
 	private WebElement minimumEducationRequiredDropDownList;
-	@FindBy(id="courseDurationInDays")
+	@FindBy(id="courseDurationInHours")
 	private WebElement courseDurationTextbox;
 	@FindBy(id="hoursPerDay")
 	private WebElement numberOfHoursTextbox;
