@@ -48,7 +48,7 @@ public class SmartAdmin_CreateUserWorkflowTestSC_07 extends TestConfiguration
 		Thread.sleep(3000);
 		sdmsUser.enterSearchByKeyword(fullName);
 		Thread.sleep(3000);
-		//Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Active']")).getText(), "Active");
+		Assert.assertEquals(driver.findElement(By.xpath("(//div[text()='init'])[1]")).getText(), "init");
 		PostLoginPage plp = new PostLoginPage(driver);
 		Thread.sleep(5000);
 		plp.clickOnProfileLogo();
