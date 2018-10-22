@@ -91,6 +91,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		rp.enterOldPassword(passwordID);
 		rp.enterNewPassword(newPassword);
 		rp.enterConfirmPassword(confirmPassword);
+		Thread.sleep(3000);
 		rp.clickResetResubmit();
 		rp.clickConfirmationOkMessage();
 		Thread.sleep(3000);

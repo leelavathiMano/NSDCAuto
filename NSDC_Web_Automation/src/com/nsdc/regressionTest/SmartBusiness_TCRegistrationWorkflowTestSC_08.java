@@ -507,7 +507,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	EnterLoginPage elp = new EnterLoginPage(driver);
     	elp.performlogin(nsdcUsername, nsdcPassword);
     	NSDCAdmin_DashboardPage nsd = new NSDCAdmin_DashboardPage(driver);
-    	Thread.sleep(8000);
+    	Thread.sleep(10000);
     	nsd.clickForReviewTCRegistrationSetup();
     	NSDC_TCCAAFFormReviewPage nstc = new NSDC_TCCAAFFormReviewPage(driver);
     	Thread.sleep(2000);
