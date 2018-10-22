@@ -1044,7 +1044,7 @@ public void addTrainingCentreTC04(String sno, String tpUsername, String tpPasswo
 	//fbad.clickOnOK();
 	Thread.sleep(3000);
 	fbd.clickOnViewTrainingCentres();
-	//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[div[span[text()='"+trainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
+	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingCentreName+"']]]]//span[text()='TC_CREATED']")).getText(), "TC_CREATED");
 	Thread.sleep(2000);
 	fbtc.clickOnAddTrainingCentre();
 	Thread.sleep(3000);
@@ -1054,14 +1054,37 @@ public void addTrainingCentreTC04(String sno, String tpUsername, String tpPasswo
 	fbad.enterTrainingCentreName(secondTrainingCentreName);
 	//fbad.selectTrainingCentreStatus(tcStatus);
 	fbad.selectForCentreOwnerShip(ownership);
-	fbad.clickOnStartDateForTCDuration();
-	startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
-	fbad.clickOnEndDateForTCDuration();
-	endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+	if(ownership.equals("Franchise"))
+	{
+		Thread.sleep(3000);
+		fbad.clickOnFranchiseDocuments_BrowseFile();
+		Thread.sleep(3000);
+		UploadFile.upload(franchiseDocument);
+		Thread.sleep(3000);
+		fbad.clickOnFranchiseDocuments_UploadFile();
+		Thread.sleep(3000);
+		fbad.clickOnStartDateForTCDuration();
+		//startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, startDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+		fbad.clickOnEndDateForTCDuration();
+		//endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 10, endDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+	}
+	else
+	{
+		fbad.clickOnStartDateForTCDuration();
+		//startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, startDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+		fbad.clickOnEndDateForTCDuration();
+		//endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 10, endDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+	}
+	
+	
 	fbad.enterNumberOfBatchesPerDay(bathesNumber);
 	fbad.enterMaximumNoOfStudentPerBatch(studentNumber);
 	fbad.enterAnnualCapacityOfTrainingCentre(annualCapacity);
@@ -1141,7 +1164,7 @@ public void addTrainingCentreTC04(String sno, String tpUsername, String tpPasswo
 	//fbad.clickOnOK();
 	Thread.sleep(3000);
 	fbd.clickOnViewTrainingCentres();
-	//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[div[span[text()='"+trainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
+	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingCentreName+"']]]]//span[text()='TC_CREATED']")).getText(), "TC_CREATED");
 	Thread.sleep(2000);
 	fbtc.clickOnAddTrainingCentre();
 	Thread.sleep(3000);
@@ -1151,14 +1174,36 @@ public void addTrainingCentreTC04(String sno, String tpUsername, String tpPasswo
 	fbad.enterTrainingCentreName(thirdTrainingCentreName);
 	//fbad.selectTrainingCentreStatus(tcStatus);
 	fbad.selectForCentreOwnerShip(ownership);
-	fbad.clickOnStartDateForTCDuration();
-	startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
-	fbad.clickOnEndDateForTCDuration();
-	endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
-	//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+	if(ownership.equals("Franchise"))
+	{
+		Thread.sleep(3000);
+		fbad.clickOnFranchiseDocuments_BrowseFile();
+		Thread.sleep(3000);
+		UploadFile.upload(franchiseDocument);
+		Thread.sleep(3000);
+		fbad.clickOnFranchiseDocuments_UploadFile();
+		Thread.sleep(3000);
+		fbad.clickOnStartDateForTCDuration();
+		//startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, startDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+		fbad.clickOnEndDateForTCDuration();
+		//endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 10, endDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+	}
+	else
+	{
+		fbad.clickOnStartDateForTCDuration();
+		//startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, startDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+		fbad.clickOnEndDateForTCDuration();
+		//endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 10, endDate);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+	}
+	
 	fbad.enterNumberOfBatchesPerDay(bathesNumber);
 	fbad.enterMaximumNoOfStudentPerBatch(studentNumber);
 	fbad.enterAnnualCapacityOfTrainingCentre(annualCapacity);
@@ -1239,7 +1284,7 @@ public void addTrainingCentreTC04(String sno, String tpUsername, String tpPasswo
 	//fbad.clickOnOK();
 	Thread.sleep(3000);
 	fbd.clickOnViewTrainingCentres();
-	//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[div[span[text()='"+trainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
+	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingCentreName+"']]]]//span[text()='TC_CREATED']")).getText(), "TC_CREATED");
 	PostLoginPage plp = new PostLoginPage(driver);
 	Thread.sleep(5000);
 	plp.clickOnProfileLogo();
@@ -2194,13 +2239,25 @@ public void approveSectorAndCourseTC08(String sno, String cmaUsername, String cm
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='course']")).getAttribute("value"), expectedCourseName);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedAddedSector);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleMappingType']")).getAttribute("value"), expectedJobRoleMappingType);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
-	//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
-	//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+	if(expectedJobRoleMappingType.equals("QP-NOS"))
+	{
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
+		//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+
+	}
+	else
+	{
+		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+
+	}
+	
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumEducationRequiredValue']")).getAttribute("value"), expectedMinimumEducation);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
+	//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='hoursPerDay']")).getAttribute("value"), expectedNumberOfHours);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseFee']")).getAttribute("value"), expectedCourseFee);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='gradingPreferences']")).getAttribute("value"), expectedGradingPrefrences);
@@ -2238,13 +2295,24 @@ public void approveSectorAndCourseTC08(String sno, String cmaUsername, String cm
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='course']")).getAttribute("value"), expectedSecondCourseName);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedAddedSector);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleMappingType']")).getAttribute("value"), expectedJobRoleMappingType);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
-	//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
-	//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+	if(expectedJobRoleMappingType.equals("QP-NOS"))
+	{
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
+		//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+
+	}
+	else
+	{
+		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+
+	}
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumEducationRequiredValue']")).getAttribute("value"), expectedMinimumEducation);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
+	//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='hoursPerDay']")).getAttribute("value"), expectedNumberOfHours);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseFee']")).getAttribute("value"), expectedCourseFee);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='gradingPreferences']")).getAttribute("value"), expectedGradingPrefrences);
@@ -2283,13 +2351,24 @@ public void approveSectorAndCourseTC08(String sno, String cmaUsername, String cm
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='course']")).getAttribute("value"), expectedThirdCourseName);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedAddedSector);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleMappingType']")).getAttribute("value"), expectedJobRoleMappingType);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
-	//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
-	//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+	if(expectedJobRoleMappingType.equals("QP-NOS"))
+	{
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
+		//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+
+	}
+	else
+	{
+		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='description']")).getAttribute("value"), expectedCourseDescription);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumAge']")).getAttribute("value"), expectedMinimumAge);
+
+	}
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumEducationRequiredValue']")).getAttribute("value"), expectedMinimumEducation);
-	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
+	//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='hoursPerDay']")).getAttribute("value"), expectedNumberOfHours);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseFee']")).getAttribute("value"), expectedCourseFee);
 	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='gradingPreferences']")).getAttribute("value"), expectedGradingPrefrences);
@@ -2334,8 +2413,6 @@ public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, St
 	Thread.sleep(2000);
 	driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 	driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-	//driver.findElement(By.xpath("//tr[td[div[span[text()='"+projectName+" - Fee Based']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-	//driver.findElement(By.xpath("//tr[td[div[span[text()='"+projectName+" - Fee Based']]]]//a[contains(text(),'View Scheme Details')]")).click();
 	Thread.sleep(3000);
 	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();
@@ -2408,8 +2485,6 @@ public void addAssessmentAgencyAndLinkAssessorTC10(String srno, String tpUsernam
 	Thread.sleep(2000);
 	driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 	driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-	//driver.findElement(By.xpath("//tr[td[div[span[text()='"+projectName+" - Fee Based']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-	//driver.findElement(By.xpath("//tr[td[div[span[text()='"+projectName+" - Fee Based']]]]//a[contains(text(),'View Scheme Details')]")).click();
 	Thread.sleep(3000);
 	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();

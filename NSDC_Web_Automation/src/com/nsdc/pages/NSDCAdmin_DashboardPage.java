@@ -12,7 +12,7 @@ public class NSDCAdmin_DashboardPage
 	
 	@FindBy(xpath="//div[p[contains(text(),'SDMS User Management')]]")
 	private WebElement createUserButton;
-	@FindBy(xpath="//div[@routerlink='tcregistrationrules']")
+	@FindBy(xpath="//div[@ng-reflect-router-link='tcregistrationrules']")
 	private WebElement tcRegistrationButton;
 	@FindBy(xpath="//div[@ng-reflect-router-link='tpregistrationrules']")
 	private WebElement tpRegistrationButton;
