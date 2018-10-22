@@ -119,8 +119,11 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Contact Details Page
-			//Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcontact-details","OMG!!! navigation to Contact Details page is unsuccessfull OR something is wrong! ");
+			//Assert.assertFalse(driver.getCurrentUrl().contains("CAN_"),"OMG!!! Candidate Has been Registered before submitting registration form!!! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcontact-details"),"OMG!!! navigation to Contact Details page is unsuccessfull OR something is wrong! ");
 			tpCrp.selectIdentificationType(identificationType);
+			Thread.sleep(4000);
+			tpCrp.enterIdentificationIDNumber(identificationIDnumber);
 			Thread.sleep(4000);
 			tpCrp.clickToBrowseIdentificationProofDoc();
 			Thread.sleep(4000);
@@ -128,8 +131,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			tpCrp.clickToUploadIdentificationProofDoc();
 			Thread.sleep(8000);
-			tpCrp.enterIdentificationIDNumber(identificationIDnumber);
-			Thread.sleep(4000);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value").trim(), identificationIDnumber);
 			if(isCommunicationAddressSameAsPermanentAddress.equalsIgnoreCase("yes"))
 			{
@@ -168,7 +169,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Education Details Page
-			//Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationeducation-details","OMG!!! navigation to Education Details page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationeducation-details"),"OMG!!! navigation to Education Details page is unsuccessfull OR something is wrong! ");
 			if(education1.equalsIgnoreCase("uneducated"))
 			{
 				Thread.sleep(2000);
@@ -236,7 +237,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Course Preferences Page
-			//Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcourse-preferences","OMG!!! navigation to Course Preference page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcourse-preferences"),"OMG!!! navigation to Course Preference page is unsuccessfull OR something is wrong! ");
 			Thread.sleep(2000);
 			tpCrp.selectHearAboutUs(hearAboutUs);
 			Thread.sleep(4000);
@@ -270,18 +271,18 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='sector'])[3]")).size()==0,"OMG!!! Removed Third preference Still Present OR Something is wrong! ");
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
-			//Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationdeclaration","OMG!!! navigation to Declaration page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationdeclaration"),"OMG!!! navigation to Declaration page is unsuccessfull OR something is wrong! ");
 			//Declaration Page -> Review Feature -> Verification OF Entered Data
 			tpCrp.clickToReviewBeforeSubmission();
 			Thread.sleep(8000);
 			//Personal Details Review PAge
-			//Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationpersonal-details","OMG!!! navigation to Personal Details Review Page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationpersonal-details"),"OMG!!! navigation to Personal Details Review Page is unsuccessfull OR something is wrong! ");
 			Select selectedNamePrefix=new Select(driver.findElement(By.xpath("//select[@formcontrolname='namePrefix']")));
 			Assert.assertEquals(selectedNamePrefix.getFirstSelectedOption().getText(),namePrefix);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='firstName']")).getAttribute("value"), fullName);
 			Assert.assertEquals(driver.findElement(By.xpath("//label[@class='custom-file-label ']/span")).getText().trim(), profilePicture);
 			Assert.assertTrue(driver.findElement(By.xpath("//input[@value='"+gender+"']")).isSelected());
-			//Assert.assertEquals(driver.findElement(By.id("dob")).getAttribute("value"), selectedDateOfBirth);
+			Assert.assertEquals(driver.findElement(By.id("dob")).getAttribute("value"), selectedDateOfBirth);
 			Select selectedGuardianRelation=new Select(driver.findElement(By.xpath("//select[@formcontrolname='relationWithGuardian']")));
 			Assert.assertEquals(selectedGuardianRelation.getFirstSelectedOption().getText(),guardianRelation);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='guardianName']")).getAttribute("value").trim(), guardianname);
@@ -293,7 +294,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 				Assert.assertTrue(driver.findElement(By.xpath("(//input[@formcontrolname='differentlyAbled'])[1]")).isSelected());
 				Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@formcontrolname='disabilityCategory']")));
 				Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText(), disablity);
-				//Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), disabilityProofDoc);
+				Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), disabilityProofDoc);
 			}
 			else
 			{
@@ -314,11 +315,11 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Contact Details Review Page
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcontact-details","OMG!!! navigation to Contact Details Review page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcontact-details"),"OMG!!! navigation to Contact Details Review page is unsuccessfull OR something is wrong! ");
 			Select selectedIdentificationType=new Select(driver.findElement(By.xpath("//select[@formcontrolname='alternateIdType']")));
 			Assert.assertEquals(selectedIdentificationType.getFirstSelectedOption().getText(), identificationType);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value"), identificationIDnumber);
-			//Assert.assertEquals(driver.findElement(By.xpath("//label[@class='custom-file-label ']/span")).getText().trim(), identificationProof);
+			Assert.assertEquals(driver.findElement(By.xpath("//label[@class='custom-file-label ']/span")).getText().trim(), identificationProof);
 			if(isCommunicationAddressSameAsPermanentAddress.equalsIgnoreCase("yes"))
 			{
 				Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='address1']")).getAttribute("value"), address);
@@ -353,7 +354,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Education Details Review Page
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationeducation-details","OMG!!! navigation to Education Details Review page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationeducation-details"),"OMG!!! navigation to Education Details Review page is unsuccessfull OR something is wrong! ");
 			Select selectedEducation1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[1]")));
 			if(education1.equalsIgnoreCase("uneducated"))
 			{
@@ -378,7 +379,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Course Preference Review Page
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcourse-preferences","OMG!!! navigation to Course Preferences Review page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationcourse-preferences"),"OMG!!! navigation to Course Preferences Review page is unsuccessfull OR something is wrong! ");
 			Select selectedHearedFrom=new Select(driver.findElement(By.xpath("//select[@formcontrolname='heardFrom']")));
 			Assert.assertEquals(selectedHearedFrom.getFirstSelectedOption().getText(), hearAboutUs);
 			Select selectedSector1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='sector'])[1]")));
@@ -397,7 +398,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Declaration Page after Successful Review
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""),configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationdeclaration","OMG!!! navigation to Declaration page is unsuccessfull OR something is wrong! ");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationdeclaration"),"OMG!!! navigation to Declaration page after Review is unsuccessfull OR something is wrong! ");
 			tpCrp.clickToAgreeAndSubmit();
 			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
 			String createdCanidate=driver.findElement(By.id("swal2-content")).getText();
@@ -431,13 +432,13 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			tpMp.clickRegister();
 			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElement(By.xpath("//div[@id='toast-container']/div/div")).getText().trim().contains("Candidates registered sucessfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
-			for(int i=3;i<8;i++)
+			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
+			for(int i=4;i<9;i++)
 			{
-				String bulkCandidateName=ReadWriteData.getData("./UploadFiles/BulkCanidatesRegistration.xlsx", "Sheet1", i, 1);
-				String bulkCandidateGender=ReadWriteData.getData("./UploadFiles/BulkCanidatesRegistration.xlsx", "Sheet1", i, 2);
-				String bulkCandidateState=ReadWriteData.getData("./UploadFiles/BulkCanidatesRegistration.xlsx", "Sheet1", i, 18);
-				String bulkCandidateDistrict=ReadWriteData.getData("./UploadFiles/BulkCanidatesRegistration.xlsx", "Sheet1", i, 17);
+				String bulkCandidateName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 1);
+				String bulkCandidateGender=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 2);
+				String bulkCandidateState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 26);
+				String bulkCandidateDistrict=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 24);
 				Thread.sleep(4000);
 				tpMp.enterKeywordsToSearch(bulkCandidateName);
 				Thread.sleep(4000);

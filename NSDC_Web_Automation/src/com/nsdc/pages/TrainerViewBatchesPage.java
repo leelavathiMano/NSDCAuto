@@ -9,48 +9,46 @@ import org.openqa.selenium.support.PageFactory;
 public class TrainerViewBatchesPage
 {
 	WebDriver driver;
-	@FindBy(linkText="Newly Assigned")
-	private WebElement newlyAssignedBatchesLink;
-	@FindBy(linkText="Accepted & Ongoing")
-	private WebElement acceptedAndOngoingBatchesLink;
-	@FindBy(linkText="Completed")
-	private WebElement completedBatchesLink;
+	@FindBy(linkText="Pending Requests")
+	private WebElement pendingBatchesLink;
+	@FindBy(linkText="Accepted")
+	private WebElement acceptedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
-	@FindBy(xpath="//input[@placeholder='Start Date']")
-	private WebElement batchStartDateFilter;
-	@FindBy(xpath="(//span[i[@class='la la-calendar']])[1]")
-	private WebElement closeBatchStartDateCalenderButton;
-	@FindBy(xpath="//input[@placeholder='End Date']")
-	private WebElement batchEndDateFilter;
-	@FindBy(xpath="(//span[i[@class='la la-calendar']])[2]")
-	private WebElement closeBatchEndDateCalenderButton;
-	@FindBy(xpath="//input[@placeholder='Search by Training Centre Name']")
-	private WebElement searchByTrainingCentreNameSearchTextfield;
-	@FindBy(xpath="//span[contains(text(),'Select Batch Type')]")
-	private WebElement filterByBatchTypeList;
-	@FindBy(xpath="//span[contains(text(),'Select Job Role')]")
-	private WebElement filterByJobRoleList;
+	//@FindBy(xpath="//input[@placeholder='Start Date']")
+	//private WebElement batchStartDateFilter;
+	//@FindBy(xpath="(//span[i[@class='la la-calendar']])[1]")
+	//private WebElement closeBatchStartDateCalenderButton;
+	//@FindBy(xpath="//input[@placeholder='End Date']")
+	//private WebElement batchEndDateFilter;
+	//@FindBy(xpath="(//span[i[@class='la la-calendar']])[2]")
+	//private WebElement closeBatchEndDateCalenderButton;
+	//@FindBy(xpath="//input[@placeholder='Search by Training Centre Name']")
+	//private WebElement searchByTrainingCentreNameSearchTextfield;
+	//@FindBy(xpath="//span[contains(text(),'Select Batch Type')]")
+	//private WebElement filterByBatchTypeList;
+	//@FindBy(xpath="//span[contains(text(),'Select Job Role')]")
+	//private WebElement filterByJobRoleList;
 	//@FindBy(xpath="//span[@class='c-angle-up']")
-	@FindBy(xpath="//b[contains(text(),'Training Centre Name')]")
-	private WebElement filterbyBatchTypeAngleUp;
+	//@FindBy(xpath="//b[contains(text(),'Training Centre Name')]")
+	//private WebElement filterbyBatchTypeAngleUp;
 	//@FindBy(xpath="//span[@class='c-angle-up']")
-	@FindBy(xpath="//label[contains(text(),'Job Role')]")
-	private WebElement filterbyJobRoleAngleUp;
-	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
-	private WebElement viewBatchDetailsOption;
-	@FindBy(xpath="//span[contains(text(),'Accept/Reject Batch')]")
-	private WebElement acceptOrRejectBatchOption;	
-	@FindBy(xpath="//button[contains(text(),'View All Batches')]")
-	private WebElement viewAllBatchesButton;
-	@FindBy(xpath="(//label[@class='m-radio'])[1]")
-	private WebElement acceptBatchRadioButton;
-	@FindBy(xpath="(//label[@class='m-radio'])[2]")
-	private WebElement rejectBatchRadioButton;
-	@FindBy(xpath="//textarea[@placeholder='Enter the reamarks']")
-	private WebElement remarksTextArea;
-	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
-	private WebElement saveAndSubmitButton;
+	//@FindBy(xpath="//label[contains(text(),'Job Role')]")
+	//private WebElement filterbyJobRoleAngleUp;
+	//@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
+	//private WebElement viewBatchDetailsOption;
+	//@FindBy(xpath="//span[contains(text(),'Accept/Reject Batch')]")
+	//private WebElement acceptOrRejectBatchOption;	
+	@FindBy(xpath="//button[contains(text(),'Go Back')]")
+	private WebElement goBackButton;
+	@FindBy(xpath="//textarea[@formcontrolname='acceptComment']")
+	private WebElement remarksForAcceptingBatchTextArea;
+	@FindBy(xpath="//angular2-multiselect[@formcontrolname='rejectedReasons']/div")
+	private WebElement rejectionReasonsList;
+	@FindBy(xpath="//textarea[@formcontrolname='rejectionComment']")
+	private WebElement remarksForRejectingBatchTextArea;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
+	private WebElement submitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[1]")
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
@@ -61,17 +59,13 @@ public class TrainerViewBatchesPage
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void clicktoGoToNewlyAssignedBatchesSection()
+	public void clicktoGoPendingBatchesSection()
 	{
-		newlyAssignedBatchesLink.click();
+		pendingBatchesLink.click();
 	}
-	public void clickToGoToAcceptAndOngoingBatchesSection()
+	public void clickToGoToAcceptedBatchesSection()
 	{
-		acceptedAndOngoingBatchesLink.click();
-	}
-	public void clickTogoToCompletedBatchesSection()
-	{
-		completedBatchesLink.click();
+		acceptedBatchesLink.click();
 	}
 	public void clickToGoToRejectedBatchesSection()
 	{
@@ -79,9 +73,21 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToGetActionMenuOptions(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[10]/div")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]/div/div/a")).click();
 	}
-	public void enterTrainingCentreNameToSearch(String trainingCentreName)
+	public void clickToSelectViewDetailsOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]//span[contains(text(),'View Details')]")).click();
+	}
+	public void clickToSelectAcceptBatchOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]//span[contains(text(),'Accept Batch')]")).click();
+	}
+	public void clickToSelectRejectBatchOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]//span[contains(text(),'Reject Batch')]")).click();
+	}
+/*	public void enterTrainingCentreNameToSearch(String trainingCentreName)
 	{
 		searchByTrainingCentreNameSearchTextfield.clear();
 		searchByTrainingCentreNameSearchTextfield.sendKeys(trainingCentreName);
@@ -110,26 +116,29 @@ public class TrainerViewBatchesPage
 	{
 		acceptOrRejectBatchOption.click();
 	}
-	public void clickViewAllBatchesToGoBackFromBatchDetails()
+*/	public void clickGoBackFromBatchDetails()
 	{
-		viewAllBatchesButton.click();
+		goBackButton.click();
 	}
-	public void clickToAcceptBatch()
+	public void enterRemarksForAcceptingBatch(String remarks)
 	{
-		acceptBatchRadioButton.click();
+		remarksForAcceptingBatchTextArea.clear();
+		remarksForAcceptingBatchTextArea.sendKeys(remarks);
 	}
-	public void clickToRejectBatch()
+	public void selectReasonForRejectingBatch(String rejectionReason) throws InterruptedException
 	{
-		rejectBatchRadioButton.click();
+		rejectionReasonsList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'"+rejectionReason+"')]")).click();
 	}
-	public void enterRemarks(String remarks)
+	public void enterRemarksForRejctingBatch(String remarksForRejectingBatch)
 	{
-		remarksTextArea.clear();
-		remarksTextArea.sendKeys(remarks);
+		remarksForRejectingBatchTextArea.clear();
+		remarksForRejectingBatchTextArea.sendKeys(remarksForRejectingBatch);
 	}
-	public void clickToSaveAndSubmit()
+	public void clickToSubmit()
 	{
-		saveAndSubmitButton.click();
+		submitButton.click();
 	}
 	public void clickToClose()
 	{
@@ -139,7 +148,7 @@ public class TrainerViewBatchesPage
 	{
 		okButton.click();
 	}
-	public void enterBatchStartDateToSearch(String batchStartDate)
+/*	public void enterBatchStartDateToSearch(String batchStartDate)
 	{
 		batchStartDateFilter.clear();
 		batchStartDateFilter.sendKeys(batchStartDate);
@@ -156,5 +165,5 @@ public class TrainerViewBatchesPage
 	public void clickToCloseBatchEndDateCalender()
 	{
 		closeBatchEndDateCalenderButton.click();
-	}
+	}*/
 }

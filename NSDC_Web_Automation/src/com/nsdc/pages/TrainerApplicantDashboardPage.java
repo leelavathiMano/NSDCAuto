@@ -10,11 +10,11 @@ public class TrainerApplicantDashboardPage
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement applicantDashboardLink;
-	@FindBy(xpath="//span[contains(text(),'Search for available batches')]")
-	private WebElement searchAndApplyForAvailableBatchesButton;
+	@FindBy(xpath="//*[contains(text(),'Search & Apply')]")
+	private WebElement searchAndApplyForAvailableBatchesCardText;
 	@FindBy(xpath="//span[contains(text(),'View Batches')]")
-	private WebElement viewBatchesButton;
-			
+	private WebElement viewBatchesCardText;
+	
 	public TrainerApplicantDashboardPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -26,11 +26,10 @@ public class TrainerApplicantDashboardPage
 	}
 	public void clickSearchAndApplyforAvailableBatches()
 	{
-		searchAndApplyForAvailableBatchesButton.click();
+		searchAndApplyForAvailableBatchesCardText.click();
 	}
 	public void clickViewBatches()
 	{
-		viewBatchesButton.click();
+		viewBatchesCardText.click();
 	}
-	
 }

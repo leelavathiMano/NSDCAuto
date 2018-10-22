@@ -10,8 +10,8 @@ public class TrainerDashboardPage
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[2]")
 	private WebElement trainerDashboardLink;
-	@FindBy(xpath="//strong[contains(text(),'View Batches')]")
-	private WebElement viewBatchesButton;
+	@FindBy(xpath="//strong[contains(text(),'All Batches')]")
+	private WebElement allBatchesButton;
 	@FindBy(xpath="//strong[contains(text(),'Update Batch Status')]")
 	private WebElement updateBatchstatusButton;
 	
@@ -24,9 +24,9 @@ public class TrainerDashboardPage
 	{
 		trainerDashboardLink.click();
 	}
-	public void clickViewBatches()
+	public void clickAllBatches()
 	{
-		viewBatchesButton.click();
+		allBatchesButton.click();
 	}
 	public void clickUpdateBatchStatus()
 	{

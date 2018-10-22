@@ -9,15 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 public class AssessorViewBatchesPage
 {
 	WebDriver driver;
-	@FindBy(linkText="Newly Assigned")
-	private WebElement newlyAssignedBatchesLink;
-	@FindBy(linkText="Accepted & Ongoing")
-	private WebElement acceptedAndOngoingBatchesLink;
-	@FindBy(linkText="Completed")
-	private WebElement completedBatchesLink;
+	@FindBy(linkText="Pending Requests")
+	private WebElement pendingRequestsLink;
+	@FindBy(linkText="Accepted")
+	private WebElement acceptedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
-	@FindBy(xpath="//input[@placeholder='Start Date']")
+/*	@FindBy(xpath="//input[@placeholder='Start Date']")
 	private WebElement batchStartDateFilter;
 	@FindBy(xpath="(//span[i[@class='la la-calendar']])[1]")
 	private WebElement closeBatchStartDateCalenderButton;
@@ -37,7 +35,7 @@ public class AssessorViewBatchesPage
 	//@FindBy(xpath="//span[@class='c-angle-up']")
 	@FindBy(xpath="//label[contains(text(),'Job Role')]")
 	private WebElement filterbyJobRoleAngleUp;
-	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
+*/	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
 	private WebElement viewBatchDetailsOption;
 	@FindBy(xpath="//span[contains(text(),'Accept/Reject Batch')]")
 	private WebElement acceptOrRejectBatchOption;	
@@ -47,10 +45,16 @@ public class AssessorViewBatchesPage
 	private WebElement acceptBatchRadioButton;
 	@FindBy(xpath="(//label[@class='m-radio m-radio--state'])[2]")
 	private WebElement rejectBatchRadioButton;
-	@FindBy(xpath="//textarea[@formcontrolname='rejectionComment']")
-	private WebElement remarksTextArea;
+	@FindBy(xpath="(//textarea[@placeholder='Enter remarks'])[1]")
+	private WebElement remarksForAcceptingBatchTextArea;
+	@FindBy(xpath="//angular2-multiselect[@name='reason']/div")
+	private WebElement rejectionReasonsList;
+	@FindBy(xpath="(//textarea[@placeholder='Enter remarks'])[2]")
+	private WebElement remarksForRejectingBatchTextArea;
 	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
-	private WebElement saveAndSubmitButton;
+	private WebElement saveAndSubmitOfAcceptBatchButton;
+	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[2]")
+	private WebElement saveAndSubmitOfRejectBatchButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[1]")
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
@@ -63,17 +67,13 @@ public class AssessorViewBatchesPage
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void clicktoGoToNewlyAssignedBatchesSection()
+	public void clicktoGoToPendingRequestsSection()
 	{
-		newlyAssignedBatchesLink.click();
+		pendingRequestsLink.click();
 	}
-	public void clickToGoToAcceptedAndOngoingBatchesSection()
+	public void clickToGoToAcceptedBatchesSection()
 	{
-		acceptedAndOngoingBatchesLink.click();
-	}
-	public void clickTogoToCompletedBatchesSection()
-	{
-		completedBatchesLink.click();
+		acceptedBatchesLink.click();
 	}
 	public void clickToGoToRejectedBatchesSection()
 	{
@@ -81,9 +81,9 @@ public class AssessorViewBatchesPage
 	}
 	public void clickToGetActionMenuOptions(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div/a")).click();
 	}
-	public void enterTrainingCentreNameToSearch(String trainingCentreName) throws InterruptedException
+/*	public void enterTrainingCentreNameToSearch(String trainingCentreName) throws InterruptedException
 	{
 		searchByTrainingCentreNameSearchTextfield.clear();
 		Thread.sleep(2000);
@@ -105,17 +105,21 @@ public class AssessorViewBatchesPage
 	{
 		filterbyJobRoleAngleUp.click();
 	}
-	public void clickToChooseViewBatchDetailsOption(String batchID)
+*/	public void clickToSelectViewBatchDetailsOption(String batchID)
 	{
 		//viewBatchDetailsOption.click();
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div/div/a[1]/span")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div/div/a/span[contains(text(),'View Batch Details')]")).click();
 	}
-	public void clickToChooseAcceptOrRejectBatchOption(String batchID)
+	public void clickToSelectAcceptBatchOption(String batchID)
 	{
 		//acceptOrRejectBatchOption.click();
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div/div/a[2]/span")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div/div/a/span[contains(text(),'Accept Batch')]")).click();
 	}
-	public void clickViewAllBatchesToGoBackFromBatchDetails()
+	public void clickToSelectRejectBatchOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]/span/div/div/a/span[contains(text(),'Reject Batch')]")).click();
+	}
+/*	public void clickViewAllBatchesToGoBackFromBatchDetails()
 	{
 		viewAllBatchesButton.click();
 	}
@@ -127,14 +131,29 @@ public class AssessorViewBatchesPage
 	{
 		rejectBatchRadioButton.click();
 	}
-	public void enterRemarks(String remarks)
+*/	public void enterRemarksForAcceptingBatch(String remarks)
 	{
-		remarksTextArea.clear();
-		remarksTextArea.sendKeys(remarks);
+		remarksForAcceptingBatchTextArea.clear();	
+		remarksForAcceptingBatchTextArea.sendKeys(remarks);
 	}
-	public void clickToSaveAndSubmit()
+	public void selectReasonForRejectingBatch(String rejectionReason) throws InterruptedException
 	{
-		saveAndSubmitButton.click();
+		rejectionReasonsList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'"+rejectionReason+"')]")).click();
+	}
+	public void enterRemarksForRejctingBatch(String remarksForRejectingBatch)
+	{
+		remarksForRejectingBatchTextArea.clear();
+		remarksForRejectingBatchTextArea.sendKeys(remarksForRejectingBatch);
+	}
+	public void clickToSaveAndSubmitBatchAccceptance()
+	{
+		saveAndSubmitOfAcceptBatchButton.click();
+	}
+	public void clickToSaveAndSubmitBatchRejection()
+	{
+		saveAndSubmitOfRejectBatchButton.click();
 	}
 	public void clickToClose()
 	{
@@ -144,7 +163,7 @@ public class AssessorViewBatchesPage
 	{
 		okButton.click();
 	}
-	public void enterBatchStartDateToSearch(String batchStartDate)
+/*	public void enterBatchStartDateToSearch(String batchStartDate)
 	{
 		batchStartDateFilter.clear();
 		batchStartDateFilter.sendKeys(batchStartDate);
@@ -162,7 +181,7 @@ public class AssessorViewBatchesPage
 	{
 		closeBatchEndDateCalenderButton.click();
 	}
-	public void clickToGoBack()
+*/	public void clickToGoBack()
 	{
 		goBackButton.click();
 	}

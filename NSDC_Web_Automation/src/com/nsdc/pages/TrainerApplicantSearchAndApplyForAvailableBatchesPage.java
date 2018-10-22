@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,25 +12,21 @@ import com.nsdc.generic.SelectDropDownList;
 public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 {
 	WebDriver driver;
-	@FindBy(xpath="//button[contains(text(),'View My Batches')]")
-	private WebElement viewMyBatchesButton;
-	@FindBy(xpath="//button[contains(text(),'Go Back')]")
-	private WebElement goBackButton;
+	@FindBy(linkText="View all Batches")
+	private WebElement viewAllBatchesLink;
 	@FindBy(linkText="Search Batches")
-	private WebElement searchBatchesButton;
-	@FindBy(linkText="My Preferences")
-	private WebElement myPreferencesButton;
-	@FindBy(xpath="//select[@formcontrolname='state']")
-	private WebElement stateOrUtDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='district']")
+	private WebElement searchBatchesSectionLink;
+	@FindBy(xpath="(//select[@formcontrolname='state'])[1]")
+	private WebElement stateDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='district'])[1]")
 	private WebElement districtDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='subDistrict']")
+	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[1]")
 	private WebElement subDistrictDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='sector']")
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[1]")
 	private WebElement sectorDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='subSector']")
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[1]")
 	private WebElement subSectorDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='jobRole']")
+	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[1]")
 	private WebElement jobRoleDropdownList;
 	@FindBy(xpath="//select[@title='Select Batch Type']")
 	private WebElement batchTypeDropdownList;
@@ -45,12 +42,19 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement closeBatchEndDateCalender;
 	@FindBy(xpath="//button[contains(text(),'Search')]")
 	private WebElement searchButton;
-	@FindBy(linkText="Edit My Search Parameters")
-	private WebElement editMySearchParametersLink;
+	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
+	private WebElement addJobRoleAndLocationToMyPreferenceButton;
 	@FindBy(xpath="//input[@placeholder='Search for Training Center Name']")
-	private WebElement searchForBatchTextbox;
-	@FindBy(xpath="//div[@class='dropdown dropup']")
+	private WebElement searchTextbox;
+	//My Preferences
+	@FindBy(linkText="My Preferences")
+	private WebElement myPreferencesSectionLink;
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
 	private WebElement actionDropdownMenu;
+	@FindBy(linkText="Search Against Preference")
+	private WebElement searchAgainstPreferenceActionOption;
+	@FindBy(linkText="Remove Preference")
+	private WebElement removePreferenceActionOption;
 	@FindBy(linkText="View Details")
 	private WebElement viewDetailsOption;
 	@FindBy(linkText="Apply to the batch")
@@ -63,73 +67,23 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement okButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement applicantDashboardLink;
-	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
-	private WebElement addJobRoleAndLocationButton;
-	
-	@FindBy(xpath="//button[contains(text(),'Add My Preferences')]")
-	private WebElement addMyPrefrencesButton;
-	@FindBy(xpath="(//select[@formcontrolname='sector'])[2]")
-	private WebElement sector_AddPreferencesDropdownList;
-	@FindBy(xpath="(//select[@formcontrolname='subSector'])[2]")
-	private WebElement subSector_AddPreferencesDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[2]")
-	private WebElement jobRole_AddPreferencesDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='state'])[2]")
-	private WebElement state_AddPrefrencesDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='district'])[2]")
-	private WebElement district_AddPreferencesDropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[2]")
-	private WebElement subDistrict_AddPreferencesDropDownList;
-	@FindBy(xpath="//button[contains(text(),'Add Preferences')]")
-	private WebElement addPrefrences_button;
-	@FindBy(xpath="//button[contains(text(),'Close')]")
-	private WebElement closeButton;
-	
-	@FindBy(xpath="//button[contains(text(),'Search a Batch')]")
-	private WebElement searchABatchButton;
-	@FindBy(xpath="//span[text()='Select Batch Type']")
-	private WebElement batchTypeDropDownList;
-	@FindBy(xpath="//span[text()='Select State']")
-	private WebElement state_MyBatchesDropDownList;
-	@FindBy(xpath="//span[text()='Select District']")
-	private WebElement district_MyBatchesDropDownList;
-	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
-	private WebElement keywordSearchTextbox;
-	
+	@FindBy(xpath="//button[contains(text(),'Go Back')]")
+	private WebElement goBackButton;
+	@FindBy(xpath="//button[contains(text(),'View My Batches')]")
+	private WebElement viewMyBatchesButton;
 	
 	public TrainerApplicantSearchAndApplyForAvailableBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
-	
-	public void clickOnViewMyBatches()
-	{
-		viewMyBatchesButton.click();
-	}
-	
-	public void clickOnGoBack()
-	{
-		goBackButton.click();
-	}
-	
-	public void clickOnSearchBatches()
-	{
-		searchBatchesButton.click();
-	}
-	
-	public void clickOnMyPreferences()
-	{
-		myPreferencesButton.click();
-	}
-	
 	public void clickToGoToApplicantDashboard()
 	{
 		applicantDashboardLink.click();
 	}
 	public void selectState(String state)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(stateOrUtDropdownList, state);
+		SelectDropDownList.selectDropDownListByVisibleText(stateDropdownList, state);
 	}
 	public void selectDistrict(String district)
 	{
@@ -155,19 +109,15 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchTypeDropdownList,batchType);
 	}
-	public void selectBatchStatus(String batchStatus)
+	public void enterBatchStartDate(String batchStartDate)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(batchStatusDropdownList,batchStatus);
-		//batchStatusDropdownList.sendKeys(Keys.TAB);
+		batchStartDateTextbox.clear();
+		batchStartDateTextbox.sendKeys(batchStartDate);
 	}
-	public void enterBatchStartDate()
+	public void enterBatchEndDate(String batchEndDate)
 	{
-		batchStartDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
-	}
-	public void enterBatchEndDate()
-	{
-		batchEndDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
-		
+		batchEndDateTextbox.clear();
+		batchEndDateTextbox.sendKeys(batchEndDate);
 	}
 	public void clickToCloseBatchStartDateCalender()
 	{
@@ -183,20 +133,44 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void enterSearchKeyword(String searchKeyword)
 	{
-		searchForBatchTextbox.clear();
-		searchForBatchTextbox.sendKeys(searchKeyword);
+		searchTextbox.clear();
+		searchTextbox.sendKeys(searchKeyword);
+	}
+	public void clickSearchBatches()
+	{
+		searchBatchesSectionLink.click();
+	}
+	public void clickMyPreferences()
+	{
+		myPreferencesSectionLink.click();
+	}
+	public void clickAddJobRoleAndLocationToMyPreference()
+	{
+		addJobRoleAndLocationToMyPreferenceButton.click();
 	}
 	public void clickAction()
 	{
 		actionDropdownMenu.click();
 	}
-	public void selectViewDetails()
+	public void selectSearchAgainstPreference()
 	{
-		viewDetailsOption.click();
+		searchAgainstPreferenceActionOption.click();
 	}
-	public void selectApplyToBatch()
+	public void selectRemovePreference()
 	{
-		applyToTheBatchOption.click();
+		removePreferenceActionOption.click();
+	}
+	public void clickToGetBatchActionMenu(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]//a[i]")).click();
+	}
+	public void selectViewBatchDetails(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Batch Details')]")).click();
+	}
+	public void selectApplyToBatch(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Apply to the Batch')]")).click();
 	}
 	public void clickApplyForBatch()
 	{
@@ -210,81 +184,21 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		okButton.click();
 	}
-	
-	public void clickOnAddJobRoleAndLocationToMyPreference()
+	public void clickGoBack()
 	{
-		addJobRoleAndLocationButton.click();
+		goBackButton.click();
 	}
-	
-	public void clickOnAddMyPreferences()
+	public void clickViewMyBatches()
 	{
-		addMyPrefrencesButton.click();
+		viewMyBatchesButton.click();
 	}
-	
-	public void selectSector_AddPreferences(String sector)
+	public void clickToGetAcceptedBatchActionMenu(String batchID)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(sector_AddPreferencesDropdownList, sector);
+		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
-	
-	public void selectSubSector_AddPreferences(String subSector)
+	public void selectAcceptedBatchViewDetails(String batchID)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(subSector_AddPreferencesDropDownList, subSector);
-	}
-	
-	public void selectJobRole_AddPreferences(String jobRole)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRole_AddPreferencesDropDownList, jobRole);
-	}
-	
-	public void selectState_AddPreferences(String state)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(state_AddPrefrencesDropDownList, state);
-	}
-	
-	public void selectDistrict_AddPreferences(String district)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(district_AddPreferencesDropDownList, district);
-	}
-	
-	public void selectSubDidtrict_AddPreferences(String subDistrict)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(subDistrict_AddPreferencesDropDownList, subDistrict);
-	}
-	
-	public void clickOnAddPrefrences()
-	{
-		addPrefrences_button.click();
-	}
-	
-	public void clickOnClose()
-	{
-		closeButton.click();
-	}
-	
-	public void clickOnSearch_a_Batch()
-	{
-		searchABatchButton.click();
-	}
-	
-	public void selectForBatchType(String batchType)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(batchTypeDropDownList, batchType);
-	}
-	
-	public void selectState_MyBatches(String state)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(state_MyBatchesDropDownList, state);
-	}
-	
-	public void selectDistrict_MyBatches(String district)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(district_MyBatchesDropDownList, district);
-	}
-	
-	public void enterKeywordForSearch_MyBatches(String keyword)
-	{
-		keywordSearchTextbox.clear();
-		keywordSearchTextbox.sendKeys(keyword);
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Details')]")).click();
 	}
 
 }

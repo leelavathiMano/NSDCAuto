@@ -17,10 +17,10 @@ public class SSC_DashboardPage
 	private WebElement createTemporaryTrainingCentreButton;
 	@FindBy(xpath="//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")
 	private WebElement createBatchButton;
-	@FindBy(xpath="//strong[text()='All Batches']")
+	@FindBy(xpath="//strong[text()='All Batches New']")
 	private WebElement allBatchesButton;
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
-	private WebElement assessmentsAndCertificationButton;
+	@FindBy(linkText="Rozgar Mela")
+	private WebElement rozgarMelaLink;
 	
 	public SSC_DashboardPage(WebDriver driver)
 	{
@@ -50,10 +50,8 @@ public class SSC_DashboardPage
 	{
 		allBatchesButton.click();
 	}
-	
-	public void clickOnAssessmentsAndCertification()
+	public void clickRozgarMela()
 	{
-		assessmentsAndCertificationButton.click();
+		rozgarMelaLink.click();
 	}
-
 }

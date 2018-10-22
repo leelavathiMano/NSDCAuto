@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,63 +11,59 @@ import com.nsdc.generic.SelectDropDownList;
 public class AssessmentAgencyViewBatchesPage
 {
 	WebDriver driver;
-	@FindBy(linkText="Newly Assigned")
-	private WebElement newlyAssignedBatchesLink;
+	@FindBy(linkText="Pending Requests")
+	private WebElement pendingRequestsLink;
 	@FindBy(linkText="Accepted")
 	private WebElement acceptedBatchesLink;
-	@FindBy(linkText="Ongoing")
-	private WebElement ongoingBatchesLink;
-	@FindBy(linkText="Completed")
-	private WebElement completedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
 	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
 	private WebElement searchByBatchIdTextfield;
-	@FindBy(xpath="//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
 	private WebElement actionMenuDropdownLink;
 	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
 	private WebElement viewBatchDetailsOption;
-	@FindBy(xpath="//span[contains(text(),'Accept/Reject Batch')]")
-	private WebElement acceptOrRejectBatchOption;	
+	@FindBy(xpath="//span[contains(text(),'Accept Batch')]")
+	private WebElement acceptBatchOption;
+	@FindBy(xpath="//span[contains(text(),'Reject Batch')]")
+	private WebElement rejectBatchOption;
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
 	private WebElement goBackButton;
-	@FindBy(xpath="(//label[@class='m-radio m-radio--state'])[1]")
-	private WebElement acceptBatchRadioButton;
-	@FindBy(xpath="(//label[@class='m-radio m-radio--state'])[2]")
-	private WebElement rejectBatchRadioButton;
-	@FindBy(xpath="//textarea[@placeholder='If Batch is rejected, the reason should be provided to be reviewed by SSC']")
-	private WebElement remarksTextArea;
-	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
-	private WebElement saveAndSubmitButton;
+	@FindBy(xpath="//textarea[@formcontrolname='acceptComment']")
+	private WebElement remarksForAcceptingBatchTextArea;
+	@FindBy(xpath="//angular2-multiselect[@formcontrolname='rejectedReasons']/div")
+	private WebElement rejectionReasonsList;
+	@FindBy(xpath="//textarea[@formcontrolname='rejectionComment']")
+	private WebElement remarksForRejectingBatchTextArea;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
+	private WebElement acceptSubmitButton;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
+	private WebElement rejectSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[1]")
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
-	@FindBy(xpath="//select[@formcontrolname='assessor']")
-	private WebElement assessorsDropdownList;
 	@FindBy(xpath="//span[contains(text(),'Assign Assessor')]")
-	private WebElement assignAssessorsActionMenuOption;
-					
+	private WebElement assignAssessorsOption;
+	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
+	private WebElement domainAssessorsDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='assessor'])[2]")
+	private WebElement platformAssessorsDropdownList;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[4]")
+	private WebElement submitMasterAssessorButton;
+	
 	public AssessmentAgencyViewBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void clickToViewNewlyAssignedBatches()
+	public void clickToViewPendingBatchRequests()
 	{
-		newlyAssignedBatchesLink.click();
+		pendingRequestsLink.click();
 	}
 	public void clickToViewAcceptedBatches()
 	{
 		acceptedBatchesLink.click();
-	}
-	public void clickToViewOngoingBatches()
-	{
-		ongoingBatchesLink.click();
-	}
-	public void clickToViewCompletedBatches()
-	{
-		completedBatchesLink.click();
 	}
 	public void clickToViewRejectedBatches()
 	{
@@ -82,7 +79,7 @@ public class AssessmentAgencyViewBatchesPage
 		Thread.sleep(2000);
 		searchByBatchIdTextfield.sendKeys(batchID);
 	}
-	public void clickToChooseViewBatchDetailsOption()
+	public void clickToSelectViewBatchDetailsOption()
 	{
 		viewBatchDetailsOption.click();
 	}
@@ -90,26 +87,37 @@ public class AssessmentAgencyViewBatchesPage
 	{
 		goBackButton.click();
 	}
-	public void clickToChooseAcceptOrRejectBatchOption()
+	public void clickToSelectAcceptBatchOption()
 	{
-		acceptOrRejectBatchOption.click();
+		acceptBatchOption.click();
 	}
-	public void clickToAcceptBatch()
+	public void clickToSelectRejectBatchOption()
 	{
-		acceptBatchRadioButton.click();
+		rejectBatchOption.click();
 	}
-	public void clickToRejectBatch()
+	public void enterRemarksForAcceptingBatch(String remarksForAcceptingBatch)
 	{
-		rejectBatchRadioButton.click();
+		remarksForAcceptingBatchTextArea.clear();
+		remarksForAcceptingBatchTextArea.sendKeys(remarksForAcceptingBatch);
 	}
-	public void enterRemarks(String remarks)
+	public void selectReasonForRejectingBatch(String rejectionReason) throws InterruptedException
 	{
-		remarksTextArea.clear();
-		remarksTextArea.sendKeys(remarks);
+		rejectionReasonsList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'"+rejectionReason+"')]")).click();
 	}
-	public void clickToSaveAndSubmit()
+	public void enterRemarksForRejctingBatch(String remarksForRejectingBatch)
 	{
-		saveAndSubmitButton.click();
+		remarksForRejectingBatchTextArea.clear();
+		remarksForRejectingBatchTextArea.sendKeys(remarksForRejectingBatch);
+	}
+	public void clickToSubmitBatchAcceptance()
+	{
+		acceptSubmitButton.click();
+	}
+	public void clickToSubmitBatchRejection()
+	{
+		rejectSubmitButton.click();
 	}
 	public void clickToClose()
 	{
@@ -119,12 +127,20 @@ public class AssessmentAgencyViewBatchesPage
 	{
 		okButton.click();
 	}
-	public void selectAssessorsToBeAssignedForBatches(String assessorID)
+	public void clickToSelectAssignAssessorsOption()
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(assessorsDropdownList, assessorID);
+		assignAssessorsOption.click();
 	}
-	public void clickToChooseAssignAssessorsActionMenuOption()
+	public void selectMasterAssessorForDomain(String assessorNameID)
 	{
-		assignAssessorsActionMenuOption.click();
+		SelectDropDownList.selectDropDownListByVisibleText(domainAssessorsDropdownList, assessorNameID);
+	}
+	public void selectMasterAssessorForPlatform(String assessorNameID)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(platformAssessorsDropdownList, assessorNameID);
+	}
+	public void clickToSubmitMasterAssessors()
+	{
+		submitMasterAssessorButton.click();
 	}
 }

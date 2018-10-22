@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,25 +14,27 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	WebDriver driver;
 	@FindBy(linkText="View all Batches")
 	private WebElement viewAllBatchesLink;
-	@FindBy(xpath="//select[@formcontrolname='state']")
-	private WebElement stateOrUtDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='district']")
+	@FindBy(linkText="Search Batches")
+	private WebElement searchBatchesSectionLink;
+	@FindBy(xpath="(//select[@formcontrolname='state'])[1]")
+	private WebElement stateDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='district'])[1]")
 	private WebElement districtDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='subDistrict']")
+	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[1]")
 	private WebElement subDistrictDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='sector']")
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[1]")
 	private WebElement sectorDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='subSector']")
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[1]")
 	private WebElement subSectorDropdownList;
-	@FindBy(xpath="//select[@title='Select Job Role']")
+	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[1]")
 	private WebElement jobRoleDropdownList;
 	@FindBy(xpath="//select[@title='Select Batch Type']")
 	private WebElement batchTypeDropdownList;
 	@FindBy(xpath="//select[@title='Select Batch Status']")
 	private WebElement batchStatusDropdownList;
-	@FindBy(id="totApplicantStartDate")
+	@FindBy(xpath="(//input[@id='date'])[1]")
 	private WebElement batchStartDateTextbox;
-	@FindBy(id="totApplicantEndDate")
+	@FindBy(xpath="(//input[@id='date'])[2]")
 	private WebElement batchEndDateTextbox;
 	@FindBy(xpath="(//div[@class='input-group-append'])[1]")
 	private WebElement closeBatchStartDateCalender;
@@ -39,12 +42,19 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement closeBatchEndDateCalender;
 	@FindBy(xpath="//button[contains(text(),'Search')]")
 	private WebElement searchButton;
-	@FindBy(linkText="Edit My Search Parameters")
-	private WebElement editMySearchParametersLink;
-	@FindBy(xpath="//input[@placeholder='Search by keyword']")
-	private WebElement searchForBatchTextbox;
-	@FindBy(xpath="//div[@class='dropdown dropup']")
+	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
+	private WebElement addJobRoleAndLocationToMyPreferenceButton;
+	@FindBy(xpath="//input[@placeholder='Search for Training Center Name']")
+	private WebElement searchTextbox;
+	//My Preferences
+	@FindBy(linkText="My Preferences")
+	private WebElement myPreferencesSectionLink;
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
 	private WebElement actionDropdownMenu;
+	@FindBy(linkText="Search Against Preference")
+	private WebElement searchAgainstPreferenceActionOption;
+	@FindBy(linkText="Remove Preference")
+	private WebElement removePreferenceActionOption;
 	@FindBy(linkText="View Details")
 	private WebElement viewDetailsOption;
 	@FindBy(linkText="Apply to the batch")
@@ -57,6 +67,10 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement okButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement applicantDashboardLink;
+	@FindBy(xpath="//button[contains(text(),'Go Back')]")
+	private WebElement goBackButton;
+	@FindBy(xpath="//button[contains(text(),'View My Batches')]")
+	private WebElement viewMyBatchesButton;
 	
 	public AssessorApplicantSearchAndApplyForAvailableBatchesPage(WebDriver driver)
 	{
@@ -69,7 +83,7 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void selectState(String state)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(stateOrUtDropdownList, state);
+		SelectDropDownList.selectDropDownListByVisibleText(stateDropdownList, state);
 	}
 	public void selectDistrict(String district)
 	{
@@ -95,18 +109,15 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchTypeDropdownList,batchType);
 	}
-	public void selectBatchStatus(String batchStatus)
+	public void enterBatchStartDate(String batchStartDate)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(batchStatusDropdownList,batchStatus);
-		//batchStatusDropdownList.sendKeys(Keys.TAB);
+		batchStartDateTextbox.clear();
+		batchStartDateTextbox.sendKeys(batchStartDate);
 	}
-	public void enterBatchStartDate()
+	public void enterBatchEndDate(String batchEndDate)
 	{
-		batchStartDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(16));
-	}
-	public void enterBatchEndDate()
-	{
-		batchEndDateTextbox.sendKeys(AddingDaysToCurrentDate.addDaysToCurrentDate(25));
+		batchEndDateTextbox.clear();
+		batchEndDateTextbox.sendKeys(batchEndDate);
 	}
 	public void clickToCloseBatchStartDateCalender()
 	{
@@ -122,20 +133,44 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void enterSearchKeyword(String searchKeyword)
 	{
-		searchForBatchTextbox.clear();
-		searchForBatchTextbox.sendKeys(searchKeyword);
+		searchTextbox.clear();
+		searchTextbox.sendKeys(searchKeyword);
+	}
+	public void clickSearchBatches()
+	{
+		searchBatchesSectionLink.click();
+	}
+	public void clickMyPreferences()
+	{
+		myPreferencesSectionLink.click();
+	}
+	public void clickAddJobRoleAndLocationToMyPreference()
+	{
+		addJobRoleAndLocationToMyPreferenceButton.click();
 	}
 	public void clickAction()
 	{
 		actionDropdownMenu.click();
 	}
-	public void selectViewDetails()
+	public void selectSearchAgainstPreference()
 	{
-		viewDetailsOption.click();
+		searchAgainstPreferenceActionOption.click();
 	}
-	public void selectApplyToBatch()
+	public void selectRemovePreference()
 	{
-		applyToTheBatchOption.click();
+		removePreferenceActionOption.click();
+	}
+	public void clickToGetBatchActionMenu(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]//a[i]")).click();
+	}
+	public void selectViewBatchDetails(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Batch Details')]")).click();
+	}
+	public void selectApplyToBatch(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Apply to the Batch')]")).click();
 	}
 	public void clickApplyForBatch()
 	{
@@ -148,5 +183,21 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	public void clickOK()
 	{
 		okButton.click();
+	}
+	public void clickGoBack()
+	{
+		goBackButton.click();
+	}
+	public void clickViewMyBatches()
+	{
+		viewMyBatchesButton.click();
+	}
+	public void clickToGetAcceptedBatchActionMenu(String batchID)
+	{
+		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
+	}
+	public void selectAcceptedBatchViewDetails(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Details')]")).click();
 	}
 }

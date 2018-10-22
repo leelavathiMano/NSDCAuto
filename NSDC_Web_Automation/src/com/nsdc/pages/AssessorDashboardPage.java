@@ -10,8 +10,8 @@ public class AssessorDashboardPage
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[2]")
 	private WebElement assessorDashboardLink;
-	@FindBy(xpath="//span[contains(text(),'View Batches')]")
-	private WebElement viewBatchesButton;
+	@FindBy(xpath="//span[contains(text(),'Batch Assessment Requests')]")
+	private WebElement batchAssessmentRequestsCardText;
 	@FindBy(xpath="//span[contains(text(),'Update Batch Status')]")
 	private WebElement updateBatchstatusButton;
 	
@@ -20,13 +20,13 @@ public class AssessorDashboardPage
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void clickToGetTrainerDashboard()
+	public void clickToGetAssessorDashboard()
 	{
 		assessorDashboardLink.click();
 	}
-	public void clickViewBatches()
+	public void clickBatchAssessmentRequests()
 	{
-		viewBatchesButton.click();
+		batchAssessmentRequestsCardText.click();
 	}
 	public void clickUpdateBatchStatus()
 	{

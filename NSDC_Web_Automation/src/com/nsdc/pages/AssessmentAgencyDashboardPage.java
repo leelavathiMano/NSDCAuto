@@ -8,29 +8,22 @@ import org.openqa.selenium.support.PageFactory;
 public class AssessmentAgencyDashboardPage
 {
 	WebDriver driver;
-	@FindBy(xpath="//span[contains(text(),'View Batches')]")
-	private WebElement viewBatchesCardText;
-	@FindBy(xpath="(//span[contains(text(),'Associated Assessors')])[1]")
-	private WebElement associatedAssessorsCardText;
-	@FindBy(xpath="//span[contains(text(),'Fee Based Batch Assessment Requests')]")
-	private WebElement feeBasedAssessmentReuestButton;
+	@FindBy(xpath="(//strong[contains(text(),'Assessment Requests')])[1]")
+	private WebElement batchAssessmentRequestsCardText;
+	@FindBy(xpath="(//strong[contains(text(),'Link Assessor')])[1]")
+	private WebElement linkAssessorsCardText;
 	
 	public AssessmentAgencyDashboardPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	public void clickToViewBatches()
+	public void clickBatchAssessmentRequests()
 	{
-		viewBatchesCardText.click();
+		batchAssessmentRequestsCardText.click();
 	}
-	public void clickToViewAllAssociatedAssessors()
+	public void clickLinksAssessors()
 	{
-		associatedAssessorsCardText.click();
-	}
-	
-	public void clickOnFeeBasedAssessmentRequest()
-	{
-		feeBasedAssessmentReuestButton.click();
+		linkAssessorsCardText.click();
 	}
 }
