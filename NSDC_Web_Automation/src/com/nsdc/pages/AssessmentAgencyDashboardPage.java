@@ -12,6 +12,8 @@ public class AssessmentAgencyDashboardPage
 	private WebElement batchAssessmentRequestsCardText;
 	@FindBy(xpath="(//strong[contains(text(),'Link Assessor')])[1]")
 	private WebElement linkAssessorsCardText;
+	@FindBy(xpath="//strong[contains(text(),'Fee Based Assessment Requests')]")
+	private WebElement feeBasedAssessmentRequestsButton;
 	
 	public AssessmentAgencyDashboardPage(WebDriver driver)
 	{
@@ -25,5 +27,9 @@ public class AssessmentAgencyDashboardPage
 	public void clickLinksAssessors()
 	{
 		linkAssessorsCardText.click();
+	}
+	public void clickOnFeeBasedAssessmentRequest() 
+	{
+		feeBasedAssessmentRequestsButton.click();
 	}
 }

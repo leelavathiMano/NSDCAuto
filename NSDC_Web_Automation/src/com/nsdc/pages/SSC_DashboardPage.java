@@ -21,6 +21,9 @@ public class SSC_DashboardPage
 	private WebElement allBatchesButton;
 	@FindBy(linkText="Rozgar Mela")
 	private WebElement rozgarMelaLink;
+	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
+	private WebElement assessmentsAndCertificationButton;
+	
 	
 	public SSC_DashboardPage(WebDriver driver)
 	{
@@ -53,5 +56,10 @@ public class SSC_DashboardPage
 	public void clickRozgarMela()
 	{
 		rozgarMelaLink.click();
+	}
+	
+	public void clickOnAssessmentsAndCertification()
+	{
+		assessmentsAndCertificationButton.click();
 	}
 }

@@ -51,6 +51,15 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement platformAssessorsDropdownList;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[4]")
 	private WebElement submitMasterAssessorButton;
+	@FindBy(xpath="//select[@formcontrolname='assessor']")
+	private WebElement assessorsDropdownList;
+	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
+	private WebElement saveAndSubmitButton;
+	@FindBy(xpath="(//label[@class='m-radio m-radio--state'])[1]")
+	private WebElement acceptBatchRadioButton;
+	@FindBy(linkText="Completed")
+	private WebElement completedBatchesLink;
+	
 	
 	public AssessmentAgencyViewBatchesPage(WebDriver driver)
 	{
@@ -142,5 +151,25 @@ public class AssessmentAgencyViewBatchesPage
 	public void clickToSubmitMasterAssessors()
 	{
 		submitMasterAssessorButton.click();
+	}
+	
+	public void selectAssessorsToBeAssignedForBatches(String assessorID)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(assessorsDropdownList, assessorID);
+	}
+	
+	public void clickToSaveAndSubmit()
+	{
+		saveAndSubmitButton.click();
+	}
+	
+	public void clickToAcceptBatch()
+	{
+		acceptBatchRadioButton.click();
+	}
+	
+	public void clickToViewCompletedBatches()
+	{
+		completedBatchesLink.click();
 	}
 }
