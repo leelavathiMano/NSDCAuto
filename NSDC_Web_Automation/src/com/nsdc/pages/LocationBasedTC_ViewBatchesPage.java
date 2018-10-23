@@ -59,6 +59,13 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement goBackButton;
 	@FindBy(xpath="//button[contains(text(),'Send Batch for Approval')]")
 	private WebElement sendBatchForApprovalButton;
+	//Applicants Rejection
+	@FindBy(xpath="//angular2-multiselect[@name='reason']/div")
+	private WebElement reasonsForRejectingApplicantList;
+	@FindBy(xpath="//textarea[@name='remarks']")
+	private WebElement remarksForRejectingApplicantTextArea;
+	@FindBy(xpath="(//button[contains(text(),'Reject Candidate')])[2]")
+	private WebElement rejectApplicantButton;
 			
 	public LocationBasedTC_ViewBatchesPage(WebDriver driver)
 	{
@@ -170,7 +177,7 @@ public class LocationBasedTC_ViewBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+createdAssessorID+"']]//a[contains(text(),'Enroll Applicant')]")).click();
 	}
-	public void selectrejectApplicantOption(String createdAssessorID)
+	public void selectRejectApplicantOption(String createdAssessorID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+createdAssessorID+"']]//a[contains(text(),'Reject Applicant')]")).click();
 	}
@@ -181,6 +188,20 @@ public class LocationBasedTC_ViewBatchesPage
 	public void clickToEnrollAllSelectedApplicants()
 	{
 		enrollSelectedApplicantsButton.click();
+	}
+	public void selectReasonForRejectingApplicant() throws InterruptedException
+	{
+		reasonsForRejectingApplicantList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'Other')]")).click();
+	}
+	public void enterRemarksForRejectingApplicant()
+	{
+		remarksForRejectingApplicantTextArea.sendKeys("Rejecting this Applicant");
+	}
+	public void clickToRejectApplicant()
+	{
+		rejectApplicantButton.click();
 	}
 	public void clickGoBack()
 	{

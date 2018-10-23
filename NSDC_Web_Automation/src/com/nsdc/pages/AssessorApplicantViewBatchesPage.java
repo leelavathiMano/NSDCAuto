@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,20 +11,8 @@ public class AssessorApplicantViewBatchesPage
 	WebDriver driver;
 	@FindBy(xpath="(//a[@class='m-menu__link m-menu__toggle']/span[2])[1]")
 	private WebElement applicantDashboardLink;
-	@FindBy(linkText="Upcoming")
-	private WebElement upcomingBatchesSectionLink;
-	@FindBy(linkText="Applied")
-	private WebElement appliedBatchesSectionLink;
-	@FindBy(linkText="Approved")
-	private WebElement approvedBatchesSectionLink;
-	@FindBy(linkText="Completed and Certified")
-	private WebElement CompletedAandCertifiedBatchesSectionLink;
-	@FindBy(linkText="Completed and Not Certified")
-	private WebElement CompletedAndNotCertifiedBatchesSectionLink;
-	@FindBy(linkText="Rejected")
-	private WebElement RejectedBatchesSectionLink;
-	@FindBy(xpath="//input[@placeholder='Search by keyword']")
-	private WebElement searchForKeywordTextField;
+	@FindBy(xpath="//button[@class='close align-data']")
+	private WebElement viewTC_CommentsCloseButton;
 	
 	public AssessorApplicantViewBatchesPage(WebDriver driver)
 	{
@@ -34,35 +23,16 @@ public class AssessorApplicantViewBatchesPage
 	{
 		applicantDashboardLink.click();
 	}
-	public void clickToGoToUpcomingBatchesSection()
+	public void clickToGetRejectedBatchActionMenu(String batchID)
 	{
-		upcomingBatchesSectionLink.click();
+		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
-	public void clickToGoToAppliedBatchesSection()
+	public void selectViewCommentsForRejection(String batchID)
 	{
-		appliedBatchesSectionLink.click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Comments')]")).click();
 	}
-	public void clickToGoToApprovedBatchesSection()
+	public void clickToCloseTC_CommentsView()
 	{
-		approvedBatchesSectionLink.click();
+		viewTC_CommentsCloseButton.click();
 	}
-	public void clickToGoToCompletedAndCertifiedBatchesSection()
-	{
-		CompletedAandCertifiedBatchesSectionLink.click();
-	}
-	public void clickToGoToCompletedAndNotCertifiedBatchesSection()
-	{
-		CompletedAndNotCertifiedBatchesSectionLink.click();
-	}
-	public void clickToGoToRejectedBatchesSection()
-	{
-		RejectedBatchesSectionLink.click();
-	}
-	public void enterToSearchForBatch(String batchKeywords)
-	{
-		searchForKeywordTextField.clear();
-		searchForKeywordTextField.sendKeys(batchKeywords);
-	}
-	
-
 }

@@ -277,6 +277,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement submitReAssignedTrainingCentreButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
+	@FindBy(xpath="//button[contains(text(),'Ok')]")
+	private WebElement batchSubmitOkButton;
 	
 	public SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(WebDriver driver)
 	{
@@ -1093,5 +1095,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void clickToCancel()
 	{
 		cancelButton.click();
+	}
+	public void clickOkForBatchSubmission()
+	{
+		batchSubmitOkButton.click();
 	}
 }

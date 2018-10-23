@@ -10,10 +10,10 @@ public class AssessorApplicantDashboardPage
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement applicantDashboardLink;
-	@FindBy(xpath="//span[contains(text(),'Search for available batches')]")
-	private WebElement searchAndApplyForAvailableBatchesButton;
-	@FindBy(xpath="//span[contains(text(),'View Batches')]")
-	private WebElement viewBatchesButton;
+	@FindBy(xpath="//strong[contains(text(),'Search & Apply')]")
+	private WebElement searchAndApplyForAvailableBatchesCardText;
+	@FindBy(xpath="//strong[contains(text(),'View Batches')]")
+	private WebElement viewBatchesCardText;
 			
 	public AssessorApplicantDashboardPage(WebDriver driver)
 	{
@@ -26,10 +26,10 @@ public class AssessorApplicantDashboardPage
 	}
 	public void clickSearchAndApplyforAvailableBatches()
 	{
-		searchAndApplyForAvailableBatchesButton.click();
+		searchAndApplyForAvailableBatchesCardText.click();
 	}
 	public void clickViewBatches()
 	{
-		viewBatchesButton.click();
+		viewBatchesCardText.click();
 	}
 }
