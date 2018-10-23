@@ -415,8 +415,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+candidateID+"')]")).getText().trim(), candidateID);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+fullName+"')]")).getText().trim(), fullName);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+gender+"')]")).getText().trim(), gender);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+state+"')]")).getText().trim(), state);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+cState+"')]")).getText().trim(), cState);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+cDistrict+"')]")).getText().trim(), cDistrict);
 			tpMp.clickToSelectCreatedCandidateRecord();
 			Thread.sleep(4000);
 			tpMp.clickToDownloadReportForSelectedCandidates();
