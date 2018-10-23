@@ -382,7 +382,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(fDAUsername, fDAPassword);
 		FDA_DashboardPage fdp = new FDA_DashboardPage(driver);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		fdp.clickOnViewAllOnboardingRequest();
 		FDA_OnboardingRequestPage frp = new  FDA_OnboardingRequestPage(driver);
 		Thread.sleep(3000);
@@ -2271,10 +2271,10 @@ public void approveSectorAndCourseTC08(String sno, String cmaUsername, String cm
 	cmci.clickOnSubmitResponse();
 	cmac.selectStatus(courseComments);
 	cmac.enterTPID(tpID);
-	Thread.sleep(8000);
+	Thread.sleep(10000);
 	cmac.clickOnApply();
 	Thread.sleep(3000);
-	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[div[span[text()='"+expectedCourseName+"']]]]//span[text()='"+courseComments+"']")).getText(), courseComments);
+	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedCourseName+"']]]]//span[text()='"+courseComments+"']")).getText(), courseComments);
 	Thread.sleep(3000);
 	cmac.selectStatus(status);
 	Thread.sleep(8000);
