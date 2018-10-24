@@ -433,7 +433,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpMp.clickRegister();
 			Thread.sleep(4000);
 			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
-			for(int i=4;i<10;i++)
+			for(int i=4;i<8;i++)
 			{
 				String bulkCandidateName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 1);
 				String bulkCandidateGender=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 2);
