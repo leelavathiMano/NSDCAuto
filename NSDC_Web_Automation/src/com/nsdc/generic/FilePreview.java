@@ -9,13 +9,24 @@ public class FilePreview
 {
 	public static void closeWindow(WebDriver driver)
 	{
-		Set<String> windows = driver.getWindowHandles();
-        Iterator <String> it  = windows.iterator();
-        String window1 = it.next();
-        String window2 = it.next();
-        driver.switchTo().window(window2);
-        driver.close();
-        driver.switchTo().window(window1);
+		 String mainWindow=driver.getWindowHandle();	
+		 
+		 Set<String> set =driver.getWindowHandles();	
+		 Iterator<String> itr= set.iterator();
+		 
+		 while(itr.hasNext())
+		 {
+			 String childWindow=itr.next();
+		   
+			 if(!mainWindow.equals(childWindow))
+			 {
+				 driver.switchTo().window(childWindow);
+				 System.out.println(driver.switchTo().window(childWindow).getTitle());
+				 driver.close();
+			 }
+		 }
+		 
+		 driver.switchTo().window(mainWindow);	
 	}
 	
 }
