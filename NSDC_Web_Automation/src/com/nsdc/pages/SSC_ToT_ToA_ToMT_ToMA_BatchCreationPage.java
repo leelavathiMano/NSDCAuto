@@ -1,13 +1,11 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
 
@@ -300,7 +298,30 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectTrainingStartDateForBatch() throws InterruptedException
 	{
 		trainingStartDateTextField.click();
-		trainingStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+		}
 	}
 	public void clickToCloseTrainingStartDateCalender()
 	{
@@ -309,12 +330,59 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectTrainingEndDateForNewBatch() throws InterruptedException 
 	{
 		trainingEndDateTextField.click();
-		trainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.RIGHT,Keys.ENTER);
+		Thread.sleep(2000);
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+		}
 	}
-	public void selectTrainingEndDateForExistingBatch()
+	public void selectTrainingEndDateForExistingBatch() throws InterruptedException
 	{	
 		trainingEndDateTextField.click();
-		trainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.ENTER);
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+		}
 	}
 	public void clickToCloseTrainingEndDateCalender()
 	{
@@ -339,11 +407,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		domainBaseQpRadioButton.click();
 	}
-	public void selectDomainTrainingStartDate()
+	public void selectDomainTrainingStartDate() throws InterruptedException
 	{
 		domainTrainingStartDateTextField.click();
-		//domainTrainingStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[1]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -357,7 +423,16 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
 		}
 		
 	}
@@ -365,11 +440,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		closeDomainTrainingStartDateCalenderIcon.click();
 	}
-	public void selectDomainTrainingEndDateForNewBatch()
+	public void selectDomainTrainingEndDateForNewBatch() throws InterruptedException
 	{
 		domainTrainingEndDateTextField.click();
-		//domainTrainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[9]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -383,15 +456,22 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
 		}
 		
 	}
-	public void selectDomainTrainingEndDateForExistingBatch()
+	public void selectDomainTrainingEndDateForExistingBatch() throws InterruptedException
 	{
 		domainTrainingEndDateTextField.click();
-		//domainTrainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[1]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -405,19 +485,25 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
 		}
-		
 	}
 	public void clickToCloseDomainTrainingEndDateCalender()
 	{
 		closeDomainTrainingEndDateCalenderIcon.click();
 	}
-	public void selectDomainAssessmentStartDateForNewBatch()
+	public void selectDomainAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
-		//domainAssessmentStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[9]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -431,15 +517,21 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
 		}
-		
 	}
-	public void selectDomainAssessmentStartDateForExistingBatch()
+	public void selectDomainAssessmentStartDateForExistingBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
-		//domainAssessmentStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[1]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -453,19 +545,25 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
 		}
 	}
 	public void clickToCloseDomainAssessmentstartDateCalender()
 	{
 		closeDomainAssessmentStartDateCalenderIcon.click();
 	}
-	public void selectDomainAssessmentEndDateForNewBatch()
+	public void selectDomainAssessmentEndDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentEndDateTextField.click();
-		//domainAssessmentEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[11]")).click();
-		//driver.findElement(By.xpath("(//td[text()='2'])[2]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -479,14 +577,21 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
 		}
 	}
-	public void selectDomainAssessmentEndDateForExistingBatch()
+	public void selectDomainAssessmentEndDateForExistingBatch() throws InterruptedException
 	{
 		domainAssessmentEndDateTextField.click();
-		//domainAssessmentEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[3]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -500,7 +605,16 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
 		}
 		
 	}
@@ -513,11 +627,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		platformBaseQpRadioButton.click();
 	}
-	public void selectPlatformTrainingStartDate()
+	public void selectPlatformTrainingStartDate() throws InterruptedException
 	{
 		platformTrainingStartDateTextField.click();
-		//platformTrainingStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[1]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -531,18 +643,25 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
 		}
 	}
 	public void clickToclosePlatformTrainingStartDateCalender()
 	{
 		closePlatformTrainingStartDateCalenderIcon.click();
 	}
-	public void selectPlatformTrainingEndDateForNewBatch()
+	public void selectPlatformTrainingEndDateForNewBatch() throws InterruptedException
 	{
 		platformTrainingEndDateTextField.click();
-		//platformTrainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[9]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -556,14 +675,21 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
 		}
 	}
-	public void selectPlatformTrainingEndDateForExistingBatch()
+	public void selectPlatformTrainingEndDateForExistingBatch() throws InterruptedException
 	{
 		platformTrainingEndDateTextField.click();
-		//platformTrainingEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[1]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -577,18 +703,25 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
 		}
 	}
 	public void clickToClosePlatformTrainingEndDateCalender()
 	{
 		closePlatformTrainingEndDateCalenderIcon.click();
 	}
-	public void selectPlatformAssessmentStartDateForNewBatch()
+	public void selectPlatformAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		platformAssessmentStartDateTextField.click();
-		//platformAssessmentStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[9]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -602,15 +735,22 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
 		}
 		
 	}
-	public void selectPlatformAssessmentStartDateForExistingBatch()
+	public void selectPlatformAssessmentStartDateForExistingBatch() throws InterruptedException
 	{
 		platformAssessmentStartDateTextField.click();
-		//platformAssessmentStartDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[1]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -624,19 +764,25 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
 		}
 	}
 	public void clickToClosePlatformAssessmentstartDateCalender()
 	{
 		closePlatformAssessmentStartDateCalenderIcon.click();
 	}
-	public void selectPlatformAssessmentEndDateForNewBatch()
+	public void selectPlatformAssessmentEndDateForNewBatch() throws InterruptedException
 	{
 		platformAssessmentEndDateTextField.click();
-		//platformAssessmentEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[11]")).click();
-		//driver.findElement(By.xpath("(//td[text()='2'])[2]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -650,14 +796,21 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
 		}
 	}
-	public void selectPlatformAssessmentEndDateForExistingBatch()
+	public void selectPlatformAssessmentEndDateForExistingBatch() throws InterruptedException
 	{
 		platformAssessmentEndDateTextField.click();
-		//platformAssessmentEndDateTextField.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.RIGHT,Keys.ENTER);
-		//driver.findElement(By.xpath("(//td[@class='day'])[3]")).click();
 		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("class").contains("disabled"))
@@ -671,7 +824,16 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		}
 		else
 		{
-			driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
 		}
 	}
 	public void clickToClosePlatformAssessmentEndDateCalender()
@@ -924,14 +1086,29 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		domainAssignMasterTrainerActionOptionLink.click();
 	}
-	public void selectDomainMasterTrainerStateFilter(String state)
+	//After just creating New TC - Variation in State and district filter numbering, so using newprefix for method name
+	public void newSelectDomainMasterTrainerStateFilter(String state) throws InterruptedException
 	{
 		domainMasterTrainerStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
+	}
+	public void newSelectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
+	{
+		domainMasterTrainerStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
+	}
+	public void selectDomainMasterTrainerStateFilter(String state) throws InterruptedException
+	{
+		domainMasterTrainerStateFilterList.click();
+		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
 	}
-	public void selectDomainMasterTrainerDistrictFilter(String district)
+	public void selectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
 		domainMasterTrainerDistrictFilterList.click();
+		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
 	}
 	public void enterDomainMasterTrainerIDToSearch(String masterTrainerID)
@@ -960,14 +1137,28 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		platformAssignMasterTrainerActionOptionLink.click();
 	}
-	public void selectPlatformMasterTrainerStateFilter(String state)
+	public void newSelectPlatformMasterTrainerStateFilter(String state) throws InterruptedException
 	{
 		platformMasterTrainerStateFilterList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
 	}
-	public void selectPlatformMasterTrainerDistrictFilter(String district)
+	public void newSelectPlatformMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
 		platformMasterTrainerDistrictFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
+	}
+	public void selectPlatformMasterTrainerStateFilter(String state) throws InterruptedException
+	{
+		platformMasterTrainerStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+	}
+	public void selectPlatformMasterTrainerDistrictFilter(String district) throws InterruptedException
+	{
+		platformMasterTrainerDistrictFilterList.click();
+		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
 	}
 	public void enterPlatformMasterTrainerIDToSearch(String masterTrainerID)
@@ -996,14 +1187,28 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		domainAssignAssessmentAgencyActionOptionLink.click();
 	}
-	public void selectDomainAssessmentAgencyStateFilter(String state)
+	public void newSelectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
 		domainAssessmentAgencyStateFilterList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
 	}
-	public void selectDomainAssessmentAgencyDistrictFilter(String district)
+	public void newSelectDomainAssessmentAgencyDistrictFilter(String district) throws InterruptedException
 	{
 		domainAssessmentAgencyDistrictFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
+	}
+	public void selectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
+	{
+		domainAssessmentAgencyStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+	}
+	public void selectDomainAssessmentAgencyDistrictFilter(String district) throws InterruptedException
+	{
+		domainAssessmentAgencyDistrictFilterList.click();
+		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
 	}
 	public void enterDomainAssessmentAgencyIDToSearch(String assessmentAgencyID)
@@ -1032,14 +1237,28 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		platformAssignAssessmentAgencyActionOptionLink.click();
 	}
-	public void selectPlatformAssessmentAgencyStateFilter(String state)
+	public void newSelectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
 		platformAssessmentAgencyStateFilterList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
 	}
-	public void selectPlatformAssessmentAgencyDistrictFilter(String district)
+	public void newSelectPlatformAssessmentAgencyDistrictFilter(String district) throws InterruptedException
 	{
 		platformAssessmentAgencyDistrictFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
+	}
+	public void selectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
+	{
+		platformAssessmentAgencyStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+	}
+	public void selectPlatformAssessmentAgencyDistrictFilter(String district) throws InterruptedException
+	{
+		platformAssessmentAgencyDistrictFilterList.click();
+		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
 	}
 	public void enterPlatformAssessmentAgencyIDToSearch(String assessmentAgencyID)
