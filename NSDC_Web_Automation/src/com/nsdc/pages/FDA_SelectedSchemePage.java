@@ -26,7 +26,7 @@ public class FDA_SelectedSchemePage
 	private WebElement viewAttachedDocument_SecondSectorButton;
 	@FindBy(xpath="(//button[contains(text(),'View Attached Documents')])[4]")
 	private WebElement viewAttachedDocument_SecondCourseButton;
-	@FindBy(xpath="//select[option[contains(text(),'Select Review Comments')]]")
+	@FindBy(xpath="//select[option[contains(text(),'Select Comments')]]")
 	private WebElement reviewCommentsDropDownList;
 	@FindBy(xpath="//textarea[@placeholder='Enter review comments here']")
 	private WebElement reviewCommentsTextbox;
