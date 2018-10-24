@@ -1095,7 +1095,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void newSelectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
-		domainMasterTrainerStateFilterList.click();
+		domainMasterTrainerDistrictFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
 	}
