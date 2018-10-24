@@ -21,7 +21,6 @@ public class FilePreview
 			 if(!mainWindow.equals(childWindow))
 			 {
 				 driver.switchTo().window(childWindow);
-				 System.out.println(driver.switchTo().window(childWindow).getTitle());
 				 driver.close();
 			 }
 		 }
