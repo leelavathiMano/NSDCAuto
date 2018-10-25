@@ -185,7 +185,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         }
         Thread.sleep(2000);
         assessor.clickOnSaveAndContinue();
-        Thread.sleep(8000);        
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
+    	Thread.sleep(8000);        
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
         assessor.enterApplicantAddress(address);
@@ -203,7 +205,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.selectParliamentaryConstituency(parliamentaryConstituency);
         Thread.sleep(2000);
         assessor.clickOnSaveAndContinue();
-        Thread.sleep(8000);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
+    	Thread.sleep(8000);
         if(education1.equals("Uneducated") && education2.equals("Uneducated") && education3.equals("Uneducated"))
         {
             assessor.selectEducationAttained(education1);
@@ -426,7 +430,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.clickOnUploadForCurriculumVitaeOrResume();
         Thread.sleep(8000);
         assessor.clickOnSaveAndContinue();
-        Thread.sleep(6000);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
+    	Thread.sleep(6000);
         //preference 1
         assessor.selectPreferredSector(preferredSector1);
         Thread.sleep(4000);
@@ -498,7 +504,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(4000);
         Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredJobRole3+"')]]")).size()==0,"OMG!!! deleted third preference still present OR Something is wrong! ");
         assessor.clickOnSaveAndContinue();
-        Thread.sleep(6000);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
+    	Thread.sleep(6000);
         assessor.clickIAgreeCheckbox();
         Thread.sleep(2000);
         assessor.clickSubmitButton();

@@ -45,7 +45,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     {
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Trainer-Workflow.xls", "TrainerRegistration");
     }
-     
     @Test(dataProvider="registrationData")
     public void trainerRegistrationTC_01(String serialNum,String createdTrainerID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3) throws Exception
     {
@@ -186,6 +185,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         }
         Thread.sleep(5000);
         trainer.clickOnSaveAndContinue();
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
     	Thread.sleep(8000);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
@@ -204,6 +205,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.selectParliamentaryConstituency(parliamentaryConstituency);
         Thread.sleep(2000);
         trainer.clickOnSaveAndContinue();
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
     	Thread.sleep(8000);
         if(education1.equals("Uneducated") && education2.equals("Uneducated") && education3.equals("Uneducated"))
         {
@@ -431,7 +434,9 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnUploadForCurriculumVitaeOrResume();
         Thread.sleep(8000);
         trainer.clickOnSaveAndContinue();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
+    	Thread.sleep(5000);
         //Preference 1
         trainer.selectPreferredSector(preferredSector1);
         Thread.sleep(4000);
@@ -503,7 +508,9 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+preferredJobRole3+"')]")).size()==0,"OMG!!! deleted third preference still present OR Something is wrong! ");
         trainer.clickOnSaveAndContinue();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present, Its Blocking further Applicant Registration Process!!!");
+    	Thread.sleep(5000);
         trainer.clickIAgreeCheckbox();
         Thread.sleep(2000);
         trainer.clickSubmitButton();
@@ -1175,7 +1182,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		Thread.sleep(2000);
-		
 		//Assigned Master Trainer Login To Accept the Batch
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		lp.clickLogin();
@@ -1206,7 +1212,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Thread.sleep(4000);	
 		tVp.clickToSubmit();
 		Thread.sleep(2000);	
-		
 		ReadWriteData.setExcelData("./TestData/Workflow/Trainer-Workflow.xls", "TrainerTrainingBatches",Integer.parseInt(serialNo),33,formatter.format(date));
 		ReadWriteData.setExcelData("./TestData/Workflow/Trainer-Workflow.xls", "TrainerTrainingBatches",Integer.parseInt(serialNo),34, LocalDateTime.now().getHour()+":"+LocalDateTime.now().getMinute());
 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Accepted Successfully");
@@ -1216,7 +1221,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		Thread.sleep(2000);
-		
 		//Assigned Assessment Agency Login to Accept and assigning master assessors for a batch
 		lp.clickLogin();
 		elp.performlogin(assessmentAgencyID, assessmentAgencyPassword);
@@ -1304,7 +1308,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		Thread.sleep(2000);
-		
 		//Master Assessor Login to Accept Batches
 		lp.clickLogin();
 		elp.performlogin(masterAssessorID, masterAssessorPassword);
@@ -1730,7 +1733,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     @Test(dataProvider="applicantsRejectionBatchData",dependsOnMethods="trainerMyProfileVerificationTC_02")
     public void tcRejectingTrainerApplicantsTC_07(String serialNo, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole,  String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String trainingCentreName, String trainingCentreID, String trainingCentrePassword, String tcBatchAcceptanceRemarks, String masterTrainerID, String masterTrainerName,  String masterTrainerPassword, String mtBatchAcceptanceRemarks, String mtAcceptedDate, String mtAcceptedTime, String assessmentAgencyID, String assessmentAgencyName, String assessmentAgencyPassword, String aaBatchAcceptanceRemarks, String aaAcceptedDate, String aaAcceptedTime, String masterAssessorID, String masterAssessorName, String masterAssessorPassword,  String maBatchAcceptanceRemarks, String maAcceptedDate, String maAcceptedTime, String state, String district, String subDistrict) throws Exception
     {
- 	   
  	   	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
  	   	LoginPage lp=new LoginPage(driver);
  	   	lp.clickLogin();
