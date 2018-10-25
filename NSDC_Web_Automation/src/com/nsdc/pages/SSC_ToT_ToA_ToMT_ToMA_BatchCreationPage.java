@@ -98,8 +98,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement submitSelectedTrainingCentreButton;
 	//Assign Master Trainer
 	//DomainQP
-	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
-	private WebElement domainMasterTrainerActionLink;
 	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[1]")
 	private WebElement domainAssignMasterTrainerActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[4]/div")
@@ -115,8 +113,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
 	private WebElement domainAssignSelectedMasterTrainerButton;
 	//platform QP
-	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[2]")
-	private WebElement platformMasterTrainerActionLink;
 	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[2]")
 	private WebElement platformAssignMasterTrainerActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[4]/div")
@@ -132,8 +128,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
 	private WebElement platformAssignSelectedMasterTrainerButton;
 	//domain AA
-	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[3]")
-	private WebElement domainAssessmentAgencyActionLink;
 	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[1]")
 	private WebElement domainAssignAssessmentAgencyActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[5]/div")
@@ -149,8 +143,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement domainAssignSelectedAssessmentAgencyButton;
 	//Platform AA
-	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[4]")
-	private WebElement platformAssessmentAgencyActionLink;
 	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[2]")
 	private WebElement platformAssignAssessmentAgencyActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[5]/div")
@@ -831,9 +823,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		submitSelectedTrainingCentreButton.click();
 	}
 	//Assigning Domain QP Master Trainer
-	public void clickDomainMasterTrainerAction()
+	public void clickDomainMasterTrainerAction(String domanJobRole)
 	{
-		domainMasterTrainerActionLink.click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
 	public void clickDomainAssignMasterTrainerOption()
 	{
@@ -869,9 +861,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		domainAssignSelectedMasterTrainerButton.click();
 	}
 	//Assigning Platform QP Master Trainer
-	public void clickPlatformMasterTrainerAction()
+	public void clickPlatformMasterTrainerAction(String platformJobRole)
 	{
-		platformMasterTrainerActionLink.click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
 	public void clickPlatformAssignMasterTrainerOption()
 	{
@@ -907,9 +899,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		platformAssignSelectedMasterTrainerButton.click();
 	}
 	//Assigning Domain Assessment Agency
-	public void clickDomainAssessmentAgencyAction()
+	public void clickDomainAssessmentAgencyAction(String domainJobRole)
 	{
-		domainAssessmentAgencyActionLink.click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
 	public void clickDomainAssignAssessmentAgencyOption()
 	{
@@ -945,9 +937,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		domainAssignSelectedAssessmentAgencyButton.click();
 	}
 	//Assigning Platform QP Assessment Agency
-	public void clickPlatformAssessmentAgencyAction()
+	public void clickPlatformAssessmentAgencyAction(String platformJobRole)
 	{
-		platformAssessmentAgencyActionLink.click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
 	public void clickPlatformAssignAssessmentAgencyOption()
 	{

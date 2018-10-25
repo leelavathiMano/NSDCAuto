@@ -999,8 +999,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+state+"')]")).getText().trim(), state);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/span[contains(text(),'Assigned')]")).getText().trim(), "Assigned");
-		//Assigning Master Trainer for domain and platform QP
-		sscTbcP.clickDomainMasterTrainerAction();
+		//Assigning Master Trainer for domain QP
+		sscTbcP.clickDomainMasterTrainerAction(domainJobRole);
 		Thread.sleep(4000);
 		sscTbcP.clickDomainAssignMasterTrainerOption();
 		Thread.sleep(4000);
@@ -1022,7 +1022,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+masterTrainerID+"')]")).getText().trim(), masterTrainerName+" ( "+masterTrainerID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'Assigned')]")).getText().trim(), "Assigned");
-		sscTbcP.clickPlatformMasterTrainerAction();
+		//Assigning Master Trainer for Platform QP
+		sscTbcP.clickPlatformMasterTrainerAction(platformJobRole);
 		Thread.sleep(4000);
 		sscTbcP.clickPlatformAssignMasterTrainerOption();
 		Thread.sleep(4000);
@@ -1043,8 +1044,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+masterTrainerID+"')])[2]")).getText().trim(), masterTrainerName+" ( "+masterTrainerID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
-		//Assigning Assessment Agency
-		sscTbcP.clickDomainAssessmentAgencyAction();
+		//Assigning Domain QP Assessment Agency
+		sscTbcP.clickDomainAssessmentAgencyAction(domainJobRole);
 		Thread.sleep(4000);
 		sscTbcP.clickDomainAssignAssessmentAgencyOption();
 		Thread.sleep(4000);
@@ -1066,7 +1067,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+assessmentAgencyID+"')])[1]")).getText().trim(), assessmentAgencyName+" ( "+assessmentAgencyID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'Assigned')])[3]")).getText().trim(), "Assigned");
 		//Assigning Platform QP Assessment Agency
-		sscTbcP.clickPlatformAssessmentAgencyAction();
+		sscTbcP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		Thread.sleep(4000);
 		sscTbcP.clickPlatformAssignAssessmentAgencyOption();
 		Thread.sleep(4000);
@@ -1938,7 +1939,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
  		Assert.assertEquals(driver.findElement(By.xpath("//td/span[contains(text(),'Assigned')]")).getText().trim(), "Assigned");
  		//Assigning Master Trainer for domain and platform QP
- 		sscTbcP.clickDomainMasterTrainerAction();
+ 		sscTbcP.clickDomainMasterTrainerAction(domainJobRole);
  		Thread.sleep(4000);
  		sscTbcP.clickDomainAssignMasterTrainerOption();
  		Thread.sleep(4000);
@@ -1960,7 +1961,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		Thread.sleep(4000);
  		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+masterTrainerID+"')]")).getText().trim(), masterTrainerName+" ( "+masterTrainerID+" )");
  		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'Assigned')]")).getText().trim(), "Assigned");
- 		sscTbcP.clickPlatformMasterTrainerAction();
+ 		sscTbcP.clickPlatformMasterTrainerAction(platformJobRole);
  		Thread.sleep(4000);
  		sscTbcP.clickPlatformAssignMasterTrainerOption();
  		Thread.sleep(4000);
@@ -1982,7 +1983,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+masterTrainerID+"')])[2]")).getText().trim(), masterTrainerName+" ( "+masterTrainerID+" )");
  		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
  		//Assigning Assessment Agency
- 		sscTbcP.clickDomainAssessmentAgencyAction();
+ 		sscTbcP.clickDomainAssessmentAgencyAction(domainJobRole);
  		Thread.sleep(4000);
  		sscTbcP.clickDomainAssignAssessmentAgencyOption();
  		Thread.sleep(4000);
@@ -2004,7 +2005,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+assessmentAgencyID+"')])[1]")).getText().trim(), assessmentAgencyName+" ( "+assessmentAgencyID+" )");
  		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'Assigned')])[3]")).getText().trim(), "Assigned");
  		//Assigning Platform QP Assessment Agency
- 		sscTbcP.clickPlatformAssessmentAgencyAction();
+ 		sscTbcP.clickPlatformAssessmentAgencyAction(platformJobRole);
  		Thread.sleep(4000);
  		sscTbcP.clickPlatformAssignAssessmentAgencyOption();
  		Thread.sleep(4000);
