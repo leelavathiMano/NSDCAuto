@@ -83,79 +83,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement createBatchButton;
 	@FindBy(linkText="Cancel")
 	private WebElement cancelLink;
-	//Add Exceptional TC and Search
-	@FindBy(xpath="//button[contains(text(),'TC')]")
-	private WebElement addExceptionalTCButton;
-	@FindBy(xpath="//input[@formcontrolname='trainingPartnerName']")
-	private WebElement trainingPartnerNameTextField;
-	@FindBy(xpath="//input[@formcontrolname='trainingCenterName']")
-	private WebElement exceptionalTrainingCentreNameTextField;
-	@FindBy(xpath="//input[@formcontrolname='website']")
-	private WebElement websiteTextField;
-	@FindBy(xpath="//input[@formcontrolname='trainingCenterCapacity']")
-	private WebElement trainingCentreCapacityTextField;
-	@FindBy(xpath="(//label[input[@type='checkbox']])[1]")
-	private WebElement residentialFacilityAvailableForMaleCheckBox;
-	@FindBy(xpath="(//label[input[@type='checkbox']])[2]")
-	private WebElement residentialFacilityAvailableForFemaleCheckBox;
-	@FindBy(xpath="(//label[input[@type='checkbox']])[3]")
-	private WebElement residentialFacilityAvailableForTransgenderCheckBox;
-	@FindBy(xpath="(//input[@formcontrolname='contactPersonName'])[1]")
-	private WebElement exceptionalTrainingCentreHeadNameTextField;
-	@FindBy(xpath="(//input[@formcontrolname='phoneNumber'])[1]")
-	private WebElement exceptionalTrainingCentreHeadMobileNumberTextField;
-	@FindBy(xpath="(//input[@formcontrolname='emailId'])[1]")
-	private WebElement exceptionalTrainingCentreHeadEmailTextField;
-	@FindBy(xpath="(//input[@formcontrolname='contactPersonName'])[2]")
-	private WebElement exceptionalTrainingCentreSPOCNameTextField;
-	@FindBy(xpath="(//input[@formcontrolname='phoneNumber'])[2]")
-	private WebElement exceptionalTrainingCentreSPOCMobileNumberTextField;
-	@FindBy(xpath="(//input[@formcontrolname='emailId'])[2]")
-	private WebElement exceptionalTrainingCentreSPOCEmailTextField;
-	@FindBy(id="customFile")
-	private WebElement spocIDProofBrowseButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
-	private WebElement uploadButton1;
-	@FindBy(xpath="//input[@formcontrolname='addressLine']")
-	private WebElement addressTextField;
-	@FindBy(xpath="//input[@formcontrolname='landmark']")
-	private WebElement landmarkTextField;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state']/div)[3]")
-	private WebElement exceptionalTrainingCentreStateList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district']/div)[3]")
-	private WebElement exceptionalTrainingCentreDistrictList;
-	@FindBy(xpath="//angular2-multiselect[@formcontrolname='subDistrict']/div")
-	private WebElement exceptionalTrainingCentreSubDistrictList;
-	@FindBy(xpath="//angular2-multiselect[@formcontrolname='constituency']/div")
-	private WebElement exceptionalTrainingCentreConstituencyList;
-	@FindBy(id="search_places")
-	private WebElement exceptionalTrainingCentreGeoLocationTextField;
-	@FindBy(xpath="//input[@formcontrolname='village']")
-	private WebElement exceptionalTrainingCentreVillageTextField;
-	@FindBy(xpath="//input[@formcontrolname='pincode']")
-	private WebElement exceptionalTrainingCentrePincodeTextField;
-	@FindBy(xpath="(//input[@id='customFile'])[2]")
-	private WebElement exceptionalTrainingCentrePhotoBrowseButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
-	private WebElement uploadButton2;
-	@FindBy(xpath="(//input[@id='customFile'])[3]")
-	private WebElement exceptionalTrainingCentreSupportDocBrowseButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
-	private WebElement uploadButton3;
-	@FindBy(xpath="//angular2-multiselect[@formcontrolname='subSector']/div")
-	private WebElement subSectorList;
-	@FindBy(xpath="//angular2-multiselect[@formcontrolname='jobRole']/div")
-	private WebElement jobRoleList;
-	@FindBy(xpath="(//button[text()='Add'])[1]")
-	private WebElement addJobRoleButton;
-	@FindBy(xpath="//label[input[@formcontrolname='confirmation']]")
-	private WebElement confirmationCheckbox;
-	@FindBy(xpath="(//button[text()='Add'])[2]")
-	private WebElement addExceptionalTrainingCentreFinalButton;
-	@FindBy(xpath="(//button[text()='Assign'])[1]")
-	private WebElement assignCurrentlyCreatingExceptionalTrainingCentreButton;
-	@FindBy(xpath="(//button[text()='Close'])[1]")
-	private WebElement closeButton;
 	//Searching Exceptional Training Centre
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[1]/div")
 	private WebElement stateFilterList;
@@ -868,180 +795,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		okButton.click();
 	}
-	//Add Exceptional Training Centre and Search
-	public void clickAddExceptionalTC()
-	{
-		addExceptionalTCButton.click();
-	}
-	public void enterTrainingPartnerName(String tpName)
-	{
-		trainingPartnerNameTextField.clear();
-		trainingPartnerNameTextField.sendKeys(tpName);
-	}
-	public void enterExceptionalTrainingCentreName(String exceptionalTCName)
-	{
-		exceptionalTrainingCentreNameTextField.clear();
-		exceptionalTrainingCentreNameTextField.sendKeys(exceptionalTCName);
-	}
-	public void enterWebsite(String website)
-	{
-		websiteTextField.clear();
-		websiteTextField.sendKeys(website);
-	}
-	public void enterExceptionalTrainingCentreCapacity(String capacity)
-	{
-		trainingCentreCapacityTextField.clear();
-		trainingCentreCapacityTextField.sendKeys(capacity);
-	}
-	public void selectResidentialFacilityAvailableForAll()
-	{
-		residentialFacilityAvailableForMaleCheckBox.click();
-		residentialFacilityAvailableForFemaleCheckBox.click();
-		residentialFacilityAvailableForTransgenderCheckBox.click();
-	}
-	public void selectResidentialFacilityAvailableForOnlyMale()
-	{
-		residentialFacilityAvailableForMaleCheckBox.click();
-	}
-	public void selectResidentialFacilityAvailableForOnlyFemale()
-	{
-		residentialFacilityAvailableForFemaleCheckBox.click();
-	}
-	public void selectResidentialFacilityAvailableForOnlyTransgender()
-	{
-		residentialFacilityAvailableForTransgenderCheckBox.click();
-	}
-	public void enterExceptionalTrainingCentreHeadName(String exceptionalTCHeadName)
-	{
-		exceptionalTrainingCentreHeadNameTextField.clear();
-		exceptionalTrainingCentreHeadNameTextField.sendKeys(exceptionalTCHeadName);
-	}
-	public void enterExceptionalTrainingCentreHeadMobile(String exceptionalTCHeadMobile)
-	{
-		exceptionalTrainingCentreHeadMobileNumberTextField.clear();
-		exceptionalTrainingCentreHeadMobileNumberTextField.sendKeys(exceptionalTCHeadMobile);
-	}
-	public void enterExceptionalTrainingCentreHeadEmail(String exceptionalTCHeadEmail)
-	{
-		exceptionalTrainingCentreHeadEmailTextField.clear();
-		exceptionalTrainingCentreHeadEmailTextField.sendKeys(exceptionalTCHeadEmail);
-	}
-	public void enterExceptionalTrainingCentreSPOCName(String exceptionalTCSPOCName)
-	{
-		exceptionalTrainingCentreSPOCNameTextField.clear();
-		exceptionalTrainingCentreSPOCNameTextField.sendKeys(exceptionalTCSPOCName);
-	}
-	public void enterExceptionalTrainingCentreSPOCMobile(String exceptionalTCSPOCMobile)
-	{
-		exceptionalTrainingCentreSPOCMobileNumberTextField.clear();
-		exceptionalTrainingCentreSPOCMobileNumberTextField.sendKeys(exceptionalTCSPOCMobile);
-	}
-	public void enterExceptionalTrainingCentreSPOCEmail(String exceptionalTCSPOCEmail)
-	{
-		exceptionalTrainingCentreSPOCEmailTextField.clear();
-		exceptionalTrainingCentreSPOCEmailTextField.sendKeys(exceptionalTCSPOCEmail);
-	}
-	public void clickToBrowseExceptionalTCSPOCIDProof()
-	{
-		spocIDProofBrowseButton.click();
-	}
-	public void clickToUploadExceptionalTCSPOCIDProof()
-	{
-		uploadButton1.click();
-	}
-	public void enterExceptionalTCAddress(String exceptionalTCAddress)
-	{
-		addressTextField.clear();
-		addressTextField.sendKeys(exceptionalTCAddress);
-	}
-	public void enterExceptionalTCLandmark(String exceptionalTCLandmark)
-	{
-		landmarkTextField.clear();
-		landmarkTextField.sendKeys(exceptionalTCLandmark);
-	}
-	public void selectExceptionalTCState(String exceptionalTCState)
-	{
-		exceptionalTrainingCentreStateList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+exceptionalTCState+"')])[2]")).click();
-	}
-	public void selectExsceptionalTCDistrict(String exceptionalTCDistrict)
-	{
-		exceptionalTrainingCentreDistrictList.click();
-		driver.findElement(By.xpath("//label[contains(text(),'"+exceptionalTCDistrict+"')]")).click();
-	}
-	public void selectExceptionalTCSubDistrict(String exceptionTCSubDistrict)
-	{
-		exceptionalTrainingCentreSubDistrictList.click();
-		driver.findElement(By.xpath("//label[contains(text(),'"+exceptionTCSubDistrict+"')]")).click();
-	}
-	public void selectExceptionalTCConstituency(String exceptionTCConstituency)
-	{
-		exceptionalTrainingCentreConstituencyList.click();
-		driver.findElement(By.xpath("//label[contains(text(),'"+exceptionTCConstituency+"')]")).click();
-	}
-	public void enterExceptionalTrainingCentreGeoLocation(String exceptionalTCGeoLocation) throws InterruptedException
-	{
-		exceptionalTrainingCentreGeoLocationTextField.clear();
-		exceptionalTrainingCentreGeoLocationTextField.sendKeys(exceptionalTCGeoLocation);
-		Thread.sleep(4000);
-		driver.findElement(By.xpath("(//li/a/span[contains(text(),'"+exceptionalTCGeoLocation+"')])[1]")).click();
-	}
-	public void enterExceptionalTrainingCentreVillage(String exceptionalTCVillage)
-	{
-		exceptionalTrainingCentreVillageTextField.clear();
-		exceptionalTrainingCentreVillageTextField.sendKeys(exceptionalTCVillage);
-	}
-	public void enterExceptionalTrainingCentrePincode(String exceptionalTCPincode)
-	{
-		exceptionalTrainingCentrePincodeTextField.clear();
-		exceptionalTrainingCentrePincodeTextField.sendKeys(exceptionalTCPincode);
-	}
-	public void clickToBrowseExceptionalTrainingCentrePhoto()
-	{
-		exceptionalTrainingCentrePhotoBrowseButton.click();
-	}
-	public void clickToUploadExceptionalTrainingCentrePhoto()
-	{
-		uploadButton2.click();
-	}
-	public void clickToBrowseExceptionalTrainingCentreSupportDoc()
-	{
-		exceptionalTrainingCentreSupportDocBrowseButton.click();
-	}
-	public void clickToUploadExceptionalTrainingCentreSupportDoc()
-	{
-		uploadButton3.click();
-	}
-	public void selectExceptionalTrainingCentreSubSector(String exceptionalTCSubSector)
-	{
-		subSectorList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+exceptionalTCSubSector+"')])[2]")).click();
-	}
-	public void selectExceptionalTrainingCentreJobRole(String exceptionalTCJobRole)
-	{
-		jobRoleList.click();
-		driver.findElement(By.xpath("//label[contains(text(),'"+exceptionalTCJobRole+"')]")).click();
-	}
-	public void clickToAddJobRole()
-	{
-		addJobRoleButton.click();
-	}
-	public void clickToConfirmDeclaration()
-	{
-		confirmationCheckbox.click();
-	}
-	public void clickToFinallyCreateExceptionalTrainingCentre()
-	{
-		addExceptionalTrainingCentreFinalButton.click();
-	}
-	public void clickToAssignCurrentlyCreatingExceptionalTrainingCentre()
-	{
-		assignCurrentlyCreatingExceptionalTrainingCentreButton.click();
-	}
-	public void clickClose()
-	{
-		closeButton.click();
-	}
 	//Search For Training Centre
 	public void selectStateFilter(String sateFilter)
 	{
@@ -1086,19 +839,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		domainAssignMasterTrainerActionOptionLink.click();
 	}
-	//After just creating New TC - Variation in State and district filter numbering, so using newprefix for method name
-	public void newSelectDomainMasterTrainerStateFilter(String state) throws InterruptedException
-	{
-		domainMasterTrainerStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
-	}
-	public void newSelectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
-	{
-		domainMasterTrainerDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
-	}
 	public void selectDomainMasterTrainerStateFilter(String state) throws InterruptedException
 	{
 		domainMasterTrainerStateFilterList.click();
@@ -1136,18 +876,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void clickPlatformAssignMasterTrainerOption()
 	{
 		platformAssignMasterTrainerActionOptionLink.click();
-	}
-	public void newSelectPlatformMasterTrainerStateFilter(String state) throws InterruptedException
-	{
-		platformMasterTrainerStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
-	}
-	public void newSelectPlatformMasterTrainerDistrictFilter(String district) throws InterruptedException
-	{
-		platformMasterTrainerDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
 	}
 	public void selectPlatformMasterTrainerStateFilter(String state) throws InterruptedException
 	{
@@ -1187,18 +915,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		domainAssignAssessmentAgencyActionOptionLink.click();
 	}
-	public void newSelectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
-	{
-		domainAssessmentAgencyStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
-	}
-	public void newSelectDomainAssessmentAgencyDistrictFilter(String district) throws InterruptedException
-	{
-		domainAssessmentAgencyDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
-	}
 	public void selectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
 		domainAssessmentAgencyStateFilterList.click();
@@ -1237,18 +953,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		platformAssignAssessmentAgencyActionOptionLink.click();
 	}
-	public void newSelectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
-	{
-		platformAssessmentAgencyStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[3]")).click();
-	}
-	public void newSelectPlatformAssessmentAgencyDistrictFilter(String district) throws InterruptedException
-	{
-		platformAssessmentAgencyDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+district+"')])[2]")).click();
-	}
 	public void selectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
 		platformAssessmentAgencyStateFilterList.click();
@@ -1278,7 +982,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		platformAssignSelectedAssessmentAgencyButton.click();
 	}
-	//After Batch creation and Exceptional TC 
+	//After Batch creation and Assigning All Actors 
 	public void clickSaveAsDraft()
 	{
 		saveAsDraftButton.click();
@@ -1289,11 +993,11 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void clickBatchAction(String createdBatchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]/td[9]/span/div/a")).click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+createdBatchID+"')]]//a)[1]")).click();
 	}
-	public void clickAssignOption(String createdBatchID)
+	public void selectAssignOption(String createdBatchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]/td[9]/span/div/div")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]//a/span[contains(text(),'Assign')]")).click();
 	}
 	public void clickViewAllBatchesAfterBatchSubmission()
 	{
@@ -1301,7 +1005,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void clickViewDetailsOption(String createdBatchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]/td[9]/span/div/div")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]//a/span[contains(text(),'View Details')]")).click();
 	}
 	public void clickReassignTC()
 	{
