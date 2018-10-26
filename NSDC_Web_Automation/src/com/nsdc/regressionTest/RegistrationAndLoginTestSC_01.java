@@ -58,16 +58,16 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         
         elp.performlogin(username, confirmPassword);
         Thread.sleep(4000);
-        Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
+        //Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
       
-        /*if(userType.equals("Training Partner") || userType.equals("Candidate"))
+        if(userType.equals("Training Partner") || userType.equals("Candidate"))
         {
             Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
         }
         else if(userType.equals("Trainer") || userType.equals("Assessor"))
         {
             Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-topbar__welcome user-name']")).getText(), username);
-        }*/
+        }
         
     }
     
