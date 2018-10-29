@@ -5,37 +5,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.SelectDropDownList;
+
 public class TrainingPartnerDashboardPage 
 {
 	WebDriver driver;
 	@FindBy(linkText="Other - Rozgar Mela")
 	private WebElement otherRozgarMelaLink;
-	@FindBy(xpath="//div[@routerlink='./add-tc']")
-	private WebElement addTrainingCentreButton;
-	@FindBy(xpath="//p[text()='View All Assessment Requests']")
-	private WebElement allAssignedRequestButton;
-	@FindBy(xpath="//p[text()='My Training Centres']")
-	private WebElement trainingCentreListButton;
 	@FindBy(xpath="//p[text()='Change My SPOC']")
 	private WebElement changeMySPOCButton;
-	@FindBy(xpath="//p[text()='Add Authorized Sign']")
-	private WebElement addAuthorizedSignButton;
-	@FindBy(xpath="//p[text()='All Authorized Signs']")
-	private WebElement allAuthorizedSignsButton;
-	@FindBy(xpath="//p[text()='Add Candidate']")
-	private WebElement addCandidateButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement dashboardButton;
 	@FindBy(xpath="//div[@routerlink='./my-schemes']")
 	private WebElement mySchemesButton;
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[3]")
-	private WebElement accrediationAndAffiliationButton;
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[4]")
-	private WebElement toTToAToMTToMAButton;
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
-	private WebElement schemeButton;
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[6]")
-	private WebElement certificationsButton;
+	
 	//TP - Candidates
 	@FindBy(xpath="//p[contains(text(),'My Candidates')]")
 	private WebElement myCandidatesCard;
@@ -51,6 +34,19 @@ public class TrainingPartnerDashboardPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'Register')]")
 	private WebElement registerButton;
+	
+	@FindBy(xpath="//div[p[text()='Add a Training Centre']]")
+	private WebElement addTrainingCentreButton;
+	@FindBy(xpath="//div[p[text()='View Training Centres']]")
+	private WebElement viewTrainingCentreButton;
+	@FindBy(xpath="//select[@formcontrolname='processType']")
+	private WebElement processTypeDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='trainingCenterType']")
+	private WebElement trainingCentreTypeDropDownList;
+	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelButton;
+	@FindBy(xpath="//button[contains(text(),'Save and Continue')]")
+	private WebElement saveAndContinueButton;
 
 	public TrainingPartnerDashboardPage(WebDriver driver)
     {
@@ -63,39 +59,9 @@ public class TrainingPartnerDashboardPage
 		otherRozgarMelaLink.click();
 	}
 	
-	public void clickOnAddATrainingCentre()
-	{
-		addTrainingCentreButton.click();
-	}
-	
-	public void clickOnViewAllAssessmentRequest()
-	{
-		allAssignedRequestButton.click();
-	}
-	
-	public void clickOnTrainingCentreList()
-	{
-		trainingCentreListButton.click();
-	}
-	
 	public void clickOnChangeMySPOC()
 	{
 		changeMySPOCButton.click();
-	}
-	
-	public void clickOnAddAuthorizedSign()
-	{
-		addAuthorizedSignButton.click();
-	}
-	
-	public void clickOnAllAuthorizedSigns()
-	{
-		allAuthorizedSignsButton.click();
-	}
-	
-	public void clickOnAddCandidate()
-	{
-		addCandidateButton.click();
 	}
 	
 	public void clickOnDashboard()
@@ -108,25 +74,6 @@ public class TrainingPartnerDashboardPage
 		mySchemesButton.click();
 	}
 	
-	public void clickOnAccrediationAndAffiliation()
-	{
-		accrediationAndAffiliationButton.click();
-	}
-	
-	public void clickOnToTToAToMTToMA()
-	{
-		toTToAToMTToMAButton.click();
-	}
-	
-	public void clickOnScheme()
-	{
-		schemeButton.click();
-	}
-	
-	public void clickOnCertifications()
-	{
-		certificationsButton.click();
-	}
 	public void clickMyCandidates()
 	{
 		myCandidatesCard.click();
@@ -158,6 +105,38 @@ public class TrainingPartnerDashboardPage
 	{
 		registerButton.click();
 	}
+	
+	public void clickOnAddTrainingCentre()
+	{
+		addTrainingCentreButton.click();
+	}
+	
+	public void clickOnViewTrainingCentre()
+	{
+		viewTrainingCentreButton.click();
+	}
+	
+	public void selectForProcessType(String processType)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(processTypeDropDownList, processType);
+	}
+	
+	public void selectTrainingCentreType(String tcType)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(trainingCentreTypeDropDownList, tcType);
+	}
+	
+	public void clickOnCancel()
+	{
+		cancelButton.click();
+	}
+	
+	public void clickOnSaveAndContinue()
+	{
+		saveAndContinueButton.click();
+	}
+	
+	
 }	
 	
 

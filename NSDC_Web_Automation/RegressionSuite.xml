@@ -16,6 +16,7 @@
       	<class name="com.nsdc.regressionTest.TrainingPartner_CandidateWorkflowTestSC_12"/>
      	<class name="com.nsdc.regressionTest.TPSPOCChangeWorkflowTestSC_13"/>
       	<class name="com.nsdc.regressionTest.FeeBased_AddSchemeWorkflowTestSC_14"/>
+      	<class name="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_15"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
