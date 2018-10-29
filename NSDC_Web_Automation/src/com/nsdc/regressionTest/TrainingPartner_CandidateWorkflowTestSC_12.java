@@ -411,6 +411,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			tpMp.clickToApplySearchFilters();
 			Thread.sleep(4000);
+			js.executeScript("window.scrollBy(0,150)", "");
+			Thread.sleep(2000);
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]")).size()==1,"OMG!!! No show of TP registered candidate - "+candidateID+" ! ");
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+candidateID+"')]")).getText().trim(), candidateID);
 			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+fullName+"')]")).getText().trim(), fullName);
@@ -437,22 +439,28 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			{
 				String bulkCandidateName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 1);
 				String bulkCandidateGender=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 2);
-				String bulkCandidateState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 26);
-				String bulkCandidateDistrict=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 24);
+				String bulkCandidateCurrentState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 21);
+				String bulkCandidateCurrentDistrict=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 23);
 				Thread.sleep(4000);
 				tpMp.enterKeywordsToSearch(bulkCandidateName);
 				Thread.sleep(4000);
 				tpMp.clickToApplySearchFilters();
 				Thread.sleep(4000);
+				if(i==4)
+				{
+					js.executeScript("window.scrollBy(0,150)", "");
+					Thread.sleep(2000);
+				}
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]")).size()==1,"OMG!!! No show of bulk registration candidate of name - "+bulkCandidateName+" !! ");
 				Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'CAN_')]")).isDisplayed());
 				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateGender+"')]")).getText().trim(), bulkCandidateGender);
-				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateState+"')]")).getText().trim(), bulkCandidateState);
-				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateDistrict+"')]")).getText().trim(), bulkCandidateDistrict);
-				Thread.sleep(4000);
+				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateCurrentState+"')]")).getText().trim(), bulkCandidateCurrentState);
+				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateCurrentDistrict+"')]")).getText().trim(), bulkCandidateCurrentDistrict);
+				Thread.sleep(2000);
 				driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/th/label/span")).click();
+				Thread.sleep(2000);
 				tpMp.clickToDownloadReportForSelectedCandidates();
-				Thread.sleep(4000);
+				Thread.sleep(2000);
 			}
 		}
 		PostLoginPage plp=new PostLoginPage(driver);
