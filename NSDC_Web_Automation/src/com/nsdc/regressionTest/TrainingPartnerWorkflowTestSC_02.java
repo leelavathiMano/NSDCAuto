@@ -481,7 +481,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     }
     
     @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
-    public void trainingPartnerApprovalTC_02(String srno, String iausername, String password, String tpID, String searchByKeyword, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
+    public void trainingPartnerApprovalTC_02(String srno, String iausername, String password, String tpID, String establishment_Year, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
@@ -541,7 +541,6 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	da_tpr.selectReviewCommentsForAddress(addressReview);
     	Thread.sleep(2000);
     	da_tpr.clickForSaveAndContinue();
-    	String establishment_Year = driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value");
     	int yearOfEstablishment = Integer.parseInt(establishment_Year);
     	Thread.sleep(2000);
     	
@@ -684,8 +683,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         else if(type_Organization.equals("Government Institute"))
         {
         	Thread.sleep(2000);
-        	da_tpr.clickOn_First_PreviewAttachedProofDocument();
-        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	//da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	//da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         }
 
 
