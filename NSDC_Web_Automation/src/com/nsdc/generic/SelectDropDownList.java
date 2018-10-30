@@ -11,7 +11,7 @@ public class SelectDropDownList
         Select sct = new Select(ddl);
         sct.selectByIndex(index);
     }
-    public static void DropDownListByValue(WebElement ddl, String value)
+    public static void selectDropDownListByValue(WebElement ddl, String value)
     {
         Select sct = new Select(ddl);
         sct.selectByValue(value);
