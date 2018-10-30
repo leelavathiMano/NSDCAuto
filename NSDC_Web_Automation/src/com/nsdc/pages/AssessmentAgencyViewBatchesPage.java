@@ -47,12 +47,10 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement assignAssessorsOption;
 	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
 	private WebElement domainAssessorsDropdownList;
-	@FindBy(xpath="(//select[@formcontrolname='assessor'])[2]")
+	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
 	private WebElement platformAssessorsDropdownList;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[4]")
 	private WebElement submitMasterAssessorButton;
-	@FindBy(xpath="//select[@formcontrolname='assessor']")
-	private WebElement assessorsDropdownList;
 	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
 	private WebElement saveAndSubmitButton;
 	@FindBy(xpath="(//label[@class='m-radio m-radio--state'])[1]")
@@ -140,34 +138,26 @@ public class AssessmentAgencyViewBatchesPage
 	{
 		assignAssessorsOption.click();
 	}
-	public void selectMasterAssessorForDomain(String assessorNameID)
+	public void selectMasterAssessorForDomain(String dmasterAssessorNameID)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(domainAssessorsDropdownList, assessorNameID);
+		SelectDropDownList.selectDropDownListByVisibleText(domainAssessorsDropdownList, dmasterAssessorNameID);
 	}
-	public void selectMasterAssessorForPlatform(String assessorNameID)
+	public void selectMasterAssessorForPlatform(String pmasterAssessorNameID)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(platformAssessorsDropdownList, assessorNameID);
+		SelectDropDownList.selectDropDownListByVisibleText(platformAssessorsDropdownList, pmasterAssessorNameID);
 	}
 	public void clickToSubmitMasterAssessors()
 	{
 		submitMasterAssessorButton.click();
 	}
-	
-	public void selectAssessorsToBeAssignedForBatches(String assessorID)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(assessorsDropdownList, assessorID);
-	}
-	
 	public void clickToSaveAndSubmit()
 	{
 		saveAndSubmitButton.click();
 	}
-	
 	public void clickToAcceptBatch()
 	{
 		acceptBatchRadioButton.click();
 	}
-	
 	public void clickToViewCompletedBatches()
 	{
 		completedBatchesLink.click();

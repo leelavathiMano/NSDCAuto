@@ -13,6 +13,7 @@
     	<class name="com.nsdc.regressionTest.SmartBusiness_TCRegistrationWorkflowTestSC_08"/>
     	<class name="com.nsdc.regressionTest.SmartBusiness_TPRegistrationWorkflowTestSC_09"/>
     	<class name="com.nsdc.regressionTest.SSC_ExceptionalTrainingCentreWorkflowSC_10"/>
+    	<class name="com.nsdc.regressionTest.SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11"/>
       	<class name="com.nsdc.regressionTest.TrainingPartner_CandidateWorkflowTestSC_12"/>
      	<class name="com.nsdc.regressionTest.TPSPOCChangeWorkflowTestSC_13"/>
       	<class name="com.nsdc.regressionTest.FeeBased_AddSchemeWorkflowTestSC_14"/>
