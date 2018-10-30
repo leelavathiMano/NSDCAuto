@@ -148,7 +148,45 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         tprp.clickSaveAndNextButton();
         
-        if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            Thread.sleep(3000);
+            //tprp.enterGSTAccountNumber(gst_Number);
+            //Thread.sleep(3000);
+            //tprp.clickBrowseButton2();
+            //Thread.sleep(3000);
+            //UploadFile.upload(upload_GST);
+            //Thread.sleep(3000);
+            //tprp.clickUploadButton2();
+            Thread.sleep(3000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(3000);
+            
+            UploadFile.upload(upload_provisional);
+            Thread.sleep(3000);
+            tprp.clickUploadButton2();
+            Thread.sleep(3000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
@@ -211,7 +249,47 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            Thread.sleep(3000);
+            //tprp.enterGSTAccountNumber(gst_Number);
+            //Thread.sleep(3000);
+            //tprp.clickBrowseButton2();
+            //Thread.sleep(3000);
+            //UploadFile.upload(upload_GST);
+            //Thread.sleep(3000);
+            //tprp.clickUploadButton2();
+            //Thread.sleep(4000);
+            
+            tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover1);
+            Thread.sleep(4000);
+            tprp.clickUploadButton2();
+            Thread.sleep(3000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
@@ -277,7 +355,55 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            Thread.sleep(4000);
+            //tprp.enterGSTAccountNumber(gst_Number);
+            //Thread.sleep(3000);
+            //tprp.clickBrowseButton2();
+            //Thread.sleep(3000);
+            //UploadFile.upload(upload_GST);
+            //Thread.sleep(3000);
+            //tprp.clickUploadButton2();
+            //Thread.sleep(4000);
+            
+            tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover1);
+            Thread.sleep(4000);
+            tprp.clickUploadButton2();
+            Thread.sleep(5000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton3();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(4000);
+            tprp.clickUploadButton3();
+            Thread.sleep(4000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
@@ -359,7 +485,63 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if((year < 2016) && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if((year < 2016) && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            //Thread.sleep(3000);
+            //tprp.enterGSTAccountNumber(gst_Number);
+            //Thread.sleep(3000);
+            //tprp.clickBrowseButton2();
+            //Thread.sleep(3000);
+            //UploadFile.upload(upload_GST);
+            //Thread.sleep(3000);
+            //tprp.clickUploadButton2();
+            Thread.sleep(5000);
+            
+            tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover1);
+            Thread.sleep(4000);
+            tprp.clickUploadButton2();
+            Thread.sleep(5000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton3();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(4000);
+            tprp.clickUploadButton3();
+            Thread.sleep(5000);
+            tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton4();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover3);
+            Thread.sleep(4000);
+            tprp.clickUploadButton4();
+            Thread.sleep(3000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if((year < 2016) && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
@@ -544,8 +726,25 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	int yearOfEstablishment = Integer.parseInt(establishment_Year);
     	Thread.sleep(2000);
     	
-    	if(establishment_Year.equals("2018") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+    	if(establishment_Year.equals("2018") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
+    		Thread.sleep(2000);
+        	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	//da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	//da_tpr.selectReviewCommentsForGST(gstReview);
+        	//Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+    		Thread.sleep(2000);
+    		da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+    		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+
+        }
+    	
+    	else if(establishment_Year.equals("2018") && (type_Organization.equals("Company")))
+    	{
     		Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForPAN(panReview);
@@ -558,11 +757,28 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     		Thread.sleep(2000);
     		da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
     		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+    	}
+    	
+    	else if(establishment_Year.equals("2017") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+    		Thread.sleep(2000);
+        	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	//da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	//da_tpr.selectReviewCommentsForGST(gstReview);
+        	//Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+         	Thread.sleep(2000);
+       	    da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
 
         }
     	
-    	else if(establishment_Year.equals("2017") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
-        {
+    	else if(establishment_Year.equals("2017") && (type_Organization.equals("Company")))
+    	{
     		Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForPAN(panReview);
@@ -576,10 +792,29 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
        	    da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-
+    	}
+    	
+        else if(establishment_Year.equals("2016") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	//da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	//da_tpr.selectReviewCommentsForGST(gstReview);
+        	//Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+        	Thread.sleep(2000);
+       	    da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
+        	Thread.sleep(2000);
         }
     	
-        else if(establishment_Year.equals("2016") && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(establishment_Year.equals("2016") && (type_Organization.equals("Company")))
         {
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -599,7 +834,30 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         }
     	
-        else if((yearOfEstablishment < 2016) && (type_Organization.equals("Company") || type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if((yearOfEstablishment < 2016) && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	//da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	//da_tpr.selectReviewCommentsForGST(gstReview);
+        	//Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
+        	Thread.sleep(2000);
+       	    da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Fifth_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForThirdFinancialYear(thirdFinancialYearReview);
+        	Thread.sleep(2000);
+        }
+    	
+        else if((yearOfEstablishment < 2016) && (type_Organization.equals("Company")))
         {
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
