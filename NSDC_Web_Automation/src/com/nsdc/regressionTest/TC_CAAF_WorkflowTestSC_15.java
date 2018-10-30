@@ -95,6 +95,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+tcID+"')]]]//span[text()='Registered']")).getText(), "Registered");
 			PostLoginPage plp = new PostLoginPage(driver);
+			Thread.sleep(3000);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
 		}
@@ -102,6 +103,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+tcID+"')]]]//span[text()='Awaiting PMKk SPOC Approval']")).getText(), "Awaiting PMKk SPOC Approval");
 			PostLoginPage plp = new PostLoginPage(driver);
+			Thread.sleep(3000);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
 			lp.clickLogin();
@@ -126,10 +128,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
 		}
-		
-
-		
-		
+	
 	}
 
 }
