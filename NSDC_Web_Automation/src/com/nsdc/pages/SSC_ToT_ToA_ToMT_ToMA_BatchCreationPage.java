@@ -196,6 +196,54 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'Ok')]")
 	private WebElement batchSubmitOkButton;
+	//Rejection - Reassign TC elements
+	@FindBy(xpath="//input[@placeholder='Enter training centre id']")
+	private WebElement reAssignTCSearchTextField;
+	//Rejection Batch Domain2 QP Elements
+	@FindBy(xpath="(//input[@formcontrolname='trainingStartDate'])[2]")
+	private WebElement domain2TrainingStartDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[7]")
+	private WebElement closeDomain2TrainingStartDateCalenderIcon;
+	@FindBy(xpath="(//input[@formcontrolname='trainingEndDate'])[2]")
+	private WebElement domain2TrainingEndDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[8]")
+	private WebElement closeDomain2TrainingEndDateCalenderIcon;
+	@FindBy(xpath="(//input[@formcontrolname='assessmentStartDate'])[2]")
+	private WebElement domain2AssessmentStartDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[9]")
+	private WebElement closeDomain2AssessmentStartDateCalenderIcon;
+	@FindBy(xpath="(//input[@formcontrolname='assessmentEndDate'])[2]")
+	private WebElement domain2AssessmentEndDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[10]")
+	private WebElement closeDomain2AssessmentEndDateCalenderIcon;
+	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[2]")
+	private WebElement domain2AssignMasterTrainerActionOptionLink;
+	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[2]")
+	private WebElement domain2AssignAssessmentAgencyActionOptionLink;
+	//Rejection Batch Platform QP Elements
+	@FindBy(xpath="(//label[@class='m-radio m-radio--success']/span)[3]")
+	private WebElement rplatformBaseQpRadioButton;
+	@FindBy(xpath="(//input[@formcontrolname='trainingStartDate'])[3]")
+	private WebElement rplatformTrainingStartDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[11]")
+	private WebElement rclosePlatformTrainingStartDateCalenderIcon;
+	@FindBy(xpath="(//input[@formcontrolname='trainingEndDate'])[3]")
+	private WebElement rplatformTrainingEndDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[12]")
+	private WebElement rclosePlatformTrainingEndDateCalenderIcon;
+	@FindBy(xpath="(//input[@formcontrolname='assessmentStartDate'])[3]")
+	private WebElement rplatformAssessmentStartDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[13]")
+	private WebElement rclosePlatformAssessmentStartDateCalenderIcon;
+	@FindBy(xpath="(//input[@formcontrolname='assessmentEndDate'])[3]")
+	private WebElement rplatformAssessmentEndDateTextField;
+	@FindBy(xpath="(//div[@class='input-group-append'])[14]")
+	private WebElement rclosePlatformAssessmentEndDateCalenderIcon;
+	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[3]")
+	private WebElement rplatformAssignMasterTrainerActionOptionLink;
+	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[3]")
+	private WebElement rplatformAssignAssessmentAgencyActionOptionLink;
+		
 	
 	public SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(WebDriver driver)
 	{
@@ -827,7 +875,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
-	public void clickDomainAssignMasterTrainerOption()
+	public void selectDomainAssignMasterTrainerOption()
 	{
 		domainAssignMasterTrainerActionOptionLink.click();
 	}
@@ -865,7 +913,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
-	public void clickPlatformAssignMasterTrainerOption()
+	public void selectPlatformAssignMasterTrainerOption()
 	{
 		platformAssignMasterTrainerActionOptionLink.click();
 	}
@@ -903,7 +951,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
-	public void clickDomainAssignAssessmentAgencyOption()
+	public void selectDomainAssignAssessmentAgencyOption()
 	{
 		domainAssignAssessmentAgencyActionOptionLink.click();
 	}
@@ -941,7 +989,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
-	public void clickPlatformAssignAssessmentAgencyOption()
+	public void selectPlatformAssignAssessmentAgencyOption()
 	{
 		platformAssignAssessmentAgencyActionOptionLink.click();
 	}
@@ -1014,5 +1062,461 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void clickOkForBatchSubmission()
 	{
 		batchSubmitOkButton.click();
+	}
+	//Rejection Batch Elements Function
+	public void enterReAssignTrainingCentreIDToSearch(String trainingCentreIDToSearchFor) throws InterruptedException
+	{
+		reAssignTCSearchTextField.clear();
+		Thread.sleep(4000);
+		reAssignTCSearchTextField.sendKeys(trainingCentreIDToSearchFor);
+	}
+	public void selectDomain2TrainingStartDate() throws InterruptedException
+	{
+		domain2TrainingStartDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+		}
+		
+	}
+	public void clickTocloseDomain2TrainingStartDateCalender()
+	{
+		closeDomain2TrainingStartDateCalenderIcon.click();
+	}
+	public void selectDomain2TrainingEndDateForNewBatch() throws InterruptedException
+	{
+		domain2TrainingEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+		}
+		
+	}
+	public void selectDomain2TrainingEndDateForExistingBatch() throws InterruptedException
+	{
+		domain2TrainingEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+		}
+	}
+	public void clickToCloseDomain2TrainingEndDateCalender()
+	{
+		closeDomain2TrainingEndDateCalenderIcon.click();
+	}
+	public void selectDomain2AssessmentStartDateForNewBatch() throws InterruptedException
+	{
+		domain2AssessmentStartDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+		}
+	}
+	public void selectDomain2AssessmentStartDateForExistingBatch() throws InterruptedException
+	{
+		domain2AssessmentStartDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+		}
+	}
+	public void clickToCloseDomain2AssessmentstartDateCalender()
+	{
+		closeDomain2AssessmentStartDateCalenderIcon.click();
+	}
+	public void selectDomain2AssessmentEndDateForNewBatch() throws InterruptedException
+	{
+		domain2AssessmentEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+		}
+	}
+	public void selectDomain2AssessmentEndDateForExistingBatch() throws InterruptedException
+	{
+		domain2AssessmentEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+		}
+		
+	}
+	public void clickToCloseDomain2AssessmentEndDateCalender()
+	{
+		closeDomain2AssessmentEndDateCalenderIcon.click();
+	}
+	//Platform QP
+	public void clickToChooserPlatformQP()
+	{
+		rplatformBaseQpRadioButton.click();
+	}
+	public void selectrPlatformTrainingStartDate() throws InterruptedException
+	{
+		rplatformTrainingStartDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
+			}
+		}
+	}
+	public void clickTocloserPlatformTrainingStartDateCalender()
+	{
+		rclosePlatformTrainingStartDateCalenderIcon.click();
+	}
+	public void selectrPlatformTrainingEndDateForNewBatch() throws InterruptedException
+	{
+		rplatformTrainingEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+		}
+	}
+	public void selectrPlatformTrainingEndDateForExistingBatch() throws InterruptedException
+	{
+		rplatformTrainingEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+		}
+	}
+	public void clickToCloserPlatformTrainingEndDateCalender()
+	{
+		rclosePlatformTrainingEndDateCalenderIcon.click();
+	}
+	public void selectrPlatformAssessmentStartDateForNewBatch() throws InterruptedException
+	{
+		rplatformAssessmentStartDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
+			}
+		}
+		
+	}
+	public void selectrPlatformAssessmentStartDateForExistingBatch() throws InterruptedException
+	{
+		rplatformAssessmentStartDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+			}
+		}
+	}
+	public void clickToCloserPlatformAssessmentstartDateCalender()
+	{
+		rclosePlatformAssessmentStartDateCalenderIcon.click();
+	}
+	public void selectrPlatformAssessmentEndDateForNewBatch() throws InterruptedException
+	{
+		rplatformAssessmentEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
+			}
+		}
+	}
+	public void selectrPlatformAssessmentEndDateForExistingBatch() throws InterruptedException
+	{
+		rplatformAssessmentEndDateTextField.click();
+		if(driver.findElements(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
+		{
+			if(driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("(//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
+			}
+		}
+		else
+		{
+			if(driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("disabled"))
+			{
+				driver.findElement(By.xpath("(//th[@class='next']/i)[1]")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
+			}
+		}
+	}
+	public void clickToCloserPlatformAssessmentEndDateCalender()
+	{
+		rclosePlatformAssessmentEndDateCalenderIcon.click();
+	}
+	public void selectDomain2AssignMasterTrainerOption()
+	{
+		domain2AssignMasterTrainerActionOptionLink.click();
+	}
+	public void selectrPlatformAssignMasterTrainerOption()
+	{
+		rplatformAssignMasterTrainerActionOptionLink.click();
+	}
+	public void selectDomain2AssignAssessmentAgencyOption()
+	{
+		domain2AssignAssessmentAgencyActionOptionLink.click();
+	}
+	public void selectrPlatformAssignAssessmentAgencyOption()
+	{
+		rplatformAssignAssessmentAgencyActionOptionLink.click();
 	}
 }
