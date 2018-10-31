@@ -1002,7 +1002,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		//Assigning Master Trainer for domain QP
 		sscTbcP.clickDomainMasterTrainerAction(domainJobRole);
 		Thread.sleep(4000);
-		sscTbcP.clickDomainAssignMasterTrainerOption();
+		sscTbcP.selectDomainAssignMasterTrainerOption();
 		Thread.sleep(4000);
 		sscTbcP.selectDomainMasterTrainerStateFilter(state);
 		Thread.sleep(4000);
@@ -1025,7 +1025,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		//Assigning Master Trainer for Platform QP
 		sscTbcP.clickPlatformMasterTrainerAction(platformJobRole);
 		Thread.sleep(4000);
-		sscTbcP.clickPlatformAssignMasterTrainerOption();
+		sscTbcP.selectPlatformAssignMasterTrainerOption();
 		Thread.sleep(4000);
 		sscTbcP.selectPlatformMasterTrainerStateFilter(state);
 		Thread.sleep(4000);
@@ -1047,7 +1047,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		//Assigning Domain QP Assessment Agency
 		sscTbcP.clickDomainAssessmentAgencyAction(domainJobRole);
 		Thread.sleep(4000);
-		sscTbcP.clickDomainAssignAssessmentAgencyOption();
+		sscTbcP.selectDomainAssignAssessmentAgencyOption();
 		Thread.sleep(4000);
 		sscTbcP.selectDomainAssessmentAgencyStateFilter(state);
 		Thread.sleep(4000);
@@ -1069,7 +1069,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		//Assigning Platform QP Assessment Agency
 		sscTbcP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		Thread.sleep(4000);
-		sscTbcP.clickPlatformAssignAssessmentAgencyOption();
+		sscTbcP.selectPlatformAssignAssessmentAgencyOption();
 		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentAgencyStateFilter(state);
 		Thread.sleep(4000);
@@ -1941,7 +1941,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		//Assigning Master Trainer for domain and platform QP
  		sscTbcP.clickDomainMasterTrainerAction(domainJobRole);
  		Thread.sleep(4000);
- 		sscTbcP.clickDomainAssignMasterTrainerOption();
+ 		sscTbcP.selectDomainAssignMasterTrainerOption();
  		Thread.sleep(4000);
  		sscTbcP.selectDomainMasterTrainerStateFilter(state);
  		Thread.sleep(4000);
@@ -1963,7 +1963,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'Assigned')]")).getText().trim(), "Assigned");
  		sscTbcP.clickPlatformMasterTrainerAction(platformJobRole);
  		Thread.sleep(4000);
- 		sscTbcP.clickPlatformAssignMasterTrainerOption();
+ 		sscTbcP.selectPlatformAssignMasterTrainerOption();
  		Thread.sleep(4000);
  		sscTbcP.selectPlatformMasterTrainerStateFilter(state);
  		Thread.sleep(4000);
@@ -1985,7 +1985,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		//Assigning Assessment Agency
  		sscTbcP.clickDomainAssessmentAgencyAction(domainJobRole);
  		Thread.sleep(4000);
- 		sscTbcP.clickDomainAssignAssessmentAgencyOption();
+ 		sscTbcP.selectDomainAssignAssessmentAgencyOption();
  		Thread.sleep(4000);
  		sscTbcP.selectDomainAssessmentAgencyStateFilter(state);
  		Thread.sleep(4000);
@@ -2007,7 +2007,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  		//Assigning Platform QP Assessment Agency
  		sscTbcP.clickPlatformAssessmentAgencyAction(platformJobRole);
  		Thread.sleep(4000);
- 		sscTbcP.clickPlatformAssignAssessmentAgencyOption();
+ 		sscTbcP.selectPlatformAssignAssessmentAgencyOption();
  		Thread.sleep(4000);
  		sscTbcP.selectPlatformAssessmentAgencyStateFilter(state);
  		Thread.sleep(4000);
