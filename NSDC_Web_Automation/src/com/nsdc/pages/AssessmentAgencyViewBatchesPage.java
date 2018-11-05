@@ -47,7 +47,7 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement assignAssessorsOption;
 	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
 	private WebElement domainAssessorsDropdownList;
-	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
+	@FindBy(xpath="(//select[@formcontrolname='assessor'])[2]")
 	private WebElement platformAssessorsDropdownList;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[4]")
 	private WebElement submitMasterAssessorButton;

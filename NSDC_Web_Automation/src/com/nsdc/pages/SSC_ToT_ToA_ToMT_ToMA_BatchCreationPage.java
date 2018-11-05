@@ -83,122 +83,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement createBatchButton;
 	@FindBy(linkText="Cancel")
 	private WebElement cancelLink;
-	//Searching Exceptional Training Centre
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[1]/div")
-	private WebElement stateFilterList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])[1]/div")
-	private WebElement districtFilterList;
-	@FindBy(xpath="//input[@formcontrolname='trainingCentreId']")
-	private WebElement searchByTrainingCentreIDTextField;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='trainingCentreType'])[1]/div")
-	private WebElement trainingCentreTypeList;
-	@FindBy(xpath="(//button[contains(text(),'Search')])[1]")
-	private WebElement searchFilterButton1;
-	@FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
-	private WebElement submitSelectedTrainingCentreButton;
-	//Assign Master Trainer
-	//DomainQP
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[1]")
-	private WebElement domainAssignMasterTrainerActionOptionLink;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[4]/div")
-	private WebElement domainMasterTrainerStateFilterList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])[4]/div")
-	private WebElement domainMasterTrainerDistrictFilterList;
-	@FindBy(xpath="//div[label[contains(text(),'Master Trainer ID:')]]/input")
-	private WebElement domainSearchByMasterTrainerIDTextField;
-	@FindBy(xpath="(//button[contains(text(),'Search')])[3]")
-	private WebElement domainSearchFilterButton1;
-	@FindBy(xpath="(//td[input[@type='radio']])[5]")
-	private WebElement domainMasterTrainerRadioButton;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
-	private WebElement domainAssignSelectedMasterTrainerButton;
-	//platform QP
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[2]")
-	private WebElement platformAssignMasterTrainerActionOptionLink;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[4]/div")
-	private WebElement platformMasterTrainerStateFilterList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])[4]/div")
-	private WebElement platformMasterTrainerDistrictFilterList;
-	@FindBy(xpath="//div[label[contains(text(),'Master Trainer ID:')]]/input")
-	private WebElement platformSearchByMasterTrainerIDTextField;
-	@FindBy(xpath="(//button[contains(text(),'Search')])[3]")
-	private WebElement platformSearchFilterButton1;
-	@FindBy(xpath="(//td[input[@type='radio']])[5]")
-	private WebElement platformMasterTrainerRadioButton;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
-	private WebElement platformAssignSelectedMasterTrainerButton;
-	//domain AA
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[1]")
-	private WebElement domainAssignAssessmentAgencyActionOptionLink;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[5]/div")
-	private WebElement domainAssessmentAgencyStateFilterList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])[5]/div")
-	private WebElement domainAssessmentAgencyDistrictFilterList;
-	@FindBy(xpath="//div[label[contains(text(),'Assessment Agency ID:')]]/input")
-	private WebElement domainSearchByAssessmentAgencyIDTextField;
-	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
-	private WebElement domainSearchFilterButton2;
-	@FindBy(xpath="(//td[input[@type='radio']])[5]")
-	private WebElement domainAssessmentAgencyRadioButton;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
-	private WebElement domainAssignSelectedAssessmentAgencyButton;
-	//Platform AA
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[2]")
-	private WebElement platformAssignAssessmentAgencyActionOptionLink;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[5]/div")
-	private WebElement platformAssessmentAgencyStateFilterList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])[5]/div")
-	private WebElement platformAssessmentAgencyDistrictFilterList;
-	@FindBy(xpath="//div[label[contains(text(),'Assessment Agency ID:')]]/input")
-	private WebElement platformSearchByAssessmentAgencyIDTextField;
-	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
-	private WebElement platformSearchFilterButton2;
-	@FindBy(xpath="(//td[input[@type='radio']])[5]")
-	private WebElement platformAssessmentAgencyRadioButton;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
-	private WebElement platformAssignSelectedAssessmentAgencyButton;
-	//After Batch Creation and Exceptional TC
-	@FindBy(xpath="//button[contains(text(),'Save as Draft')]")
-	private WebElement saveAsDraftButton;
-	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
-	private WebElement submitButton;
-	@FindBy(xpath="//button[contains(text(),'View All Batches')]")
-	private WebElement viewAllBatchesButton;
-	@FindBy(xpath="//input[@class='form-control ng-untouched ng-pristine']")
-	private WebElement batchNameReadOnlyTextField;
-	@FindBy(xpath="//select[@formcontrolname='state']")
-	private WebElement stateDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='district']")
-	private WebElement districtDropdownList;
-	@FindBy(xpath="//select[@formcontrolname='subDistrict']")
-	private WebElement subDistrictDropdownList;
-	@FindBy(xpath="//button[text()='Search & Assign Training Centre']")
-	private WebElement searchAndAssignTrainingCentreButton;
-	@FindBy(xpath="//input[@placeholder='Search by keyword']")
-	private WebElement searchTextBox;
-	@FindBy(xpath="//a[@data-toggle='dropdown']")
-	private WebElement actionDropdownMenu;
-	@FindBy(linkText="View Details")
-	private WebElement viewDetailsOptionLink;
-	@FindBy(linkText="Assign Batch")
-	private WebElement assignBatchOptionLink;
-	@FindBy(xpath="(//button[text()='Assign'])[1]")
-	private WebElement assignTrainingCentreButton1;
-	@FindBy(xpath="(//button[text()='Back'])[1]")
-	private WebElement backButton;
-	@FindBy(xpath="(//button[text()='Assign'])[2]")
-	private WebElement assignTrainingCentreButton2;
-	@FindBy(xpath="//button[contains(text(),'Re-Assign')]")
-	private WebElement reAssignTCButton;
-	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
-	private WebElement submitReAssignedTrainingCentreButton;
-	@FindBy(xpath="//button[contains(text(),'Cancel')]")
-	private WebElement cancelButton;
-	@FindBy(xpath="//button[contains(text(),'Ok')]")
-	private WebElement batchSubmitOkButton;
-	//Rejection - Reassign TC elements
-	@FindBy(xpath="//input[@placeholder='Enter training centre id']")
-	private WebElement reAssignTCSearchTextField;
 	//Rejection Batch Domain2 QP Elements
 	@FindBy(xpath="(//input[@formcontrolname='trainingStartDate'])[2]")
 	private WebElement domain2TrainingStartDateTextField;
@@ -216,10 +100,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement domain2AssessmentEndDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[10]")
 	private WebElement closeDomain2AssessmentEndDateCalenderIcon;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[2]")
-	private WebElement domain2AssignMasterTrainerActionOptionLink;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[2]")
-	private WebElement domain2AssignAssessmentAgencyActionOptionLink;
 	//Rejection Batch Platform QP Elements
 	@FindBy(xpath="(//label[@class='m-radio m-radio--success']/span)[3]")
 	private WebElement rplatformBaseQpRadioButton;
@@ -239,11 +119,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement rplatformAssessmentEndDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[14]")
 	private WebElement rclosePlatformAssessmentEndDateCalenderIcon;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[3]")
-	private WebElement rplatformAssignMasterTrainerActionOptionLink;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[3]")
-	private WebElement rplatformAssignAssessmentAgencyActionOptionLink;
-		
+			
 	
 	public SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(WebDriver driver)
 	{
@@ -835,202 +711,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		okButton.click();
 	}
-	//Search For Training Centre
-	public void selectStateFilter(String sateFilter)
-	{
-		stateFilterList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+sateFilter+"')])[1]")).click();
-	}
-	public void selectDistrictFilter(String districtFilter)
-	{
-		districtFilterList.click();
-		driver.findElement(By.xpath("(//label[contains(text(),'"+districtFilter+"')])[1]")).click();
-	}
-	public void enterTrainingCentreIDToSearch(String trainingCentreIDToSearchFor) throws InterruptedException
-	{
-		searchByTrainingCentreIDTextField.clear();
-		Thread.sleep(4000);
-		searchByTrainingCentreIDTextField.sendKeys(trainingCentreIDToSearchFor);
-	}
-	public void selectExceptionalTrainingCentreTypeFilter() throws InterruptedException
-	{
-		trainingCentreTypeList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'exceptional')])[1]")).click();
-	}
-	public void clickToGetSearchFilterResult()
-	{
-		searchFilterButton1.click();
-	}
-	public void clickToChooseResultedTrainingCentreToAssign(String searchedTrainingCentreID)
-	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+searchedTrainingCentreID+"')]]/td/input[@type='radio']")).click();
-	}
-	public void clickToSubmitSelectedTrainingCentre()
-	{
-		submitSelectedTrainingCentreButton.click();
-	}
-	//Assigning Domain QP Master Trainer
-	public void clickDomainMasterTrainerAction(String domanJobRole)
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
-	}
-	public void selectDomainAssignMasterTrainerOption()
-	{
-		domainAssignMasterTrainerActionOptionLink.click();
-	}
-	public void selectDomainMasterTrainerStateFilter(String state) throws InterruptedException
-	{
-		domainMasterTrainerStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
-	}
-	public void selectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
-	{
-		domainMasterTrainerDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
-	}
-	public void enterDomainMasterTrainerIDToSearch(String masterTrainerID)
-	{
-		domainSearchByMasterTrainerIDTextField.clear();
-		domainSearchByMasterTrainerIDTextField.sendKeys(masterTrainerID);
-	}
-	public void clickToGetDomainMasterSearchFilterResult()
-	{
-		domainSearchFilterButton1.click();
-	}
-	public void clickToChooseDomainMasterTrainer()
-	{
-		domainMasterTrainerRadioButton.click();
-	}
-	public void clickToFinallyAssignSelectedDomainMasterTrainer()
-	{
-		domainAssignSelectedMasterTrainerButton.click();
-	}
-	//Assigning Platform QP Master Trainer
-	public void clickPlatformMasterTrainerAction(String platformJobRole)
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
-	}
-	public void selectPlatformAssignMasterTrainerOption()
-	{
-		platformAssignMasterTrainerActionOptionLink.click();
-	}
-	public void selectPlatformMasterTrainerStateFilter(String state) throws InterruptedException
-	{
-		platformMasterTrainerStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
-	}
-	public void selectPlatformMasterTrainerDistrictFilter(String district) throws InterruptedException
-	{
-		platformMasterTrainerDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
-	}
-	public void enterPlatformMasterTrainerIDToSearch(String masterTrainerID)
-	{
-		platformSearchByMasterTrainerIDTextField.clear();
-		platformSearchByMasterTrainerIDTextField.sendKeys(masterTrainerID);
-	}
-	public void clickToGetPlatformMasterSearchFilterResult()
-	{
-		platformSearchFilterButton1.click();
-	}
-	public void clickToChoosePlatformMasterTrainer()
-	{
-		platformMasterTrainerRadioButton.click();
-	}
-	public void clickToFinallyAssignSelectedPlatformMasterTrainer()
-	{
-		platformAssignSelectedMasterTrainerButton.click();
-	}
-	//Assigning Domain Assessment Agency
-	public void clickDomainAssessmentAgencyAction(String domainJobRole)
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
-	}
-	public void selectDomainAssignAssessmentAgencyOption()
-	{
-		domainAssignAssessmentAgencyActionOptionLink.click();
-	}
-	public void selectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
-	{
-		domainAssessmentAgencyStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
-	}
-	public void selectDomainAssessmentAgencyDistrictFilter(String district) throws InterruptedException
-	{
-		domainAssessmentAgencyDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
-	}
-	public void enterDomainAssessmentAgencyIDToSearch(String assessmentAgencyID)
-	{
-		domainSearchByAssessmentAgencyIDTextField.clear();
-		domainSearchByAssessmentAgencyIDTextField.sendKeys(assessmentAgencyID);
-	}
-	public void clickToGetDomainAssessmentAgencySearchFilterResult()
-	{
-		domainSearchFilterButton2.click();
-	}
-	public void clickToChooseDomainAssessmentAgency()
-	{
-		domainAssessmentAgencyRadioButton.click();
-	}
-	public void clickToFinallyAssignSelectedDomainAssessmentAgency()
-	{
-		domainAssignSelectedAssessmentAgencyButton.click();
-	}
-	//Assigning Platform QP Assessment Agency
-	public void clickPlatformAssessmentAgencyAction(String platformJobRole)
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
-	}
-	public void selectPlatformAssignAssessmentAgencyOption()
-	{
-		platformAssignAssessmentAgencyActionOptionLink.click();
-	}
-	public void selectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
-	{
-		platformAssessmentAgencyStateFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
-	}
-	public void selectPlatformAssessmentAgencyDistrictFilter(String district) throws InterruptedException
-	{
-		platformAssessmentAgencyDistrictFilterList.click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
-	}
-	public void enterPlatformAssessmentAgencyIDToSearch(String assessmentAgencyID)
-	{
-		platformSearchByAssessmentAgencyIDTextField.clear();
-		platformSearchByAssessmentAgencyIDTextField.sendKeys(assessmentAgencyID);
-	}
-	public void clickToGetPlatformAssessmentAgencySearchFilterResult()
-	{
-		platformSearchFilterButton2.click();
-	}
-	public void clickToChoosePlatformAssessmentAgency()
-	{
-		platformAssessmentAgencyRadioButton.click();
-	}
-	public void clickToFinallyAssignSelectedPlatformAssessmentAgency()
-	{
-		platformAssignSelectedAssessmentAgencyButton.click();
-	}
-	//After Batch creation and Assigning All Actors 
-	public void clickSaveAsDraft()
-	{
-		saveAsDraftButton.click();
-	}
-	public void clickToSubmitBatch()
-	{
-		submitButton.click();
-	}
 	public void clickBatchAction(String createdBatchID)
 	{
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+createdBatchID+"')]]//a)[1]")).click();
@@ -1039,37 +719,11 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]//a/span[contains(text(),'Assign')]")).click();
 	}
-	public void clickViewAllBatchesAfterBatchSubmission()
-	{
-		viewAllBatchesButton.click();
-	}
 	public void clickViewDetailsOption(String createdBatchID)
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]//a/span[contains(text(),'View Details')]")).click();
 	}
-	public void clickReassignTC()
-	{
-		reAssignTCButton.click();
-	}
-	public void clickToSubmitReAssignedTC()
-	{
-		submitReAssignedTrainingCentreButton.click();
-	}
-	public void clickToCancel()
-	{
-		cancelButton.click();
-	}
-	public void clickOkForBatchSubmission()
-	{
-		batchSubmitOkButton.click();
-	}
 	//Rejection Batch Elements Function
-	public void enterReAssignTrainingCentreIDToSearch(String trainingCentreIDToSearchFor) throws InterruptedException
-	{
-		reAssignTCSearchTextField.clear();
-		Thread.sleep(4000);
-		reAssignTCSearchTextField.sendKeys(trainingCentreIDToSearchFor);
-	}
 	public void selectDomain2TrainingStartDate() throws InterruptedException
 	{
 		domain2TrainingStartDateTextField.click();
@@ -1502,21 +1156,5 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void clickToCloserPlatformAssessmentEndDateCalender()
 	{
 		rclosePlatformAssessmentEndDateCalenderIcon.click();
-	}
-	public void selectDomain2AssignMasterTrainerOption()
-	{
-		domain2AssignMasterTrainerActionOptionLink.click();
-	}
-	public void selectrPlatformAssignMasterTrainerOption()
-	{
-		rplatformAssignMasterTrainerActionOptionLink.click();
-	}
-	public void selectDomain2AssignAssessmentAgencyOption()
-	{
-		domain2AssignAssessmentAgencyActionOptionLink.click();
-	}
-	public void selectrPlatformAssignAssessmentAgencyOption()
-	{
-		rplatformAssignAssessmentAgencyActionOptionLink.click();
 	}
 }

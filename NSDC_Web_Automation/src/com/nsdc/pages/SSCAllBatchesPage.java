@@ -41,7 +41,7 @@ public class SSCAllBatchesPage
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+batchID+"')]]/td[9]//a)[1]")).click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+batchID+"')]]//a)[1]")).click();
 	}
 	public void selectViewDetailsOption(String batchID)
 	{
@@ -71,74 +71,6 @@ public class SSCAllBatchesPage
 	public void clickOk()
 	{
 		okButton.click();
-	}
-	//Domain Master Trainer Action Menu
-	public void selectViewDomainMasterTrainerCommentsOption(String domainJobRoleCode) throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[6]//a/span[contains(text(),'View Comments')]")).click();
-	}
-	public void selectViewDomainMasterTrainerAttendenceOption(String domainJobRoleCode)throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[6]//a/span[contains(text(),'View Attendence')]")).click();
-	}
-	public void clickToCloseDomainMasterTrainerViewCommentsWindow()
-	{
-		driver.findElement(By.xpath("(//button[@class='close'])[1]")).click();
-	}
-	//Platform Master Trainer Action Menu
-	public void selectViewPlatformMasterTrainerCommentsOption(String platformJobRoleCode) throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[6]//a/span[contains(text(),'View Comments')]")).click();
-	}
-	public void selectViewPlatformMasterTrainerAttendenceOption(String platformJobRoleCode)throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[6]//a/span[contains(text(),'View Attendence')]")).click();
-	}
-	public void clickToClosePlatformMasterTrainerViewCommentsWindow()
-	{
-		driver.findElement(By.xpath("(//button[@class='close'])[1]")).click();
-	}
-	//Domain Assessment Agency Action Menu
-	public void selectViewDomainAssessmentAgencyCommentsOption(String domainJobRoleCode) throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[6]//a/span[contains(text(),'View Comments')]")).click();
-	}
-	public void selectViewDomainAssessmentAgencyAttendenceOption(String domainJobRoleCode)throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[6]//a/span[contains(text(),'View Attendence')]")).click();
-	}
-	public void clickToCloseDomainAssessmentAgencyViewCommentsWindow()
-	{
-		driver.findElement(By.xpath("(//button[@class='close'])[3]")).click();
-	}
-	//Platform Assessment Agency Action Menu
-	public void selectViewPlatformAssessmentAgencyCommentsOption(String platformJobRoleCode) throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[6]//a/span[contains(text(),'View Comments')]")).click();
-	}
-	public void selectViewPlatformAssessmentAgencyAttendenceOption(String platformJobRoleCode)throws InterruptedException
-	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[6]/div/div/a")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[6]//a/span[contains(text(),'View Attendence')]")).click();
-	}
-	public void clickToClosePlatformAssessmentAgencyViewCommentsWindow()
-	{
-		driver.findElement(By.xpath("(//button[@class='close'])[3]")).click();
 	}
 }	
 	

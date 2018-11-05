@@ -15,30 +15,6 @@ public class TrainerViewBatchesPage
 	private WebElement acceptedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
-	//@FindBy(xpath="//input[@placeholder='Start Date']")
-	//private WebElement batchStartDateFilter;
-	//@FindBy(xpath="(//span[i[@class='la la-calendar']])[1]")
-	//private WebElement closeBatchStartDateCalenderButton;
-	//@FindBy(xpath="//input[@placeholder='End Date']")
-	//private WebElement batchEndDateFilter;
-	//@FindBy(xpath="(//span[i[@class='la la-calendar']])[2]")
-	//private WebElement closeBatchEndDateCalenderButton;
-	//@FindBy(xpath="//input[@placeholder='Search by Training Centre Name']")
-	//private WebElement searchByTrainingCentreNameSearchTextfield;
-	//@FindBy(xpath="//span[contains(text(),'Select Batch Type')]")
-	//private WebElement filterByBatchTypeList;
-	//@FindBy(xpath="//span[contains(text(),'Select Job Role')]")
-	//private WebElement filterByJobRoleList;
-	//@FindBy(xpath="//span[@class='c-angle-up']")
-	//@FindBy(xpath="//b[contains(text(),'Training Centre Name')]")
-	//private WebElement filterbyBatchTypeAngleUp;
-	//@FindBy(xpath="//span[@class='c-angle-up']")
-	//@FindBy(xpath="//label[contains(text(),'Job Role')]")
-	//private WebElement filterbyJobRoleAngleUp;
-	//@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
-	//private WebElement viewBatchDetailsOption;
-	//@FindBy(xpath="//span[contains(text(),'Accept/Reject Batch')]")
-	//private WebElement acceptOrRejectBatchOption;	
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
 	private WebElement goBackButton;
 	@FindBy(xpath="//textarea[@formcontrolname='acceptComment']")
@@ -49,6 +25,8 @@ public class TrainerViewBatchesPage
 	private WebElement remarksForRejectingBatchTextArea;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
 	private WebElement submitButton;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
+	private WebElement rejectionSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[1]")
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
@@ -73,50 +51,21 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToGetActionMenuOptions(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]/div/div/a")).click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+batchID+"')]]//a)[1]")).click();
 	}
 	public void clickToSelectViewDetailsOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]//span[contains(text(),'View Details')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'View Details')]")).click();
 	}
 	public void clickToSelectAcceptBatchOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]//span[contains(text(),'Accept Batch')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Accept Batch')]")).click();
 	}
 	public void clickToSelectRejectBatchOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]//span[contains(text(),'Reject Batch')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Reject Batch')]")).click();
 	}
-/*	public void enterTrainingCentreNameToSearch(String trainingCentreName)
-	{
-		searchByTrainingCentreNameSearchTextfield.clear();
-		searchByTrainingCentreNameSearchTextfield.sendKeys(trainingCentreName);
-	}
-	public void clickToViewFilterByBatchTypeListOptions()
-	{
-		filterByBatchTypeList.click();
-	}
-	public void clickToViewFilterByJobRoleListOptions()
-	{
-		filterByJobRoleList.click();
-	}
-	public void clickToCloseFilterByBatchTypeList()
-	{
-		filterbyBatchTypeAngleUp.click();
-	}
-	public void clickToCloseFilterByJobRoleList()
-	{
-		filterbyJobRoleAngleUp.click();
-	}
-	public void clickToChooseViewBatchDetailsOption()
-	{
-		viewBatchDetailsOption.click();
-	}
-	public void clickToChooseAcceptOrRejectBatchOption()
-	{
-		acceptOrRejectBatchOption.click();
-	}
-*/	public void clickGoBackFromBatchDetails()
+	public void clickGoBackFromBatchDetails()
 	{
 		goBackButton.click();
 	}
@@ -131,7 +80,7 @@ public class TrainerViewBatchesPage
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+rejectionReason+"')]")).click();
 	}
-	public void enterRemarksForRejctingBatch(String remarksForRejectingBatch)
+	public void enterRemarksForRejectingBatch(String remarksForRejectingBatch)
 	{
 		remarksForRejectingBatchTextArea.clear();
 		remarksForRejectingBatchTextArea.sendKeys(remarksForRejectingBatch);
@@ -139,6 +88,10 @@ public class TrainerViewBatchesPage
 	public void clickToSubmit()
 	{
 		submitButton.click();
+	}
+	public void clickToSubmitBatchRejection()
+	{
+		rejectionSubmitButton.click();
 	}
 	public void clickToClose()
 	{
@@ -148,22 +101,4 @@ public class TrainerViewBatchesPage
 	{
 		okButton.click();
 	}
-/*	public void enterBatchStartDateToSearch(String batchStartDate)
-	{
-		batchStartDateFilter.clear();
-		batchStartDateFilter.sendKeys(batchStartDate);
-	}
-	public void clickToCloseBatchStartDateCalender()
-	{
-		closeBatchStartDateCalenderButton.click();
-	}
-	public void enterBatchEndDateToSearch(String batchEndDate)
-	{
-		batchEndDateFilter.clear();
-		batchEndDateFilter.sendKeys(batchEndDate);
-	}
-	public void clickToCloseBatchEndDateCalender()
-	{
-		closeBatchEndDateCalenderButton.click();
-	}*/
 }
