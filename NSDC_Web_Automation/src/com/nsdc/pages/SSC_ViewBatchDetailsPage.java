@@ -139,10 +139,29 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement reAssignMasterTrainerStateFilterList;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])/div")
 	private WebElement reAssignMasterTrainerDistrictFilterList;
+	@FindBy(xpath="//input[@type='radio']")
+	private WebElement reAssignDomainMasterTrainerRadioButton;
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
 	private WebElement reAssignSelectedDomainMasterTrainerButton;
-	@FindBy(xpath="(//td[input[@type='radio']])[1]")
-	private WebElement reAssignDomainMasterTrainerRadioButton;
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])/div")
+	private WebElement reAssignAssessmentAgencyStateFilterList;
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district'])/div")
+	private WebElement reAssignAssessmentAgencyDistrictFilterList;
+	@FindBy(xpath="//input[@type='radio']")
+	private WebElement reAssignDomainAssessmentAgencyRadioButton;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
+	private WebElement reAssignSelectedDomainAssessmentAgencyButton;
+	//Domain JobRole 2 ReAssign Assessment Agency elements
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state']/div)[5]")
+	private WebElement reAssignDomainJobRole2AssesmentAgencyStateFilterList;
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district']/div)[5]")
+	private WebElement reAssignDomainJobRole2AssesmentAgencyDistrictFilterList;
+	@FindBy(xpath="(//input[@type='radio'])[7]")
+	private WebElement reAssignDomainJobRole2AssesmentAgencyRadioButton;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
+	private WebElement reAssignSelectedDomainJobRole2AssesmentAgencyButton;
+	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
+	private WebElement searchFilterButton4;
 	
 	public SSC_ViewBatchDetailsPage(WebDriver driver)
 	{
@@ -435,7 +454,7 @@ public class SSC_ViewBatchDetailsPage
 		driver.findElement(By.xpath("(//button[@class='close'])[1]")).click();
 	}		
 	//Domain Assessment Agency Action Menu
-	public void selectReAssignAssessmentAgencyOption(String domainJobroleCode) throws InterruptedException
+	public void selectReAssignDomainAssessmentAgencyOption(String domainJobroleCode) throws InterruptedException
 	{
 		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobroleCode+"')]])[2]//a)[1]")).click();
 		Thread.sleep(2000);
@@ -444,7 +463,7 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectViewDomainAssessmentAgencyCommentsOption(String domainJobRoleCode) throws InterruptedException
 	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]]//a)[2]")).click();
+		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]//a)[1]")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]//span[contains(text(),'View Comments')]")).click();
 	}
@@ -495,5 +514,56 @@ public class SSC_ViewBatchDetailsPage
 	public void clickToChooseReAssignDomainMasterTrainer()
 	{
 		reAssignDomainMasterTrainerRadioButton.click();
+	}
+	public void selectReAssignAssessmentAgencyState(String state) throws InterruptedException
+	{
+		reAssignAssessmentAgencyStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'"+state+"')]")).click();
+	}
+	public void selectReAssignAssessmentAgencyDistrict(String district) throws InterruptedException
+	{
+		reAssignAssessmentAgencyDistrictFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
+	}
+	public void clickToFinallyReAsssignSelectedDomainAssessmentAgency()
+	{
+		reAssignSelectedDomainAssessmentAgencyButton.click();
+	}
+	public void clickToChooseReAssignDomainAssessmentAgency()
+	{
+		reAssignDomainAssessmentAgencyRadioButton.click();
+	}
+	//Domain Job Role 2 Assessment Agency - View Comments option will disappear after reassigning aa for domain job role 1, as same aa for both job role
+	public void selectReAssignAssessmentAgencyOptionForDomainJobRole2(String domainJobRoleCode2) throws InterruptedException
+	{
+		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//a)[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//span[contains(text(),'Assign Assessment Agency')]")).click();
+	}
+	public void selectReAssignDomainJobRole2AssessmentAgencyState(String state) throws InterruptedException
+	{
+		reAssignDomainJobRole2AssesmentAgencyStateFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+	}
+	public void selectReAssignDomainJobRole2AssessmentAgencyDistrict(String district) throws InterruptedException
+	{
+		reAssignDomainJobRole2AssesmentAgencyDistrictFilterList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
+	}
+	public void clickToChooseReAssignDomainJobrole2AssessmentAgency()
+	{
+		reAssignDomainJobRole2AssesmentAgencyRadioButton.click();
+	}
+	public void clickToFinallyReAsssignSelectedDomainJobRole2AssessmentAgency()
+	{
+		reAssignSelectedDomainJobRole2AssesmentAgencyButton.click();
+	}
+	public void clickToGetDomainJobRole2AssessmentAgencyFilterResult()
+	{
+		searchFilterButton4.click();
 	}
 }
