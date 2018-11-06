@@ -14,8 +14,13 @@ public class TP_FeeBasedProgramPage
 	
 	WebDriver driver;
 	
+	
 	@FindBy(xpath="(//button[@class='close'])[3]")
 	private WebElement closeButton;
+	@FindBy(xpath="//input[@placeholder='Select Agreement Date']")
+	private WebElement agreementDateTextbox;
+	@FindBy(xpath="//input[@placeholder='Select First Disbursement Date']")
+	private WebElement disbursementDateTextbox;
 	@FindBy(xpath="//input[@placeholder='Select Start Date']")
 	private WebElement startDateOfProjectTextbox;
 	@FindBy(xpath="(//span[@class='input-group-text'])[1]")
@@ -166,6 +171,18 @@ public class TP_FeeBasedProgramPage
 		//act.moveToElement(closeButton).click().build().perform();
 		Thread.sleep(3000);
 		closeButton.click();
+	}
+	
+	public void clickOnSelectAgreementDate()
+	{
+		agreementDateTextbox.click();
+		agreementDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
+	}
+	
+	public void clickOnSelectDisbursementDate()
+	{
+		disbursementDateTextbox.click();
+		disbursementDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void clickOnStartDateOfProject()throws Exception
