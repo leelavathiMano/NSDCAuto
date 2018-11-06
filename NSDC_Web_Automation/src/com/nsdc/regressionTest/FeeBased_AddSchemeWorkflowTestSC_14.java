@@ -101,6 +101,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			projectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 6, projectDuration);
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 7, projectDuration);
+			tpfb.clickOnSelectAgreementDate();
 			tpfb.enterProjectProposalID(projectID);
 			Thread.sleep(3000);
 			tpfb.enterNameOfProject(projectName);
@@ -118,6 +119,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 10, implementingOrganisation);	
 			Thread.sleep(5000);
 			tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
+			//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
 			tpfb.enterPromoterDetails(promoterDetails);
 			tpfb.enterProjectTarget(target);
 			tpfb.selectAssessmentMode(assessmentMode);
@@ -140,6 +142,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			projectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 6, projectDuration);
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 7, projectDuration);
+			tpfb.clickOnSelectDisbursementDate();
 			tpfb.enterProjectProposalID(projectID);
 			Thread.sleep(3000);
 			tpfb.enterNameOfProject(projectName);
@@ -157,6 +160,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 10, implementingOrganisation);	
 			Thread.sleep(5000);
 			tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
+			//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
 			tpfb.enterPromoterDetails(promoterDetails);
 			tpfb.enterProjectTarget(target);
 			tpfb.selectAssessmentMode(assessmentMode);
@@ -593,6 +597,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				tpfb.enterProjectFundedBy(newFundedBy);
 				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);
+				tpfb.clickOnSelectAgreementDate();
 				tpfb.enterProjectProposalID(newProjectID);
 				Thread.sleep(3000);
 				tpfb.enterNameOfProject(newProjectName);
@@ -618,6 +623,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			{
 				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);
+				tpfb.clickOnSelectDisbursementDate();
 				tpfb.enterProjectProposalID(newProjectID);
 				Thread.sleep(3000);
 				tpfb.enterNameOfProject(newProjectName);
