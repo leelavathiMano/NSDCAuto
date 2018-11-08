@@ -226,9 +226,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	Thread.sleep(3000);
-            tprp.enterAadharNumber(aadhar_Number);
-            tprp.clickToVerifyAadharNumber();
+        	//Thread.sleep(3000);
+            //tprp.enterAadharNumber(aadhar_Number);
+            //tprp.clickToVerifyAadharNumber();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -331,9 +331,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	Thread.sleep(3000);
-            tprp.enterAadharNumber(aadhar_Number);
-            tprp.clickToVerifyAadharNumber();
+        	//Thread.sleep(3000);
+            //tprp.enterAadharNumber(aadhar_Number);
+            //tprp.clickToVerifyAadharNumber();
             Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
@@ -453,9 +453,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	Thread.sleep(3000);
-            tprp.enterAadharNumber(aadhar_Number);
-            tprp.clickToVerifyAadharNumber();
+        	//Thread.sleep(3000);
+            //tprp.enterAadharNumber(aadhar_Number);
+            //tprp.clickToVerifyAadharNumber();
             Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
@@ -599,9 +599,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if((year < 2016) && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	Thread.sleep(3000);
-            tprp.enterAadharNumber(aadhar_Number);
-            tprp.clickToVerifyAadharNumber();
+        	//Thread.sleep(3000);
+            //tprp.enterAadharNumber(aadhar_Number);
+            //tprp.clickToVerifyAadharNumber();
             Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
@@ -882,7 +882,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	
         else if(establishment_Year.equals("2018") && type_Organization.equals("Proprietorship"))
         {
-        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
@@ -894,7 +894,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	
         else if(establishment_Year.equals("2017") && type_Organization.equals("Proprietorship"))
         {
-        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
@@ -907,7 +907,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	
         else if(establishment_Year.equals("2016") && type_Organization.equals("Proprietorship"))
         {
-        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
@@ -922,7 +922,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	
         else if((yearOfEstablishment < 2016) && type_Organization.equals("Proprietorship"))
         {
-        	da_tpr.selectReviewCommentForAadharNumber(adharReview);
+        	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
