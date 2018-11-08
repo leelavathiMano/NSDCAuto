@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
 
 public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
@@ -196,8 +194,12 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
-	public void selectAcceptedBatchViewDetails(String batchID)
+	public void selectAcceptedBatchViewDetailsOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Details')]")).click();
+	}
+	public void selectAcceptedBatchProvideFeedbackOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Provide Feedback')]")).click();
 	}
 }

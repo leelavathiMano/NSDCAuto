@@ -200,5 +200,8 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Details')]")).click();
 	}
-
+	public void selectAcceptedBatchProvideFeedbackOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Provide Feedback')]")).click();
+	}
 }
