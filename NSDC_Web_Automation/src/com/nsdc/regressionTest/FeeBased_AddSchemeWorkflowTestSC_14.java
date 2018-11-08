@@ -62,7 +62,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="addScheme_FeeBased")
-	public void addSchemeTC_01(String sno, String tpUsername, String tpPassword, String schemeName, String financialModel, String fundedBy, String projectDuration, String projectID, String projectName, String implementingOrganisation, String proposingOrganisation, String promoterDetails, String target, String assessmentMode, String startDate, String endDate, String loanAmount, String moratoriumPeriod, String loanduration, String interestRate, String signedTermsheetFile, String signedProposalFile, String otherSupportingFile, String sector, String trainingTarget, String addSectorUndertakingFile, String affiliationCertificate, String courseName, String sector_AddCourse, String jobRole, String jobRoleName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String numberOfHours, String courseFee, String gradingPrefrences, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanFile, String stampPaper, String state, String district) throws Exception
+	public void addSchemeTC_01(String sno, String tpUsername, String tpPassword, String schemeName, String financialModel, String fundedBy, String projectDuration, String AgreementOrDisbursementDate, String projectID, String projectName, String proposingOrganisation, String implementingOrganisation, String promoterDetails, String target, String assessmentMode, String startDate, String endDate, String loanAmount, String moratoriumPeriod, String loanduration, String interestRate, String signedTermsheetFile, String signedProposalFile, String otherSupportingFile, String sector, String trainingTarget, String addSectorUndertakingFile, String affiliationCertificate, String courseName, String sector_AddCourse, String jobRole, String jobRoleName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String numberOfHours, String courseFee, String gradingPrefrences, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanFile, String stampPaper, String state, String district) throws Exception
 	{
 		int srno = Integer.parseInt(sno);
 		LoginPage lp = new LoginPage(driver);
@@ -97,37 +97,42 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		if(financialModel.equals("Funded"))
 		{
 			Thread.sleep(5000);
-			tpfb.enterProjectFundedBy(fundedBy);
+			//tpfb.enterProjectFundedBy(fundedBy);
+			fundedBy = driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 5, fundedBy);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 6, fundedBy);			
 			projectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 6, projectDuration);
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 7, projectDuration);
-			tpfb.clickOnSelectAgreementDate();
+			tpfb.clickOnSelectDisbursementDate();
 			tpfb.enterProjectProposalID(projectID);
+			AgreementOrDisbursementDate = driver.findElement(By.xpath("//input[@placeholder='Select First Disbursement Date']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 7, AgreementOrDisbursementDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 8, AgreementOrDisbursementDate);			
 			Thread.sleep(3000);
 			tpfb.enterNameOfProject(projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 5, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 8, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", 1, 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 5, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 8, projectName);
 		
-			//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
-			implementingOrganisation = driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 9, implementingOrganisation);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 10, implementingOrganisation);	
+			proposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 10, proposingOrganisation);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 11, proposingOrganisation);	
 			Thread.sleep(5000);
-			tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
-			//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
+			//tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
+			tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
 			tpfb.enterPromoterDetails(promoterDetails);
 			tpfb.enterProjectTarget(target);
 			tpfb.selectAssessmentMode(assessmentMode);
 			Thread.sleep(3000);
 			tpfb.clickOnStartDateOfProject();
 			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 14, startDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 15, startDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 15, startDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 16, startDate);
 			//tpfb.clickOnEndDateOfProject();
 			Thread.sleep(3000);
 			tpfb.enterSanctionLoanAmount(loanAmount);
@@ -142,33 +147,36 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			projectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 6, projectDuration);
 			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 7, projectDuration);
-			tpfb.clickOnSelectDisbursementDate();
+			tpfb.clickOnSelectAgreementDate();
 			tpfb.enterProjectProposalID(projectID);
+			AgreementOrDisbursementDate = driver.findElement(By.xpath("//input[@placeholder='Select Agreement Date']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 7, AgreementOrDisbursementDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 8, AgreementOrDisbursementDate);			
 			Thread.sleep(3000);
 			tpfb.enterNameOfProject(projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 3, projectName);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 8, projectName);
-		
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 3, projectName);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 8, projectName);
+	
 			//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
-			implementingOrganisation = driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 9, implementingOrganisation);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 10, implementingOrganisation);	
+			proposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", srno, 10, proposingOrganisation);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", srno, 11, proposingOrganisation);	
 			Thread.sleep(5000);
-			tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
-			//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
+			//tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
+			tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
 			tpfb.enterPromoterDetails(promoterDetails);
 			tpfb.enterProjectTarget(target);
 			tpfb.selectAssessmentMode(assessmentMode);
 			Thread.sleep(3000);
 			tpfb.clickOnStartDateOfProject();
 			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 14, startDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 15, startDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 15, startDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 16, startDate);
 			tpfb.clickOnSanctionLoanAmount();
 			//tpfb.clickOnEndDateOfProject();
 			//endDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
@@ -176,69 +184,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			//ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 16, endDate);
 		}
 		
-		/*if(a != 1)
-		{
-			Thread.sleep(3000);
-			tpfb.clickOnCloseButton();
-			Thread.sleep(8000);
-			tpfb.clickOnStartDateOfProject();
-			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 4, startDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 6, startDate);
-			tpfb.clickOnEndDateOfProject();
-			endDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 5, endDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 7, endDate);
-		}
-		else 
-		{
-			Thread.sleep(5000);
-			tpfb.clickOnStartDateOfProject();
-			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 4, startDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 6, startDate);
-			tpfb.clickOnEndDateOfProject();
-			endDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 5, endDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 7, endDate);
-			
-		}
-		
-		tpfb.enterProjectProposalID(projectID);
-		tpfb.enterNameOfProject(projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 3, projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04", Integer.parseInt(sno), 3, projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 3, projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 3, projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(sno), 3, projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 3, projectName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 8, projectName);
-
-		//tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
-		tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
-		tpfb.selectFinancialModelType(financialModel);
-		if(financialModel.equals("Funded"))
-		{
-			tpfb.enterProjectFundedBy(fundedBy);
-			tpfb.enterProjectTarget(target);
-			tpfb.selectAssessmentMode(assessmentMode);
-			tpfb.enterPromoterDetails(promoterDetails);
-			tpfb.enterSanctionLoanAmount(loanAmount);
-			tpfb.selectMoratoriumPeriod(moratoriumPeriod);
-			tpfb.selectForLoanDuration(loanduration);
-			tpfb.selectForInterestRate(interestRate);
-		}
-		else if(financialModel.equals("Non-Funded"))
-		{
-			tpfb.enterProjectTarget(target);
-			tpfb.selectAssessmentMode(assessmentMode);
-			tpfb.enterPromoterDetails(promoterDetails);
-		}*/
 		
 		Thread.sleep(3000);
 		endDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
-		ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 15, endDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 16, endDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 16, endDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 17, endDate);
 		Thread.sleep(3000);
 		tpfb.clickOnSignedTermsheetBrowseFile();
 		Thread.sleep(3000);
@@ -292,8 +242,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			tpfb.selectAssociatedQP_JobRoleNameI(jobRoleName);
 			tpfb.enterCourseName(courseName);
 			nsqfLevel = driver.findElement(By.xpath("(//input[@ng-reflect-name='nsqfLevel'])[2]")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 31, nsqfLevel);
-			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 25, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 32, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 26, nsqfLevel);
 			tpfb.enterNameOfIssuedCertificate(certificateName);
 		}
 		else 
@@ -379,7 +329,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="approveScheme", dependsOnMethods="addSchemeTC_01")
-	public void daApproveSchemeTC_02(String srno, String fDAUsername, String fDAPassword, String tpID, String expectedFinancialModelType, String status, String expectedFundedBy, String expectedProjectDuration,  String expectedProjectID, String expectedProjectName, String expectedImplementingOrganisation, String expectedProposingOrganisation,  String expectedPromoterDetails, String expectedProjectTarget, String expectedAssessmentMode, String expectedStartDate, String expectedEndDate, String expectedSanctionLoanAmount, String expectedMoratoriumPeriod, String expectedLoanDuration, String expectedInterestRate, String expectedSector, String expectedCourseName, String expectedJobRoleMappingType ,String expectedAssociatedQP, String expectedNSQFLevel, String expectedProposedHour, String expectedState, String expectedDistrict, String comments, String reviewComments) throws Exception
+	public void daApproveSchemeTC_02(String srno, String fDAUsername, String fDAPassword, String tpID, String expectedFinancialModelType, String status, String expectedFundedBy, String expectedProjectDuration, String AggrementOrdisbursementDate,  String expectedProjectID, String expectedProjectName, String expectedProposingOrganisation, String expectedImplementingOrganisation,  String expectedPromoterDetails, String expectedProjectTarget, String expectedAssessmentMode, String expectedStartDate, String expectedEndDate, String expectedSanctionLoanAmount, String expectedMoratoriumPeriod, String expectedLoanDuration, String expectedInterestRate, String expectedSector, String expectedCourseName, String expectedJobRoleMappingType ,String expectedAssociatedQP, String expectedNSQFLevel, String expectedProposedHour, String expectedState, String expectedDistrict, String comments, String reviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -414,10 +364,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value"), expectedFundedBy);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), expectedProjectDuration);
+			Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='firstDisbursementDate'])[2]")).getAttribute("value"), AggrementOrdisbursementDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), expectedProjectID);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), expectedProjectName);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value"), expectedImplementingOrganisation);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), expectedProposingOrganisation);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), expectedImplementingOrganisation);
 			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), expectedPromoterDetails);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), expectedProjectTarget);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), expectedAssessmentMode);
@@ -430,40 +381,18 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		}
 		else
 		{
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), expectedProjectDuration);
+			Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='agreementDate'])[2]")).getAttribute("value"), AggrementOrdisbursementDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), expectedProjectID);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), expectedProjectName);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value"), expectedImplementingOrganisation);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), expectedProposingOrganisation);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), expectedImplementingOrganisation);
 			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), expectedPromoterDetails);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), expectedProjectTarget);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), expectedAssessmentMode);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), expectedStartDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), expectedEndDate);
 		}
-		
-		
-		/*Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), expectedStartDate);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), expectedEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), expectedProjectID);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), expectedProjectName);
-		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), expectedProposingOrganisation);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value"), expectedImplementingOrganisation);
-		if(expectedFinancialModelType.equals("Funded"))
-		{
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='typeOfPia']")).getAttribute("value"), expectedFinancialModelType);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value"), expectedFundedBy);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), expectedProjectTarget);
-			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), expectedPromoterDetails);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sanctionLoanAmount']")).getAttribute("value"), expectedSanctionLoanAmount);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='moratoriumPeriod']")).getAttribute("value"), expectedMoratoriumPeriod);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='loanDuration']")).getAttribute("value"), expectedLoanDuration);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='interestRate']")).getAttribute("value"), expectedInterestRate);
-		}
-		else if(expectedFinancialModelType.equals("Non-Funded"))
-		{
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='typeOfPia']")).getAttribute("value"), expectedFinancialModelType);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), expectedProjectTarget);
-		}*/
 		
 		Thread.sleep(3000);
 		fss.clickOnDownloadSignedTermsheet();
@@ -520,7 +449,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='REJECTED'])[1]")).getText(), "REJECTED");
 		}
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
@@ -536,7 +465,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="resubmitAndReviewScheme", dependsOnMethods="daApproveSchemeTC_02")
-	public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String tpPassword, String daComments, String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, String newProjectDuration, String newProjectID, String newProjectName, String newImplementingOrganisation, String newProposingOrganisation, String newPromoterDetails, String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newLoanAmount, String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, String newSignedTermsheetFile, String newSignedProposalFile, String newOtherSupportingFile, String newSector, String newTrainingTarget, String newAddSectorUndertakingFile, String newAffiliationCertificate, String newCourseName, String newSector_AddCourse, String newJobRole, String newJobRoleName, String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge, String newMinimumEducation, String newCourseDuration, String newNumberOfHours, String newCourseFee, String newGradingPrefrences, String newCourseApprovalFile, String newAffiliationFile, String newWorkOrderFile, String newChallanFile, String newStampPaper, String newState, String newDistrict, String fDAUsername, String fDAPassword, String newComments, String newReviewComments) throws Exception
+	public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String tpPassword, String daComments, String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, String newProjectDuration, String newAgreementOrDisbursementDate, String newProjectID, String newProjectName, String newProposingOrganisation, String newImplementingOrganisation, String newPromoterDetails, String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newLoanAmount, String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, String newSignedTermsheetFile, String newSignedProposalFile, String newOtherSupportingFile, String newSector, String newTrainingTarget, String newAddSectorUndertakingFile, String newAffiliationCertificate, String newCourseName, String newSector_AddCourse, String newJobRole, String newJobRoleName, String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge, String newMinimumEducation, String newCourseDuration, String newNumberOfHours, String newCourseFee, String newGradingPrefrences, String newCourseApprovalFile, String newAffiliationFile, String newWorkOrderFile, String newChallanFile, String newStampPaper, String newState, String newDistrict, String fDAUsername, String fDAPassword, String newComments, String newReviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -594,24 +523,28 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			if(newFinancialModel.equals("Funded"))
 			{
 				Thread.sleep(5000);
-				tpfb.enterProjectFundedBy(newFundedBy);
+				//tpfb.enterProjectFundedBy(newFundedBy);
+				newFundedBy = driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 7, newFundedBy);
 				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);
-				tpfb.clickOnSelectAgreementDate();
+				tpfb.clickOnSelectDisbursementDate();
 				tpfb.enterProjectProposalID(newProjectID);
+				newAgreementOrDisbursementDate = driver.findElement(By.xpath("//input[@placeholder='Select First Disbursement Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 9, newAgreementOrDisbursementDate);
 				Thread.sleep(3000);
 				tpfb.enterNameOfProject(newProjectName);
 				//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
-				newImplementingOrganisation = driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 11, newImplementingOrganisation);
-				tpfb.enterNameOfProposingOrganisation(newProposingOrganisation);
+				newProposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 12, newProposingOrganisation);
+				tpfb.enterNameOfImplementingOrganisation(newImplementingOrganisation);
 				tpfb.enterPromoterDetails(newPromoterDetails);
 				tpfb.enterProjectTarget(newTarget);
 				tpfb.selectAssessmentMode(newAssessmentMode);
 				Thread.sleep(3000);
 				tpfb.clickOnStartDateOfProject();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 16, newStartDate);
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 17, newStartDate);
 				//tpfb.clickForNewEndDateOfProject();
 				tpfb.enterSanctionLoanAmount(newLoanAmount);
 				tpfb.selectMoratoriumPeriod(newMoratoriumPeriod);
@@ -623,21 +556,23 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			{
 				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);
-				tpfb.clickOnSelectDisbursementDate();
+				tpfb.clickOnSelectAgreementDate();
 				tpfb.enterProjectProposalID(newProjectID);
+				newAgreementOrDisbursementDate = driver.findElement(By.xpath("//input[@placeholder='Select Agreement Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 9, newAgreementOrDisbursementDate);
 				Thread.sleep(3000);
 				tpfb.enterNameOfProject(newProjectName);
 				//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
-				newImplementingOrganisation = driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 11, newImplementingOrganisation);	
-				tpfb.enterNameOfProposingOrganisation(newProposingOrganisation);
+				newProposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 12, newProposingOrganisation);	
+				tpfb.enterNameOfImplementingOrganisation(newImplementingOrganisation);
 				tpfb.enterPromoterDetails(newPromoterDetails);
 				tpfb.enterProjectTarget(newTarget);
 				tpfb.selectAssessmentMode(newAssessmentMode);
 				Thread.sleep(3000);
 				tpfb.clickOnStartDateOfProject();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 16, newStartDate);
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 17, newStartDate);
 				//tpfb.clickOnEndDateOfProject();
 				Thread.sleep(3000);
 				tpfb.clickOnSanctionLoanAmount();
@@ -647,7 +582,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 				Thread.sleep(3000);
 				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 17, newEndDate);
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 18, newEndDate);
 				Thread.sleep(3000);
 				tpfb.clickOnSignedTermsheetBrowseFile();
 				Thread.sleep(3000);
@@ -698,7 +633,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 					tpfb.selectAssociatedQP_JobRoleNameI(newJobRoleName);
 					tpfb.enterCourseName(newCourseName);
 					newNsqfLevel = driver.findElement(By.xpath("(//input[@ng-reflect-name='nsqfLevel'])[2]")).getAttribute("value");
-					ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 33, newNsqfLevel);
+					ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 34, newNsqfLevel);
 					tpfb.enterNameOfIssuedCertificate(newCertificateName);
 				}
 				else 
@@ -805,10 +740,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				{
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value"), newFundedBy);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
+					Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='firstDisbursementDate'])[2]")).getAttribute("value"), newAgreementOrDisbursementDate);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
-					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
+					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
 					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), newPromoterDetails);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), newTarget);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
@@ -821,10 +757,12 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				}
 				else
 				{
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
+					//Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='agreementDate'])[2]")).getAttribute("value"), AggrementOrdisbursementDate);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
-					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
+					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
 					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), newPromoterDetails);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), newTarget);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
