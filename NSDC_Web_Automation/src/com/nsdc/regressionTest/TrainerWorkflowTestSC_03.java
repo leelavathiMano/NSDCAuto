@@ -1223,7 +1223,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 			Thread.sleep(4000);
 			if(i==1)
 			{
-				aVp.selectMasterAssessorForDomain(dmasterAssessorName+"("+dmasterAssessorID+")");
+				aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
 				Thread.sleep(2000);
 			}
 			else
