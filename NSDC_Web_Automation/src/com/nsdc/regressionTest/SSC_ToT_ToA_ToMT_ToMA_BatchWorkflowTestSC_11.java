@@ -53,7 +53,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickCreateBatch();
-		Thread.sleep(6000);
+		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
@@ -90,7 +90,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode+"')]")).isDisplayed(),"OMG!!! DomainJobRoleCode not displayed OR Something is wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+domainJobRole+"')]")).getText().trim(), domainJobRole);
 		sscTbcP.selectDomainTrainingStartDate();
@@ -199,11 +199,11 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
 		Thread.sleep(4000);
+		Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Toast Error Message present, Unable to create Batch! May be some data not entered OR Something went wrong! ");
 		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
 		String[]parts=bacthCreationsuccessfulURL.split("/");
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 1, createdBatchID);
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssccreate-new-batchbatch-assignment"+createdBatchID,"OMG!!! No show of Batch Assignment Page OR Something is wrong! ");
@@ -786,7 +786,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 			aVp.clickToGoBack();
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagencyview-batches");
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains("assessmentagencyview-batches"));
 			aVp.enterBatchIdToSearch(batchID);
 			Thread.sleep(2000);
 			if(i==1)
@@ -887,7 +887,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 			if(i==1)
 			{
-				aVp.selectMasterAssessorForDomain(dmasterAssessorName+"("+dmasterAssessorID+")");
+				aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
 				Thread.sleep(2000);
 			}
 			else
@@ -2074,4 +2074,201 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 		}
 	}
+	
+	@Test(dataProvider="batchRejectionData",dependsOnMethods="rejectionBatchCreationTC_07")
+	public void masterAssessorBatchRejectionTC_11(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole1, String domainJobRoleCode1, String domainJobRole2, String domainJobRoleCode2, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String domainJobRole2Fees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String d1masterTrainerID, String d1masterTrainerName, String d1masterTrainerPassword, String d1mtReasonForRejection, String d1mtBatchRejectionRemarks, String d1mtRemarksDate, String d1mtRemarksTime, String d2masterTrainerID, String d2masterTrainerName, String d2masterTrainerPassword, String d2mtReasonForRejection, String d2mtBatchRejectionRemarks, String d2mtRemarksDate, String d2mtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime) throws Exception
+	{
+		if(serialNum.equals("4"))
+		{
+			for(int i=1; i<4;i++)
+			{
+				if(i==1)
+				{
+					LoginPage lp=new LoginPage(driver);
+					lp.clickLogin();
+					EnterLoginPage elp=new EnterLoginPage(driver);
+					elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
+					Thread.sleep(2000);
+					JavascriptExecutor js=(JavascriptExecutor)driver;
+					js.executeScript("window.scrollBy(0,200)", "");
+					Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
+					AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
+					Thread.sleep(4000);
+					aDp.clickBatchAssessmentRequests();
+					Thread.sleep(2000);
+					AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
+					aVp.clickToViewPendingBatchRequests();
+					Thread.sleep(2000);
+					aVp.enterBatchIdToSearch(batchID);
+					Thread.sleep(2000);
+					js.executeScript("window.scrollBy(0,200)", "");
+					Thread.sleep(2000);
+					aVp.clickToGetActionMenuOptions();
+					Thread.sleep(2000);
+					aVp.clickToGetActionMenuOptions();
+					Thread.sleep(2000);
+					aVp.clickToSelectAcceptBatchOption();
+					Thread.sleep(2000);
+					aVp.enterRemarksForAcceptingBatch("Accepted By DAA");
+					Thread.sleep(2000);		
+					aVp.clickToSubmitBatchAcceptance();
+					Thread.sleep(2000);
+					aVp.clickOk();
+					Thread.sleep(2000);
+					//verifying accepted batches & assigning assessors
+					aVp.clickToViewAcceptedBatches();
+					Thread.sleep(4000);
+					aVp.enterBatchIdToSearch(batchID);
+					Thread.sleep(2000);
+					js.executeScript("window.scrollBy(0,200)", "");
+					Thread.sleep(2000);
+					aVp.clickToGetActionMenuOptions();
+					Thread.sleep(4000);
+					aVp.clickToGetActionMenuOptions();
+					Thread.sleep(2000);
+					aVp.clickToSelectAssignAssessorsOption();
+					Thread.sleep(4000);
+					aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
+					Thread.sleep(2000);
+					aVp.selectMasterAssessorForDomain2(dmasterAssessorName+"("+dmasterAssessorID+")");
+					Thread.sleep(2000);
+					aVp.clickToSubmitMasterAssessors();
+					Thread.sleep(4000);
+					aVp.clickOk();
+					Thread.sleep(4000);
+					PostLoginPage plp=new PostLoginPage(driver);
+					plp.clickOnProfileLogo();
+					Thread.sleep(2000);
+					plp.clickOnLogout();
+					Thread.sleep(2000);
+				}
+				//Assigned Master Assessor Rejecting Batch
+				LoginPage lp=new LoginPage(driver);
+				lp.clickLogin();
+				Thread.sleep(2000);
+				EnterLoginPage elp=new EnterLoginPage(driver);
+				elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
+				Thread.sleep(8000);
+				AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
+				maDp.clickToGetAssessorDashboard();
+				Thread.sleep(2000);
+				maDp.clickBatchAssessmentRequests();
+				Thread.sleep(4000);
+				AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
+				maVp.clicktoGoToPendingRequestsSection();
+				Thread.sleep(4000);
+				JavascriptExecutor js=(JavascriptExecutor)driver;
+				js.executeScript("window.scrollBy(0,200)", "");
+				Thread.sleep(2000);
+				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in Master Assessor - "+dmasterAssessorID+" Pending Requests Section!");
+				Thread.sleep(4000);
+				maVp.clickToGetActionMenuOptions(batchID);
+				Thread.sleep(2000);
+				maVp.clickToSelectRejectBatchOption(batchID);
+				Thread.sleep(4000);
+				maVp.selectReasonForRejectingBatch(dmaReasonForRejectingBatch);
+				Thread.sleep(2000);
+				maVp.enterRemarksForRejectingBatch(dmaRejectionRemarks);
+				Thread.sleep(2000);
+				maVp.clickToSaveAndSubmitBatchRejection();
+				Thread.sleep(4000);
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
+				Date date = new Date();
+				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 78, formatter.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 79, timeFormat.format(date));
+				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Rejected");
+				maVp.clickOk();
+				Thread.sleep(4000);
+				js.executeScript("window.scrollBy(0,-500)", "");
+				Thread.sleep(4000);
+				//verifying Rejected Batch
+				maVp.clickToGoToRejectedBatchesSection();
+				Thread.sleep(4000);
+				js.executeScript("window.scrollBy(0,250)", "");
+				Thread.sleep(4000);
+				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in Master Assessor - "+dmasterAssessorID+" Rejected Section!");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), "ToT/ToA");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), batchID);
+				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[4]")).getText().trim(), domainJobRole+"("+domainJobRoleCode+")" );
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), tcName+" - "+state+","+district);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchSize);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), "For Assessment");
+				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), dAssessmentStartDate+dAssessmentEndDate);
+				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[9]")).getText().trim(), formatter.format(date));
+				//View Batch Details - Rejected Status for Master Assessor
+				maVp.clickToGetActionMenuOptions(batchID);
+				Thread.sleep(2000);
+				maVp.clickToSelectViewBatchDetailsOption(batchID);
+				Thread.sleep(4000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+dmasterAssessorID+"')]]/td[6]")).getText().trim(), "Rejected");
+				PostLoginPage plp=new PostLoginPage(driver);
+				plp.clickOnProfileLogo();
+				Thread.sleep(2000);
+				plp.clickOnLogout();
+				Thread.sleep(4000);
+				//ReAssigning Master Assessor By Assessment Agency
+				lp.clickLogin();
+				elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
+				Thread.sleep(2000);
+				js.executeScript("window.scrollBy(0,200)", "");
+				Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
+				Thread.sleep(4000);
+				AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
+				aDp.clickBatchAssessmentRequests();
+				Thread.sleep(2000);
+				AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
+				aVp.clickToViewAcceptedBatches();
+				Thread.sleep(4000);
+				aVp.enterBatchIdToSearch(batchID);
+				Thread.sleep(2000);
+				js.executeScript("window.scrollBy(0,200)", "");
+				Thread.sleep(2000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), "Rejected by Assessor");
+				aVp.clickToGetActionMenuOptions();
+				Thread.sleep(4000);
+				aVp.clickToGetActionMenuOptions();
+				Thread.sleep(2000);
+				aVp.clickToSelectViewBatchDetailsOption();
+				Thread.sleep(4000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole1+"')]]/td[6]")).getText().trim(), "Rejected");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole2+"')]]/td[6]")).getText().trim(), "Rejected");
+				aVp.clickToGetActionMenuOptions();
+				Thread.sleep(2000);
+				aVp.selectViewCommentsOfMasterAssessorOption();
+				Thread.sleep(2000);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Comments by Assessor on')]]]]/div[1]")).getText().trim(), "Comments by Assessor on "+dmaRemarksDate+" :");
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Comments by Assessor on')]]]]/div[2]")).getText().trim(), dmaRejectionRemarks);
+				aVp.clickToCloseViewComments();
+				Thread.sleep(4000);
+				aVp.clickToGetActionMenuOptions();
+				Thread.sleep(4000);
+				aVp.selectReAssignMasterAssessorOption();
+				Thread.sleep(4000);
+				aVp.selectReAssignMasterAssessorForDomain(dmasterAssessorName, dmasterAssessorID);
+				Thread.sleep(2000);
+				aVp.clickToSubmitReAssignedMasterAssessor();
+				Thread.sleep(4000);
+				if(i==3)
+				{
+					Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Cannot Assign Assessor");
+					aVp.clickToCancel();
+				}
+				else
+				{
+					Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "You have successfully assigned "+dmasterAssessorName+" ("+dmasterAssessorID+") for the "+batchID);
+					aVp.clickOk();
+					Thread.sleep(4000);
+					Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole1+"')]]/td[3]")).getText().trim(), dmasterAssessorName+"("+dmasterAssessorID+")");
+					Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole1+"')]]/td[6]")).getText().trim(), "Pending");
+				}
+				Thread.sleep(4000);
+				plp.clickOnProfileLogo();
+				Thread.sleep(2000);
+				plp.clickOnLogout();
+				Thread.sleep(4000);
+			}
+		}
+	} 
 }		

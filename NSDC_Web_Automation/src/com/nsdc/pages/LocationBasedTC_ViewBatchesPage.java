@@ -1,14 +1,10 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
 import com.nsdc.generic.SelectDropDownList;
 
 public class LocationBasedTC_ViewBatchesPage
@@ -81,34 +77,34 @@ public class LocationBasedTC_ViewBatchesPage
 	public void clikToGetBatchActionMenu(String batchID)
 	{
 		//actionMenu.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]/div/div/a")).click();
+		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
 	public void selectViewBatchDetailsOption(String batchID)
 	{
 		//viewBatchDetailsOption.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]//a/span[contains(text(),'View Batch Details')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'View Batch Details')]")).click();
 	}
 	public void selectAcceptBatchOption(String batchID)
 	{
 		//acceptOrRejectBatchOption.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]//a/span[contains(text(),'Accept')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Accept')]")).click();
 	}
 	public void selectRejectBatchOption(String batchID)
 	{
 		//acceptOrRejectBatchOption.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]//a/span[contains(text(),'Reject')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Reject')]")).click();
 	}
 	public void selectRaiseRescheduleRequestOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]//a/span[contains(text(),'Raise Reschedule Request')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Raise Reschedule Request')]")).click();
 	}
 	public void selectRaiseCancellationRequest(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]//a/span[contains(text(),'Raise Cancellation Request')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Raise Cancellation Request')]")).click();
 	}
 	public void clickToSelectEnrollApplicantsOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]//a//span[contains(text(),'Enroll Applicants')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a//span[contains(text(),'Enroll Applicants')]")).click();
 	}
 	public void clickToGoToDashboard()
 	{

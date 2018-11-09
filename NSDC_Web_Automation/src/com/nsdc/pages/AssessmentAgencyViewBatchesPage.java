@@ -19,7 +19,7 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement rejectedBatchesLink;
 	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
 	private WebElement searchByBatchIdTextfield;
-	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
+	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
 	private WebElement actionMenuDropdownLink;
 	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
 	private WebElement viewBatchDetailsOption;
@@ -46,7 +46,9 @@ public class AssessmentAgencyViewBatchesPage
 	@FindBy(xpath="//span[contains(text(),'Assign Assessor')]")
 	private WebElement assignAssessorsOption;
 	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
-	private WebElement domainAssessorsDropdownList;
+	private WebElement domain1AssessorsDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='assessor'])[2]")
+	private WebElement domain2AssessorsDropdownList;
 	@FindBy(xpath="(//select[@formcontrolname='assessor'])[1]")
 	private WebElement platformAssessorsDropdownList;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[4]")
@@ -57,7 +59,17 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement acceptBatchRadioButton;
 	@FindBy(linkText="Completed")
 	private WebElement completedBatchesLink;
-	
+	//ReAssign Master Assessor
+	@FindBy(xpath="(//span[contains(text(),'View')])[1]")
+	private WebElement viewCommentsOptionText;
+	@FindBy(xpath="(//span[contains(text(),'Re-Assign')])[1]")
+	private WebElement reAssignAssessorOptionText;
+	@FindBy(xpath="//angular2-multiselect[@formcontrolname='assessor']/div")
+	private WebElement reAssignMasterAssessorList;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
+	private WebElement submitReAssignedMasterAssessorButton;
+	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelButton;
 	
 	public AssessmentAgencyViewBatchesPage(WebDriver driver)
 	{
@@ -138,9 +150,13 @@ public class AssessmentAgencyViewBatchesPage
 	{
 		assignAssessorsOption.click();
 	}
-	public void selectMasterAssessorForDomain(String dmasterAssessorNameID)
+	public void selectMasterAssessorForDomain1(String dmasterAssessorNameID)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(domainAssessorsDropdownList, dmasterAssessorNameID);
+		SelectDropDownList.selectDropDownListByVisibleText(domain1AssessorsDropdownList, dmasterAssessorNameID);
+	}
+	public void selectMasterAssessorForDomain2(String dmasterAssessorNameID)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(domain2AssessorsDropdownList, dmasterAssessorNameID);
 	}
 	public void selectMasterAssessorForPlatform(String pmasterAssessorNameID)
 	{
@@ -161,5 +177,31 @@ public class AssessmentAgencyViewBatchesPage
 	public void clickToViewCompletedBatches()
 	{
 		completedBatchesLink.click();
+	}
+	//ReAssign Master Assessors
+	public void selectViewCommentsOfMasterAssessorOption()
+	{
+		viewCommentsOptionText.click();
+	}
+	public void selectReAssignMasterAssessorOption()
+	{
+		reAssignAssessorOptionText.click();
+	}
+	public void clickToCloseViewComments()
+	{
+		driver.findElement(By.xpath("(//button[@class='close'])[1]")).click();
+	}
+	public void selectReAssignMasterAssessorForDomain(String dmasterAssessorName, String dmasterAssessorID)
+	{
+		reAssignMasterAssessorList.click();
+		driver.findElement(By.xpath("//label[contains(text(),'"+dmasterAssessorName+" ( "+dmasterAssessorID+" )')]")).click();
+	}
+	public void clickToSubmitReAssignedMasterAssessor()
+	{
+		submitReAssignedMasterAssessorButton.click();
+	}
+	public void clickToCancel()
+	{
+		cancelButton.click();
 	}
 }

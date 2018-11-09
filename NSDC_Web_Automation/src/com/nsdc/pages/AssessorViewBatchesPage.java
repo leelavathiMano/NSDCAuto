@@ -86,7 +86,7 @@ public class AssessorViewBatchesPage
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+rejectionReason+"')]")).click();
 	}
-	public void enterRemarksForRejctingBatch(String remarksForRejectingBatch)
+	public void enterRemarksForRejectingBatch(String remarksForRejectingBatch)
 	{
 		remarksForRejectingBatchTextArea.clear();
 		remarksForRejectingBatchTextArea.sendKeys(remarksForRejectingBatch);
