@@ -162,7 +162,20 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement reAssignSelectedDomainJobRole2AssesmentAgencyButton;
 	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
 	private WebElement searchFilterButton4;
-	
+	//Approving Applicants
+	@FindBy(xpath="//a[h5[contains(text(),'Batch Details')]]")
+	private WebElement batchDetailsSectionText;
+	@FindBy(xpath="//a[h5[contains(text(),'Enrolled Applicants')]]")
+	private WebElement enrolledApplicantsSectionText;
+	@FindBy(xpath="//a[h5[contains(text(),'Approved Applicants')]]")
+	private WebElement approvedApplicantsSectionText;
+	@FindBy(xpath="//button[contains(text(),'Approve Applicants')]")
+	private WebElement approveApplicantsButton;
+	@FindBy(xpath="//button[contains(text(),'View Payment Details')]")
+	private WebElement viewPaymentDetailsButton;
+	@FindBy(xpath="//button[contains(text(),'Go Back')]")
+	private WebElement goBackButton;
+		
 	public SSC_ViewBatchDetailsPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -565,5 +578,50 @@ public class SSC_ViewBatchDetailsPage
 	public void clickToGetDomainJobRole2AssessmentAgencyFilterResult()
 	{
 		searchFilterButton4.click();
+	}
+	//Approving And Rejecting Applicants
+	public void clickTogoToBatchDetailsSection()
+	{
+		batchDetailsSectionText.click();
+	}
+	public void clickToGoToEnrolledApplicantsSection()
+	{
+		enrolledApplicantsSectionText.click();
+	}
+	public void clickToGoToApprovedApplicantsSection()
+	{
+		approvedApplicantsSectionText.click();
+	}
+	public void clickToSelectApplicantToBeApproved(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//label[input[@type='checkbox']]/span")).click();
+	}
+	public void clickToGetApplicantActionMenu(String applicnatID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicnatID+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
+	}
+	public void selectViewDetailsOfApplicantOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'View Details')]")).click();
+	}
+	public void selectApproveOfApplicantOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Approve Applicant')]")).click();
+	}
+	public void selectRejectApplicantOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Reject Applicant')]")).click();
+	}
+	public void clickToApproveAllSelectedApplicants()
+	{
+		approveApplicantsButton.click();
+	}
+	public void clickToViewPaymentDetails()
+	{
+		viewPaymentDetailsButton.click();
+	}
+	public void clickGoBack()
+	{
+		goBackButton.click();
 	}
 }

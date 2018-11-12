@@ -52,7 +52,7 @@ public class SSCAllBatchesPage
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve Applicants')]")).click();
 	}
 	//Verifying Trainer Batch Applicants from SSC End
-	public void clickToFoToBatchDetailsSection()
+	public void clickToGoToBatchDetailsSection()
 	{
 		batchDetailsSectionLink.click();
 	}
