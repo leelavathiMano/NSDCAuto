@@ -175,6 +175,13 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement viewPaymentDetailsButton;
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
 	private WebElement goBackButton;
+	//Applicants Rejection
+	@FindBy(xpath="//angular2-multiselect[@name='rejectReason']/div")
+	private WebElement reasonsForRejectingApplicantList;
+	@FindBy(xpath="//textarea[@name='remarks']")
+	private WebElement remarksForRejectingApplicantTextArea;
+	@FindBy(xpath="//button[contains(text(),'Submit')]")
+	private WebElement rejectApplicantSubmitButton;	
 		
 	public SSC_ViewBatchDetailsPage(WebDriver driver)
 	{
@@ -608,10 +615,6 @@ public class SSC_ViewBatchDetailsPage
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Approve Applicant')]")).click();
 	}
-	public void selectRejectApplicantOption(String applicantID)
-	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Reject Applicant')]")).click();
-	}
 	public void clickToApproveAllSelectedApplicants()
 	{
 		approveApplicantsButton.click();
@@ -623,5 +626,24 @@ public class SSC_ViewBatchDetailsPage
 	public void clickGoBack()
 	{
 		goBackButton.click();
+	}
+	//Applicants Rejection
+	public void selectRejectApplicantOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Reject Applicant')]")).click();
+	}
+	public void selectReasonForRejectingApplicant() throws InterruptedException
+	{
+		reasonsForRejectingApplicantList.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//label[contains(text(),'Other')]")).click();
+	}
+	public void enterRemarksForRejectingApplicant()
+	{
+		remarksForRejectingApplicantTextArea.sendKeys("SSC Rejecting this Applicant");
+	}
+	public void clickToRejectApplicant()
+	{
+		rejectApplicantSubmitButton.click();
 	}
 }
