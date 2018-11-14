@@ -1999,6 +1999,28 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+createdTrainerID+"']]/td[3]")).getText().trim(), name);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+createdTrainerID+"']]/td[4]")).getText().trim(), email);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+createdTrainerID+"']]/td[5]")).getText().trim(), mobile);
+   	 	if(serialNum.equals("5"))
+	 	{
+   	 		sVp.clickToApproveBatch();
+   	 		Thread.sleep(4000);
+   	 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Approved!!\nBatch approved successfully");
+   	 		sVp.clickOk();
+   	 		Thread.sleep(4000);
+   	 		sAp.clickToViewAllPublishedBatches();
+   	 		Thread.sleep(4000);
+   	 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Approved");
+   	 		sAp.clickToGetBatchActionMenu(batchID);
+   	 		Thread.sleep(2000);
+   	 		sAp.selectViewDetailsOption(batchID);
+   	 		Thread.sleep(4000);
+   	 		sVp.clickToGoToApprovedApplicantsSection();
+   	 		Thread.sleep(4000);
+   	 		sVp.clickToSubmitBatch();
+   	 		Thread.sleep(2000);
+   	 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Batch is already approved");
+	 	}
+   	 	else
+   	 	{
    	 	sVp.clickToGetApplicantActionMenu(createdTrainerID);
    	 	Thread.sleep(2000);
    	 	sVp.selectViewDetailsOfApplicantOption(createdTrainerID);
@@ -2050,6 +2072,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
    	 	Thread.sleep(4000);
    	 	js.executeScript("window.scrollBy(0,-1000)", "");
    	 	Thread.sleep(4000);
+   	 	}
    	 	PostLoginPage plp=new PostLoginPage(driver);
    	 	plp.clickOnProfileLogo();
    	 	Thread.sleep(2000);
