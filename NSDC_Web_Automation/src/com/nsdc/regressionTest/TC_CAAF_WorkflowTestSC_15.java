@@ -20,6 +20,9 @@ import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.SA_DashboardPage;
 import com.nsdc.pages.SA_ViewJobRoleRecommendationRequestPage;
+import com.nsdc.pages.SSC_AccrediationAndAffiliationPage;
+import com.nsdc.pages.SSC_AccrediationAndAffiliation_CAAFRequestPage;
+import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.TC_DashboardPage;
 import com.nsdc.pages.TC_MySchemesPage;
 import com.nsdc.pages.TrainingCentre_CAAF_Page;
@@ -87,12 +90,12 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		}
 		
 		Thread.sleep(3000);
-		atc.clickOnUploadMOU_BrowseFile();
-		Thread.sleep(3000);
-		UploadFile.upload(mOU_File);
-		Thread.sleep(3000);
-		atc.clickOnUploadMOU_UploadFile();
-		Thread.sleep(3000);
+//		atc.clickOnUploadMOU_BrowseFile();
+//		Thread.sleep(3000);
+//		UploadFile.upload(mOU_File);
+//		Thread.sleep(3000);
+//		atc.clickOnUploadMOU_UploadFile();
+//		Thread.sleep(3000);
 		atc.clickOnSubmit();
 		Thread.sleep(3000);
 		atc.clickOnYesAddTrainingCentre();
@@ -147,7 +150,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_SC15TC02");
 	}
 	
-	@Test(dataProvider="tc_CAAF_FormFilling")
+	@Test(dataProvider="tc_CAAF_FormFilling", dependsOnMethods="addTrainingCentreTC_01")
 	public void cAAF_FormFillingTC_02(String sno, String tcUsername, String tcPassword, String newPassword, String confirmPassword, String nameOfTC, String tcType, String socialmedia, String websiteurl, String spocName, String spocEmail, String spocMobileNumber, String spocAltNumber, String centrePrincipalName, String centrePrincipalEmail, String centrePrincipalcontactNumber, String tcAddress, String tcLandmark, String tcPinCode, String tcState, String tcDistrict, String tcTehsil, String tcParliamentry, String tcAddressProof, String addressProofFile, String tcAreaClassificationCentre, String centreAtGroundFloor, String buildingStatus, String buildingConstruction, String transportSystem, String transportName, String buildingFace, String approachRoadWidth, String previousBuildingState, String buildingStateFile, String firstAffiliationName, String firstAffiliationType, String firstAboutAffiliation, String secondAffiliationName, String secondAffiliationType, String secondAboutAffiliation, String thirdAffiliationName, String thirdAffiliationType, String thirdAboutAffiliation, String menResidentialArea, String totalAreaMenResidential, String roomsNumberMenResidential, String residentialCapacityMen, String remarkMenResidential, String womenResidentialArea, String totalAreaWomenResidential, String roomsNumberWomenResidential, String residentialCapacityWomen, String remarkWomenResidential, String fireEquipmentAvailablity, String classRoomCarpetArea, String classroomRemark, String laboratoryCarpetArea, String laboratoryType, String laboratoryRemark, String hybridCarpetArea, String hybridLaboratoryType, String hybridRemark, String sector, String jobRollName, String secondJobRollName, String thirdJobRollName, String traineeToTrainerRatio, String parallelBatchesNumber, String jobRole, String additionalArea, String additionalCarpetArea, String coveredCarpetArea, String trainerID, String trainerAvailablity, String trainerResourceType, String first_Classroom, String first_Laboratory, String first_Hybrid, String second_Classroom, String second_Laboratory, String second_Hybrid, String firstCentreCarpetArea, String firstCentrWashroomType, String firstCentreAreaRemark, String secondCentreCarpetArea, String secondCentrWashroomType, String secondCentreAreaRemark, String thirdCentreCarpetArea, String thirdCentreAreaRemark, String fourthCentreCarpetArea, String fourthCentreAreaRemark, String fifthCentreAreaType, String fifthCentreCarpetArea, String fifthCentrWashroomType, String fifthCentreAreaRemark, String firstSupportStaffName, String firstCentreStaffHighestQualification, String firstResourceType, String firstCentreStaffRemark, String secondSupportStaffType, String secondSupportStaffName, String secondCentreStaffHighestQualification, String secondResourceType, String secondCentreStaffRemark) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -579,8 +582,6 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		caaf.clickForAddAnotherCentreStaff();
 		
-		//JavascriptExecutor js = (JavascriptExecutor) driver;
-		//js.executeScript("scroll(0, 900)");
 		Thread.sleep(5000);
 		caaf.clickOnSaveAndNext();
 		
@@ -603,6 +604,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		
 		
 	}
+	
+	
 	
 	
 	
