@@ -143,6 +143,9 @@ public class TrainerMyProfilePage
 	private WebElement cancelButton2;
 	@FindBy(xpath="//button[text()='Search & Apply']")
 	private WebElement searchAndAppluButton;
+	//Edit Profile
+	@FindBy(xpath="//button[contains(text(),'Edit Profile')]")
+	private WebElement editProfileButton;
 	
 	public TrainerMyProfilePage(WebDriver driver)
 	{
@@ -387,5 +390,10 @@ public class TrainerMyProfilePage
 	public void clickToDeleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducated()
 	{
 		deleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducatedButton.click();
+	}
+	//Edit Profile
+	public void clickEditProfile()
+	{
+		editProfileButton.click();
 	}
 }

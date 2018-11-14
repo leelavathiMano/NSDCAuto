@@ -193,7 +193,7 @@ public class LocationBasedTC_ViewBatchesPage
 	}
 	public void enterRemarksForRejectingApplicant()
 	{
-		remarksForRejectingApplicantTextArea.sendKeys("Rejecting this Applicant");
+		remarksForRejectingApplicantTextArea.sendKeys("TC Rejecting this Applicant");
 	}
 	public void clickToRejectApplicant()
 	{
