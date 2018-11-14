@@ -23,7 +23,7 @@ public class SSC_BatchReSchedulePage
 	private WebElement trainingEndDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[2]")
 	private WebElement closeTrainingEndDateCalenderIcon;
-	//domain QP
+	//domain Job QP
 	@FindBy(xpath="(//input[@formcontrolname='trainingStartDate'])[1]")
 	private WebElement domainTrainingStartDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[3]")
