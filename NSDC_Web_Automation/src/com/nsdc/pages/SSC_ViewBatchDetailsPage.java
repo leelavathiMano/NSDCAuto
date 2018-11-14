@@ -181,7 +181,9 @@ public class SSC_ViewBatchDetailsPage
 	@FindBy(xpath="//textarea[@name='remarks']")
 	private WebElement remarksForRejectingApplicantTextArea;
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
-	private WebElement rejectApplicantSubmitButton;	
+	private WebElement rejectApplicantSubmitButton;
+	@FindBy(xpath="//button[contains(text(),'Approve Batch')]")
+	private WebElement approveBatchButton;
 		
 	public SSC_ViewBatchDetailsPage(WebDriver driver)
 	{
@@ -645,5 +647,9 @@ public class SSC_ViewBatchDetailsPage
 	public void clickToRejectApplicant()
 	{
 		rejectApplicantSubmitButton.click();
+	}
+	public void clickToApproveBatch()
+	{
+		approveBatchButton.click();
 	}
 }
