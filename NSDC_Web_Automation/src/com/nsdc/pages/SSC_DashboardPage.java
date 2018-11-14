@@ -23,6 +23,8 @@ public class SSC_DashboardPage
 	private WebElement rozgarMelaLink;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
 	private WebElement assessmentsAndCertificationButton;
+	@FindBy(xpath="(//span[@class='m-menu__link-text'])[6]")
+	private WebElement accrediationAndAffiliationButton;
 	
 	
 	public SSC_DashboardPage(WebDriver driver)
@@ -61,5 +63,10 @@ public class SSC_DashboardPage
 	public void clickOnAssessmentsAndCertification()
 	{
 		assessmentsAndCertificationButton.click();
+	}
+
+	public void clickOnAccrediationAndAffiliation()
+	{
+		accrediationAndAffiliationButton.click();
 	}
 }
