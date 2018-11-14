@@ -24,6 +24,11 @@ public class SSCAllBatchesPage
 	private WebElement applicantsSectionLink;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
+	//Reschedule and cancellation
+	@FindBy(xpath="(//button[contains(text(),'Reject Request')])[1]")
+	private WebElement rejectBatchRescheduleRequestButton;
+	@FindBy(xpath="(//button[contains(text(),'Approve Request')])[1]")
+	private WebElement approveBatchRescheduleRequestButton;
 	
 	
 	public SSCAllBatchesPage(WebDriver driver)
@@ -71,6 +76,19 @@ public class SSCAllBatchesPage
 	public void clickOk()
 	{
 		okButton.click();
+	}
+	//Batch Reschedule and Cancellation
+	public void selectApproveOrRejectRescheduleRequestOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve/ Reject Reschedule Request')]")).click();
+	}
+	public void clickToRejectBatchRescheduleRequest()
+	{
+		rejectBatchRescheduleRequestButton.click();
+	}
+	public void clickToApproveBatchRescheduleRequest()
+	{
+		approveBatchRescheduleRequestButton.click();
 	}
 }	
 	

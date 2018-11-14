@@ -62,7 +62,16 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement remarksForRejectingApplicantTextArea;
 	@FindBy(xpath="(//button[contains(text(),'Reject Candidate')])[2]")
 	private WebElement rejectApplicantButton;
-			
+	//Reschedule and Cancellation Elements
+	@FindBy(id="customFile")
+	private WebElement batchRescheduleSupportingDocumentBrowseButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	private WebElement batchRescheduleSupportingDocumentUploadButton;
+	@FindBy(xpath="(//textarea[@formcontrolname='comments'])[1]")
+	private WebElement batchRescheduleCommentsTextArea;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[3]")
+	private WebElement batchRescheduleSubmitButton;
+				
 	public LocationBasedTC_ViewBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -206,5 +215,23 @@ public class LocationBasedTC_ViewBatchesPage
 	public void clickToSendBatchForApproval()
 	{
 		sendBatchForApprovalButton.click();
+	}
+	//Batch Reschedule and Cancellation
+	public void clickToBrowseForBatchRescheduleSupportingDocument()
+	{
+		batchRescheduleSupportingDocumentBrowseButton.click();
+	}
+	public void clickToUploadBatchRescheduleSupportingDocument()
+	{
+		batchRescheduleSupportingDocumentUploadButton.click();
+	}
+	public void enterCommentsForBatchReschedule(String batchRescheduleComments)
+	{
+		batchRescheduleCommentsTextArea.clear();
+		batchRescheduleCommentsTextArea.sendKeys(batchRescheduleComments);
+	}
+	public void clickToSubmitBatchreschedule()
+	{
+		batchRescheduleSubmitButton.click();
 	}
 }

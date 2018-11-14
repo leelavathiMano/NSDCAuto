@@ -144,6 +144,9 @@ public class AssessorMyProfilePage
 	private WebElement cancelButton2;
 	@FindBy(xpath="//button[text()='Search & Apply']")
 	private WebElement searchAndAppluButton;
+	//Edit Profile
+	@FindBy(xpath="//button[contains(text(),'Edit Profile')]")
+	private WebElement editProfileButton;
 	
 	public AssessorMyProfilePage(WebDriver driver)
 	{
@@ -386,5 +389,10 @@ public class AssessorMyProfilePage
 	public void clickToDeleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducated()
 	{
 		deleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducatedButton.click();
+	}
+	//Edit Profile
+	public void clickEditProfile()
+	{
+		editProfileButton.click();
 	}
 }

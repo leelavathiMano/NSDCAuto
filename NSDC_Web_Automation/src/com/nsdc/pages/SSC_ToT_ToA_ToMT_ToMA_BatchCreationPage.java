@@ -138,6 +138,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchCategoryDropdownList, batchCategory);
 	}
+	//Batch Duration
 	public void selectTrainingStartDateForBatch() throws InterruptedException
 	{
 		trainingStartDateTextField.click();
@@ -250,6 +251,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		domainBaseQpRadioButton.click();
 	}
+	//Domain Training Dates
 	public void selectDomainTrainingStartDate() throws InterruptedException
 	{
 		domainTrainingStartDateTextField.click();
@@ -344,6 +346,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		closeDomainTrainingEndDateCalenderIcon.click();
 	}
+	//Domain Assessment Dates
 	public void selectDomainAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
@@ -470,6 +473,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		platformBaseQpRadioButton.click();
 	}
+	//Platform Training Dates
 	public void selectPlatformTrainingStartDate() throws InterruptedException
 	{
 		platformTrainingStartDateTextField.click();
@@ -562,6 +566,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		closePlatformTrainingEndDateCalenderIcon.click();
 	}
+	//Platform Assessment Dates
 	public void selectPlatformAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		platformAssessmentStartDateTextField.click();
