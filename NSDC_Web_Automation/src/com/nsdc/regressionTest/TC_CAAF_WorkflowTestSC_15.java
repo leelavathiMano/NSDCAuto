@@ -332,7 +332,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_2 ']")).getText(), "CLASS_2");
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_3 ']")).getText(), "CLASS_3");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("scroll(0, 900)");
+		js.executeScript("scroll(0, 500)");
 		Thread.sleep(10000);
 		caaf.clickOnThird_Remove();
 		
