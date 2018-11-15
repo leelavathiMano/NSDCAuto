@@ -152,16 +152,16 @@ public class SSC_ViewBatchDetailsPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
 	private WebElement reAssignSelectedDomainAssessmentAgencyButton;
 	//Domain JobRole 2 ReAssign Assessment Agency elements
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state']/div)[5]")
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state']/div)[1]")
 	private WebElement reAssignDomainJobRole2AssesmentAgencyStateFilterList;
-	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district']/div)[5]")
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district']/div)[1]")
 	private WebElement reAssignDomainJobRole2AssesmentAgencyDistrictFilterList;
-	@FindBy(xpath="(//input[@type='radio'])[7]")
-	private WebElement reAssignDomainJobRole2AssesmentAgencyRadioButton;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
-	private WebElement reAssignSelectedDomainJobRole2AssesmentAgencyButton;
-	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
+	@FindBy(xpath="(//button[contains(text(),'Search')])[1]")
 	private WebElement searchFilterButton4;
+	@FindBy(xpath="(//input[@type='radio'])[1]")
+	private WebElement reAssignDomainJobRole2AssesmentAgencyRadioButton;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
+	private WebElement reAssignSelectedDomainJobRole2AssesmentAgencyButton;
 	//Approving Applicants
 	@FindBy(xpath="//a[h5[contains(text(),'Batch Details')]]")
 	private WebElement batchDetailsSectionText;
@@ -562,7 +562,7 @@ public class SSC_ViewBatchDetailsPage
 	{
 		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//a)[1]")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//span[contains(text(),'Assign Assessment Agency')]")).click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//span[contains(text(),'Reassign Assessment Agency')]")).click();
 	}
 	public void selectReAssignDomainJobRole2AssessmentAgencyState(String state) throws InterruptedException
 	{

@@ -51,19 +51,19 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToGetActionMenuOptions(String batchID)
 	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+batchID+"')]]//a)[1]")).click();
+		driver.findElement(By.xpath("(//tr[td[1][contains(text(),'"+batchID+"')]]//a)[1]")).click();
 	}
 	public void clickToSelectViewDetailsOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'View Details')]")).click();
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'View Details')]")).click();
 	}
 	public void clickToSelectAcceptBatchOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Accept Batch')]")).click();
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Accept Batch')]")).click();
 	}
 	public void clickToSelectRejectBatchOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Reject Batch')]")).click();
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Reject Batch')]")).click();
 	}
 	public void clickGoBackFromBatchDetails()
 	{

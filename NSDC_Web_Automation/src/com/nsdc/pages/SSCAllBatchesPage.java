@@ -46,15 +46,15 @@ public class SSCAllBatchesPage
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+batchID+"')]]//a)[1]")).click();
+		driver.findElement(By.xpath("(//tr[td[1][contains(text(),'"+batchID+"')]]//a)[1]")).click();
 	}
 	public void selectViewDetailsOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'View Details')]")).click();	
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'View Details')]")).click();	
 	}
 	public void selectApproveApplicantsOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve Applicants')]")).click();
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve Applicants')]")).click();
 	}
 	//Verifying Trainer Batch Applicants from SSC End
 	public void clickToGoToBatchDetailsSection()
@@ -80,7 +80,7 @@ public class SSCAllBatchesPage
 	//Batch Reschedule and Cancellation
 	public void selectApproveOrRejectRescheduleRequestOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve/ Reject Reschedule Request')]")).click();
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve/ Reject Reschedule Request')]")).click();
 	}
 	public void clickToRejectBatchRescheduleRequest()
 	{
