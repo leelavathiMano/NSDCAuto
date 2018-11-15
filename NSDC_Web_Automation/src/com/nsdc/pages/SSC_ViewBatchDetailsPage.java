@@ -568,7 +568,7 @@ public class SSC_ViewBatchDetailsPage
 	{
 		reAssignDomainJobRole2AssesmentAgencyStateFilterList.click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
+		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[1]")).click();
 	}
 	public void selectReAssignDomainJobRole2AssessmentAgencyDistrict(String district) throws InterruptedException
 	{

@@ -111,7 +111,7 @@ public class LocationBasedTC_ViewBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Raise Cancellation Request')]")).click();
 	}
-	public void clickToSelectEnrollApplicantsOption(String batchID)
+	public void selectEnrollApplicantsOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a//span[contains(text(),'Enroll Applicants')]")).click();
 	}

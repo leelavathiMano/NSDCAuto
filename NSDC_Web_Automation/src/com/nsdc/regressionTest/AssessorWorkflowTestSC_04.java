@@ -1131,7 +1131,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 		Thread.sleep(2000);
     }
     
-    @Test(dataProvider="assessorTrainingBatchesData",dependsOnMethods="assessorTrainingBatchesForAssessorApplicantsTC_03")
+    @Test(dataProvider="assessorTrainingBatchesData", dependsOnMethods="assessorTrainingBatchesForAssessorApplicantsTC_03")
     public void batchApprovalTC_04(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime) throws Exception
     {
     	//Assigned TC Login to Accept Batch
@@ -1203,7 +1203,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 			}
 			Thread.sleep(4000);	
 			tVp.clickToSubmit();
-			Thread.sleep(2000);	
+			Thread.sleep(4000);	
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
@@ -1266,7 +1266,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 			}
 			Thread.sleep(2000);		
 			aVp.clickToSubmitBatchAcceptance();
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
@@ -1373,7 +1373,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 		}
    }
        
-   @Test(dataProvider="registrationData",dependsOnMethods="batchApprovalTC_04")
+   @Test(dataProvider="registrationData", dependsOnMethods="batchApprovalTC_04")
    public void assessorSearchAndApplyForAvailableBatchTC_05(String serialNum,String createdAssessorID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3, String paymentMode, String bankName, String paymentReferenceNumber, String paymentDate, String paymentRemarks) throws Exception
    {
 	   String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
@@ -1635,9 +1635,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
 	   tcVp.clikToGetBatchActionMenu(batchID);
 	   Thread.sleep(2000);
-	   tcVp.clickToSelectEnrollApplicantsOption(batchID);
+	   tcVp.selectEnrollApplicantsOption(batchID);
 	   Thread.sleep(4000);
-	   Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-batch-betails"+batchID+"applied","OMG!!! navigation to Enroll Applicants Page is unsuccessful OR Something went wrong! ");   
 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+createdAssessorID+"']]")).size()==1,"OMG!!! No show of Assessor Applicant - "+createdAssessorID+" who has applied for the Batch - "+batchID+" OR Something went wrong! ");
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+createdAssessorID+"']]/td[2]")).getText().trim(), createdAssessorID);
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+createdAssessorID+"']]/td[3]")).getText().trim(), name);
@@ -1647,7 +1646,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   Thread.sleep(4000);
 	   tcVp.selectViewDetailsOfApplicantOption(createdAssessorID);
 	   Thread.sleep(4000);
-	   Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-applicant-details"+batchID+createdAssessorID+"Assessor","OMG!!! navigation to View Applicant Details Page is unsuccessful OR Something went wrong! ");
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -1679,7 +1677,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   //tcVp.clickGoBack(); 
 	   driver.navigate().back();
 	   Thread.sleep(4000);
-	   Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-batch-betails"+batchID+"applied","OMG!!! View Applicant Details - GoBack navigation to Applied Applicants Page Section is unsuccessfull OR Something went wrong! ");
 	   if(serialNum.equals("1"))
 	   {
 		   tcVp.clickToSelectApplicantToBeEnrolled(createdAssessorID);
@@ -1727,7 +1724,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 		   Thread.sleep(4000);
 		   tcVp.selectViewDetailsOfApplicantOption(createdAssessorID);
 		   Thread.sleep(4000);
-		   Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-applicant-details"+batchID+createdAssessorID+"Assessor","OMG!!! navigation to View Applicant Details Page is unsuccessful OR Something went wrong! ");
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -1795,12 +1791,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   String platformTrainingEndDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 20);
 	   String platformAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 21);
 	   String platformAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 22);
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), batchID);
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), state+"/"+city);
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[4]")).getText().trim(), domainJobRole+", "+platformJobRole);
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), "Enrolled");
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchCreatedDate);
+	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), batchID);
+	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
+	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), state+"/"+city);
+	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[4]")).getText().trim(), domainJobRole+", "+platformJobRole);
+	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), "Enrolled");
+	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchCreatedDate);
 	   AssessorApplicantViewBatchesPage aVp=new AssessorApplicantViewBatchesPage(driver);
 	   aVp.clickToGetEnrolledBatchActionMenu(batchID);
 	   Thread.sleep(2000);
@@ -1901,6 +1897,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
   	 	sAp.clickToViewAllPublishedBatches();
   	 	Thread.sleep(4000);
   	 	String batchID=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 1);
+  	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Submitted");
   	 	sAp.clickToGetBatchActionMenu(batchID);
   	 	Thread.sleep(2000);
   	 	sAp.selectApproveApplicantsOption(batchID);
@@ -1918,7 +1915,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
   	 	Thread.sleep(2000);
   	 	sVp.selectViewDetailsOfApplicantOption(createdAssessorID);
   	 	Thread.sleep(2000);
-  	 	Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscapplicant-details"+batchID+createdAssessorID+"Assessor","OMG!!! navigation to View Applicant Details Page is unsuccessful OR Something went wrong! ");
   	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
   	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
   	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -2008,14 +2004,14 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
    	 		Thread.sleep(4000);
    	 		sAp.clickToViewAllPublishedBatches();
    	 		Thread.sleep(4000);
-   	 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Approved");
+   	 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Approved");
    	 		sAp.clickToGetBatchActionMenu(batchID);
    	 		Thread.sleep(2000);
    	 		sAp.selectViewDetailsOption(batchID);
    	 		Thread.sleep(4000);
    	 		sVp.clickToGoToApprovedApplicantsSection();
    	 		Thread.sleep(4000);
-   	 		sVp.clickToSubmitBatch();
+   	 		sVp.clickToApproveBatch();
    	 		Thread.sleep(2000);
    	 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Batch is already approved");
 	 	}
@@ -2025,7 +2021,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
   	  	 	Thread.sleep(2000);
   	  	 	sVp.selectViewDetailsOfApplicantOption(createdAssessorID);
   	  	 	Thread.sleep(2000);
-  	  	 	Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscapplicant-details"+batchID+createdAssessorID+"Assessor","OMG!!! navigation to View Applicant Details Page is unsuccessful OR Something went wrong! ");
   	  	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
   	  	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
   	  	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -2110,7 +2105,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 			Thread.sleep(4000);
 			aSp.clickSearch();
 			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
 			aSp.clickToGetBatchActionMenu(batchID);
 			Thread.sleep(4000);
 			aSp.selectApplyToBatch(batchID);
@@ -2139,9 +2134,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 			Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
 			tcVp.clikToGetBatchActionMenu(batchID);
 			Thread.sleep(4000);
-			tcVp.clickToSelectEnrollApplicantsOption(batchID);
+			tcVp.selectEnrollApplicantsOption(batchID);
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-batch-betails"+batchID+"applied","OMG!!! navigation to Enroll Applicants Page is unsuccessful OR Something went wrong! ");   
 			tcVp.clickToGetApplicantActionMenu(createdAssessorID);
 			Thread.sleep(4000);
 			tcVp.selectRejectApplicantOption(createdAssessorID);
@@ -2196,7 +2190,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 			Thread.sleep(4000);
 			aSp.clickSearch();
 			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
 			aSp.clickToGetBatchActionMenu(batchID);
 			Thread.sleep(4000);
 			aSp.selectApplyToBatch(batchID);
@@ -2225,9 +2219,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
 	   		tcVp.clikToGetBatchActionMenu(batchID);
 	   		Thread.sleep(4000);
-	   		tcVp.clickToSelectEnrollApplicantsOption(batchID);
-	   		Thread.sleep(4000);
-	   		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-batch-betails"+batchID+"applied","OMG!!! navigation to Enroll Applicants Page is unsuccessful OR Something went wrong! ");   
+	   		tcVp.selectEnrollApplicantsOption(batchID);
+	   		Thread.sleep(6000);
 	   		tcVp.clickToGetApplicantActionMenu(createdAssessorID);
 	   		Thread.sleep(4000);
 	   		tcVp.selectEnrollApplicantOption(createdAssessorID);
@@ -2284,7 +2277,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   		Thread.sleep(2000);
 	   		sVp.selectViewDetailsOfApplicantOption(createdAssessorID);
 	   		Thread.sleep(2000);
-	   		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscapplicant-details"+batchID+createdAssessorID+"Assessor","OMG!!! navigation to View Applicant Details Page is unsuccessful OR Something went wrong! ");
 	   		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 	   		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 	   		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
