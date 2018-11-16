@@ -1270,8 +1270,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		//Domain JobRole 2 Dates
 		sscTbcP.selectDomain2TrainingStartDate();
 		Thread.sleep(2000);
-		sscTbcP.clickTocloseDomain2TrainingStartDateCalender();
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectDomain2TrainingEndDateForNewBatch();
