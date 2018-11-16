@@ -226,16 +226,23 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
-            Thread.sleep(3000);
+        	tprp.enterPANNumber(pan_Number);
+            Thread.sleep(5000);
             tprp.clickBrowseButton1();
-            Thread.sleep(3000);
-            
-            UploadFile.upload(upload_provisional);
+            Thread.sleep(4000);
+            UploadFile.upload(upload_PAN);
             Thread.sleep(3000);
             tprp.clickUploadButton1();
+            
+            Thread.sleep(4000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_provisional);
+            Thread.sleep(3000);
+            tprp.clickUploadButton2();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -331,17 +338,24 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
+        	tprp.enterPANNumber(pan_Number);
+        	Thread.sleep(4000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(4000);
+            tprp.clickUploadButton1();
             Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
-            tprp.clickBrowseButton1();
+            tprp.clickBrowseButton2();
             Thread.sleep(4000);
             UploadFile.upload(upload_turnover1);
             Thread.sleep(4000);
-            tprp.clickUploadButton1();
+            tprp.clickUploadButton2();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -453,25 +467,32 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
-            Thread.sleep(5000);
-            tprp.enterAnnualTurnOver1(turnover1);
-            Thread.sleep(4000);
+        	tprp.enterPANNumber(pan_Number);
+        	Thread.sleep(5000);
             tprp.clickBrowseButton1();
             Thread.sleep(4000);
-            UploadFile.upload(upload_turnover1);
+            UploadFile.upload(upload_PAN);
             Thread.sleep(4000);
             tprp.clickUploadButton1();
             Thread.sleep(5000);
-            tprp.enterAnnualTurnOver2(turnover2);
+            tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
             tprp.clickBrowseButton2();
             Thread.sleep(4000);
-            UploadFile.upload(upload_turnover2);
+            UploadFile.upload(upload_turnover1);
             Thread.sleep(4000);
             tprp.clickUploadButton2();
+            Thread.sleep(5000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton3();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(4000);
+            tprp.clickUploadButton3();
             Thread.sleep(4000);
             
             tprp.clickSaveAndNextButton();
@@ -599,33 +620,40 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         else if((year < 2016) && type_Of_The_Organization.equals("Proprietorship"))
         {
-        	//Thread.sleep(3000);
+        	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
-            Thread.sleep(5000);
-            tprp.enterAnnualTurnOver1(turnover1);
+        	tprp.enterPANNumber(pan_Number);
+        	Thread.sleep(5000);
+        	tprp.clickBrowseButton1();
             Thread.sleep(4000);
-            tprp.clickBrowseButton1();
-            Thread.sleep(4000);
-            UploadFile.upload(upload_turnover1);
+            UploadFile.upload(upload_PAN);
             Thread.sleep(4000);
             tprp.clickUploadButton1();
             Thread.sleep(5000);
-            tprp.enterAnnualTurnOver2(turnover2);
+            tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
             tprp.clickBrowseButton2();
             Thread.sleep(4000);
-            UploadFile.upload(upload_turnover2);
+            UploadFile.upload(upload_turnover1);
             Thread.sleep(4000);
             tprp.clickUploadButton2();
             Thread.sleep(5000);
-            tprp.enterAnnualTurnOver3(turnover3);
+            tprp.enterAnnualTurnOver2(turnover2);
             Thread.sleep(4000);
             tprp.clickBrowseButton3();
             Thread.sleep(4000);
-            UploadFile.upload(upload_turnover3);
+            UploadFile.upload(upload_turnover2);
             Thread.sleep(4000);
             tprp.clickUploadButton3();
+            Thread.sleep(5000);
+            tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton4();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover3);
+            Thread.sleep(4000);
+            tprp.clickUploadButton4();
             Thread.sleep(4000);
             
             tprp.clickSaveAndNextButton();
@@ -885,9 +913,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
-        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	da_tpr.selectReviewCommentForPAN(panReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Third_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
         	
         }
@@ -897,9 +928,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-       	    da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+       	    da_tpr.clickOn_Third_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
 
@@ -910,12 +944,16 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	Thread.sleep(2000);
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-       	    da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+       	    da_tpr.clickOn_Third_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+        	da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
         	Thread.sleep(2000);
         }
@@ -925,15 +963,19 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
+        	Thread.sleep(3000);
+        	da_tpr.selectReviewCommentForPAN(panReview);
+        	Thread.sleep(2000);
+        	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         	Thread.sleep(2000);
-       	    da_tpr.clickOn_Second_PreviewAttachedProofDocument();
+       	    da_tpr.clickOn_Third_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForFirstFinancialYear(firstFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+        	da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForSecondFinancialYear(secondFinancialYearReview);
         	Thread.sleep(2000);
-        	da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
+        	da_tpr.clickOn_Fifth_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForThirdFinancialYear(thirdFinancialYearReview);
         	Thread.sleep(2000);
         }
