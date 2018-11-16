@@ -26,7 +26,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	}
 	
 	@Test(dataProvider="candidateRegistrationData")
-	public void candidateRegistrationTC_01(String serialNum, String createdCandidateID, String trainingPartnerID, String trainingPartnerPassword, String typeOfRegistration, String bulkExcelFile, String namePrefix, String fullName, String profilePicture, String gender, String dob, String guardianRelation, String guardianname, String maritalStatus, String placeOfBirth, String cast, String religion, String isDisabled, String disablity, String disabilityProofDoc, String address, String village, String state, String district, String subDistrict, String pincode, String parlimentaryConstituency, String identificationType, String identificationIDnumber, String identificationProof, String isCommunicationAddressSameAsPermanentAddress, String cAddress, String cVillage, String cState, String cDistrict, String cSubDistrict, String cPincode, String cParlimentaryConstituency, String education1, String specialisation1, String yearOfPassing1, String education1Proof, String education2, String specialisation2, String othersEducationName, String yearOfPassing2, String education2Proof, String education3, String specialisation3, String yearOfPassing3, String education3Proof , String hearAboutUs, String sector1, String subSector1, String jobRole1, String sector2, String subSector2, String jobRole2, String sector3, String subSector3, String jobRole3) throws Exception
+	public void candidateRegistrationTC_01(String serialNum, String createdCandidateID, String trainingPartnerID, String trainingPartnerPassword, String typeOfRegistration, String bulkExcelFile, String namePrefix, String fullName, String profilePicture, String gender, String dob, String guardianRelation, String guardianName, String maritalStatus, String placeOfBirth, String cast, String religion, String isDisabled, String disablity, String disabilityProofDoc, String address, String village, String state, String district, String subDistrict, String pincode, String parlimentaryConstituency, String identificationType, String identificationIDnumber, String identificationProof, String isCommunicationAddressSameAsPermanentAddress, String cAddress, String cVillage, String cState, String cDistrict, String cSubDistrict, String cPincode, String cParlimentaryConstituency, String education1, String specialisation1, String yearOfPassing1, String education1Proof, String education2, String specialisation2, String othersEducationName, String yearOfPassing2, String education2Proof, String education3, String specialisation3, String yearOfPassing3, String education3Proof , String hearAboutUs, String sector1, String subSector1, String jobRole1, String sector2, String subSector2, String jobRole2, String sector3, String subSector3, String jobRole3) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
@@ -74,7 +74,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	        ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner_Candidate-Workflow.xls", "CandidateRegistration", Integer.parseInt(serialNum), 10, selectedDateOfBirth);
 	        tpCrp.selectRelationWithGuardian(guardianRelation);
 			Thread.sleep(2000);
-			tpCrp.enterGuardianName(guardianname);
+			tpCrp.enterGuardianName(guardianName);
 			Thread.sleep(2000);
 			tpCrp.selectMaritalStatus(maritalStatus);
 			Thread.sleep(2000);
@@ -124,7 +124,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.selectIdentificationType(identificationType);
 			Thread.sleep(4000);
 			tpCrp.enterIdentificationIDNumber(identificationIDnumber);
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 			tpCrp.clickToBrowseIdentificationProofDoc();
 			Thread.sleep(4000);
 			UploadFile.upload(identificationProof);
@@ -285,7 +285,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.id("dob")).getAttribute("value"), selectedDateOfBirth);
 			Select selectedGuardianRelation=new Select(driver.findElement(By.xpath("//select[@formcontrolname='relationWithGuardian']")));
 			Assert.assertEquals(selectedGuardianRelation.getFirstSelectedOption().getText(),guardianRelation);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='guardianName']")).getAttribute("value").trim(), guardianname);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='guardianName']")).getAttribute("value").trim(), guardianName);
 			Select selectedMaritalstatus=new Select(driver.findElement(By.xpath("//select[@formcontrolname='maritialStatus']")));
 			Assert.assertEquals(selectedMaritalstatus.getFirstSelectedOption().getText(), maritalStatus);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='placeOfBirth']")).getAttribute("value"), placeOfBirth);
@@ -414,11 +414,60 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			js.executeScript("window.scrollBy(0,150)", "");
 			Thread.sleep(2000);
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]")).size()==1,"OMG!!! No show of TP registered candidate - "+candidateID+" ! ");
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+candidateID+"')]")).getText().trim(), candidateID);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+fullName+"')]")).getText().trim(), fullName);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+gender+"')]")).getText().trim(), gender);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+cState+"')]")).getText().trim(), cState);
-			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+cDistrict+"')]")).getText().trim(), cDistrict);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[1]")).getText().trim(), candidateID);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[2]")).getText().trim(), fullName);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[3]")).getText().trim(), gender);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[6]")).getText().trim(), selectedDateOfBirth);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[7]")).getText().trim(), placeOfBirth);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[8]")).getText().trim(), maritalStatus);
+			if(guardianRelation.equalsIgnoreCase("father"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[9]")).getText().trim(), guardianName);
+			}
+			else if(guardianRelation.equalsIgnoreCase("mother"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[10]")).getText().trim(), guardianName);
+			}
+			else
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[11]")).getText().trim(), guardianName);
+			}
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[12]")).getText().trim(), cast);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[17]")).getText().trim(), address);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[18]")).getText().trim(), village);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[19]")).getText().trim(), district);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[20]")).getText().trim(), state);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[21]")).getText().trim(), pincode);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[23]")).getText().trim(), cAddress);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[24]")).getText().trim(), cVillage);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[25]")).getText().trim(), cDistrict);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[26]")).getText().trim(), cState);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[27]")).getText().trim(), cPincode);
+			//Self Registered Candidate Action Menu - View Details
+			tpMp.clickToGetRegisteredCandidateActionMenu();
+			Thread.sleep(2000);
+			tpMp.selectRegisteredCandidateViewDetailsOption();
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")).getText().trim(), fullName);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), dob.replaceAll("/", "-"));
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), gender);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), cast);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Religion')]]/span[2]")).getText().trim(), religion);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Candidate Address')]]/span[2]")).getText().trim(), cAddress);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), cPincode);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), cState);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), cDistrict);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
+	       	tpMp.clickGoBack();
+	       	Thread.sleep(6000);
+	       	Thread.sleep(4000);
+			tpMp.enterCandidateIDToSearch(candidateID);
+			Thread.sleep(4000);
+			tpMp.clickToApplySearchFilters();
+			Thread.sleep(4000);
+			js.executeScript("window.scrollBy(0,150)", "");
+			Thread.sleep(2000);
 			tpMp.clickToSelectCreatedCandidateRecord();
 			Thread.sleep(4000);
 			tpMp.clickToDownloadReportForSelectedCandidates();
@@ -434,28 +483,92 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			tpMp.clickRegister();
 			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
+			//Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
 			for(int i=4;i<8;i++)
 			{
 				String bulkCandidateName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 1);
 				String bulkCandidateGender=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 2);
-				String bulkCandidateCurrentState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 21);
-				String bulkCandidateCurrentDistrict=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 23);
+				String bulkCandidateDoB=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 3);
+				String bulkCandidatePlaceOfBirth=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 4);
+				String bulkCandidateMaritalStatus=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 5);
+				String bulkCandidateFatherName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 6);
+				String bulkCandidateMotherName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 7);
+				String bulkCandidateGuardianName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 8);
+				String bulkCandidateCategory=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 9);
+				String bulkCandidateReligion=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 11);
+				String bulkCandidateMobileNumber=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 26);
+				String bulkCandidateEmail=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 28);
+				String bulkCandidatePermanentAddress=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 12);
+				String bulkCandidatePermanentCity=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 13);
+				String bulkCandidatePermanentDistrict=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 14);
+				String bulkCandidatePermanentState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 15);
+				String bulkCandidatePermanentPinCode=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 16);
+				String bulkCandidatePermanentCountry=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 18);
+				String bulkCandidateCurrentAddress=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 19);
+				String bulkCandidateCurrentCity=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 20);
+				String bulkCandidateCurrentDistrict=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 21);
+				String bulkCandidateCurrentState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 23);
+				String bulkCandidateCurrentPinCode=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 22);
+				String bulkCandidateCurrentCountry=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 25);
 				Thread.sleep(4000);
 				tpMp.enterKeywordsToSearch(bulkCandidateName);
 				Thread.sleep(4000);
 				tpMp.clickToApplySearchFilters();
 				Thread.sleep(4000);
-				if(i==4)
-				{
-					js.executeScript("window.scrollBy(0,150)", "");
-					Thread.sleep(2000);
-				}
+				js.executeScript("window.scrollBy(0,150)", "");
+				Thread.sleep(2000);
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]")).size()==1,"OMG!!! No show of bulk registration candidate of name - "+bulkCandidateName+" !! ");
 				Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'CAN_')]")).isDisplayed());
-				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateGender+"')]")).getText().trim(), bulkCandidateGender);
-				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateCurrentState+"')]")).getText().trim(), bulkCandidateCurrentState);
-				Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+bulkCandidateCurrentDistrict+"')]")).getText().trim(), bulkCandidateCurrentDistrict);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")).getText().trim(), bulkCandidateName);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[3]")).getText().trim(), bulkCandidateGender);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[4]")).getText().trim(), "bulkupload");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[5]")).getText().trim(), "Training Partner");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[6]")).getText().trim(), bulkCandidateDoB);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[7]")).getText().trim(), bulkCandidatePlaceOfBirth);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[8]")).getText().trim(), bulkCandidateMaritalStatus);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[9]")).getText().trim(), bulkCandidateFatherName);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[10]")).getText().trim(), bulkCandidateMotherName);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[11]")).getText().trim(), bulkCandidateGuardianName);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[12]")).getText().trim(), bulkCandidateCategory);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[13]")).getText().trim(), bulkCandidateReligion);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[14]")).getText().trim(), bulkCandidateMobileNumber);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[16]")).getText().trim(), bulkCandidateEmail);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[17]")).getText().trim(), bulkCandidatePermanentAddress);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[18]")).getText().trim(), bulkCandidatePermanentCity);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[19]")).getText().trim(), bulkCandidatePermanentDistrict);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[20]")).getText().trim(), bulkCandidatePermanentState);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[21]")).getText().trim(), bulkCandidatePermanentPinCode);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[22]")).getText().trim(), bulkCandidatePermanentCountry);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[23]")).getText().trim(), bulkCandidateCurrentAddress);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[24]")).getText().trim(), bulkCandidateCurrentCity);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[25]")).getText().trim(), bulkCandidateCurrentDistrict);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[26]")).getText().trim(), bulkCandidateCurrentState);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[27]")).getText().trim(), bulkCandidateCurrentPinCode);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[28]")).getText().trim(), bulkCandidateCurrentCountry);
+				//Bulk Registered Candidate Action Menu - View Details
+				tpMp.clickToGetRegisteredCandidateActionMenu();
+				Thread.sleep(2000);
+				tpMp.selectRegisteredCandidateViewDetailsOption();
+				Thread.sleep(4000);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")).getText().trim(), bulkCandidateName);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), bulkCandidateDoB.replaceAll("/", "-"));
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), bulkCandidateGender);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), bulkCandidateCategory);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Religion')]]/span[2]")).getText().trim(), bulkCandidateReligion);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mobile Number')]]/span[2]")).getText().trim(), bulkCandidateMobileNumber);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Email')]]/span[2]")).getText().trim(), bulkCandidateEmail);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Candidate Address')]]/span[2]")).getText().trim(), bulkCandidateCurrentAddress);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), bulkCandidateCurrentPinCode);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), bulkCandidateCurrentState);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), bulkCandidateCurrentDistrict);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
+		       	tpMp.clickGoBack();
+		       	Thread.sleep(6000);
+		       	tpMp.enterKeywordsToSearch(bulkCandidateName);
+				Thread.sleep(4000);
+				tpMp.clickToApplySearchFilters();
+				Thread.sleep(4000);
+				js.executeScript("window.scrollBy(0,150)", "");
 				Thread.sleep(2000);
 				driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/th/label/span")).click();
 				Thread.sleep(2000);

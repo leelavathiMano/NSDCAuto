@@ -24,11 +24,16 @@ public class SSCAllBatchesPage
 	private WebElement applicantsSectionLink;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
-	//Reschedule and cancellation
+	//Reschedule
 	@FindBy(xpath="(//button[contains(text(),'Reject Request')])[1]")
 	private WebElement rejectBatchRescheduleRequestButton;
 	@FindBy(xpath="(//button[contains(text(),'Approve Request')])[1]")
 	private WebElement approveBatchRescheduleRequestButton;
+	//cancellation
+	@FindBy(xpath="(//button[contains(text(),'Reject Request')])[2]")
+	private WebElement rejectBatchCancellationRequestButton;
+	@FindBy(xpath="(//button[contains(text(),'Approve Request')])[2]")
+	private WebElement approveBatchCancellationRequestButton;
 	
 	
 	public SSCAllBatchesPage(WebDriver driver)
@@ -77,7 +82,7 @@ public class SSCAllBatchesPage
 	{
 		okButton.click();
 	}
-	//Batch Reschedule and Cancellation
+	//Batch Reschedule
 	public void selectApproveOrRejectRescheduleRequestOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve/ Reject Reschedule Request')]")).click();
@@ -89,6 +94,19 @@ public class SSCAllBatchesPage
 	public void clickToApproveBatchRescheduleRequest()
 	{
 		approveBatchRescheduleRequestButton.click();
+	}
+	//Batch Cancellation
+	public void selectApproveOrRejectCancellationRequestOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Approve/ Reject Cancellation Request')]")).click();
+	}
+	public void clickToRejectBatchCancellationRequest()
+	{
+		rejectBatchCancellationRequestButton.click();
+	}
+	public void clickToApproveBatchCancellationRequest()
+	{
+		approveBatchCancellationRequestButton.click();
 	}
 }	
 	

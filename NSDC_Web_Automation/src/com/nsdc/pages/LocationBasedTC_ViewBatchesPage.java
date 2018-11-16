@@ -62,7 +62,7 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement remarksForRejectingApplicantTextArea;
 	@FindBy(xpath="(//button[contains(text(),'Reject Candidate')])[2]")
 	private WebElement rejectApplicantButton;
-	//Reschedule and Cancellation Elements
+	//Reschedule Elements
 	@FindBy(id="customFile")
 	private WebElement batchRescheduleSupportingDocumentBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
@@ -71,6 +71,15 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement batchRescheduleCommentsTextArea;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[3]")
 	private WebElement batchRescheduleSubmitButton;
+	//Cancellation Elements
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	private WebElement batchCancellationSupportingDocumentBrowseButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	private WebElement batchCancellationSupportingDocumentUploadButton;
+	@FindBy(xpath="(//textarea[@formcontrolname='comments'])[2]")
+	private WebElement batchCancellationCommentsTextArea;
+	@FindBy(xpath="(//button[contains(text(),'Submit')])[4]")
+	private WebElement batchCancellationSubmitButton;
 				
 	public LocationBasedTC_ViewBatchesPage(WebDriver driver)
 	{
@@ -216,7 +225,7 @@ public class LocationBasedTC_ViewBatchesPage
 	{
 		sendBatchForApprovalButton.click();
 	}
-	//Batch Reschedule and Cancellation
+	//Batch Reschedule
 	public void clickToBrowseForBatchRescheduleSupportingDocument()
 	{
 		batchRescheduleSupportingDocumentBrowseButton.click();
@@ -233,5 +242,23 @@ public class LocationBasedTC_ViewBatchesPage
 	public void clickToSubmitBatchreschedule()
 	{
 		batchRescheduleSubmitButton.click();
+	}
+	//Batch Cancellation
+	public void clickToBrowseForBatchCancellationSupportingDocument()
+	{
+		batchCancellationSupportingDocumentBrowseButton.click();
+	}
+	public void clickToUploadBatchCancellationSupportingDocument()
+	{
+		batchCancellationSupportingDocumentUploadButton.click();
+	}
+	public void enterCommentsForBatchCancellation(String batchCancellationComments)
+	{
+		batchCancellationCommentsTextArea.clear();
+		batchCancellationCommentsTextArea.sendKeys(batchCancellationComments);
+	}
+	public void clickToSubmitBatchCancellation()
+	{
+		batchCancellationSubmitButton.click();
 	}
 }

@@ -32,6 +32,12 @@ public class TrainingPartner_MyCandidatesPage
 	private WebElement downloadReportForSelectedCandidatesButton;
 	@FindBy(xpath="//input[@formcontrolname='keyword']")
 	private WebElement searchByKeywordsTextField;
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
+	private WebElement registeredCandidateActionLink;
+	@FindBy(linkText="View Details")
+	private WebElement registeredCandidateViewDetailsOptionLink;
+	@FindBy(xpath="//button[contains(text(),'Go Back')]")
+	private WebElement goBackButton;
 	
 	public TrainingPartner_MyCandidatesPage(WebDriver driver)
     {
@@ -87,5 +93,17 @@ public class TrainingPartner_MyCandidatesPage
 	{
 		searchByKeywordsTextField.clear();
 		searchByKeywordsTextField.sendKeys(keywordToSearch);
+	}
+	public void clickToGetRegisteredCandidateActionMenu()
+	{
+		registeredCandidateActionLink.click();
+	}
+	public void selectRegisteredCandidateViewDetailsOption()
+	{
+		registeredCandidateViewDetailsOptionLink.click();
+	}
+	public void clickGoBack()
+	{
+		goBackButton.click();
 	}
 }
