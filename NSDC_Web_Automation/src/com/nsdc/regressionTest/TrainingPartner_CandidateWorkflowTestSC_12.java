@@ -420,7 +420,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[6]")).getText().trim(), selectedDateOfBirth);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[7]")).getText().trim(), placeOfBirth);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[8]")).getText().trim(), maritalStatus);
-			if(guardianRelation.equalsIgnoreCase("father"))
+		/*	if(guardianRelation.equalsIgnoreCase("father"))
 			{
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[9]")).getText().trim(), guardianName);
 			}
@@ -433,7 +433,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[11]")).getText().trim(), guardianName);
 			}
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[12]")).getText().trim(), cast);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
+		*/	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[17]")).getText().trim(), address);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[18]")).getText().trim(), village);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[19]")).getText().trim(), district);
