@@ -69,6 +69,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 			crp.clickOnIAgree();
 			Thread.sleep(5000);
 			crp.clickForSubmit();
+			
 		}
 		else
 		{
@@ -77,7 +78,9 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 			crp.clickOnIAgree();
 			Thread.sleep(5000);
 			crp.clickForSubmit();
+			
 		}
+		
 		String username = driver.findElement(By.xpath("(//h2/b)[1]")).getText();
 		candidateID = username.replace("Candidate Id - ", "");
 		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 18, candidateID);
@@ -85,7 +88,10 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		passwordID = password.replace("Password - ", "");
 		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 19, passwordID);
 		crp.clickOnOK();
-		
+		Thread.sleep(3000);
+		crp.clickOnBack();
+		Thread.sleep(3000);
+		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(candidateID, passwordID);
 		rp.enterOldPassword(passwordID);
