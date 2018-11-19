@@ -142,6 +142,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectTrainingStartDateForBatch() throws InterruptedException
 	{
 		trainingStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -203,6 +204,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectTrainingEndDateForExistingBatch() throws InterruptedException
 	{	
 		trainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -255,6 +257,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainTrainingStartDate() throws InterruptedException
 	{
 		domainTrainingStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -288,6 +291,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainTrainingEndDateForNewBatch() throws InterruptedException
 	{
 		domainTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -317,6 +321,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainTrainingEndDateForExistingBatch() throws InterruptedException
 	{
 		domainTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -350,6 +355,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -378,6 +384,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainAssessmentStartDateForExistingBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -410,6 +417,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainAssessmentEndDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -438,6 +446,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectDomainAssessmentEndDateForExistingBatch() throws InterruptedException
 	{
 		domainAssessmentEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -477,6 +486,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectPlatformTrainingStartDate() throws InterruptedException
 	{
 		platformTrainingStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -509,6 +519,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectPlatformTrainingEndDateForNewBatch() throws InterruptedException
 	{
 		platformTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
@@ -537,6 +548,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectPlatformTrainingEndDateForExistingBatch() throws InterruptedException
 	{
 		platformTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))

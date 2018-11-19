@@ -13,13 +13,13 @@ public class SSC_BatchReSchedulePage
 	private WebElement batchRescheduleSubmitButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
-	@FindBy(id="startDates")
+	@FindBy(xpath="//input[@formcontrolname='startDate']")
 	private WebElement trainingStartDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[1]")
 	private WebElement closeTrainingStartDateCalenderIcon;
 	@FindBy(xpath="//div[@class='datepicker-days']")
 	private WebElement datePicker;
-	@FindBy(id="endDates")
+	@FindBy(xpath="//input[@formcontrolname='endDate']")
 	private WebElement trainingEndDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[2]")
 	private WebElement closeTrainingEndDateCalenderIcon;
@@ -75,9 +75,10 @@ public class SSC_BatchReSchedulePage
 	public void selectTrainingStartDateForBatch() throws InterruptedException
 	{
 		trainingStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
@@ -88,7 +89,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -110,7 +111,7 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
@@ -121,7 +122,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -136,9 +137,10 @@ public class SSC_BatchReSchedulePage
 	public void selectTrainingEndDateForExistingBatch() throws InterruptedException
 	{	
 		trainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
@@ -149,7 +151,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -169,9 +171,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainTrainingStartDate() throws InterruptedException
 	{
 		domainTrainingStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
@@ -182,7 +185,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -202,9 +205,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainTrainingEndDateForNewBatch() throws InterruptedException
 	{
 		domainTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
@@ -215,7 +219,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -231,9 +235,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainTrainingEndDateForExistingBatch() throws InterruptedException
 	{
 		domainTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
@@ -244,7 +249,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -264,9 +269,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
@@ -277,7 +283,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -292,9 +298,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainAssessmentStartDateForExistingBatch() throws InterruptedException
 	{
 		domainAssessmentStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
@@ -305,7 +312,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -324,9 +331,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainAssessmentEndDateForNewBatch() throws InterruptedException
 	{
 		domainAssessmentEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
@@ -337,7 +345,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -352,9 +360,10 @@ public class SSC_BatchReSchedulePage
 	public void selectDomainAssessmentEndDateForExistingBatch() throws InterruptedException
 	{
 		domainAssessmentEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
@@ -365,7 +374,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -386,9 +395,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformTrainingStartDate() throws InterruptedException
 	{
 		platformTrainingStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
@@ -399,7 +409,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -418,9 +428,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformTrainingEndDateForNewBatch() throws InterruptedException
 	{
 		platformTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
@@ -431,7 +442,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -446,9 +457,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformTrainingEndDateForExistingBatch() throws InterruptedException
 	{
 		platformTrainingEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
@@ -459,7 +471,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -478,9 +490,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformAssessmentStartDateForNewBatch() throws InterruptedException
 	{
 		platformAssessmentStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
@@ -491,7 +504,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -508,9 +521,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformAssessmentStartDateForExistingBatch() throws InterruptedException
 	{
 		platformAssessmentStartDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
@@ -521,7 +535,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -540,9 +554,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformAssessmentEndDateForNewBatch() throws InterruptedException
 	{
 		platformAssessmentEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
@@ -553,7 +568,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -568,9 +583,10 @@ public class SSC_BatchReSchedulePage
 	public void selectPlatformAssessmentEndDateForExistingBatch() throws InterruptedException
 	{
 		platformAssessmentEndDateTextField.click();
+		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
@@ -581,7 +597,7 @@ public class SSC_BatchReSchedulePage
 		}
 		else
 		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("ng-reflect-disabled").contains("disabled"))
+			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
@@ -589,7 +605,7 @@ public class SSC_BatchReSchedulePage
 			}
 			else
 			{
-				driver.findElement(By.xpath("//td[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).click();
+				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).click();
 			}
 		}
 	}
