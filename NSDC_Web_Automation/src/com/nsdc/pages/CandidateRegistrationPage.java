@@ -107,15 +107,15 @@ public class CandidateRegistrationPage
 	public void clickOnDateOfBirthField() throws Exception
 	{
 		Thread.sleep(2000);
-		dobTextbox.sendKeys(Keys.ENTER);
+		dobTextbox.sendKeys(Keys.ENTER, Keys.TAB);
 		//dob_YearButton.click();
 		//selectYearFieldButton.click();
 		//selectYearButton.click();
 		//selectMonthButton.click();
 		//Thread.sleep(3000);
 		//selectDateButton.click();
-		Thread.sleep(2000);
-		calenderIconButton.click();
+//		Thread.sleep(4000);
+//		calenderIconButton.click();
 	}
 	
 	public void selectGender(String gender)
