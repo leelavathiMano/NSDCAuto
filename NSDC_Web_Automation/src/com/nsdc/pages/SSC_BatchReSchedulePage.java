@@ -78,13 +78,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
 		}
 		else
@@ -93,7 +93,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
 			else
 			{
@@ -111,13 +111,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
 		}
 		else
@@ -126,7 +126,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
 			else
 			{
@@ -140,13 +140,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
 		}
 		else
@@ -155,7 +155,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
 			else
 			{
@@ -174,13 +174,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
 		}
 		else
@@ -189,7 +189,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
 			else
 			{
@@ -208,13 +208,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 		}
 		else
@@ -223,7 +223,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 			else
 			{
@@ -238,13 +238,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 		}
 		else
@@ -253,7 +253,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 			else
 			{
@@ -272,13 +272,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 		}
 		else
@@ -287,7 +287,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 			else
 			{
@@ -301,13 +301,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 		}
 		else
@@ -316,7 +316,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 			else
 			{
@@ -334,13 +334,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
 		}
 		else
@@ -349,7 +349,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
 			else
 			{
@@ -363,13 +363,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
 		}
 		else
@@ -378,7 +378,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
 			else
 			{
@@ -398,13 +398,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
 		}
 		else
@@ -413,7 +413,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
 			}
 			else
 			{
@@ -431,13 +431,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 		}
 		else
@@ -446,7 +446,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 			else
 			{
@@ -460,13 +460,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 		}
 		else
@@ -475,7 +475,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 			else
 			{
@@ -493,13 +493,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 		}
 		else
@@ -508,7 +508,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
 			}
 			else
 			{
@@ -524,13 +524,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 		}
 		else
@@ -539,7 +539,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
 			}
 			else
 			{
@@ -557,13 +557,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
 		}
 		else
@@ -572,7 +572,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(26)+"'])[1]")).click();
 			}
 			else
 			{
@@ -586,13 +586,13 @@ public class SSC_BatchReSchedulePage
 		Thread.sleep(2000);
 		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
 		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).getAttribute("ng-reflect-disabled").contains("true"))
+			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).getAttribute("ng-reflect-disabled").contains("true"))
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
 			}
 			else
 			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
 		}
 		else
@@ -601,7 +601,7 @@ public class SSC_BatchReSchedulePage
 			{
 				driver.findElement(By.xpath("//div[@class='ngb-dp-arrow right']")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).click();
+				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
 			}
 			else
 			{

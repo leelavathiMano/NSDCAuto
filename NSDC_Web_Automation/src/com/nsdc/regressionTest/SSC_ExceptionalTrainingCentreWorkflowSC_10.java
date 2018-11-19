@@ -19,7 +19,6 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguration
 {
-	
 	@DataProvider
 	public Object[][] sscTemporaryTrainingCentreCreationData()
 	{
@@ -55,11 +54,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(4000);
 		sscTbcP.selectTrainingStartDateForBatch();
 		Thread.sleep(2000);
-		sscTbcP.clickToCloseTrainingStartDateCalender();
-		Thread.sleep(2000);
 		sscTbcP.selectTrainingEndDateForNewBatch();
-		Thread.sleep(2000);
-		sscTbcP.clickToCloseTrainingEndDateCalender();
 		Thread.sleep(2000);
 		sscTbcP.selectDomainJobRole(jobRole);
 		Thread.sleep(4000);
@@ -70,38 +65,22 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(2000);
 		sscTbcP.selectDomainTrainingStartDate();
 		Thread.sleep(4000);
-		sscTbcP.clickTocloseDomainTrainingStartDateCalender();
-		Thread.sleep(4000);
 		sscTbcP.selectDomainTrainingEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.clickToCloseDomainTrainingEndDateCalender();
 		Thread.sleep(4000);
 		sscTbcP.selectDomainAssessmentStartDateForNewBatch();
 		Thread.sleep(4000);
-		sscTbcP.clickToCloseDomainAssessmentstartDateCalender();
-		Thread.sleep(4000);
 		sscTbcP.selectDomainAssessmentEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.clickToCloseDomainAssessmentEndDateCalender();
 		Thread.sleep(4000);
 		//Platform QP
 		sscTbcP.clickToChoosePlatformQP();
 		Thread.sleep(4000);
 		sscTbcP.selectPlatformTrainingStartDate();
 		Thread.sleep(4000);
-		sscTbcP.clickToclosePlatformTrainingStartDateCalender();
-		Thread.sleep(4000);
 		sscTbcP.selectPlatformTrainingEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.clickToClosePlatformTrainingEndDateCalender();
 		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentStartDateForNewBatch();
 		Thread.sleep(4000);
-		sscTbcP.clickToClosePlatformAssessmentstartDateCalender();
-		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.clickToClosePlatformAssessmentEndDateCalender();
 		Thread.sleep(4000);
 		sscTbcP.clickToViewFees();
 		Thread.sleep(2000);
