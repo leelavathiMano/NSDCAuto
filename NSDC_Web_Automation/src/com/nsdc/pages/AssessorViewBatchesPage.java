@@ -41,6 +41,11 @@ public class AssessorViewBatchesPage
 	private WebElement okButton;
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
 	private WebElement goBackButton;
+	//Approved Applicants
+	@FindBy(linkText="Batch Details")
+	private WebElement batchDetailsSectionLinkText;
+	@FindBy(linkText="Approved Applicants")
+	private WebElement approvedApplicantsSectionLinkText;
 		
 	public AssessorViewBatchesPage(WebDriver driver)
 	{
@@ -111,4 +116,21 @@ public class AssessorViewBatchesPage
 	{
 		goBackButton.click();
 	}
+	//After SSC Approving Batch
+	public void clickToGoToBatchDetailsSection()
+	{
+		batchDetailsSectionLinkText.click();
+	}
+	public void clickToGoToApprovedApplicantsSection()
+	{
+		approvedApplicantsSectionLinkText.click();
+	}
+	public void clickToGetApplicantActionMenu(String applicnatID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicnatID+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
+	}
+	public void selectViewDetailsOfApplicantOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[span[contains(text(),'View Details')]]")).click();
+	}	
 }

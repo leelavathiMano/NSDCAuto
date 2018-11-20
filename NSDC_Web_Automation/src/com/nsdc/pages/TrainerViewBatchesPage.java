@@ -31,6 +31,12 @@ public class TrainerViewBatchesPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
+	//Approved Applicants
+	@FindBy(linkText="Batch Details")
+	private WebElement batchDetailsSectionLinkText;
+	@FindBy(linkText="Approved Applicants")
+	private WebElement approvedApplicantsSectionLinkText;
+	
 		
 	public TrainerViewBatchesPage(WebDriver driver)
 	{
@@ -100,5 +106,22 @@ public class TrainerViewBatchesPage
 	public void clickOk()
 	{
 		okButton.click();
+	}
+	//After SSC Approving Batch
+	public void clickToGoToBatchDetailsSection()
+	{
+		batchDetailsSectionLinkText.click();
+	}
+	public void clickToGoToApprovedApplicantsSection()
+	{
+		approvedApplicantsSectionLinkText.click();
+	}
+	public void clickToGetApplicantActionMenu(String applicnatID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicnatID+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
+	}
+	public void selectViewDetailsOfApplicantOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'View Details')]")).click();
 	}
 }

@@ -38,7 +38,8 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement closeBatchStartDateCalender;
 	@FindBy(xpath="(//div[@class='input-group-append'])[2]")
 	private WebElement closeBatchEndDateCalender;
-	@FindBy(xpath="//button[contains(text(),'Search')]")
+	//@FindBy(xpath="//button[contains(text(),'Search')]")
+	@FindBy(xpath="(//button[@type='submit'])[1]")
 	private WebElement searchButton;
 	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
 	private WebElement addJobRoleAndLocationToMyPreferenceButton;

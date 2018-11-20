@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
 
 public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
@@ -40,7 +38,8 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement closeBatchStartDateCalender;
 	@FindBy(xpath="(//div[@class='input-group-append'])[2]")
 	private WebElement closeBatchEndDateCalender;
-	@FindBy(xpath="//button[contains(text(),'Search')]")
+	//@FindBy(xpath="//button[contains(text(),'Search')]")
+	@FindBy(xpath="(//button[@type='submit'])[1]")
 	private WebElement searchButton;
 	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
 	private WebElement addJobRoleAndLocationToMyPreferenceButton;
