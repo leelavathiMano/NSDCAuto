@@ -1127,7 +1127,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02");
 	}
 
-	@Test(dataProvider="cmaApproveTC", dependsOnMethods="addTrainingCentreTC04")
+	@Test(dataProvider="cmaApproveTC")
 	public void approveTrainingCentreTC_05(String sno, String cmaUsername, String cmaPassword, String tpID, String tcType, String status, String expectedTCName, String expectedOwnership, String expectedStartDate, String expectedEndDate, String expectedBathesNumber, String expectedStudentNumber, String expectedAnnualCapacity, String expectedCapacityUtilization, String expectedGovernmentTieUp, String expectedCentreCapacity, String expectedCentreArea, String expectedTrainingRooms, String expectedLabNumber, String expectedReceptionArea, String expectedWaitingArea, String expectedMaleWashRooms, String expectedFemaleWashRooms, String expectedUnisexWashRooms, String expectedAirportDistance, String expectedTrainStationDistance, String expectedCityCentreDistance, String expectedTCAddress, String expectedLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedCity, String expectedParliamentryConstituency, String expectedSPOCName, String expectedSPOCEmail, String expectedSPOCMobile, String expectedSPOCDesignation, String expectedSPOCLandLine, String expectedSector, String expectedCourseName, String expectedTarget, String review, String reviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1138,7 +1138,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(8000);
 		cmad.clickOnViewAllTCAddRequest();
 		CMA_TCRequestPage cmtc = new CMA_TCRequestPage(driver);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 //		cmtc.selectType(tcType);
 //		cmtc.selectStatus(status);
 //		cmtc.clickOnApply();
@@ -1148,7 +1148,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedTCName+"']]]]//a[contains(text(),'Take Action')]")).click();
 		
 		CMA_TrainingCentreInfoPage cmat = new CMA_TrainingCentreInfoPage(driver);
-		Thread.sleep(8000);
+		Thread.sleep(15000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='trainingCentreName']")).getAttribute("value"), expectedTCName);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='ownership']")).getAttribute("value"), expectedOwnership);
 		if(expectedOwnership.equals("Franchise"))
@@ -1186,7 +1186,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 //		cmtc.selectType(tcType);
 //		cmtc.selectStatus(status);
 //		cmtc.clickOnApply();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedTCName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedTCName+"']]]]//a[contains(text(),'Take Action')]")).click();
@@ -1689,7 +1689,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
 		Thread.sleep(10000);
 		tpdp.clickOnMySchemes();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
 		Thread.sleep(4000);
@@ -1821,7 +1821,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveSector&CourseSC15TC05");
 	}
 
-	@Test(dataProvider="approveSectorAndCourses", dependsOnMethods="addSectorAndCourseTC07")
+	@Test(dataProvider="approveSectorAndCourses")
 	public void approveSectorAndCourseTC08(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector, String expectedTrainingTarget, String sectorReviewComments, String sectorComments, String expectedCourseName, String expectedAddedSector, String expectedJobRoleMappingType, String expectedJobRoleName, String expectedNSQFLevel, String expectedCourseDescription, String expectedIssuedCertificateName, String expectedMinimumAge, String expectedMinimumEducation, String expectedCourseDuration, String expectedNumberOfHours, String expectedCourseFee, String expectedGradingPrefrences, String courseReviewComments, String courseComments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1939,7 +1939,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06");
 	}
 
-	@Test(dataProvider="linkTrainer", dependsOnMethods="approveSectorAndCourseTC08")
+	@Test(dataProvider="linkTrainer")
 	public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
