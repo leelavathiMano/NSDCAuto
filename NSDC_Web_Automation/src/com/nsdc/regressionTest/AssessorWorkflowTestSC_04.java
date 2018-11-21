@@ -595,6 +595,10 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
            	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[7]")).getText().trim(), edu_details2);
            	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[8]")).getText().contains(edu_document2));
       	}
+      	else
+      	{
+      		Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains("Uneducated"));
+      	}
       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[1]")).getText().contains(industrial_sector1));
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[3]")).getText().trim(), industrialExperienceDetails1);
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[4]")).getText().trim(), industrial_years1+" years "+industrial_months1+" months");
@@ -607,7 +611,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[6]")).getText().contains(training_sector2));
        	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[8]")).getText().contains(trainingExperienceDetails2));
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[9]")).getText().trim(), trainingExperienceYears2+" years "+trainingExperienceMonths2+" months");
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
+  /*    Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[2]")).getText().trim(), preferredSector1);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredDistrict1);
@@ -617,8 +621,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
-       	//Edit Profile
+   */  	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
+    	//Edit Profile
        	aMpP.clickEditProfile();
     	Thread.sleep(2000);
     	Assert.assertEquals(aMpP.getNameOfTheApplicant(),name);
@@ -696,7 +700,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	if(education1.equals("Uneducated") && education2.equals("Uneducated") && education3.equals("Uneducated"))
         {
-    		Assert.assertTrue(driver.findElement(By.xpath("(//table[@class='table table-striped'])[1]/tbody")).getText().equalsIgnoreCase("No records found"));
+    		Assert.assertTrue(driver.findElement(By.xpath("(//table[@class='table table-striped'])[1]//td[2]")).getText().equalsIgnoreCase("Uneducated"));
         }
     	else
     	{
@@ -872,7 +876,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	plp.clickOnLogout();
     	Thread.sleep(2000);
-    }
+   }
     
     @DataProvider()
     public Object[][] assessorTrainingBatchesData()
@@ -1758,7 +1762,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	   aDp.clickViewBatches();
 	   Thread.sleep(4000);
 	   String batchID=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 1);
-	   String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 2);
+	   //String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 2);
 	   String batchStartDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 9);
 	   String batchEndDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 10);
 	   String domainTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorTrainingBatches", 1, 15);

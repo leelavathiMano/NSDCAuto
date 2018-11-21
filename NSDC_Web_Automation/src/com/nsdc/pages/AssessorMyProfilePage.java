@@ -86,7 +86,7 @@ public class AssessorMyProfilePage
 	private WebElement educationDetailsCloseButton;
 	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[3]")
 	private WebElement deleteAddedThirdEducationDetailsButton;
-	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[1]")
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[2]")
 	private WebElement deleteAddedFirstEducationDetailsButton;
 	//Industrial Experience Details Record
 	@FindBy(xpath="(//button[contains(text(),'Add')])[2]")
@@ -107,7 +107,7 @@ public class AssessorMyProfilePage
 	private WebElement industrialExperienceDetailsSaveAndSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[2]")
 	private WebElement industrialExperienceDetailsCloseButton;
-	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[3]")
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[4]")
 	private WebElement deleteAddedThirdtIndustrialExperienceRecordInCaseOfUneducatedButton;
 	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[5]")
 	private WebElement deleteAddedThirdIndustrialExperienceDetailsButton;
@@ -132,7 +132,7 @@ public class AssessorMyProfilePage
 	private WebElement trainingExperienceDetailsCloseButton;
 	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[7]")
 	private WebElement deleteAddedThirdTrainingExperienceDetailsButton;
-	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[5]")
+	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[6]")
 	private WebElement deleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducatedButton;
 	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement curriculumVitaeBrowseButton;

@@ -420,7 +420,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[6]")).getText().trim(), selectedDateOfBirth);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[7]")).getText().trim(), placeOfBirth);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[8]")).getText().trim(), maritalStatus);
-		/*	if(guardianRelation.equalsIgnoreCase("father"))
+	/*		if(guardianRelation.equalsIgnoreCase("father"))
 			{
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[9]")).getText().trim(), guardianName);
 			}
@@ -433,7 +433,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[11]")).getText().trim(), guardianName);
 			}
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[12]")).getText().trim(), cast);
-		*/	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[17]")).getText().trim(), address);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[18]")).getText().trim(), village);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[19]")).getText().trim(), district);
@@ -468,7 +468,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,150)", "");
 			Thread.sleep(2000);
-			tpMp.clickToSelectCreatedCandidateRecord();
+	*/		tpMp.clickToSelectCreatedCandidateRecord();
 			Thread.sleep(4000);
 			tpMp.clickToDownloadReportForSelectedCandidates();
 			Thread.sleep(4000);
@@ -483,7 +483,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			tpMp.clickRegister();
 			Thread.sleep(4000);
-			//Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
+			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
 			for(int i=4;i<8;i++)
 			{
 				String bulkCandidateName=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 1);
