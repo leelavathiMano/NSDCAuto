@@ -89,7 +89,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 19, passwordID);
 		crp.clickOnOK();
 		Thread.sleep(3000);
-		crp.clickOnBack();
+		crp.clickForClose();
 		Thread.sleep(3000);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);

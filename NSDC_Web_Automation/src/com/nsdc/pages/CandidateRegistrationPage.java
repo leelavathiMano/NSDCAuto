@@ -72,7 +72,7 @@ public class CandidateRegistrationPage
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Close')]")
-	private WebElement cancelButton;
+	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement oKButton;
 	
@@ -219,9 +219,9 @@ public class CandidateRegistrationPage
 		submitButton.click();
 	}
 	
-	public void clickForCancel()
+	public void clickForClose()
 	{
-		cancelButton.click();
+		closeButton.click();
 	}
 	
 	public void clickOnOK()
