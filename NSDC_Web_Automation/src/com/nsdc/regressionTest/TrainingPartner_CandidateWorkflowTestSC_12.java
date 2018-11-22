@@ -433,7 +433,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[11]")).getText().trim(), guardianName);
 			}
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[12]")).getText().trim(), cast);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
+	*/		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[13]")).getText().trim(), religion);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[17]")).getText().trim(), address);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[18]")).getText().trim(), village);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[19]")).getText().trim(), district);
@@ -452,12 +452,12 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")).getText().trim(), fullName);
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), dob.replaceAll("/", "-"));
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), gender);
-	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), cast);
+	       	//Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), cast);
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Religion')]]/span[2]")).getText().trim(), religion);
-	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Candidate Address')]]/span[2]")).getText().trim(), cAddress);
-	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), cPincode);
-	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), cState);
-	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), cDistrict);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Candidate Address')]]/span[2]")).getText().trim(), address);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), pincode);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), state);
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), district);
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
 	       	tpMp.clickGoBack();
 	       	Thread.sleep(6000);
@@ -468,7 +468,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,150)", "");
 			Thread.sleep(2000);
-	*/		tpMp.clickToSelectCreatedCandidateRecord();
+			tpMp.clickToSelectCreatedCandidateRecord();
 			Thread.sleep(4000);
 			tpMp.clickToDownloadReportForSelectedCandidates();
 			Thread.sleep(4000);
@@ -557,10 +557,10 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Religion')]]/span[2]")).getText().trim(), bulkCandidateReligion);
 		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mobile Number')]]/span[2]")).getText().trim(), bulkCandidateMobileNumber);
 		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Email')]]/span[2]")).getText().trim(), bulkCandidateEmail);
-		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Candidate Address')]]/span[2]")).getText().trim(), bulkCandidateCurrentAddress);
-		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), bulkCandidateCurrentPinCode);
-		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), bulkCandidateCurrentState);
-		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), bulkCandidateCurrentDistrict);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Candidate Address')]]/span[2]")).getText().trim(), bulkCandidatePermanentAddress);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), bulkCandidatePermanentPinCode);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), bulkCandidatePermanentState);
+		       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), bulkCandidatePermanentDistrict);
 		       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
 		       	tpMp.clickGoBack();
 		       	Thread.sleep(6000);
