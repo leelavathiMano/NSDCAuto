@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class SSC_ExceptionalTraningCentreCreationPage
 {
 	WebDriver driver;	
-	@FindBy(xpath="//button[contains(text(),'TC')]")
+	@FindBy(xpath="//button[contains(text(),'Add Exclusive ToT/ToA Centre')]")
 	private WebElement addExceptionalTCButton;
 	@FindBy(xpath="//input[@formcontrolname='trainingPartnerName']")
 	private WebElement trainingPartnerNameTextField;
@@ -239,7 +239,7 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	{
 		subSectorList.click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+exceptionalTCSubSector+"')])[2]")).click();
+		driver.findElement(By.xpath("(//label[contains(text(),'"+exceptionalTCSubSector+"')])[1]")).click();
 	}
 	public void selectExceptionalTrainingCentreJobRole(String exceptionalTCJobRole) throws InterruptedException
 	{
