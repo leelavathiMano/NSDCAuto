@@ -25,6 +25,8 @@ import com.nsdc.pages.SSC_BatchReSchedulePage;
 import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
 import com.nsdc.pages.SSC_ViewBatchDetailsPage;
+import com.nsdc.pages.TrainerApplicantDashboardPage;
+import com.nsdc.pages.TrainerApplicantSearchAndApplyForAvailableBatchesPage;
 import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerViewBatchesPage;
 import com.nsdc.testConfig.TestConfiguration;
@@ -230,7 +232,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+createdBatchID+"\nis successfully assigned to   "+dmasterTrainerID+"\nState : "+state+"\nDistrict : "+district);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+dmasterTrainerID+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+dmasterTrainerID+"')]")).getText().trim(), dmasterTrainerName+" ( "+dmasterTrainerID+" )");
@@ -330,10 +332,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscTbcP.selectAssignOption(createdBatchID);
 		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
-		Thread.sleep(4000);
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 2,formatter.format(date));
+		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//h2[@id='swal2-title']/p/b")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")");
 		sVbP.clickViewAllBatchesAfterBatchSubmission();
 		Thread.sleep(4000);
@@ -577,7 +579,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 			Thread.sleep(4000);	
 			tVp.clickToSubmit();
-			Thread.sleep(2000);	
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
@@ -591,6 +592,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 70, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 71, timeFormat.format(date));
 			}
+			Thread.sleep(4000);	
 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Accepted Successfully");
 			tVp.clickOk();
 			Thread.sleep(2000);
@@ -769,7 +771,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 			Thread.sleep(2000);		
 			aVp.clickToSubmitBatchAcceptance();
-			Thread.sleep(4000);	
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
@@ -783,7 +784,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 76, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 77, timeFormat.format(date));
 			}
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(),"You have successfully accepted "+batchID);
 			aVp.clickOk();
 			Thread.sleep(2000);
@@ -1012,7 +1013,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 			Thread.sleep(4000);
 			maVp.clickToSaveAndSubmitBatchAccceptance();
-			Thread.sleep(4000);	
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
@@ -1409,7 +1409,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+createdBatchID+"\nis successfully assigned to   "+d1masterTrainerID+"\nState : "+state+"\nDistrict : "+district);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+d1masterTrainerID+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+d1masterTrainerID+"')]")).getText().trim(), d1masterTrainerName+" ( "+d1masterTrainerID+" )");
@@ -1433,7 +1433,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+createdBatchID+"\nis successfully assigned to   "+d2masterTrainerID+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+d2masterTrainerID+"')]")).getText().trim(), d2masterTrainerName+" ( "+d2masterTrainerID+" )");
@@ -1527,10 +1526,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+passessmentAgencyID+"')]")).getText().trim(), passessmentAgencyName+" ( "+passessmentAgencyID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
 		sVbP.clickToSubmitBatch();
-		Thread.sleep(4000);
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 2,formatter.format(date));
+		Thread.sleep(4000);
 		sVbP.clickViewAllBatchesAfterBatchSubmission();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending for Publish");
@@ -1714,8 +1713,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 57, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 58, timeFormat.format(date));
+				Thread.sleep(4000);	
 				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Rejected");
-				Thread.sleep(2000);	
 				tVp.clickOk();
 				Thread.sleep(2000);
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in Pending Requests Section of Master Trainer - "+d1masterTrainerID);
@@ -1887,15 +1886,15 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				aVp.enterRemarksForRejctingBatch(daaRejectionRemarks);
 				Thread.sleep(4000);
 				aVp.clickToSubmitBatchRejection();
-				Thread.sleep(4000);	
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 				Date date = new Date();
 				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 71, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 72, timeFormat.format(date));
+				Thread.sleep(4000);	
 				Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(),"You have successfully rejected "+batchID);
-				Thread.sleep(4000);
 				aVp.clickOk();
+				Thread.sleep(4000);	
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in pending section of - "+dassessmentAgencyID+" OR something is wrong! ");
 				//verifying rejected batches
 				js.executeScript("window.scrollBy(0,-500)", "");
@@ -2120,14 +2119,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				maVp.enterRemarksForRejectingBatch(dmaRejectionRemarks);
 				Thread.sleep(2000);
 				maVp.clickToSaveAndSubmitBatchRejection();
-				Thread.sleep(4000);	
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 				Date date = new Date();
 				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 78, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 79, timeFormat.format(date));
+				Thread.sleep(4000);	
 				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Rejected");
-				Thread.sleep(4000);
 				maVp.clickOk();
 				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,-500)", "");
@@ -2471,12 +2469,11 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sVbP.clickToSubmitBatch();
 		Thread.sleep(4000);
 		sVbP.clickOkForBatchSubmission();
-		Thread.sleep(4000);
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel", Integer.parseInt(serialNum), 2,formatter.format(date));
 		PostLoginPage plp=new PostLoginPage(driver);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
@@ -2770,8 +2767,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchreschedule();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule Request Raised");
-		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
@@ -2836,8 +2831,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		SSC_BatchReSchedulePage sRp=new SSC_BatchReSchedulePage(driver);
 		sRp.clickToSubmitRescheduledBatch();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Rescheduled Successfully!!");
-		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "batch reschedule request successfully approved");
 		sRp.clickOk();
 		Thread.sleep(4000);
 		sAp.clickToViewAllPublishedBatches();
@@ -2903,8 +2896,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchreschedule();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule Request Raised");
-		//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
@@ -3028,8 +3019,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 47, rPlatformAssessmentEndDate);
 		sRp.clickToSubmitRescheduledBatch();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Rescheduled Successfully!!");
-		//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "batch reschedule request successfully approved");
 		sRp.clickOk();
 		Thread.sleep(4000);
 		sAp.clickToViewAllPublishedBatches();
@@ -3148,8 +3137,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchCancellation();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Cancellation Request Raised");
-		//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Cancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
@@ -3191,8 +3178,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
 		sAp.clickToRejectBatchCancellationRequest();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Request Rejected!!");
-		//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Cancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") "+batchID+" has been rejected");
 		sAp.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
@@ -3256,8 +3241,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchCancellation();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Cancellation Request Raised");
-		//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Cancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
@@ -3299,8 +3282,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
 		sAp.clickToApproveBatchCancellationRequest();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Cancelled Successfully!!");
-		//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Batch cancellation request successfully approved");
 		sAp.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
@@ -3328,5 +3309,94 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		Thread.sleep(4000);
+	}
+	
+	//Batch Full Test Case
+	@DataProvider
+    public Object[][] totApplicantsData()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants");
+    }
+    @Test(dataProvider="totApplicantsData", dependsOnMethods={"masterAssessorBatchApprovalTC_05", "masterTrainerBatchApprovalTC_03"})
+    public void batchFullTC_19(String serialNum,String createdTrainerID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredJobRoleCode3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3, String paymentMode, String bankName, String paymentReferenceNumber, String paymentDate, String paymentRemarks) throws Exception
+    {
+    	if(serialNum.equals("1")||serialNum.equals("2"))
+	   	{
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			String batchID=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", 1, 1);
+ 	   		String tcID=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 0);
+			String tcPassword=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 1);
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+ 	   		LoginPage lp=new LoginPage(driver);
+ 	   		lp.clickLogin();
+ 	   		EnterLoginPage elp=new EnterLoginPage(driver);
+ 	   		//Applicant Applying for batch
+			elp.performlogin(createdTrainerID, "Qwerty@123");
+			Thread.sleep(8000);
+			TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
+			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainerapplicant"," Login Unsuccessfull!! OR Its taking too much time to load!!! ");
+			tDp.clickToGetApplicantDashboard();
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+			js.executeScript("window.scrollBy(0,200)", "");
+			Thread.sleep(4000);
+			tDp.clickSearchAndApplyforAvailableBatches();
+			Thread.sleep(4000);
+			TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
+			tSp.selectState(state);
+			Thread.sleep(2000);
+			tSp.selectSector(preferredSector1);
+			Thread.sleep(4000);
+			tSp.clickSearch();
+			Thread.sleep(4000);
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
+			tSp.clickToGetBatchActionMenu(batchID);
+			Thread.sleep(4000);
+			tSp.selectApplyToBatch(batchID);
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully !!");
+			tSp.clickOK();  
+			Thread.sleep(4000);
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
+			plp.clickOnLogout();
+			Thread.sleep(6000);
+ 	   		//TC Approving Applicants
+			lp.clickLogin();
+			Thread.sleep(2000);
+ 	   		elp.performlogin(tcID, tcPassword);
+ 	   		Thread.sleep(8000);
+ 	   		LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
+ 	   		js.executeScript("window.scrollBy(0,200)","");
+ 	   		Thread.sleep(4000);
+ 	   		tcDp.clickToViewBatches();
+ 	   		Thread.sleep(2000);
+ 	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
+ 	   		tcVp.clickToViewAllAcceptedBatches();
+ 	   		Thread.sleep(4000);
+ 	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+ 	   		tcVp.clikToGetBatchActionMenu(batchID);
+ 	   		Thread.sleep(4000);
+ 	   		tcVp.selectEnrollApplicantsOption(batchID);
+ 	   		Thread.sleep(4000);
+ 	   		tcVp.clickToGetApplicantActionMenu(createdTrainerID);
+ 	   		Thread.sleep(4000);
+ 	   		tcVp.selectEnrollApplicantOption(createdTrainerID);
+ 	   		Thread.sleep(4000);
+ 	   		if(serialNum.equals("2"))
+ 	   		{
+ 	   			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Can not enroll more candidates than batch size, please check total number of enrolled / approved candidates count");
+ 	   		}
+ 	   		else
+ 	   		{
+ 	   			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("approved successfully"),"OMG!!! Applicant Enroll Successfull Popup Text not displayed OR Something went wrong! ");
+ 	   			tcVp.clickOk();
+ 	   			Thread.sleep(4000);
+ 	   		}
+ 	   		plp.clickOnProfileLogo();
+ 	   		Thread.sleep(2000);
+ 	   		plp.clickOnLogout();
+ 	   		Thread.sleep(6000);
+ 	   	}
 	}
 }		

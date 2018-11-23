@@ -439,11 +439,22 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[19]")).getText().trim(), district);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[20]")).getText().trim(), state);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[21]")).getText().trim(), pincode);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[23]")).getText().trim(), cAddress);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[24]")).getText().trim(), cVillage);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[25]")).getText().trim(), cDistrict);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[26]")).getText().trim(), cState);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[27]")).getText().trim(), cPincode);
+			if(isCommunicationAddressSameAsPermanentAddress.equalsIgnoreCase("yes"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[23]")).getText().trim(), address);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[24]")).getText().trim(), village);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[25]")).getText().trim(), district);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[26]")).getText().trim(), state);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[27]")).getText().trim(), pincode);
+			}
+			else
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[23]")).getText().trim(), cAddress);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[24]")).getText().trim(), cVillage);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[25]")).getText().trim(), cDistrict);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[26]")).getText().trim(), cState);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+candidateID+"')]]/td[27]")).getText().trim(), cPincode);
+			}
 			//Self Registered Candidate Action Menu - View Details
 			tpMp.clickToGetRegisteredCandidateActionMenu();
 			Thread.sleep(2000);
