@@ -84,6 +84,12 @@ public class TrainingPartnerRegistrationPage
     private WebElement parliamentaryConstituencyDropdownList;
     @FindBy(xpath="//select[@ng-reflect-name='addressProof']")
     private WebElement addressProofDropDownList;
+    @FindBy(xpath="//div[label[contains(text(),'Communication Address Same as Permanent Address:')]]//span")
+    private WebElement communicationAddSameAsPermanentAddressCheckbox;
+    @FindBy(xpath="(//input[@id='customFile'])[2]")
+    private WebElement second_BrowseFileButton;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+    private WebElement second_UploadFileButton;
     
     @FindBy(xpath="//input[@name='account-number']")
     private WebElement panTextbox;
@@ -328,6 +334,21 @@ public class TrainingPartnerRegistrationPage
     public void selectAddressProof(String address_proof)
     {
         SelectDropDownList.selectDropDownListByVisibleText(addressProofDropDownList, address_proof);
+    }
+    
+    public void clickOnCommunicationAddressSameAsPermanentAddress()
+    {
+    	communicationAddSameAsPermanentAddressCheckbox.click();
+    }
+    
+    public void clickOn_Second_BrowseFile()
+    {
+    	second_BrowseFileButton.click();
+    }
+    
+    public void clickOn_Second_UploadFile()
+    {
+    	second_UploadFileButton.click();
     }
     
     public void enterPANNumber(String pan_Number)

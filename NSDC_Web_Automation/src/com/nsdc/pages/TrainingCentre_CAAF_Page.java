@@ -111,6 +111,10 @@ public class TrainingCentre_CAAF_Page
     private WebElement facility_PowerBackupCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[10]")
     private WebElement facility_TCFunctionalCheckBox;
+    @FindBy(xpath="//select[@id='typeOfCentreFloor']")
+    private WebElement typeOfCentreFloorDropDownList;
+    @FindBy(xpath="//select[@id='typeOfTrainingCentreWalls']")
+    private WebElement typeOfTrainingCentreWallsDropDownList;
     @FindBy(id="availabilityOfInternet")
     private WebElement availablityOfInternetDropDownlist;
     
@@ -278,25 +282,25 @@ public class TrainingCentre_CAAF_Page
     private WebElement addClassRoomButton;
     @FindBy(xpath="//input[@id='classroomCarpetArea']")
     private WebElement classRoomCarpetAreaTextbox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[1]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[4]")
     private WebElement classRoomProjectorCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[2]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[5]")
     private WebElement classRoomAirConditionerCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[3]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[6]")
     private WebElement classRoomCCTVCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[4]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[7]")
     private WebElement classRoomAdequateLightCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[5]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[8]")
     private WebElement classRoomExhaustFanCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[6]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[1]")
     private WebElement classRoomSecuredElectricWireCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[7]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[9]")
     private WebElement classRoomWellVantilatedCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[8]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[2]")
     private WebElement classRoomAvailablityOfDustbinCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[9]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[10]")
     private WebElement classRoomCleanNdHygenicCheckBox;
-    @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[10]")
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[3]")
     private WebElement classRoomEmergencyNumberDisplayedCheckBox;
     @FindBy(xpath="//textarea[@id='classroomRemarks']")
     private WebElement classRoomRemarkTextbox;
@@ -938,7 +942,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilitiesCheckBoxes()
     {
         List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-    	for(int i=0;i<10;i++)
+    	for(int i=0;i<6;i++)
     	{
     		WebElement ele = element.get(i);
     		ele.click();
@@ -994,6 +998,16 @@ public class TrainingCentre_CAAF_Page
     public void clickFacility_TrainingCentreFunctional()
     {
         facility_TCFunctionalCheckBox.click();
+    }
+    
+    public void selectTypeOfCentreFloor(String centreFloorType)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(typeOfCentreFloorDropDownList, centreFloorType);
+    }
+    
+    public void selectTypeOfTrainingCentreWalls(String tcWallsType)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(typeOfTrainingCentreWallsDropDownList, tcWallsType);
     }
     
     public void selectAvailablityOfInternet(String internetAvailablity)
@@ -1075,7 +1089,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnMenResidentialArea_EquippedWithAll()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=10;i<14;i++)
+     	for(int i=6;i<10;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1139,7 +1153,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnWomenResidentialArea_EquippedWithAll()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=14;i<18;i++)
+     	for(int i=10;i<14;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1245,7 +1259,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilities_ForMedicalAndSafety()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-12']/span"));
-     	for(int i=7;i<15;i++)
+     	for(int i=7;i<21;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1474,6 +1488,7 @@ public class TrainingCentre_CAAF_Page
     	
     }
     
+    
     public void clickOnProjector_ClassRoom()
     {
         classRoomProjectorCheckBox.click();
@@ -1631,6 +1646,7 @@ public class TrainingCentre_CAAF_Page
      	}
     	
     }
+    
     
     public void clickOnLaboratoryProjector()
     {

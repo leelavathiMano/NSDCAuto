@@ -84,7 +84,34 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		atc.enterCentreHeadEmailAddress(centreHeadEmail);
 		atc.enterCentreHeadMobileNumber(centreHeadMobile);
 		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='trainingCenterType']")).getAttribute("value").substring(3), tcType);
-		if(tcType.equals("PMKK SPOKE"))
+		if(tcType.equals("Government") || tcType.equals("NON PMKK"))
+		{
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='processType']")).getAttribute("value"), "Accreditation & Affiliation");			
+		}
+		else if(tcType.equals("PMKK"))
+		{
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='processType']")).getAttribute("value"), "Accreditation & Affiliation");
+			Thread.sleep(3000);
+			atc.clickOnUploadMOU_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(mOU_File);
+			Thread.sleep(3000);
+			atc.clickOnUploadMOU_UploadFile();
+			Thread.sleep(3000);
+		}
+		else if(tcType.equals("PMKK SPOKE"))
+		{
+			atc.enterPMKK_HUB_ID(pmkkHubID);
+			atc.clickOnVerify();
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='processType']")).getAttribute("value"), "Accreditation & Affiliation");
+			Thread.sleep(3000);
+			atc.clickOnUploadMOU_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(mOU_File);
+			Thread.sleep(3000);
+			atc.clickOnUploadMOU_UploadFile();
+		}
+		/*if(tcType.equals("PMKK SPOKE"))
 		{
 			atc.enterPMKK_HUB_ID(pmkkHubID);
 			atc.clickOnVerify();
@@ -93,15 +120,15 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		else
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='processType']")).getAttribute("value"), "Accreditation & Affiliation");
-		}
+		}*/
 		
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 //		atc.clickOnUploadMOU_BrowseFile();
 //		Thread.sleep(3000);
 //		UploadFile.upload(mOU_File);
 //		Thread.sleep(3000);
 //		atc.clickOnUploadMOU_UploadFile();
-//		Thread.sleep(3000);
+		Thread.sleep(3000);
 		atc.clickOnSubmit();
 		Thread.sleep(3000);
 		atc.clickOnYesAddTrainingCentre();
@@ -157,8 +184,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_SC15TC02");
 	}
 	
-	@Test(dataProvider="tc_CAAF_FormFilling", dependsOnMethods="addTrainingCentreTC_01")
-	public void cAAF_FormFillingTC_02(String sno, String tcUsername, String tcPassword, String newPassword, String confirmPassword, String nameOfTC, String tcType, String socialmedia, String websiteurl, String spocName, String spocEmail, String spocMobileNumber, String spocAltNumber, String centrePrincipalName, String centrePrincipalEmail, String centrePrincipalcontactNumber, String tcAddress, String tcLandmark, String tcPinCode, String tcState, String tcDistrict, String tcTehsil, String tcParliamentry, String tcAddressProof, String addressProofFile, String tcAreaClassificationCentre, String centreAtGroundFloor, String buildingStatus, String buildingConstruction, String transportSystem, String transportName, String buildingFace, String approachRoadWidth, String previousBuildingState, String buildingStateFile, String internetAvailablity, String firstAffiliationName, String firstAffiliationType, String firstAboutAffiliation, String secondAffiliationName, String secondAffiliationType, String secondAboutAffiliation, String thirdAffiliationName, String thirdAffiliationType, String thirdAboutAffiliation, String menResidentialArea, String totalAreaMenResidential, String roomsNumberMenResidential, String residentialCapacityMen, String remarkMenResidential, String womenResidentialArea, String totalAreaWomenResidential, String roomsNumberWomenResidential, String residentialCapacityWomen, String remarkWomenResidential, String safeDrinkingWater, String fireEquipmentAvailablity, String classRoomCarpetArea, String classroomRemark, String laboratoryCarpetArea, String laboratoryType, String laboratoryRemark, String hybridCarpetArea, String hybridLaboratoryType, String hybridRemark, String sector, String jobRollName, String secondJobRollName, String thirdJobRollName, String traineeToTrainerRatio, String parallelBatchesNumber, String jobRole, String additionalArea, String additionalCarpetArea, String coveredCarpetArea, String trainerID, String trainerAvailablity, String trainerResourceType, String first_Classroom, String first_Laboratory, String first_Hybrid, String second_Classroom, String second_Laboratory, String second_Hybrid, String firstCentreCarpetArea, String firstCentrWashroomType, String firstCentreAreaRemark, String secondCentreCarpetArea, String secondCentrWashroomType, String secondCentreAreaRemark, String thirdCentreCarpetArea, String thirdCentreAreaRemark, String fourthCentreCarpetArea, String fourthCentreAreaRemark, String fifthCentreAreaType, String fifthCentreCarpetArea, String fifthCentrWashroomType, String fifthCentreAreaRemark, String firstSupportStaffName, String firstCentreStaffHighestQualification, String firstResourceType, String firstCentreStaffRemark, String secondSupportStaffName, String secondCentreStaffHighestQualification, String secondResourceType, String secondCentreStaffRemark, String thirdSupportStaffName, String thirdCentreStaffHighestQualification, String thirdResourceType, String thirdCentreStaffRemark, String fourthSupportStaffType, String fourthSupportStaffName, String fourthCentreStaffHighestQualification, String fourthResourceType, String fourthCentreStaffRemark) throws Exception
+	@Test(dataProvider="tc_CAAF_FormFilling")
+	public void cAAF_FormFillingTC_02(String sno, String tcUsername, String tcPassword, String newPassword, String confirmPassword, String nameOfTC, String tcType, String socialmedia, String websiteurl, String spocName, String spocEmail, String spocMobileNumber, String spocAltNumber, String centrePrincipalName, String centrePrincipalEmail, String centrePrincipalcontactNumber, String tcAddress, String tcLandmark, String tcPinCode, String tcState, String tcDistrict, String tcTehsil, String tcParliamentry, String tcAddressProof, String addressProofFile, String tcAreaClassificationCentre, String centreAtGroundFloor, String buildingStatus, String buildingConstruction, String transportSystem, String transportName, String buildingFace, String approachRoadWidth, String previousBuildingState, String buildingStateFile, String centreFloorType, String tcWallsType, String internetAvailablity, String firstAffiliationName, String firstAffiliationType, String firstAboutAffiliation, String secondAffiliationName, String secondAffiliationType, String secondAboutAffiliation, String thirdAffiliationName, String thirdAffiliationType, String thirdAboutAffiliation, String menResidentialArea, String totalAreaMenResidential, String roomsNumberMenResidential, String residentialCapacityMen, String remarkMenResidential, String womenResidentialArea, String totalAreaWomenResidential, String roomsNumberWomenResidential, String residentialCapacityWomen, String remarkWomenResidential, String safeDrinkingWater, String fireEquipmentAvailablity, String classRoomCarpetArea, String classroomRemark, String laboratoryCarpetArea, String laboratoryType, String laboratoryRemark, String hybridCarpetArea, String hybridLaboratoryType, String hybridRemark, String sector, String jobRollName, String secondJobRollName, String thirdJobRollName, String traineeToTrainerRatio, String parallelBatchesNumber, String jobRole, String additionalArea, String additionalCarpetArea, String coveredCarpetArea, String trainerID, String trainerAvailablity, String trainerResourceType, String first_Classroom, String first_Laboratory, String first_Hybrid, String second_Classroom, String second_Laboratory, String second_Hybrid, String firstCentreCarpetArea, String firstCentrWashroomType, String firstCentreAreaRemark, String secondCentreCarpetArea, String secondCentrWashroomType, String secondCentreAreaRemark, String thirdCentreCarpetArea, String thirdCentreAreaRemark, String fourthCentreCarpetArea, String fourthCentreAreaRemark, String fifthCentreAreaType, String fifthCentreCarpetArea, String fifthCentrWashroomType, String fifthCentreAreaRemark, String firstSupportStaffName, String firstCentreStaffHighestQualification, String firstResourceType, String firstCentreStaffRemark, String secondSupportStaffName, String secondCentreStaffHighestQualification, String secondResourceType, String secondCentreStaffRemark, String thirdSupportStaffName, String thirdCentreStaffHighestQualification, String thirdResourceType, String thirdCentreStaffRemark, String fourthSupportStaffType, String fourthSupportStaffName, String fourthCentreStaffHighestQualification, String fourthResourceType, String fourthCentreStaffRemark) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -226,6 +253,9 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		
 		Thread.sleep(3000);
 		caaf.clickOnAllFacilitiesCheckBoxes();
+		Thread.sleep(3000);
+		caaf.selectTypeOfCentreFloor(centreFloorType);
+		caaf.selectTypeOfTrainingCentreWalls(tcWallsType);
 		caaf.selectAvailablityOfInternet(internetAvailablity);
 		Thread.sleep(3000);
 		caaf.enterFirst_NameofAffiliation(firstAffiliationName);
@@ -307,7 +337,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		caaf.clickOnAllFacilities_MaintainingHygieneAndSanitation();
 		Thread.sleep(3000);
-		caaf.selectforFireFightingEquipmentAvailablity(fireEquipmentAvailablity);
+		//caaf.selectforFireFightingEquipmentAvailablity(fireEquipmentAvailablity);
 		Thread.sleep(3000);
 		caaf.clickOnAllFacilities_ForMedicalAndSafety();
 		Thread.sleep(5000);
@@ -634,6 +664,4 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	
-	
-		
 }
