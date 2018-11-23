@@ -769,8 +769,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Apparel')]")).getText().trim(), "Apparel");
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Training Experience in Apparel Sector')]")).getText().trim(), "Training Experience in Apparel Sector");
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Apparel')]]/td[4]")).getText().trim(), "11 months");
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Apparel')]]/td[5]")).getText().trim(), "Yes");
+    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Apparel')]])[2]/td[4]")).getText().trim(), "11 months");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Apparel')]])[2]/td[5]")).getText().trim(), "Yes");
     	aMpP.clickCurriculumVitaeBrowse();
     	Thread.sleep(2000);
     	UploadFile.upload(photoFile);
