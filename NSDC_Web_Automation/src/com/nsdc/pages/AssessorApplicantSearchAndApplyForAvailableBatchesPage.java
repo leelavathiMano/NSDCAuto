@@ -48,9 +48,6 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	//My Preferences
 	@FindBy(linkText="My Preferences")
 	private WebElement myPreferencesSectionLink;
-	
-	@FindBy(xpath="//button[contains(text(),'Apply for the Batch')]")
-	private WebElement applyForBatchButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
@@ -161,10 +158,6 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	public void selectApplyToBatch(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Apply to the Batch')]")).click();
-	}
-	public void clickApplyForBatch()
-	{
-		applyForBatchButton.click();
 	}
 	public void clickCancel()
 	{
