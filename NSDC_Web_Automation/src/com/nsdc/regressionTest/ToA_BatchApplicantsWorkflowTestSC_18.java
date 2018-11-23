@@ -713,9 +713,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), state+"/"+city);
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+") , "+platformJobRole+" ("+platformJobRoleCode+")");  
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Applied");
-	   SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
-	   Date date=new Date();
-	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), formatter.format(date));
+	   //Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), formatter.format(date));
 	   //Accepted Batch - View Details Data Verification
 	   aSp.clickToGetAcceptedBatchActionMenu(batchID);
 	   Thread.sleep(2000);

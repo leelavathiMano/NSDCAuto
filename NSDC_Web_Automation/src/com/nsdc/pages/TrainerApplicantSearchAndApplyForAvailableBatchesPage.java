@@ -48,18 +48,6 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	//My Preferences
 	@FindBy(linkText="My Preferences")
 	private WebElement myPreferencesSectionLink;
-	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
-	private WebElement actionDropdownMenu;
-	@FindBy(linkText="Search Against Preference")
-	private WebElement searchAgainstPreferenceActionOption;
-	@FindBy(linkText="Remove Preference")
-	private WebElement removePreferenceActionOption;
-	@FindBy(linkText="View Details")
-	private WebElement viewDetailsOption;
-	@FindBy(linkText="Apply to the batch")
-	private WebElement applyToTheBatchOption;
-	@FindBy(xpath="//button[contains(text(),'Apply for the Batch')]")
-	private WebElement applyForBatchButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
@@ -147,17 +135,17 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		addJobRoleAndLocationToMyPreferenceButton.click();
 	}
-	public void clickAction()
+	public void clickToGetMyPreferenceActionMenu(String preferredSector)
 	{
-		actionDropdownMenu.click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
 	}
-	public void selectSearchAgainstPreference()
+	public void selectSearchAgainstPreference(String preferredSector)
 	{
-		searchAgainstPreferenceActionOption.click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Search Against Preference')]")).click();
 	}
-	public void selectRemovePreference()
+	public void selectRemovePreference(String preferredSector)
 	{
-		removePreferenceActionOption.click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Remove Preference')]")).click();
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{
@@ -170,10 +158,6 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	public void selectApplyToBatch(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Apply to the Batch')]")).click();
-	}
-	public void clickApplyForBatch()
-	{
-		applyForBatchButton.click();
 	}
 	public void clickCancel()
 	{
