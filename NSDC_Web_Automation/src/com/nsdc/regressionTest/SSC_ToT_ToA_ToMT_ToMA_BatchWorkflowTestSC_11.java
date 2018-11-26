@@ -1385,7 +1385,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Training Centre Assigned\n"+createdBatchID+"\nis successfully assigned to   "+tcName+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
@@ -1413,7 +1412,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+d1masterTrainerID+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+d1masterTrainerID+"')]")).getText().trim(), d1masterTrainerName+" ( "+d1masterTrainerID+" )");
@@ -2666,7 +2664,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchreschedule();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule Request Raised");
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule request Raised");
 		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
@@ -3114,7 +3112,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 	}
 	
 	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscApprovingBatchRescheduleRequestAndUpdatingBatchDurationTC_16")
-	public void sscRejectingBatchCancellationRequestTC_17(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String state, String district, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	public void sscRejectingBatchCancellationRequestTC_17(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String state, String district, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -3413,4 +3411,141 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
  	   		Thread.sleep(6000);
  	   	}
 	}
+    
+    @Test(dataProvider="sscBatchCreationData", dependsOnMethods="batchFullTC_19")
+    public void sendBackBatchTC_20(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmasterTrainerRemarksDate, String dmasterTrainerRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String dassessmentAgencyRemarksDate, String dassessmentAgencyRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmasterAssessorRemarks, String dmasterAssesorRemarksDate, String dmasterAssessorRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmasterTrainerRemarksDate, String pmasterTrainerRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String passessmentAgencyRemarksDate, String passessmentAgencyRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmasterAssessorRemarks, String pmasterAssesorRemarksDate, String pmasterAssessorRemarksTime) throws Exception
+    {
+    	if(serialNum.equals("1"))
+    	{
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+        	LoginPage lp=new LoginPage(driver);
+        	lp.clickLogin();
+        	Thread.sleep(2000);
+     	   	EnterLoginPage elp=new EnterLoginPage(driver);
+     	   	elp.performlogin(tcID, tcPassword);
+     	   	Thread.sleep(6000);
+     	   	LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
+     	   	JavascriptExecutor js=(JavascriptExecutor)driver;
+     	   	js.executeScript("window.scrollBy(0,200)","");
+     	   	Thread.sleep(4000);
+     	   	tcDp.clickToViewBatches();
+     	   	Thread.sleep(2000);
+     	   	LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
+     	   	tcVp.clickToViewAllAcceptedBatches();
+     	   	Thread.sleep(4000);
+     	   	Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchID);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), batchType);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+"),\n"+platformJobRole+" ("+platformJobRoleCode+")");   
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), batchSize);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
+     	   	tcVp.clikToGetBatchActionMenu(batchID);
+     	   	Thread.sleep(2000);
+     	   	tcVp.selectEnrollApplicantsOption(batchID);
+     	   	Thread.sleep(4000);
+     	   	tcVp.clickToGoToEnrolledApplicantsSection();
+     	   	Thread.sleep(4000);
+     	   	String applicantID =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 1);
+     	   	String applicantName =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 3);
+     	   	String applicantEmail =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 4);
+     	   	String applicantMobile =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 5);
+     	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]")).size()==1,"OMG!!! No show of Enrolled Assessor Applicant - "+applicantID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+applicantID+"']")).getText().trim(), applicantID);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantName+"')]")).getText().trim(), applicantName);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantEmail+"')]")).getText().trim(), applicantEmail);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantMobile+"')]")).getText().trim(), applicantMobile);
+     	   	//Sending Batch To SSC For Approval
+     	   	tcVp.clickToSendBatchForApproval();
+     	   	Thread.sleep(4000);
+     	   	Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Submitted for Approval");
+     	   	Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been submitted for approval to SSC");
+     	   	tcVp.clickOk();
+     	   	Thread.sleep(4000);
+     	   	tcVp.clickToViewAllAcceptedBatches();
+     	   	Thread.sleep(4000);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Submitted for Approval");
+     	   	PostLoginPage plp=new PostLoginPage(driver);
+     	   	plp.clickOnProfileLogo();
+	   		Thread.sleep(2000);
+	   		plp.clickOnLogout();
+	   		Thread.sleep(6000);
+     	   	//SSC Sending Back Batch
+     	   	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+      	 	lp.clickLogin();
+      	 	elp.performlogin(sscUsername, sscPassword);
+      	 	Thread.sleep(10000);
+      	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+      	 	js.executeScript("window.scrollBy(0,200)", "");
+      	 	Thread.sleep(4000);
+      	 	sDp.clickAllBatches();
+      	 	Thread.sleep(4000);
+      	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+      	 	sAp.clickToViewAllPublishedBatches();
+      	 	Thread.sleep(6000);
+      	 	sAp.clickToGetBatchActionMenu(batchID);
+      	 	Thread.sleep(2000);
+      	 	sAp.selectApproveApplicantsOption(batchID);
+      	 	Thread.sleep(4000);
+      	 	SSC_ViewBatchDetailsPage sVp=new SSC_ViewBatchDetailsPage(driver);
+      	 	sVp.clickToGoToEnrolledApplicantsSection();
+      	 	Thread.sleep(2000);
+      	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantID+"']]")).size()==1,"OMG!!! No show of TC Approved Trainer Applicant - "+applicantID+" in Enrolled Applicants Section, who has applied for the batch - "+batchID+" OR Something went wrong! ");
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[2]")).getText().trim(), applicantID);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[3]")).getText().trim(), applicantName);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[4]")).getText().trim(), applicantEmail);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[5]")).getText().trim(), applicantMobile);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[6]")).getText().trim(), "Paid");
+      	 	sVp.clickToGoToApprovedApplicantsSection();
+      	 	Thread.sleep(4000);
+      	 	//Send Back
+      	 	sVp.clickToSendBackBatch();
+      	 	Thread.sleep(4000);
+      	 	sVp.enterRemarksForSendBackBatch("Sending Back This Batch as these applicants are unpaid");
+      	 	Thread.sleep(2000);
+      	 	sVp.clickToSubmitSendBackBatch();
+      	 	Thread.sleep(4000);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Batch Sent Back\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") Batch sent back successfully");
+      	 	sVp.clickOk();
+      	 	Thread.sleep(4000);
+      	 	sAp.clickToViewAllPublishedBatches();
+      	 	Thread.sleep(4000);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Sent Back");
+      	 	plp.clickOnProfileLogo();
+      	 	Thread.sleep(2000);
+      	 	plp.clickOnLogout();
+      	 	Thread.sleep(6000);
+      	 	//TC Checking Sent Back Batch
+      	 	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+        	lp.clickLogin();
+        	Thread.sleep(2000);
+     	   	elp.performlogin(tcID, tcPassword);
+     	   	Thread.sleep(6000);
+     	   	js.executeScript("window.scrollBy(0,200)","");
+     	   	Thread.sleep(4000);
+     	   	tcDp.clickToViewBatches();
+     	   	Thread.sleep(2000);
+     	   	tcVp.clickToViewAllAcceptedBatches();
+     	   	Thread.sleep(4000);
+     	   	Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchID);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), batchType);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+"),\n"+platformJobRole+" ("+platformJobRoleCode+")");   
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), batchSize);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Sent Back by SSC");
+     	   	tcVp.clikToGetBatchActionMenu(batchID);
+     	   	Thread.sleep(2000);
+     	   	tcVp.selectReEnrollApplicantsOption(batchID);
+     	   	Thread.sleep(4000);
+     	   	tcVp.clickToGoToAppliedApplicantsSection();
+     	   	Thread.sleep(4000);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//div[p[b[contains(text(),'Batch Status')]]]//span")).getText().trim(), "Rejected");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//div[p[b[contains(text(),'Rejected Reason')]]]//p[3]")).getText().trim(), "Sending Back This Batch as these applicants are unpaid");
+     	   	plp.clickOnProfileLogo();
+     	 	Thread.sleep(2000);
+     	 	plp.clickOnLogout();
+     	 	Thread.sleep(2000);
+     	}
+    }
 }		

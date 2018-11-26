@@ -124,6 +124,10 @@ public class LocationBasedTC_ViewBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a//span[contains(text(),'Enroll Applicants')]")).click();
 	}
+	public void selectReEnrollApplicantsOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a//span[contains(text(),'Re-Enroll Applicants')]")).click();
+	}
 	public void clickToGoToDashboard()
 	{
 		totToAToMTToMALink.click();

@@ -184,6 +184,12 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement rejectApplicantSubmitButton;
 	@FindBy(xpath="//button[contains(text(),'Approve Batch')]")
 	private WebElement approveBatchButton;
+	@FindBy(xpath="//button[contains(text(),'Send Back Batch')]")
+	private WebElement sendBackBatchButton;
+	@FindBy(name="remarks")
+	private WebElement sendBackBatchRemarksTextArea;
+	@FindBy(xpath="//button[contains(text(),'Submit')]")
+	private WebElement sendBackBatchSubmitButton;
 		
 	public SSC_ViewBatchDetailsPage(WebDriver driver)
 	{
@@ -651,5 +657,18 @@ public class SSC_ViewBatchDetailsPage
 	public void clickToApproveBatch()
 	{
 		approveBatchButton.click();
+	}
+	public void clickToSendBackBatch()
+	{
+		sendBackBatchButton.click();
+	}
+	public void enterRemarksForSendBackBatch(String sendBackBatchRemarks)
+	{
+		sendBackBatchRemarksTextArea.clear();
+		sendBackBatchRemarksTextArea.sendKeys(sendBackBatchRemarks);
+	}
+	public void clickToSubmitSendBackBatch()
+	{
+		sendBackBatchSubmitButton.click();
 	}
 }
