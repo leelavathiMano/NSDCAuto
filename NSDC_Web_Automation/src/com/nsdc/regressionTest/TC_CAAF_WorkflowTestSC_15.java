@@ -22,6 +22,8 @@ import com.nsdc.pages.PMKKSPOC_AccrediationAndAffiliationPage;
 import com.nsdc.pages.PMKKSPOC_AssignedInspectionRequestPage;
 import com.nsdc.pages.PMKKSPOC_DashboardPage;
 import com.nsdc.pages.PostLoginPage;
+import com.nsdc.pages.QC_AllAssignedInspectionRequestPage;
+import com.nsdc.pages.QC_DashboardPage;
 import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.SA_DashboardPage;
 import com.nsdc.pages.SA_ViewJobRoleRecommendationRequestPage;
@@ -567,7 +569,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(5000);
 		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='type'])[1]")).getText(), "Reception");
 		caaf.enter_FirstCentreArea_CarpetArea(firstCentreCarpetArea);
-		caaf.select_FirstCentreArea_TypeOfWashRoom(firstCentrWashroomType);
+		//caaf.select_FirstCentreArea_TypeOfWashRoom(firstCentrWashroomType);
 		Thread.sleep(3000);
 		caaf.clickOnFirstCentreArea_EquippedWithAll();
 		Thread.sleep(3000);
@@ -576,7 +578,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='type'])[2]")).getText(), "Placement & Entrepreneurship Cell");
 		caaf.enter_SecondCentreArea_CarpetArea(secondCentreCarpetArea);
-		caaf.select_SecondCentreArea_TypeOfWashRoom(secondCentrWashroomType);
+		//caaf.select_SecondCentreArea_TypeOfWashRoom(secondCentrWashroomType);
 		Thread.sleep(3000);
 		caaf.clickOnSecondCentreArea_EquippedWithAll();
 		Thread.sleep(3000);
@@ -586,7 +588,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='type'])[3]")).getText(), "Male Washroom");
 		caaf.enter_ThirdCentreArea_CarpetArea(thirdCentreCarpetArea);
 		Thread.sleep(8000);
-		caaf.clickOnThirdCentreArea_EquippedWithAll();
+		//caaf.clickOnThirdCentreArea_EquippedWithAll();
 		Thread.sleep(3000);
 		caaf.enter_ThirdCentreArea_Remark(thirdCentreAreaRemark);
 		
@@ -594,7 +596,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='type'])[4]")).getText(), "Female Washroom");
 		caaf.enter_FourthCentreArea_CarpetArea(fourthCentreCarpetArea);
 		Thread.sleep(3000);
-		caaf.clickOnFourthCentreArea_EquippedWithAll();
+		//caaf.clickOnFourthCentreArea_EquippedWithAll();
 		Thread.sleep(3000);
 		caaf.enter_FourthCentreArea_Remark(fourthCentreAreaRemark);
 		
@@ -620,23 +622,24 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		
 		Thread.sleep(3000);
 		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='type'])[2]")).getAttribute("value"), "");
+		caaf.selectSecond_TypeOfSupportStaff(fourthSupportStaffType);
 		caaf.enterSecond_NameOfSupportStaff(secondSupportStaffName);
 		caaf.selectSecond_HighestQualificationForCentreStaff(secondCentreStaffHighestQualification);
 		caaf.selectSecond_ResourceTypeOfCentreStaff(secondResourceType);
 		caaf.enterSecond_RemarkForCentreStaff(secondCentreStaffRemark);
 		
-		Thread.sleep(3000);
-		caaf.enterThird_NameOfSupportStaff(thirdSupportStaffName);
-		caaf.selectThird_HighestQualificationForCentreStaff(thirdCentreStaffHighestQualification);
-		caaf.selectThird_ResourceTypeOfCentreStaff(thirdResourceType);
-		caaf.enterThird_RemarkForCentreStaff(thirdCentreStaffRemark);
-		
-		Thread.sleep(3000);
-		caaf.selectFourth_TypeOfSupportStaff(fourthSupportStaffType);
-		caaf.enterFourth_NameOfSupportStaff(fourthSupportStaffName);
-		caaf.selectFourth_HighestQualificationForCentreStaff(fourthCentreStaffHighestQualification);
-		caaf.selectFourth_ResourceTypeOfCentreStaff(fourthResourceType);
-		caaf.enterFourth_RemarkForCentreStaff(fourthCentreStaffRemark);
+//		Thread.sleep(3000);
+//		caaf.enterThird_NameOfSupportStaff(thirdSupportStaffName);
+//		caaf.selectThird_HighestQualificationForCentreStaff(thirdCentreStaffHighestQualification);
+//		caaf.selectThird_ResourceTypeOfCentreStaff(thirdResourceType);
+//		caaf.enterThird_RemarkForCentreStaff(thirdCentreStaffRemark);
+//		
+//		Thread.sleep(3000);
+//		caaf.selectFourth_TypeOfSupportStaff(fourthSupportStaffType);
+//		caaf.enterFourth_NameOfSupportStaff(fourthSupportStaffName);
+//		caaf.selectFourth_HighestQualificationForCentreStaff(fourthCentreStaffHighestQualification);
+//		caaf.selectFourth_ResourceTypeOfCentreStaff(fourthResourceType);
+//		caaf.enterFourth_RemarkForCentreStaff(fourthCentreStaffRemark);
 		
 		caaf.clickForAddAnotherCentreStaff();
 		
@@ -663,5 +666,6 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		
 	}
 	
+
 	
 }

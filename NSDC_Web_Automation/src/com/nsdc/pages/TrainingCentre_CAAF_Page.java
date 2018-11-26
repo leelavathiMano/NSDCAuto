@@ -573,7 +573,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement securedElectricWires_FirstCentreAreaCheckBox;
     @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[7]")
     private WebElement dustbinAvailablity_FirstCentreAreaCheckBox;
-    @FindBy(xpath="(//textarea[@placeholder='Enter Brief about the Job Role'])[1]")
+    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[1]")
     private WebElement centreArea_FirstRemarkTextbox;
     
     
@@ -600,7 +600,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement securedElectricWires_SecondCentreAreaCheckBox;
     @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[14]")
     private WebElement dustbinAvailablity_SecondCentreAreaCheckBox;
-    @FindBy(xpath="(//textarea[@placeholder='Enter Brief about the Job Role'])[2]")
+    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[2]")
     private WebElement centreArea_SecondRemarkTextbox;
     
     @FindBy(xpath="(//select[option[text()='Select Centre Area Type']])[3]")
@@ -623,7 +623,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement securedElectricWires_ThirdCentreAreaCheckBox;
     @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[21]")
     private WebElement dustbinAvailablity_ThirdCentreAreaCheckBox;
-    @FindBy(xpath="(//textarea[@placeholder='Enter Brief about the Job Role'])[3]")
+    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[3]")
     private WebElement centreArea_ThirdRemarkTextbox;
     
     @FindBy(xpath="(//select[option[text()='Select Centre Area Type']])[4]")
@@ -646,14 +646,14 @@ public class TrainingCentre_CAAF_Page
     private WebElement securedElectricWires_FourthCentreAreaCheckBox;
     @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[28]")
     private WebElement dustbinAvailablity_FourthCentreAreaCheckBox;
-    @FindBy(xpath="(//textarea[@placeholder='Enter Brief about the Job Role'])[4]")
+    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[4]")
     private WebElement centreArea_FourthRemarkTextbox;
     
     @FindBy(xpath="//select[option[text()='Select Centre Area Type']]")
     private WebElement centreAreaType_FifthDropDownList;
     @FindBy(xpath="//input[@placeholder='Enter Carpet Area (in Sq. Ft)']")
     private WebElement centreCarpetArea_FifthTexbox;
-    @FindBy(xpath="(//select[@id='typeOfWashRoom'])[5]")
+    @FindBy(xpath="(//select[@id='typeOfWashRoom'])[1]")
     private WebElement centreArea_FifthWashRoomTypeDropDownList;
     @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[29]")
     private WebElement cctv_FifthCentreAreaCheckBox;
@@ -669,7 +669,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement securedElectricWires_FifthCentreAreaCheckBox;
     @FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[35]")
     private WebElement dustbinAvailablity_FifthCentreAreaCheckBox;
-    @FindBy(xpath="(//textarea[@placeholder='Enter Brief about the Job Role'])[5]")
+    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[5]")
     private WebElement centreArea_FifthRemarkTextbox;
     @FindBy(xpath="//button[contains(text(),'Add Centre Area Type')]")
     private WebElement addAnotherCentreTypeButton;
@@ -689,7 +689,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement centreStaff_AddButton;
     //@FindBy(xpath="//button[contains(text(),'Save & Continue')]")
     //private WebElement centreStaff_SaveAndContinueButton;
-    @FindBy(xpath="(//select[@id='type'])[1]")
+    @FindBy(xpath="(//select[@id='type'])[2]")
     private WebElement second_CentreSupportStaff_TypeDropDownList;
     @FindBy(xpath="(//input[@placeholder='Enter Name of Support Staff'])[2]")
     private WebElement second_CentreSupportStaff_NameTextbox;
@@ -697,7 +697,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement second_CentreStaff_highestQualificationDropDownList;
     @FindBy(xpath="(//select[@id='typeOfResource'])[2]")
     private WebElement second_CentreStaff_ResourceTypeDropDownList;
-    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[2]")
+    //@FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[2]")
+    @FindBy(xpath="(//textarea[@placeholder='Enter brief about the Job Role'])")
     private WebElement second_CentreStaff_RemarkTextbox;
     @FindBy(xpath="(//select[@id='type'])[3]")
     private WebElement third_CentreSupportStaff_TypeDropDownList;
@@ -2488,7 +2489,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnFifthCentreArea_EquippedWithAll()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[input[@class='ng-untouched ng-pristine ng-valid']]/span"));
-     	for(int i=2;i<9;i++)
+     	for(int i=14;i<21;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
