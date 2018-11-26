@@ -845,7 +845,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(4000);
  		   tcVp.selectEnrollApplicantOption(trainerID);
  		   Thread.sleep(4000);
- 		   Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("approved successfully"),"OMG!!! Applicant Enroll Successfull Popup Text not displayed OR Something went wrong! ");
+		  // Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Applicant enrolled successfully\nYou have successfully enrolled to the "+batchID);
  		   tcVp.clickOk();
  		   Thread.sleep(4000);
  	   }
