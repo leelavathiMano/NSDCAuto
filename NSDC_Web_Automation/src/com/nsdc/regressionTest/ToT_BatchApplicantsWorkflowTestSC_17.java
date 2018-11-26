@@ -698,7 +698,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  			Thread.sleep(2000);
  			tSp.selectApplyToBatch(batchID);
  			Thread.sleep(4000);
- 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully !!");
+ 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
  			tSp.clickOK();
  		 // }
  			Thread.sleep(4000);
@@ -1730,7 +1730,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Thread.sleep(4000);
 			tSp.selectApplyToBatch(batchID);
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully !!");
 			tSp.clickOK();  
 			Thread.sleep(4000);
 			PostLoginPage plp=new PostLoginPage(driver);
@@ -1833,7 +1832,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Thread.sleep(4000);
 			tSp.selectApplyToBatch(batchID);
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully !!");
 			tSp.clickOK();  
 			Thread.sleep(4000);
 			PostLoginPage plp=new PostLoginPage(driver);
