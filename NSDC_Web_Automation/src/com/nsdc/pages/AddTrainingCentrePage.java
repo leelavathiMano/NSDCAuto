@@ -39,7 +39,7 @@ public class AddTrainingCentrePage
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement addressProof_UploadFileButton;
 	
-	@FindBy(xpath="//input[@placeholder='Enter Name Of SPOC']")
+	@FindBy(xpath="//input[@placeholder='Enter Name of SPOC']")
 	private WebElement SPOC_nameTextBox;
 	@FindBy(xpath="//input[@placeholder='Enter Email Address of SPOC']")
 	private WebElement SPOC_emailTextBox;
