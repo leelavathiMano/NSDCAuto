@@ -17,8 +17,10 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement acceptedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
-	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
+	@FindBy(xpath="//input[@placeholder='Search by Keyword']")
 	private WebElement searchByBatchIdTextfield;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchFilterButton;
 	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
 	private WebElement actionMenuDropdownLink;
 	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
@@ -102,6 +104,10 @@ public class AssessmentAgencyViewBatchesPage
 		searchByBatchIdTextfield.clear();
 		Thread.sleep(2000);
 		searchByBatchIdTextfield.sendKeys(batchID);
+	}
+	public void clickToApplySelectedSearchFilters()
+	{
+		applySearchFilterButton.click();
 	}
 	public void clickToSelectViewBatchDetailsOption()
 	{

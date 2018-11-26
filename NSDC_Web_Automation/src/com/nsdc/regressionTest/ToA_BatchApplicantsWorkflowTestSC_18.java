@@ -425,9 +425,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			Thread.sleep(2000);
 			aVp.enterBatchIdToSearch(batchID);
 			Thread.sleep(2000);
+			aVp.clickToApplySelectedSearchFilters();
+			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
-			Thread.sleep(2000);
-			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(2000);
 			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(2000);
@@ -464,9 +464,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			Thread.sleep(4000);
 			aVp.enterBatchIdToSearch(batchID);
 			Thread.sleep(2000);
+			aVp.clickToApplySelectedSearchFilters();
+			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
-			Thread.sleep(2000);
-			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(2000);
 			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(2000);
@@ -1496,9 +1496,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    			Thread.sleep(2000);
    			aVp.enterBatchIdToSearch(batchID);
    			Thread.sleep(2000);
+   			aVp.clickToApplySelectedSearchFilters();
+			Thread.sleep(4000);
    			js.executeScript("window.scrollBy(0,200)", "");
-   			Thread.sleep(2000);
-   			aVp.clickToGetActionMenuOptions();
    			Thread.sleep(2000);
    			aVp.clickToGetActionMenuOptions();
    			Thread.sleep(2000);

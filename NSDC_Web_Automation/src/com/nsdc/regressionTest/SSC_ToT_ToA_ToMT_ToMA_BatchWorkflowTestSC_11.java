@@ -695,6 +695,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Thread.sleep(2000);
 			aVp.enterBatchIdToSearch(batchID);
 			Thread.sleep(2000);
+			aVp.clickToApplySelectedSearchFilters();
+			Thread.sleep(4000);
 			if(i==1)
 			{
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in "+dassessmentAgencyID+" Pending Requests section!!! ");
@@ -715,8 +717,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), batchSize);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Pending for Acceptance");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), batchCreatedDate);
-			aVp.clickToGetActionMenuOptions();
-			Thread.sleep(2000);
 			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(2000);
 			aVp.clickToSelectViewBatchDetailsOption();
@@ -751,6 +751,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Thread.sleep(4000);
 			aVp.enterBatchIdToSearch(batchID);
 			Thread.sleep(2000);
+			aVp.clickToApplySelectedSearchFilters();
+			Thread.sleep(4000);
 			if(i==1)
 			{
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in "+dassessmentAgencyID+" Pending Requests section!!! ");
@@ -761,8 +763,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(4000);
-			aVp.clickToGetActionMenuOptions();
-			Thread.sleep(2000);
 			aVp.clickToSelectAcceptBatchOption();
 			Thread.sleep(2000);
 			if(i==1)
@@ -805,6 +805,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Thread.sleep(4000);
 			aVp.enterBatchIdToSearch(batchID);
 			Thread.sleep(2000);
+			aVp.clickToApplySelectedSearchFilters();
+			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
 			Thread.sleep(2000);
 			if(i==1)
@@ -837,8 +839,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[9]")).getText().trim(), batchCreatedDate);
 			aVp.clickToGetActionMenuOptions();
 			Thread.sleep(4000);
-			aVp.clickToGetActionMenuOptions();
-			Thread.sleep(2000);
 			aVp.clickToSelectAssignAssessorsOption();
 			Thread.sleep(4000);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Batch ID')]]]]/div[2]/span")).getText().trim(),batchID);
@@ -1860,6 +1860,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(2000);
 				aVp.enterBatchIdToSearch(batchID);
 				Thread.sleep(2000);
+				aVp.clickToApplySelectedSearchFilters();
+				Thread.sleep(4000);
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in "+dassessmentAgencyID+" Pending Requests section!!! ");
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
@@ -1879,8 +1881,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					String reAssignedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 101);
 					Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), reAssignedDate);
 				}
-				aVp.clickToGetActionMenuOptions();
-				Thread.sleep(2000);
 				aVp.clickToGetActionMenuOptions();
 				Thread.sleep(2000);
 				aVp.clickToSelectRejectBatchOption();
@@ -1907,6 +1907,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				aVp.enterBatchIdToSearch(batchID);
 				Thread.sleep(2000);
+				aVp.clickToApplySelectedSearchFilters();
+				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
 				Assert.assertTrue(driver.findElements(By.xpath("//td[text()='"+batchID+"']")).size()==1,"OMG!!! The Batch - "+batchID+" is not found in Accepted Section of - "+dassessmentAgencyID+" !!! ");
@@ -2053,9 +2055,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					Thread.sleep(2000);
 					aVp.enterBatchIdToSearch(batchID);
 					Thread.sleep(2000);
+					aVp.clickToApplySelectedSearchFilters();
+					Thread.sleep(4000);
 					js.executeScript("window.scrollBy(0,200)", "");
-					Thread.sleep(2000);
-					aVp.clickToGetActionMenuOptions();
 					Thread.sleep(2000);
 					aVp.clickToGetActionMenuOptions();
 					Thread.sleep(2000);
@@ -2072,12 +2074,12 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					Thread.sleep(4000);
 					aVp.enterBatchIdToSearch(batchID);
 					Thread.sleep(2000);
+					aVp.clickToApplySelectedSearchFilters();
+					Thread.sleep(4000);
 					js.executeScript("window.scrollBy(0,200)", "");
 					Thread.sleep(2000);
 					aVp.clickToGetActionMenuOptions();
 					Thread.sleep(4000);
-					aVp.clickToGetActionMenuOptions();
-					Thread.sleep(2000);
 					aVp.clickToSelectAssignAssessorsOption();
 					Thread.sleep(4000);
 					aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
@@ -2197,13 +2199,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				aVp.enterBatchIdToSearch(batchID);
 				Thread.sleep(2000);
+				aVp.clickToApplySelectedSearchFilters();
+				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rejected by Assessor");
 				aVp.clickToGetActionMenuOptions();
 				Thread.sleep(4000);
-				aVp.clickToGetActionMenuOptions();
-				Thread.sleep(2000);
 				aVp.clickToSelectViewBatchDetailsOption();
 				Thread.sleep(4000);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole1+"')]]/td[6]")).getText().trim(), "Rejected");
@@ -2562,9 +2564,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		aVp.enterBatchIdToSearch(batchID);
 		Thread.sleep(2000);
+		aVp.clickToApplySelectedSearchFilters();
+		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(2000);
-		aVp.clickToGetActionMenuOptions();
 		Thread.sleep(2000);
 		aVp.clickToGetActionMenuOptions();
 		Thread.sleep(2000);
@@ -2581,9 +2583,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		aVp.enterBatchIdToSearch(batchID);
 		Thread.sleep(2000);
+		aVp.clickToApplySelectedSearchFilters();
+		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(2000);
-		aVp.clickToGetActionMenuOptions();
 		Thread.sleep(2000);
 		aVp.clickToGetActionMenuOptions();
 		Thread.sleep(2000);
