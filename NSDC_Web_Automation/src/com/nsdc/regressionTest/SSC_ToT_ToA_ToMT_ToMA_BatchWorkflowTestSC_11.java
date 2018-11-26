@@ -174,6 +174,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		String[]parts=bacthCreationsuccessfulURL.split("/");
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 1, createdBatchID);
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+") is successfully created");
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssccreate-new-batchbatch-assignment"+createdBatchID,"OMG!!! No show of Batch Assignment Page OR Something is wrong! ");
@@ -204,7 +205,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Training Centre Assigned\n"+createdBatchID+"\nis successfully assigned to   "+tcName+"\nState : "+state+"\nDistrict : "+district);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Training Centre Assigned\nBatch ID -"+createdBatchID+"\nis successfully assigned to   "+tcName+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
@@ -255,6 +256,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+pmasterTrainerID+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+pmasterTrainerID+"')])[1]")).getText().trim(), pmasterTrainerName+" ( "+pmasterTrainerID+" )");
@@ -277,6 +279,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+dassessmentAgencyName+"\nState : "+state+"\nDistrict :"+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+dassessmentAgencyID+"')]")).getText().trim(), dassessmentAgencyName+" ( "+dassessmentAgencyID+" )");
@@ -299,6 +302,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+passessmentAgencyName+"\nState : "+state+"\nDistrict :"+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+passessmentAgencyID+"')])[1]")).getText().trim(), passessmentAgencyName+" ( "+passessmentAgencyID+" )");
@@ -448,7 +452,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		lTcVbP.clickToAcceptBatch();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Accepted Successfully");	
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Accepted Successfully\nYou have successfully accepted for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 		lTcVbP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[text()='"+batchID+"']")).size()==0,"OMG!!! accepted batch - "+batchID+" should not be shown in pending batches section! OR Something is wrong! ");
@@ -593,7 +597,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 71, timeFormat.format(date));
 			}
 			Thread.sleep(4000);	
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Accepted Successfully");
+			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Accepted Successfully\nYou have successfully accepted for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 			tVp.clickOk();
 			Thread.sleep(2000);
 			if(i==1)
@@ -785,7 +789,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 77, timeFormat.format(date));
 			}
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(),"You have successfully accepted "+batchID);
+			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Request Accepted Successfully\nYou have successfully accepted\nBatch ID - "+batchID);
 			aVp.clickOk();
 			Thread.sleep(2000);
 			if(i==1)
@@ -1027,7 +1031,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 83, timeFormat.format(date));
 			}
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Accepted Successfully");
+			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Accepted Successfully\nYou have successfully accepted for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 			maVp.clickOk();
 			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,-500)", "");
@@ -1581,7 +1585,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				lTcVbP.clickToRejectBatch();
 				Thread.sleep(4000);
-				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Rejected");	
+				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Request Rejected\nYou have rejected request for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");	
 				lTcVbP.clickOk();
 				Thread.sleep(2000);
 				Assert.assertTrue(driver.findElements(By.xpath("//td[text()='"+batchID+"']")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in pending batches section! OR Something is wrong! ");
@@ -1648,7 +1652,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				}
 				else
 				{
-					Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Training Centre Assigned");	
+					Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Training Centre Assigned\nBatch ID -"+batchID+"\nis successfully assigned to   "+tcName+"\nState : "+state+"\nDistrict : "+district);	
 					sVbP.clickOk();
 					Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
 					Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcName+"')]")).getText().trim(), tcName);
@@ -1714,7 +1718,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 57, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 58, timeFormat.format(date));
 				Thread.sleep(4000);	
-				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Rejected");
+				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Request Rejected\nYou have rejected request for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 				tVp.clickOk();
 				Thread.sleep(2000);
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in Pending Requests Section of Master Trainer - "+d1masterTrainerID);
@@ -1810,7 +1814,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				}
 				else
 				{
-					Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText(), batchID+"\nis successfully assigned to   "+d1masterTrainerID+"\nState : "+state+"\nDistrict : "+district);
+					//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText(), batchID+"\nis successfully assigned to   "+d1masterTrainerID+"\nState : "+state+"\nDistrict : "+district);
 					sVbP.clickOk();
 					Thread.sleep(2000);
 					//after Reassign, batch status should not be rejected
@@ -1892,7 +1896,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 71, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 72, timeFormat.format(date));
 				Thread.sleep(4000);	
-				Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(),"You have successfully rejected "+batchID);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Request Rejected\nYou have rejected request for\nBatch ID - "+batchID);
 				aVp.clickOk();
 				Thread.sleep(4000);	
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in pending section of - "+dassessmentAgencyID+" OR something is wrong! ");
@@ -1982,7 +1986,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				}
 				else
 				{
-					Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText(), batchID+"\nis successfully assigned to   "+dassessmentAgencyName+"\nState : "+state+"\nDistrict :"+district);
+					//Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText(), batchID+"\nis successfully assigned to   "+dassessmentAgencyName+"\nState : "+state+"\nDistrict :"+district);
 					sBp.clickOk();
 					Thread.sleep(4000);
 					//ReAssigning Assessment Agency For Domain Job Role 2
@@ -2125,7 +2129,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 78, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 79, timeFormat.format(date));
 				Thread.sleep(4000);	
-				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(),"Request Rejected");
+				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Request Rejected\nYou have rejected request for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 				maVp.clickOk();
 				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,-500)", "");
@@ -2703,7 +2707,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[1]")).getText().trim(), batchRescheduleComments);
 		sAp.clickToRejectBatchRescheduleRequest();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Request Rejected!!");
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Request Rejected");
 		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") "+batchID+" has been rejected");
 		sAp.clickOk();
 		Thread.sleep(4000);
@@ -2807,6 +2811,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchRescheduleSupportingDocument+"')])[1]")).isDisplayed());
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[1]")).getText().trim(), batchRescheduleComments);
 		sAp.clickToApproveBatchRescheduleRequest();
+		Thread.sleep(2000);
+		sAp.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='sector']")).getAttribute("value").trim(), expectedSector);
 		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[1]")).getAttribute("value").trim(), subSector);
@@ -2936,7 +2942,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchRescheduleSupportingDocument+"')])[1]")).isDisplayed());
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[1]")).getText().trim(), batchRescheduleComments);
 		sAp.clickToApproveBatchRescheduleRequest();
-		Thread.sleep(2000);		
+		Thread.sleep(2000);	
+		sAp.clickOk();
+		Thread.sleep(2000);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-newreschedule-batch"+batchID,"OMG!!! Navigation to Reschedule Batch Page is unsuccessful OR Something went wrong! ");
 		SSC_BatchReSchedulePage sRp=new SSC_BatchReSchedulePage(driver);		
 		sRp.selectTrainingStartDateForBatch();
@@ -3137,6 +3145,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchCancellation();
 		Thread.sleep(4000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
@@ -3178,6 +3187,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
 		sAp.clickToRejectBatchCancellationRequest();
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Rejected\nCancellation request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") "+batchID+" has been rejected");
 		sAp.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
@@ -3241,6 +3251,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		lTcVbP.clickToSubmitBatchCancellation();
 		Thread.sleep(4000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
@@ -3282,6 +3293,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
 		sAp.clickToApproveBatchCancellationRequest();
 		Thread.sleep(2000);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Batch Cancelled Successfully!!\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been cancelled");
 		sAp.clickOk();
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);

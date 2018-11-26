@@ -1859,6 +1859,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		tcVp.clikToGetBatchActionMenu(batchID);
  	   		Thread.sleep(4000);
  	   		tcVp.selectEnrollApplicantsOption(batchID);
+ 	   		Thread.sleep(6000);
+ 	   		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==1,"OMG!!! No show of Trainer Applicant - "+trainerID+" in Applied Applicants Section!!! OR Something went wrong! ");
+ 	   		tcVp.clickToGetApplicantActionMenu(trainerID);
+ 	   		Thread.sleep(4000);
+ 	   		tcVp.selectEnrollApplicantOption(trainerID);
+ 	   		Thread.sleep(4000);
+ 	   		Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("approved successfully"),"OMG!!! Applicant Enroll Successfull Popup Text not displayed OR Something went wrong! ");
+ 	   		tcVp.clickOk();
  	   		Thread.sleep(4000);
  	   		tcVp.clickToGoToEnrolledApplicantsSection();
  	   		Thread.sleep(4000);
