@@ -146,6 +146,8 @@ public class TrainerMyProfilePage
 	//Edit Profile
 	@FindBy(xpath="//button[contains(text(),'Edit Profile')]")
 	private WebElement editProfileButton;
+	@FindBy(xpath="//button[contains(text(),'OK')]")
+	private WebElement okButton;
 	
 	public TrainerMyProfilePage(WebDriver driver)
 	{
@@ -395,5 +397,9 @@ public class TrainerMyProfilePage
 	public void clickEditProfile()
 	{
 		editProfileButton.click();
+	}
+	public void clickOK()
+	{
+		okButton.click();
 	}
 }

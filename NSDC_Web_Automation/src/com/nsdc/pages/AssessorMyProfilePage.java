@@ -147,6 +147,8 @@ public class AssessorMyProfilePage
 	//Edit Profile
 	@FindBy(xpath="//button[contains(text(),'Edit Profile')]")
 	private WebElement editProfileButton;
+	@FindBy(xpath="//button[contains(text(),'OK')]")
+	private WebElement okButton;
 	
 	public AssessorMyProfilePage(WebDriver driver)
 	{
@@ -394,5 +396,9 @@ public class AssessorMyProfilePage
 	public void clickEditProfile()
 	{
 		editProfileButton.click();
+	}
+	public void clickOK()
+	{
+		okButton.click();
 	}
 }

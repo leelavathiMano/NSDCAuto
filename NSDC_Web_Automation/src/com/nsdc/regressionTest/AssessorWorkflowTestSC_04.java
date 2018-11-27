@@ -622,6 +622,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	}
     	aMpP.clickSaveChanges1();
     	Thread.sleep(4000);
+    	aMpP.clickOK();
+    	Thread.sleep(4000);
     	//Assessor Contact and Address verification
     	JavascriptExecutor js=(JavascriptExecutor)driver;
     	js.executeScript("window.scrollBy(0,-1000)","");
@@ -779,6 +781,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(8000);
     	aMpP.clickSaveChanges2();
     	Thread.sleep(4000);
+    	aMpP.clickOK();
+    	Thread.sleep(4000);
     	js.executeScript("window.scrollBy(0,-1500)","");
     	Thread.sleep(2000);
     	aMpP.clickMyAssociations();
@@ -825,7 +829,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
  	   //Add My Search Preferences
  	   aSp.clickAddJobRoleAndLocationToMyPreference();
  	   Thread.sleep(4000);
- 	   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Preference Added Successfully !!");
+ 	   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Preference Added Successfully");
  	   aSp.clickOK();
  	   Thread.sleep(2000);
  	   js.executeScript("window.scrollBy(0,-200)", "");
