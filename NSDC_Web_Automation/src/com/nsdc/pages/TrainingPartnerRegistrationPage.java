@@ -20,7 +20,7 @@ public class TrainingPartnerRegistrationPage
     private WebElement yearOfEstablishmentDropDownList;
     @FindBy(id="customFile")
     private WebElement browseFileButton;
-    @FindBy(xpath="//button[contains(text(),'Upload')]")
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
     private WebElement uploadFileButton;
     @FindBy(xpath="//input[@name='landline-number']")
     private WebElement landlineNumberTextBox;
@@ -64,25 +64,25 @@ public class TrainingPartnerRegistrationPage
     private WebElement saveAndNextButton;
     @FindBy(xpath="(//button[@class='btn btn-outline-info'])")
     private WebElement saveAsDraftButton1;
-    @FindBy(xpath="//textarea[@id='m_autosize_1']")
+    @FindBy(xpath="(//textarea[@id='m_autosize_1'])[1]")
     private WebElement addressOfTheOrganizationTextBox;
-    @FindBy(xpath="//input[@ng-reflect-name='landmark']")
+    @FindBy(xpath="(//input[@ng-reflect-name='landmark'])[1]")
     private WebElement nearByLandmarkTextBox;
-    @FindBy(xpath="//input[@name='pincode']")
+    @FindBy(xpath="(//input[@name='pincode'])[1]")
     private WebElement pinCodeTextBox;
-    @FindBy(xpath="//select[@name='state']")
+    @FindBy(xpath="(//select[@name='state'])[1]")
     private WebElement stateDropDownList;
-    @FindBy(xpath="//select[@name='dist']")
+    @FindBy(xpath="(//select[@name='dist'])[1]")
     private WebElement districtDropDownList;
-    @FindBy(xpath="//select[@name='tehsil']")
+    @FindBy(xpath="(//select[@name='tehsil'])[1]")
     private WebElement tehsilDropDownList;
-    @FindBy(xpath="//select[@name='villlage']")
+    @FindBy(xpath="(//select[@name='villlage'])[1]")
     private WebElement cityDropDownList;
     @FindBy(xpath="//input[@id='search_places']")
     private WebElement geoLocationTextBoxTextBox;
-    @FindBy(xpath="//select[@ng-reflect-name='parliamentaryConstituency']")
+    @FindBy(xpath="(//select[@ng-reflect-name='parliamentaryConstituency'])[1]")
     private WebElement parliamentaryConstituencyDropdownList;
-    @FindBy(xpath="//select[@ng-reflect-name='addressProof']")
+    @FindBy(xpath="(//select[@ng-reflect-name='addressProof'])[1]")
     private WebElement addressProofDropDownList;
     @FindBy(xpath="//div[label[contains(text(),'Communication Address Same as Permanent Address:')]]//span")
     private WebElement communicationAddSameAsPermanentAddressCheckbox;
