@@ -25,7 +25,7 @@ public class InspectionAgency_ViewInspectionPage
 	private WebElement assignToDropDownList;
 	@FindBy(xpath="(//select[@id='exampleSelect1'])[2]")
 	private WebElement statusOfRequestDropDownList;
-	@FindBy(xpath="//button[contains(text(),'Assign')]")
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
 	private WebElement assign_Button;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
 	private WebElement cancel_Button;
