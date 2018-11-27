@@ -210,21 +210,21 @@ public class TP_FeeBased_AddTrainingCentrePage
     private WebElement laboratoryRoomPhotos_UploadButton; 
     @FindBy(xpath="//div[label[@for='maleWashroomRoomPhotos']]//select[@id='dropDown']")
     private WebElement maleWashRoomPhotos_DropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'Male Washroom Room Photos:')]]//input[@id='customFile']")
+    @FindBy(xpath="//div[label[contains(text(),'Male Washroom Photos:')]]//input[@id='customFile']")
     private WebElement maleWashRoomPhotos_BrowseButton;
-    @FindBy(xpath="//div[label[contains(text(),'Male Washroom Room Photos:')]]//button[contains(text(),'Upload')]")
+    @FindBy(xpath="//div[label[contains(text(),'Male Washroom Photos:')]]//button[contains(text(),'Upload')]")
     private WebElement maleWashRoomPhotos_UploadButton;
     @FindBy(xpath="//div[label[@for='femaleWashroomRoomPhotos']]//select[@id='dropDown']")
     private WebElement femaleWashRoomPhotos_DropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'Female Washroom Room Photos:')]]//input[@id='customFile']")
+    @FindBy(xpath="//div[label[contains(text(),'Female Washroom Photos:')]]//input[@id='customFile']")
     private WebElement femaleWashRoomPhotos_BrowseButton;
-    @FindBy(xpath="//div[label[contains(text(),'Female Washroom Room Photos:')]]//button[contains(text(),'Upload')]")
+    @FindBy(xpath="//div[label[contains(text(),'Female Washroom Photos:')]]//button[contains(text(),'Upload')]")
     private WebElement femaleWashRoomPhotos_UploadButton;
     @FindBy(xpath="//div[label[@for='unisexWashroomRoomPhotos']]//select[@id='dropDown']")
     private WebElement unisexWashRoomPhotos_DropDownList;
-    @FindBy(xpath="//div[label[contains(text(),'Unisex Washroom Room Photos:')]]//input[@id='customFile']")
+    @FindBy(xpath="//div[label[contains(text(),'Unisex Washroom Photos:')]]//input[@id='customFile']")
     private WebElement unisexWashRoomPhotos_BrowseButton;
-    @FindBy(xpath="//div[label[contains(text(),'Unisex Washroom Room Photos:')]]//button[contains(text(),'Upload')]")
+    @FindBy(xpath="//div[label[contains(text(),'Unisex Washroom Photos:')]]//button[contains(text(),'Upload')]")
     private WebElement unisexWashRoom_UploadButton;
     
     @FindBy(xpath="//div[label[contains(text(),'Washroom Room Photos')]]//input[@id='customFile']")
