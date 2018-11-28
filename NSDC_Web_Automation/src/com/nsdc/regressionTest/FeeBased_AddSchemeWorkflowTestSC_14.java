@@ -903,13 +903,13 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.selectForGovernmentTieUp(governmentTieUp);
 		fbad.enterCentreCapacity(centreCapacity);
 		fbad.entreCentreArea(centreArea);
-		fbad.enterNumberOfTrainingRooms(trainingRooms);
-		fbad.enterNumbersOfLabs(labNumber);
+		fbad.selectNumberOfTrainingRooms(trainingRooms);
+		fbad.selectNumbersOfLabs(labNumber);
 		fbad.enterReceptionAreaSize(receptionArea);
 		fbad.enterWaitingAreaCapacity(waitingArea);
-		fbad.enterNumberOfMaleWashRooms(maleWashRooms);
-		fbad.enterNumberOfFemaleWashRooms(femaleWashRooms);
-		fbad.enterNumberOfUnisexWashRooms(unisexWashRooms);
+		fbad.selectNumberOfMaleWashRooms(maleWashRooms);
+		fbad.selectNumberOfFemaleWashRooms(femaleWashRooms);
+		fbad.selectNumberOfUnisexWashRooms(unisexWashRooms);
 		fbad.enterDistanceFromNearestAirport(airportDistance);
 		fbad.enterDistanceFromNearestTrainStation(trainStationDistance);
 		fbad.enterDistanceFromNearestCityCentre(cityCentreDistance);
@@ -923,7 +923,6 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.selectTehsil(tehsil);
 		Thread.sleep(3000);
 		fbad.selectCityOrVillage(city);
-		//driver.findElement(By.xpath("//input[@id='City']")).sendKeys("xyz");
 		Thread.sleep(2000);
 		fbad.selectParliamentryConstituency(parliamentryConstituency);
 		fbad.enterGeoLocation(geoLocation);
@@ -1094,8 +1093,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(3000);
 		fbad.selectCourse(course);
 		fbad.enterTarget(target);
+		Thread.sleep(3000);
 		fbad.clickOnSubmit_SectorTarget();
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		fbad.clickOnSubmit();
 		Thread.sleep(3000);
 		fbad.clickOnYesAddTrainingCentre();
@@ -1129,9 +1129,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		cmad.clickOnViewAllTCAddRequest();
 		CMA_TCRequestPage cmtc = new CMA_TCRequestPage(driver);
 		Thread.sleep(10000);
-//		cmtc.selectType(tcType);
-//		cmtc.selectStatus(status);
-//		cmtc.clickOnApply();
+		cmtc.selectType(tcType);
+		cmtc.selectStatus(status);
+		cmtc.clickOnApply();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedTCName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		Thread.sleep(3000);
@@ -1314,21 +1314,24 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				fbad.clickOnStartDateForTCDuration();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
+				Thread.sleep(5000);
 				fbad.clickOnEndDateForTCDuration();
 				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
 			else
 			{
+				Thread.sleep(3000);
 				fbad.clickOnStartDateForTCDuration();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
+				Thread.sleep(5000);
 				fbad.clickOnEndDateForTCDuration();
 				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
 			
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			fbad.enterNumberOfBatchesPerDay(newBathesNumber);
 			fbad.enterMaximumNoOfStudentPerBatch(newStudentNumber);
 			fbad.enterAnnualCapacityOfTrainingCentre(newAnnualCapacity);
@@ -1336,13 +1339,18 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.selectForGovernmentTieUp(newGovernmentTieUp);
 			fbad.enterCentreCapacity(newCentreCapacity);
 			fbad.entreCentreArea(newCentreArea);
-			fbad.enterNumberOfTrainingRooms(newTrainingRooms);
-			fbad.enterNumbersOfLabs(newLabNumber);
+			Thread.sleep(3000);
+			fbad.selectNumberOfTrainingRooms(newTrainingRooms);
+			Thread.sleep(3000);
+			fbad.selectNumbersOfLabs(newLabNumber);
 			fbad.enterReceptionAreaSize(newReceptionArea);
 			fbad.enterWaitingAreaCapacity(newWaitingArea);
-			fbad.enterNumberOfMaleWashRooms(newMaleWashRooms);
-			fbad.enterNumberOfFemaleWashRooms(newFemaleWashRooms);
-			fbad.enterNumberOfUnisexWashRooms(newUnisexWashRooms);
+			Thread.sleep(3000);
+			fbad.selectNumberOfMaleWashRooms(newMaleWashRooms);
+			Thread.sleep(3000);
+			fbad.selectNumberOfFemaleWashRooms(newFemaleWashRooms);
+			Thread.sleep(3000);
+			fbad.selectNumberOfUnisexWashRooms(newUnisexWashRooms);
 			fbad.enterDistanceFromNearestAirport(newAirportDistance);
 			fbad.enterDistanceFromNearestTrainStation(newTrainStationDistance);
 			fbad.enterDistanceFromNearestCityCentre(newCityCentreDistance);
@@ -1360,166 +1368,150 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.selectParliamentryConstituency(newParliamentryConstituency);
 			fbad.enterGeoLocation(geoLocation);
 			Thread.sleep(3000);
-			//fbad.clickOnInternetConectivityFacility();
 			fbad.clickOnInternetConnectivity_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnInternetConnectivity_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnAVOrVideoConFacility();
 			fbad.clickOnAVOrVideoConFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnAVOrVideoConFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnLibraryFacility();
 			fbad.clickOnLibrary_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnLibrary_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnStaffRoomFacility();
 			fbad.clickOnStaffRoom_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnStaffRoom_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnCafeteriaFacility();
 			fbad.clickOnCafetaria_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnCafetaria_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnPhysicalDisabledFriendlyFacility();
 			fbad.clickOnPhysicalDisabledFriendly_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnPhysicalDisabledFriendly_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnParkingFacility();
 			fbad.clickOnParkingFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnParkingFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnThreePhasePowerConnectionFacility();
 			fbad.clickOnThreePhasePowerConnection_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnThreePhasePowerConnection_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnPowerBackupFacility();
 			fbad.clickOnPowerBackupFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnPowerBackupFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnFireSafetyEquipmentFacility();
 			fbad.clickOnFireSafetyEquipment_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnFireSafetyEquipment_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnFirstAidKitAvailablityFacility();
 			fbad.clickOnFirstAidKitAvailablity_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnFirstAidKitAvailablity_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnCounsellingRoomFacility();
 			fbad.clickOnCounsellingRoom_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnCounsellingRoom_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnResidentialTrainingFacility();
 			fbad.clickOnResidentialTraining_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnResidentialTraining_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnCCTVFacility();
 			fbad.clickOnCCTVFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnCCTVFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnBiometricTraineeAttendanceFacility();
 			fbad.clickOnBiometricTrainingAttendance_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnBiometricTrainingAttendance_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnNSDCBrandingFacility();
 			fbad.clickOnNSDCBranding_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnNSDCBranding_UploadFile();
 			
-			Thread.sleep(3000);
-			fbad.enterNameOfSPOC(newSpocName);
-			fbad.enterEmailAddressOfSPOC(newSpocEmail);
-			fbad.enterMobileNumberOfSPOC(newSpocMobile);
-			fbad.enterDesignationOfSPOC(newSpocDesignation);
-			fbad.enterLandLineNumberOfSPOC(newSpocLandLine);
-			Thread.sleep(3000);
-			fbad.select_SrNo_TrainingRoomPhotos(srNo_TCRoom);
-			fbad.clickOnTrainingRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newTCRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnTrainingRoomPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_Laboratory(laboratory_SrNo);
-			fbad.clickOnLaboratoryPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newLaboratoryPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnLaboratoryPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_ForMaleWashRoom(maleWashRoom_SrNo);
-			fbad.clickOnMaleWashRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newMaleWashRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnMaleWashRoomPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_ForFemaleWashRoom(femaleWashRoom_SrNo);
-			fbad.clickOnFemaleWashRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newFemaleWashRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnFemaleWashRoomPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_ForUnisexWashRoom(unisexWashRoom_SrNo);
-			fbad.clickOnUnisexWashRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newUnisexWashRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnUnisexWashRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.enterNameOfSPOC(newSpocName);
+//			fbad.enterEmailAddressOfSPOC(newSpocEmail);
+//			fbad.enterMobileNumberOfSPOC(newSpocMobile);
+//			fbad.enterDesignationOfSPOC(newSpocDesignation);
+//			fbad.enterLandLineNumberOfSPOC(newSpocLandLine);
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_TrainingRoomPhotos(srNo_TCRoom);
+//			fbad.clickOnTrainingRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newTCRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnTrainingRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_Laboratory(laboratory_SrNo);
+//			fbad.clickOnLaboratoryPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newLaboratoryPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnLaboratoryPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_ForMaleWashRoom(maleWashRoom_SrNo);
+//			fbad.clickOnMaleWashRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newMaleWashRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnMaleWashRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_ForFemaleWashRoom(femaleWashRoom_SrNo);
+//			fbad.clickOnFemaleWashRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newFemaleWashRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnFemaleWashRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_ForUnisexWashRoom(unisexWashRoom_SrNo);
+//			fbad.clickOnUnisexWashRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newUnisexWashRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnUnisexWashRoomPhotos_UploadFile();
 			
 			Thread.sleep(5000);
 			fbad.clickOnAddSectorTarget();
 			Thread.sleep(3000);
 			fbad.selectSector(newSector);
 			Thread.sleep(3000);
-			fbad.selectCourse(newCourse);
+			//fbad.selectCourse(newCourse);
 			fbad.enterTarget(newTarget);
 			fbad.clickOnSubmit_SectorTarget();
 			Thread.sleep(8000);
@@ -1527,7 +1519,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			fbad.clickOnYesAddTrainingCentre();
 			Thread.sleep(3000);
-			//fbad.clickOnOK();
+			fbad.clickOnOK();
 			Thread.sleep(3000);
 			fbd.clickOnViewTrainingCentres();
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newTrainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
@@ -1625,7 +1617,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 		
 			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newSector+"']")).getText(), newSector);
-			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newCourse+"']")).getText(), newCourse);
+			//Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newCourse+"']")).getText(), newCourse);
 			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newTarget+"']")).getText(), newTarget);
 			
 			cmat.selectReview(review);
@@ -1653,13 +1645,14 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 		}
 		
-		PostLoginPage plp = new PostLoginPage(driver);
-		Thread.sleep(3000);
-		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
+	PostLoginPage plp = new PostLoginPage(driver);
+	Thread.sleep(3000);
+	plp.clickOnProfileLogo();
+	plp.clickOnLogout();
+	
+}	
 		
-		
-	}
+
 
 
 
@@ -1669,7 +1662,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04");
 	}
 
-	@Test(dataProvider="addSectorAndCourses", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
+	@Test(dataProvider="addSectorAndCourses")
 	public void addSectorAndCourseTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1927,7 +1920,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06");
 	}
 
-	@Test(dataProvider="linkTrainer", dependsOnMethods="approveSectorAndCourseTC08")
+	@Test(dataProvider="linkTrainer", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
 	public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -2085,6 +2078,346 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		
 		
 	}
+	
+	
+	
+	@DataProvider
+	public Object[][] createBatchAndEnrollCandidates()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08");
+	}
+
+	@Test(dataProvider="createBatchAndEnrollCandidates", dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10")
+	public void createBatchAndEnrollCandidateTC11(String sno, String tpUsername, String tpPassword, String candidateRegistrationFile, String projectName, String tcName, String sector, String course, String target, String batchName, String batchSize, String batchType, String courseName, String expectedSector, String expectedAssociatedQP, String expectedNSQFLevel, String trainerName, String expectedTrainersEmail, String expectedTrainersMobile, String assessmentMode, String trainingFee, String feePaidBy, String batchID, String candidateList, String sscUsername, String sscPassword, String assessmentAgencyID, String aaPassword, String assessorID, String asPassword, String assessmentAgency, String assessor, String certificateFile, String placementDocument, String appointmentLetter, String salarySlip, String undertakingDocument) throws Exception
+	{
+		LoginPage lp = new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp = new EnterLoginPage(driver);
+		elp.performlogin(tpUsername, tpPassword);
+		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
+		Thread.sleep(10000);
+		//tpdp.clickOnRegisterCandidate();
+		tpdp.clickMyCandidates();
+		Thread.sleep(5000);
+		tpdp.clickOnRegisterCandidate_InViewMyCandidate();
+		Thread.sleep(3000);
+		tpdp.clickToChooseBulkExcelSheetUpload();
+		Thread.sleep(3000);
+		tpdp.clickForExcelFileBrowse();
+		Thread.sleep(3000);
+		UploadFile.upload(candidateRegistrationFile);
+		Thread.sleep(3000);
+		tpdp.clickRegister();
+		Thread.sleep(3000);
+		TrainingPartner_MyCandidatesPage tpmc = new TrainingPartner_MyCandidatesPage(driver);
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//label[@class='m-checkbox m-checkbox--solid m-checkbox--state-brand']/span")).click();
+		Thread.sleep(5000);
+		tpmc.clickToDownloadReportForSelectedCandidates();
+		JavascriptExecutor jv = (JavascriptExecutor) driver;
+		jv.executeScript("scroll(900,0)");
+		Thread.sleep(10000);
+		tpdp.clickOnDashboard();
+		
+		Thread.sleep(10000);
+		tpdp.clickOnMySchemes();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();		
+		TP_FeeBased_DashboardPage tpfb = new TP_FeeBased_DashboardPage(driver);
+		Thread.sleep(3000);
+		tpfb.clickOnViewTrainingCentres();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+tcName+"']]]]//span[text()='ACCEPTED']")).getText(), "ACCEPTED");
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+tcName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+tcName+"']]]]//a[contains(text(),'View Details')]")).click();
+		TP_FeeBased_CreateBatchAddSectorTargetPage cbas = new TP_FeeBased_CreateBatchAddSectorTargetPage(driver);
+		Thread.sleep(5000);
+		cbas.clickOnAddSectorTargets();
+		cbas.selectSector(sector);
+		cbas.selectCourse(course);
+		cbas.enterTarget(target);
+		cbas.clickOnSubmit();
+		Thread.sleep(5000);
+		cbas.clickOnAssignedSectorTargets();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+sector+"']")).getText(), sector);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+sector+"']]//td[text()='"+course+"']")).getText(), course);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+sector+"']]//td[text()='"+target+"']")).getText(), target);
+		Thread.sleep(5000);
+		cbas.clickOnCreateBatch();
+		TP_FeeBased_BatchDetailsPage fbd = new TP_FeeBased_BatchDetailsPage(driver);
+		Thread.sleep(3000);
+		fbd.enterBatchName(batchName);
+		Thread.sleep(3000);
+		fbd.clickOnStartDate_BatchDuration();
+		fbd.clickOnEndDate_BatchDuration();
+		Thread.sleep(3000);
+		fbd.selectBatchType(batchType);
+		Thread.sleep(3000);
+		fbd.enterBatchSize(batchSize);
+		Thread.sleep(3000);
+		fbd.selectCourseName(courseName);
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Sector']")).getAttribute("value"), expectedSector);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='qpCode']")).getAttribute("value"), expectedAssociatedQP);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
+		Thread.sleep(3000);
+		fbd.selectTrainerName(trainerName);
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter email address']")).getAttribute("value"), expectedTrainersEmail);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter mobile number']")).getAttribute("value"), expectedTrainersMobile);
+		fbd.clickOnStartDate_TrainingDuration();
+		fbd.clickOnEndDate_TrainingDuration();
+		Thread.sleep(3000);
+		fbd.clickOnStartDate_AssessmentDuration();
+		fbd.clickOnEndDate_AssessmentDuration();
+		Thread.sleep(3000);
+		fbd.selectAssessmentMode(assessmentMode);
+		fbd.enterTrainingFee(trainingFee);
+		Thread.sleep(3000);
+		fbd.selectFeePaidBy(feePaidBy);
+		Thread.sleep(3000);
+		fbd.clickOnSaveAndSubmitBatch();
+		Thread.sleep(3000);
+		fbd.clickOnYesCreateBatch();
+		Thread.sleep(3000);
+		batchID = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText().replace("Batch ID - ", "");
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 22, batchID);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 5, batchID);
+		fbd.clickOnEnrollCandidates();
+		TP_FeeBased_EnrollCandidatesPage fec = new TP_FeeBased_EnrollCandidatesPage(driver);
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-badge m-badge--info m-badge--wide status-badge']")).getText(), "Enroll Candidates");
+		Thread.sleep(3000);
+		fec.clickOnUploadCandidateList();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='batchId'])[1]")).getAttribute("value"), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='stage'])[1]")).getAttribute("value"), "Candidate Enrollment");
+		Thread.sleep(3000);
+		fec.clickOnCandidateList_BrowseFile();
+		Thread.sleep(3000);
+		UploadFile.upload(candidateList);
+		Thread.sleep(3000);
+		fec.clickOnSubmit();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@class='m-badge m-badge--info m-badge--wide status-badge']")).getText(), "Enroll Candidates");
+		Thread.sleep(8000);
+		fec.clickOnReUploadCandidateList();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='batchId'])[1]")).getAttribute("value"), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='stage'])[1]")).getAttribute("value"), "enrollment");
+		fec.clickOnSubmit();
+		Thread.sleep(3000);
+		fec.clickOnEnrollCandidates();
+		Thread.sleep(8000);
+		Assert.assertEquals(driver.findElement(By.xpath("//span[text()='attendance']")).getText(), "Attendance");
+		Thread.sleep(5000);
+		fec.clickOnUploadDetails();
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='batchId'])[1]")).getAttribute("value"), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='stage'])[1]")).getAttribute("value"), "attendance");
+		Thread.sleep(3000);
+		fec.clickOnCandidateList_BrowseFile();
+		Thread.sleep(3000);
+		UploadFile.upload(candidateList);
+		Thread.sleep(3000);
+		fec.clickOnSubmit();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("//span[text()='assessment']")).getText(), "Assessment");
+		Thread.sleep(4000);
+		fec.clickOnSubmitForAssessment();
+		Thread.sleep(3000);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='batchId'])[2]")).getAttribute("value"), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='stage'])[2]")).getAttribute("value"), "assessment");
+		Assert.assertEquals(driver.findElement(By.xpath("//select[@formcontrolname='assessmentMode']")).getAttribute("value").substring(3), assessmentMode);
+		if(assessmentMode.equals("SSC"))
+		{
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='sector']")).getAttribute("value"), expectedSector);
+			Thread.sleep(3000);
+			fec.clickOnSubmit_AssessmentDetails();
+			PostLoginPage plp = new PostLoginPage(driver);
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+			lp.clickLogin();
+			elp.performlogin(sscUsername, sscPassword);
+			SSC_DashboardPage ssc = new SSC_DashboardPage(driver);
+			Thread.sleep(5000);
+			ssc.clickOnAssessmentsAndCertification();
+			SSC_AssessmentsAndCertification_DashboardPage sac = new SSC_AssessmentsAndCertification_DashboardPage(driver);
+			Thread.sleep(3000);
+			sac.clickOnAssessmentsButton();
+			SSC_AssessmentsAndCertifications_ViewAllBatchesPage svb = new SSC_AssessmentsAndCertifications_ViewAllBatchesPage(driver);
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[div[span[text()='"+batchID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[div[span[text()='"+batchID+"']]]]//a[contains(text(),'Accept')]")).click();
+			Thread.sleep(3000);
+			svb.clickOnAssessment_StartDate();
+			svb.clickOnAssessment_EndDate();
+			Thread.sleep(3000);
+			svb.clickOnSubmit();
+			Thread.sleep(3000);
+			svb.clickOnOK();
+			Thread.sleep(3000);
+			svb.clickOnAccepted();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[div[span[text()='"+batchID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[div[span[text()='"+batchID+"']]]]//a[contains(text(),'Assign Assessment Agency')]")).click();
+			svb.selectAssessmentAgency(assessmentAgencyID);
+			svb.clickOnSubmit_ApproveMarksheet();
+			Thread.sleep(3000);
+			svb.clickOnOK();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+			lp.clickLogin();
+			elp.performlogin(assessmentAgencyID, aaPassword);
+			AssessmentAgencyDashboardPage aad = new AssessmentAgencyDashboardPage(driver);
+			Thread.sleep(3000);
+			aad.clickOnFeeBasedAssessmentRequest();
+			AssessmentAgencyViewBatchesPage avb = new AssessmentAgencyViewBatchesPage(driver);
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Accept/Reject Batch')]")).click();
+			Thread.sleep(3000);
+			avb.clickToAcceptBatch();
+			avb.clickToSaveAndSubmit();
+			Thread.sleep(3000);
+			avb.clickOk();
+			Thread.sleep(3000);
+			avb.clickToViewAcceptedBatches();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Assign Assessor')]")).click();
+			Thread.sleep(3000);
+			//avb.selectAssessorsToBeAssignedForBatches(assessorID);
+			Thread.sleep(2000);
+			avb.clickToSaveAndSubmit();
+			Thread.sleep(3000);
+			avb.clickOk();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+			/*lp.clickLogin();
+			elp.performlogin(assessorID, asPassword);
+			AssessorDashboardPage adp = new AssessorDashboardPage(driver);
+			Thread.sleep(5000);
+			adp.clickToGetTrainerDashboard();
+			Thread.sleep(5000);
+			adp.clickViewBatches();
+			AssessorViewBatchesPage asvb = new AssessorViewBatchesPage(driver);
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Accept/Reject Batch')]")).click();
+			Thread.sleep(3000);
+			asvb.clickToAcceptBatch();
+			asvb.clickToSaveAndSubmit();
+			Thread.sleep(3000);
+			asvb.clickOk();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();*/
+			
+		}
+		else
+		{
+			Thread.sleep(3000);
+			//fec.selectAssessmentAgencyName(assessmentAgency);
+			fec.selectAssessor(assessor);
+			Thread.sleep(3000);
+			fec.clickOnSubmit_AssessmentDetails();
+			Thread.sleep(3000);
+			fec.clickOnUploadDetails();
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='batchId']")).getAttribute("value"), batchID);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='stage']")).getAttribute("value"), "Assessment & Certification Details");
+			Thread.sleep(3000);
+			fec.clickOnCandidateList_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(candidateList);
+			Thread.sleep(3000);
+			fec.clickOnSubmit();
+			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='Placement']")).getText(), "Placement");
+			Thread.sleep(3000);
+			fec.clickOnUploadCandidateList();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='batchId'])[1]")).getAttribute("value"), batchID);
+			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='stage'])[1]")).getAttribute("value"), "Placement Details");
+			Thread.sleep(3000);
+			fec.clickOnCandidateList_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(candidateList);
+			Thread.sleep(3000);
+			fec.clickOnSubmit();
+			Thread.sleep(10000);
+			fec.clickOnAction_FirstCandidate();
+			Thread.sleep(3000);
+			fec.clickOnUploadCertificate_FirstCandidate();
+			Thread.sleep(3000);
+			fec.clickOnCertificate_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(certificateFile);
+			Thread.sleep(8000);
+			fec.clickOnCertificate_UploadFile();
+			Thread.sleep(3000);
+			fec.clickOnSubmit_CandidateCertificate();
+			Thread.sleep(3000);
+			fec.clickOnAction_FirstCandidate();
+			Thread.sleep(3000);
+			fec.clickOnUploadPlacementDocument_FirstCandidate();
+			Thread.sleep(3000);
+			fec.clickOnPlacementDocument_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(placementDocument);
+			Thread.sleep(5000);
+			fec.clickOnPlacementDocument_UploadFile();
+			Thread.sleep(3000);
+			fec.clickOnAppointmentLetter_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(appointmentLetter);
+			Thread.sleep(5000);
+			fec.clickOnAppointmentLetter_UploadFile();
+			Thread.sleep(3000);
+			fec.clickOnSalarySlip_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(salarySlip);
+			Thread.sleep(5000);
+			fec.clickOnSalarySlip_UploadFile();
+			Thread.sleep(3000);
+			fec.clickOnUndertakingDocument_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(undertakingDocument);
+			Thread.sleep(3000);
+			fec.clickOnUndertakingDocument_UploadFile();
+			Thread.sleep(3000);
+			fec.clickOnSubmit_PlacementDocument();
+			Thread.sleep(3000);
+			JavascriptExecutor jvs = (JavascriptExecutor) driver;
+			jvs.executeScript("scroll(900,0)");
+			Thread.sleep(10000);
+			fec.clickOnBack();
+			Thread.sleep(3000);
+			fec.clickOnBack();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+batchID+"']")).getText(), batchID);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//td[text()='"+batchName+"']")).getText(), batchName);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//td[text()='"+courseName+"']")).getText(), courseName);
+			//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//td[text()='"+expectedAssociatedQP+"']")).getText(), expectedAssociatedQP);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[text()='"+batchSize+"']")).getText(), batchSize);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[span[text()='completed']]")).getText(), "Completed");
+			Thread.sleep(3000);		
+			PostLoginPage plp = new PostLoginPage(driver);
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+			
+		}
+		
+
+	}
+
 	
 	
 }
