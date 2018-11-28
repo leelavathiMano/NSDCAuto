@@ -452,7 +452,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		lTcVbP.clickToAcceptBatch();
 		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Accepted Successfully\nYou have successfully accepted for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Accepted Successfully\nYou have successfully accepted\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 		lTcVbP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[text()='"+batchID+"']")).size()==0,"OMG!!! accepted batch - "+batchID+" should not be shown in pending batches section! OR Something is wrong! ");
@@ -2206,8 +2206,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				aVp.clickToSelectViewBatchDetailsOption();
 				Thread.sleep(4000);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole1+"')]]/td[6]")).getText().trim(), "Rejected");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole2+"')]]/td[6]")).getText().trim(), "Rejected");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole1+"')]]/td[5]")).getText().trim(), "Rejected");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole2+"')]]/td[5]")).getText().trim(), "Rejected");
 				aVp.clickToGetActionMenuOptions();
 				Thread.sleep(2000);
 				aVp.selectViewCommentsOfMasterAssessorOption();
@@ -2220,6 +2220,14 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				aVp.selectReAssignMasterAssessorOption();
 				Thread.sleep(4000);
+				//Verifying Batch Details
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Batch ID')]]]]/div[2]/span")).getText().trim(),batchID);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Batch Name')]]]]/div[4]/span")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
+				Assert.assertEquals(driver.findElement(By.xpath("//div[span[strong[contains(text(),'Training Centre Name')]]]")).getText().trim(), "Training Centre Name & Location : "+tcName);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[strong[contains(text(),'State')]]")).getText().trim(), "State : "+state);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[span[strong[contains(text(),'District')]]]")).getText().trim(), "District : "+district);
+				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+domainJobRoleCode1+"')]")).getText().trim(), domainJobRoleCode1);
+				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+dAssessmentStartDate+" to')]")).getText().trim(), dAssessmentStartDate+" to "+dAssessmentEndDate);
 				aVp.selectReAssignMasterAssessorForDomain(dmasterAssessorName, dmasterAssessorID);
 				Thread.sleep(2000);
 				aVp.clickToSubmitReAssignedMasterAssessor();
