@@ -167,20 +167,23 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
 		//Deleting Added JobRole
-		eTCp.clickToDeleteAddedJobRole();
-		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==0,"OMG!!! Deleted JobRole record present OR Something went wrong! ");
-		//Again Adding Deleted JobRole
-		eTCp.selectExceptionalTrainingCentreSubSector(subSector);
-		Thread.sleep(4000);
-		eTCp.selectExceptionalTrainingCentreJobRole(jobRole);
-		Thread.sleep(4000);
-		eTCp.clickToAddJobRole();
-		Thread.sleep(4000);
-		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==1,"OMG!!! No show of Added JobRole record OR Something went wrong! ");
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
+		if(serialNum.equals("1"))
+		{
+			eTCp.clickToDeleteAddedJobRole();
+			Thread.sleep(2000);
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==0,"OMG!!! Deleted JobRole record present OR Something went wrong! ");
+			//Again Adding Deleted JobRole
+			eTCp.selectExceptionalTrainingCentreSubSector(subSector);
+			Thread.sleep(4000);
+			eTCp.selectExceptionalTrainingCentreJobRole(jobRole);
+			Thread.sleep(4000);
+			eTCp.clickToAddJobRole();
+			Thread.sleep(4000);
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==1,"OMG!!! No show of Added JobRole record OR Something went wrong! ");
+			Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
+			Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
+			Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
+		}
 		eTCp.clickToConfirmDeclaration();
 		Thread.sleep(4000);
 		if(serialNum.equals("1")) //Assigning Created Exceptional TC Directly to a Batch
