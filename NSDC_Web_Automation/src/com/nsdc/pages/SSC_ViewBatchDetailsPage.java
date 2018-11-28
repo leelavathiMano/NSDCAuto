@@ -72,7 +72,7 @@ public class SSC_ViewBatchDetailsPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
 	private WebElement domainAssignSelectedMasterTrainerButton;
 	//platform QP
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[2]")
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[3]")
 	private WebElement platformAssignMasterTrainerActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[4]/div")
 	private WebElement platformMasterTrainerStateFilterList;
@@ -87,7 +87,7 @@ public class SSC_ViewBatchDetailsPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
 	private WebElement platformAssignSelectedMasterTrainerButton;
 	//domain AA
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[1]")
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[4]")
 	private WebElement domainAssignAssessmentAgencyActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[5]/div")
 	private WebElement domainAssessmentAgencyStateFilterList;
@@ -102,7 +102,7 @@ public class SSC_ViewBatchDetailsPage
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement domainAssignSelectedAssessmentAgencyButton;
 	//Platform AA
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[2]")
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[5]")
 	private WebElement platformAssignAssessmentAgencyActionOptionLink;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state'])[5]/div")
 	private WebElement platformAssessmentAgencyStateFilterList;
@@ -124,13 +124,15 @@ public class SSC_ViewBatchDetailsPage
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
 	private WebElement submitReAssignedTrainingCentreButton;
 	//Rejection Batch - Two Domain JobRole and One Platform QP elements
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[2]")
+	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[1]")
 	private WebElement domain2AssignMasterTrainerActionOptionLink;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[2]")
-	private WebElement domain2AssignAssessmentAgencyActionOptionLink;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Master Trainer')])[3]")
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[4]")
 	private WebElement rplatformAssignMasterTrainerActionOptionLink;
-	@FindBy(xpath="(//a[@class='dropdown-item']/span[contains(text(),'Assign Assessment Agency')])[3]")
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[5]")
+	private WebElement domain1AssignAssessmentAgencyActionOptionLink;
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[6]")
+	private WebElement domain2AssignAssessmentAgencyActionOptionLink;
+	@FindBy(xpath="(//a[@class='dropdown-item']/span)[7]")
 	private WebElement rplatformAssignAssessmentAgencyActionOptionLink;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
@@ -427,6 +429,10 @@ public class SSC_ViewBatchDetailsPage
 	public void selectrPlatformAssignMasterTrainerOption()
 	{
 		rplatformAssignMasterTrainerActionOptionLink.click();
+	}
+	public void selectDomain1AssignAssessmentAgencyOption()
+	{
+		domain1AssignAssessmentAgencyActionOptionLink.click();
 	}
 	public void selectDomain2AssignAssessmentAgencyOption()
 	{

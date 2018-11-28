@@ -626,8 +626,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	}
        	tMpP.clickSaveChanges1();
        	Thread.sleep(4000);
-       	tMpP.clickOK();
-    	Thread.sleep(4000);
+      //tMpP.clickOK();
+      //Thread.sleep(4000);
        	//Trainer Contact and Address verification
        	JavascriptExecutor js=(JavascriptExecutor)driver;
        	js.executeScript("window.scrollBy(0,-1000)","");
@@ -783,8 +783,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	Thread.sleep(8000);
     	tMpP.clickSaveChanges2();
     	Thread.sleep(4000);
-    	tMpP.clickOK();
-    	Thread.sleep(4000);
+      //tMpP.clickOK();
+      //Thread.sleep(4000);
        	js.executeScript("window.scrollBy(0,-1500)","");
        	Thread.sleep(2000);
        	tMpP.clickMyAssociations();

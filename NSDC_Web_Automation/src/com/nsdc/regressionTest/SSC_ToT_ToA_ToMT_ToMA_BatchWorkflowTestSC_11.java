@@ -1464,7 +1464,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		//Assigning Domain QP 1 Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole1);
 		Thread.sleep(2000);
-		sVbP.selectDomainAssignAssessmentAgencyOption();
+		sVbP.selectDomain1AssignAssessmentAgencyOption();
 		Thread.sleep(2000);
 		sVbP.selectDomainAssessmentAgencyStateFilter(state);
 		Thread.sleep(2000);
@@ -3365,7 +3365,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Thread.sleep(4000);
 			tSp.selectApplyToBatch(batchID);
 			Thread.sleep(4000);
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully !!");
+			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
 			tSp.clickOK();  
 			Thread.sleep(4000);
 			PostLoginPage plp=new PostLoginPage(driver);
