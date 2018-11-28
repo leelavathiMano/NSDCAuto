@@ -205,6 +205,7 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	public void enterExceptionalTrainingCentreGeoLocation(String exceptionalTCGeoLocation) throws InterruptedException
 	{
 		exceptionalTrainingCentreGeoLocationTextField.clear();
+		Thread.sleep(2000);
 		exceptionalTrainingCentreGeoLocationTextField.sendKeys(exceptionalTCGeoLocation);
 		Thread.sleep(4000);
 		driver.findElement(By.xpath("(//li/a/span[contains(text(),'"+exceptionalTCGeoLocation+"')])[1]")).click();
