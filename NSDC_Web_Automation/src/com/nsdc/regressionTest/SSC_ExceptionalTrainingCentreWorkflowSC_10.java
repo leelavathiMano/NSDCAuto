@@ -189,9 +189,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		if(serialNum.equals("1")) //Assigning Created Exceptional TC Directly to a Batch
 		{
 			eTCp.clickToAssignCurrentlyCreatingExceptionalTrainingCentre();
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Assign - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Exceptional TC Assigned Successfully");
+			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("Assigned Successfully"));
 			eTCp.clickOK();
 			Thread.sleep(4000);
 			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains("batch-assignment"),"OMG!!! Assign Just Created TC Button is not naviogated to Batch Assignment Page OR Something is wrong! ");
@@ -223,7 +223,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		else //Add Exceptional TC after Creating Batch
 		{
 			eTCp.clickToFinallyCreateExceptionalTrainingCentre();
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Add - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
 			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
 			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
