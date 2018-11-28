@@ -187,48 +187,41 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		{
 			eTCp.clickToAssignCurrentlyCreatingExceptionalTrainingCentre();
 			Thread.sleep(4000);
-			if(driver.findElements(By.xpath("//div[@class='toast-message']")).size()!=0)
-			{
-				Assert.assertFalse(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().contains("duplicate"),"OMG!!! Duplicate TC SPOC EMAIl OR MOBILE!");
-				Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Some Toast Error Message is coming while assigning currently added exceptional training centre to the Batch!");
-			}
-			else
-			{
-				Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Exceptional TC Assigned Successfully");
-				eTCp.clickOK();
-				Thread.sleep(4000);
-				Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains("batch-assignment"),"OMG!!! Assign Just Created TC Button is not naviogated to Batch Assignment Page OR Something is wrong! ");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'EXPTC_')]]/td[span[contains(text(),'Assigned')]]")).getText().trim(), "Assigned");
-				String createdExceptionalTCID=driver.findElement(By.xpath("//td[contains(text(),'EXPTC_')]")).getText().trim();
-				ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1,createdExceptionalTCID);
-				PostLoginPage plp=new PostLoginPage(driver);
-				plp.clickOnProfileLogo();
-				Thread.sleep(2000);
-				plp.clickOnLogout();
-				Thread.sleep(4000);
-				lp.clickLogin();
-				elp.performlogin(createdExceptionalTCID, "ekaushal");
-				Thread.sleep(4000);
-				RegistrationPage rp = new RegistrationPage(driver);
-				rp.enterOldPassword("ekaushal");
-			    rp.enterNewPassword("Qwerty@123");
-			    rp.enterConfirmPassword("Qwerty@123");
-			    rp.clickResetResubmit();
-			    Thread.sleep(2000);
-			    rp.clickConfirmationOkMessage();
-			    elp.performlogin(createdExceptionalTCID, "Qwerty@123");
-			    Thread.sleep(8000);
-			    plp.clickOnProfileLogo();
-			    Thread.sleep(2000);
-			    plp.clickOnLogout();
-			    Thread.sleep(2000);
-			}
+			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Assign - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
+			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Exceptional TC Assigned Successfully");
+			eTCp.clickOK();
+			Thread.sleep(4000);
+			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains("batch-assignment"),"OMG!!! Assign Just Created TC Button is not naviogated to Batch Assignment Page OR Something is wrong! ");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'EXPTC_')]]/td[span[contains(text(),'Assigned')]]")).getText().trim(), "Assigned");
+			String createdExceptionalTCID=driver.findElement(By.xpath("//td[contains(text(),'EXPTC_')]")).getText().trim();
+			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1,createdExceptionalTCID);
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
+			plp.clickOnLogout();
+			Thread.sleep(4000);
+			lp.clickLogin();
+			elp.performlogin(createdExceptionalTCID, "ekaushal");
+			Thread.sleep(4000);
+			RegistrationPage rp = new RegistrationPage(driver);
+			rp.enterOldPassword("ekaushal");
+			rp.enterNewPassword("Qwerty@123");
+			rp.enterConfirmPassword("Qwerty@123");
+			rp.clickResetResubmit();
+			Thread.sleep(2000);
+			rp.clickConfirmationOkMessage();
+			elp.performlogin(createdExceptionalTCID, "Qwerty@123");
+			Thread.sleep(8000);
+			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
+			plp.clickOnLogout();
+			Thread.sleep(2000);
 		}
 		else //Add Exceptional TC after Creating Batch
 		{
 			eTCp.clickToFinallyCreateExceptionalTrainingCentre();
 			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
+			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Add - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
 			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
 			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
