@@ -48,20 +48,20 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement centreCapacityTextbox;
 	@FindBy(id="centreCarpetArea")
 	private WebElement centreAreaTextbox;
-	@FindBy(id="totalNumberOfTrainingRooms")
-	private WebElement trainingRoomNumbersTextbox;
-	@FindBy(id="totalNumberOfLabs")
-	private WebElement labNumbersTextbox;
+	@FindBy(xpath="//select[@id='totalNumberOfTrainingRooms']")
+	private WebElement trainingRoomNumbersDropDownList;
+	@FindBy(xpath="//select[@id='totalNumberOfLabs']")
+	private WebElement labNumbersDropDownList;
 	@FindBy(id="receptionCarpetArea")
 	private WebElement receptionAreaTextbox;
 	@FindBy(id="waitingAreaCapacity")
 	private WebElement waitingAreaCapacityTextbox;
-	@FindBy(id="numberOfMaleWashRooms")
-	private WebElement maleWashRoomNumbersTextbox;
-	@FindBy(id="numberOfFemaleWashRooms")
-	private WebElement femaleWashRoomNumbersTextbox;
-	@FindBy(id="numberOfTransGenderWashRooms")
-	private WebElement unisexWashRoomNumbersTextbox;
+	@FindBy(xpath="//select[@id='numberOfMaleWashRooms']")
+	private WebElement maleWashRoomNumbersDropDownList;
+	@FindBy(xpath="//select[@id='numberOfFemaleWashRooms']")
+	private WebElement femaleWashRoomNumbersDropDownList;
+	@FindBy(xpath="//select[@id='numberOfTransGenderWashRooms']")
+	private WebElement unisexWashRoomNumbersDropDownList;
 	@FindBy(id="distanceFromNearestAirport")
 	private WebElement distanceFromAirportTextbox;
 	@FindBy(id="distanceFromNearestTrainStation")
@@ -358,18 +358,14 @@ public class TP_FeeBased_AddTrainingCentrePage
 		centreAreaTextbox.sendKeys(centreArea);
 	}
 	
-	public void enterNumberOfTrainingRooms(String trainingRooms)throws Exception
+	public void selectNumberOfTrainingRooms(String trainingRooms)
 	{
-		ClearTextUsingBackspace.clearAll(trainingRoomNumbersTextbox);
-		Thread.sleep(2000);
-		trainingRoomNumbersTextbox.sendKeys(trainingRooms);
+		SelectDropDownList.selectDropDownListByVisibleText(trainingRoomNumbersDropDownList, trainingRooms);
 	}
 	
-	public void enterNumbersOfLabs(String labNumber)throws Exception
+	public void selectNumbersOfLabs(String labNumber)
 	{
-		ClearTextUsingBackspace.clearAll(labNumbersTextbox);
-		Thread.sleep(2000);
-		labNumbersTextbox.sendKeys(labNumber);
+		SelectDropDownList.selectDropDownListByVisibleText(labNumbersDropDownList, labNumber);
 	}
 	
 	public void enterReceptionAreaSize(String receptionArea)throws Exception
@@ -386,26 +382,20 @@ public class TP_FeeBased_AddTrainingCentrePage
 		waitingAreaCapacityTextbox.sendKeys(waitingArea);
 	}
 	
-	public void enterNumberOfMaleWashRooms(String maleWashRooms)throws Exception
+	public void selectNumberOfMaleWashRooms(String maleWashRooms)
 	{
-		ClearTextUsingBackspace.clearAll(maleWashRoomNumbersTextbox);
-		Thread.sleep(2000);
-		maleWashRoomNumbersTextbox.sendKeys(maleWashRooms);
+		SelectDropDownList.selectDropDownListByVisibleText(maleWashRoomNumbersDropDownList, maleWashRooms);
 	}
 	
 	
-	public void enterNumberOfFemaleWashRooms(String femaleWashRooms)throws Exception
+	public void selectNumberOfFemaleWashRooms(String femaleWashRooms)
 	{
-		ClearTextUsingBackspace.clearAll(femaleWashRoomNumbersTextbox);
-		Thread.sleep(2000);
-		femaleWashRoomNumbersTextbox.sendKeys(femaleWashRooms);
+		SelectDropDownList.selectDropDownListByVisibleText(femaleWashRoomNumbersDropDownList, femaleWashRooms);
 	}
 	
-	public void enterNumberOfUnisexWashRooms(String unisexWashRooms)throws Exception
+	public void selectNumberOfUnisexWashRooms(String unisexWashRooms)
 	{
-		ClearTextUsingBackspace.clearAll(unisexWashRoomNumbersTextbox);
-		Thread.sleep(2000);
-		unisexWashRoomNumbersTextbox.sendKeys(unisexWashRooms);
+		SelectDropDownList.selectDropDownListByVisibleText(unisexWashRoomNumbersDropDownList, unisexWashRooms);
 	}
 	
 	public void enterDistanceFromNearestAirport(String airportDistance)throws Exception

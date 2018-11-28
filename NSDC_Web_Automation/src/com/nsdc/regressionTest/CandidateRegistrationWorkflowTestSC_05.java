@@ -65,6 +65,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 			Thread.sleep(3000);
 			crp.selectCIOType(cioType);
 			crp.selectCIOName(cioName);
+			Thread.sleep(3000);
 			crp.clickOnIntrestedInPMKVYTraining();
 			crp.clickOnIAgree();
 			Thread.sleep(5000);

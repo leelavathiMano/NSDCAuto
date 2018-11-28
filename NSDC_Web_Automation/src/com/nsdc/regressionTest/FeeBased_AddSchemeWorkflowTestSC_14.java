@@ -903,13 +903,13 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.selectForGovernmentTieUp(governmentTieUp);
 		fbad.enterCentreCapacity(centreCapacity);
 		fbad.entreCentreArea(centreArea);
-		fbad.enterNumberOfTrainingRooms(trainingRooms);
-		fbad.enterNumbersOfLabs(labNumber);
+		fbad.selectNumberOfTrainingRooms(trainingRooms);
+		fbad.selectNumbersOfLabs(labNumber);
 		fbad.enterReceptionAreaSize(receptionArea);
 		fbad.enterWaitingAreaCapacity(waitingArea);
-		fbad.enterNumberOfMaleWashRooms(maleWashRooms);
-		fbad.enterNumberOfFemaleWashRooms(femaleWashRooms);
-		fbad.enterNumberOfUnisexWashRooms(unisexWashRooms);
+		fbad.selectNumberOfMaleWashRooms(maleWashRooms);
+		fbad.selectNumberOfFemaleWashRooms(femaleWashRooms);
+		fbad.selectNumberOfUnisexWashRooms(unisexWashRooms);
 		fbad.enterDistanceFromNearestAirport(airportDistance);
 		fbad.enterDistanceFromNearestTrainStation(trainStationDistance);
 		fbad.enterDistanceFromNearestCityCentre(cityCentreDistance);
@@ -923,7 +923,6 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.selectTehsil(tehsil);
 		Thread.sleep(3000);
 		fbad.selectCityOrVillage(city);
-		//driver.findElement(By.xpath("//input[@id='City']")).sendKeys("xyz");
 		Thread.sleep(2000);
 		fbad.selectParliamentryConstituency(parliamentryConstituency);
 		fbad.enterGeoLocation(geoLocation);
@@ -1129,9 +1128,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		cmad.clickOnViewAllTCAddRequest();
 		CMA_TCRequestPage cmtc = new CMA_TCRequestPage(driver);
 		Thread.sleep(10000);
-//		cmtc.selectType(tcType);
-//		cmtc.selectStatus(status);
-//		cmtc.clickOnApply();
+		cmtc.selectType(tcType);
+		cmtc.selectStatus(status);
+		cmtc.clickOnApply();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedTCName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		Thread.sleep(3000);
@@ -1314,21 +1313,24 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				fbad.clickOnStartDateForTCDuration();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
+				Thread.sleep(5000);
 				fbad.clickOnEndDateForTCDuration();
 				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
 			else
 			{
+				Thread.sleep(3000);
 				fbad.clickOnStartDateForTCDuration();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
+				Thread.sleep(5000);
 				fbad.clickOnEndDateForTCDuration();
 				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
 			
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			fbad.enterNumberOfBatchesPerDay(newBathesNumber);
 			fbad.enterMaximumNoOfStudentPerBatch(newStudentNumber);
 			fbad.enterAnnualCapacityOfTrainingCentre(newAnnualCapacity);
@@ -1336,13 +1338,18 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.selectForGovernmentTieUp(newGovernmentTieUp);
 			fbad.enterCentreCapacity(newCentreCapacity);
 			fbad.entreCentreArea(newCentreArea);
-			fbad.enterNumberOfTrainingRooms(newTrainingRooms);
-			fbad.enterNumbersOfLabs(newLabNumber);
+			Thread.sleep(3000);
+			fbad.selectNumberOfTrainingRooms(newTrainingRooms);
+			Thread.sleep(3000);
+			fbad.selectNumbersOfLabs(newLabNumber);
 			fbad.enterReceptionAreaSize(newReceptionArea);
 			fbad.enterWaitingAreaCapacity(newWaitingArea);
-			fbad.enterNumberOfMaleWashRooms(newMaleWashRooms);
-			fbad.enterNumberOfFemaleWashRooms(newFemaleWashRooms);
-			fbad.enterNumberOfUnisexWashRooms(newUnisexWashRooms);
+			Thread.sleep(3000);
+			fbad.selectNumberOfMaleWashRooms(newMaleWashRooms);
+			Thread.sleep(3000);
+			fbad.selectNumberOfFemaleWashRooms(newFemaleWashRooms);
+			Thread.sleep(3000);
+			fbad.selectNumberOfUnisexWashRooms(newUnisexWashRooms);
 			fbad.enterDistanceFromNearestAirport(newAirportDistance);
 			fbad.enterDistanceFromNearestTrainStation(newTrainStationDistance);
 			fbad.enterDistanceFromNearestCityCentre(newCityCentreDistance);
@@ -1360,166 +1367,150 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.selectParliamentryConstituency(newParliamentryConstituency);
 			fbad.enterGeoLocation(geoLocation);
 			Thread.sleep(3000);
-			//fbad.clickOnInternetConectivityFacility();
 			fbad.clickOnInternetConnectivity_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnInternetConnectivity_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnAVOrVideoConFacility();
 			fbad.clickOnAVOrVideoConFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnAVOrVideoConFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnLibraryFacility();
 			fbad.clickOnLibrary_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnLibrary_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnStaffRoomFacility();
 			fbad.clickOnStaffRoom_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnStaffRoom_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnCafeteriaFacility();
 			fbad.clickOnCafetaria_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnCafetaria_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnPhysicalDisabledFriendlyFacility();
 			fbad.clickOnPhysicalDisabledFriendly_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnPhysicalDisabledFriendly_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnParkingFacility();
 			fbad.clickOnParkingFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnParkingFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnThreePhasePowerConnectionFacility();
 			fbad.clickOnThreePhasePowerConnection_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnThreePhasePowerConnection_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnPowerBackupFacility();
 			fbad.clickOnPowerBackupFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnPowerBackupFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnFireSafetyEquipmentFacility();
 			fbad.clickOnFireSafetyEquipment_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnFireSafetyEquipment_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnFirstAidKitAvailablityFacility();
 			fbad.clickOnFirstAidKitAvailablity_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnFirstAidKitAvailablity_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnCounsellingRoomFacility();
 			fbad.clickOnCounsellingRoom_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnCounsellingRoom_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnResidentialTrainingFacility();
 			fbad.clickOnResidentialTraining_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnResidentialTraining_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnCCTVFacility();
 			fbad.clickOnCCTVFacility_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnCCTVFacility_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnBiometricTraineeAttendanceFacility();
 			fbad.clickOnBiometricTrainingAttendance_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnBiometricTrainingAttendance_UploadFile();
 			Thread.sleep(3000);
-			//fbad.clickOnNSDCBrandingFacility();
 			fbad.clickOnNSDCBranding_BrowseFile();
 			Thread.sleep(3000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(3000);
 			fbad.clickOnNSDCBranding_UploadFile();
 			
-			Thread.sleep(3000);
-			fbad.enterNameOfSPOC(newSpocName);
-			fbad.enterEmailAddressOfSPOC(newSpocEmail);
-			fbad.enterMobileNumberOfSPOC(newSpocMobile);
-			fbad.enterDesignationOfSPOC(newSpocDesignation);
-			fbad.enterLandLineNumberOfSPOC(newSpocLandLine);
-			Thread.sleep(3000);
-			fbad.select_SrNo_TrainingRoomPhotos(srNo_TCRoom);
-			fbad.clickOnTrainingRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newTCRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnTrainingRoomPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_Laboratory(laboratory_SrNo);
-			fbad.clickOnLaboratoryPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newLaboratoryPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnLaboratoryPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_ForMaleWashRoom(maleWashRoom_SrNo);
-			fbad.clickOnMaleWashRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newMaleWashRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnMaleWashRoomPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_ForFemaleWashRoom(femaleWashRoom_SrNo);
-			fbad.clickOnFemaleWashRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newFemaleWashRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnFemaleWashRoomPhotos_UploadFile();
-			Thread.sleep(3000);
-			fbad.select_SrNo_ForUnisexWashRoom(unisexWashRoom_SrNo);
-			fbad.clickOnUnisexWashRoomPhotos_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(newUnisexWashRoomPhotos);
-			Thread.sleep(3000);
-			fbad.clickOnUnisexWashRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.enterNameOfSPOC(newSpocName);
+//			fbad.enterEmailAddressOfSPOC(newSpocEmail);
+//			fbad.enterMobileNumberOfSPOC(newSpocMobile);
+//			fbad.enterDesignationOfSPOC(newSpocDesignation);
+//			fbad.enterLandLineNumberOfSPOC(newSpocLandLine);
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_TrainingRoomPhotos(srNo_TCRoom);
+//			fbad.clickOnTrainingRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newTCRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnTrainingRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_Laboratory(laboratory_SrNo);
+//			fbad.clickOnLaboratoryPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newLaboratoryPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnLaboratoryPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_ForMaleWashRoom(maleWashRoom_SrNo);
+//			fbad.clickOnMaleWashRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newMaleWashRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnMaleWashRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_ForFemaleWashRoom(femaleWashRoom_SrNo);
+//			fbad.clickOnFemaleWashRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newFemaleWashRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnFemaleWashRoomPhotos_UploadFile();
+//			Thread.sleep(3000);
+//			fbad.select_SrNo_ForUnisexWashRoom(unisexWashRoom_SrNo);
+//			fbad.clickOnUnisexWashRoomPhotos_BrowseFile();
+//			Thread.sleep(3000);
+//			UploadFile.upload(newUnisexWashRoomPhotos);
+//			Thread.sleep(3000);
+//			fbad.clickOnUnisexWashRoomPhotos_UploadFile();
 			
 			Thread.sleep(5000);
 			fbad.clickOnAddSectorTarget();
 			Thread.sleep(3000);
 			fbad.selectSector(newSector);
 			Thread.sleep(3000);
-			fbad.selectCourse(newCourse);
+			//fbad.selectCourse(newCourse);
 			fbad.enterTarget(newTarget);
 			fbad.clickOnSubmit_SectorTarget();
 			Thread.sleep(8000);
@@ -1527,7 +1518,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			fbad.clickOnYesAddTrainingCentre();
 			Thread.sleep(3000);
-			//fbad.clickOnOK();
+			fbad.clickOnOK();
 			Thread.sleep(3000);
 			fbd.clickOnViewTrainingCentres();
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newTrainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
@@ -1625,7 +1616,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 		
 			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newSector+"']")).getText(), newSector);
-			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newCourse+"']")).getText(), newCourse);
+			//Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newCourse+"']")).getText(), newCourse);
 			Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+newTarget+"']")).getText(), newTarget);
 			
 			cmat.selectReview(review);
@@ -1653,13 +1644,14 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 		}
 		
-		PostLoginPage plp = new PostLoginPage(driver);
-		Thread.sleep(3000);
-		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
+	PostLoginPage plp = new PostLoginPage(driver);
+	Thread.sleep(3000);
+	plp.clickOnProfileLogo();
+	plp.clickOnLogout();
+	
+}	
 		
-		
-	}
+
 
 
 
@@ -1669,7 +1661,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04");
 	}
 
-	@Test(dataProvider="addSectorAndCourses", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
+	@Test(dataProvider="addSectorAndCourses")
 	public void addSectorAndCourseTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1927,7 +1919,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06");
 	}
 
-	@Test(dataProvider="linkTrainer", dependsOnMethods="approveSectorAndCourseTC08")
+	@Test(dataProvider="linkTrainer", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
 	public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
