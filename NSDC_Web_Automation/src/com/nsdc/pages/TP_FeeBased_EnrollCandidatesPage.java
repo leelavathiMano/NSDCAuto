@@ -35,7 +35,7 @@ public class TP_FeeBased_EnrollCandidatesPage
 	private WebElement attendanceButton;
 	@FindBy(xpath="//select[@formcontrolname='assessmentMode']")
 	private WebElement selectModeDropDownList;
-	@FindBy(xpath="//select[@formcontrolname='assessmentAgencyUserName']")
+	@FindBy(xpath="//input[@formcontrolname='assessmentAgencyUserName']")
 	private WebElement assessmentAgencyDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='assessorUserName']")
 	private WebElement assessorDropDownList;
@@ -59,7 +59,7 @@ public class TP_FeeBased_EnrollCandidatesPage
 	private WebElement certificateRadioButton;
 	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement certificate_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement certificate_UploadFileButton;
 	@FindBy(xpath="(//button[text()='Submit'])[3]")
 	private WebElement submit_CandidateCertificateButton;
@@ -72,17 +72,21 @@ public class TP_FeeBased_EnrollCandidatesPage
 	@FindBy(xpath="(//a[contains(text(),'Upload Placement')])[3]")
 	private WebElement placementDocument_ThirdCandidateButton;
 	@FindBy(xpath="(//input[@id='customFile'])[3]")
-	private WebElement offerLetter_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
-	private WebElement offerLetter_UploadFileButton;
+	private WebElement placementDocument_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	private WebElement placementDocument_UploadFileButton;
 	@FindBy(xpath="(//input[@id='customFile'])[4]")
 	private WebElement appointmentLetter_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
 	private WebElement appointmentLetter_UploadFileButton;
 	@FindBy(xpath="(//input[@id='customFile'])[5]")
 	private WebElement salarySlip_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
 	private WebElement salarySlip_UploadFileButton;
+	@FindBy(xpath="(//input[@id='customFile'])[6]")
+	private WebElement undertakingDocument_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+	private WebElement undertakingDocument_UploadFileButton;
 	@FindBy(xpath="(//button[text()='Submit'])[4]")
 	private WebElement submit_PlacementDocumentButton;
 	@FindBy(xpath="(//button[text()='Close'])[4]")
@@ -248,14 +252,14 @@ public class TP_FeeBased_EnrollCandidatesPage
 		placementDocument_ThirdCandidateButton.click();
 	}
 	
-	public void clickOnOfferLetter_BrowseFile()
+	public void clickOnPlacementDocument_BrowseFile()
 	{
-		offerLetter_BrowseFileButton.click();
+		placementDocument_BrowseFileButton.click();
 	}
 	
-	public void clickOnOfferLetter_UploadFile()
+	public void clickOnPlacementDocument_UploadFile()
 	{
-		offerLetter_UploadFileButton.click();
+		placementDocument_UploadFileButton.click();
 	}
 	
 	public void clickOnAppointmentLetter_BrowseFile()
@@ -276,6 +280,16 @@ public class TP_FeeBased_EnrollCandidatesPage
 	public void clickOnSalarySlip_UploadFile()
 	{
 		salarySlip_UploadFileButton.click();
+	}
+	
+	public void clickOnUndertakingDocument_BrowseFile()
+	{
+		undertakingDocument_BrowseFileButton.click();
+	}
+	
+	public void clickOnUndertakingDocument_UploadFile()
+	{
+		undertakingDocument_UploadFileButton.click();
 	}
 	
 	public void clickOnSubmit_PlacementDocument()
