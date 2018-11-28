@@ -34,6 +34,8 @@ public class TrainingPartnerDashboardPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'Register')]")
 	private WebElement registerButton;
+	@FindBy(xpath="//span[contains(text(),'Register Candidate')]")
+	private WebElement registerCandidate_InMyCandidateButton;
 	
 	@FindBy(xpath="//div[p[text()='Add a Training Centre']]")
 	private WebElement addTrainingCentreButton;
@@ -104,6 +106,11 @@ public class TrainingPartnerDashboardPage
 	public void clickRegister()
 	{
 		registerButton.click();
+	}
+	
+	public void clickOnRegisterCandidate_InViewMyCandidate()
+	{
+		registerCandidate_InMyCandidateButton.click();
 	}
 	
 	public void clickOnAddTrainingCentre()
