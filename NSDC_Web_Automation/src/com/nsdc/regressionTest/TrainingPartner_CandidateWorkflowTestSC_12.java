@@ -170,69 +170,58 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Thread.sleep(8000);
 			//Education Details Page
 			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationeducation-details"),"OMG!!! navigation to Education Details page is unsuccessfull OR something is wrong! ");
-			if(education1.equalsIgnoreCase("uneducated"))
-			{
-				Thread.sleep(2000);
-				tpCrp.selectEducation(education1);
-				Thread.sleep(2000);
-				Assert.assertTrue(driver.findElements(By.xpath("//label[contains(text(),'Specialisation')]")).size()==0,"OMG!!! Education Details Fields should be hidden in case of uneducated candidate OR Something went wring! ");
-				Assert.assertTrue(driver.findElements(By.xpath("//button[contains(text(),'Add Education Details')]")).size()==0,"OMG!!! Add Education Details button should be hidden in case of uneducated candidate OR Something went wrong! ");
-			}
-			else
-			{
-				Thread.sleep(2000);
-				tpCrp.selectEducation(education1);
-				Thread.sleep(2000);
-				tpCrp.enterSpecialisation(specialisation1);
-				Thread.sleep(2000);
-				tpCrp.selectYearOfPassing(yearOfPassing1);
-				Thread.sleep(2000);
-				tpCrp.clickToBrowseEducationProofDoc();
-				Thread.sleep(4000);
-				UploadFile.upload(education1Proof);
-				Thread.sleep(4000);
-				tpCrp.clickToUploadEducationProof();
-				Thread.sleep(8000);
-				//Second Education Record
-				Thread.sleep(2000);
-				tpCrp.clickToAddOneMoreEducationRecord();
-				Thread.sleep(4000);
-				tpCrp.seelctSecondEducation(education2);
-				Thread.sleep(4000);
-				tpCrp.enterSecondSpecialisation(specialisation2);
-				Thread.sleep(4000);
-				tpCrp.enterEducationNameInCaseOFOthers(othersEducationName);
-				Thread.sleep(4000);
-				tpCrp.selectSecondYearOfPassing(yearOfPassing2);
-				Thread.sleep(4000);
-				tpCrp.clickToBrowseSecondEducationProof();
-				Thread.sleep(4000);
-				UploadFile.upload(education2Proof);
-				Thread.sleep(4000);
-				tpCrp.clickToUploadSecondEducationProof();
-				Thread.sleep(8000);
-				//Third Education Record
-				tpCrp.clickToAddOneMoreEducationRecord();
-				Thread.sleep(4000);
-				tpCrp.selectThirdEducation(education3);
-				Thread.sleep(4000);
-				tpCrp.enterThirdSpecialisation(specialisation3);
-				Thread.sleep(4000);
-				tpCrp.selectThirdYearOfPassing(yearOfPassing3);
-				Thread.sleep(4000);
-				tpCrp.clickToBrowseThirdEducationProof();
-				Thread.sleep(4000);
-				UploadFile.upload(education3Proof);
-				Thread.sleep(8000);
-				tpCrp.clickToUploadThirdEducationProof();
-				Thread.sleep(5000);
-				//Removing added third Education record
-				tpCrp.clickToRemoveAddedThirdEducationRecord();
-				Thread.sleep(4000);
-				Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[3]")).size()==0,"OMG!!! Removed third education record fields present OR Something is wrong! ");
-				Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[2]")).size()==1,"OMG!!! Added Second Education Record not present OR Something is wrong! ");
-				Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[1]")).size()==1,"OMG!!! Added First Education Record not present OR Something is wrong! ");
-			}
+			Thread.sleep(2000);
+			tpCrp.selectEducation(education1);
+			Thread.sleep(2000);
+			tpCrp.enterSpecialisation(specialisation1);
+			Thread.sleep(2000);
+			tpCrp.selectYearOfPassing(yearOfPassing1);
+			Thread.sleep(2000);
+			tpCrp.clickToBrowseEducationProofDoc();
+			Thread.sleep(4000);
+			UploadFile.upload(education1Proof);
+			Thread.sleep(4000);
+			tpCrp.clickToUploadEducationProof();
+			Thread.sleep(8000);
+			//Second Education Record
+			Thread.sleep(2000);
+			tpCrp.clickToAddOneMoreEducationRecord();
+			Thread.sleep(4000);
+			tpCrp.seelctSecondEducation(education2);
+			Thread.sleep(4000);
+			tpCrp.enterSecondSpecialisation(specialisation2);
+			Thread.sleep(4000);
+			tpCrp.enterEducationNameInCaseOFOthers(othersEducationName);
+			Thread.sleep(4000);
+			tpCrp.selectSecondYearOfPassing(yearOfPassing2);
+			Thread.sleep(4000);
+			tpCrp.clickToBrowseSecondEducationProof();
+			Thread.sleep(4000);
+			UploadFile.upload(education2Proof);
+			Thread.sleep(4000);
+			tpCrp.clickToUploadSecondEducationProof();
+			Thread.sleep(8000);
+			//Third Education Record
+			tpCrp.clickToAddOneMoreEducationRecord();
+			Thread.sleep(4000);
+			tpCrp.selectThirdEducation(education3);
+			Thread.sleep(4000);
+			tpCrp.enterThirdSpecialisation(specialisation3);
+			Thread.sleep(4000);
+			tpCrp.selectThirdYearOfPassing(yearOfPassing3);
+			Thread.sleep(4000);
+			tpCrp.clickToBrowseThirdEducationProof();
+			Thread.sleep(4000);
+			UploadFile.upload(education3Proof);
+			Thread.sleep(8000);
+			tpCrp.clickToUploadThirdEducationProof();
+			Thread.sleep(5000);
+			//Removing added third Education record
+			tpCrp.clickToRemoveAddedThirdEducationRecord();
+			Thread.sleep(4000);
+			Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[3]")).size()==0,"OMG!!! Removed third education record fields present OR Something is wrong! ");
+			Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[2]")).size()==1,"OMG!!! Added Second Education Record not present OR Something is wrong! ");
+			Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[1]")).size()==1,"OMG!!! Added First Education Record not present OR Something is wrong! ");
 			Thread.sleep(2000);
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
@@ -356,26 +345,19 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			//Education Details Review Page
 			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains(configuredURL.replaceAll("/", "")+"trainingpartnercandidate-registrationeducation-details"),"OMG!!! navigation to Education Details Review page is unsuccessfull OR something is wrong! ");
 			Select selectedEducation1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[1]")));
-			if(education1.equalsIgnoreCase("uneducated"))
-			{
-				Assert.assertEquals(selectedEducation1.getFirstSelectedOption().getText(), education1);
-			}
-			else
-			{
-				Assert.assertEquals(selectedEducation1.getFirstSelectedOption().getText(), education1);
-				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='specialization'])[1]")).getAttribute("value").trim(), specialisation1);
-				Select selectedPassingYear1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[1]")));
-				Assert.assertEquals(selectedPassingYear1.getFirstSelectedOption().getText(), yearOfPassing1);
-				Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[1]")).getText().trim(), education1Proof);
-				//Second Education Record
-				Select selectedEducation2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[2]")));
-				Assert.assertEquals(selectedEducation2.getFirstSelectedOption().getText(), education2);
-				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='specialization'])[2]")).getAttribute("value").trim(), specialisation2);
-				Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='educationName']")).getAttribute("value").trim(), othersEducationName);
-				Select selectedYearOfPassing2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[2]")));
-				Assert.assertEquals(selectedYearOfPassing2.getFirstSelectedOption().getText(), yearOfPassing2);
-				Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), education2Proof);
-			}
+			Assert.assertEquals(selectedEducation1.getFirstSelectedOption().getText(), education1);
+			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='specialization'])[1]")).getAttribute("value").trim(), specialisation1);
+			Select selectedPassingYear1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[1]")));
+			Assert.assertEquals(selectedPassingYear1.getFirstSelectedOption().getText(), yearOfPassing1);
+			Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[1]")).getText().trim(), education1Proof);
+			//Second Education Record
+			Select selectedEducation2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[2]")));
+			Assert.assertEquals(selectedEducation2.getFirstSelectedOption().getText(), education2);
+			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='specialization'])[2]")).getAttribute("value").trim(), specialisation2);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='educationName']")).getAttribute("value").trim(), othersEducationName);
+			Select selectedYearOfPassing2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[2]")));
+			Assert.assertEquals(selectedYearOfPassing2.getFirstSelectedOption().getText(), yearOfPassing2);
+			Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), education2Proof);
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(8000);
 			//Course Preference Review Page

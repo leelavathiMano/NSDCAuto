@@ -192,60 +192,52 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Contact & Address Details Section, Its Blocking further Applicant Registration Process!!!");
     	Thread.sleep(8000);
-        if(education1.equals("Uneducated") && education2.equals("Uneducated") && education3.equals("Uneducated"))
-        {
-            assessor.selectEducationAttained(education1);
-            Assert.assertTrue(driver.findElements(By.xpath("//label[contains(text(),'Details of Education')]")).size()==0,"OMG!!! Education Details Fields should be hidden in case of Un-Educated Applicant!!! ");
-        }
-        else
-        {
-            assessor.selectEducationAttained(education1);
-            Thread.sleep(2000);
-            assessor.enterDetailsOfEducation(edu_details1);
-            Thread.sleep(2000);
-            assessor.clickOnBrowseForUploadEducationProofDocument();
-            Thread.sleep(2000);
-            UploadFile.upload(edu_document1);
-            Thread.sleep(4000);
-            assessor.clickOnUploadForUploadEducationProofDocument();
-            Thread.sleep(8000);
-            assessor.clickOnAddEducationDetailsButton();
-            Thread.sleep(2000);
-            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education1+"')]")).getText(), education1);
-            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText(), edu_details1);
-            Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[1]")).getText(), "yes");
-            Thread.sleep(4000);
-            assessor.selectEducationAttained(education2);
-            Thread.sleep(2000);
-            assessor.enterDetailsOfEducation(edu_details2);
-            Thread.sleep(2000);
-            assessor.clickOnBrowseForUploadEducationProofDocument();
-            Thread.sleep(2000);
-            UploadFile.upload(edu_document2);
-            Thread.sleep(4000);
-            assessor.clickOnUploadForUploadEducationProofDocument();
-            Thread.sleep(8000);
-            assessor.clickOnAddEducationDetailsButton();
-            Thread.sleep(2000);
-            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education2+"')]")).getText(), education2);
-            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
-            Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
-            Thread.sleep(4000);
-            assessor.selectEducationAttained(education3);
-            assessor.enterDetailsOfEducation(edu_details3);
-            assessor.clickOnBrowseForUploadEducationProofDocument();
-           	Thread.sleep(4000);
-           	UploadFile.upload(edu_document3);
-           	Thread.sleep(4000);
-           	assessor.clickOnUploadForUploadEducationProofDocument();
-           	Thread.sleep(8000);
-            assessor.clickOnAddEducationDetailsButton();
-            Thread.sleep(2000);
-            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText(), education3);
-            Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details3+"')]")).getText(), edu_details3);
-            Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[3]")).getText(), "yes");
-            assessor.deleteThirdEducationDetails();
-        }
+        assessor.selectEducationAttained(education1);
+        Thread.sleep(2000);
+        assessor.enterDetailsOfEducation(edu_details1);
+        Thread.sleep(2000);
+        assessor.clickOnBrowseForUploadEducationProofDocument();
+        Thread.sleep(2000);
+        UploadFile.upload(edu_document1);
+        Thread.sleep(4000);
+        assessor.clickOnUploadForUploadEducationProofDocument();
+        Thread.sleep(8000);
+        assessor.clickOnAddEducationDetailsButton();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education1+"')]")).getText(), education1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText(), edu_details1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[1]")).getText(), "yes");
+        Thread.sleep(4000);
+        assessor.selectEducationAttained(education2);
+        Thread.sleep(2000);
+        assessor.enterDetailsOfEducation(edu_details2);
+        Thread.sleep(2000);
+        assessor.clickOnBrowseForUploadEducationProofDocument();
+        Thread.sleep(2000);
+        UploadFile.upload(edu_document2);
+        Thread.sleep(4000);
+        assessor.clickOnUploadForUploadEducationProofDocument();
+        Thread.sleep(8000);
+        assessor.clickOnAddEducationDetailsButton();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education2+"')]")).getText(), education2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText(), edu_details2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[2]")).getText(), "yes");
+        Thread.sleep(4000);
+        assessor.selectEducationAttained(education3);
+        assessor.enterDetailsOfEducation(edu_details3);
+        assessor.clickOnBrowseForUploadEducationProofDocument();
+        Thread.sleep(4000);
+        UploadFile.upload(edu_document3);
+        Thread.sleep(4000);
+        assessor.clickOnUploadForUploadEducationProofDocument();
+        Thread.sleep(8000);
+        assessor.clickOnAddEducationDetailsButton();
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText(), education3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details3+"')]")).getText(), edu_details3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'yes')])[3]")).getText(), "yes");
+        assessor.deleteThirdEducationDetails();
         Thread.sleep(4000);
         assessor.selectRelevantSectorForIndustrialExperience(industrial_sector1);
         Thread.sleep(2000);
@@ -310,14 +302,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
-        if(education1.equals("Uneducated") || education2.equals("Uneducated") || education3.equals("Uneducated"))
-        {
-            assessor.deleteThirdIndustrialExperienceDetailsWithoutEducationDetail();
-        }
-        else
-        {
-            assessor.deleteThirdIndustrialExperienceDetails();
-        }
+        assessor.deleteThirdIndustrialExperienceDetails();
         int totalIndustrialMonths=((Integer.parseInt(industrial_years1)+Integer.parseInt(industrial_years2))*12)+Integer.parseInt(industrial_months1)+Integer.parseInt(industrial_months2);
       	int finalIndustrialMonths=totalIndustrialMonths%12;
     	int finalIndustrialYears=(totalIndustrialMonths-finalIndustrialMonths)/12;
@@ -387,14 +372,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector3+"')]")).getText(), training_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails3+"')]")).getText(), trainingExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[5]")).getText(), "Yes");
-        if(education1.equals("Uneducated") || education2.equals("Uneducated") || education3.equals("Uneducated"))
-        {
-            assessor.deleteThirdTrainingExperienceWithoutEducationDetails();
-        }
-        else
-        {
-            assessor.deleteThirdTrainingExperienceDetails();
-        }
+        assessor.deleteThirdTrainingExperienceDetails();
         int totalTrainingMonths=((Integer.parseInt(trainingExperienceYears1)+Integer.parseInt(trainingExperienceYears2))*12)+Integer.parseInt(trainingExperienceMonths1)+Integer.parseInt(trainingExperienceMonths2);
       	int finalTrainingMonths=totalTrainingMonths%12;
     	int finalTrainingYears=(totalTrainingMonths-finalTrainingMonths)/12;
@@ -529,19 +507,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), state);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), city);
       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mandal')]]/span[2]")).getText().trim(), mandal);
-      	if(!education1.equals("Uneducated") && !education2.equals("Uneducated") && !education3.equals("Uneducated"))
-      	{
-      		Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains(education1));
-           	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[3]")).getText().trim(), edu_details1);
-           	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[4]")).getText().contains(edu_document1));
-           	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[5]")).getText().contains(education2));
-           	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[7]")).getText().trim(), edu_details2);
-           	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[8]")).getText().contains(edu_document2));
-      	}
-      	else
-      	{
-      		Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains("Uneducated"));
-      	}
+      	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains(education1));
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[3]")).getText().trim(), edu_details1);
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[4]")).getText().contains(edu_document1));
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[5]")).getText().contains(education2));
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[7]")).getText().trim(), edu_details2);
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[8]")).getText().contains(edu_document2));
       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[1]")).getText().contains(industrial_sector1));
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[3]")).getText().trim(), industrialExperienceDetails1);
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[4]")).getText().trim(), industrial_years1+" years "+industrial_months1+" months");
@@ -643,26 +614,13 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	aMpP.clickEducationAndWork();
     	Thread.sleep(2000);
-    	if(education1.equals("Uneducated") && education2.equals("Uneducated") && education3.equals("Uneducated"))
-        {
-    		Assert.assertTrue(driver.findElement(By.xpath("(//table[@class='table table-striped'])[1]//td[2]")).getText().equalsIgnoreCase("Uneducated"));
-        }
-    	else
-    	{
-    		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+education1+"']")).getText().trim(), education1);
-    		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText().trim(), edu_details1);
-    	    Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education1+"']]/td[4]")).getText().trim(), "Yes");
-    	    //Education Record 2
-    	    Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+education2+"']")).getText().trim(), education2);
-    	    Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText().trim(), edu_details2);
-    	    Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education2+"']]/td[4]")).getText().trim(), "Yes");
-    	 }
-    	//Checking UnEducated Option
-        aMpP.clickToAddEducationDetails();
-    	Thread.sleep(2000);
-    	aMpP.selectEducationAttained("Uneducated");
-    	Thread.sleep(2000);
-    	Assert.assertTrue(driver.findElements(By.xpath("//label[contains(text(),'Details of Education:')]")).size()==0, "OMG!!! Education Details Fields should be hidden in case of UnEducated!! ");
+    	Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+education1+"']")).getText().trim(), education1);
+    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details1+"')]")).getText().trim(), edu_details1);
+    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education1+"']]/td[4]")).getText().trim(), "Yes");
+    	//Education Record 2
+    	Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+education2+"']")).getText().trim(), education2);
+    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText().trim(), edu_details2);
+    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education2+"']]/td[4]")).getText().trim(), "Yes");
     	//Adding Education Record
     	aMpP.selectEducationAttained("Others");
     	Thread.sleep(2000);
