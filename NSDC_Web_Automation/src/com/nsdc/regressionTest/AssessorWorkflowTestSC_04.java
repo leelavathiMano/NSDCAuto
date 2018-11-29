@@ -591,6 +591,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	{
     		Assert.assertEquals(selectedApplicantCategories.get(0).getText()+","+selectedApplicantCategories.get(1).getText(), applicant_Category);
     	}
+    	Thread.sleep(2000);
     	aMpP.clickSaveChanges1();
     	Thread.sleep(4000);
     	aMpP.clickOK();
@@ -622,6 +623,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText().trim(), edu_details2);
     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education2+"']]/td[4]")).getText().trim(), "Yes");
     	//Adding Education Record
+    	aMpP.clickToAddEducationDetails();
+    	Thread.sleep(2000);
     	aMpP.selectEducationAttained("Others");
     	Thread.sleep(2000);
     	Assert.assertFalse(driver.findElements(By.xpath("//label[contains(text(),'Details of Education:')]")).size()==0, "OMG!!! Education Details Fields should be displayed in case of Other Education Attained Type!! ");
@@ -726,7 +729,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	aMpP.clickToUploadSelectedTrainingExperienceProofDoc();
     	Thread.sleep(8000);
     	aMpP.clickToSubmitTrainingExperienceDetails();
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Apparel')]")).getText().trim(), "Apparel");
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Training Experience in Apparel Sector')]")).getText().trim(), "Training Experience in Apparel Sector");
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Apparel')]])[2]/td[4]")).getText().trim(), "11 months");
