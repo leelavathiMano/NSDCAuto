@@ -25,11 +25,11 @@ public class AssessorViewBatchesPage
 	private WebElement acceptBatchRadioButton;
 	@FindBy(xpath="(//label[@class='m-radio m-radio--state'])[2]")
 	private WebElement rejectBatchRadioButton;
-	@FindBy(xpath="(//textarea[@placeholder='Enter remarks'])[1]")
+	@FindBy(xpath="(//textarea[@name='comment'])[1]")
 	private WebElement remarksForAcceptingBatchTextArea;
 	@FindBy(xpath="//angular2-multiselect[@name='reason']/div")
 	private WebElement rejectionReasonsList;
-	@FindBy(xpath="(//textarea[@placeholder='Enter remarks'])[2]")
+	@FindBy(xpath="(//textarea[@name='comment'])[2]")
 	private WebElement remarksForRejectingBatchTextArea;
 	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
 	private WebElement saveAndSubmitOfAcceptBatchButton;

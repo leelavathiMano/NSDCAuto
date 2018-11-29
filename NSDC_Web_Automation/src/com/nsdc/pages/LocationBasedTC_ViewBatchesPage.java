@@ -51,6 +51,8 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement appliedApplicantsSectionLink;
 	@FindBy(xpath="//button[contains(text(),'Enroll Selected Applicants')]")
 	private WebElement enrollSelectedApplicantsButton;
+	@FindBy(xpath="//button[contains(text(),'Yes')]")
+	private WebElement yesButton;
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
 	private WebElement goBackButton;
 	@FindBy(xpath="//button[contains(text(),'Send Batch for Approval')]")
@@ -206,6 +208,10 @@ public class LocationBasedTC_ViewBatchesPage
 	public void clickToEnrollAllSelectedApplicants()
 	{
 		enrollSelectedApplicantsButton.click();
+	}
+	public void clickToFinallyEnrollSelectedApplicants()
+	{
+		yesButton.click();
 	}
 	public void selectReasonForRejectingApplicant() throws InterruptedException
 	{

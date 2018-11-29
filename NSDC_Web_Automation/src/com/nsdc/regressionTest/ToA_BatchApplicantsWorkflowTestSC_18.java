@@ -33,6 +33,10 @@ import com.nsdc.testConfig.TestConfiguration;
 public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 {
 	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
+	String batchSector=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 0);
+	String batchSubSector=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 1);
+	String batchDomainJobRole=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 2);
+	String batchDomainJobRoleCode=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 3);
 	String sscID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 21);
 	String sscPassword=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 22);
 	String batchType=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 4);
@@ -584,8 +588,8 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   aDp.clickSearchAndApplyforAvailableBatches();
 	   Thread.sleep(4000);
 	   AssessorApplicantSearchAndApplyForAvailableBatchesPage aSp=new AssessorApplicantSearchAndApplyForAvailableBatchesPage(driver);
-  /*	if(serialNum.equals("1"))
-	   {
+	   if(serialNum.equals("1"))
+/*	   {
 		   aSp.clickMyPreferences();
 		   Thread.sleep(4000);
 		   aSp.clickToGetMyPreferenceActionMenu(preferredSector1);
@@ -599,7 +603,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[3]")).getText().contains(platformJobRole));
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[4]")).getText().trim(), state);
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), city);
-		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchStartDate+" - "+batchEndDate);
+		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchStartDate.replaceAll("-", "/")+" to "+batchEndDate.replaceAll("-", "/"));
 		   //have to select batch action
 		   Thread.sleep(2000);
 		   aSp.clickToGetBatchActionMenu(batchID);
@@ -611,8 +615,8 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Name')]]])[1]/div[2]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Type')]]])[1]/div[1]")).getText().trim(), batchType);
 		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Date')]]])[1]/div[2]")).getText().trim(), batchStartDate.replaceAll("-", "/")+" to "+batchEndDate.replaceAll("-", "/"));
-		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[1]")).getText().trim(), preferredSector1);
-		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[2]")).getText().trim(), preferredSubSector1);
+		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[1]")).getText().trim(), batchSector);
+		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[2]")).getText().trim(), batchSubSector);
 		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Fee')]]])[1]/div[1]")).getText().trim(), batchFees);
 		   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Name of Training Center')]]])/div[1]")).getText().trim(), tcName);
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[2]")).getText().trim(), domainJobRole);
@@ -632,7 +636,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Thread.sleep(2000);
 		   aSp.selectApplyToBatch(batchID);
 		   Thread.sleep(2000);
-		   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully !!");
+		   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
 		   aSp.clickOK();
 		   Thread.sleep(2000);
 	   }
@@ -682,7 +686,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   }	   
 	   else
 	   {
-	*/	   	aSp.selectState(state);
+*/		   	aSp.selectState(state);
 			Thread.sleep(2000);
 			aSp.selectSector(preferredSector1);
 			Thread.sleep(4000);
@@ -701,7 +705,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			Thread.sleep(8000);
 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
 			aSp.clickOK();   
-	 //  }
+//	   }
 	   Thread.sleep(4000);
 	   js.executeScript("window.scrollBy(0,-1000)", "");
 	   Thread.sleep(4000);
@@ -723,8 +727,8 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Name')]]])[1]/div[2]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Type')]]])[1]/div[1]")).getText().trim(), batchType);
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Date')]]])[1]/div[2]")).getText().trim().replaceAll("/", "-"), batchStartDate+" to "+batchEndDate);
-	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[1]")).getText().trim(), preferredSector1);
-	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[2]")).getText().trim(), preferredSubSector1);
+	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[1]")).getText().trim(), batchSector);
+	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[2]")).getText().trim(), batchSubSector);
 	   //Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Fee')]]])[1]/div[1]")).getText().trim(), batchFees);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Name of Training Center')]]]/div[1]")).getText().trim(), tcName);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Training Partner')]]]/div[2]")).getText().trim(), tcTPName);
@@ -841,6 +845,8 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Assert.assertTrue(driver.findElement(By.xpath("//tr[td[text()='"+assessorID+"']]//input[@name='Checkbox']")).isSelected(),"OMG!!! checkbox not selected for assessor applicant - "+assessorID);
 		   tcVp.clickToEnrollAllSelectedApplicants();
 		   Thread.sleep(4000);
+		   tcVp.clickToFinallyEnrollSelectedApplicants();
+ 		   Thread.sleep(4000);
 	   }
 	   else
 	   {
@@ -996,8 +1002,8 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Name')]]])[1]/div[2]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Type')]]])[1]/div[1]")).getText().trim(), batchType);
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Date')]]])[1]/div[2]")).getText().trim().replaceAll("/", "-"), batchStartDate+" to "+batchEndDate);
-	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[1]")).getText().trim(), preferredSector1);
-	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[2]")).getText().trim(), preferredSubSector1);
+	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[1]")).getText().trim(), batchSector);
+	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Sector')]]])[1]/div[2]")).getText().trim(), batchSubSector);
 	   //Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Fee')]]])[1]/div[1]")).getText().trim(), batchFees);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Name of Training Center')]]]/div[1]")).getText().trim(), tcName);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Training Partner')]]]/div[2]")).getText().trim(), tcTPName);
@@ -1144,7 +1150,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
   	 		Thread.sleep(2000);
   	 		sVp.selectApproveOfApplicantOption(assessorID);
   	 		Thread.sleep(4000);
-  	 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved!!\nApplicant successfully approved");
+  	 		//Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved!!\nApplicant successfully approved");
   	 		sVp.clickOk();
   	 		Thread.sleep(4000);
   	 		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
