@@ -1314,8 +1314,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				fbad.clickOnStartDateForTCDuration();
 				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
-				Thread.sleep(5000);
+				Thread.sleep(8000);
 				fbad.clickOnEndDateForTCDuration();
+				Thread.sleep(3000);
 				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
 				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
@@ -1354,6 +1355,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.enterDistanceFromNearestAirport(newAirportDistance);
 			fbad.enterDistanceFromNearestTrainStation(newTrainStationDistance);
 			fbad.enterDistanceFromNearestCityCentre(newCityCentreDistance);
+			Thread.sleep(3000);
 			fbad.enterAddressOFTC(newTCAddress);
 			fbad.enterNearByLandmark(newLandmark);
 			fbad.enterPincode(newPincode);
@@ -1521,8 +1523,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			fbad.clickOnOK();
 			Thread.sleep(3000);
-			fbd.clickOnViewTrainingCentres();
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newTrainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
+			//fbd.clickOnViewTrainingCentres();
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newTrainingCentreName+"']]]]//span[text()='RESUBMITTED']")).getText(), "RESUBMITTED");
 			PostLoginPage plp = new PostLoginPage(driver);
 			Thread.sleep(5000);
 			plp.clickOnProfileLogo();
@@ -1843,7 +1845,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(3000);
 		cmas.selectStatus(sectorComments);
 		cmas.enterTPID(tpID);
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		cmas.clickOnApply();
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
 		
@@ -1901,12 +1903,12 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		cmci.clickOnSubmitResponse();
 		cmac.selectStatus(courseComments);
 		cmac.enterTPID(tpID);
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		cmac.clickOnApply();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+expectedCourseName+"']]]]//span[text()='"+courseComments+"']")).getText(), courseComments);
 		
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		PostLoginPage plp = new PostLoginPage(driver);
 		Thread.sleep(3000);
 		plp.clickOnProfileLogo();

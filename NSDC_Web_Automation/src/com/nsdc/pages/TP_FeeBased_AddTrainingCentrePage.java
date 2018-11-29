@@ -300,7 +300,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 		tcDuration_StartDateButton.sendKeys(Keys.ENTER, Keys.TAB);
 	}
 	
-	public void clickOnEndDateForTCDuration()
+	public void clickOnEndDateForTCDuration()throws Exception
 	{
 		for(int i=0;i<12;i++)
 		{
@@ -308,6 +308,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 			
 		}
 		selectDateButton.click();
+		Thread.sleep(3000);
 		batchesPerDayTextbox.click();
 	}
 	
