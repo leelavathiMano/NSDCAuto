@@ -1794,7 +1794,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		}
 		
 		PostLoginPage  plp = new PostLoginPage(driver);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
 		
