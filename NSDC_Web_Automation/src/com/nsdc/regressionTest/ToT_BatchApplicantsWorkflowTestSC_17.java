@@ -1069,6 +1069,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	sAp.clickToViewAllPublishedBatches();
    	 	Thread.sleep(6000);
    	 	String batchID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 1);
+  	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Submitted for Approval");
    	 	sAp.clickToGetBatchActionMenu(batchID);
    	 	Thread.sleep(2000);
    	 	sAp.selectApproveApplicantsOption(batchID);

@@ -55,7 +55,7 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement yesButton;
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
 	private WebElement goBackButton;
-	@FindBy(xpath="//button[contains(text(),'Send Batch for Approval')]")
+	@FindBy(xpath="//button[contains(text(),'Send Batch')]")
 	private WebElement sendBatchForApprovalButton;
 	//Applicants Rejection
 	@FindBy(xpath="//angular2-multiselect[@name='reason']/div")
