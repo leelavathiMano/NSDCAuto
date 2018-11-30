@@ -14,7 +14,7 @@ public class LocationBasedTC_DashboardPage
 	private WebElement rozgarMelaLink;
 	@FindBy(xpath="//p[contains(text(),'View Applications')]")
 	private WebElement viewApplicationsCard;
-	@FindBy(xpath="//strong[text()='View Batches-New']")
+	@FindBy(xpath="//strong[text()='View Batches']")
 	private WebElement viewBatchesButton;
 	@FindBy(xpath="(//p[contains(text(),'Associated Trainers')])[1]")
 	private WebElement associatedTrainersCard;
