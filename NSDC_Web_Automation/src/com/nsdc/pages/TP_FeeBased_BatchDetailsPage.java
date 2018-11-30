@@ -22,7 +22,7 @@ public class TP_FeeBased_BatchDetailsPage
 	private WebElement endDate_BatchDurationTextbox;
 	@FindBy(xpath="//select[@formcontrolname='batchType']")
 	private WebElement batchTypeDropDownList;
-	@FindBy(xpath="//select[@formcontrolname='courseName']")
+	@FindBy(xpath="//select[@formcontrolname='courseId']")
 	private WebElement courseNameDropDownList;
 	@FindBy(xpath="//input[@placeholder='Sector']")
 	private WebElement sectorTextbox;
@@ -149,7 +149,7 @@ public class TP_FeeBased_BatchDetailsPage
 	
 	public void clickOnEndDate_TrainingDuration()throws Exception
 	{
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		endDate_TrainingDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
 	}
 	
