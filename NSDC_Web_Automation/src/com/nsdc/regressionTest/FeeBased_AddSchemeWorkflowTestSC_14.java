@@ -1794,7 +1794,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		}
 		
 		PostLoginPage  plp = new PostLoginPage(driver);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
 		
@@ -1847,9 +1847,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		cmas.enterTPID(tpID);
 		Thread.sleep(12000);
 		cmas.clickOnApply();
+		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
 		
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		cmad.clickOnDashboard();
 		Thread.sleep(8000);
 		cmad.clickOnViewAllCourseAddRequest();
@@ -2097,29 +2098,29 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(10000);
-		//tpdp.clickOnRegisterCandidate();
-		tpdp.clickMyCandidates();
-		Thread.sleep(5000);
-		tpdp.clickOnRegisterCandidate_InViewMyCandidate();
-		Thread.sleep(3000);
-		tpdp.clickToChooseBulkExcelSheetUpload();
-		Thread.sleep(3000);
-		tpdp.clickForExcelFileBrowse();
-		Thread.sleep(3000);
-		UploadFile.upload(candidateRegistrationFile);
-		Thread.sleep(3000);
-		tpdp.clickRegister();
-		Thread.sleep(3000);
-		TrainingPartner_MyCandidatesPage tpmc = new TrainingPartner_MyCandidatesPage(driver);
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//label[@class='m-checkbox m-checkbox--solid m-checkbox--state-brand']/span")).click();
-		Thread.sleep(5000);
-		tpmc.clickToDownloadReportForSelectedCandidates();
-		JavascriptExecutor jv = (JavascriptExecutor) driver;
-		jv.executeScript("scroll(900,0)");
-		Thread.sleep(10000);
-		tpdp.clickOnDashboard();
+//		Thread.sleep(10000);
+//		//tpdp.clickOnRegisterCandidate();
+//		tpdp.clickMyCandidates();
+//		Thread.sleep(5000);
+//		tpdp.clickOnRegisterCandidate_InViewMyCandidate();
+//		Thread.sleep(3000);
+//		tpdp.clickToChooseBulkExcelSheetUpload();
+//		Thread.sleep(3000);
+//		tpdp.clickForExcelFileBrowse();
+//		Thread.sleep(3000);
+//		UploadFile.upload(candidateRegistrationFile);
+//		Thread.sleep(3000);
+//		tpdp.clickRegister();
+//		Thread.sleep(3000);
+//		TrainingPartner_MyCandidatesPage tpmc = new TrainingPartner_MyCandidatesPage(driver);
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//label[@class='m-checkbox m-checkbox--solid m-checkbox--state-brand']/span")).click();
+//		Thread.sleep(5000);
+//		tpmc.clickToDownloadReportForSelectedCandidates();
+//		JavascriptExecutor jv = (JavascriptExecutor) driver;
+//		jv.executeScript("scroll(900,0)");
+//		Thread.sleep(10000);
+//		tpdp.clickOnDashboard();
 		
 		Thread.sleep(10000);
 		tpdp.clickOnMySchemes();
