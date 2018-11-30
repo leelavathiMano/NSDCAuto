@@ -3,6 +3,7 @@ package com.nsdc.pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -79,6 +80,8 @@ public class CMA_TrainingCentreInfoPage
 	@FindBy(xpath="(//button[@class='close'])[1]")
 	private WebElement close_PreviewButton;
 	
+	@FindBy(xpath="//p[text()='Adding a Training Centre']")
+	private WebElement addTCText;
 	
 	
 	public CMA_TrainingCentreInfoPage(WebDriver driver) 
@@ -86,6 +89,7 @@ public class CMA_TrainingCentreInfoPage
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
 	
 	public void clickOnDownloadFranchiseDocuments()throws Exception
 	{
