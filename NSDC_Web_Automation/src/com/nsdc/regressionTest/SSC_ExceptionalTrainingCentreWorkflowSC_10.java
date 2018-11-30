@@ -163,7 +163,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		eTCp.clickToAddJobRole();
 		Thread.sleep(4000);
 		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==1,"OMG!!! No show of Added JobRole record OR Something went wrong! ");
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
+		//Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
 		//Deleting Added JobRole
@@ -180,7 +180,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			eTCp.clickToAddJobRole();
 			Thread.sleep(4000);
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==1,"OMG!!! No show of Added JobRole record OR Something went wrong! ");
-			Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
+			//Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
 			Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
 			Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
 		}
