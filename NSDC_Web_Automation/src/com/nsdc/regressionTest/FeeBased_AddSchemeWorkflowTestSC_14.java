@@ -2091,39 +2091,14 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08");
 	}
 
-	@Test(dataProvider="createBatchAndEnrollCandidates")//, dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10")
+	@Test(dataProvider="createBatchAndEnrollCandidates", dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10")
 	public void createBatchAndEnrollCandidateTC11(String sno, String tpUsername, String tpPassword, String candidateRegistrationFile, String projectName, String tcName, String sector, String course, String target, String batchName, String batchSize, String batchType, String courseName, String expectedSector, String expectedAssociatedQP, String expectedNSQFLevel, String trainerName, String expectedTrainersEmail, String expectedTrainersMobile, String assessmentMode, String trainingFee, String feePaidBy, String batchID, String candidateList, String sscUsername, String sscPassword, String assessmentAgencyID, String aaPassword, String assessorID, String asPassword, String assessmentAgency, String assessor, String certificateFile, String placementDocument, String appointmentLetter, String salarySlip, String undertakingDocument) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
-		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(10000);
-		//tpdp.clickOnRegisterCandidate();
-		tpdp.clickMyCandidates();
-		Thread.sleep(5000);
-		tpdp.clickOnRegisterCandidate_InViewMyCandidate();
-		Thread.sleep(3000);
-		tpdp.clickToChooseBulkExcelSheetUpload();
-		Thread.sleep(3000);
-		tpdp.clickForExcelFileBrowse();
-		Thread.sleep(3000);
-		UploadFile.upload(candidateRegistrationFile);
-		Thread.sleep(3000);
-		tpdp.clickRegister();
-		Screenshot.takeScreenshot(driver, "registerCndidate");
-		Thread.sleep(3000);
-		TrainingPartner_MyCandidatesPage tpmc = new TrainingPartner_MyCandidatesPage(driver);
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//label[@class='m-checkbox m-checkbox--solid m-checkbox--state-brand']/span")).click();
-		Thread.sleep(5000);
-		tpmc.clickToDownloadReportForSelectedCandidates();
-		JavascriptExecutor jv = (JavascriptExecutor) driver;
-		jv.executeScript("scroll(900,0)");
-		Thread.sleep(10000);
-		tpdp.clickOnDashboard();
-		
+		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);		
 		Thread.sleep(10000);
 		tpdp.clickOnMySchemes();
 		Thread.sleep(5000);
