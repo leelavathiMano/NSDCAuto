@@ -308,7 +308,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 			
 		}
 		selectDateButton.click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		batchesPerDayTextbox.click();
 	}
 	

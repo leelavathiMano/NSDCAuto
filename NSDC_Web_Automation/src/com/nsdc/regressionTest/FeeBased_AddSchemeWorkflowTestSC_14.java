@@ -1847,9 +1847,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		cmas.enterTPID(tpID);
 		Thread.sleep(12000);
 		cmas.clickOnApply();
+		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
 		
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		cmad.clickOnDashboard();
 		Thread.sleep(8000);
 		cmad.clickOnViewAllCourseAddRequest();
