@@ -1780,7 +1780,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		Thread.sleep(4000);
  	   		tcVp.clickToRejectApplicant();
  	   		Thread.sleep(4000);
- 	   		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Rejected!!");
+ 	   		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Rejected");
  	   		tcVp.clickOk();
  	   		Thread.sleep(2000);
  	   		tcVp.clickToGoToAppliedApplicantsSection();
