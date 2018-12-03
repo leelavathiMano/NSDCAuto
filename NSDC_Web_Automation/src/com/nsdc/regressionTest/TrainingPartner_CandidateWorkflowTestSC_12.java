@@ -443,7 +443,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpMp.selectRegisteredCandidateViewDetailsOption();
 			Thread.sleep(4000);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")).getText().trim(), fullName);
-	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), dob.replaceAll("/", "-"));
+	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), selectedDateOfBirth.replaceAll("/", "-"));
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), gender);
 	       	//Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), cast);
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Religion')]]/span[2]")).getText().trim(), religion);
