@@ -1,6 +1,7 @@
 package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -17,6 +18,7 @@ import com.nsdc.pages.InspectionAgency_ViewInspectionPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
+import com.nsdc.pages.TrainingPartnerReEditRegistrationPage;
 import com.nsdc.pages.TrainingPartnerRegistrationPage;
 import com.nsdc.testConfig.TestConfiguration;
 
@@ -1030,7 +1032,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Add a Training Centre')]")).getText(), "Add a Training Centre");
     }
     
-  //TP Rejection Flow
+    //TP Rejection Flow
     @DataProvider
     public Object[][] tpRejectionProfileData()
     {
@@ -1040,7 +1042,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     @Test(dataProvider="tpRejectionProfileData")
     public void rejectionTPCreationTC_03(String serialNum, String tpID, String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional) throws Exception
     {
-        //DatabaseConnection.deleteTrainingPartner(email);
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
         String year_Establishment = year_Of_Establishment;
         int year = Integer.parseInt(year_Establishment);
         Thread.sleep(2000);
@@ -1186,7 +1188,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(5000);
         tprp.clickSaveAndNextButton();
         Thread.sleep(4000);
-        if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1208,10 +1210,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
+        else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Company"))
         {
         	tprp.enterPANNumber(pan_Number);
           	Thread.sleep(2000);
@@ -1221,11 +1221,19 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
           	Thread.sleep(2000);
           	tprp.clickUploadButton1();
           	Thread.sleep(3000);
-        	tprp.clickBrowseButton2();
+          	tprp.enterGSTAccountNumber(gst_Number);
+          	Thread.sleep(2000);
+          	tprp.clickBrowseButton2();
+            Thread.sleep(2000);
+            UploadFile.upload(upload_GST);
+            Thread.sleep(2000);
+            tprp.clickUploadButton2();
+            Thread.sleep(3000);
+          	tprp.clickBrowseButton3();
             Thread.sleep(2000);
             UploadFile.upload(upload_provisional);
             Thread.sleep(2000);
-            tprp.clickUploadButton2();
+            tprp.clickUploadButton3();
             Thread.sleep(3000);
             tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
@@ -1233,10 +1241,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1260,10 +1266,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Proprietorship"))
+        else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Company"))
         {
            	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1273,13 +1277,21 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickUploadButton1();
             Thread.sleep(3000);
+            tprp.enterGSTAccountNumber(gst_Number);
+          	Thread.sleep(2000);
+          	tprp.clickBrowseButton2();
+            Thread.sleep(2000);
+            UploadFile.upload(upload_GST);
+            Thread.sleep(2000);
+            tprp.clickUploadButton2();
+            Thread.sleep(3000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
-            tprp.clickBrowseButton2();
+            tprp.clickBrowseButton3();
             Thread.sleep(2000);
             UploadFile.upload(upload_turnover1);
             Thread.sleep(2000);
-            tprp.clickUploadButton2();
+            tprp.clickUploadButton3();
             Thread.sleep(3000);
             tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
@@ -1287,10 +1299,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1324,10 +1334,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Proprietorship"))
+        else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Company"))
         {
         	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1337,21 +1345,29 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickUploadButton1();
             Thread.sleep(3000);
-            tprp.enterAnnualTurnOver1(turnover1);
+            tprp.enterGSTAccountNumber(gst_Number);
+          	Thread.sleep(2000);
+          	tprp.clickBrowseButton2();
             Thread.sleep(2000);
-            tprp.clickBrowseButton2();
-            Thread.sleep(2000);
-            UploadFile.upload(upload_turnover1);
+            UploadFile.upload(upload_GST);
             Thread.sleep(2000);
             tprp.clickUploadButton2();
             Thread.sleep(3000);
-            tprp.enterAnnualTurnOver2(turnover2);
+            tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
             tprp.clickBrowseButton3();
             Thread.sleep(2000);
-            UploadFile.upload(upload_turnover2);
+            UploadFile.upload(upload_turnover1);
             Thread.sleep(2000);
             tprp.clickUploadButton3();
+            Thread.sleep(3000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(2000);
+            tprp.clickBrowseButton4();
+            Thread.sleep(2000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(2000);
+            tprp.clickUploadButton4();
             Thread.sleep(3000);
             tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
@@ -1359,10 +1375,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if((year < 2016) && (type_Of_The_Organization.equals("Company") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if((year < 2016) && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1402,10 +1416,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
-            Thread.sleep(2000);
         }
-        else if((year < 2016) && type_Of_The_Organization.equals("Proprietorship"))
+        else if((year < 2016) && type_Of_The_Organization.equals("Company"))
         {
            	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1415,37 +1427,43 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickUploadButton1();
             Thread.sleep(3000);
-            tprp.enterAnnualTurnOver1(turnover1);
+            tprp.enterGSTAccountNumber(gst_Number);
+          	Thread.sleep(2000);
+          	tprp.clickBrowseButton2();
             Thread.sleep(2000);
-            tprp.clickBrowseButton2();
-            Thread.sleep(2000);
-            UploadFile.upload(upload_turnover1);
+            UploadFile.upload(upload_GST);
             Thread.sleep(2000);
             tprp.clickUploadButton2();
             Thread.sleep(3000);
-            tprp.enterAnnualTurnOver2(turnover2);
+            tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
             tprp.clickBrowseButton3();
             Thread.sleep(2000);
-            UploadFile.upload(upload_turnover2);
+            UploadFile.upload(upload_turnover1);
             Thread.sleep(2000);
             tprp.clickUploadButton3();
             Thread.sleep(3000);
-            tprp.enterAnnualTurnOver3(turnover3);
+            tprp.enterAnnualTurnOver2(turnover2);
             Thread.sleep(2000);
             tprp.clickBrowseButton4();
             Thread.sleep(2000);
-            UploadFile.upload(upload_turnover3);
+            UploadFile.upload(upload_turnover2);
             Thread.sleep(2000);
             tprp.clickUploadButton4();
+            Thread.sleep(3000);
+            tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(2000);
+            tprp.clickBrowseButton5();
+            Thread.sleep(2000);
+            UploadFile.upload(upload_turnover3);
+            Thread.sleep(2000);
+            tprp.clickUploadButton5();
             Thread.sleep(3000);
             tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
             tprp.clickIAgreeCheckBox();
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
-            Thread.sleep(2000);
-            tprp.clickPaymentOkButton();
             Thread.sleep(2000);
         }
         else if(type_Of_The_Organization.equals("Government Institute"))
@@ -1456,10 +1474,480 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueButton();
             Thread.sleep(2000);
         }
-        tprp.clickDownloadButton();
-        Thread.sleep(4000);
         tprp.clickLogOutButton();
         Thread.sleep(4000);
-   }
+    }
     
+    @DataProvider
+    public Object[][] tpRejectionData()
+    {
+         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TP_Rejection");
+    }
+     
+    @Test(dataProvider="tpRejectionData",dependsOnMethods="rejectionTPCreationTC_03")
+    public void tpRejectionTC_04(String serialNum, String tpID, String iaUsername, String password, String tpEmail, String daName, String statusOption, String daUserName, String daPassword, String searchKeywords, String nameOfOrganization, String nameOfOrganizationReviewComments, String nameOfOrganizationComments, String typeOfOrganization, String typeOfOrganizationReviewComments, String typeOfOrganizationComments, String addressOfOrganization, String nearByLandmark, String pincode, String sateOrUnionTerritory, String district, String tehsilMandalBlock, String townVillage, String parlimentaryConsistuency, String addressProofOfOrganization, String addressOfTheOrganizationReviewComments, String addressOfTheOrganizationComments, String yearOfEstablishment, String panCardNumber, String panCardReviewComments, String panCardComments, String gstNumber, String gstNumberReviewComments, String gstNumberComments,String aadharNumber, String aadharNumReviewComments, String aadharNumComments, String yearOfEstablishmentReviewcomments, String yearOfEstablishmentComments, String prvisionalCertificateReviewComments, String prvisionalCertificateComment, String turnOver1, String financialYear1ReviewComments, String financialYear1Comments, String turnOver2, String financialYear2ReviewComments, String financialYear2Comments, String turnOver3, String financialYear3ReviewComments, String financialYear3Comments, String reviewStatus, String finalReviewstatusComments, String finalReviewStatusFile, String tpDaAssert, String updateOrganizationType, String updateYearOfEstablishment, String updatePAN, String uploadPAN, String updateGSTNumber, String uploadGST, String updateFinancialYear1TurnOver, String uploadFinancialYear1, String updateFinancialYear2TurnOver, String uploadFinancialYear2, String updateFinancialYear3TurnOver, String uploadFinancialYear3, String updateAadharNum, String uploadProvisional) throws Exception
+    {
+ 	   	//Rejecting TP 3 Times
+     	for(int i=1;i<4;i++)
+       	{
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+     		LoginPage lp = new LoginPage(driver);
+          	lp.clickLogin();
+     	   	EnterLoginPage elp = new EnterLoginPage(driver);
+    	  	elp.performlogin(iaUsername, password);
+     	   	//viewing all TP requests waiting for IA to assign respected DA
+    	   	InspectionAgency_DashboardPage ia = new InspectionAgency_DashboardPage(driver);
+     	   	Thread.sleep(4000);
+     	   	JavascriptExecutor js=(JavascriptExecutor)driver;
+     	   	js.executeScript("window.scrollBy(0,200)", "");
+     		Thread.sleep(2000);
+    	   	ia.clickOnViewAllAssessmentRequest();
+    	   	Thread.sleep(2000);
+    	   	InspectionAgency_ViewInspectionPage iv=new InspectionAgency_ViewInspectionPage(driver);
+     	   	iv.enterTPIDForSearch(tpID);
+    	   	Thread.sleep(2000);
+    	   	iv.clickOnApply();
+    	   	Thread.sleep(4000);
+    	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[span[contains(text(),'"+tpID+"')]]]")).size()!=0,"OMG!!! No show of rejection profile TP - "+tpID+" for IA - "+iaUsername+" ( iteration - "+i+" )");
+     	   	iv.clickOnAction();
+     	   	Thread.sleep(2000);
+     	   	iv.clickOnTakeAction();
+     	   	Thread.sleep(2000);
+     	   	String spocName=ReadWriteData.getData("./TestData/Workflow/TrainingPartner-Workflow.xls", "RejectionTP_Creation", Integer.parseInt(serialNum), 3);
+     	   	Assert.assertEquals(driver.findElement(By.name("SPOC_Name")).getAttribute("value").trim(), spocName);
+     	   	String spocEmail=ReadWriteData.getData("./TestData/Workflow/TrainingPartner-Workflow.xls", "Config fields", 1, 3);
+     	   	Assert.assertEquals(driver.findElement(By.name("SPOC_Email")).getAttribute("value").trim(), spocEmail);
+     	   	String spocMobile=ReadWriteData.getData("./TestData/Workflow/TrainingPartner-Workflow.xls", "Config fields", 1, 4);
+     	   	Assert.assertEquals(driver.findElement(By.name("SPOC-mobile")).getAttribute("value").trim(), spocMobile);
+     	   	iv.selectForAssignTo_Second(daName);
+     	   	Thread.sleep(2000);
+     	   	iv.clickForAssign();
+     	   	Thread.sleep(2000);
+     	   	PostLoginPage plp=new PostLoginPage(driver);
+     	   	plp.clickOnProfileLogo();
+    	   	plp.clickOnLogout();
+        	Thread.sleep(6000);
+     	   	//DA Rejecting TP
+    	   	lp.clickLogin();
+     	   	elp.performlogin(daUserName, daPassword);
+     	   	Thread.sleep(6000);
+     	   	DA_DashboardPage da=new DA_DashboardPage(driver);
+     	   	Thread.sleep(4000);
+     	   	js.executeScript("window.scrollBy(0,200)", "");
+     	   	Thread.sleep(2000);
+     	   	da.clickOnViewAllAssessmentRequest();
+     	   	Thread.sleep(2000);
+     	   	DesktopAssessor_ViewInspectionPage dv=new DesktopAssessor_ViewInspectionPage(driver);
+     	   	dv.enterKeywordForTPID(tpID);
+     	   	Thread.sleep(2000);
+     	   	dv.clickOnApply();
+     		Thread.sleep(2000);
+     	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[span[contains(text(),'"+tpID+"')]]]")).size()!=0,"OMG!!! No show of created rejection profile TP"+tpID+" for DA - "+daUserName);
+     	   	dv.clickOnAction();
+     	   	Thread.sleep(2000);
+     	   	dv.clickOnTakeAction();
+     	   	Thread.sleep(2000);
+     	   	DA_Assign_TPRegistrationFormPage da_tpr = new DA_Assign_TPRegistrationFormPage(driver);
+     	   	//Asserting every field information against TP registered data
+     	   	//Organization Name verification
+     	   	Assert.assertEquals(driver.findElement(By.name("organization-name")).getAttribute("value").trim(), nameOfOrganization);
+     	   	//Organization Type verification
+     	   	if(i==1)
+     	   	{
+         	   	Assert.assertEquals( driver.findElement(By.xpath("(//div[div[label[contains(text(),'Type of the Organization:')]]]//input)[2]")).getAttribute("value").trim(), typeOfOrganization);
+     	   	}
+     	   	else
+     	   	{
+         	   	Assert.assertEquals( driver.findElement(By.xpath("(//div[div[label[contains(text(),'Type of the Organization:')]]]//input)[2]")).getAttribute("value").trim(), updateOrganizationType);
+     	   	}
+     	   	//Organization Address verification
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Address of the Organization:')]]]//input)[3]")).getAttribute("value").trim(), addressOfOrganization);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Nearby Landmark')]]]//label//input)[3]")).getAttribute("value").trim(), nearByLandmark);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Pincode')]]]//label//input)[4]")).getAttribute("value").trim(), pincode);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'State')]]]//label//input)[7]")).getAttribute("value").trim(), sateOrUnionTerritory);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//input)[7]")).getAttribute("value").trim(), district);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//input)[10]")).getAttribute("value").trim(), tehsilMandalBlock);
+     	  	Assert.assertEquals(driver.findElement(By.xpath("(//input)[8]")).getAttribute("value").trim(), parlimentaryConsistuency);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//input)[11]")).getAttribute("value").trim(), townVillage);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("(//div[label[label[contains(text(),'Address Proof of the Organization')]]]//input)[2]")).getAttribute("value").trim(), addressProofOfOrganization);
+     	   	Thread.sleep(2000);
+     	   	da_tpr.selectReviewCommentsForAddress(addressOfTheOrganizationReviewComments);
+     	   	Thread.sleep(2000);
+     	   	da_tpr.enterAdditionalCommentForAddressOfOrganization(addressOfTheOrganizationComments);
+     	   	da_tpr.clickForSaveAndContinue();
+     	   	Thread.sleep(2000);
+     	   	//checking year of establishment and checking loaded fields depending on the type of organization and year of establishment
+     	   	if((i==1 && typeOfOrganization.equalsIgnoreCase("Government Institute")) || (i>1 && updateOrganizationType.equalsIgnoreCase("Government Institute")))
+     	   	{
+     	   		da_tpr.clickForSaveAndContinue();
+          	   	Thread.sleep(2000);
+     	   	}
+     	   	else if((i==1 && (typeOfOrganization.equals("Proprietorship")||typeOfOrganization.equals("Firm")||typeOfOrganization.equals("Society")||typeOfOrganization.equals("Trust")||typeOfOrganization.equals("Limited Liability Partnership (LLP)"))) || (i>1 && (updateOrganizationType.equals("Proprietorship")||updateOrganizationType.equals("Firm")||updateOrganizationType.equals("Society")||updateOrganizationType.equals("Trust")|| updateOrganizationType.equals("Limited Liability Partnership (LLP)"))))
+     	   	{
+     	   		if(i==1)
+     	   		{
+     	   			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Account Number']")).getAttribute("value").trim(), panCardNumber);
+     	   		}
+     	   		else
+     	   		{
+    				Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Account Number']")).getAttribute("value").trim(), updatePAN);
+     	   		}
+     		 	Thread.sleep(2000);
+     		 	da_tpr.selectReviewCommentForPAN(panCardReviewComments);
+     		 	Thread.sleep(2000);
+     		 	da_tpr.enterAdditionalCommentForPAN(panCardComments);
+     		 	Thread.sleep(2000);
+     	   	}
+     	   	else if((i==1 && typeOfOrganization.equals("Company")) || (i>1 && updateOrganizationType.equals("Company")))
+    	   	{
+     	   		if(i==1)
+     	   		{
+        			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Account Number']")).getAttribute("value").trim(), panCardNumber);
+     	   		}
+     	   		else
+     	   		{
+        			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Account Number']")).getAttribute("value").trim(), updatePAN);
+     	   		}
+		 		da_tpr.selectReviewCommentForPAN(panCardReviewComments);
+		 		Thread.sleep(2000);
+		 		da_tpr.enterAdditionalCommentForPAN(panCardComments);
+		 		Thread.sleep(2000);
+		 		da_tpr.selectReviewCommentsForGST(gstNumberReviewComments);
+	        	Thread.sleep(2000);
+	        	da_tpr.enterAdditionalCommentForGST(gstNumberComments);
+	        	Thread.sleep(2000);
+		 	}
+     		//Year Of Establishment verification
+    		if((i==1 && !typeOfOrganization.equals("Government Institute")) || (i>1 && !updateOrganizationType.equalsIgnoreCase("Government Institute")))
+     	   	{
+    			if(i==1)
+     			{
+         	   		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value").trim(), yearOfEstablishment);
+     			}
+     			else
+     			{
+         	   		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value").trim(), updateYearOfEstablishment);
+     			}
+    			if((i==1 && yearOfEstablishment.equals("2018")) || (i>1 && updateYearOfEstablishment.equals("2018")))
+        		{
+        			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+         		 	Thread.sleep(2000);
+         		 	da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+         		 	Thread.sleep(2000);
+         		 	da_tpr.selectReviewCommentForProvisionalCertificate(prvisionalCertificateReviewComments);
+         		 	Thread.sleep(2000);
+         		 	da_tpr.enterAdditionalCommentForProvisionalCertificate(prvisionalCertificateComment);
+         		 	Thread.sleep(2000);
+         		}
+         	   	else if((i==1 && yearOfEstablishment.equals("2017")) || (i>1 && updateYearOfEstablishment.equals("2017")))
+         	   	{
+         			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+     		 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
+     		 		Thread.sleep(2000);
+         	   	}    	   	
+         	   	else if((i==1 && yearOfEstablishment.equals("2016")) || (i>1 && updateYearOfEstablishment.equals("2016")))
+         	   	{
+         			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+     		 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
+     		 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForSecondFinancialYear(financialYear2ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
+     		 		Thread.sleep(2000);
+     		 	}
+         	   	else if((i==1 && Integer.parseInt(yearOfEstablishment)<2016) || (i>1 && Integer.parseInt(updateYearOfEstablishment)<2016))
+         	   	{
+         			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+     		 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
+     		 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForSecondFinancialYear(financialYear2ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
+     		 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[3]")).getAttribute("value").trim(), turnOver3);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForThirdFinancialYear(financialYear3ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForThirdFinancialYear(financialYear3Comments);
+     		 		Thread.sleep(2000);
+     		 	}
+     	   	}
+    		da_tpr.clickForSaveAndContinue();
+	     	Thread.sleep(4000);
+     	   	Select finalreviewStatius=new Select(driver.findElement(By.xpath("//select[@placeholder='Deemed Not Ready']")));
+     	   	Assert.assertEquals(finalreviewStatius.getFirstSelectedOption().getText().trim(),"Deemed Not Ready");
+      	   	da_tpr.enterAdditionalCommentForFinalStatus(finalReviewstatusComments);
+      	   	Thread.sleep(4000);
+      	   	da_tpr.clickForFinalStatusBrowseFile();
+      	   	Thread.sleep(4000);
+      	   	UploadFile.upload(finalReviewStatusFile);
+      	   	Thread.sleep(5000);
+      	   	da_tpr.clickForFinalStatusUploadFile();
+      	   	Thread.sleep(5000);
+      	   	da_tpr.clickForSaveAndContinue();
+      	   	Thread.sleep(4000);
+      	   	Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! something went wrong after clicking Final Review Save and Continue button! ");
+      	   	Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Your review is submitted successfully");
+      	   	da_tpr.clickForOK();
+      	   	Thread.sleep(4000);
+      	   	//Verifying Awaiting TP Reply status
+      	   	da.clickOnViewAllAssessmentRequest();
+      	   	Thread.sleep(4000);
+   	   		dv.enterKeywordForTPID(tpID);
+   	   		Thread.sleep(2000);
+   	   		dv.clickOnApply();
+   	   		Thread.sleep(2000);
+      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+tpID+"')]]]/td[8]")).getText().trim(), "Awaiting TP Reply");
+      	   	plp.clickOnProfileLogo();
+      	   	Thread.sleep(2000);
+      	   	plp.clickOnLogout();
+      	   	Thread.sleep(6000);
+    	  	//TP Login to check DA Action Comments
+     	   	lp.clickLogin();
+      	   	Thread.sleep(2000);
+      	   	elp.performlogin(tpID, "Qwerty@123");
+      	   	Thread.sleep(8000);
+      	   	TrainingPartnerReEditRegistrationPage tpREp=new TrainingPartnerReEditRegistrationPage(driver);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Action DA Comments')]")).getText(), tpDaAssert);
+     	   	js.executeScript("window.scrollBy(0,200)", "");
+     		Thread.sleep(2000);
+     		tpREp.clickDaComments();
+     	   	Thread.sleep(6000);
+     	   	if(i==3)
+     	   	{
+     	   		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='status-message']/p")).getText(),"You are blocked for 2 months as your application is rejected 3 times by Desktop Assessor.");
+     	   		Thread.sleep(2000);
+     	   		plp.clickOnProfileLogo();
+     	   		Thread.sleep(2000);
+     	   		plp.clickOnLogout();
+     	   	}
+ 	    	else
+ 	    	{
+ 	    		//Verifying submitted Data and DA_Comments
+ 	    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='nameOfOrganisation']")).getAttribute("value"), nameOfOrganization);
+ 	    		if(i==1)
+ 	    		{
+ 	    			Select selectedOrganizationType=new Select(driver.findElement(By.xpath("//select[@formcontrolname='typeOfOrganisation']")));
+ 		    		Assert.assertEquals(selectedOrganizationType.getFirstSelectedOption().getText().trim(), typeOfOrganization);
+ 		    		
+ 		    	}
+ 	    		else
+ 	    		{
+ 	    			Select selectedYearOfEstablishment=new Select(driver.findElement(By.xpath("//select[@formcontrolname='typeOfOrganisation']")));
+ 		    		Assert.assertEquals(selectedYearOfEstablishment.getFirstSelectedOption().getText().trim(), updateOrganizationType);
+ 	    		}
+ 	    		if(i==1 && !typeOfOrganization.equalsIgnoreCase("Government Institute"))
+ 	    		{
+ 	    			Select selectedYearOfEstablishment=new Select(driver.findElement(By.xpath("//select[@formcontrolname='yearOfEstablishment']")));
+ 		    		Assert.assertEquals(selectedYearOfEstablishment.getFirstSelectedOption().getText().trim(), yearOfEstablishment);
+ 		    		Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+yearOfEstablishmentComments+"')]")).isDisplayed(), " OMG!!! No show of DA Rejection Comments for Year Of Establishment ");
+ 	    		}
+ 	    		else if(i>1 && !updateOrganizationType.equalsIgnoreCase("Government Institute"))
+ 	    		{
+ 	    			Select selectedOrganizationType=new Select(driver.findElement(By.xpath("//select[@formcontrolname='yearOfEstablishment']")));
+ 		    		Assert.assertEquals(selectedOrganizationType.getFirstSelectedOption().getText().trim(), updateYearOfEstablishment);
+ 		    		Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+yearOfEstablishmentComments+"')]")).isDisplayed(), " OMG!!! No show of DA Rejection Comments for Year Of Establishment ");
+ 	    		}
+ 	    		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@formcontrolname='addressLine1']")).getAttribute("value").trim(), addressOfOrganization);
+ 	    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='landmark']")).getAttribute("value").trim(), nearByLandmark);
+	    		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='pincode']")).getAttribute("value").trim(), pincode);
+	    		Select selectedState=new Select(driver.findElement(By.xpath("//select[@formcontrolname='state']")));
+	    		Assert.assertEquals(selectedState.getFirstSelectedOption().getText().trim(), sateOrUnionTerritory);
+	    		Select selectedDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='district']")));
+	    		Assert.assertEquals(selectedDistrict.getFirstSelectedOption().getText().trim(), district);
+	    		Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
+	    		Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
+	    		Select selectedParlimentary=new Select(driver.findElement(By.xpath("//select[@formcontrolname='parliamentaryConstituency']")));
+	    		Assert.assertEquals(selectedParlimentary.getFirstSelectedOption().getText().trim(), parlimentaryConsistuency);
+	    		Select selectedaddressProof=new Select(driver.findElement(By.xpath("//select[@formcontrolname='addressProof']")));
+	    		Assert.assertEquals(selectedaddressProof.getFirstSelectedOption().getText().trim(), addressProofOfOrganization);
+	    		Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+addressOfTheOrganizationComments+"')]")).isDisplayed());
+	    		if(i==1 && typeOfOrganization.equalsIgnoreCase("Company")) 
+	    		{
+	    			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='GST']")).getAttribute("value").trim(), gstNumber);
+	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+gstNumberComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for GST ");
+	    		}
+	    		else if(i>1 && updateOrganizationType.equalsIgnoreCase("Company")) 
+	    		{
+	    			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='GST']")).getAttribute("value").trim(), updateGSTNumber);
+	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+gstNumberComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for GST ");
+	    		}
+	    		if(i==1 && !typeOfOrganization.equalsIgnoreCase("Government Institute")) 
+	    		{
+	    			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='PAN']")).getAttribute("value").trim(), panCardNumber);
+	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+panCardComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for PAN ");
+	    			if(yearOfEstablishment.equals("2018"))
+	    			{
+	    				
+	    			}
+	    			else if(yearOfEstablishment.equals("2017"))
+	    			{
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), turnOver1);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
+	    			}
+	    			else if(yearOfEstablishment.equals("2016"))
+	    			{
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), turnOver1);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
+		    			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[2]")).getAttribute("value").trim(), turnOver2);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear2Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Second Financial Year");
+	    			}
+	    			else if(Integer.parseInt(yearOfEstablishment)<2016)
+	    			{
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), turnOver1);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
+		    			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[2]")).getAttribute("value").trim(), turnOver2);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear2Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Second Financial Year");
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[3]")).getAttribute("value").trim(), turnOver3);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear3Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Third Financial Year ");
+	    			}
+	    		}
+	    		else if(i>1 && !updateOrganizationType.equalsIgnoreCase("Government Institute")) 
+	    		{
+	    			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='PAN']")).getAttribute("value").trim(), updatePAN);
+	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+panCardComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for PAN ");
+	    			if(updateYearOfEstablishment.equals("2018"))
+	    			{
+	    				
+	    			}
+	    			else if(updateYearOfEstablishment.equals("2017"))
+	    			{
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), updateFinancialYear1TurnOver);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
+	    			}
+	    			else if(updateYearOfEstablishment.equals("2016"))
+	    			{
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), updateFinancialYear1TurnOver);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
+		    			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[2]")).getAttribute("value").trim(), updateFinancialYear2TurnOver);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear2Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Second Financial Year");
+	    			}
+	    			else if(Integer.parseInt(updateYearOfEstablishment)<2016)
+	    			{
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), updateFinancialYear1TurnOver);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
+		    			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[2]")).getAttribute("value").trim(), updateFinancialYear2TurnOver);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear2Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Second Financial Year");
+	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[3]")).getAttribute("value").trim(), updateFinancialYear3TurnOver);
+		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear3Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Third Financial Year ");
+	    			}
+	    		}
+	    		Assert.assertTrue(driver.findElement(By.xpath("//h4[contains(text(),'"+finalReviewstatusComments+"')]")).isDisplayed());	
+ 	    		//Updating Rejected Form - Re-Edit
+ 	    		tpREp.clicknameOfOrganizationSave();
+ 	    		Thread.sleep(2000);
+ 	    		//Changing of Organization Type
+ 	    		if(i==1 && !updateOrganizationType.equalsIgnoreCase(typeOfOrganization))
+ 	    		{
+ 	    			tpREp.selectUpdatedTypeOfOrganization(updateOrganizationType);
+ 	    			Thread.sleep(2000);
+ 	    			if(!updateOrganizationType.equalsIgnoreCase("Government Institute"))
+ 	    			{
+ 	    				if(updateOrganizationType.equalsIgnoreCase("Proprietorship")||updateOrganizationType.equalsIgnoreCase("Firm")||updateOrganizationType.equalsIgnoreCase("Society")||updateOrganizationType.equalsIgnoreCase("Trust")||updateOrganizationType.equalsIgnoreCase("Limited Liability Partnership (LLP)"))
+ 			    		{
+ 		    				tpREp.enterPAN(updatePAN);
+ 		    				Thread.sleep(2000);
+ 		    				tpREp.clickToBrowseFileForPAN();
+ 		    				Thread.sleep(4000);
+ 		    				UploadFile.upload(uploadPAN);
+ 		    				Thread.sleep(4000);
+ 		    				tpREp.clickToUploadPAN();
+ 		    				Thread.sleep(4000);
+ 		    			}
+ 		    			else if(updateOrganizationType.equalsIgnoreCase("Company"))
+ 		    			{
+ 		    				tpREp.enterPAN(updatePAN);
+ 							Thread.sleep(2000);
+ 							tpREp.clickToBrowseFileForPAN();
+ 							Thread.sleep(5000);
+ 							UploadFile.upload(uploadPAN);
+ 							Thread.sleep(5000);
+ 							tpREp.clickToUploadPAN();
+ 							Thread.sleep(5000);
+ 							tpREp.enterGST(uploadGST);
+ 							Thread.sleep(2000);
+ 							tpREp.clickToBrowseFileForGST();
+ 							Thread.sleep(2000);
+ 							UploadFile.upload(uploadGST);
+ 							Thread.sleep(5000);
+ 							tpREp.clickToUploadGST();
+ 							Thread.sleep(5000);
+ 		    			}
+ 	    			}
+ 	    		}
+ 		    	if(i==1 && !updateYearOfEstablishment.equals(yearOfEstablishment) && !updateOrganizationType.equalsIgnoreCase("Government Institute"))
+ 		    	{
+ 		    		tpREp.selectUpdatedYearOfEstablishment(updateYearOfEstablishment);
+ 		    		Thread.sleep(2000);
+ 		    		int updatedYearOfEst=Integer.parseInt(updateYearOfEstablishment);
+ 		    		if(updatedYearOfEst==2018)
+	    			{
+	    				Assert.assertFalse(driver.findElements(By.xpath("//label[contains(text(),'Provisional Certificate')]")).size()==0, "OMG!!! Provisional Certificate Fields are not coming!!! ");
+	    				tpREp.clickToBrowseFileForProvisionalCertificate();
+		    			Thread.sleep(4000);
+		    			UploadFile.upload(uploadProvisional);
+		    			Thread.sleep(4000);
+		    			tpREp.clickToUploadProvisionalCertificate();
+		    			Thread.sleep(4000);
+	    			}
+ 		    		else if(updatedYearOfEst==2017)
+	    			{
+	    				Assert.assertTrue(driver.findElements(By.xpath("//input[@placeholder='Enter Annual Turnover']")).size()==1, "OMG!!! TurnOver Fields for First Financial Year Not Present!!! ");
+	    				tpREp.enterFirstFinancialYearTurnOver(updateFinancialYear1TurnOver);
+	    				Thread.sleep(2000);
+	    			}
+ 		    		else if(updatedYearOfEst==2016)
+	    			{
+	    				Assert.assertTrue(driver.findElements(By.xpath("//input[@placeholder='Enter Annual Turnover']")).size()==2, "OMG!!! TurnOver Fields for Latest Two Financial Years Not Present!!! ");
+	    				tpREp.enterFirstFinancialYearTurnOver(updateFinancialYear1TurnOver);
+	    				Thread.sleep(4000);
+	    				tpREp.enterSecondFinancialYearTurnOver(updateFinancialYear2TurnOver);
+		    			Thread.sleep(2000);
+	    			}
+ 		    		else if(updatedYearOfEst<2016)
+	    			{
+	    				Assert.assertTrue(driver.findElements(By.xpath("//input[@placeholder='Enter Annual Turnover']")).size()==3, "OMG!!! TurnOver Fields for Latest Three Financial Years Not Present!!! ");
+	    				tpREp.enterFirstFinancialYearTurnOver(updateFinancialYear1TurnOver);
+	    				Thread.sleep(4000);
+	    				tpREp.enterSecondFinancialYearTurnOver(updateFinancialYear2TurnOver);
+		    			Thread.sleep(2000);
+		    			tpREp.enterThirdFinancialYearTurnOver(updateFinancialYear3TurnOver);
+		    			Thread.sleep(2000);
+		    		}
+ 		    	}
+ 		    	Thread.sleep(2000);
+ 	    		Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Save & Submit for Review')]")).isEnabled());
+ 		    	tpREp.clickSubmitForReview();
+ 		    	Thread.sleep(2000);
+ 		    	Thread.sleep(2000);
+ 	    		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText(), "Your Application has been submitted for review, Kindly wait for approval");
+ 	    		Thread.sleep(2000);
+ 	    		tpREp.clickSentforApprovalPopup();
+ 	    		Thread.sleep(2000);
+ 	    		plp.clickOnProfileLogo();
+ 	    		Thread.sleep(2000);
+ 	    		plp.clickOnLogout();
+ 	    		Thread.sleep(6000);
+ 	    	}			
+     	} 	    				
+    }
 }
