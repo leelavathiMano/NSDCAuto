@@ -36,6 +36,27 @@ public class TrainerViewBatchesPage
 	private WebElement batchDetailsSectionLinkText;
 	@FindBy(linkText="Approved Applicants")
 	private WebElement approvedApplicantsSectionLinkText;
+	//On-going Batch
+	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
+	private WebElement searchByBatchIDTextField;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchFilterButton;
+	@FindBy(linkText="Batch Attendance")
+	private WebElement batchAttendanceSectionLinkText;
+	@FindBy(xpath="//angular2-multiselect[@formcontrolname='jobRole']/div")
+	private WebElement platformJobRoleList;
+	@FindBy(name="uploadFile")
+	private WebElement browseForAttendanceButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	private WebElement uploadAttendanceButton;
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	private WebElement browseForAttendanceSupportingDocButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	private WebElement uploadAttendanceSupportDocButton;
+	@FindBy(xpath="//td[contains(text(),'Delete')]")
+	private WebElement deleteAttendanceSupportDocButton;
+	@FindBy(xpath="//button[contains(text(),'Submit to SSC')]")
+	private WebElement submitBatchAttendanceToSSCButton;
 	
 		
 	public TrainerViewBatchesPage(WebDriver driver)
@@ -123,5 +144,53 @@ public class TrainerViewBatchesPage
 	public void selectViewDetailsOfApplicantOption(String applicantID)
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'View Details')]")).click();
+	}
+	//On-Going Batch
+	public void enterBatchIDToSearch(String batchID)
+	{
+		searchByBatchIDTextField.clear();
+		searchByBatchIDTextField.sendKeys(batchID);
+	}
+	public void clickToGetSearchFilterResult()
+	{
+		applySearchFilterButton.click();
+	}
+	public void clickToSelectUploadAttendanceOption(String batchID)
+	{
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Upload Attendance')]")).click();
+	}
+	public void clickToGoToBatchAttendanceSection()
+	{
+		batchAttendanceSectionLinkText.click();
+	}
+	public void selectplatformJobRole(String platformJobRole)
+	{
+		platformJobRoleList.click();
+		driver.findElement(By.xpath("//label[contains(text(),'"+platformJobRole+"')]")).click();
+	}
+	public void clickToBrowseForAttendanceFile()
+	{
+		browseForAttendanceButton.click();
+	}
+	public void clickToUploadChoosedAttendanceFile()
+	{
+		uploadAttendanceButton.click();
+	}
+	//
+	public void clickToBrowseForAttendanceSupportFile()
+	{
+		browseForAttendanceSupportingDocButton.click();
+	}
+	public void clickToUploadChoosedAttendanceSupportFile()
+	{
+		uploadAttendanceSupportDocButton.click();
+	}
+	public void clickToDeleteUploadedAttendanceSupportDoc()
+	{
+		deleteAttendanceSupportDocButton.click();
+	}
+	public void clickToFinallySubmitBatchAttendanceToSSC()
+	{
+		submitBatchAttendanceToSSCButton.click();
 	}
 }
