@@ -17,7 +17,7 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement acceptedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
-	@FindBy(xpath="//input[@placeholder='Search by Keyword']")
+	@FindBy(id="Search")
 	private WebElement searchByBatchIdTextfield;
 	@FindBy(xpath="//button[contains(text(),'Apply')]")
 	private WebElement applySearchFilterButton;
