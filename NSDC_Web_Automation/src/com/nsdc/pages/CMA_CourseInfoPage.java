@@ -22,6 +22,8 @@ public class CMA_CourseInfoPage
 	private WebElement downloadChallanOfFeePaidButton;
 	@FindBy(xpath="//button[text()='Download Upload Stamp paper with Self Declaration:']")
 	private WebElement downloadStampPaperButton;
+	@FindBy(xpath="//select[@id='qpNosAlignedCentre']")
+	private WebElement qpNosAllignedCentreDropDownList;
 	@FindBy(xpath="//select[@id='review']")
 	private WebElement reviewCommentsDropDownList;
 	@FindBy(xpath="//textarea[@id='comment']")
@@ -71,6 +73,11 @@ public class CMA_CourseInfoPage
 		downloadStampPaperButton.click();
 		Thread.sleep(2000);
 		FilePreview.closeWindow(driver);
+	}
+	
+	public void selectQPNosAlignedCentre(String qpNosCentre)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(qpNosAllignedCentreDropDownList, qpNosCentre);
 	}
 	
 	public void selectReviewComments(String reviewComments)
