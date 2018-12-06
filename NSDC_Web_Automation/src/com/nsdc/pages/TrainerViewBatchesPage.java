@@ -57,6 +57,8 @@ public class TrainerViewBatchesPage
 	private WebElement deleteAttendanceSupportDocButton;
 	@FindBy(xpath="//button[contains(text(),'Submit to SSC')]")
 	private WebElement submitBatchAttendanceToSSCButton;
+	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelButton;
 	
 		
 	public TrainerViewBatchesPage(WebDriver driver)
@@ -192,5 +194,9 @@ public class TrainerViewBatchesPage
 	public void clickToFinallySubmitBatchAttendanceToSSC()
 	{
 		submitBatchAttendanceToSSCButton.click();
+	}
+	public void clickToCancel()
+	{
+		cancelButton.click();
 	}
 }
