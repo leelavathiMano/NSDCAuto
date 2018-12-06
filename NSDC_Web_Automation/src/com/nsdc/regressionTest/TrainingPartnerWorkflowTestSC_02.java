@@ -148,16 +148,16 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(5000);
         tprp.clickOnCommunicationAddressSameAsPermanentAddress();
         
-//        Thread.sleep(3000);
-//        Assert.assertEquals(driver.findElement(By.xpath("//textarea[@formcontrolname='address1']")).getAttribute("value"), addresss_Of_Organization);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='landmark'])[2]")).getAttribute("value"), near_By_Landmark);
-//        Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='pinCode']")).getAttribute("value"), pin_Code);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[2]")).getAttribute("value"), state);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[2]")).getAttribute("value"), district);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='subDistrict'])[2]")).getAttribute("value"), tehsil);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='village'])[2]")).getAttribute("value"), city);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='parliamentaryConstituency'])[2]")).getAttribute("value"), parliamentary_constituency);
-//        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='addressProof'])[2]")).getAttribute("value"), address_proof);
+        Thread.sleep(3000);
+        Assert.assertEquals(driver.findElement(By.xpath("//textarea[@formcontrolname='address1']")).getAttribute("value"), addresss_Of_Organization);
+        Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='landmark'])[2]")).getAttribute("value"), near_By_Landmark);
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='pinCode']")).getAttribute("value"), pin_Code);
+        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[2]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
+        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[2]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
+        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='subDistrict'])[2]")).getAttribute("value").substring(3).replace(" ", ""), tehsil.replace(" ", ""));
+        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='village'])[2]")).getAttribute("value").substring(3).replace(" ", ""), city.replace(" ", ""));
+        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='parliamentaryConstituency'])[2]")).getAttribute("value").substring(3).replace(" ", ""), parliamentary_constituency.replace(" ", ""));
+        Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='addressProof'])[2]")).getAttribute("value"), address_proof);
        
         Thread.sleep(4000);
         tprp.clickOn_Second_BrowseFile();
