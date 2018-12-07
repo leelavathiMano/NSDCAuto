@@ -43,23 +43,23 @@ public class TrainingPartnerReEditRegistrationPage
 	private WebElement yearOfEstablishmentDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='PAN']")
 	private WebElement panTextField;
-	@FindBy(xpath="//app-upload-file[@filetype='pan']/div/div/div/div/input")
+	@FindBy(xpath="//app-upload-file[@filetype='pan']//input")
 	private WebElement panBrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='pan']/div/div/div[2]/div/button[contains(text(),'Upload')]")
+	@FindBy(xpath="//app-upload-file[@filetype='pan']//button[contains(text(),'Upload')]")
 	private WebElement panUploadFileButton;
 	@FindBy(xpath="//input[@formcontrolname='GST']")
 	private WebElement gstTextField;
-	@FindBy(xpath="//app-upload-file[@filetype='gst']/div/div/div/div/input")
+	@FindBy(xpath="//app-upload-file[@filetype='gst']//input")
 	private WebElement gstBrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='gst']/div/div/div[2]/div/button[contains(text(),'Upload')]")
+	@FindBy(xpath="//app-upload-file[@filetype='gst']//button[contains(text(),'Upload')]")
 	private WebElement gstUploadFileButton;
 	@FindBy(xpath="//input[@formcontrolname='aadhar']")
 	private WebElement aadharTextField;
 	@FindBy(xpath="//button[contains(text(),'Verify')]")
 	private WebElement aadharVerifyButton;
-	@FindBy(xpath="//app-upload-file[@filetype='provisionalDocument']/div/div/div/div/input")
+	@FindBy(xpath="//app-upload-file[@filetype='provisionalDocument']//input")
 	private WebElement provisionalCertificateBrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='provisionalDocument']/div/div/div[2]/div/button[contains(text(),'Upload')]")
+	@FindBy(xpath="//app-upload-file[@filetype='provisionalDocument']//button[contains(text(),'Upload')]")
 	private WebElement provisionalCertificateUploadButton;
 	@FindBy(xpath="//input[@formcontrolname='annuvalTurnover1']")
 	private WebElement turnOver1TextField;
@@ -67,18 +67,22 @@ public class TrainingPartnerReEditRegistrationPage
 	private WebElement turnOver2TextField;
 	@FindBy(xpath="//input[@formcontrolname='annuvalTurnover3']")
 	private WebElement turnOver3TextField;
-	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover1']/div/div/div/div/input")
+	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover1']//input")
 	private WebElement turnOver1FileBrowseButton;
-	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover1']/div/div/div[2]/div/button[contains(text(),'Upload')]")
+	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover1']//button[contains(text(),'Upload')]")
 	private WebElement turnOver1FileUploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover2']/div/div/div/div/input")
+	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover2']//input")
 	private WebElement turnOver2FileBrowseButton;
-	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover2']/div/div/div[2]/div/button[contains(text(),'Upload')]")
+	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover2']//button[contains(text(),'Upload')]")
 	private WebElement turnOver2FileUploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover3']/div/div/div/div/input")
+	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover3']//input")
 	private WebElement turnOver3FileBrowseButton;
-	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover3']/div/div/div[2]/div/button[contains(text(),'Upload')]")
+	@FindBy(xpath="//app-upload-file[@filetype='annuvalTurnover3']//button[contains(text(),'Upload')]")
 	private WebElement turnOver3FileUploadButton;
+	@FindBy(xpath="//app-upload-file[@filetype='yearOfEstablishmentFile']//input")
+	private WebElement yearOfEstablishmentFileBrowseButton;
+	@FindBy(xpath="//app-upload-file[@filetype='yearOfEstablishmentFile']//button[contains(text(),'Upload')]")
+	private WebElement yearOfEstablishmentFileUploadButton;
 	
 	public TrainingPartnerReEditRegistrationPage(WebDriver driver)
     {
@@ -161,7 +165,7 @@ public class TrainingPartnerReEditRegistrationPage
 	}
 	public void clickToBrowseFileForGST()
 	{
-		gstBrowseFileButton.clear();
+		gstBrowseFileButton.click();
 	}
 	public void clickToUploadGST()
 	{
@@ -175,6 +179,14 @@ public class TrainingPartnerReEditRegistrationPage
 	public void clickToVerifyAadhar()
 	{
 		aadharVerifyButton.click();
+	}
+	public void clickToBrowseFileForYearOfEstablishment()
+	{
+		yearOfEstablishmentFileBrowseButton.click();
+	}
+	public void clickToUploadYearOfEstablishment()
+	{
+		yearOfEstablishmentFileUploadButton.click();
 	}
 	public void clickToBrowseFileForProvisionalCertificate()
 	{
