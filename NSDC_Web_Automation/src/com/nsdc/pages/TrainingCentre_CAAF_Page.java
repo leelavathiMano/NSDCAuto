@@ -342,25 +342,25 @@ public class TrainingCentre_CAAF_Page
     private WebElement laboratoryCarpetAreaTextbox;
     @FindBy(xpath="//select[@id='type']")
     private WebElement laboratoryTypeDropDownList;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[11]")
-    private WebElement laboratoryProjectorCheckBox;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[12]")
-    private WebElement laboratoryAirConditionerCheckBox;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[13]")
-    private WebElement laboratoryCCTVCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[14]")
-    private WebElement laboratoryAdequateLightCheckBox;
+    private WebElement laboratoryProjectorCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[15]")
-    private WebElement laboratoryExhaustFanCheckBox;
+    private WebElement laboratoryAirConditionerCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[16]")
-    private WebElement laboratorySecuredElectricWireCheckBox;
+    private WebElement laboratoryCCTVCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[17]")
-    private WebElement laboratoryWellVantilatedCheckBox;
+    private WebElement laboratoryAdequateLightCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[18]")
-    private WebElement laboratoryAvailablityOfDustbinCheckBox;
+    private WebElement laboratoryExhaustFanCheckBox;
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[11]")
+    private WebElement laboratorySecuredElectricWireCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[19]")
-    private WebElement laboratoryCleanNdHygenicCheckBox;
+    private WebElement laboratoryWellVantilatedCheckBox;
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[12]")
+    private WebElement laboratoryAvailablityOfDustbinCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[20]")
+    private WebElement laboratoryCleanNdHygenicCheckBox;
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[13]")
     private WebElement laboratoryEmergencyNumberDisplayedCheckBox;
     @FindBy(xpath="//textarea[@id='labremarks']")
     private WebElement laboratoryRemarkTextbox;
@@ -377,25 +377,25 @@ public class TrainingCentre_CAAF_Page
     private WebElement hybridCarpetAreaTextbox;
     @FindBy(xpath="//select[@id='hybridType']")
     private WebElement hybridLaboratoryTypeDropDownList;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[21]")
-    private WebElement hybridProjectorCheckBox;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[22]")
-    private WebElement hybridAirConditionerCheckBox;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[23]")
-    private WebElement hybridCCTVCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[24]")
-    private WebElement hybridAdequateLightCheckBox;
+    private WebElement hybridProjectorCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[25]")
-    private WebElement hybridExhaustFanCheckBox;
+    private WebElement hybridAirConditionerCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[26]")
-    private WebElement hybridSecuredElectricWireCheckBox;
+    private WebElement hybridCCTVCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[27]")
-    private WebElement hybridWellVantilatedCheckBox;
+    private WebElement hybridAdequateLightCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[28]")
-    private WebElement hybridAvailablityOfDustbinCheckBox;
+    private WebElement hybridExhaustFanCheckBox;
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[21]")
+    private WebElement hybridSecuredElectricWireCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[29]")
-    private WebElement hybridCleanNdHygenicCheckBox;
+    private WebElement hybridWellVantilatedCheckBox;
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[22]")
+    private WebElement hybridAvailablityOfDustbinCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[30]")
+    private WebElement hybridCleanNdHygenicCheckBox;
+    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[23]")
     private WebElement hybridEmergencyNumberDisplayedCheckBox;
     @FindBy(xpath="//textarea[@id='remarks']")
     private WebElement hybridRemarkTextbox;
@@ -453,6 +453,22 @@ public class TrainingCentre_CAAF_Page
     private WebElement associatedLaboratory_Second_DropDownList;
     @FindBy(xpath="(//select[option[text()='Select Hybrid']])[2]")
     private WebElement associatedHybrid_Second_DropDownList;
+    @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[1]")
+    private WebElement first_AvailableQuantity_EquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[2]")
+    private WebElement second_AvailableQuantity_EquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[3]")
+    private WebElement third_AvailableQuantity_EquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[4]")
+    private WebElement fourth_AvailableQuantity_EquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='remarks'])[1]")
+    private WebElement first_Remark_ForEquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='remarks'])[2]")
+    private WebElement second_Remark_ForEquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='remarks'])[3]")
+    private WebElement third_Remark_ForEquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='remarks'])[4]")
+    private WebElement fourth_Remark_ForEquipmentTextbox;
     
     @FindBy(xpath="//button[contains(text(),'Next')]")
     private WebElement nextButton;
@@ -697,8 +713,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement second_CentreStaff_highestQualificationDropDownList;
     @FindBy(xpath="(//select[@id='typeOfResource'])[2]")
     private WebElement second_CentreStaff_ResourceTypeDropDownList;
-    //@FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[2]")
-    @FindBy(xpath="(//textarea[@placeholder='Enter brief about the Job Role'])")
+    //@FindBy(xpath="(//textarea[@placeholder='Enter brief about the Job Role'])")
+    @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[2]")
     private WebElement second_CentreStaff_RemarkTextbox;
     @FindBy(xpath="(//select[@id='type'])[3]")
     private WebElement third_CentreSupportStaff_TypeDropDownList;
@@ -943,7 +959,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilitiesCheckBoxes()
     {
         List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-    	for(int i=0;i<6;i++)
+    	for(int i=0;i<5;i++)
     	{
     		WebElement ele = element.get(i);
     		ele.click();
@@ -1090,7 +1106,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnMenResidentialArea_EquippedWithAll()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=6;i<10;i++)
+     	for(int i=5;i<9;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1154,7 +1170,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnWomenResidentialArea_EquippedWithAll()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=10;i<14;i++)
+     	for(int i=9;i<13;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1219,7 +1235,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilities_MaintainingHygieneAndSanitation()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-12']/span"));
-     	for(int i=3;i<7;i++)
+     	for(int i=3;i<6;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1260,7 +1276,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilities_ForMedicalAndSafety()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-12']/span"));
-     	for(int i=7;i<21;i++)
+     	for(int i=6;i<20;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1946,6 +1962,54 @@ public class TrainingCentre_CAAF_Page
     	SelectDropDownList.selectDropDownListByVisibleText(associatedHybrid_Second_DropDownList, hybrid);
     }
     
+    public void enter_First_AvailableQuantityForEquipment(String firstQuantity)
+    {
+    	first_AvailableQuantity_EquipmentTextbox.clear();
+    	first_AvailableQuantity_EquipmentTextbox.sendKeys(firstQuantity);
+    }
+    
+    public void enter_Second_AvailableQuantityForEquipment(String secondQuantity)
+    {
+    	second_AvailableQuantity_EquipmentTextbox.clear();
+    	second_AvailableQuantity_EquipmentTextbox.sendKeys(secondQuantity);
+    }
+    
+    public void enter_Third_AvailableQuantityForEquipment(String thirdQuantity)
+    {
+    	third_AvailableQuantity_EquipmentTextbox.clear();
+    	third_AvailableQuantity_EquipmentTextbox.sendKeys(thirdQuantity);
+    }
+    
+    public void enter_Fourth_AvailableQuantityForEquipment(String fourthQuantity)
+    {
+    	fourth_AvailableQuantity_EquipmentTextbox.clear();
+    	fourth_AvailableQuantity_EquipmentTextbox.sendKeys(fourthQuantity);
+    }
+    
+    public void enter_First_Remark_ForEquipment(String firstRemark)
+    {
+    	first_Remark_ForEquipmentTextbox.clear();
+    	first_Remark_ForEquipmentTextbox.sendKeys(firstRemark);
+    }
+    
+    public void enter_Second_Remark_ForEquipment(String secondRemark)
+    {
+    	second_Remark_ForEquipmentTextbox.clear();
+    	second_Remark_ForEquipmentTextbox.sendKeys(secondRemark);
+    }
+    
+    public void enter_Third_Remark_ForEquipment(String thirdRemark)
+    {
+    	third_Remark_ForEquipmentTextbox.clear();
+    	third_Remark_ForEquipmentTextbox.sendKeys(thirdRemark);
+    }
+    
+    public void enter_Fourth_Remark_ForEquipment(String fourthRemark)
+    {
+    	fourth_Remark_ForEquipmentTextbox.clear();
+    	fourth_Remark_ForEquipmentTextbox.sendKeys(fourthRemark);
+    }
+    
     public void clickOnNext()
     {
     	nextButton.click();
@@ -2489,7 +2553,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnFifthCentreArea_EquippedWithAll()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[input[@class='ng-untouched ng-pristine ng-valid']]/span"));
-     	for(int i=14;i<21;i++)
+     	for(int i=2;i<9;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
