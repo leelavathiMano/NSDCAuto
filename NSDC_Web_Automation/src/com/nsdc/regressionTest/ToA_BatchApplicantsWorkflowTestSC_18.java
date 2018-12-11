@@ -389,13 +389,13 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 			if(i==1)
 			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 43, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 44, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 43, formatter.format(date));
 			}
 			else
 			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 50, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
 			}
 			Thread.sleep(4000);	
 			tVp.clickOk();
@@ -452,13 +452,13 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 			if(i==1)
 			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 55, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 56, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 55, formatter.format(date));
 			}
 			else
 			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
 			}
 			Thread.sleep(4000);
 			aVp.clickOk();
@@ -536,13 +536,13 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 			if(i==1)
 			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 67, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 68, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 67, formatter.format(date));
 			}
 			else
 			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
 				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 74, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
 			}
 			Thread.sleep(4000);
 			maVp.clickOk();
