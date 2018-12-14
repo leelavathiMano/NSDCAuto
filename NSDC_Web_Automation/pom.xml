@@ -46,6 +46,11 @@
             <version>2.6.12</version>
         </dependency>
         <dependency>
+    		<groupId>com.rabbitmq</groupId>
+   			<artifactId>amqp-client</artifactId>
+    		<version>5.5.0</version>
+		</dependency>
+        <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.8.2</version>

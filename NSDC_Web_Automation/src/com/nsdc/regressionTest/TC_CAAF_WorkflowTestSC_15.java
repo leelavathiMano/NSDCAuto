@@ -1,14 +1,29 @@
 package com.nsdc.regressionTest;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nsdc.generic.MobileHandlers;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.mobile.ui.object.TC_CAAF_DashboardScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_Equipments_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_Facilities_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.LoginScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_CentreArea_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_Clasroom_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_GeneralDetails_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_Lab_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_Residential_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.TC_CAAF_Trainers_UploadImagesScreen;
+import com.nsdc.mobile.ui.object.UsersScreen;
 import com.nsdc.pages.AddTrainingCentrePage;
 import com.nsdc.pages.DA_DashboardPage;
 import com.nsdc.pages.DA_TCRequestPage;
@@ -35,6 +50,7 @@ import com.nsdc.pages.TC_DashboardPage;
 import com.nsdc.pages.TC_MySchemesPage;
 import com.nsdc.pages.TrainingCentre_CAAF_Page;
 import com.nsdc.pages.TrainingPartnerDashboardPage;
+import com.nsdc.testConfig.CreateAppiumDriver;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
@@ -670,9 +686,259 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		plp.clickOnProfileLogo();
 		caaf.clickOnLogout_Profile();
-		
-		
+				
 	}
 	
-
+	@Test(dataProvider="tc_CAAF_FormFilling",enabled=false)
+	public void tc_CAAF_MobileUploadTC_03(String sno, String tcUsername, String tcPassword, String newPassword, String confirmPassword, String nameOfTC, String tcType, String socialmedia, String websiteurl, String spocName, String spocEmail, String spocMobileNumber, String spocAltNumber, String centrePrincipalName, String centrePrincipalEmail, String centrePrincipalcontactNumber, String tcAddress, String tcLandmark, String tcPinCode, String tcState, String tcDistrict, String tcTehsil, String tcParliamentry, String tcAddressProof, String addressProofFile, String tcAreaClassificationCentre, String centreAtGroundFloor, String buildingStatus, String buildingConstruction, String transportSystem, String transportName, String buildingFace, String approachRoadWidth, String previousBuildingState, String buildingStateFile, String centreFloorType, String tcWallsType, String internetAvailablity, String firstAffiliationName, String firstAffiliationType, String firstAboutAffiliation, String secondAffiliationName, String secondAffiliationType, String secondAboutAffiliation, String thirdAffiliationName, String thirdAffiliationType, String thirdAboutAffiliation, String menResidentialArea, String totalAreaMenResidential, String roomsNumberMenResidential, String residentialCapacityMen, String remarkMenResidential, String womenResidentialArea, String totalAreaWomenResidential, String roomsNumberWomenResidential, String residentialCapacityWomen, String remarkWomenResidential, String safeDrinkingWater, String fireEquipmentAvailablity, String classRoomCarpetArea, String classroomRemark, String laboratoryCarpetArea, String laboratoryType, String laboratoryRemark, String hybridCarpetArea, String hybridLaboratoryType, String hybridRemark, String sector, String jobRollName, String secondJobRollName, String thirdJobRollName, String traineeToTrainerRatio, String parallelBatchesNumber, String jobRole, String additionalArea, String additionalCarpetArea, String coveredCarpetArea, String trainerID, String trainerAvailablity, String trainerResourceType, String first_Classroom, String first_Laboratory, String first_Hybrid, String second_Classroom, String second_Laboratory, String second_Hybrid, String firstCentreCarpetArea, String firstCentrWashroomType, String firstCentreAreaRemark, String secondCentreCarpetArea, String secondCentrWashroomType, String secondCentreAreaRemark, String thirdCentreCarpetArea, String thirdCentreAreaRemark, String fourthCentreCarpetArea, String fourthCentreAreaRemark, String fifthCentreAreaType, String fifthCentreCarpetArea, String fifthCentrWashroomType, String fifthCentreAreaRemark, String firstSupportStaffName, String firstCentreStaffHighestQualification, String firstResourceType, String firstCentreStaffRemark, String secondSupportStaffName, String secondCentreStaffHighestQualification, String secondResourceType, String secondCentreStaffRemark, String thirdSupportStaffName, String thirdCentreStaffHighestQualification, String thirdResourceType, String thirdCentreStaffRemark, String fourthSupportStaffType, String fourthSupportStaffName, String fourthCentreStaffHighestQualification, String fourthResourceType, String fourthCentreStaffRemark) throws Exception
+	{
+        appDriver = CreateAppiumDriver.getDriverInstance();
+		
+		int srno = Integer.parseInt(sno);
+		
+		String emailID = "TC_003608";//ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 1);
+		String password = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 2);
+		
+		UsersScreen us = new UsersScreen(appDriver);
+		us.getTrainingCentreButton().click();
+		
+		LoginScreen ls = new LoginScreen(appDriver);
+		ls.getEmailTextbox().sendKeys(emailID);
+		ls.getPasswordTextbox().sendKeys(password);
+		ls.getLoginButton().click();
+		
+		TC_CAAF_DashboardScreen sd = new TC_CAAF_DashboardScreen(appDriver);
+		sd.getGeneralDeatilsButton().click();
+		sd.getEnableGPSButton().click();
+		
+		TC_CAAF_GeneralDetails_UploadImagesScreen gd_uis = new TC_CAAF_GeneralDetails_UploadImagesScreen(appDriver);
+		List <WebElement> elements = gd_uis.getUpLoadFileButtons();
+		for(int i=0; i<elements.size(); i++)
+		{
+			WebElement e1 = elements.get(i);
+			if(i==0)
+			{
+				e1.click();
+				gd_uis.getDeviceStorageAccessButton().click();
+				MobileHandlers.clickPicture(appDriver);
+			}
+			else if(i==9)
+			{
+				MobileHandlers.scrollScreen(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+				e1.click();
+				MobileHandlers.clickPicture(appDriver);
+			}
+			else
+			{
+				e1.click();
+				MobileHandlers.clickPicture(appDriver);
+			}
+					
+		}		
+		gd_uis.getSubmitButton().click();
+		gd_uis.getOkButton().click();
+		
+		sd.getTrainersButton().click();
+		
+		TC_CAAF_Trainers_UploadImagesScreen trainer_uis = new TC_CAAF_Trainers_UploadImagesScreen(appDriver);
+		List <WebElement> trainerButtons = trainer_uis.getTrainerButtons();
+		
+		for(int i=1; i<trainerButtons.size(); i++)
+		{
+			WebElement e1 = trainerButtons.get(i);
+			e1.click();
+			
+			trainer_uis.getProfilePicButton().click();
+			MobileHandlers.clickPicture(appDriver);	
+			
+			List <WebElement> uploadButtons = trainer_uis.getUploadFileButtons();
+			for(int j=0; j<uploadButtons.size(); j++)
+			{
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				if(j==2)
+				{
+					MobileHandlers.scrollScreen(appDriver);
+					MobileHandlers.scrollScreen(appDriver);
+					MobileHandlers.scrollScreen(appDriver);
+					trainer_uis.getHighestQualificationButton().click();
+					MobileHandlers.clickPicture(appDriver);	
+					e2.click();
+				}
+				MobileHandlers.clickPicture(appDriver);	
+			}
+			
+			trainer_uis.getSubmitButton().click();
+			trainer_uis.getOkButton().click();
+			
+			if(i<trainerButtons.size()-1)
+			{
+				sd.getTrainersButton().click();
+			}
+		}
+		
+		sd.getClassroomButton().click();
+		
+		TC_CAAF_Clasroom_UploadImagesScreen classroom_uis = new TC_CAAF_Clasroom_UploadImagesScreen(appDriver);
+		List <WebElement> classroomButtons = classroom_uis.getClassroomButtons();
+		
+		for(int i=1; i<classroomButtons.size(); i++)
+		{
+			WebElement e1 = classroomButtons.get(i);
+			e1.click();
+			MobileHandlers.scrollScreen(appDriver);
+			
+			List <WebElement> uploadButtons = classroom_uis.getUploadFileButtons();
+			for(int j=0; j<uploadButtons.size(); j++)
+			{
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				MobileHandlers.clickPicture(appDriver);	
+			}
+			
+			List <WebElement> uploadVideoButtons = classroom_uis.getUploadVideoButtons();
+			for(int k=0; k<uploadVideoButtons.size(); k++)
+			{
+				WebElement e3 = uploadVideoButtons.get(k);
+				e3.click();
+				MobileHandlers.recordVideo(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+			
+			classroom_uis.getSubmitButton().click();
+			classroom_uis.getOkButton().click();
+			
+			if(i<classroomButtons.size()-1)
+			{
+				sd.getClassroomButton().click();
+			}
+		}
+		
+		sd.getLaboratoryDetailsButton().click();
+		
+		TC_CAAF_Lab_UploadImagesScreen lab_uis = new TC_CAAF_Lab_UploadImagesScreen(appDriver);
+		List <WebElement> labButtons = lab_uis.getLabButtons();
+		
+		for(int i=1; i<labButtons.size(); i++)
+		{
+			WebElement e1 = labButtons.get(i);
+			e1.click();
+			MobileHandlers.scrollScreen(appDriver);
+			
+			List <WebElement> uploadButtons = lab_uis.getUploadFileButtons();
+			for(int j=0; j<uploadButtons.size(); j++)
+			{
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				MobileHandlers.clickPicture(appDriver);	
+			}
+			
+			List <WebElement> uploadVideoButtons = lab_uis.getUploadVideoButtons();
+			for(int k=0; k<uploadVideoButtons.size(); k++)
+			{
+				WebElement e3 = uploadVideoButtons.get(k);
+				e3.click();
+				MobileHandlers.recordVideo(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+			
+			lab_uis.getSubmitButton().click();
+			lab_uis.getOkButton().click();
+			
+			if(i<labButtons.size()-1)
+			{
+				sd.getLaboratoryDetailsButton().click();
+			}
+		}
+		
+		sd.getCentreAreaButton().click();
+		
+		TC_CAAF_CentreArea_UploadImagesScreen centreArea_uis = new TC_CAAF_CentreArea_UploadImagesScreen(appDriver);
+		List <WebElement> facilitiesButtons = centreArea_uis.getFacilitiesButtons();
+		
+		for(int i=1; i<facilitiesButtons.size(); i++)
+		{
+			WebElement e1 = facilitiesButtons.get(i);
+			e1.click();
+			MobileHandlers.scrollScreen(appDriver);
+			
+			List <WebElement> uploadButtons = centreArea_uis.getUploadFileButtons();
+			for(int j=0; j<uploadButtons.size(); j++)
+			{
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				MobileHandlers.clickPicture(appDriver);	
+			}
+			
+			List <WebElement> uploadVideoButtons = centreArea_uis.getUploadVideoButtons();
+			for(int k=0; k<uploadVideoButtons.size(); k++)
+			{
+				WebElement e3 = uploadVideoButtons.get(k);
+				e3.click();
+				MobileHandlers.recordVideo(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+			
+			centreArea_uis.getSubmitButton().click();
+			centreArea_uis.getOkButton().click();
+			
+			if(i<facilitiesButtons.size()-1)
+			{
+				sd.getCentreAreaButton().click();
+			}
+		}
+		
+		sd.getResidentialFacilitiesButton().click();
+		
+		TC_CAAF_Residential_UploadImagesScreen residential_uis = new TC_CAAF_Residential_UploadImagesScreen(appDriver);
+		residential_uis.getOkButton().click();
+		residential_uis.getAddButton().click();
+		residential_uis.getFacilityDecriptionTextbox().sendKeys("Facility description");
+		
+		List <WebElement> uploadButtons1 = residential_uis.getUploadFileButtons();
+		for(int i=0; i<uploadButtons1.size(); i++)
+		{
+			WebElement e1 = uploadButtons1.get(i);
+			e1.click();
+			MobileHandlers.clickPicture(appDriver);
+		}
+		
+		MobileHandlers.scrollScreen(appDriver);
+		MobileHandlers.scrollScreen(appDriver);
+		
+		List <WebElement> uploadVideoButtons1 = residential_uis.getUploadVideoButtons();
+		for(int j=0; j<uploadVideoButtons1.size(); j++)
+		{
+			WebElement e2 = uploadVideoButtons1.get(j);
+			e2.click();
+			MobileHandlers.recordVideo(appDriver);
+			MobileHandlers.scrollScreen(appDriver);
+		}
+		
+		residential_uis.getSubmitButton().click();
+		residential_uis.getOkButton().click();
+		
+		sd.getFacilitiesButton().click();
+		
+		TC_CAAF_Facilities_UploadImagesScreen facilities_uis = new TC_CAAF_Facilities_UploadImagesScreen(appDriver);
+		
+		List <WebElement> uploadButtons2 = facilities_uis.getUploadFileButtons();
+		for(int i=0; i<uploadButtons2.size(); i++)
+		{
+			if(i==3)
+			{
+				MobileHandlers.scrollScreen(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+			WebElement e1 = uploadButtons2.get(i);
+			e1.click();
+			MobileHandlers.clickPicture(appDriver);	
+		}
+		
+		facilities_uis.getSubmitButton().click();
+		facilities_uis.getOkButton().click();
+	}
+		
 }
