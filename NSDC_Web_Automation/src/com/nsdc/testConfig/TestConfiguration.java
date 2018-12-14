@@ -16,9 +16,12 @@ import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.Screenshot;
 import com.nsdc.generic.ZipFolder;
 
+import io.appium.java_client.AppiumDriver;
+
 public class TestConfiguration
 {
     public WebDriver driver;
+    public AppiumDriver appDriver;
     
     @BeforeSuite
     public void preSuite() throws Exception
@@ -92,4 +95,3 @@ public class TestConfiguration
     }
     
 }
-
