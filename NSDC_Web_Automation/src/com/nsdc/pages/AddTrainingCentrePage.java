@@ -20,7 +20,7 @@ public class AddTrainingCentrePage
 	private WebElement nearByLandmarkTextbox;
 	@FindBy(xpath="//input[@formcontrolname='pincode']")
 	private WebElement pincodeTextbox;
-	@FindBy(xpath="//select[option[text()='Select the state/Union Territory']]")
+	@FindBy(xpath="//select[option[text()='Select the State/Union Territory']]")
 	private WebElement stateDropDownList;
 	@FindBy(xpath="//select[option[text()='Select District']]")
 	private WebElement districtDropDownList;
@@ -39,7 +39,7 @@ public class AddTrainingCentrePage
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement addressProof_UploadFileButton;
 	
-	@FindBy(xpath="//input[@placeholder='Enter Name of SPOC']")
+	@FindBy(xpath="//input[@placeholder='Enter Name of the SPOC']")
 	private WebElement SPOC_nameTextBox;
 	@FindBy(xpath="//input[@placeholder='Enter Email Address of SPOC']")
 	private WebElement SPOC_emailTextBox;
@@ -50,7 +50,7 @@ public class AddTrainingCentrePage
 	private WebElement centreHead_NameTextbox;
 	@FindBy(xpath="//input[@placeholder='Enter Email Address of Centre Head']")
 	private WebElement centreHead_EmailTextbox;
-	@FindBy(xpath="//input[@placeholder='Enter Mobile Number Of Centre Head']")
+	@FindBy(xpath="//input[@placeholder='Enter Mobile Number of Centre Head']")
 	private WebElement centreHead_MobileTextbox;
 	
 	@FindBy(xpath="//select[@formcontrolname='trainingCenterType']")
@@ -136,7 +136,7 @@ public class AddTrainingCentrePage
 	{
 		geoLocationTextbox.clear();
 		geoLocationTextbox.sendKeys(geoLocation);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         geoLocationTextbox.sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
 	}
 	
