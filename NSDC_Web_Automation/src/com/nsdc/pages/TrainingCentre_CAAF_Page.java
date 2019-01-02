@@ -28,7 +28,6 @@ public class TrainingCentre_CAAF_Page
     private WebElement socialMediaTextbox;
     @FindBy(xpath="//input[@id='websiteURL']")
     private WebElement websiteTextbox;
-    
     @FindBy(xpath="//input[@id='SPOCfirstName']")
     private WebElement spocNameTextbox;
     @FindBy(xpath="//input[@id='SPOCEmail']")
@@ -56,8 +55,6 @@ public class TrainingCentre_CAAF_Page
     private WebElement tcDistrictDropDownList;
     @FindBy(xpath="//select[@id='tehsil']")
     private WebElement tcTehsilDropDownList;
-    //@FindBy(xpath="//select[@id='city']")
-    //private WebElement tcCityOrVillageDropDownList;
     @FindBy(xpath="//select[@id='parliamentaryConstituency']")
     private WebElement tcParliamentryDropDownList;
     @FindBy(xpath="//select[@id='addressProofType']")
@@ -145,6 +142,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement rooms_MenResidentialTextbox;
     @FindBy(xpath="//input[@id='menResidentialCapacity']")
     private WebElement capacity_MenResidentialTextbox;
+    @FindBy(xpath="//select[option[contains(text(),'Select Availability of Male Warden')]]")
+    private WebElement maleWardenAvailablityDropDownList;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[11]")
     private WebElement menResidential_CCTVCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[12]")
@@ -338,6 +337,10 @@ public class TrainingCentre_CAAF_Page
     private WebElement addLaboratoryButton;
   //@FindBy(xpath="//select[@id='labSerialNumebr']")
     //private WebElement laboratorySerialNumberDropDownList;
+    @FindBy(xpath="(//input[@id='openArea'])[1]")
+    private WebElement openAreaTextbox;
+    @FindBy(xpath="(//input[@id='coveredArea'])[1]")
+    private WebElement coveredAreaTextbox;
     @FindBy(xpath="//input[@id='labcarpetArea']")
     private WebElement laboratoryCarpetAreaTextbox;
     @FindBy(xpath="//select[@id='type']")
@@ -373,6 +376,10 @@ public class TrainingCentre_CAAF_Page
     private WebElement addHybridButton;
     //@FindBy(xpath="//select[@id='hybridserialNumber']")
     //private WebElement hybridSerialNumberDropDownList;
+    @FindBy(xpath="(//input[@id='openArea'])[2]")
+    private WebElement hybridOpenAreaTextbox;
+    @FindBy(xpath="(//input[@id='coveredArea'])[2]")
+    private WebElement hybridCoveredAreaTextbox;
     @FindBy(xpath="(//input[@id='carpetArea'])[1]")
     private WebElement hybridCarpetAreaTextbox;
     @FindBy(xpath="//select[@id='hybridType']")
@@ -406,17 +413,17 @@ public class TrainingCentre_CAAF_Page
     
     @FindBy(xpath="//span[text()='Add Job Role']")
     private WebElement addJobRoleButton;
-    @FindBy(xpath="//select[@id='sector']")
+    @FindBy(xpath="//select[@formcontrolname='sector']")
     private WebElement sectorDropDownList;
     //@FindBy(xpath="//select[@id='subSectorName']")
     //private WebElement skillSubSectorDropDownList;
     @FindBy(xpath="//select[option[text()='Select Job Role Name']]")
     private WebElement jobRoleNameDropDownList;
-    @FindBy(xpath="//select[@id='trainerToTraineeRatio']")
+    @FindBy(xpath="//select[@formcontrolname='trainerToTraineeRatio']")
     private WebElement traineeToTrainerRatioDropDownList;
-    @FindBy(xpath="//select[@id='parallelBranchesInADay']")
+    @FindBy(xpath="//select[@formcontrolname='parallelBranchesInADay']")
     private WebElement parallelBathcesNumberDropDownList;
-    @FindBy(xpath="//textarea[@id='jobDescription']")
+    @FindBy(xpath="//textarea[@formcontrolname='jobDescription']")
     private WebElement aboutJobRoleTextbox;
     //@FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[1]")
     //private WebElement jobRole_ClassroomCheckBox;
@@ -424,17 +431,17 @@ public class TrainingCentre_CAAF_Page
     //private WebElement jobRole_LaboratoryCheckBox;
     //@FindBy(xpath="(//label[input[@class='ng-untouched ng-pristine ng-valid']]/span)[3]")
     //private WebElement jobRole_HybridCheckBox;
-    @FindBy(xpath="//select[@id='infrastructureNeeded']")
+    @FindBy(xpath="//select[@formcontrolname='infrastructureNeeded']")
     private WebElement additionalAreaRequiredDropDownList;
-    @FindBy(xpath="(//input[@id='carpetArea'])[2]")
+    @FindBy(xpath="(//input[@formcontrolname='carpetArea'])")
     private WebElement additionalCarpetAreaTextbox;
-    @FindBy(xpath="//input[@id='additionalCoveredCarpetArea']")
+    @FindBy(xpath="//input[@formcontrolname='additionalCoveredCarpetArea']")
     private WebElement additionalCoveredCarpetAreaTextbox;
-    @FindBy(xpath="//input[@id='userName']")
+    @FindBy(xpath="//input[@formcontrolname='userName']")
     private WebElement trainerIDTextbox;
-    @FindBy(xpath="//select[@id='availabilityOfTrainer']")
+    @FindBy(xpath="//select[@formcontrolname='availibility']")
     private WebElement trainerAvailablityDropDownList;
-    @FindBy(xpath="//select[@id='typeOfResource']")
+    @FindBy(xpath="//select[@formcontrolname='type']")
     private WebElement trainerResourceTypeDropDownList;
     @FindBy(xpath="(//button[text()='Add'])[4]")
     private WebElement add_JobRole_Button;
@@ -461,6 +468,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement third_AvailableQuantity_EquipmentTextbox;
     @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[4]")
     private WebElement fourth_AvailableQuantity_EquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[5]")
+    private WebElement fifth_AvailableQuantity_EquipmentTextbox;
     @FindBy(xpath="(//input[@formcontrolname='remarks'])[1]")
     private WebElement first_Remark_ForEquipmentTextbox;
     @FindBy(xpath="(//input[@formcontrolname='remarks'])[2]")
@@ -469,6 +478,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement third_Remark_ForEquipmentTextbox;
     @FindBy(xpath="(//input[@formcontrolname='remarks'])[4]")
     private WebElement fourth_Remark_ForEquipmentTextbox;
+    @FindBy(xpath="(//input[@formcontrolname='remarks'])[5]")
+    private WebElement fifth_Remark_ForEquipmentTextbox;
     
     @FindBy(xpath="//button[contains(text(),'Next')]")
     private WebElement nextButton;
@@ -697,6 +708,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement first_CentreSupportStaff_NameTextbox;
     @FindBy(xpath="(//select[@id='highestQualification'])[1]")
     private WebElement first_CentreStaff_highestQualificationDropDownList;
+    @FindBy(xpath="//input[@placeholder='Enter Experience (in Months)']")
+    private WebElement experienceTextbox;
     @FindBy(xpath="(//select[@id='typeOfResource'])[1]")
     private WebElement first_CentreStaff_ResourceTypeDropDownList;
     @FindBy(xpath="(//textarea[@placeholder='Enter Remarks'])[1]")
@@ -1103,6 +1116,11 @@ public class TrainingCentre_CAAF_Page
         capacity_MenResidentialTextbox.sendKeys(residentialCapacityMen);
     }
     
+    public void selectForMaleWardenAvailablity(String maleWarden)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(maleWardenAvailablityDropDownList, maleWarden);
+    }
+    
     public void clickOnMenResidentialArea_EquippedWithAll()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
@@ -1170,7 +1188,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnWomenResidentialArea_EquippedWithAll()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=9;i<13;i++)
+     	for(int i=9;i<14;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1276,7 +1294,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilities_ForMedicalAndSafety()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-12']/span"));
-     	for(int i=6;i<20;i++)
+     	for(int i=6;i<23;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1642,6 +1660,18 @@ public class TrainingCentre_CAAF_Page
         SelectDropDownList.selectDropDownListByVisibleText(laboratorySerialNumberDropDownList, laboratorySerialNumber);
     }*/
     
+    public void enterLaboratoryOpenArea(String laboratoryOpenArea)
+    {
+    	openAreaTextbox.clear();
+    	openAreaTextbox.sendKeys(laboratoryOpenArea);
+    }
+    
+    public void enterLaboratoryCoveredArea(String laboratoryCoveredArea)
+    {
+    	coveredAreaTextbox.clear();
+    	coveredAreaTextbox.sendKeys(laboratoryCoveredArea);
+    }
+    
     public void enterLaboratoryCarpetArea(String laboratoryCarpetArea)
     {
     	laboratoryCarpetAreaTextbox.clear();
@@ -1740,6 +1770,19 @@ public class TrainingCentre_CAAF_Page
     {
         SelectDropDownList.selectDropDownListByVisibleText(hybridSerialNumberDropDownList, hybridSerialNumber);
     }*/
+    
+    public void enterHybridOpenArea(String hybridOpenArea)
+    {
+    	hybridOpenAreaTextbox.clear();
+    	hybridOpenAreaTextbox.sendKeys(hybridOpenArea);
+    }
+    
+    public void enterHybridCoveredArea(String hybridCoveredArea)
+    {
+    	hybridCoveredAreaTextbox.clear();
+    	hybridCoveredAreaTextbox.sendKeys(hybridCoveredArea);
+    }
+
     
     public void enterHybridCarpetArea(String hybridCarpetArea)
     {
@@ -1986,6 +2029,12 @@ public class TrainingCentre_CAAF_Page
     	fourth_AvailableQuantity_EquipmentTextbox.sendKeys(fourthQuantity);
     }
     
+    public void enter_Fifth_AvailableQuantityForEquipment(String fifthQuantity)
+    {
+    	fifth_AvailableQuantity_EquipmentTextbox.clear();
+    	fifth_AvailableQuantity_EquipmentTextbox.sendKeys(fifthQuantity);
+    }
+    
     public void enter_First_Remark_ForEquipment(String firstRemark)
     {
     	first_Remark_ForEquipmentTextbox.clear();
@@ -2008,6 +2057,12 @@ public class TrainingCentre_CAAF_Page
     {
     	fourth_Remark_ForEquipmentTextbox.clear();
     	fourth_Remark_ForEquipmentTextbox.sendKeys(fourthRemark);
+    }
+    
+    public void enter_Fifth_Remark_ForEquipment(String fifthRemark)
+    {
+    	fifth_Remark_ForEquipmentTextbox.clear();
+    	fifth_Remark_ForEquipmentTextbox.sendKeys(fifthRemark);
     }
     
     public void clickOnNext()
@@ -2620,6 +2675,12 @@ public class TrainingCentre_CAAF_Page
     public void selectFirst_HighestQualificationForCentreStaff(String firstCentreStaffHighestQualification)
     {
         SelectDropDownList.selectDropDownListByVisibleText(first_CentreStaff_highestQualificationDropDownList, firstCentreStaffHighestQualification);
+    }
+    
+    public void enterExpeience(String experience)
+    {
+    	experienceTextbox.clear();
+    	experienceTextbox.sendKeys(experience);
     }
     
     public void selectFirst_ResourceTypeOfCentreStaff(String firstResourceType)
