@@ -10,8 +10,8 @@ public class NSDCAdmin_DashboardPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//div[p[contains(text(),'SDMS User Management')]]")
-	private WebElement createUserButton;
+	@FindBy(xpath="//div[p[contains(text(),'User Management')]]")
+	private WebElement userManagementCard;
 	@FindBy(xpath="//div[@ng-reflect-router-link='tcregistrationrules']")
 	private WebElement tcRegistrationButton;
 	@FindBy(xpath="//div[@ng-reflect-router-link='tpregistrationrules']")
@@ -22,6 +22,10 @@ public class NSDCAdmin_DashboardPage
 	private WebElement oKButton;
 	@FindBy(xpath="//span[contains(text(),'NSDCADMIN1')]")
 	private WebElement nSDCAdminProfileButton;
+	@FindBy(xpath="//span[contains(text(),'NSDCADMIN_000001')]")
+	private WebElement nSDCAdminNewProfileButton;
+	@FindBy(xpath="//div[p[contains(text(),'Create Scheme')]]")
+	private WebElement createSchemeCard;
 	@FindBy(xpath="//button[contains(text(),'Logout')]")
 	private WebElement nSDCLogOutButton;
 	
@@ -31,9 +35,9 @@ public class NSDCAdmin_DashboardPage
         PageFactory.initElements(driver, this);
     }
 	
-	public void clickOnCreateSDMSUser()
+	public void clickOnUserManagement()
 	{
-		createUserButton.click();
+		userManagementCard.click();
 	}
 	
 	public void clickForReviewTCRegistrationSetup()
@@ -51,6 +55,11 @@ public class NSDCAdmin_DashboardPage
 		schemeApproval_SOButton.click();
 	}
 	
+	public void clickOnCreateScheme()
+	{
+		createSchemeCard.click();
+	}
+	
 	public void clickOnOK()
 	{
 		oKButton.click();
@@ -58,6 +67,11 @@ public class NSDCAdmin_DashboardPage
 	public void clickOnNSDCProfile()
 	{
 		nSDCAdminProfileButton.click();
+	}
+	
+	public void clickOnNewNSDCProfile()
+	{
+		nSDCAdminNewProfileButton.click();
 	}
 	
 	public void clickOnNSDCLogOut()
