@@ -34,6 +34,14 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	private WebElement assignButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
+	@FindBy(xpath="//select[@formcontrolname='centreInspector']")
+	private WebElement assignTo_CentreInspector_DropDownList;
+	@FindBy(xpath="//input[@formcontrolname='inspectionDate']")
+	private WebElement InspectionDateTextbox;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
+	private WebElement assign_ForCIButton;
+	@FindBy(xpath="(//button[contains(text(),'Cancel')])[3]")
+	private WebElement cancel_ForCIButton;
 	
 	
 	public PMKKSPOC_AssignedInspectionRequestPage(WebDriver driver)
@@ -98,6 +106,27 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	public void clickOnCancel()
 	{
 		cancelButton.click();
+	}
+	
+	public void selectForAssign_CentreInspector(String ciUsername)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(assignTo_CentreInspector_DropDownList, ciUsername);
+	}
+	
+	public void enterForInspectionDate()
+	{
+		//InspectionDateTextbox.clear();
+		InspectionDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
+	}
+	
+	public void clickOnAssign_ForCI()
+	{
+		assign_ForCIButton.click();
+	}
+	
+	public void clickOnCancel_ForCI()
+	{
+		cancel_ForCIButton.click();
 	}
 
 }

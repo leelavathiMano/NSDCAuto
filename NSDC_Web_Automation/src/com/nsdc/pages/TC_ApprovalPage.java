@@ -5,11 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.FilePreview;
 import com.nsdc.generic.SelectDropDownList;
 
 public class TC_ApprovalPage 
 {
 	WebDriver driver;
+	
+	@FindBy(xpath="//button[contains(text(),'Preview Attached Proof Document')]")
+	private WebElement previewAttachedProofDocument_First_Button;
 	
 	@FindBy(xpath="(//select[option[text()='Select Review Comments']])[1]")
 	private WebElement first_ReveiewCommentsDropDownList;
@@ -158,6 +162,69 @@ public class TC_ApprovalPage
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
 	
+	@FindBy(xpath="//div[text()='1.Front View']")
+	private WebElement frontView_Image_Button;
+	@FindBy(xpath="//div[text()='2.Left View']")
+	private WebElement leftView_Image_Button;	
+	@FindBy(xpath="//div[text()='3.Right View']")
+	private WebElement rightView_Image_Button;
+	@FindBy(xpath="//div[text()='4.Internet Connectivity']")
+	private WebElement internetConectivity_Image_Button;
+	@FindBy(xpath="//div[text()='5.Power Backup']")
+	private WebElement powerBackup_Image_Button;
+	@FindBy(xpath="//div[text()='1.Functional Washroom for DifferentlyAbled']")
+	private WebElement washroom_Image_Button;
+	@FindBy(xpath="//div[text()='2.Ramp']")
+	private WebElement ramp_Image_Button;
+	@FindBy(xpath="//div[text()='3.Lift']")
+	private WebElement lift_Image_Button;
+	@FindBy(xpath="//div[text()='1.Daily Inspection']")
+	private WebElement dailyInspection_Image_Button;
+	@FindBy(xpath="//div[text()='2.Safe Drinking']")
+	private WebElement safeDrinking_Image_Button;
+	@FindBy(xpath="//div[text()='1.Fire Fighting Equipment']")
+	private WebElement fireFightingEquipment_Image_Button;
+	@FindBy(xpath="//div[text()='2.First Aid Kit']")
+	private WebElement firstAidKit_Image_Button;
+	
+	@FindBy(xpath="(//div[text()='1.View 1'])[1]")
+	private WebElement firstView_FirstImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[1]")
+	private WebElement secondView_FirstImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 1'])[2]")
+	private WebElement firstView_SecondImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[2]")
+	private WebElement secondView_SecondImage_Button;
+	@FindBy(xpath="//div[text()='1.SSC Certificate']")
+	private WebElement sscCertificate_Image_Button;
+	@FindBy(xpath="//div[text()='2.Highest Qualification Certificate']")
+	private WebElement highestQualificationCertificate_Image_Button;
+	@FindBy(xpath="//div[text()='3.NIESBUD/other agency certificate of entrepreneurship']")
+	private WebElement nIESBUD_Image_Button;
+	@FindBy(xpath="//div[text()='4.Industrial Experiance']")
+	private WebElement industrialExperience_Image_Button;
+	
+	
+	@FindBy(xpath="(//div[text()='1.View 1'])[3]")
+	private WebElement firstView_ThirdImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[3]")
+	private WebElement secondView_ThirdImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 1'])[4]")
+	private WebElement firstView_FourthImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[4]")
+	private WebElement secondView_FourthImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 1'])[5]")
+	private WebElement firstView_FifthImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[5]")
+	private WebElement secondView_FifthImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 1'])[6]")
+	private WebElement firstView_SixthImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[6]")
+	private WebElement secondView_SixthImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 1'])[7]")
+	private WebElement firstView_SeventhImage_Button;
+	@FindBy(xpath="(//div[text()='1.View 2'])[7]")
+	private WebElement secondView_SeventhImage_Button;
 	
 	
 	public TC_ApprovalPage(WebDriver driver)
@@ -166,6 +233,13 @@ public class TC_ApprovalPage
         PageFactory.initElements(driver, this);
     }
 	
+	
+	public void clickOn_First_PreviewAttachedProofDocument()throws Exception
+	{
+		previewAttachedProofDocument_First_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
 	
 	public void select_First_ReviewComments(String reviewComments)
 	{
@@ -197,7 +271,7 @@ public class TC_ApprovalPage
 		SelectDropDownList.selectDropDownListByVisibleText(sixth_ReveiewCommentsDropDownList, reviewComments);
 	}
 	
-	public void select_seventh_ReviewComments(String reviewComments)
+	public void select_Seventh_ReviewComments(String reviewComments)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(seventh_ReveiewCommentsDropDownList, reviewComments);
 	}
@@ -539,6 +613,216 @@ public class TC_ApprovalPage
 	public void clickOnOK()
 	{
 		okButton.click();
+	}
+	
+	public void clickOn_FrontView_Image()throws Exception
+	{
+		frontView_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_LeftView_Image()throws Exception
+	{
+		leftView_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_RightView_Image()throws Exception
+	{
+		rightView_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_InternetConectivity_Image()throws Exception
+	{
+		internetConectivity_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_PowerBackup_Image()throws Exception
+	{
+		powerBackup_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_DifferentyAbledWashroom_Image()throws Exception
+	{
+		washroom_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_Ramp_Image()throws Exception
+	{
+		ramp_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_Lift_Image()throws Exception
+	{
+		lift_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_DailyInspection_Image()throws Exception
+	{
+		dailyInspection_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SafeDrinking_Image()throws Exception
+	{
+		safeDrinking_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FireFightingEquipment_Image()throws Exception
+	{
+		fireFightingEquipment_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstAidKit_Image()throws Exception
+	{
+		firstAidKit_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_FirstImage()throws Exception
+	{
+		firstView_FirstImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_FirstImage()throws Exception
+	{
+		secondView_FirstImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_SecondImage()throws Exception
+	{
+		firstView_SecondImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_SecondImage()throws Exception
+	{
+		secondView_SecondImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SSCCertificate_Image()throws Exception
+	{
+		sscCertificate_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_HighestQualification_Image()throws Exception
+	{
+		highestQualificationCertificate_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_NIESBUD_Image()throws Exception
+	{
+		nIESBUD_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_IndustrialExperience_Image()throws Exception
+	{
+		industrialExperience_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_ThirdImage()throws Exception
+	{
+		firstView_ThirdImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_ThirdImage()throws Exception
+	{
+		secondView_ThirdImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_FourthImage()throws Exception
+	{
+		firstView_FourthImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_FourthImage()throws Exception
+	{
+		secondView_FourthImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_FifthImage()throws Exception
+	{
+		firstView_FifthImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_FifthImage()throws Exception
+	{
+		secondView_FifthImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_SixthImage()throws Exception
+	{
+		firstView_SixthImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_SixthImage()throws Exception
+	{
+		secondView_SixthImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstView_SeventhImage()throws Exception
+	{
+		firstView_SeventhImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SecondView_SeventhImage()throws Exception
+	{
+		secondView_SeventhImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
 	}
 	
 	

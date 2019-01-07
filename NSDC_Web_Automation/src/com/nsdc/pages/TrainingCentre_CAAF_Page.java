@@ -759,6 +759,10 @@ public class TrainingCentre_CAAF_Page
     private WebElement payment_SaveAndContinueButton;
     @FindBy(xpath="//button[contains(text(),'Previous')]")
     private WebElement previousButton;
+    @FindBy(xpath="//button[text()='Continue']")
+    private WebElement continueButton;
+    @FindBy(xpath="//button[text()='Download Invoice']")
+    private WebElement downloadInvoiceButton;
     @FindBy(xpath="//button[text()='OK']")
     private WebElement oKButton;
     @FindBy(xpath="//button[text()='Logout']")
@@ -773,6 +777,7 @@ public class TrainingCentre_CAAF_Page
     
     @FindBy(linkText="Logout")
     private WebElement logout_ProfileButton;
+    
     
     
     public TrainingCentre_CAAF_Page(WebDriver driver) 
@@ -1294,7 +1299,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnAllFacilities_ForMedicalAndSafety()
     {
     	List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-12']/span"));
-     	for(int i=6;i<23;i++)
+     	for(int i=6;i<22;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -2805,6 +2810,16 @@ public class TrainingCentre_CAAF_Page
     public void clickOnPrevious()
     {
     	previousButton.click();
+    }
+    
+    public void clickOnContinue()
+    {
+    	continueButton.click();
+    }
+    
+    public void clickOnDownloadInvoice()
+    {
+    	downloadInvoiceButton.click();
     }
     
     public void clickOnOK()

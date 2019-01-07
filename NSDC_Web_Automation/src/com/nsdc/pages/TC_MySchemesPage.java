@@ -48,6 +48,16 @@ public class TC_MySchemesPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
+	@FindBy(xpath="//button[text()='Submit for Inspection']")
+	private WebElement submitForInspectionButton;
+	@FindBy(xpath="//label[input[@value='Accepted']]/span")
+	private WebElement acceptInspectionDate_RadioButton;
+	@FindBy(xpath="//label[input[@value='Rejected']]/span")
+	private WebElement rejectInspectionDate_RadioButton;
+	@FindBy(xpath="(//button[@class='btn btn-next'])[3]")
+	private WebElement submit_ForInspectionDateButton;
+	@FindBy(xpath="(//button[contains(text(),'Cancel')])[3]")
+	private WebElement cancel_ForInspectionDateButton;
 	
 	
 	public TC_MySchemesPage(WebDriver driver) 
@@ -145,6 +155,31 @@ public class TC_MySchemesPage
 	public void clickOnOK()
 	{
 		okButton.click();
+	}
+	
+	public void clickOnSubmitForInspection()
+	{
+		submitForInspectionButton.click();
+	}
+	
+	public void clickOnAcceptProposedInspectionDate()
+	{
+		acceptInspectionDate_RadioButton.click();
+	}
+	
+	public void clickOnRejectProposedInspectionDate()
+	{
+		acceptInspectionDate_RadioButton.click();
+	}
+	
+	public void clickOnSubmit_ForInspectionDate()
+	{
+		submit_ForInspectionDateButton.click();
+	}
+	
+	public void clickOnCabcel_ForInspectionDate()
+	{
+		cancel_ForInspectionDateButton.click();
 	}
 
 }
