@@ -12,6 +12,8 @@ public class PMKKSPOC_DashboardPage
 	
 	@FindBy(xpath="//div[p[text()='Adding TC Requests']]")
 	private WebElement viewTCrequestButton;
+	@FindBy(xpath="//div[p[text()='View All Assessment Requests']]")
+	private WebElement viewAllAssessmentRequest;
 	
 	
 	
@@ -24,6 +26,11 @@ public class PMKKSPOC_DashboardPage
 	public void clickOnaddingTCRequest()
 	{
 		viewTCrequestButton.click();
+	}
+	
+	public void clickOnViewAllAssessmentRequest()
+	{
+		viewAllAssessmentRequest.click();
 	}
 
 }
