@@ -236,8 +236,6 @@ public class TrainingCentre_CAAF_Page
     private WebElement fourth_ProgramOfferedDropDownList;
     @FindBy(xpath="(//label[input[@formcontrolname='nsqfApproved']]/span)[4]")
     private WebElement fourth_NsqfApprovedCheckBox;
-    @FindBy(xpath="(//select[@formcontrolname='programName'])[5]")
-    private WebElement fifth_ProgramOfferedDropDownList;
     @FindBy(xpath="(//label[input[@formcontrolname='nsqfApproved']]/span)[5]")
     private WebElement fifth_NsqfApprovedCheckBox;*/
    

@@ -420,8 +420,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		caaf.clickOnAddLaboratory();
 		Thread.sleep(3000);
-		caaf.enterLaboratoryOpenArea(laboratoryOpenArea);
-		caaf.enterLaboratoryCoveredArea(laboratoryCoveredArea);
+		//caaf.enterLaboratoryOpenArea(laboratoryOpenArea);
+		//caaf.enterLaboratoryCoveredArea(laboratoryCoveredArea);
 		caaf.enterLaboratoryCarpetArea(laboratoryCarpetArea);
 		caaf.selectLaboratoryType(laboratoryType);
 		caaf.clickOnLaboratoryEquippedwith_ALL();
@@ -469,8 +469,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		caaf.clickOnAddHybrid();
 		Thread.sleep(3000);
-		caaf.enterHybridOpenArea(hybridOpenArea);
-		caaf.enterHybridCoveredArea(hybridCoveredArea);
+		//caaf.enterHybridOpenArea(hybridOpenArea);
+		//caaf.enterHybridCoveredArea(hybridCoveredArea);
 		caaf.enterHybridCarpetArea(hybridCarpetArea);
 		caaf.selectHybridLaboratoryType(hybridLaboratoryType);
 		caaf.clickOnHybridEquippedwith_ALL();
