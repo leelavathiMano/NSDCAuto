@@ -699,6 +699,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.selectSecond_TypeOfSupportStaff(fourthSupportStaffType);
 		caaf.enterSecond_NameOfSupportStaff(secondSupportStaffName);
 		caaf.selectSecond_HighestQualificationForCentreStaff(secondCentreStaffHighestQualification);
+		caaf.enterExpeience(experience);
 		caaf.selectSecond_ResourceTypeOfCentreStaff(secondResourceType);
 		caaf.enterSecond_RemarkForCentreStaff(secondCentreStaffRemark);
 		
