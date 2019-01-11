@@ -11,7 +11,7 @@ public class LoginPage
     
     @FindBy(xpath="//li[@routerlink='login']")
     private WebElement loginButton;
-    @FindBy(xpath="//li[text()='Register']")
+    @FindBy(xpath="//li[contains(text(),'Register')]")
     private WebElement registerButton;
     
     public LoginPage(WebDriver driver)
