@@ -80,9 +80,11 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		tpdp.selectTrainingCentreType(tcType);
 		tpdp.clickOnSaveAndContinue();
 		AddTrainingCentrePage atc = new AddTrainingCentrePage(driver);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		atc.enterTrainingCentreName(tcName);
+		Thread.sleep(3000);
 		atc.enterAddress(tcAddress);
+		Thread.sleep(3000);
 		atc.enterNearByLandmark(landmark);
 		atc.enterPincode(pincode);
 		atc.selectState(state);
