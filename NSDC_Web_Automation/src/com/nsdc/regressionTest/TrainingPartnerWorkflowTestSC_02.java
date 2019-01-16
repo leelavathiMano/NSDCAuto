@@ -711,7 +711,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPApprovalSC02TC02");
     }
     
-    @Test(dataProvider="tpApproval")
+    @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
     public void trainingPartnerApprovalTC_02(String srno, String iausername, String password, String tpID, String establishment_Year, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
