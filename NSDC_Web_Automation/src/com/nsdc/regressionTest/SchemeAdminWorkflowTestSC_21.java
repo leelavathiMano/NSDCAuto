@@ -57,11 +57,11 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 	   elp.performlogin("NSDCADMIN1", "Password@123");
 	   Thread.sleep(10000);
  }
- /*@Test
+ @Test
  public void checkSikuli() throws Exception
  {
 	 GUIFunctionality.dateuploadFile();
- }*/
+ }
    @DataProvider
    public Object[][] AddBusinessOwnerData()
    {
@@ -452,7 +452,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		   updateSchemeDetails.selectTargetAllocatedAtLevel(target_Allocated_At_Level);
 		   js.executeScript("window.scrollBy(0,300)", "");
 		   Thread.sleep(2000);
-		   GUIFunctionality.dateuploadFile();
+		   GUIFunctionality.selectDate();
 		   Thread.sleep(2000);
 
 	   }

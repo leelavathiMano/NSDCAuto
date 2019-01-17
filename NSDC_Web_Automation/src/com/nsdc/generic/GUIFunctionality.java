@@ -5,19 +5,26 @@ import org.sikuli.script.Screen;
 
 public class GUIFunctionality
 {
-	public static void dateuploadFile() throws Exception
+	public static void selectDate() throws Exception
 	{
-		Pattern filepath = new Pattern("./UploadFiles/Capture1.PNG");
-		Pattern open = new Pattern("./UploadFiles/Capture2.PNG");
-		Pattern open2 = new Pattern("./UploadFiles/Capture3.PNG");
+		Pattern datePicker = new Pattern("./SikuliImages/DatePicker.PNG");
+		Pattern calendar = new Pattern("./SikuliImages/Calendar.PNG");
+		Pattern date = new Pattern("./SikuliImages/Date.PNG");
 		Screen src = new Screen();
 		src.setAutoWaitTimeout(40);
 		Thread.sleep(2000);
-		src.click(filepath);
-		src.click(open);
-		src.click(open2);
+		src.click(datePicker);
+		src.click(calendar);
+		src.click(date);
 	}
 	
-	
+	public static void dateuploadFile() throws Exception
+	{
+		Pattern login = new Pattern("./SikuliImages/Capture8.PNG");
+		Screen src = new Screen();
+		src.setAutoWaitTimeout(40);
+		Thread.sleep(2000);
+		src.click(login);
+	}
 	
 }
