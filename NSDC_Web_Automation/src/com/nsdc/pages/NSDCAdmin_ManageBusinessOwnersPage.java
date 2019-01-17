@@ -38,6 +38,10 @@ public class NSDCAdmin_ManageBusinessOwnersPage
 	{
 		searchButton.click();
 	}
+	public void clickOnReset()
+	{
+		resetButton.click();
+	}
 	public void clickOnNsdcAdminDashboard()
 	{
 		nsdcAdminDashboardButton.click();
