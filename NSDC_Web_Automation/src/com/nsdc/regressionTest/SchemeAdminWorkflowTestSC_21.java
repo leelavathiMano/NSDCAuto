@@ -472,16 +472,17 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			updateSchemeDetails.selectTargetAllocationProhibitionFor(target_Allocation_Prohibition_For);
 			updateSchemeDetails.selectTargetAllocatedAtLevel(target_Allocated_At_Level);
 			js.executeScript("window.scrollBy(0,300)", "");
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			GUIFunctionality.selectDate();
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 
 		}
 		else if(target_Allocation_Required.equals("No"))
 		{
 			js.executeScript("window.scrollBy(0,300)", "");
+			Thread.sleep(3000);
 			GUIFunctionality.selectDate();
-			Thread.sleep(15000);
+			Thread.sleep(3000);
 
 		}
 		Thread.sleep(5000);
