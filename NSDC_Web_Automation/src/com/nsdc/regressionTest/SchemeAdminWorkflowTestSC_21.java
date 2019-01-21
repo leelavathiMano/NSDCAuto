@@ -57,11 +57,11 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		elp.performlogin("NSDCADMIN1", "Password@123");
 		Thread.sleep(10000);
 	}
-	@Test
+	/*@Test
 	public void checkSikuli() throws Exception
 	{
 		GUIFunctionality.dateuploadFile();
-	}
+	}*/
 	@DataProvider
 	public Object[][] AddBusinessOwnerData()
 	{
@@ -90,12 +90,13 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		addBusinessOwner.enterNearByLandmark(near_By_Landmark);
 		addBusinessOwner.enterPincode(pincode);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,200)", "");
+		js.executeScript("window.scrollBy(0,300)", "");
 		Thread.sleep(6000);
 		addBusinessOwner.selectStateOrUnionTerritory(state_Or_UnionTerritory);
 		addBusinessOwner.selectDistrict(district);
 		Thread.sleep(4000);
 		addBusinessOwner.selectTehsilOrMandalOrBlock(tehsil_Or_Mandal_Or_Block);
+		Thread.sleep(3000);
 		addBusinessOwner.selectCityOrVillageOrTown(city_Or_Village_Or_Town);
 		addBusinessOwner.selectParliamentaryConstituency(parliamentary_Constituency);
 		Thread.sleep(6000);
@@ -109,791 +110,850 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		Thread.sleep(6000);
 		ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 1, created_Bo_Username);
 		ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 21, created_Bo_Username);
-	      // ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingSchemeOwner", Integer.parseInt(serialNum), 2, created_Bo_Username);
-	      manageBusinessOwner.clickOnNsdcAdminDashboard();
-	      Thread.sleep(6000);
-	      dp.clickOnCreateScheme();
-	      Thread.sleep(10000);
-	      NSDCAdmin_CreateSchemePage createScheme = new NSDCAdmin_CreateSchemePage(driver);
-	      if(select_Scheme.equals("PMKVY")) 
-	      {
-	      	
-	      	Thread.sleep(3000);
-	      	createScheme.selectScheme(select_Scheme);
-	      	createScheme.selectASchemeType(select_A_Scheme_Type);
-	      	Thread.sleep(4000);
-	      	if(select_A_Training_Type.equals("RPL")||select_A_Training_Type.equals("STT")||select_A_Training_Type.equals("India Internal")||select_A_Training_Type.equals("Special Project")||select_A_Training_Type.equals("Others"))
-	      	{
-	      		Thread.sleep(6000);
-	      		createScheme.selectATrainingType(select_A_Training_Type);
-	      		createScheme.selectPayoutAdvice(select_Payout_Advice);
-	      		createScheme.selectAssignToBusinessOwner(created_Bo_Username);
-	      	}
-	      }
-	      
-	      else if(select_Scheme.equals("NON-PMKVY"))
-	      {
-	      	Thread.sleep(3000);
-	      	createScheme.selectScheme(select_Scheme);
-	      	createScheme.enterSchemeName(enter_Scheme_Name);
-	      	createScheme.enterSchemeDepartmentOrMinistry(enter_Scheme_Department_Or_Ministry);
-	      	Thread.sleep(6000);
-	      	createScheme.selectPayoutAdvice(select_Payout_Advice);
-	      	createScheme.selectAssignToBusinessOwner(created_Bo_Username);   
-	      }
-	      
-	      else if(select_Scheme.equals("Integration"))
-	      {
-	      	Thread.sleep(3000);
-	      	createScheme.selectScheme(select_Scheme);
-	      	createScheme.enterSchemeName(enter_Scheme_Name);
-	      	createScheme.enterSchemeDepartmentOrMinistry(enter_Scheme_Department_Or_Ministry);
-	      	Thread.sleep(6000);
-	      	createScheme.selectPayoutAdvice(select_Payout_Advice);
-	      	createScheme.selectAssignToBusinessOwner(created_Bo_Username);
-	      }
-	      
-	      Thread.sleep(6000);
-	      createScheme.clickOnSubmitAndAssignToBusinessAdmin();
-	      Thread.sleep(6000);
-	      Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'scheme created and assigned successfully')]")).getText(), "scheme created and assigned successfully");
-	      createScheme.clickOnOk();
-	      Thread.sleep(6000);
-	      dp.clickOnNSDCProfile();
-	      Thread.sleep(4000);
-	      dp.clickOnNSDCLogOut();
-	      Thread.sleep(4000);
-	      LoginPage lp = new LoginPage(driver);
-	      lp.clickLogin();
-	      EnterLoginPage elp = new EnterLoginPage(driver);
-	      elp.performlogin(created_Bo_Username, "ekaushal");
-	      Thread.sleep(2000);
-	      RegistrationPage rp = new RegistrationPage(driver);
-	      rp.enterOldPassword(bo_Old_Password);
-	      rp.enterNewPassword(bo_New_Password);
-	      rp.enterConfirmPassword(bo_Confirm_Password);
-	      rp.clickResetResubmit();
-	      Thread.sleep(2000);
-	      rp.clickConfirmationOkMessage();
-	      elp.performlogin(created_Bo_Username, bo_Confirm_Password);
-	      Thread.sleep(12000);
-	      BusinessOwner_Dashboardpage bo_Dashboard = new BusinessOwner_Dashboardpage(driver);
-	      bo_Dashboard.clickOnAddASchemeOwner();
-	      BusinessOwner_AddASchemeOwnerPage addSchemeOwner = new BusinessOwner_AddASchemeOwnerPage(driver);
-	      addSchemeOwner.enterFullName(so_Full_Name);
-	      addSchemeOwner.enterEmailAddress(so_Email_Address);
-	      addSchemeOwner.enterMobileNumber(so_Mobile_Number);	   
-	      addSchemeOwner.clickOnSubmit();
-	      String createdScheme_Owner=driver.findElement(By.xpath("//h2[contains(text(),'Scheme Admin created. Please save the username: ')]")).getText();
-	      created_So_Username = createdScheme_Owner.replace("Scheme Admin created. Please save the username: ", "");
-	      System.out.println(created_So_Username);
-	      ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 22, created_So_Username);
-	      ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 29, created_So_Username);
-	      String soConfirmationMsg = "Scheme Admin created. Please save the username: "+created_So_Username;
-	      System.out.println(soConfirmationMsg);
-	      Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'Scheme Admin created.')]]")).getText().trim(), soConfirmationMsg);
-	      Thread.sleep(4000);
-	      addSchemeOwner.clickOnOk();
-	      Thread.sleep(4000);
-	      bo_Dashboard.clickOnAssignToSchemeOwner();
-	      BusinessOwner_AssignToSchemeOwnerPage assignSchemeOwner = new BusinessOwner_AssignToSchemeOwnerPage(driver);
-	      if(select_A_Training_Type.equals("RPL"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnRplAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnRplAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("STT"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnSTTAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnSTTAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("India Internal"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnIndiaInternalAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnIndiaInternalAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Special Project"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnSpecialProjectAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnSpecialProjectAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Others"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnOthersAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnOthersAssignScheme();
-	      }
-	      else if(select_Scheme.equals("NON-PMKVY"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnNonPMKVYAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnNonPMKVYAssignScheme();
-	      }
-	      else if(select_Scheme.equals("Integration"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeOwner.clickOnIntegrationAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeOwner.clickOnIntegrationAssignScheme();
-	      }
-	      
-	      Thread.sleep(3000);
-	      BusinessOwner_AssignSchemePage assignScheme = new BusinessOwner_AssignSchemePage(driver);
-	      assignScheme.selectSchemeOwner(created_So_Username);
-	      Thread.sleep(3000);
-	      assignScheme.clickOnSubmitAndAssignScheme();
-	      Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'scheme assigned successfully')]]")).getText().trim(), "scheme assigned successfully");
-	      assignScheme.clickOnOk();
-	      Thread.sleep(5000);
-	      bo_Dashboard.clickOnBOProfile();
-	      Thread.sleep(5000);
-	      bo_Dashboard.clickOnBOLogOut();
-	      lp.clickLogin();
-	      elp.performlogin(created_So_Username, "ekaushal");
-	      Thread.sleep(3000);
-	      rp.enterOldPassword(so_Old_Password);
-	      rp.enterNewPassword(so_New_Password);
-	      rp.enterConfirmPassword(so_Confirm_Password);
-	      rp.clickResetResubmit();
-	      Thread.sleep(2000);
-	      rp.clickConfirmationOkMessage();
-	      elp.performlogin(created_So_Username, so_Confirm_Password);
-	      Thread.sleep(10000);
-	      SchemeOwner_Dashboardpage so_Dashboard = new SchemeOwner_Dashboardpage(driver);
-	      so_Dashboard.clickOnAddASchemeAdmin();
-	      SchemeOwner_AddASchemeAdminPage addSchemeAdmin = new SchemeOwner_AddASchemeAdminPage(driver);
-	      addSchemeAdmin.enterFullName(sa_Full_Name);
-	      addSchemeAdmin.enterEmailAddress(sa_Email_Address);
-	      addSchemeAdmin.enterMobileNumber(sa_Mobile_Number);
-	      Thread.sleep(3000);
-	      addSchemeAdmin.clickOnSubmit();
-	      String createdScheme_Admin=driver.findElement(By.xpath("//h2[contains(text(),'Scheme Admin created. Please save the username: ')]")).getText();
-	      created_Sa_Username = createdScheme_Admin.replace("Scheme Admin created. Please save the username: ", "");
-	      System.out.println(created_Sa_Username);
-	      ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 36, created_Sa_Username);;
-	      String saConfirmationMsg = "Scheme Admin created. Please save the username: "+created_Sa_Username;
-	      System.out.println(saConfirmationMsg);
-	      Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'Scheme Admin created.')]]")).getText().trim(), saConfirmationMsg);
-	      Thread.sleep(6000);
-	      addSchemeOwner.clickOnOk();
-	      Thread.sleep(6000);
-	      so_Dashboard.clickOnAssignToSchemeAdmin();
-	      SchemeOwner_AssignToSchemeAdminPage assignSchemeAdmin = new SchemeOwner_AssignToSchemeAdminPage(driver);
-	      if(select_A_Training_Type.equals("RPL"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnRplAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnRplAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("STT"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnSTTAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnSTTAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("India Internal"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnIndiaInternalAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnIndiaInternalAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Special Project"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnSpecialProjectAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnSpecialProjectAssignScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Others"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnOthersAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnOthersAssignScheme();
-	      }
-	      else if(select_Scheme.equals("NON-PMKVY"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnNonPMKVYAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnNonPMKVYAssignScheme();
-	      }
-	      else if(select_Scheme.equals("Integration"))
-	      {
-	      	Thread.sleep(4000);
-	      	assignSchemeAdmin.clickOnIntegrationAction();
-	      	Thread.sleep(5000);
-	      	assignSchemeAdmin.clickOnIntegrationAssignScheme();
-	      }
-	      
-	      SchemeOwner_AssignSchemePage assignSchemeToSA = new SchemeOwner_AssignSchemePage(driver);
-	      assignSchemeToSA.selectSchemeOwner(created_Sa_Username);
-	      Thread.sleep(6000);
-	      assignSchemeToSA.clickOnSubmitAndAssignScheme();
-	      Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'scheme assigned successfully')]]")).getText().trim(), "scheme assigned successfully");
-	      assignSchemeToSA.clickOnOk();
-	      Thread.sleep(6000);
-	      so_Dashboard.clickOnSOProfile();
-	      Thread.sleep(4000);
-	      so_Dashboard.clickOnSOLogOut();
-	      Thread.sleep(6000);
-	      
-	      lp.clickLogin();
-	      elp.performlogin(created_Sa_Username, "ekaushal");
-	      Thread.sleep(3000);
-	      rp.enterOldPassword(sa_Old_Password);
-	      rp.enterNewPassword(sa_New_Password);
-	      rp.enterConfirmPassword(sa_Confirm_Password);
-	      rp.clickResetResubmit();
-	      Thread.sleep(2000);
-	      rp.clickConfirmationOkMessage();
-	      elp.performlogin(created_Sa_Username, sa_Confirm_Password);
-	      Thread.sleep(10000);
-	      SchemeAdmin_DashboardPage sa_Dashboard = new SchemeAdmin_DashboardPage(driver);
-	      sa_Dashboard.clickOnUpdateScheme();
-	      Thread.sleep(4000);
-	      SchemeAdmin_UpdateSchemePage updateScheme = new SchemeAdmin_UpdateSchemePage(driver);
-	      if(select_A_Training_Type.equals("RPL"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnRplAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnRplUpdateScheme();
-	      }
-	      else if(select_A_Training_Type.equals("STT"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnSTTAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnSTTUpdateScheme();
-	      }
-	      else if(select_A_Training_Type.equals("India Internal"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnIndiaInternalAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnIndiaInternalUpdateScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Special Project"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnSpecialProjectAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnSpecialProjectUpdateScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Others"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnOthersAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnOthersUpdateScheme();
-	      }
-	      else if(select_Scheme.equals("NON-PMKVY"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnNonPMKVYAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnNonPMKVYUpdateScheme();
-	      }
-	      else if(select_Scheme.equals("Integration"))
-	      {
-	      	Thread.sleep(4000);
-	      	updateScheme.clickOnIntegrationAction();
-	      	Thread.sleep(5000);
-	      	updateScheme.clickOnIntegrationUpdateScheme();
-	      }
-	      
-	      Thread.sleep(3000);
-	      
-	      SchemeAdmin_UpdateSchemeDetailsPage updateSchemeDetails = new SchemeAdmin_UpdateSchemeDetailsPage(driver);
-	      updateSchemeDetails.enterDescriptionOftheScheme(description_Of_the_Scheme);
-	      updateSchemeDetails.enterDocumentsRequired(documents_Required);
-	      updateSchemeDetails.enterPrerequisiteToScheme(prerequisite_To_Scheme);
-	      js.executeScript("window.scrollBy(0,200)", "");
-	      Thread.sleep(6000);
-	      updateSchemeDetails.clickBrowseFile();
-	      Thread.sleep(4000);
-	      UploadFile.upload(uploadFile);
-	      Thread.sleep(4000);
-	      updateSchemeDetails.clickUploadFile();
-	      Thread.sleep(4000);
-	      updateSchemeDetails.selectDisabilityForthescheme(disability);
-	      updateSchemeDetails.selectGenderCatered(gender);
-	      updateSchemeDetails.selectCaste(caste);
-	      updateSchemeDetails.selectReligion(religion);
-	      Thread.sleep(5000);
-	      updateSchemeDetails.clickOnSaveAndSubmit();
-	      Thread.sleep(5000);
-	      updateSchemeDetails.selectTypeOfProjectImplementingAgency(type_Of_Project_Implementing_Agency);
-	      updateSchemeDetails.selectTrainingCentreRegistrationProcessDrivenBy(training_Centre_Registration_Process_Driven_By);
-	      updateSchemeDetails.enterRegistrationFee(registration_Fee);
-	      updateSchemeDetails.selectTypeOfTrainingPartnerOrPIA(type_Of_Training_Partner_Or_PIA);
-	      updateSchemeDetails.selectSchemeRegistrationFee(scheme_Registration_Fee);
-	      updateSchemeDetails.enterSchemeRegistrationAmount(scheme_Registration_Amount);
-	      updateSchemeDetails.selectAdditionalDocumentsRequired(additional_Documents_Required);
-	      updateSchemeDetails.clickOnSaveAndAddAnotherTrainingPartnerType();
-	      updateSchemeDetails.selectTargetAllocationRequired(target_Allocation_Required);
-	      if(target_Allocation_Required.equals("Yes"))
-	      {
-	      	updateSchemeDetails.selectTargetAllocationProhibitionFor(target_Allocation_Prohibition_For);
-	      	updateSchemeDetails.selectTargetAllocatedAtLevel(target_Allocated_At_Level);
-	      	js.executeScript("window.scrollBy(0,300)", "");
-	      	Thread.sleep(2000);
-	      	GUIFunctionality.selectDate();
-	      	Thread.sleep(2000);
+	    //ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingSchemeOwner", Integer.parseInt(serialNum), 2, created_Bo_Username);
+	    manageBusinessOwner.enterBoUsername(created_Bo_Username);
+	    Thread.sleep(3000);
+	    manageBusinessOwner.clickOnSearch();
+	    Thread.sleep(3000);
+		//Assert Business Owner Data
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_Bo_Username+"')]")).getText(), created_Bo_Username);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+email_Id+"')]")).getText(), email_Id);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+mobile_Number+"')]")).getText(), mobile_Number);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+state_Or_UnionTerritory+"')]")).getText(), state_Or_UnionTerritory);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+district+"')]")).getText(), district);
+		Thread.sleep(2000);
+		manageBusinessOwner.clickOnReset();
+		Thread.sleep(3000);
+		manageBusinessOwner.clickOnNsdcAdminDashboard();
+		Thread.sleep(6000);
+		dp.clickOnCreateScheme();
+		Thread.sleep(10000);
+		NSDCAdmin_CreateSchemePage createScheme = new NSDCAdmin_CreateSchemePage(driver);
+		if(select_Scheme.equals("PMKVY")) 
+		{
+			
+			Thread.sleep(3000);
+			createScheme.selectScheme(select_Scheme);
+			createScheme.selectASchemeType(select_A_Scheme_Type);
+			Thread.sleep(4000);
+			
+			if(select_A_Training_Type.equals("RPL")||select_A_Training_Type.equals("STT")||select_A_Training_Type.equals("India Internal")||select_A_Training_Type.equals("Special Project")||select_A_Training_Type.equals("Others"))
+			{
+				Thread.sleep(6000);
+				createScheme.selectATrainingType(select_A_Training_Type);
+				createScheme.selectPayoutAdvice(select_Payout_Advice);
+				createScheme.selectAssignToBusinessOwner(created_Bo_Username);
+			}
+		}
+		
+		else if(select_Scheme.equals("NON-PMKVY")||select_Scheme.equals("Integration"))
+		{
+			Thread.sleep(3000);
+			createScheme.selectScheme(select_Scheme);
+			createScheme.enterSchemeName(enter_Scheme_Name);
+			createScheme.enterSchemeDepartmentOrMinistry(enter_Scheme_Department_Or_Ministry);
+			Thread.sleep(6000);
+			createScheme.selectPayoutAdvice(select_Payout_Advice);
+			createScheme.selectAssignToBusinessOwner(created_Bo_Username);   
+		}
+		
+		Thread.sleep(6000);
+		createScheme.clickOnSubmitAndAssignToBusinessAdmin();
+		Thread.sleep(6000);
+		Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'scheme created and assigned successfully')]")).getText(), "scheme created and assigned successfully");
+		createScheme.clickOnOk();
+		Thread.sleep(6000);
+		dp.clickOnNSDCProfile();
+		Thread.sleep(4000);
+		dp.clickOnNSDCLogOut();
+		Thread.sleep(4000);
+		LoginPage lp = new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp = new EnterLoginPage(driver);
+		elp.performlogin(created_Bo_Username, "ekaushal");
+		Thread.sleep(2000);
+		RegistrationPage rp = new RegistrationPage(driver);
+		rp.enterOldPassword(bo_Old_Password);
+		rp.enterNewPassword(bo_New_Password);
+		rp.enterConfirmPassword(bo_Confirm_Password);
+		rp.clickResetResubmit();
+		Thread.sleep(2000);
+		rp.clickConfirmationOkMessage();
+		elp.performlogin(created_Bo_Username, bo_Confirm_Password);
+		Thread.sleep(12000);
+		BusinessOwner_Dashboardpage bo_Dashboard = new BusinessOwner_Dashboardpage(driver);
+		bo_Dashboard.clickOnAddASchemeOwner();
+		BusinessOwner_AddASchemeOwnerPage addSchemeOwner = new BusinessOwner_AddASchemeOwnerPage(driver);
+		addSchemeOwner.enterFullName(so_Full_Name);
+		addSchemeOwner.enterEmailAddress(so_Email_Address);
+		addSchemeOwner.enterMobileNumber(so_Mobile_Number);	   
+		addSchemeOwner.clickOnSubmit();
+		String createdScheme_Owner=driver.findElement(By.xpath("//h2[contains(text(),'Scheme Admin created. Please save the username: ')]")).getText();
+		created_So_Username = createdScheme_Owner.replace("Scheme Admin created. Please save the username: ", "");
+		System.out.println(created_So_Username);
+		ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 22, created_So_Username);
+		ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 29, created_So_Username);
+		String soConfirmationMsg = "Scheme Admin created. Please save the username: "+created_So_Username;
+		System.out.println(soConfirmationMsg);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'Scheme Admin created.')]]")).getText().trim(), soConfirmationMsg);
+		Thread.sleep(4000);
+		addSchemeOwner.clickOnOk();
+		Thread.sleep(4000);
+		bo_Dashboard.clickOnAssignToSchemeOwner();
+		BusinessOwner_AssignToSchemeOwnerPage assignSchemeOwner = new BusinessOwner_AssignToSchemeOwnerPage(driver);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText().trim(), enter_Scheme_Name);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText().trim(), select_A_Scheme_Type);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText().trim(), select_A_Training_Type);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText().trim(), enter_Scheme_Department_Or_Ministry);
+		if(select_A_Training_Type.equals("RPL"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnRplAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnRplAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("STT"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnSTTAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnSTTAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("India Internal"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnIndiaInternalAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnIndiaInternalAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("Special Project"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnSpecialProjectAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnSpecialProjectAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("Others"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnOthersAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnOthersAssignScheme();
+		}
+		else if(select_Scheme.equals("NON-PMKVY"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnNonPMKVYAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnNonPMKVYAssignScheme();
+		}
+		else if(select_Scheme.equals("Integration"))
+		{
+			Thread.sleep(4000);
+			assignSchemeOwner.clickOnIntegrationAction();
+			Thread.sleep(5000);
+			assignSchemeOwner.clickOnIntegrationAssignScheme();
+		}
+		
+		Thread.sleep(3000);
+		BusinessOwner_AssignSchemePage assignScheme = new BusinessOwner_AssignSchemePage(driver);
+		assignScheme.selectSchemeOwner(created_So_Username);
+		Thread.sleep(3000);
+		assignScheme.clickOnSubmitAndAssignScheme();
+		Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'scheme assigned successfully')]]")).getText().trim(), "scheme assigned successfully");
+		assignScheme.clickOnOk();
+		Thread.sleep(5000);
+		bo_Dashboard.clickOnBOProfile();
+		Thread.sleep(5000);
+		bo_Dashboard.clickOnBOLogOut();
+		lp.clickLogin();
+		elp.performlogin(created_So_Username, "ekaushal");
+		Thread.sleep(3000);
+		rp.enterOldPassword(so_Old_Password);
+		rp.enterNewPassword(so_New_Password);
+		rp.enterConfirmPassword(so_Confirm_Password);
+		rp.clickResetResubmit();
+		Thread.sleep(2000);
+		rp.clickConfirmationOkMessage();
+		elp.performlogin(created_So_Username, so_Confirm_Password);
+		Thread.sleep(10000);
+		SchemeOwner_Dashboardpage so_Dashboard = new SchemeOwner_Dashboardpage(driver);
+		so_Dashboard.clickOnAddASchemeAdmin();
+		SchemeOwner_AddASchemeAdminPage addSchemeAdmin = new SchemeOwner_AddASchemeAdminPage(driver);
+		addSchemeAdmin.enterFullName(sa_Full_Name);
+		addSchemeAdmin.enterEmailAddress(sa_Email_Address);
+		addSchemeAdmin.enterMobileNumber(sa_Mobile_Number);
+		Thread.sleep(3000);
+		addSchemeAdmin.clickOnSubmit();
+		String createdScheme_Admin=driver.findElement(By.xpath("//h2[contains(text(),'Scheme Admin created. Please save the username: ')]")).getText();
+		created_Sa_Username = createdScheme_Admin.replace("Scheme Admin created. Please save the username: ", "");
+		System.out.println(created_Sa_Username);
+		ReadWriteData.setExcelData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 36, created_Sa_Username);;
+		String saConfirmationMsg = "Scheme Admin created. Please save the username: "+created_Sa_Username;
+		System.out.println(saConfirmationMsg);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'Scheme Admin created.')]]")).getText().trim(), saConfirmationMsg);
+		Thread.sleep(6000);
+		addSchemeOwner.clickOnOk();
+		Thread.sleep(6000);
+		so_Dashboard.clickOnAssignToSchemeAdmin();
+		SchemeOwner_AssignToSchemeAdminPage assignSchemeAdmin = new SchemeOwner_AssignToSchemeAdminPage(driver);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText().trim(), enter_Scheme_Name);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText().trim(), select_A_Scheme_Type);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText().trim(), select_A_Training_Type);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText().trim(), enter_Scheme_Department_Or_Ministry);
+		if(select_A_Training_Type.equals("RPL"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnRplAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnRplAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("STT"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnSTTAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnSTTAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("India Internal"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnIndiaInternalAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnIndiaInternalAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("Special Project"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnSpecialProjectAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnSpecialProjectAssignScheme();
+		}
+		else if(select_A_Training_Type.equals("Others"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnOthersAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnOthersAssignScheme();
+		}
+		else if(select_Scheme.equals("NON-PMKVY"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnNonPMKVYAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnNonPMKVYAssignScheme();
+		}
+		else if(select_Scheme.equals("Integration"))
+		{
+			Thread.sleep(4000);
+			assignSchemeAdmin.clickOnIntegrationAction();
+			Thread.sleep(5000);
+			assignSchemeAdmin.clickOnIntegrationAssignScheme();
+		}
+		
+		SchemeOwner_AssignSchemePage assignSchemeToSA = new SchemeOwner_AssignSchemePage(driver);
+		assignSchemeToSA.selectSchemeOwner(created_Sa_Username);
+		Thread.sleep(6000);
+		assignSchemeToSA.clickOnSubmitAndAssignScheme();
+		Assert.assertEquals(driver.findElement(By.xpath("//div[h2[contains(text(),'scheme assigned successfully')]]")).getText().trim(), "scheme assigned successfully");
+		assignSchemeToSA.clickOnOk();
+		Thread.sleep(6000);
+		so_Dashboard.clickOnSOProfile();
+		Thread.sleep(4000);
+		so_Dashboard.clickOnSOLogOut();
+		Thread.sleep(6000);
+		
+		lp.clickLogin();
+		elp.performlogin(created_Sa_Username, "ekaushal");
+		Thread.sleep(3000);
+		rp.enterOldPassword(sa_Old_Password);
+		rp.enterNewPassword(sa_New_Password);
+		rp.enterConfirmPassword(sa_Confirm_Password);
+		rp.clickResetResubmit();
+		Thread.sleep(2000);
+		rp.clickConfirmationOkMessage();
+		elp.performlogin(created_Sa_Username, sa_Confirm_Password);
+		Thread.sleep(10000);
+		SchemeAdmin_DashboardPage sa_Dashboard = new SchemeAdmin_DashboardPage(driver);
+		sa_Dashboard.clickOnUpdateScheme();
+		Thread.sleep(4000);
+		SchemeAdmin_UpdateSchemePage updateScheme = new SchemeAdmin_UpdateSchemePage(driver);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText().trim(), enter_Scheme_Name);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText().trim(), select_A_Scheme_Type);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText().trim(), select_A_Training_Type);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText().trim(), enter_Scheme_Department_Or_Ministry);
+		if(select_A_Training_Type.equals("RPL"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnRplAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnRplUpdateScheme();
+		}
+		else if(select_A_Training_Type.equals("STT"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnSTTAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnSTTUpdateScheme();
+		}
+		else if(select_A_Training_Type.equals("India Internal"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnIndiaInternalAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnIndiaInternalUpdateScheme();
+		}
+		else if(select_A_Training_Type.equals("Special Project"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnSpecialProjectAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnSpecialProjectUpdateScheme();
+		}
+		else if(select_A_Training_Type.equals("Others"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnOthersAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnOthersUpdateScheme();
+		}
+		else if(select_Scheme.equals("NON-PMKVY"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnNonPMKVYAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnNonPMKVYUpdateScheme();
+		}
+		else if(select_Scheme.equals("Integration"))
+		{
+			Thread.sleep(4000);
+			updateScheme.clickOnIntegrationAction();
+			Thread.sleep(5000);
+			updateScheme.clickOnIntegrationUpdateScheme();
+		}
+		
+		Thread.sleep(3000);
+		
+		SchemeAdmin_UpdateSchemeDetailsPage updateSchemeDetails = new SchemeAdmin_UpdateSchemeDetailsPage(driver);
+		updateSchemeDetails.enterDescriptionOftheScheme(description_Of_the_Scheme);
+		updateSchemeDetails.enterDocumentsRequired(documents_Required);
+		updateSchemeDetails.enterPrerequisiteToScheme(prerequisite_To_Scheme);
+		js.executeScript("window.scrollBy(0,200)", "");
+		Thread.sleep(6000);
+		updateSchemeDetails.clickBrowseFile();
+		Thread.sleep(4000);
+		UploadFile.upload(uploadFile);
+		Thread.sleep(4000);
+		updateSchemeDetails.clickUploadFile();
+		Thread.sleep(4000);
+		updateSchemeDetails.selectDisabilityForthescheme(disability);
+		updateSchemeDetails.selectGenderCatered(gender);
+		updateSchemeDetails.selectCaste(caste);
+		updateSchemeDetails.selectReligion(religion);
+		Thread.sleep(5000);
+		updateSchemeDetails.clickOnSaveAndSubmit();
+		Thread.sleep(5000);
+		updateSchemeDetails.selectTypeOfProjectImplementingAgency(type_Of_Project_Implementing_Agency);
+		updateSchemeDetails.selectTrainingCentreRegistrationProcessDrivenBy(training_Centre_Registration_Process_Driven_By);
+		updateSchemeDetails.enterRegistrationFee(registration_Fee);
+		updateSchemeDetails.selectTypeOfTrainingPartnerOrPIA(type_Of_Training_Partner_Or_PIA);
+		updateSchemeDetails.selectSchemeRegistrationFee(scheme_Registration_Fee);
+		updateSchemeDetails.enterSchemeRegistrationAmount(scheme_Registration_Amount);
+		updateSchemeDetails.selectAdditionalDocumentsRequired(additional_Documents_Required);
+		updateSchemeDetails.clickOnSaveAndAddAnotherTrainingPartnerType();
+		updateSchemeDetails.selectTargetAllocationRequired(target_Allocation_Required);
+		if(target_Allocation_Required.equals("Yes"))
+		{
+			updateSchemeDetails.selectTargetAllocationProhibitionFor(target_Allocation_Prohibition_For);
+			updateSchemeDetails.selectTargetAllocatedAtLevel(target_Allocated_At_Level);
+			js.executeScript("window.scrollBy(0,300)", "");
+			Thread.sleep(2000);
+			GUIFunctionality.selectDate();
+			Thread.sleep(2000);
 
-	      }
-	      else if(target_Allocation_Required.equals("No"))
-	      {
-	      	updateSchemeDetails.selectTargetAllocationProhibitionFor(target_Allocation_Prohibition_For);
-	      	updateSchemeDetails.selectTargetAllocatedAtLevel(target_Allocated_At_Level);
-	      	js.executeScript("window.scrollBy(0,300)", "");
-	      	Thread.sleep(15000);
+		}
+		else if(target_Allocation_Required.equals("No"))
+		{
+			js.executeScript("window.scrollBy(0,300)", "");
+			GUIFunctionality.selectDate();
+			Thread.sleep(15000);
 
-	      }
-	      Thread.sleep(5000);
-	      updateSchemeDetails.clickOnSaveAndContinue1();
-	      Thread.sleep(4000);
-	      updateSchemeDetails.selectLocationSpecificity(location_Specificity);
-	      updateSchemeDetails.selectDistrict(select_District);
-	      updateSchemeDetails.clickOnAadhaarMandatory();
-	      Thread.sleep(3000);
-	      updateSchemeDetails.clickOnSpecialStateStudentWithoutAadhaarAllowed();
-	      Thread.sleep(5000);
-	      updateSchemeDetails.clickOnAdd();
-	      Thread.sleep(5000);
-	      updateSchemeDetails.clickOnSaveAndContinue2();
-	      Thread.sleep(5000);
-	      updateSchemeDetails.clickOnSubmit();
-	      Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme sent for approval')]")).getText().trim(), "Scheme sent for approval");
-	      updateSchemeDetails.clickOnOk();
-	      Thread.sleep(4000);
-	      sa_Dashboard.clickOnViewAllSchemes();
-	      Thread.sleep(4000);
-	      
-	      SchemeAdmin_ViewAllSchemesPage viewAllSchemes = new SchemeAdmin_ViewAllSchemesPage(driver);
-	      Thread.sleep(4000);
+		}
+		Thread.sleep(5000);
+		updateSchemeDetails.clickOnSaveAndContinue1();
+		Thread.sleep(4000);
+		updateSchemeDetails.selectLocationSpecificity(location_Specificity);
+		updateSchemeDetails.selectDistrict(select_District);
+		updateSchemeDetails.clickOnAadhaarMandatory();
+		Thread.sleep(3000);
+		updateSchemeDetails.clickOnSpecialStateStudentWithoutAadhaarAllowed();
+		Thread.sleep(5000);
+		updateSchemeDetails.clickOnAdd();
+		Thread.sleep(5000);
+		updateSchemeDetails.clickOnSaveAndContinue2();
+		Thread.sleep(5000);
+		updateSchemeDetails.clickOnSubmit();
+		Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme sent for approval')]")).getText().trim(), "Scheme sent for approval");
+		updateSchemeDetails.clickOnOk();
+		Thread.sleep(4000);
+		sa_Dashboard.clickOnViewAllSchemes();
+		Thread.sleep(4000);
+		
+		SchemeAdmin_ViewAllSchemesPage viewAllSchemes = new SchemeAdmin_ViewAllSchemesPage(driver);
+		Thread.sleep(4000);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_Sa_Username+"')]")).getText().trim(), created_Sa_Username);
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_Sa_Username+"')]")).getText()+" "+created_Sa_Username );
 
-	      if(select_A_Training_Type.equals("RPL"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnRplAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnRplViewScheme();
-	      }
-	      else if(select_A_Training_Type.equals("STT"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnSTTAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnSTTViewScheme();
-	      }
-	      else if(select_A_Training_Type.equals("India Internal"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnIndiaInternalAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnIndiaInternalViewScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Special Project"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnSpecialProjectAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnSpecialProjectViewScheme();
-	      }
-	      else if(select_A_Training_Type.equals("Others"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnOthersAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnOthersViewScheme();
-	      }
-	      else if(select_Scheme.equals("NON-PMKVY"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnNonPMKVYAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnNonPMKVYViewScheme();
-	      }
-	      else if(select_Scheme.equals("Integration"))
-	      {
-	      	Thread.sleep(4000);
-	      	viewAllSchemes.clickOnIntegrationAction();
-	      	Thread.sleep(5000);
-	      	viewAllSchemes.clickOnIntegrationViewScheme();
-	      }
-	      
-	      Thread.sleep(3000);
-	      if(select_A_Training_Type.equals("RPL")||select_A_Training_Type.equals("STT")||select_A_Training_Type.equals("India Internal")||select_A_Training_Type.equals("Special Project")||select_A_Training_Type.equals("Others")||select_A_Training_Type.equals("NON-PMKVY")||select_A_Training_Type.equals("Integration"))
-	      {
-	      	Thread.sleep(4000);
-	      	Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description of the Scheme']")).getAttribute("value"), description_Of_the_Scheme);
-	      	Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the documents required for the scheme']")).getAttribute("value"), documents_Required);
-	      	Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the pre-requisite to scheme']")).getAttribute("value"), prerequisite_To_Scheme);
-	      	Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@title='Select Disability']")));
-	      	Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText(), disability);
-	      	Select selectedGender=new Select(driver.findElement(By.xpath("//select[@title='Select Gender']")));
-	      	Assert.assertEquals(selectedGender.getFirstSelectedOption().getText(), gender);
-	      	Select selectedCaste=new Select(driver.findElement(By.xpath("//select[@title='Select Caste']")));
-	      	Assert.assertEquals(selectedCaste.getFirstSelectedOption().getText(), caste);
-	      	Select selectedReligion=new Select(driver.findElement(By.xpath("//select[@title='Select Religion']")));
-	      	Assert.assertEquals(selectedReligion.getFirstSelectedOption().getText(), religion);
-	      	SchemeAdmin_ViewAllSchemes_ViewSchemesDetailsPage view_Schemes_Details = new SchemeAdmin_ViewAllSchemes_ViewSchemesDetailsPage(driver);
-	      	view_Schemes_Details.clickOnNext1();
-	      	Thread.sleep(4000);
-	      	Assert.assertEquals(type_Of_Project_Implementing_Agency, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'program')]")).getText());
-	      	Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'AA')]")).getText());
-	      	Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'123456')])[1]")).getText());
-	      	Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
-	      	String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
-	      	System.out.println(str1);
-	      	String schemeRegistrationFee;
-	      	schemeRegistrationFee = str1.toLowerCase();
-	      	System.out.println(schemeRegistrationFee);
-	      	Thread.sleep(9000);
-	      	System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText()+" "+schemeRegistrationFee );
-	      	Assert.assertEquals(schemeRegistrationFee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText());   
-	      	Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'123456')])[2]")).getText());
-	      	String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
-	      	System.out.println(str2);
-	      	String additionalDocumentsRequired;
-	      	additionalDocumentsRequired = str2.toLowerCase();
-	      	System.out.println(additionalDocumentsRequired);
-	      	Thread.sleep(9000);
-	      	System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText()+" "+additionalDocumentsRequired );
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText()+" "+select_Scheme );
 
-	      	Assert.assertEquals(additionalDocumentsRequired, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText());
-	      	Select selectedtargetAllocationRequired=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
-	      	System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText()+" "+ target_Allocation_Required);
-	      	Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
-	      	Select selectedtargetAllocationProhibitionFor=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
-	      	Assert.assertEquals(selectedtargetAllocationProhibitionFor.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
-	      	Select selectedtargetAllocatedAtLevel=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
-	      	Assert.assertEquals(selectedtargetAllocatedAtLevel.getFirstSelectedOption().getText(), target_Allocated_At_Level);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr/td[contains(text(),'1')])[2]")).getText().trim(), "1");
+		System.out.println(driver.findElement(By.xpath("(//tr/td[contains(text(),'1')])[2]")).getText()+" "+"1" );
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'submitted')]")).getText().trim(), "submitted");
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'submitted')]")).getText()+" "+"submitted" );
+
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText().trim(), enter_Scheme_Name);
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText()+" "+enter_Scheme_Name );
+
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText().trim(), select_A_Scheme_Type);
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText()+" "+select_A_Scheme_Type );
+
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText().trim(), select_A_Training_Type);
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText()+" "+select_A_Training_Type );
+
+		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText().trim(), enter_Scheme_Department_Or_Ministry);
+		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText()+" "+enter_Scheme_Department_Or_Ministry );
+
+		if(select_A_Training_Type.equals("RPL"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnRplAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnRplViewScheme();
+		}
+		else if(select_A_Training_Type.equals("STT"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnSTTAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnSTTViewScheme();
+		}
+		else if(select_A_Training_Type.equals("India Internal"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnIndiaInternalAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnIndiaInternalViewScheme();
+		}
+		else if(select_A_Training_Type.equals("Special Project"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnSpecialProjectAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnSpecialProjectViewScheme();
+		}
+		else if(select_A_Training_Type.equals("Others"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnOthersAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnOthersViewScheme();
+		}
+		else if(select_Scheme.equals("NON-PMKVY"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnNonPMKVYAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnNonPMKVYViewScheme();
+		}
+		else if(select_Scheme.equals("Integration"))
+		{
+			Thread.sleep(4000);
+			viewAllSchemes.clickOnIntegrationAction();
+			Thread.sleep(5000);
+			viewAllSchemes.clickOnIntegrationViewScheme();
+		}
+		
+		Thread.sleep(3000);
+		if(select_A_Training_Type.equals("RPL")||select_A_Training_Type.equals("STT")||select_A_Training_Type.equals("India Internal")||select_A_Training_Type.equals("Special Project")||select_A_Training_Type.equals("Others")||select_A_Training_Type.equals("NON-PMKVY")||select_A_Training_Type.equals("Integration"))
+		{
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description of the Scheme']")).getAttribute("value"), description_Of_the_Scheme);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the documents required for the scheme']")).getAttribute("value"), documents_Required);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the pre-requisite to scheme']")).getAttribute("value"), prerequisite_To_Scheme);
+			Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@title='Select Disability']")));
+			Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText(), disability);
+			Select selectedGender=new Select(driver.findElement(By.xpath("//select[@title='Select Gender']")));
+			Assert.assertEquals(selectedGender.getFirstSelectedOption().getText(), gender);
+			Select selectedCaste=new Select(driver.findElement(By.xpath("//select[@title='Select Caste']")));
+			Assert.assertEquals(selectedCaste.getFirstSelectedOption().getText(), caste);
+			Select selectedReligion=new Select(driver.findElement(By.xpath("//select[@title='Select Religion']")));
+			Assert.assertEquals(selectedReligion.getFirstSelectedOption().getText(), religion);
+			SchemeAdmin_ViewAllSchemes_ViewSchemesDetailsPage view_Schemes_Details = new SchemeAdmin_ViewAllSchemes_ViewSchemesDetailsPage(driver);
+			view_Schemes_Details.clickOnNext1();
+			Thread.sleep(4000);
+			Assert.assertEquals(type_Of_Project_Implementing_Agency, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Project_Implementing_Agency+"')]")).getText());
+			Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+training_Centre_Registration_Process_Driven_By+"')]")).getText());
+			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+registration_Fee+"')])[1]")).getText());
+			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Training_Partner_Or_PIA+"')]")).getText());
+			String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
+			System.out.println(str1);
+			String schemeRegistrationFee;
+			schemeRegistrationFee = str1.toLowerCase();
+			System.out.println(schemeRegistrationFee);
+			Thread.sleep(9000);
+			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText()+" "+schemeRegistrationFee );
+			Assert.assertEquals(schemeRegistrationFee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText());   
+			Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+scheme_Registration_Amount+"')])[2]")).getText());
+			String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
+			System.out.println(str2);
+			String additionalDocumentsRequired;
+			additionalDocumentsRequired = str2.toLowerCase();
+			System.out.println(additionalDocumentsRequired);
+			Thread.sleep(9000);
+			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText()+" "+additionalDocumentsRequired );
+
+			Assert.assertEquals(additionalDocumentsRequired, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText());
+			Select selectedtargetAllocationRequired=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
+			
+			if(target_Allocation_Required.equals("Yes")) {
+				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText()+" "+ target_Allocation_Required);
+				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
+				Select selectedtargetAllocationProhibitionFor=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
+				Assert.assertEquals(selectedtargetAllocationProhibitionFor.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
+				Select selectedtargetAllocatedAtLevel=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
+				Assert.assertEquals(selectedtargetAllocatedAtLevel.getFirstSelectedOption().getText(), target_Allocated_At_Level);
 			   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
-			   view_Schemes_Details.clickOnNext2();
-			   Thread.sleep(5000);
-			   Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
-			   Thread.sleep(5000);
-			   Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
-			   Thread.sleep(5000);
+			}
+			else if(target_Allocation_Required.equals("No")) {
+				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText()+" "+ target_Allocation_Required);
+				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
+			}
+			
+			view_Schemes_Details.clickOnNext2();
+			Thread.sleep(5000);
+			Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
+			Thread.sleep(5000);
+			Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
+			Thread.sleep(5000);
 //			   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
 //			   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
-view_Schemes_Details.clickOnNext3();
-Thread.sleep(4000);
-view_Schemes_Details.clickOnSubmit();
-Thread.sleep(4000);
-Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme sent for approval')]")).getText().trim(), "Scheme sent for approval");
-view_Schemes_Details.clickOnOk();
+			view_Schemes_Details.clickOnNext3();
+			Thread.sleep(4000);
+			view_Schemes_Details.clickOnSubmit();
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme sent for approval')]")).getText().trim(), "Scheme sent for approval");
+			view_Schemes_Details.clickOnOk();
+			}
+			Thread.sleep(6000);
+			sa_Dashboard.clickOnSaProfile();
+			Thread.sleep(4000);
+			sa_Dashboard.clickOnSaLogOut();
+			Thread.sleep(6000);
+			lp.clickLogin();
 
-}
+			elp.performlogin(created_So_Username, so_Confirm_Password);
+			Thread.sleep(10000);
+			so_Dashboard.clickOnAllApprovalRequests();
 
-Thread.sleep(6000);
-sa_Dashboard.clickOnSaProfile();
-Thread.sleep(4000);
-sa_Dashboard.clickOnSaLogOut();
-Thread.sleep(6000);
+			SchemeOwner_AllApprovalRequestsPage approvalRequest = new SchemeOwner_AllApprovalRequestsPage(driver);
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_Sa_Username+"')]")).getText().trim(), created_Sa_Username);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_Sa_Username+"')]")).getText()+" "+created_Sa_Username );
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText()+" "+select_Scheme );
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'submitted')]")).getText().trim(), "submitted");
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'submitted')]")).getText()+" "+"submitted" );
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText().trim(), enter_Scheme_Name);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText()+" "+enter_Scheme_Name );
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText().trim(), select_A_Scheme_Type);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText()+" "+select_A_Scheme_Type );
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText().trim(), select_A_Training_Type);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText()+" "+select_A_Training_Type );
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText().trim(), enter_Scheme_Department_Or_Ministry);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText()+" "+enter_Scheme_Department_Or_Ministry );
 
+			if(select_A_Training_Type.equals("RPL"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnRplAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnRplApproveOrRejectScheme();	
+			}
 
-
-
-lp.clickLogin();
-
-elp.performlogin(created_So_Username, so_Confirm_Password);
-Thread.sleep(10000);
-so_Dashboard.clickOnAllApprovalRequests();
-
-SchemeOwner_AllApprovalRequestsPage approvalRequest = new SchemeOwner_AllApprovalRequestsPage(driver);
-Thread.sleep(4000);
-
-if(select_A_Training_Type.equals("RPL"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnRplAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnRplApproveOrRejectScheme();
-	
-
-	
-}
-
-else if(select_A_Training_Type.equals("STT"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnSTTAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnRplApproveOrRejectScheme();
-	
-}
-
-
-if(select_A_Training_Type.equals("India Internal"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnIndiaInternalAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnIndiaInternalApproveOrRejectScheme();
-	
-}
-
-else  if(select_A_Training_Type.equals("Special Project"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnSpecialProjectAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnSpecialProjectApproveOrRejectScheme();
-	
-}
-else if(select_A_Training_Type.equals("Others"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnOthersAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnOthersApproveOrRejectScheme();
-	
-}
-else if(select_A_Training_Type.equals("NON-PMKVY"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnNonPMKVYAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnNonPMKVYApproveOrRejectScheme();
-	
-}
-else if(select_A_Training_Type.equals("Integration"))
-{
-	Thread.sleep(4000);
-	approvalRequest.clickOnIntegrationAction();
-	Thread.sleep(5000);
-	approvalRequest.clickOnIntegrationApproveOrRejectScheme();
-	
-	
-}
-Thread.sleep(4000);
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description of the Scheme']")).getAttribute("value"), description_Of_the_Scheme);
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the documents required for the scheme']")).getAttribute("value"), documents_Required);
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the pre-requisite to scheme']")).getAttribute("value"), prerequisite_To_Scheme);
-Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@title='Select Disability']")));
-Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText(), disability);
-Select selectedGender=new Select(driver.findElement(By.xpath("//select[@title='Select Gender']")));
-Assert.assertEquals(selectedGender.getFirstSelectedOption().getText(), gender);
-Select selectedCaste=new Select(driver.findElement(By.xpath("//select[@title='Select Caste']")));
-Assert.assertEquals(selectedCaste.getFirstSelectedOption().getText(), caste);
-Select selectedReligion=new Select(driver.findElement(By.xpath("//select[@title='Select Religion']")));
-Assert.assertEquals(selectedReligion.getFirstSelectedOption().getText(), religion);
-SchemeOwner_ApproveOrRejectSchemesPage approveOrRejectSchemes = new SchemeOwner_ApproveOrRejectSchemesPage(driver);
-approveOrRejectSchemes.clickOnNext1();
-Assert.assertEquals(type_Of_Project_Implementing_Agency, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'program')]")).getText());
-Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'AA')]")).getText());
-Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'123456')])[1]")).getText());
-Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
-String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
-System.out.println(str1);
-String schemeRegistrationFee;
-schemeRegistrationFee = str1.toLowerCase();
-System.out.println(schemeRegistrationFee);
-Thread.sleep(9000);
-System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText()+" "+schemeRegistrationFee );
-Assert.assertEquals(schemeRegistrationFee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText());   
-Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'123456')])[2]")).getText());
-String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
-System.out.println(str2);
-String additionalDocumentsRequired;
-additionalDocumentsRequired = str2.toLowerCase();
-System.out.println(additionalDocumentsRequired);
-Thread.sleep(9000);
-System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText()+" "+additionalDocumentsRequired );
-
-Assert.assertEquals(additionalDocumentsRequired, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText());
-Select selectedtargetAllocationRequired=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
-Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
-Select selectedtargetAllocationProhibitionFor=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
-Assert.assertEquals(selectedtargetAllocationProhibitionFor.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
-Select selectedtargetAllocatedAtLevel=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
-Assert.assertEquals(selectedtargetAllocatedAtLevel.getFirstSelectedOption().getText(), target_Allocated_At_Level);
-		   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
-		   approveOrRejectSchemes.clickOnNext2();
-		   Thread.sleep(5000);
-		   Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
-		   Thread.sleep(5000);
-		   Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
-		   Thread.sleep(5000);
-//		   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
-//		   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
-approveOrRejectSchemes.clickOnNext3();
-Thread.sleep(4000);
-approveOrRejectSchemes.clickOnApprove();
-Thread.sleep(4000);
-Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme approved')]")).getText().trim(), "Scheme approved");
-Thread.sleep(4000);
-approveOrRejectSchemes.clickOnOk();
+			else if(select_A_Training_Type.equals("STT"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnSTTAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnSTTApproveOrRejectScheme();
+			}
 
 
+			if(select_A_Training_Type.equals("India Internal"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnIndiaInternalAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnIndiaInternalApproveOrRejectScheme();
+			}
+
+			else  if(select_A_Training_Type.equals("Special Project"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnSpecialProjectAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnSpecialProjectApproveOrRejectScheme();
+			}
+
+			else if(select_A_Training_Type.equals("Others"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnOthersAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnOthersApproveOrRejectScheme();
+			}
+
+			else if(select_A_Training_Type.equals("NON-PMKVY"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnNonPMKVYAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnNonPMKVYApproveOrRejectScheme();
+			}
+
+			else if(select_A_Training_Type.equals("Integration"))
+			{
+				Thread.sleep(4000);
+				approvalRequest.clickOnIntegrationAction();
+				Thread.sleep(5000);
+				approvalRequest.clickOnIntegrationApproveOrRejectScheme();
+			}
+
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description of the Scheme']")).getAttribute("value"), description_Of_the_Scheme);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the documents required for the scheme']")).getAttribute("value"), documents_Required);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the pre-requisite to scheme']")).getAttribute("value"), prerequisite_To_Scheme);
+			Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@title='Select Disability']")));
+			Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText(), disability);
+			Select selectedGender=new Select(driver.findElement(By.xpath("//select[@title='Select Gender']")));
+			Assert.assertEquals(selectedGender.getFirstSelectedOption().getText(), gender);
+			Select selectedCaste=new Select(driver.findElement(By.xpath("//select[@title='Select Caste']")));
+			Assert.assertEquals(selectedCaste.getFirstSelectedOption().getText(), caste);
+			Select selectedReligion=new Select(driver.findElement(By.xpath("//select[@title='Select Religion']")));
+			Assert.assertEquals(selectedReligion.getFirstSelectedOption().getText(), religion);
+			SchemeOwner_ApproveOrRejectSchemesPage approveOrRejectSchemes = new SchemeOwner_ApproveOrRejectSchemesPage(driver);
+			approveOrRejectSchemes.clickOnNext1();
+			Assert.assertEquals(type_Of_Project_Implementing_Agency, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Project_Implementing_Agency+"')]")).getText());
+			Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+training_Centre_Registration_Process_Driven_By+"')]")).getText());
+			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+registration_Fee+"')])[1]")).getText());
+			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Training_Partner_Or_PIA+"')]")).getText());
+			String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
+			System.out.println(str1);
+			String schemeRegistrationFee;
+			schemeRegistrationFee = str1.toLowerCase();
+			System.out.println(schemeRegistrationFee);
+			Thread.sleep(9000);
+			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText()+" "+schemeRegistrationFee );
+			Assert.assertEquals(schemeRegistrationFee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText());   
+			Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+scheme_Registration_Amount+"')])[2]")).getText());
+			String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
+			System.out.println(str2);
+			String additionalDocumentsRequired;
+			additionalDocumentsRequired = str2.toLowerCase();
+			System.out.println(additionalDocumentsRequired);
+			Thread.sleep(9000);
+			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText()+" "+additionalDocumentsRequired );
+			Assert.assertEquals(additionalDocumentsRequired, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText());
+			Select selectedtargetAllocationRequired=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
+			if(target_Allocation_Required.equals("Yes")) {
+				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
+				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
+				Select selectedtargetAllocationProhibitionFor=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
+				Assert.assertEquals(selectedtargetAllocationProhibitionFor.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
+				Select selectedtargetAllocatedAtLevel=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
+				Assert.assertEquals(selectedtargetAllocatedAtLevel.getFirstSelectedOption().getText(), target_Allocated_At_Level);
+			}
+			else if(target_Allocation_Required.equals("No")) {
+				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
+				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
+			}
+						   		   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
+						   		   approveOrRejectSchemes.clickOnNext2();
+						   		   Thread.sleep(5000);
+						   		   Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
+						   		   Thread.sleep(5000);
+						   		   Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
+						   		   Thread.sleep(5000);
+//						   		   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
+//						   		   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
+			approveOrRejectSchemes.clickOnNext3();
+			Thread.sleep(4000);
+			approveOrRejectSchemes.clickOnApprove();
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme approved')]")).getText().trim(), "Scheme approved");
+			Thread.sleep(4000);
+			approveOrRejectSchemes.clickOnOk();
+			Thread.sleep(6000);
+			so_Dashboard.clickOnSOProfile();
+			Thread.sleep(4000);
+			so_Dashboard.clickOnSOLogOut();
+			Thread.sleep(6000);
+			lp.clickLogin();
+			elp.performlogin(created_BO_Username, bo_Confirm_Password);
+			Thread.sleep(10000);
+			bo_Dashboard.clickOnAllApprovalRequests();
+			BusinessOwner_AllApprovalRequestsPage bo_ApprovalRequest = new BusinessOwner_AllApprovalRequestsPage(driver);
+			Thread.sleep(8000);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_So_Username+"')]")).getText().trim(), created_So_Username);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+created_So_Username+"')]")).getText()+" "+created_So_Username );
+
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText()+" "+select_Scheme );
+
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'submitted')]")).getText().trim(), "submitted");
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'submitted')]")).getText()+" "+"submitted" );
+
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText().trim(), enter_Scheme_Name);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Name+"')]")).getText()+" "+enter_Scheme_Name );
+
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText().trim(), select_A_Scheme_Type);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Scheme_Type+"')]")).getText()+" "+select_A_Scheme_Type );
+
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText().trim(), select_A_Training_Type);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_A_Training_Type+"')]")).getText()+" "+select_A_Training_Type );
+
+			Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText().trim(), enter_Scheme_Department_Or_Ministry);
+			System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+enter_Scheme_Department_Or_Ministry+"')]")).getText()+" "+enter_Scheme_Department_Or_Ministry );
+
+			if(select_A_Training_Type.equals("RPL"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnRplAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnRplApproveOrRejectScheme();	
+			}
+
+			else if(select_A_Training_Type.equals("STT"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnSTTAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnSTTApproveOrRejectScheme();
+			}
 
 
+			if(select_A_Training_Type.equals("India Internal"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnIndiaInternalAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnIndiaInternalApproveOrRejectScheme();
+			}
 
-Thread.sleep(6000);
+			else  if(select_A_Training_Type.equals("Special Project"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnSpecialProjectAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnSpecialProjectApproveOrRejectScheme();
+			}
 
-so_Dashboard.clickOnSOProfile();
-Thread.sleep(4000);
-so_Dashboard.clickOnSOLogOut();
-Thread.sleep(6000);
+			else if(select_A_Training_Type.equals("Others"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnOthersAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnOthersApproveOrRejectScheme();
+			}
 
+			else if(select_A_Training_Type.equals("NON-PMKVY"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnNonPMKVYAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnNonPMKVYApproveOrRejectScheme();	
+			}
 
+			else if(select_A_Training_Type.equals("Integration"))
+			{
+				Thread.sleep(4000);
+				bo_ApprovalRequest.clickOnIntegrationAction();
+				Thread.sleep(5000);
+				bo_ApprovalRequest.clickOnIntegrationApproveOrRejectScheme();
+			}
 
-lp.clickLogin();
-elp.performlogin(created_BO_Username, bo_Confirm_Password);
-Thread.sleep(10000);
-bo_Dashboard.clickOnAllApprovalRequests();
-BusinessOwner_AllApprovalRequestsPage bo_ApprovalRequest = new BusinessOwner_AllApprovalRequestsPage(driver);
-Thread.sleep(4000);
-
-if(select_A_Training_Type.equals("RPL"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnRplAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnRplApproveOrRejectScheme();
-	
-}
-
-else if(select_A_Training_Type.equals("STT"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnSTTAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnRplApproveOrRejectScheme();
-	
-}
-
-
-if(select_A_Training_Type.equals("India Internal"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnIndiaInternalAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnIndiaInternalApproveOrRejectScheme();
-	
-
-	
-}
-
-else  if(select_A_Training_Type.equals("Special Project"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnSpecialProjectAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnSpecialProjectApproveOrRejectScheme();
-	
-	
-}
-else if(select_A_Training_Type.equals("Others"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnOthersAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnOthersApproveOrRejectScheme();
-	
-}
-else if(select_A_Training_Type.equals("NON-PMKVY"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnNonPMKVYAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnNonPMKVYApproveOrRejectScheme();
-	
-	
-}
-else if(select_A_Training_Type.equals("Integration"))
-{
-	Thread.sleep(4000);
-	bo_ApprovalRequest.clickOnIntegrationAction();
-	Thread.sleep(5000);
-	bo_ApprovalRequest.clickOnIntegrationApproveOrRejectScheme();
-	
-}
-
-Thread.sleep(4000);
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description of the Scheme']")).getAttribute("value"), description_Of_the_Scheme);
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the documents required for the scheme']")).getAttribute("value"), documents_Required);
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the pre-requisite to scheme']")).getAttribute("value"), prerequisite_To_Scheme);
-Select selectedDisability1=new Select(driver.findElement(By.xpath("//select[@title='Select Disability']")));
-Assert.assertEquals(selectedDisability1.getFirstSelectedOption().getText(), disability);
-Select selectedGender1=new Select(driver.findElement(By.xpath("//select[@title='Select Gender']")));
-Assert.assertEquals(selectedGender1.getFirstSelectedOption().getText(), gender);
-Select selectedCaste1=new Select(driver.findElement(By.xpath("//select[@title='Select Caste']")));
-Assert.assertEquals(selectedCaste1.getFirstSelectedOption().getText(), caste);
-Select selectedReligion1=new Select(driver.findElement(By.xpath("//select[@title='Select Religion']")));
-Assert.assertEquals(selectedReligion1.getFirstSelectedOption().getText(), religion);
-BusinessOwner_ApproveOrRejectSchemesPage bo_approveOrRejectSchemes = new BusinessOwner_ApproveOrRejectSchemesPage(driver);
-bo_approveOrRejectSchemes.clickOnNext1();
-Assert.assertEquals(type_Of_Project_Implementing_Agency, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'program')]")).getText());
-Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'AA')]")).getText());
-Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'123456')])[1]")).getText());
-Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
-String str3=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
-System.out.println(str3);
-String schemeRegistrationFee1;
-schemeRegistrationFee1 = str3.toLowerCase();
-System.out.println(schemeRegistrationFee1);
-Thread.sleep(9000);
-System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee1+"')])[1]")).getText()+" "+schemeRegistrationFee1 );
-Assert.assertEquals(schemeRegistrationFee1, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee1+"')])[1]")).getText());   
-Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'123456')])[2]")).getText());
-String str4=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
-System.out.println(str4);
-String additionalDocumentsRequired1;
-additionalDocumentsRequired1 = str4.toLowerCase();
-System.out.println(additionalDocumentsRequired1);
-Thread.sleep(9000);
-System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired1+"')])[2]")).getText()+" "+additionalDocumentsRequired1);
-
-Assert.assertEquals(additionalDocumentsRequired1, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired1+"')])[2]")).getText());
-Select selectedtargetAllocationRequired1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
-System.out.println(selectedtargetAllocationRequired1.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
-Assert.assertEquals(selectedtargetAllocationRequired1.getFirstSelectedOption().getText(), target_Allocation_Required);
-Select selectedtargetAllocationProhibitionFor1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
-Assert.assertEquals(selectedtargetAllocationProhibitionFor1.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
-Select selectedtargetAllocatedAtLevel1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
-Assert.assertEquals(selectedtargetAllocatedAtLevel1.getFirstSelectedOption().getText(), target_Allocated_At_Level);
-		   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
-		   bo_approveOrRejectSchemes.clickOnNext2();
-		   Thread.sleep(5000);
-		   Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
-		   Thread.sleep(5000);
-		   Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
-		   Thread.sleep(5000);
-//		   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
-//		   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
-bo_approveOrRejectSchemes.clickOnNext3();
-Thread.sleep(4000);
-bo_approveOrRejectSchemes.clickOnApprove();
-Thread.sleep(4000);
-Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme approved')]")).getText().trim(), "Scheme approved");
-Thread.sleep(4000);
-bo_approveOrRejectSchemes.clickOnOk();
-Thread.sleep(4000);
-
-
-
-
-
-}
-}
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description of the Scheme']")).getAttribute("value"), description_Of_the_Scheme);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the documents required for the scheme']")).getAttribute("value"), documents_Required);
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter the pre-requisite to scheme']")).getAttribute("value"), prerequisite_To_Scheme);
+			Select selectedDisability1=new Select(driver.findElement(By.xpath("//select[@title='Select Disability']")));
+			Assert.assertEquals(selectedDisability1.getFirstSelectedOption().getText(), disability);
+			Select selectedGender1=new Select(driver.findElement(By.xpath("//select[@title='Select Gender']")));
+			Assert.assertEquals(selectedGender1.getFirstSelectedOption().getText(), gender);
+			Select selectedCaste1=new Select(driver.findElement(By.xpath("//select[@title='Select Caste']")));
+			Assert.assertEquals(selectedCaste1.getFirstSelectedOption().getText(), caste);
+			Select selectedReligion1=new Select(driver.findElement(By.xpath("//select[@title='Select Religion']")));
+			Assert.assertEquals(selectedReligion1.getFirstSelectedOption().getText(), religion);
+			BusinessOwner_ApproveOrRejectSchemesPage bo_approveOrRejectSchemes = new BusinessOwner_ApproveOrRejectSchemesPage(driver);
+			bo_approveOrRejectSchemes.clickOnNext1();
+			Assert.assertEquals(type_Of_Project_Implementing_Agency, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Project_Implementing_Agency+"')]")).getText());
+			Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+training_Centre_Registration_Process_Driven_By+"')]")).getText());
+			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+registration_Fee+"')])[1]")).getText());
+			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Training_Partner_Or_PIA+"')]")).getText());
+			String str3=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
+			System.out.println(str3);
+			String schemeRegistrationFee1;
+			schemeRegistrationFee1 = str3.toLowerCase();
+			System.out.println(schemeRegistrationFee1);
+			Thread.sleep(9000);
+			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee1+"')])[1]")).getText()+" "+schemeRegistrationFee1 );
+			Assert.assertEquals(schemeRegistrationFee1, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee1+"')])[1]")).getText());   
+			Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+scheme_Registration_Amount+"')])[2]")).getText());
+			String str4=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
+			System.out.println(str4);
+			String additionalDocumentsRequired1;
+			additionalDocumentsRequired1 = str4.toLowerCase();
+			System.out.println(additionalDocumentsRequired1);
+			Thread.sleep(9000);
+			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired1+"')])[2]")).getText()+" "+additionalDocumentsRequired1);
+			Assert.assertEquals(additionalDocumentsRequired1, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired1+"')])[2]")).getText());
+			Select selectedtargetAllocationRequired1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
+			if(target_Allocation_Required.equals("Yes")) {
+				System.out.println(selectedtargetAllocationRequired1.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
+				Assert.assertEquals(selectedtargetAllocationRequired1.getFirstSelectedOption().getText(), target_Allocation_Required);
+				Select selectedtargetAllocationProhibitionFor1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
+				Assert.assertEquals(selectedtargetAllocationProhibitionFor1.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
+				Select selectedtargetAllocatedAtLevel1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
+				Assert.assertEquals(selectedtargetAllocatedAtLevel1.getFirstSelectedOption().getText(), target_Allocated_At_Level);
+						   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
+						}
+						else if(target_Allocation_Required.equals("No")) {
+							System.out.println(selectedtargetAllocationRequired1.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
+							Assert.assertEquals(selectedtargetAllocationRequired1.getFirstSelectedOption().getText(), target_Allocation_Required);
+						}
+						
+						bo_approveOrRejectSchemes.clickOnNext2();
+						Thread.sleep(5000);
+						Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
+						Thread.sleep(5000);
+						Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
+						Thread.sleep(5000);
+//						   		   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
+//						   		   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
+			bo_approveOrRejectSchemes.clickOnNext3();
+			Thread.sleep(4000);
+			bo_approveOrRejectSchemes.clickOnApprove();
+			Thread.sleep(4000);
+			Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Scheme approved')]")).getText().trim(), "Scheme approved");
+			Thread.sleep(4000);
+			bo_approveOrRejectSchemes.clickOnOk();
+			Thread.sleep(4000);
+			}
+			}
 
 
 
