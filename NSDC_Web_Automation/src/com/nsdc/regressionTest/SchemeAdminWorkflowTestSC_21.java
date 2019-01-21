@@ -186,8 +186,10 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		BusinessOwner_AddASchemeOwnerPage addSchemeOwner = new BusinessOwner_AddASchemeOwnerPage(driver);
 		addSchemeOwner.enterFullName(so_Full_Name);
 		addSchemeOwner.enterEmailAddress(so_Email_Address);
-		addSchemeOwner.enterMobileNumber(so_Mobile_Number);	   
+		addSchemeOwner.enterMobileNumber(so_Mobile_Number);	 
+		Thread.sleep(3000);
 		addSchemeOwner.clickOnSubmit();
+		Thread.sleep(3000);
 		String createdScheme_Owner=driver.findElement(By.xpath("//h2[contains(text(),'Scheme Admin created. Please save the username: ')]")).getText();
 		created_So_Username = createdScheme_Owner.replace("Scheme Admin created. Please save the username: ", "");
 		System.out.println(created_So_Username);
