@@ -54,7 +54,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
-		elp.performlogin("NSDCADMIN1", "Password@123");
+		elp.performlogin("NSDCADMIN_000001", "Qwerty@123");
 		Thread.sleep(10000);
 	}
 	/*@Test
@@ -163,7 +163,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'scheme created and assigned successfully')]")).getText(), "scheme created and assigned successfully");
 		createScheme.clickOnOk();
 		Thread.sleep(6000);
-		dp.clickOnNSDCProfile();
+		dp.clickOnNewNSDCProfile();
 		Thread.sleep(4000);
 		dp.clickOnNSDCLogOut();
 		Thread.sleep(4000);
