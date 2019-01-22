@@ -168,7 +168,7 @@ public class TC_ApprovalPage
 	private WebElement leftView_Image_Button;	
 	@FindBy(xpath="//div[text()='3.Right View']")
 	private WebElement rightView_Image_Button;
-	@FindBy(xpath="//div[text()='4.Internet Connectivity']")
+	@FindBy(xpath="//div[text()='4.Internet Bill']")
 	private WebElement internetConectivity_Image_Button;
 	@FindBy(xpath="//div[text()='5.Power Backup']")
 	private WebElement powerBackup_Image_Button;

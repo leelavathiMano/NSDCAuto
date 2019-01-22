@@ -28,9 +28,9 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	private WebElement deSelectAllButton;
 	@FindBy(xpath="//button[text()='Take Action']")
 	private WebElement takeActionButton;
-	@FindBy(xpath="//select[@id='exampleSelect1']")
+	@FindBy(xpath="(//select[@formcontrolname='da'])[1]")
 	private WebElement assignTo_DA_DropDownList;
-	@FindBy(xpath="//button[contains(text(),'Assign')]")
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement assignButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
@@ -38,6 +38,8 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	private WebElement assignTo_CentreInspector_DropDownList;
 	@FindBy(xpath="//input[@formcontrolname='inspectionDate']")
 	private WebElement InspectionDateTextbox;
+	@FindBy(xpath="(//label[contains(text(),'SPOC Name')])[3]")
+	private WebElement spocNameTextbox;
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement assign_ForCIButton;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[3]")
@@ -118,6 +120,12 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 		//InspectionDateTextbox.clear();
 		InspectionDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
+	
+	public void clickOnSpocName()
+	{
+		spocNameTextbox.click();
+	}
+	
 	
 	public void clickOnAssign_ForCI()
 	{

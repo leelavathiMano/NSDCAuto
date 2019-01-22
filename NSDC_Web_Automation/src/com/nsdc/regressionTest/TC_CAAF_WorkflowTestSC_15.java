@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -14,6 +13,9 @@ import com.nsdc.generic.MobileHandlers;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.mobile.ui.object.CI_MyDashboardScreen;
+import com.nsdc.mobile.ui.object.CI_SkillRootScreen;
+import com.nsdc.mobile.ui.object.CI_StartInspectionScreen;
 import com.nsdc.mobile.ui.object.LoginScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_CentreArea_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_Clasroom_UploadImagesScreen;
@@ -298,38 +300,38 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterFirst_BriefAboutTheAffiliation(firstAboutAffiliation);
 		Thread.sleep(3000);
 		caaf.clickOnAddAnotherAffiliation();
-		Thread.sleep(3000);
-		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
-		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
-		caaf.enterFirst_Affiliation_StartDate();
-		caaf.enterFirst_Affiliation_EndDate();
-		caaf.enterFirst_BriefAboutTheAffiliation(secondAboutAffiliation);
-		Thread.sleep(3000);
-		caaf.clickOnAddAnotherAffiliation();
-		Thread.sleep(3000);
-		caaf.enterFirst_NameofAffiliation(thirdAffiliationName);
-		caaf.selectFirst_TypeOfAffiliation(thirdAffiliationType);
-		caaf.enterFirst_Affiliation_StartDate();
-		caaf.enterFirst_Affiliation_EndDate();
-		caaf.enterFirst_BriefAboutTheAffiliation(thirdAboutAffiliation);
-		Thread.sleep(3000);
-		caaf.clickOnAddAnotherAffiliation();
-		Thread.sleep(3000);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("scroll(0, 900)");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationName+"']")).getText(), firstAffiliationName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationType+"']")).getText(), firstAffiliationType);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAboutAffiliation+"']")).getText(), firstAboutAffiliation);
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationName+"']")).getText(), secondAffiliationName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationType+"']")).getText(), secondAffiliationType);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAboutAffiliation+"']")).getText(), secondAboutAffiliation);
-
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationName+"']")).getText(), thirdAffiliationName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationType+"']")).getText(), thirdAffiliationType);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAboutAffiliation+"']")).getText(), thirdAboutAffiliation);
-		Thread.sleep(2000);
-		caaf.clickOnRemove_ThirdAffiliation();
+//		Thread.sleep(3000);
+//		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
+//		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
+//		caaf.enterFirst_Affiliation_StartDate();
+//		caaf.enterFirst_Affiliation_EndDate();
+//		caaf.enterFirst_BriefAboutTheAffiliation(secondAboutAffiliation);
+//		Thread.sleep(3000);
+//		caaf.clickOnAddAnotherAffiliation();
+//		Thread.sleep(3000);
+//		caaf.enterFirst_NameofAffiliation(thirdAffiliationName);
+//		caaf.selectFirst_TypeOfAffiliation(thirdAffiliationType);
+//		caaf.enterFirst_Affiliation_StartDate();
+//		caaf.enterFirst_Affiliation_EndDate();
+//		caaf.enterFirst_BriefAboutTheAffiliation(thirdAboutAffiliation);
+//		Thread.sleep(3000);
+//		caaf.clickOnAddAnotherAffiliation();
+//		Thread.sleep(3000);
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("scroll(0, 900)");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationName+"']")).getText(), firstAffiliationName);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationType+"']")).getText(), firstAffiliationType);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAboutAffiliation+"']")).getText(), firstAboutAffiliation);
+//		
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationName+"']")).getText(), secondAffiliationName);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationType+"']")).getText(), secondAffiliationType);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAboutAffiliation+"']")).getText(), secondAboutAffiliation);
+//
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationName+"']")).getText(), thirdAffiliationName);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationType+"']")).getText(), thirdAffiliationType);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAboutAffiliation+"']")).getText(), thirdAboutAffiliation);
+//		Thread.sleep(2000);
+//		caaf.clickOnRemove_ThirdAffiliation();
 
 		
 		caaf.selectMen_ResidentialAreaAvailable(menResidentialArea);
@@ -388,35 +390,35 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterClassRoomRemark(classroomRemark);
 		Thread.sleep(3000);
 		caaf.clickOn_Add_ForClassRoom();
-		Thread.sleep(3000);
-		caaf.clickOnAddClassRoom();
-		Thread.sleep(3000);
-		caaf.enterClassRoomCarpetArea(classRoomCarpetArea);
-		caaf.clickOnClassRoomEquippedwith_ALL();
-		Thread.sleep(3000);
-			caaf.clickOnSecuredElectricWire_ClassRoom();
-			Thread.sleep(3000);
-		caaf.enterClassRoomRemark(classroomRemark);
-		Thread.sleep(3000);
-		caaf.clickOn_Add_ForClassRoom();
-		Thread.sleep(3000);
-		caaf.clickOnAddClassRoom();
-		Thread.sleep(3000);
-		caaf.enterClassRoomCarpetArea(classRoomCarpetArea);
-		caaf.clickOnClassRoomEquippedwith_ALL();
-		Thread.sleep(3000);
-			caaf.clickOnSecuredElectricWire_ClassRoom();
-			Thread.sleep(3000);
-		caaf.enterClassRoomRemark(classroomRemark);
-		Thread.sleep(3000);
-		caaf.clickOn_Add_ForClassRoom();
-		Thread.sleep(3000);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_1 ']")).getText(), "CLASS_1");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_2 ']")).getText(), "CLASS_2");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_3 ']")).getText(), "CLASS_3");
-		js.executeScript("scroll(0, 500)");
-		Thread.sleep(10000);
-		caaf.clickOnThird_Remove();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddClassRoom();
+//		Thread.sleep(3000);
+//		caaf.enterClassRoomCarpetArea(classRoomCarpetArea);
+//		caaf.clickOnClassRoomEquippedwith_ALL();
+//		Thread.sleep(3000);
+//			caaf.clickOnSecuredElectricWire_ClassRoom();
+//			Thread.sleep(3000);
+//		caaf.enterClassRoomRemark(classroomRemark);
+//		Thread.sleep(3000);
+//		caaf.clickOn_Add_ForClassRoom();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddClassRoom();
+//		Thread.sleep(3000);
+//		caaf.enterClassRoomCarpetArea(classRoomCarpetArea);
+//		caaf.clickOnClassRoomEquippedwith_ALL();
+//		Thread.sleep(3000);
+//			caaf.clickOnSecuredElectricWire_ClassRoom();
+//			Thread.sleep(3000);
+//		caaf.enterClassRoomRemark(classroomRemark);
+//		Thread.sleep(3000);
+//		caaf.clickOn_Add_ForClassRoom();
+//		Thread.sleep(3000);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_1 ']")).getText(), "CLASS_1");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_2 ']")).getText(), "CLASS_2");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='CLASS_3 ']")).getText(), "CLASS_3");
+//		js.executeScript("scroll(0, 500)");
+//		Thread.sleep(10000);
+//		caaf.clickOnThird_Remove();
 		
 		
 		Thread.sleep(3000);
@@ -431,41 +433,41 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterLaboratoryRemark(laboratoryRemark);
 		Thread.sleep(3000);
 		caaf.clickOnAdd_ForLaboratory();
-		Thread.sleep(3000);
-		caaf.clickOnAddLaboratory();
-		Thread.sleep(3000);
-		caaf.enterLaboratoryOpenArea(laboratoryOpenArea);
-		caaf.enterLaboratoryCoveredArea(laboratoryCoveredArea);
-		caaf.enterLaboratoryCarpetArea(laboratoryCarpetArea);
-		caaf.selectLaboratoryType(laboratoryType);
-		caaf.clickOnLaboratoryEquippedwith_ALL();
-		Thread.sleep(3000);
-			caaf.clickOnLabboratorySecuredElectricWire();
-			Thread.sleep(3000);
-		caaf.enterLaboratoryRemark(laboratoryRemark);
-		Thread.sleep(3000);
-		caaf.clickOnAdd_ForLaboratory();
-		Thread.sleep(3000);
-		caaf.clickOnAddLaboratory();
-		Thread.sleep(3000);
-		caaf.enterLaboratoryOpenArea(laboratoryOpenArea);
-		caaf.enterLaboratoryCoveredArea(laboratoryCoveredArea);
-		caaf.enterLaboratoryCarpetArea(laboratoryCarpetArea);
-		caaf.selectLaboratoryType(laboratoryType);
-		caaf.clickOnLaboratoryEquippedwith_ALL();
-		Thread.sleep(3000);
-			caaf.clickOnLabboratorySecuredElectricWire();
-			Thread.sleep(3000);
-		caaf.enterLaboratoryRemark(laboratoryRemark);
-		Thread.sleep(3000);
-		caaf.clickOnAdd_ForLaboratory();
-		Thread.sleep(3000);
-		js.executeScript("scroll(0, 900)");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='LAB_1']")).getText(), "LAB_1");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='LAB_2']")).getText(), "LAB_2");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='LAB_3']")).getText(), "LAB_3");
-		Thread.sleep(10000);
-		caaf.clickOnFifth_Remove();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddLaboratory();
+//		Thread.sleep(3000);
+//		//caaf.enterLaboratoryOpenArea(laboratoryOpenArea);
+//		//caaf.enterLaboratoryCoveredArea(laboratoryCoveredArea);
+//		caaf.enterLaboratoryCarpetArea(laboratoryCarpetArea);
+//		caaf.selectLaboratoryType(laboratoryType);
+//		caaf.clickOnLaboratoryEquippedwith_ALL();
+//		Thread.sleep(3000);
+//			caaf.clickOnLabboratorySecuredElectricWire();
+//			Thread.sleep(3000);
+//		caaf.enterLaboratoryRemark(laboratoryRemark);
+//		Thread.sleep(3000);
+//		caaf.clickOnAdd_ForLaboratory();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddLaboratory();
+//		Thread.sleep(3000);
+//		//caaf.enterLaboratoryOpenArea(laboratoryOpenArea);
+//		//caaf.enterLaboratoryCoveredArea(laboratoryCoveredArea);
+//		caaf.enterLaboratoryCarpetArea(laboratoryCarpetArea);
+//		caaf.selectLaboratoryType(laboratoryType);
+//		caaf.clickOnLaboratoryEquippedwith_ALL();
+//		Thread.sleep(3000);
+//			caaf.clickOnLabboratorySecuredElectricWire();
+//			Thread.sleep(3000);
+//		caaf.enterLaboratoryRemark(laboratoryRemark);
+//		Thread.sleep(3000);
+//		caaf.clickOnAdd_ForLaboratory();
+//		Thread.sleep(3000);
+//		js.executeScript("scroll(0, 900)");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='LAB_1']")).getText(), "LAB_1");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='LAB_2']")).getText(), "LAB_2");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='LAB_3']")).getText(), "LAB_3");
+//		Thread.sleep(10000);
+//		caaf.clickOnFifth_Remove();
 		
 		
 		Thread.sleep(3000);
@@ -480,41 +482,41 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterHybridRemark(hybridRemark);
 		Thread.sleep(3000);
 		caaf.clickOnAdd_ForHybrid();
-		Thread.sleep(3000);
-		caaf.clickOnAddHybrid();
-		Thread.sleep(3000);
-		caaf.enterHybridOpenArea(hybridOpenArea);
-		caaf.enterHybridCoveredArea(hybridCoveredArea);
-		caaf.enterHybridCarpetArea(hybridCarpetArea);
-		caaf.selectHybridLaboratoryType(hybridLaboratoryType);
-		caaf.clickOnHybridEquippedwith_ALL();
-			Thread.sleep(3000);
-			caaf.clickOnHybrid_SecuredElectricWire();
-		Thread.sleep(3000);
-		caaf.enterHybridRemark(hybridRemark);
-		Thread.sleep(3000);
-		caaf.clickOnAdd_ForHybrid();
-		Thread.sleep(3000);
-		caaf.clickOnAddHybrid();
-		Thread.sleep(3000);
-		caaf.enterHybridOpenArea(hybridOpenArea);
-		caaf.enterHybridCoveredArea(hybridCoveredArea);
-		caaf.enterHybridCarpetArea(hybridCarpetArea);
-		caaf.selectHybridLaboratoryType(hybridLaboratoryType);
-		caaf.clickOnHybridEquippedwith_ALL();
-			Thread.sleep(3000);
-			caaf.clickOnHybrid_SecuredElectricWire();
-		Thread.sleep(3000);
-		caaf.enterHybridRemark(hybridRemark);
-		Thread.sleep(3000);
-		caaf.clickOnAdd_ForHybrid();
-		Thread.sleep(2000);
-		js.executeScript("scroll(0, 900)");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='HYBRID_1']")).getText(), "HYBRID_1");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='HYBRID_2']")).getText(), "HYBRID_2");
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='HYBRID_3']")).getText(), "HYBRID_3");
-		Thread.sleep(10000);
-		caaf.clickOnSeventh_Remove();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddHybrid();
+//		Thread.sleep(3000);
+//		//caaf.enterHybridOpenArea(hybridOpenArea);
+//		//caaf.enterHybridCoveredArea(hybridCoveredArea);
+//		caaf.enterHybridCarpetArea(hybridCarpetArea);
+//		caaf.selectHybridLaboratoryType(hybridLaboratoryType);
+//		caaf.clickOnHybridEquippedwith_ALL();
+//			Thread.sleep(3000);
+//			caaf.clickOnHybrid_SecuredElectricWire();
+//		Thread.sleep(3000);
+//		caaf.enterHybridRemark(hybridRemark);
+//		Thread.sleep(3000);
+//		caaf.clickOnAdd_ForHybrid();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddHybrid();
+//		Thread.sleep(3000);
+//		//caaf.enterHybridOpenArea(hybridOpenArea);
+//		//caaf.enterHybridCoveredArea(hybridCoveredArea);
+//		caaf.enterHybridCarpetArea(hybridCarpetArea);
+//		caaf.selectHybridLaboratoryType(hybridLaboratoryType);
+//		caaf.clickOnHybridEquippedwith_ALL();
+//			Thread.sleep(3000);
+//			caaf.clickOnHybrid_SecuredElectricWire();
+//		Thread.sleep(3000);
+//		caaf.enterHybridRemark(hybridRemark);
+//		Thread.sleep(3000);
+//		caaf.clickOnAdd_ForHybrid();
+//		Thread.sleep(2000);
+//		js.executeScript("scroll(0, 900)");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='HYBRID_1']")).getText(), "HYBRID_1");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='HYBRID_2']")).getText(), "HYBRID_2");
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='HYBRID_3']")).getText(), "HYBRID_3");
+//		Thread.sleep(10000);
+//		caaf.clickOnSeventh_Remove();
 		
 		
 		Thread.sleep(5000);
@@ -541,83 +543,83 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.selectTrainerResourceType(trainerResourceType);
 		Thread.sleep(3000);
 		caaf.clickOnAdd_ForJobRole();
-		Thread.sleep(3000);
-		caaf.clickOnAddJobRole();
-		Thread.sleep(3000);
-		caaf.selectSectorForJobRole(secondSector);
-		caaf.selectForJobRoleName(secondJobRoleName);
-		caaf.selectForTraineeToTrainerRatio(traineeToTrainerRatio);
-		caaf.selectParallelBathcesNumber(parallelBatchesNumber);
-		caaf.enterBriefAboutJobRole(jobRole);
-		caaf.selectAdditionalAreaRequiredForJobRole(additionalArea);
-		if(additionalArea.equals("Yes"))
-		{
-			caaf.enterAdditionalAreaCarpetArea(additionalCarpetArea);
-			caaf.enterAdditionalCoveredCarpetArea(coveredCarpetArea);
-			caaf.enterTrainerID(trainerID);
-		}
-		else
-		{
-			caaf.enterTrainerID(trainerID);
-		}
-		
-		caaf.selectTrainerAvailablity(trainerAvailablity);
-		caaf.selectTrainerResourceType(trainerResourceType);
-		Thread.sleep(3000);
-		caaf.clickOnAdd_ForJobRole();
-		Thread.sleep(3000);
-		caaf.clickOnAddJobRole();
-		Thread.sleep(3000);
-		caaf.selectSectorForJobRole(firstSector);
-		caaf.selectForJobRoleName(thirdJobRoleName);
-		caaf.selectForTraineeToTrainerRatio(traineeToTrainerRatio);
-		caaf.selectParallelBathcesNumber(parallelBatchesNumber);
-		caaf.enterBriefAboutJobRole(jobRole);
-		caaf.selectAdditionalAreaRequiredForJobRole(additionalArea);
-		if(additionalArea.equals("Yes"))
-		{
-			caaf.enterAdditionalAreaCarpetArea(additionalCarpetArea);
-			caaf.enterAdditionalCoveredCarpetArea(coveredCarpetArea);
-			caaf.enterTrainerID(trainerID);
-		}
-		else
-		{
-			caaf.enterTrainerID(trainerID);
-		}
-		
-		caaf.selectTrainerAvailablity(trainerAvailablity);
-		caaf.selectTrainerResourceType(trainerResourceType);
-		Thread.sleep(3000);
-		caaf.clickOnAdd_ForJobRole();
-		Thread.sleep(3000);
-		//JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("scroll(0, 900)");
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+firstJobRoleName+"'])[1]")).getText(), firstJobRoleName);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+firstSector+"'])[1]")).getText(), firstSector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+traineeToTrainerRatio+"'])[1]")).getText(), traineeToTrainerRatio);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+parallelBatchesNumber+"'])[1]")).getText(), parallelBatchesNumber);
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+secondJobRoleName+"')]")).getText(), secondJobRoleName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+secondSector+"')]")).getText(), secondSector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+traineeToTrainerRatio+"'])[2]")).getText(), traineeToTrainerRatio);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+parallelBatchesNumber+"'])[2]")).getText(), parallelBatchesNumber);
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdJobRoleName+"']")).getText(), thirdJobRoleName);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+firstSector+"'])[2]")).getText(), firstSector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+traineeToTrainerRatio+"'])[3]")).getText(), traineeToTrainerRatio);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+parallelBatchesNumber+"'])[3]")).getText(), parallelBatchesNumber);
-		
-		Thread.sleep(10000);
-		caaf.clickOnNinth_Remove();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddJobRole();
+//		Thread.sleep(3000);
+//		caaf.selectSectorForJobRole(secondSector);
+//		caaf.selectForJobRoleName(secondJobRoleName);
+//		caaf.selectForTraineeToTrainerRatio(traineeToTrainerRatio);
+//		caaf.selectParallelBathcesNumber(parallelBatchesNumber);
+//		caaf.enterBriefAboutJobRole(jobRole);
+//		caaf.selectAdditionalAreaRequiredForJobRole(additionalArea);
+//		if(additionalArea.equals("Yes"))
+//		{
+//			caaf.enterAdditionalAreaCarpetArea(additionalCarpetArea);
+//			caaf.enterAdditionalCoveredCarpetArea(coveredCarpetArea);
+//			caaf.enterTrainerID(trainerID);
+//		}
+//		else
+//		{
+//			caaf.enterTrainerID(trainerID);
+//		}
+//		
+//		caaf.selectTrainerAvailablity(trainerAvailablity);
+//		caaf.selectTrainerResourceType(trainerResourceType);
+//		Thread.sleep(3000);
+//		caaf.clickOnAdd_ForJobRole();
+//		Thread.sleep(3000);
+//		caaf.clickOnAddJobRole();
+//		Thread.sleep(3000);
+//		caaf.selectSectorForJobRole(firstSector);
+//		caaf.selectForJobRoleName(thirdJobRoleName);
+//		caaf.selectForTraineeToTrainerRatio(traineeToTrainerRatio);
+//		caaf.selectParallelBathcesNumber(parallelBatchesNumber);
+//		caaf.enterBriefAboutJobRole(jobRole);
+//		caaf.selectAdditionalAreaRequiredForJobRole(additionalArea);
+//		if(additionalArea.equals("Yes"))
+//		{
+//			caaf.enterAdditionalAreaCarpetArea(additionalCarpetArea);
+//			caaf.enterAdditionalCoveredCarpetArea(coveredCarpetArea);
+//			caaf.enterTrainerID(trainerID);
+//		}
+//		else
+//		{
+//			caaf.enterTrainerID(trainerID);
+//		}
+//		
+//		caaf.selectTrainerAvailablity(trainerAvailablity);
+//		caaf.selectTrainerResourceType(trainerResourceType);
+//		Thread.sleep(3000);
+//		caaf.clickOnAdd_ForJobRole();
+//		Thread.sleep(3000);
+//		//JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("scroll(0, 900)");
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+firstJobRoleName+"'])[1]")).getText(), firstJobRoleName);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+firstSector+"'])[1]")).getText(), firstSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+traineeToTrainerRatio+"'])[1]")).getText(), traineeToTrainerRatio);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+parallelBatchesNumber+"'])[1]")).getText(), parallelBatchesNumber);
+//		
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+secondJobRoleName+"')]")).getText(), secondJobRoleName);
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+secondSector+"')]")).getText(), secondSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+traineeToTrainerRatio+"'])[2]")).getText(), traineeToTrainerRatio);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+parallelBatchesNumber+"'])[2]")).getText(), parallelBatchesNumber);
+//		
+//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdJobRoleName+"']")).getText(), thirdJobRoleName);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+firstSector+"'])[2]")).getText(), firstSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+traineeToTrainerRatio+"'])[3]")).getText(), traineeToTrainerRatio);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//td[text()='"+parallelBatchesNumber+"'])[3]")).getText(), parallelBatchesNumber);
+//		
+//		Thread.sleep(10000);
+//		caaf.clickOnNinth_Remove();
 		
 		Thread.sleep(3000);
 		caaf.select_First_AssociatedClassroom(first_Classroom);
 		caaf.select_First_AssociatedLaboratory(first_Laboratory);
 		caaf.select_First_AssociatedHybrid(first_Hybrid);
-		Thread.sleep(3000);
-		caaf.select_Second_AssociatedClassroom(second_Classroom);
-		caaf.select_Second_AssociatedLaboratory(second_Laboratory);
-		caaf.select_Second_AssociatedHybrid(second_Hybrid);
+//		Thread.sleep(3000);
+//		caaf.select_Second_AssociatedClassroom(second_Classroom);
+//		caaf.select_Second_AssociatedLaboratory(second_Laboratory);
+//		caaf.select_Second_AssociatedHybrid(second_Hybrid);
 		
 		if((firstJobRoleName.equals("AGRICULTURE")) && secondJobRoleName.equals("APPAREL"))
 		{
@@ -627,10 +629,10 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			caaf.enter_Second_Remark_ForEquipment(secondRemark);
 			caaf.enter_Third_AvailableQuantityForEquipment(thirdQuantity);
 			caaf.enter_Third_Remark_ForEquipment(thirdRemark);
-			caaf.enter_Fourth_AvailableQuantityForEquipment(fourthQuantity);
-			caaf.enter_Fourth_Remark_ForEquipment(fourthRemark);
-			caaf.enter_Fifth_AvailableQuantityForEquipment(fifthQuantity);
-			caaf.enter_Fifth_Remark_ForEquipment(fifthRemark);
+//			caaf.enter_Fourth_AvailableQuantityForEquipment(fourthQuantity);
+//			caaf.enter_Fourth_Remark_ForEquipment(fourthRemark);
+//			caaf.enter_Fifth_AvailableQuantityForEquipment(fifthQuantity);
+//			caaf.enter_Fifth_Remark_ForEquipment(fifthRemark);
 			Thread.sleep(5000);
 			caaf.clickOnSaveAndNext();
 		}
@@ -639,6 +641,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		{
 			caaf.enter_First_AvailableQuantityForEquipment(firstQuantity);
 			caaf.enter_First_Remark_ForEquipment(firstRemark);	
+			Thread.sleep(5000);
+			caaf.clickOnSaveAndNext();
 		}
 		
 		else if(firstJobRoleName.equals("None"))
@@ -750,7 +754,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_BillPaymentSC15TC03");
 	}
 	
-	@Test(dataProvider="tc_CAAF_BillPayment",enabled=false)
+	@Test(dataProvider="tc_CAAF_BillPayment")//,enabled=false)
 	public void tc_CAAF_MobileUploadTC_03(String sno, String tcUsername, String tcPassword, String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName) throws Exception
 	{
         appDriver = CreateAppiumDriver.getDriverInstance();
@@ -1010,7 +1014,10 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.clickOnSaveAndNext();
 		Thread.sleep(3000);
 		caaf.clickOnSaveAndContinueToPayment();
+		Thread.sleep(3000);
+		caaf.clickOnOK();
 		TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
+		Thread.sleep(3000);
 		tcbi.enterCity(city);
 		tcbi.selectCountry(Country);
 		Thread.sleep(3000);
@@ -1066,8 +1073,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04");
 	}
 	
-	@Test(dataProvider="tcApproval", enabled=false)
-	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String tcName_ReviewComments, String tcType_ReviewComments, String centreDirector_ReviewComments, String address_ReviewComments, String area_ReviewComments, String centreAtGroundFloor_ReviewComments, String buildingStatus_ReviewComments, String buildingType_ReviewComments, String transport_ReviewComments, String nearestTransport_ReviewComments, String buildingFrontFace_ReviewComments, String approachRoad_ReviewComments, String buildingPreviousState_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String floorArea_JobRole_ReviewComments, String coveredArea_JobRole_ReviewComments, String classroomArea_ReviewComments, String classroomFacilities_ReviewComments, String labOpenArea_ReviewComments, String labCoverdArea_ReviewComments, String labArea_ReviewComments, String labType_ReviewComments, String labFacilities_ReviewComments, String equipmentDetails_ReviewComments, String trainer_ReviewComments, String firstCentreArea_ReviewComments, String secondCentreArea_ReviewComments, String thirdCentreArea_ReviewComments, String fourthCentreArea_ReviewComments, String fifthCentreArea_ReviewComments, String firstCentreStaff_ReviewComments, String secondCentreStaff_ReviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String ssc_Username) throws Exception
+	@Test(dataProvider="tcApproval")//, enabled=false)
+	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String tcName_ReviewComments, String tcType_ReviewComments, String centreDirector_ReviewComments, String address_ReviewComments, String area_ReviewComments, String centreAtGroundFloor_ReviewComments, String buildingStatus_ReviewComments, String buildingType_ReviewComments, String transport_ReviewComments, String nearestTransport_ReviewComments, String buildingFrontFace_ReviewComments, String approachRoad_ReviewComments, String buildingPreviousState_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String floorArea_JobRole_ReviewComments, String coveredArea_JobRole_ReviewComments, String classroomArea_ReviewComments, String classroomFacilities_ReviewComments, String labOpenArea_ReviewComments, String labCoverdArea_ReviewComments, String labArea_ReviewComments, String labType_ReviewComments, String labFacilities_ReviewComments, String hybridArea_ReviewComments, String hybridType_ReviewComments, String hybridFacilities_ReviewComments, String equipmentDetails_ReviewComments, String trainer_ReviewComments, String firstCentreArea_ReviewComments, String secondCentreArea_ReviewComments, String thirdCentreArea_ReviewComments, String fourthCentreArea_ReviewComments, String fifthCentreArea_ReviewComments, String firstCentreStaff_ReviewComments, String secondCentreStaff_ReviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String ssc_Username) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1158,7 +1165,10 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				datc.clickOnAction();
 				datc.clickOnViewQuickDetails();
 				Thread.sleep(3000);
-				datc.clickOnReview();
+				//datc.clickOnReview();
+				datc.clickOnAction();
+				Thread.sleep(3000);
+				datc.clickOnTakeAction();
 				
 				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
 				Thread.sleep(3000);
@@ -1206,13 +1216,16 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
 				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
 				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_FirstView_SecondImage();
 				datr.clickOn_SecondView_SecondImage();
 				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
+				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+				Thread.sleep(3000);
+				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_SSCCertificate_Image();
 				datr.clickOn_HighestQualification_Image();
@@ -1221,36 +1234,39 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				Thread.sleep(10000);
 				datr.clickOnNext_ForJobRole();
 				
-				Thread.sleep(3000);
-				datr.clickOn_Second_Action();
-				datr.clickOn_Second_TakeAction();
-				
-				Thread.sleep(3000);
-				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FirstImage();
-				datr.clickOn_SecondView_FirstImage();
-				Thread.sleep(3000);
-				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_SecondImage();
-				datr.clickOn_SecondView_SecondImage();
-				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_SSCCertificate_Image();
-				datr.clickOn_HighestQualification_Image();
-				datr.clickOn_NIESBUD_Image();
-				datr.clickOn_IndustrialExperience_Image();
-				Thread.sleep(10000);
-				datr.clickOnNext_ForJobRole();
+//				Thread.sleep(3000);
+//				datr.clickOn_Second_Action();
+//				datr.clickOn_Second_TakeAction();
+//				
+//				Thread.sleep(3000);
+//				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
+//				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
+//				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
+//				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_FirstImage();
+//				datr.clickOn_SecondView_FirstImage();
+//				Thread.sleep(3000);
+//				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
+//				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
+//				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_SecondImage();
+//				datr.clickOn_SecondView_SecondImage();
+//				Thread.sleep(3000);
+//				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+//				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+//				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+//				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_SSCCertificate_Image();
+//				datr.clickOn_HighestQualification_Image();
+//				datr.clickOn_NIESBUD_Image();
+//				datr.clickOn_IndustrialExperience_Image();
+//				Thread.sleep(10000);
+//				datr.clickOnNext_ForJobRole();
 				
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Third();
@@ -1357,13 +1373,16 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
 				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
 				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_FirstView_SecondImage();
 				datr.clickOn_SecondView_SecondImage();
 				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
+				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+				Thread.sleep(3000);
+				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_SSCCertificate_Image();
 				datr.clickOn_HighestQualification_Image();
@@ -1372,36 +1391,39 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				Thread.sleep(10000);
 				datr.clickOnNext_ForJobRole();
 				
-				Thread.sleep(3000);
-				datr.clickOn_Second_Action();
-				datr.clickOn_Second_TakeAction();
-				
-				Thread.sleep(3000);
-				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FirstImage();
-				datr.clickOn_SecondView_FirstImage();
-				Thread.sleep(3000);
-				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_SecondImage();
-				datr.clickOn_SecondView_SecondImage();
-				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_SSCCertificate_Image();
-				datr.clickOn_HighestQualification_Image();
-				datr.clickOn_NIESBUD_Image();
-				datr.clickOn_IndustrialExperience_Image();
-				Thread.sleep(10000);
-				datr.clickOnNext_ForJobRole();
+//				Thread.sleep(3000);
+//				datr.clickOn_Second_Action();
+//				datr.clickOn_Second_TakeAction();
+//				
+//				Thread.sleep(3000);
+//				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
+//				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
+//				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
+//				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_FirstImage();
+//				datr.clickOn_SecondView_FirstImage();
+//				Thread.sleep(3000);
+//				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
+//				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
+//				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_SecondImage();
+//				datr.clickOn_SecondView_SecondImage();
+//				Thread.sleep(3000);
+//				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+//				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+//				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+//				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_SSCCertificate_Image();
+//				datr.clickOn_HighestQualification_Image();
+//				datr.clickOn_NIESBUD_Image();
+//				datr.clickOn_IndustrialExperience_Image();
+//				Thread.sleep(10000);
+//				datr.clickOnNext_ForJobRole();
 				
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Third();
@@ -1483,9 +1505,9 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			{
 				Thread.sleep(3000);
 				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign To DA')]")).click();
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 				pmir.selectAssignTo_DA(daUsername);
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 				pmir.clickOnAssign();
 				pmir.enterForSearch(tc_ID);
 				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='In-Process DA']")).getText(), "In-Process DA");
@@ -1560,13 +1582,16 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
 				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
 				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_FirstView_SecondImage();
 				datr.clickOn_SecondView_SecondImage();
 				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
+				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+				Thread.sleep(3000);
+				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_SSCCertificate_Image();
 				datr.clickOn_HighestQualification_Image();
@@ -1575,36 +1600,39 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				Thread.sleep(10000);
 				datr.clickOnNext_ForJobRole();
 				
-				Thread.sleep(3000);
-				datr.clickOn_Second_Action();
-				datr.clickOn_Second_TakeAction();
-				
-				Thread.sleep(3000);
-				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FirstImage();
-				datr.clickOn_SecondView_FirstImage();
-				Thread.sleep(3000);
-				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_SecondImage();
-				datr.clickOn_SecondView_SecondImage();
-				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_SSCCertificate_Image();
-				datr.clickOn_HighestQualification_Image();
-				datr.clickOn_NIESBUD_Image();
-				datr.clickOn_IndustrialExperience_Image();
-				Thread.sleep(10000);
-				datr.clickOnNext_ForJobRole();
+//				Thread.sleep(3000);
+//				datr.clickOn_Second_Action();
+//				datr.clickOn_Second_TakeAction();
+//				
+//				Thread.sleep(3000);
+//				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
+//				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
+//				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
+//				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_FirstImage();
+//				datr.clickOn_SecondView_FirstImage();
+//				Thread.sleep(3000);
+//				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
+//				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
+//				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_SecondImage();
+//				datr.clickOn_SecondView_SecondImage();
+//				Thread.sleep(3000);
+//				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+//				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+//				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+//				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_SSCCertificate_Image();
+//				datr.clickOn_HighestQualification_Image();
+//				datr.clickOn_NIESBUD_Image();
+//				datr.clickOn_IndustrialExperience_Image();
+//				Thread.sleep(10000);
+//				datr.clickOnNext_ForJobRole();
 				
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Third();
@@ -1711,13 +1739,16 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
 				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
 				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_FirstView_SecondImage();
 				datr.clickOn_SecondView_SecondImage();
 				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
+				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+				Thread.sleep(3000);
+				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
 				Thread.sleep(3000);
 				datr.clickOn_SSCCertificate_Image();
 				datr.clickOn_HighestQualification_Image();
@@ -1726,36 +1757,39 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				Thread.sleep(10000);
 				datr.clickOnNext_ForJobRole();
 				
-				Thread.sleep(3000);
-				datr.clickOn_Second_Action();
-				datr.clickOn_Second_TakeAction();
-				
-				Thread.sleep(3000);
-				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FirstImage();
-				datr.clickOn_SecondView_FirstImage();
-				Thread.sleep(3000);
-				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_SecondImage();
-				datr.clickOn_SecondView_SecondImage();
-				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_SSCCertificate_Image();
-				datr.clickOn_HighestQualification_Image();
-				datr.clickOn_NIESBUD_Image();
-				datr.clickOn_IndustrialExperience_Image();
-				Thread.sleep(10000);
-				datr.clickOnNext_ForJobRole();
+//				Thread.sleep(3000);
+//				datr.clickOn_Second_Action();
+//				datr.clickOn_Second_TakeAction();
+//				
+//				Thread.sleep(3000);
+//				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
+//				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
+//				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
+//				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_FirstImage();
+//				datr.clickOn_SecondView_FirstImage();
+//				Thread.sleep(3000);
+//				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
+//				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
+//				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_FirstView_SecondImage();
+//				datr.clickOn_SecondView_SecondImage();
+//				Thread.sleep(3000);
+//				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+//				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+//				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+//				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
+//				Thread.sleep(3000);
+//				datr.clickOn_SSCCertificate_Image();
+//				datr.clickOn_HighestQualification_Image();
+//				datr.clickOn_NIESBUD_Image();
+//				datr.clickOn_IndustrialExperience_Image();
+//				Thread.sleep(10000);
+//				datr.clickOnNext_ForJobRole();
 				
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Third();
@@ -1825,11 +1859,11 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		tcd.clickOnMyCAAFSubmit();
 		TC_MySchemesPage tcm = new TC_MySchemesPage(driver);
 		Thread.sleep(3000);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//span[text()='"+sector+"']")).getText(), sector);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//b")).getText(), "Deemed Ready");
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[text()='"+sector+"']")).getText(), sector);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Deemed Ready");
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-		driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//a[contains(text(),'Apply for Scheme')]")).click();
+		driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[contains(text(),'Apply for Scheme')]")).click();
 		Thread.sleep(3000);
 		tcm.selectScheme_ForJobRoleName(scheme);
 		tcm.clickOnBrowseFileForScheme();
@@ -1842,7 +1876,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(3000);
 		tcm.clickOnOK();
 		//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//span[text()='Fee Based']")).getText(), scheme);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//b")).getText(), "Scheme Approval Pending");
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approval Pending");
 		Thread.sleep(3000);
 		Thread.sleep(3000);
 		PostLoginPage plp = new PostLoginPage(driver);
@@ -1896,7 +1930,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Thread.sleep(8000);
 			tcd.clickOnMyCAAFSubmit();
 			Thread.sleep(5000);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//b")).getText(), "Scheme Approved");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approved");
 			Thread.sleep(3000);
 			tcm.clickOnSubmitForInspection();
 			
@@ -1967,8 +2001,10 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			iatc.selectForAssign_CentreInspector(ci_Username);
 			iatc.enterForInspectionDate();
 			Thread.sleep(3000);
+			iatc.clickOnSpocName();
+			Thread.sleep(3000);
 			inspectionDate = driver.findElement(By.xpath("//input[@formcontrolname='inspectionDate']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC03", Integer.parseInt(sno), 69, inspectionDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 72, inspectionDate);
 			Thread.sleep(3000);
 			iatc.clickOnAssign_ForCI();
 			Thread.sleep(3000);
@@ -1981,6 +2017,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			tcd.clickOnMyCAAFSubmit();
 			Thread.sleep(8000);
 			tcm.clickOnAcceptInspectionDate();
+			Thread.sleep(3000);
 			Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", "").replace("-", "/"), inspectionDate);
 			Thread.sleep(3000);
 			tcm.clickOnAcceptProposedInspectionDate();
@@ -1988,6 +2025,31 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			tcm.clickOnSubmit_ForInspectionDate();
 			Thread.sleep(3000);
 			tcm.clickOnOK();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+			
+			
+			//CI Mobile app
+			appDriver = CreateAppiumDriver.getDriverInstance();
+			
+			LoginScreen ls = new LoginScreen(appDriver);
+			ls.getEmailTextbox().sendKeys(ci_Username);
+			ls.getPasswordTextbox().sendKeys(password);
+			ls.getLoginButton().click();
+			
+			CI_MyDashboardScreen ci_dash = new CI_MyDashboardScreen(appDriver);
+			MobileHandlers.scrollScreen(appDriver);
+			MobileHandlers.scrollScreen(appDriver);
+			ci_dash.getTCIDButton().click();
+			
+			CI_StartInspectionScreen ci_sis = new CI_StartInspectionScreen(appDriver);
+			MobileHandlers.scrollScreen(appDriver);
+			ci_sis.getStartInspectionButton().click();
+			
+			CI_SkillRootScreen ci_srs = new CI_SkillRootScreen(appDriver);
+			ci_srs.getGeneralDetailsButton().click();
+			
 			
 			lp.clickLogin();
 			elp.performlogin(qc_Username, password);
@@ -2047,13 +2109,16 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
 			datr.select_Thirteen_ReviewComments(labType_ReviewComments);
 			datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-			//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
 			Thread.sleep(3000);
 			datr.clickOn_FirstView_SecondImage();
 			datr.clickOn_SecondView_SecondImage();
 			Thread.sleep(3000);
-			datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-			datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
+			datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+			datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+			datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+			Thread.sleep(3000);
+			datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+			datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
 			Thread.sleep(3000);
 			datr.clickOn_SSCCertificate_Image();
 			datr.clickOn_HighestQualification_Image();
@@ -2062,36 +2127,39 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Thread.sleep(10000);
 			datr.clickOnNext_ForJobRole();
 			
-			Thread.sleep(3000);
-			datr.clickOn_Second_Action();
-			datr.clickOn_Second_TakeAction();
-			
-			Thread.sleep(3000);
-			datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-			datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-			datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-			datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOn_FirstView_FirstImage();
-			datr.clickOn_SecondView_FirstImage();
-			Thread.sleep(3000);
-			datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-			datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-			datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-			//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOn_FirstView_SecondImage();
-			datr.clickOn_SecondView_SecondImage();
-			Thread.sleep(3000);
-			datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-			datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOn_SSCCertificate_Image();
-			datr.clickOn_HighestQualification_Image();
-			datr.clickOn_NIESBUD_Image();
-			datr.clickOn_IndustrialExperience_Image();
-			Thread.sleep(10000);
-			datr.clickOnNext_ForJobRole();
+//			Thread.sleep(3000);
+//			datr.clickOn_Second_Action();
+//			datr.clickOn_Second_TakeAction();
+//			
+//			Thread.sleep(3000);
+//			datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
+//			datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
+//			datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
+//			datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.clickOn_FirstView_FirstImage();
+//			datr.clickOn_SecondView_FirstImage();
+//			Thread.sleep(3000);
+//			datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
+//			datr.select_Thirteen_ReviewComments(labType_ReviewComments);
+//			datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.clickOn_FirstView_SecondImage();
+//			datr.clickOn_SecondView_SecondImage();
+//			Thread.sleep(3000);
+//			datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+//			datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+//			datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+//			datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.clickOn_SSCCertificate_Image();
+//			datr.clickOn_HighestQualification_Image();
+//			datr.clickOn_NIESBUD_Image();
+//			datr.clickOn_IndustrialExperience_Image();
+//			Thread.sleep(10000);
+//			datr.clickOnNext_ForJobRole();
 			
 			Thread.sleep(3000);
 			datr.clickOnSaveAndNext_Third();
@@ -2157,7 +2225,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Thread.sleep(8000);
 			tcd.clickOnMyCAAFSubmit();
 			Thread.sleep(5000);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+jobRoleName+" (AGR/Q0239)']]]//b")).getText(), "Scheme Approved");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approved");
 			Thread.sleep(3000);
 			tcm.clickOnSubmitForInspection();
 			
@@ -2230,7 +2298,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			pmir.enterForInspectionDate();
 			Thread.sleep(3000);
 			inspectionDate = driver.findElement(By.xpath("//input[@formcontrolname='inspectionDate']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC03", Integer.parseInt(sno), 69, inspectionDate);
+			ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 72, inspectionDate);
 			Thread.sleep(3000);
 			pmir.clickOnAssign_ForCI();
 			Thread.sleep(3000);
@@ -2252,6 +2320,9 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			tcm.clickOnSubmit_ForInspectionDate();
 			Thread.sleep(3000);
 			tcm.clickOnOK();
+			
+			//CI Mobileapp
+			
 			
 			lp.clickLogin();
 			elp.performlogin(qc_Username, password);
@@ -2312,13 +2383,16 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
 			datr.select_Thirteen_ReviewComments(labType_ReviewComments);
 			datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-			//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
 			Thread.sleep(3000);
 			datr.clickOn_FirstView_SecondImage();
 			datr.clickOn_SecondView_SecondImage();
 			Thread.sleep(3000);
-			datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-			datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
+			datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+			datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+			datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+			Thread.sleep(3000);
+			datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+			datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
 			Thread.sleep(3000);
 			datr.clickOn_SSCCertificate_Image();
 			datr.clickOn_HighestQualification_Image();
@@ -2327,36 +2401,39 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Thread.sleep(10000);
 			datr.clickOnNext_ForJobRole();
 			
-			Thread.sleep(3000);
-			datr.clickOn_Second_Action();
-			datr.clickOn_Second_TakeAction();
-			
-			Thread.sleep(3000);
-			datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-			datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-			datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-			datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOn_FirstView_FirstImage();
-			datr.clickOn_SecondView_FirstImage();
-			Thread.sleep(3000);
-			datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-			datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-			datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-			//datr.select_Sixteen_ReviewComments(labFacilities_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOn_FirstView_SecondImage();
-			datr.clickOn_SecondView_SecondImage();
-			Thread.sleep(3000);
-			datr.select_Fifteen_ReviewComments(equipmentDetails_ReviewComments);
-			datr.select_Sixteen_ReviewComments(trainer_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOn_SSCCertificate_Image();
-			datr.clickOn_HighestQualification_Image();
-			datr.clickOn_NIESBUD_Image();
-			datr.clickOn_IndustrialExperience_Image();
-			Thread.sleep(10000);
-			datr.clickOnNext_ForJobRole();
+//			Thread.sleep(3000);
+//			datr.clickOn_Second_Action();
+//			datr.clickOn_Second_TakeAction();
+//			
+//			Thread.sleep(3000);
+//			datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
+//			datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
+//			datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
+//			datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.clickOn_FirstView_FirstImage();
+//			datr.clickOn_SecondView_FirstImage();
+//			Thread.sleep(3000);
+//			datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
+//			datr.select_Thirteen_ReviewComments(labType_ReviewComments);
+//			datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.clickOn_FirstView_SecondImage();
+//			datr.clickOn_SecondView_SecondImage();
+//			Thread.sleep(3000);
+//			datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
+//			datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
+//			datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
+//			datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
+//			Thread.sleep(3000);
+//			datr.clickOn_SSCCertificate_Image();
+//			datr.clickOn_HighestQualification_Image();
+//			datr.clickOn_NIESBUD_Image();
+//			datr.clickOn_IndustrialExperience_Image();
+//			Thread.sleep(10000);
+//			datr.clickOnNext_ForJobRole();
 			
 			Thread.sleep(3000);
 			datr.clickOnSaveAndNext_Third();
@@ -2431,6 +2508,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//td[text()='New Request']")).getText(), "New Request");
 		driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a")).click();
 		driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[text()='Action Affilations']")).click();
+		
 		
 		tcID = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 1);
 		

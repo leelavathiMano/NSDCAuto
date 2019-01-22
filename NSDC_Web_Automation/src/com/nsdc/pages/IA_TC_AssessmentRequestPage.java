@@ -30,17 +30,19 @@ public class IA_TC_AssessmentRequestPage
 	private WebElement deSelectAllButton;
 	@FindBy(xpath="(//button[text()='Take Action'])[2]")
 	private WebElement takeActionButton;
-	@FindBy(xpath="(//select[@id='exampleSelect1'])[2]")
+	@FindBy(xpath="(//select[@formcontrolname='da'])[2]")
 	private WebElement assignTo_DA_DropDownList;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[4]")
 	private WebElement assignButton;
-	@FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Cancel')])[7]")
 	private WebElement cancelButton;
 	@FindBy(xpath="//select[@formcontrolname='centreInspector']")
 	private WebElement assignTo_CentreInspector_DropDownList;
 	@FindBy(xpath="//input[@formcontrolname='inspectionDate']")
 	private WebElement InspectionDateTextbox;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[6]")
+	@FindBy(xpath="(//label[contains(text(),'SPOC Name')])[5]")
+	private WebElement spocNameTextbox;
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[9]")
 	private WebElement assign_ForCIButton;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[6]")
 	private WebElement cancel_ForCIButton;
@@ -122,8 +124,13 @@ public class IA_TC_AssessmentRequestPage
 	
 	public void enterForInspectionDate()
 	{
-		InspectionDateTextbox.clear();
+		//InspectionDateTextbox.clear();
 		InspectionDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
+	}
+	
+	public void clickOnSpocName()
+	{
+		spocNameTextbox.click();
 	}
 	
 	public void clickOnAssign_ForCI()
