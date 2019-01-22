@@ -1,7 +1,6 @@
 package com.nsdc.regressionTest;
 
 import org.testng.annotations.Test;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -602,7 +601,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+training_Centre_Registration_Process_Driven_By+"')]")).getText());
 			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+registration_Fee+"')])[1]")).getText());
 			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Training_Partner_Or_PIA+"')]")).getText());
-			String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
+			String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 52);
 			System.out.println(str1);
 			String schemeRegistrationFee;
 			schemeRegistrationFee = str1.toLowerCase();
@@ -611,7 +610,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText()+" "+schemeRegistrationFee );
 			Assert.assertEquals(schemeRegistrationFee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText());   
 			Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+scheme_Registration_Amount+"')])[2]")).getText());
-			String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
+			String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", Integer.parseInt(serialNum), 54);
 			System.out.println(str2);
 			String additionalDocumentsRequired;
 			additionalDocumentsRequired = str2.toLowerCase();
@@ -622,7 +621,8 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			Assert.assertEquals(additionalDocumentsRequired, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText());
 			Select selectedtargetAllocationRequired=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
 			
-			if(target_Allocation_Required.equals("Yes")) {
+			if(target_Allocation_Required.equals("Yes")) 
+			{
 				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText()+" "+ target_Allocation_Required);
 				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
 				Select selectedtargetAllocationProhibitionFor=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
@@ -631,7 +631,8 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 				Assert.assertEquals(selectedtargetAllocatedAtLevel.getFirstSelectedOption().getText(), target_Allocated_At_Level);
 			   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
 			}
-			else if(target_Allocation_Required.equals("No")) {
+			else if(target_Allocation_Required.equals("No"))
+			{
 				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText()+" "+ target_Allocation_Required);
 				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
 			}
@@ -642,8 +643,8 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			Thread.sleep(5000);
 			Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
 			Thread.sleep(5000);
-//			   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
-//			   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
+//			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
+//			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
 			view_Schemes_Details.clickOnNext3();
 			Thread.sleep(4000);
 			view_Schemes_Details.clickOnSubmit();
@@ -754,7 +755,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+training_Centre_Registration_Process_Driven_By+"')]")).getText());
 			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+registration_Fee+"')])[1]")).getText());
 			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Training_Partner_Or_PIA+"')]")).getText());
-			String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
+			String str1=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner",  Integer.parseInt(serialNum), 52);
 			System.out.println(str1);
 			String schemeRegistrationFee;
 			schemeRegistrationFee = str1.toLowerCase();
@@ -763,7 +764,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText()+" "+schemeRegistrationFee );
 			Assert.assertEquals(schemeRegistrationFee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee+"')])[1]")).getText());   
 			Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+scheme_Registration_Amount+"')])[2]")).getText());
-			String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
+			String str2=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner",  Integer.parseInt(serialNum), 54);
 			System.out.println(str2);
 			String additionalDocumentsRequired;
 			additionalDocumentsRequired = str2.toLowerCase();
@@ -772,27 +773,30 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText()+" "+additionalDocumentsRequired );
 			Assert.assertEquals(additionalDocumentsRequired, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired+"')])[2]")).getText());
 			Select selectedtargetAllocationRequired=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
-			if(target_Allocation_Required.equals("Yes")) {
-				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
+			if(target_Allocation_Required.equals("Yes")) 
+			{
+			    System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
 				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
 				Select selectedtargetAllocationProhibitionFor=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
 				Assert.assertEquals(selectedtargetAllocationProhibitionFor.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
 				Select selectedtargetAllocatedAtLevel=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
 				Assert.assertEquals(selectedtargetAllocatedAtLevel.getFirstSelectedOption().getText(), target_Allocated_At_Level);
 			}
-			else if(target_Allocation_Required.equals("No")) {
+			else if(target_Allocation_Required.equals("No")) 
+			{
 				System.out.println(selectedtargetAllocationRequired.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
 				Assert.assertEquals(selectedtargetAllocationRequired.getFirstSelectedOption().getText(), target_Allocation_Required);
 			}
-						   		   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
-						   		   approveOrRejectSchemes.clickOnNext2();
-						   		   Thread.sleep(5000);
-						   		   Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
-						   		   Thread.sleep(5000);
-						   		   Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
-						   		   Thread.sleep(5000);
-//						   		   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
-//						   		   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
+			 //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
+	   		 approveOrRejectSchemes.clickOnNext2();
+	   		 Thread.sleep(5000);
+	   		 Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
+	   		 Thread.sleep(5000);
+	   		 Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
+	   		 Thread.sleep(5000);
+//	   		 Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
+//	   		 Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
+						   		  
 			approveOrRejectSchemes.clickOnNext3();
 			Thread.sleep(4000);
 			approveOrRejectSchemes.clickOnApprove();
@@ -907,7 +911,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			Assert.assertEquals(training_Centre_Registration_Process_Driven_By, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+training_Centre_Registration_Process_Driven_By+"')]")).getText());
 			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+registration_Fee+"')])[1]")).getText());
 			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'"+type_Of_Training_Partner_Or_PIA+"')]")).getText());
-			String str3=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 52);
+			String str3=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner",  Integer.parseInt(serialNum), 52);
 			System.out.println(str3);
 			String schemeRegistrationFee1;
 			schemeRegistrationFee1 = str3.toLowerCase();
@@ -916,7 +920,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee1+"')])[1]")).getText()+" "+schemeRegistrationFee1 );
 			Assert.assertEquals(schemeRegistrationFee1, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+schemeRegistrationFee1+"')])[1]")).getText());   
 			Assert.assertEquals(scheme_Registration_Amount, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+scheme_Registration_Amount+"')])[2]")).getText());
-			String str4=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner", 1, 54);
+			String str4=ReadWriteData.getData("./TestData/Workflow/SchemeAdmin-Workflow.xls", "AddingBusinessOwner",  Integer.parseInt(serialNum), 54);
 			System.out.println(str4);
 			String additionalDocumentsRequired1;
 			additionalDocumentsRequired1 = str4.toLowerCase();
@@ -925,28 +929,31 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			System.out.println(driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired1+"')])[2]")).getText()+" "+additionalDocumentsRequired1);
 			Assert.assertEquals(additionalDocumentsRequired1, driver.findElement(By.xpath("(//tbody/tr/td[contains(text(),'"+additionalDocumentsRequired1+"')])[2]")).getText());
 			Select selectedtargetAllocationRequired1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect1']")));
-			if(target_Allocation_Required.equals("Yes")) {
+			
+			if(target_Allocation_Required.equals("Yes"))
+			{
 				System.out.println(selectedtargetAllocationRequired1.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
 				Assert.assertEquals(selectedtargetAllocationRequired1.getFirstSelectedOption().getText(), target_Allocation_Required);
 				Select selectedtargetAllocationProhibitionFor1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect3']")));
 				Assert.assertEquals(selectedtargetAllocationProhibitionFor1.getFirstSelectedOption().getText(), target_Allocation_Prohibition_For);
 				Select selectedtargetAllocatedAtLevel1=new Select(driver.findElement(By.xpath("//select[@id='exampleSelect4']")));
 				Assert.assertEquals(selectedtargetAllocatedAtLevel1.getFirstSelectedOption().getText(), target_Allocated_At_Level);
-						   //Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
-						}
-						else if(target_Allocation_Required.equals("No")) {
-							System.out.println(selectedtargetAllocationRequired1.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
-							Assert.assertEquals(selectedtargetAllocationRequired1.getFirstSelectedOption().getText(), target_Allocation_Required);
-						}
+				//Assert.assertEquals(select_District, driver.findElement(By.xpath("//select[@title='Select Caste']")).getText());
+			}
+			else if(target_Allocation_Required.equals("No"))
+			{
+				System.out.println(selectedtargetAllocationRequired1.getFirstSelectedOption().getText() +" "+target_Allocation_Required);
+				Assert.assertEquals(selectedtargetAllocationRequired1.getFirstSelectedOption().getText(), target_Allocation_Required);
+			}
 						
-						bo_approveOrRejectSchemes.clickOnNext2();
-						Thread.sleep(5000);
-						Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
-						Thread.sleep(5000);
-						Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
-						Thread.sleep(5000);
-//						   		   Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
-//						   		   Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
+			bo_approveOrRejectSchemes.clickOnNext2();
+			Thread.sleep(5000);
+			Assert.assertEquals(location_Specificity, driver.findElement(By.xpath("//tr/td[contains(text(),'ANDAMAN AND NICOBAR ISLANDS')]")).getText());
+			Thread.sleep(5000);
+			Assert.assertEquals(district, driver.findElement(By.xpath("//tr/td/span[contains(text(),' NICOBARS')]")).getText());
+			Thread.sleep(5000);
+//			Assert.assertEquals(registration_Fee, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'123456')]")).getText());
+//			Assert.assertEquals(type_Of_Training_Partner_Or_PIA, driver.findElement(By.xpath("//tbody/tr/td[contains(text(),'Gov')]")).getText());
 			bo_approveOrRejectSchemes.clickOnNext3();
 			Thread.sleep(4000);
 			bo_approveOrRejectSchemes.clickOnApprove();
@@ -957,52 +964,6 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			Thread.sleep(4000);
 			}
 			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
