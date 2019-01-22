@@ -91,7 +91,7 @@ public class TestConfiguration
             Screenshot.takeScreenshot(driver, result.getName());
         }
        
-        	driver.close();       	    	
+        	//driver.close();       	    	
     }
     
 }
