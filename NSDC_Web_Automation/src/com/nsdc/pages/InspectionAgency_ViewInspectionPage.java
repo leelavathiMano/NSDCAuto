@@ -21,11 +21,11 @@ public class InspectionAgency_ViewInspectionPage
 	private WebElement viewQuickDetails_Button;
 	@FindBy(xpath="(//a[contains(text(),'Take Action')])[1]")
 	private WebElement takeAction_Button;
-	@FindBy(xpath="(//select[@id='exampleSelect1'])[1]")
+	@FindBy(xpath="(//select[@formcontrolname='da'])[1]")
 	private WebElement assignToDropDownList;
 	@FindBy(xpath="(//select[@id='exampleSelect1'])[2]")
 	private WebElement statusOfRequestDropDownList;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement assign_Button;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
 	private WebElement cancel_Button;
