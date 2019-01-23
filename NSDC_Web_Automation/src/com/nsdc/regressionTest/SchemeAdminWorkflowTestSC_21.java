@@ -1048,11 +1048,11 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 			}
 			
 			Thread.sleep(3000);
-			SchemeAdmin_AddQpsToSchemePage  sa_AddQpsToScheme = new SchemeAdmin_AddQpsToSchemePage(driver);
+			/*SchemeAdmin_AddQpsToSchemePage  sa_AddQpsToScheme = new SchemeAdmin_AddQpsToSchemePage(driver);
 			sa_AddQpsToScheme.selectSector(select_Sector);
 			Thread.sleep(4000);
 			sa_AddQpsToScheme.selectSubSector(select_SubSector);
-			Thread.sleep(4000);
+			Thread.sleep(4000);*/
 			
 			
 			
