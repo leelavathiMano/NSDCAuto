@@ -40,7 +40,7 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	private WebElement InspectionDateTextbox;
 	@FindBy(xpath="(//label[contains(text(),'SPOC Name')])[3]")
 	private WebElement spocNameTextbox;
-	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
+	@FindBy(xpath="(//button[contains(text(),'Assign')])[6]")
 	private WebElement assign_ForCIButton;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[3]")
 	private WebElement cancel_ForCIButton;

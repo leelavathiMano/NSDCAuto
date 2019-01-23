@@ -13,9 +13,6 @@ import com.nsdc.generic.MobileHandlers;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
-import com.nsdc.mobile.ui.object.CI_MyDashboardScreen;
-import com.nsdc.mobile.ui.object.CI_SkillRootScreen;
-import com.nsdc.mobile.ui.object.CI_StartInspectionScreen;
 import com.nsdc.mobile.ui.object.LoginScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_CentreArea_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_Clasroom_UploadImagesScreen;
@@ -1933,6 +1930,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approved");
 			Thread.sleep(3000);
 			tcm.clickOnSubmitForInspection();
+			Thread.sleep(3000);
+			tcm.clickOnOK();
 			
 			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
 			tcbi.enterCity(city);
@@ -2031,24 +2030,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			
 			
 			//CI Mobile app
-			appDriver = CreateAppiumDriver.getDriverInstance();
-			
-			LoginScreen ls = new LoginScreen(appDriver);
-			ls.getEmailTextbox().sendKeys(ci_Username);
-			ls.getPasswordTextbox().sendKeys(password);
-			ls.getLoginButton().click();
-			
-			CI_MyDashboardScreen ci_dash = new CI_MyDashboardScreen(appDriver);
-			MobileHandlers.scrollScreen(appDriver);
-			MobileHandlers.scrollScreen(appDriver);
-			ci_dash.getTCIDButton().click();
-			
-			CI_StartInspectionScreen ci_sis = new CI_StartInspectionScreen(appDriver);
-			MobileHandlers.scrollScreen(appDriver);
-			ci_sis.getStartInspectionButton().click();
-			
-			CI_SkillRootScreen ci_srs = new CI_SkillRootScreen(appDriver);
-			ci_srs.getGeneralDetailsButton().click();
+
 			
 			
 			lp.clickLogin();
@@ -2228,6 +2210,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approved");
 			Thread.sleep(3000);
 			tcm.clickOnSubmitForInspection();
+			Thread.sleep(3000);
+			tcm.clickOnOK();
 			
 			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
 			tcbi.enterCity(city);
@@ -2313,13 +2297,17 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			tcd.clickOnMyCAAFSubmit();
 			Thread.sleep(8000);
 			tcm.clickOnAcceptInspectionDate();
-			//Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", "").replace("-", "/"), inspectionDate);
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", ""), inspectionDate);
 			Thread.sleep(3000);
 			tcm.clickOnAcceptProposedInspectionDate();
 			Thread.sleep(3000);
 			tcm.clickOnSubmit_ForInspectionDate();
 			Thread.sleep(3000);
 			tcm.clickOnOK();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
 			
 			//CI Mobileapp
 			
