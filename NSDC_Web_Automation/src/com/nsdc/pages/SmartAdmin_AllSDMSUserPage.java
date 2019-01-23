@@ -6,81 +6,70 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SmartAdmin_AllSDMSUserPage 
-{
-	
+public class SmartAdmin_AllSDMSUserPage {
+
 	WebDriver driver;
-	
-	@FindBy(xpath="//input[@placeholder='Search']")
+
+	@FindBy(xpath = "//input[@placeholder='Search']")
 	private WebElement searchTextbox;
-	@FindBy(xpath="(//a[contains(text(),'Edit')])[1]")
+	@FindBy(xpath = "(//a[contains(text(),'Edit')])[1]")
 	private WebElement edit_ActionButton;
-	@FindBy(xpath="(//a[contains(text(),'Remove')])[1]")
+	@FindBy(xpath = "(//a[contains(text(),'Remove')])[1]")
 	private WebElement remove_ActionButton;
-	@FindBy(xpath="//input[@formcontrolname='firstName']")
+	@FindBy(xpath = "//input[@formcontrolname='firstName']")
 	private WebElement fullName_UserDetailsTextbox;
-	@FindBy(xpath="//button[contains(text(),'Submit')]")
+	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	private WebElement submitbutton;
-	@FindBy(xpath="//button[text()='Yes']")
+	@FindBy(xpath = "//button[text()='Yes']")
 	private WebElement yesButton;
-	@FindBy(xpath="//button[text()='Cancel']")
+	@FindBy(xpath = "//button[text()='Cancel']")
 	private WebElement cancelButton;
-	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	@FindBy(xpath = "//button[contains(text(),'Cancel')]")
 	private WebElement closeButton;
-	@FindBy(xpath="//button[text()='OK']")
+	@FindBy(xpath = "//button[text()='OK']")
 	private WebElement oKButton;
-	
-	public SmartAdmin_AllSDMSUserPage(WebDriver driver)
-    {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-	
-	public void enterSearchByKeyword(String search)
-	{
+
+	public SmartAdmin_AllSDMSUserPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	public void enterSearchByKeyword(String search) {
 		searchTextbox.clear();
 		searchTextbox.sendKeys(search);
 		searchTextbox.sendKeys(Keys.ENTER);
 	}
-	
-	public void clickOnEdit()
-	{
+
+	public void clickOnEdit() {
 		edit_ActionButton.click();
 	}
-	
-	public void clickOnRemove()
-	{
+
+	public void clickOnRemove() {
 		remove_ActionButton.click();
 	}
-	
-	public void enterFullName_UserDetails(String name)
-	{
+
+	public void enterFullName_UserDetails(String name) {
 		fullName_UserDetailsTextbox.clear();
 		fullName_UserDetailsTextbox.sendKeys(name);
 	}
-	
-	public void clickOnSubmit()
-	{
+
+	public void clickOnSubmit() {
 		submitbutton.click();
 	}
-	
-	public void clickOnYes()
-	{
+
+	public void clickOnYes() {
 		yesButton.click();
 	}
-	
-	public void clickOnCancel()
-	{
+
+	public void clickOnCancel() {
 		cancelButton.click();
 	}
-	
-	public void clickOnClose()
-	{
+
+	public void clickOnClose() {
 		closeButton.click();
 	}
-	
-	public void clickOnOK()
-	{
+
+	public void clickOnOK() {
 		oKButton.click();
 	}
 
