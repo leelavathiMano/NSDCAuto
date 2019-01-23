@@ -515,8 +515,8 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText().trim(), select_Scheme);
 		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+select_Scheme+"')]")).getText()+" "+select_Scheme );
 
-		Assert.assertEquals(driver.findElement(By.xpath("(//table[thead[tr[th[contains(text(),'"+version+"')]]]]/tbody/tr/td[text()='"+version+"'])[2]")).getText().trim(), version);
-		System.out.println(driver.findElement(By.xpath("(//table[thead[tr[th[contains(text(),'"+version+"')]]]]/tbody/tr/td[text()='"+version+"'])[2]")).getText()+" "+version );
+		Assert.assertEquals(driver.findElement(By.xpath("(//table[thead[tr[th[contains(text(),'version')]]]]/tbody/tr/td[text()='"+version+"'])[2]")).getText().trim(), version);
+		System.out.println(driver.findElement(By.xpath("(//table[thead[tr[th[contains(text(),'version')]]]]/tbody/tr/td[text()='"+version+"'])[2]")).getText()+" "+version );
 		
 		Assert.assertEquals(driver.findElement(By.xpath("//tr/td[contains(text(),'"+submitted_Status+"')]")).getText().trim(), submitted_Status);
 		System.out.println(driver.findElement(By.xpath("//tr/td[contains(text(),'"+submitted_Status+"')]")).getText()+" "+submitted_Status );
