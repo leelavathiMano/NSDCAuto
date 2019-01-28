@@ -48,6 +48,7 @@ public class MobileHandlers
 		TouchAction act = new TouchAction(appDriver);
 		act.press(new PointOption().withCoordinates(startx, starty)).waitAction(waitOptions(Duration.ofSeconds(2))).moveTo(point(endx, endy)).release().perform();
 	}
+	
 	@SuppressWarnings("rawtypes")
 	public static void clickPicture(AppiumDriver appDriver)
 	{
