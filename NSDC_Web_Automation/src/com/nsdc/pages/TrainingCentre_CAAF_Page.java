@@ -580,7 +580,7 @@ public class TrainingCentre_CAAF_Page
     //Page4
     @FindBy(xpath="(//select[option[text()='Select Centre Area Type']])[1]")
     private WebElement centreAreaType_FirstDropDownList;
-    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area(In Sq.ft)'])[1]")
+    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area (in Sq. Ft)'])[1]")
     private WebElement centreCarpetArea_FirstTexbox;
     @FindBy(xpath="(//select[@id='typeOfWashRoom'])[1]")
     private WebElement centreArea_FirstWashRoomTypeDropDownList;
@@ -607,7 +607,7 @@ public class TrainingCentre_CAAF_Page
     
     @FindBy(xpath="(//select[option[text()='Select Centre Area Type']])[2]")
     private WebElement centreAreaType_SecondDropDownList;
-    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area(In Sq.ft)'])[2]")
+    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area (in Sq. Ft)'])[2]")
     private WebElement centreCarpetArea_SecondTexbox;
     @FindBy(xpath="(//select[@id='typeOfWashRoom'])[2]")
     private WebElement centreArea_SecondWashRoomTypeDropDownList;
@@ -630,7 +630,7 @@ public class TrainingCentre_CAAF_Page
     
     @FindBy(xpath="(//select[option[text()='Select Centre Area Type']])[3]")
     private WebElement centreAreaType_ThirdDropDownList;
-    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area(In Sq.ft)'])[3]")
+    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area (in Sq. Ft)'])[3]")
     private WebElement centreCarpetArea_ThirdTexbox;
     @FindBy(xpath="(//select[@id='typeOfWashRoom'])[3]")
     private WebElement centreArea_ThirdWashRoomTypeDropDownList;
@@ -653,7 +653,7 @@ public class TrainingCentre_CAAF_Page
     
     @FindBy(xpath="(//select[option[text()='Select Centre Area Type']])[4]")
     private WebElement centreAreaType_FourthDropDownList;
-    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area(In Sq.ft)'])[4]")
+    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area (in Sq. Ft)'])[4]")
     private WebElement centreCarpetArea_FourthTexbox;
     @FindBy(xpath="(//select[@id='typeOfWashRoom'])[4]")
     private WebElement centreArea_FourthWashRoomTypeDropDownList;
@@ -676,7 +676,7 @@ public class TrainingCentre_CAAF_Page
     
     @FindBy(xpath="//select[option[text()='Select Centre Area Type']]")
     private WebElement centreAreaType_FifthDropDownList;
-    @FindBy(xpath="//input[@placeholder='Enter Carpet Area (in Sq. Ft)']")
+    @FindBy(xpath="(//input[@placeholder='Enter Carpet Area (in Sq. Ft)'])[5]")
     private WebElement centreCarpetArea_FifthTexbox;
     @FindBy(xpath="(//select[@id='typeOfWashRoom'])[1]")
     private WebElement centreArea_FifthWashRoomTypeDropDownList;
@@ -2477,7 +2477,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnThirdCentreArea_EquippedWithAll()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[input[@class='ng-untouched ng-pristine ng-valid']]/span"));
-     	for(int i=1;i<7;i++)
+     	for(int i=0;i<6;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -2544,7 +2544,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnFourthCentreArea_EquippedWithAll()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[input[@class='ng-untouched ng-pristine ng-valid']]/span"));
-     	for(int i=2;i<8;i++)
+     	for(int i=0;i<6;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -2611,7 +2611,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnFifthCentreArea_EquippedWithAll()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[input[@class='ng-untouched ng-pristine ng-valid']]/span"));
-     	for(int i=2;i<9;i++)
+     	for(int i=0;i<7;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();

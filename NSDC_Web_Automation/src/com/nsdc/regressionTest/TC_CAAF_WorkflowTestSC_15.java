@@ -9,9 +9,11 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nsdc.generic.FilePreview;
 import com.nsdc.generic.MobileHandlers;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.SelectDropDownList;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.mobile.ui.object.LoginScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_CentreArea_UploadImagesScreen;
@@ -207,7 +209,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="tc_CAAF_FormFilling")
-	public void cAAF_FormFillingTC_02(String sno, String tcUsername, String tcPassword, String newPassword, String confirmPassword, String nameOfTC, String tcType, String socialmedia, String websiteurl, String spocName, String spocEmail, String spocMobileNumber, String spocAltNumber, String centrePrincipalName, String centrePrincipalEmail, String centrePrincipalcontactNumber, String tcAddress, String tcLandmark, String tcPinCode, String tcState, String tcDistrict, String tcTehsil, String tcParliamentry, String tcAddressProof, String addressProofFile, String tcAreaClassificationCentre, String centreAtGroundFloor, String buildingStatus, String buildingConstruction, String transportSystem, String transportName, String buildingFace, String approachRoadWidth, String previousBuildingState, String buildingStateFile, String centreFloorType, String tcWallsType, String internetAvailablity, String firstAffiliationName, String firstAffiliationType, String firstAboutAffiliation, String secondAffiliationName, String secondAffiliationType, String secondAboutAffiliation, String thirdAffiliationName, String thirdAffiliationType, String thirdAboutAffiliation, String menResidentialArea, String totalAreaMenResidential, String roomsNumberMenResidential, String residentialCapacityMen, String maleWardenAvailablity, String remarkMenResidential, String womenResidentialArea, String totalAreaWomenResidential, String roomsNumberWomenResidential, String residentialCapacityWomen, String remarkWomenResidential, String safeDrinkingWater, String fireEquipmentAvailablity, String classRoomCarpetArea, String classroomRemark, String laboratoryOpenArea, String laboratoryCoveredArea,  String laboratoryCarpetArea, String laboratoryType, String laboratoryRemark, String hybridOpenArea, String hybridCoveredArea, String hybridCarpetArea, String hybridLaboratoryType, String hybridRemark, String firstSector, String firstJobRoleName, String secondSector, String secondJobRoleName, String thirdJobRoleName, String traineeToTrainerRatio, String parallelBatchesNumber, String jobRole, String additionalArea, String additionalCarpetArea, String coveredCarpetArea, String trainerID, String trainerAvailablity, String trainerResourceType, String first_Classroom, String first_Laboratory, String first_Hybrid, String second_Classroom, String second_Laboratory, String second_Hybrid, String firstQuantity, String firstRemark, String secondQuantity, String secondRemark, String thirdQuantity, String thirdRemark, String fourthQuantity, String fourthRemark, String fifthQuantity, String fifthRemark, String firstCentreCarpetArea, String firstCentrWashroomType, String firstCentreAreaRemark, String secondCentreCarpetArea, String secondCentrWashroomType, String secondCentreAreaRemark, String thirdCentreCarpetArea, String thirdCentreAreaRemark, String fourthCentreCarpetArea, String fourthCentreAreaRemark, String fifthCentreAreaType, String fifthCentreCarpetArea, String fifthCentrWashroomType, String fifthCentreAreaRemark, String firstSupportStaffName, String firstCentreStaffHighestQualification, String experience, String firstResourceType, String firstCentreStaffRemark, String secondSupportStaffName, String secondCentreStaffHighestQualification, String secondResourceType, String secondCentreStaffRemark, String thirdSupportStaffName, String thirdCentreStaffHighestQualification, String thirdResourceType, String thirdCentreStaffRemark, String fourthSupportStaffType, String fourthSupportStaffName, String fourthCentreStaffHighestQualification, String fourthResourceType, String fourthCentreStaffRemark) throws Exception
+	public void cAAF_FormFillingTC_02(String sno, String tcUsername, String tcPassword, String newPassword, String confirmPassword, String nameOfTC, String tcType, String socialmedia, String websiteurl, String spocName, String spocEmail, String spocMobileNumber, String spocAltNumber, String centrePrincipalName, String centrePrincipalEmail, String centrePrincipalcontactNumber, String tcAddress, String tcLandmark, String tcPinCode, String tcState, String tcDistrict, String tcTehsil, String tcParliamentry, String tcAddressProof, String addressProofFile, String tcAreaClassificationCentre, String centreAtGroundFloor, String buildingStatus, String buildingConstruction, String transportSystem, String transportName, String buildingFace, String approachRoadWidth, String previousBuildingState, String buildingStateFile, String centreFloorType, String tcWallsType, String internetAvailablity, String firstAffiliationName, String firstAffiliationType, String firstAboutAffiliation, String secondAffiliationName, String secondAffiliationType, String secondAboutAffiliation, String thirdAffiliationName, String thirdAffiliationType, String thirdAboutAffiliation, String menResidentialArea, String totalAreaMenResidential, String roomsNumberMenResidential, String residentialCapacityMen, String maleWardenAvailablity, String remarkMenResidential, String womenResidentialArea, String totalAreaWomenResidential, String roomsNumberWomenResidential, String residentialCapacityWomen, String remarkWomenResidential, String safeDrinkingWater, String fireEquipmentAvailablity, String classRoomCarpetArea, String classroomRemark, String laboratoryOpenArea, String laboratoryCoveredArea,  String laboratoryCarpetArea, String laboratoryType, String laboratoryRemark, String hybridOpenArea, String hybridCoveredArea, String hybridCarpetArea, String hybridLaboratoryType, String hybridRemark, String firstSector, String firstJobRoleName, String secondSector, String secondJobRoleName, String thirdJobRoleName, String traineeToTrainerRatio, String parallelBatchesNumber, String jobRole, String additionalArea, String additionalCarpetArea, String coveredCarpetArea, String trainerID, String trainerAvailablity, String trainerResourceType, String first_Classroom, String first_Laboratory, String first_Hybrid, String second_Classroom, String second_Laboratory, String second_Hybrid, String firstQuantity, String firstRemark, String secondQuantity, String secondRemark, String thirdQuantity, String thirdRemark, String fourthQuantity, String fourthRemark, String fifthQuantity, String fifthRemark, String firstCentreCarpetArea, String firstCentrWashroomType, String firstCentreAreaRemark, String secondCentreCarpetArea, String secondCentrWashroomType, String secondCentreAreaRemark, String thirdCentreCarpetArea, String thirdCentreAreaRemark, String fourthCentreCarpetArea, String fourthCentreAreaRemark, String fifthCentreAreaType, String fifthCentreCarpetArea, String fifthCentrWashroomType, String fifthCentreAreaRemark, String firstSupportStaffName, String firstCentreStaffHighestQualification, String experience, String firstResourceType, String firstCentreStaffRemark, String secondSupportStaffType, String secondSupportStaffName, String secondCentreStaffHighestQualification, String secondResourceType, String secondCentreStaffRemark, String thirdSupportStaffName, String thirdCentreStaffHighestQualification, String thirdResourceType, String thirdCentreStaffRemark, String fourthSupportStaffType, String fourthSupportStaffName, String fourthCentreStaffHighestQualification, String fourthResourceType, String fourthCentreStaffRemark) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -618,35 +620,36 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 //		caaf.select_Second_AssociatedLaboratory(second_Laboratory);
 //		caaf.select_Second_AssociatedHybrid(second_Hybrid);
 		
-		if((firstJobRoleName.equals("AGRICULTURE")) && secondJobRoleName.equals("APPAREL"))
+		Thread.sleep(3000);
+		if(driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText().equals(firstJobRoleName))
 		{
-			caaf.enter_First_AvailableQuantityForEquipment(firstQuantity);
-			caaf.enter_First_Remark_ForEquipment(firstRemark);
-			caaf.enter_Second_AvailableQuantityForEquipment(secondQuantity);
-			caaf.enter_Second_Remark_ForEquipment(secondRemark);
-			caaf.enter_Third_AvailableQuantityForEquipment(thirdQuantity);
-			caaf.enter_Third_Remark_ForEquipment(thirdRemark);
-//			caaf.enter_Fourth_AvailableQuantityForEquipment(fourthQuantity);
-//			caaf.enter_Fourth_Remark_ForEquipment(fourthRemark);
-//			caaf.enter_Fifth_AvailableQuantityForEquipment(fifthQuantity);
-//			caaf.enter_Fifth_Remark_ForEquipment(fifthRemark);
+			Thread.sleep(3000);
+			List<WebElement> eqp = driver.findElements(By.xpath("//input[@formcontrolname='availabilityQuantity']"));
+			for(int i=0;i<eqp.size();i++)
+			{
+				WebElement eqp_qnt = eqp.get(i);
+				eqp_qnt.sendKeys(fourthQuantity);
+			}
+			
+			List<WebElement> eqr = driver.findElements(By.xpath("//input[@formcontrolname='remarks']"));
+			for(int i=0;i<eqr.size();i++)
+			{
+				WebElement eqp_rmk = eqr.get(i);
+				eqp_rmk.sendKeys(firstRemark);
+			}
+			
+			Thread.sleep(5000);
+			caaf.clickOnSaveAndNext();
+		}
+		else
+		{
 			Thread.sleep(5000);
 			caaf.clickOnSaveAndNext();
 		}
 		
-		else if(firstJobRoleName.equals("Airline High Lift Truck Operator"))
-		{
-			caaf.enter_First_AvailableQuantityForEquipment(firstQuantity);
-			caaf.enter_First_Remark_ForEquipment(firstRemark);	
-			Thread.sleep(5000);
-			caaf.clickOnSaveAndNext();
-		}
+//		Thread.sleep(5000);
+//		caaf.clickOnSaveAndNext();
 		
-		else if(firstJobRoleName.equals("None"))
-		{
-			Thread.sleep(5000);
-			caaf.clickOnSaveAndNext();
-		}
 		
 		
 		Thread.sleep(8000);
@@ -705,26 +708,12 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterFirst_RemarkForCentreStaff(firstCentreStaffRemark);
 		
 		Thread.sleep(3000);
-		//Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='type'])[2]")).getAttribute("value"), "");
-		caaf.selectSecond_TypeOfSupportStaff(fourthSupportStaffType);
+		caaf.selectSecond_TypeOfSupportStaff(secondSupportStaffType);
 		caaf.enterSecond_NameOfSupportStaff(secondSupportStaffName);
 		caaf.selectSecond_HighestQualificationForCentreStaff(secondCentreStaffHighestQualification);
 		caaf.enterExpeience(experience);
 		caaf.selectSecond_ResourceTypeOfCentreStaff(secondResourceType);
 		caaf.enterSecond_RemarkForCentreStaff(secondCentreStaffRemark);
-		
-//		Thread.sleep(3000);
-//		caaf.enterThird_NameOfSupportStaff(thirdSupportStaffName);
-//		caaf.selectThird_HighestQualificationForCentreStaff(thirdCentreStaffHighestQualification);
-//		caaf.selectThird_ResourceTypeOfCentreStaff(thirdResourceType);
-//		caaf.enterThird_RemarkForCentreStaff(thirdCentreStaffRemark);
-//		
-//		Thread.sleep(3000);
-//		caaf.selectFourth_TypeOfSupportStaff(fourthSupportStaffType);
-//		caaf.enterFourth_NameOfSupportStaff(fourthSupportStaffName);
-//		caaf.selectFourth_HighestQualificationForCentreStaff(fourthCentreStaffHighestQualification);
-//		caaf.selectFourth_ResourceTypeOfCentreStaff(fourthResourceType);
-//		caaf.enterFourth_RemarkForCentreStaff(fourthCentreStaffRemark);
 		
 		caaf.clickForAddAnotherCentreStaff();
 		
@@ -751,7 +740,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_BillPaymentSC15TC03");
 	}
 	
-	@Test(dataProvider="tc_CAAF_BillPayment")//,enabled=false)
+	@Test(dataProvider="tc_CAAF_BillPayment",enabled=false)
 	public void tc_CAAF_MobileUploadTC_03(String sno, String tcUsername, String tcPassword, String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName) throws Exception
 	{
         appDriver = CreateAppiumDriver.getDriverInstance();
@@ -1013,44 +1002,45 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.clickOnSaveAndContinueToPayment();
 		Thread.sleep(3000);
 		caaf.clickOnOK();
-		TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
-		Thread.sleep(3000);
-		tcbi.enterCity(city);
-		tcbi.selectCountry(Country);
-		Thread.sleep(3000);
-		if(paymentMethod.equals("Credit Card"))
-		{
-			tcbi.clickOnCreditCard();
-			Thread.sleep(3000);
-			tcbi.enterCreditCardNumber(creditCardNumber);
-			tcbi.selectMonth_ForCreditCard(month_CreditCard);
-			tcbi.selectYear_ForCreditCard(year_CreditCard);
-			tcbi.enterCVVForCreditCard(cvv_CreditCard);
-			Thread.sleep(3000);
-			tcbi.clickOnMakePaymentForCreditCard();
-		}
-		else if(paymentMethod.equals("Debit Card"))
-		{
-			tcbi.clickOnDebitCard();
-			Thread.sleep(3000);
-			tcbi.enterDebitCardNumber(debitCardNumber);
-			tcbi.selectMonth_ForDebitCard(month_DebitCard);
-			tcbi.selectYear_ForDebitCard(year_DebitCard);
-			tcbi.enterCVVForDebitCard(cvv_DebitCard);
-			Thread.sleep(3000);
-			tcbi.clickOnMakePaymentForDebitCard();
-		}
-		else if(paymentMethod.equals("Net Banking"))
-		{
-			tcbi.clickOnNetBanking();
-			Thread.sleep(3000);
-			tcbi.selectBankName(bankName);
-			Thread.sleep(3000);
-			tcbi.clickOnMakePaymentForNetBanking();
-		}
-		Thread.sleep(3000);
-		tcbi.clickOnReturnToTheMerchantSite();
-		Thread.sleep(3000);
+//		TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
+//		Thread.sleep(3000);
+//		tcbi.enterCity(city);
+//		tcbi.selectCountry(Country);
+//		Thread.sleep(3000);
+//		if(paymentMethod.equals("Credit Card"))
+//		{
+//			tcbi.clickOnCreditCard();
+//			Thread.sleep(3000);
+//			tcbi.enterCreditCardNumber(creditCardNumber);
+//			tcbi.selectMonth_ForCreditCard(month_CreditCard);
+//			tcbi.selectYear_ForCreditCard(year_CreditCard);
+//			tcbi.enterCVVForCreditCard(cvv_CreditCard);
+//			Thread.sleep(3000);
+//			tcbi.clickOnMakePaymentForCreditCard();
+//		}
+//		else if(paymentMethod.equals("Debit Card"))
+//		{
+//			tcbi.clickOnDebitCard();
+//			Thread.sleep(3000);
+//			tcbi.enterDebitCardNumber(debitCardNumber);
+//			tcbi.selectMonth_ForDebitCard(month_DebitCard);
+//			tcbi.selectYear_ForDebitCard(year_DebitCard);
+//			tcbi.enterCVVForDebitCard(cvv_DebitCard);
+//			Thread.sleep(3000);
+//			tcbi.clickOnMakePaymentForDebitCard();
+//		}
+//		else if(paymentMethod.equals("Net Banking"))
+//		{
+//			tcbi.clickOnNetBanking();
+//			Thread.sleep(3000);
+//			tcbi.selectBankName(bankName);
+//			Thread.sleep(3000);
+//			tcbi.clickOnMakePaymentForNetBanking();
+//		}
+//		Thread.sleep(3000);
+//		tcbi.clickOnReturnToTheMerchantSite();
+		
+		Thread.sleep(5000);
 		caaf.clickOnContinue();
 		Thread.sleep(3000);
 		caaf.clickOnOK();
@@ -1070,7 +1060,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04");
 	}
 	
-	@Test(dataProvider="tcApproval")//, enabled=false)
+	@Test(dataProvider="tcApproval", enabled=false)
 	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String tcName_ReviewComments, String tcType_ReviewComments, String centreDirector_ReviewComments, String address_ReviewComments, String area_ReviewComments, String centreAtGroundFloor_ReviewComments, String buildingStatus_ReviewComments, String buildingType_ReviewComments, String transport_ReviewComments, String nearestTransport_ReviewComments, String buildingFrontFace_ReviewComments, String approachRoad_ReviewComments, String buildingPreviousState_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String floorArea_JobRole_ReviewComments, String coveredArea_JobRole_ReviewComments, String classroomArea_ReviewComments, String classroomFacilities_ReviewComments, String labOpenArea_ReviewComments, String labCoverdArea_ReviewComments, String labArea_ReviewComments, String labType_ReviewComments, String labFacilities_ReviewComments, String hybridArea_ReviewComments, String hybridType_ReviewComments, String hybridFacilities_ReviewComments, String equipmentDetails_ReviewComments, String trainer_ReviewComments, String firstCentreArea_ReviewComments, String secondCentreArea_ReviewComments, String thirdCentreArea_ReviewComments, String fourthCentreArea_ReviewComments, String fifthCentreArea_ReviewComments, String firstCentreStaff_ReviewComments, String secondCentreStaff_ReviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String ssc_Username) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1117,36 +1107,36 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		}
 		else if(tc_Type.equals("NON PMKK"))
 		{
-			elp.performlogin(ia_Username, password);
-			InspectionAgency_DashboardPage iad = new InspectionAgency_DashboardPage(driver);
-			Thread.sleep(8000);
-			iad.clickOnViewAllAssessmentRequest();
-			IA_TC_AssessmentRequestPage iatc = new IA_TC_AssessmentRequestPage(driver);
-			Thread.sleep(3000);
-			iatc.clickOnViewAllTCRequest();
-			Thread.sleep(3000);
-			iatc.enterForSearch(tc_ID);
-			iatc.selectStage(stage);
-			//iatc.enterDateForAssign();
-			iatc.clickOnApply();
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+//			elp.performlogin(ia_Username, password);
+//			InspectionAgency_DashboardPage iad = new InspectionAgency_DashboardPage(driver);
+//			Thread.sleep(8000);
+//			iad.clickOnViewAllAssessmentRequest();
+//			IA_TC_AssessmentRequestPage iatc = new IA_TC_AssessmentRequestPage(driver);
+//			Thread.sleep(3000);
+//			iatc.clickOnViewAllTCRequest();
+//			Thread.sleep(3000);
+//			iatc.enterForSearch(tc_ID);
+//			iatc.selectStage(stage);
+//			//iatc.enterDateForAssign();
+//			iatc.clickOnApply();
+//			Thread.sleep(3000);
+//			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 			if(assignTo.equals("Assign To DA"))
 			{
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign To DA')]")).click();
-				Thread.sleep(3000);
-				iatc.selectAssignTo_DA(daUsername);
-				Thread.sleep(3000);
-				iatc.clickOnAssign();
-				//iatc.enterForSearch(tc_ID);
-				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='In-Process DA']")).getText(), "In-Process DA");
+//				Thread.sleep(3000);
+//				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign To DA')]")).click();
+//				Thread.sleep(3000);
+//				iatc.selectAssignTo_DA(daUsername);
+//				Thread.sleep(3000);
+//				iatc.clickOnAssign();
+//				//iatc.enterForSearch(tc_ID);
+//				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='In-Process DA']")).getText(), "In-Process DA");
 				PostLoginPage plp = new PostLoginPage(driver);
-				Thread.sleep(3000);
-				plp.clickOnProfileLogo();
-				plp.clickOnLogout();
-				
-				lp.clickLogin();
+//				Thread.sleep(3000);
+//				plp.clickOnProfileLogo();
+//				plp.clickOnLogout();
+//				
+//				lp.clickLogin();
 				elp.performlogin(daUsername, password);
 				DA_DashboardPage dap = new DA_DashboardPage(driver);
 				Thread.sleep(10000);
@@ -1175,130 +1165,129 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_First();
 				
-				Thread.sleep(3000);
-				datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
-				Thread.sleep(3000);
-				datr.select_Third_ReviewComments(menResidential_ReviewComments);
-				datr.select_Fourth_ReviewComments(womenResidential_ReviewComments);
-				datr.select_Fifth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
-				Thread.sleep(3000);
-				datr.select_Sixth_ReviewComments(hygiene_ReviewComments);
-				datr.select_Seventh_ReviewComments(medical_ReviewComments);
+				List<WebElement> ele = driver.findElements(By.xpath("//select[option[text()='Select Review Comments']]"));
+				for(int i=1;i<7;i++)
+				{
+					WebElement revw = ele.get(i);
+					SelectDropDownList.selectDropDownListByVisibleText(revw, address_ReviewComments);
+					if(i==1)
+					{
+						Thread.sleep(3000);
+						datr.clickOn_FrontView_Image();
+						datr.clickOn_LeftView_Image();
+						datr.clickOn_RightView_Image();
+						datr.clickOn_InternetConectivity_Image();
+						datr.clickOn_PowerBackup_Image();
+					}
+					else if(i==4)
+					{
+						Thread.sleep(3000);
+						datr.clickOn_DifferentyAbledWashroom_Image();
+						datr.clickOn_Ramp_Image();
+						datr.clickOn_Lift_Image();
+					}
+					
+					else if(i==5)
+					{
+						Thread.sleep(3000);
+						datr.clickOn_DailyInspection_Image();
+						datr.clickOn_SafeDrinking_Image();
+					}
+					else if(i==6)
+					{
+						Thread.sleep(3000);
+						datr.clickOn_FireFightingEquipment_Image();
+						datr.clickOn_FirstAidKit_Image();
+					}
+					
+				}
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Second();
 				
 				Thread.sleep(3000);
-				datr.clickOn_First_Action();
-				datr.clickOn_First_TakeAction();
+				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				for(int i=0;i<elements.size();i++)
+				{
+					WebElement e1 = elements.get(i);
+					e1.click();
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
 				
-				Thread.sleep(3000);
-				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FirstImage();
-				datr.clickOn_SecondView_FirstImage();
-				Thread.sleep(3000);
-				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_SecondImage();
-				datr.clickOn_SecondView_SecondImage();
-				Thread.sleep(3000);
-				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
-				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
-				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
-				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_SSCCertificate_Image();
-				datr.clickOn_HighestQualification_Image();
-				datr.clickOn_NIESBUD_Image();
-				datr.clickOn_IndustrialExperience_Image();
-				Thread.sleep(10000);
-				datr.clickOnNext_ForJobRole();
+					List<WebElement> ele2 = driver.findElements(By.xpath("//select[option[text()='Select Review Comments']]"));
+					{
+						
+							for(int j=7;j<ele2.size()-6;j++)
+							{
+								WebElement rvw = ele2.get(j);
+								Thread.sleep(3000);								
+								SelectDropDownList.selectDropDownListByVisibleText(rvw, address_ReviewComments);
+								if(j==10)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_FirstView_FirstImage();
+									datr.clickOn_SecondView_FirstImage();
+								}
+								else if(j==13)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_FirstView_SecondImage();
+									datr.clickOn_SecondView_SecondImage();
+								}
+								
+								else if(j==18)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_SSCCertificate_Image();
+									datr.clickOn_HighestQualification_Image();
+									datr.clickOn_NIESBUD_Image();
+									datr.clickOn_IndustrialExperience_Image();
+								}	
+								
+							}
+							
+					}		
+							Thread.sleep(10000);
+							datr.clickOnNext_ForJobRole();
+					
+							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+
+					
+				}
 				
-//				Thread.sleep(3000);
-//				datr.clickOn_Second_Action();
-//				datr.clickOn_Second_TakeAction();
-//				
-//				Thread.sleep(3000);
-//				datr.select_Eighth_ReviewComments(floorArea_JobRole_ReviewComments);
-//				datr.select_Ninth_ReviewComments(coveredArea_JobRole_ReviewComments);
-//				datr.select_Tenth_ReviewComments(classroomArea_ReviewComments);
-//				datr.select_Eleventh_ReviewComments(classroomFacilities_ReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOn_FirstView_FirstImage();
-//				datr.clickOn_SecondView_FirstImage();
-//				Thread.sleep(3000);
-//				datr.select_Twelth_ReviewComments(labOpenArea_ReviewComments);
-//				datr.select_Thirteen_ReviewComments(labType_ReviewComments);
-//				datr.select_Fourteen_ReviewComments(labFacilities_ReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOn_FirstView_SecondImage();
-//				datr.clickOn_SecondView_SecondImage();
-//				Thread.sleep(3000);
-//				datr.select_Fifteen_ReviewComments(hybridArea_ReviewComments);
-//				datr.select_Sixteen_ReviewComments(hybridType_ReviewComments);
-//				datr.select_Seventeen_ReviewComments(hybridFacilities_ReviewComments);
-//				Thread.sleep(3000);
-//				datr.select_Eighteen_ReviewComments(equipmentDetails_ReviewComments);
-//				datr.select_Ninteen_ReviewComments(trainer_ReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOn_SSCCertificate_Image();
-//				datr.clickOn_HighestQualification_Image();
-//				datr.clickOn_NIESBUD_Image();
-//				datr.clickOn_IndustrialExperience_Image();
-//				Thread.sleep(10000);
-//				datr.clickOnNext_ForJobRole();
-				
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("scroll(900, 0)");
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Third();
 				
-				Thread.sleep(3000);
-				datr.select_Eighth_ReviewComments(firstCentreArea_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FirstImage();
-				datr.clickOn_SecondView_FirstImage();
-				Thread.sleep(3000);
-				datr.select_Ninth_ReviewComments(secondCentreArea_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_SecondImage();
-				datr.clickOn_SecondView_SecondImage();
-				Thread.sleep(3000);
-				datr.select_Tenth_ReviewComments(thirdCentreArea_ReviewComments);
-				datr.clickOn_FirstView_ThirdImage();
-				datr.clickOn_SecondView_ThirdImage();
-				Thread.sleep(3000);
-				datr.select_Eleventh_ReviewComments(fourthCentreArea_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FourthImage();
-				datr.clickOn_SecondView_FourthImage();
-				Thread.sleep(3000);
-				datr.select_Twelth_ReviewComments(fifthCentreArea_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FirstView_FifthImage();
-				datr.clickOn_SecondView_FifthImage();
+				List<WebElement> ele3 = driver.findElements(By.xpath("//select[option[text()='Select Review Comments']]"));
+				for(int i=7;i<ele3.size()-1;i++)
+				{
+					WebElement revw1 = ele3.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw1, address_ReviewComments);
+					for(int k=0;k<5;k++)
+					{
+						Thread.sleep(3000);
+						driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(k+1)+"]")).click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+						driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(k+1)+"]")).click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+					}
+					
+				}
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Fourth();
 				
-				//js.executeScript("scroll(900, 0)");
-				Thread.sleep(3000);
-				datr.select_Thirteen_ReviewComments(firstCentreStaff_ReviewComments);
-				datr.select_Fourteen_ReviewComments(secondCentreStaff_ReviewComments);
+				List<WebElement> ele4 = driver.findElements(By.xpath("//select[option[text()='Select Review Comments']]"));
+				for(int i=13; i<ele4.size(); i++)
+				{
+					WebElement revw2 = ele4.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw2, address_ReviewComments);
+				}
+				
 				Thread.sleep(3000);
 				datr.clickOnSaveAndNext_Fifth();
 				
@@ -1934,41 +1923,41 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			tcm.clickOnOK();
 			
 			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
-			tcbi.enterCity(city);
-			tcbi.selectCountry(Country);
-			Thread.sleep(3000);
-			if(paymentMethod.equals("Credit Card"))
-			{
-				tcbi.clickOnCreditCard();
-				Thread.sleep(3000);
-				tcbi.enterCreditCardNumber(creditCardNumber);
-				tcbi.selectMonth_ForCreditCard(month_CreditCard);
-				tcbi.selectYear_ForCreditCard(year_CreditCard);
-				tcbi.enterCVVForCreditCard(cvv_CreditCard);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForCreditCard();
-			}
-			else if(paymentMethod.equals("Debit Card"))
-			{
-				tcbi.clickOnDebitCard();
-				Thread.sleep(3000);
-				tcbi.enterDebitCardNumber(debitCardNumber);
-				tcbi.selectMonth_ForDebitCard(month_DebitCard);
-				tcbi.selectYear_ForDebitCard(year_DebitCard);
-				tcbi.enterCVVForDebitCard(cvv_DebitCard);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForDebitCard();
-			}
-			else if(paymentMethod.equals("Net Banking"))
-			{
-				tcbi.clickOnNetBanking();
-				Thread.sleep(3000);
-				tcbi.selectBankName(bankName);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForNetBanking();
-			}
-			Thread.sleep(3000);
-			tcbi.clickOnReturnToTheMerchantSite();
+//			tcbi.enterCity(city);
+//			tcbi.selectCountry(Country);
+//			Thread.sleep(3000);
+//			if(paymentMethod.equals("Credit Card"))
+//			{
+//				tcbi.clickOnCreditCard();
+//				Thread.sleep(3000);
+//				tcbi.enterCreditCardNumber(creditCardNumber);
+//				tcbi.selectMonth_ForCreditCard(month_CreditCard);
+//				tcbi.selectYear_ForCreditCard(year_CreditCard);
+//				tcbi.enterCVVForCreditCard(cvv_CreditCard);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForCreditCard();
+//			}
+//			else if(paymentMethod.equals("Debit Card"))
+//			{
+//				tcbi.clickOnDebitCard();
+//				Thread.sleep(3000);
+//				tcbi.enterDebitCardNumber(debitCardNumber);
+//				tcbi.selectMonth_ForDebitCard(month_DebitCard);
+//				tcbi.selectYear_ForDebitCard(year_DebitCard);
+//				tcbi.enterCVVForDebitCard(cvv_DebitCard);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForDebitCard();
+//			}
+//			else if(paymentMethod.equals("Net Banking"))
+//			{
+//				tcbi.clickOnNetBanking();
+//				Thread.sleep(3000);
+//				tcbi.selectBankName(bankName);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForNetBanking();
+//			}
+//			Thread.sleep(3000);
+//			tcbi.clickOnReturnToTheMerchantSite();
 			Thread.sleep(5000);
 			tcbi.clickOnContinue();
 			
@@ -2214,41 +2203,41 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			tcm.clickOnOK();
 			
 			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
-			tcbi.enterCity(city);
-			tcbi.selectCountry(Country);
-			Thread.sleep(3000);
-			if(paymentMethod.equals("Credit Card"))
-			{
-				tcbi.clickOnCreditCard();
-				Thread.sleep(3000);
-				tcbi.enterCreditCardNumber(creditCardNumber);
-				tcbi.selectMonth_ForCreditCard(month_CreditCard);
-				tcbi.selectYear_ForCreditCard(year_CreditCard);
-				tcbi.enterCVVForCreditCard(cvv_CreditCard);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForCreditCard();
-			}
-			else if(paymentMethod.equals("Debit Card"))
-			{
-				tcbi.clickOnDebitCard();
-				Thread.sleep(3000);
-				tcbi.enterDebitCardNumber(debitCardNumber);
-				tcbi.selectMonth_ForDebitCard(month_DebitCard);
-				tcbi.selectYear_ForDebitCard(year_DebitCard);
-				tcbi.enterCVVForDebitCard(cvv_DebitCard);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForDebitCard();
-			}
-			else if(paymentMethod.equals("Net Banking"))
-			{
-				tcbi.clickOnNetBanking();
-				Thread.sleep(3000);
-				tcbi.selectBankName(bankName);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForNetBanking();
-			}
-			Thread.sleep(3000);
-			tcbi.clickOnReturnToTheMerchantSite();
+//			tcbi.enterCity(city);
+//			tcbi.selectCountry(Country);
+//			Thread.sleep(3000);
+//			if(paymentMethod.equals("Credit Card"))
+//			{
+//				tcbi.clickOnCreditCard();
+//				Thread.sleep(3000);
+//				tcbi.enterCreditCardNumber(creditCardNumber);
+//				tcbi.selectMonth_ForCreditCard(month_CreditCard);
+//				tcbi.selectYear_ForCreditCard(year_CreditCard);
+//				tcbi.enterCVVForCreditCard(cvv_CreditCard);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForCreditCard();
+//			}
+//			else if(paymentMethod.equals("Debit Card"))
+//			{
+//				tcbi.clickOnDebitCard();
+//				Thread.sleep(3000);
+//				tcbi.enterDebitCardNumber(debitCardNumber);
+//				tcbi.selectMonth_ForDebitCard(month_DebitCard);
+//				tcbi.selectYear_ForDebitCard(year_DebitCard);
+//				tcbi.enterCVVForDebitCard(cvv_DebitCard);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForDebitCard();
+//			}
+//			else if(paymentMethod.equals("Net Banking"))
+//			{
+//				tcbi.clickOnNetBanking();
+//				Thread.sleep(3000);
+//				tcbi.selectBankName(bankName);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForNetBanking();
+//			}
+//			Thread.sleep(3000);
+//			tcbi.clickOnReturnToTheMerchantSite();
 			Thread.sleep(5000);
 			tcbi.clickOnContinue();
 			
