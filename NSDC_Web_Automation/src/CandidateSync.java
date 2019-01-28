@@ -20,6 +20,7 @@ import com.nsdc.generic.ReadMultipleDataFromExcel;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.touch.offset.PointOption;
 
 public class CandidateSync
@@ -73,16 +74,21 @@ public class CandidateSync
            cap.setCapability("deviceName", "032872488T062365");
            cap.setCapability("appPackage", "com.sdms.candidate_offline");
            cap.setCapability("appActivity", "com.sdms.candidate_offline.MainActivity");
-   		
+           cap.setCapability("noReset", "true");
+
            AndroidDriver driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap);
           
            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-           driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
-           driver.findElement(By.xpath("//android.widget.Button[@text='Sync Down Master Data']")).click();
-           driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
+           //driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+           //driver.findElement(By.xpath("//android.widget.Button[@text='Sync Down Master Data']")).click();
+          // driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
+           ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
+           ((StartsActivity)driver).currentActivity();
            driver.findElement(By.xpath("//android.widget.Button[@text='Register']")).click();
            driver.findElement(By.xpath("//android.widget.Image[@text='registrationlogo']")).click();
-           driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
+          // ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
+          // ((StartsActivity)driver).currentActivity();
+          // driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
            driver.findElementById("com.mediatek.camera:id/rlk_camera_switcher").click();
            driver.findElementById("com.mediatek.camera:id/shutter_button").click();
            driver.findElementById("com.mediatek.camera:id/done_button").click();
