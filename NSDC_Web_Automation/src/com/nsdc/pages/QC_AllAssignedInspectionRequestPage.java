@@ -10,7 +10,7 @@ public class QC_AllAssignedInspectionRequestPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//input[@placeholder='Search by keyword']")
+	@FindBy(xpath="//input[@formcontrolname='tcId']")
 	private WebElement searchByKeywordTextbox;
 	
 	

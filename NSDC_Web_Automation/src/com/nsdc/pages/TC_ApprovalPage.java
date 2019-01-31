@@ -146,8 +146,21 @@ public class TC_ApprovalPage
 	@FindBy(xpath="(//button[contains(text(),'Save & Next')])[5]")
 	private WebElement saveAndNext_Fifth_Button;
 	
+	@FindBy(xpath="(//button[contains(text(),'Next')])[1]")
+	private WebElement next_First_Button;
+	@FindBy(xpath="(//button[contains(text(),'Next')])[2]")
+	private WebElement next_Second_Button;
+	@FindBy(xpath="(//button[contains(text(),'Next')])[3]")
+	private WebElement next_Third_Button;
+	@FindBy(xpath="(//button[contains(text(),'Next')])[4]")
+	private WebElement next_Fourth_Button;
+	@FindBy(xpath="(//button[contains(text(),'Next')])[5]")
+	private WebElement next_Fifth_Button;
+	
 	@FindBy(xpath="//button[contains(text(),'back')]")
 	private WebElement backButton;
+	@FindBy(xpath="//button[contains(text(),'Go Back')]")
+	private WebElement goBackButton;
 	
 	@FindBy(xpath="//select[@formcontrolname='finalStatus']")
 	private WebElement finalReviewStatusDropDownList;
@@ -161,6 +174,7 @@ public class TC_ApprovalPage
 	private WebElement saveAndContinueButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
+	
 	
 	@FindBy(xpath="//div[text()='1.Front View']")
 	private WebElement frontView_Image_Button;
@@ -225,6 +239,32 @@ public class TC_ApprovalPage
 	private WebElement firstView_SeventhImage_Button;
 	@FindBy(xpath="(//div[text()='1.View 2'])[7]")
 	private WebElement secondView_SeventhImage_Button;
+	
+	@FindBy(xpath="//a[contains(text(),'Centre Areas')]")
+	private WebElement centreAreas_Button;
+	@FindBy(xpath="//a[contains(text(),'Job Role & Infrastructure')]")
+	private WebElement jobRoleButton;
+	
+	@FindBy(xpath="(//select[@formcontrolname='status'])[1]")
+	private WebElement centreStatusDropDownList;
+	@FindBy(xpath="//textarea[@placeholder='Enter your review comments']")
+	private WebElement centreCommentTextbox;
+	@FindBy(xpath="(//input[@id='customFile'])[1]")
+	private WebElement centre_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	private WebElement centre_UploadFileButton;
+	@FindBy(xpath="//div[label[contains(text(),'Final Review Status:')]]//select[@formcontrolname='status']")
+	private WebElement jobRole_FinalReviewStatusDropDownList;
+	@FindBy(xpath="//div[div[contains(text(),'Final Review Comment:')]]//textarea[@placeholder='Enter your review comments ']")
+	private WebElement jobRole_FinalReviewCommentTextbox;
+	@FindBy(xpath="//div[div[contains(text(),'Final Review Comment:')]]//input[@id='customFile']")
+	private WebElement jobRole_BrowseFileButton;
+	@FindBy(xpath="//div[div[contains(text(),'Final Review Comment:')]]//button[contains(text(),'Upload')]")
+	private WebElement jobRole_UploadFileButton;
+	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	private WebElement saveAndSubmitButton;
+	@FindBy(xpath="//button[contains(text(),'Ok')]")
+	private WebElement qc_OKButton;
 	
 	
 	public TC_ApprovalPage(WebDriver driver)
@@ -574,9 +614,41 @@ public class TC_ApprovalPage
 	}
 	
 	
+	public void clickOnNext_First()
+	{
+		next_First_Button.click();
+	}
+	
+	public void clickOnNext_Second()
+	{
+		next_Second_Button.click();
+	}
+	
+	public void clickOnNext_Third()
+	{
+		next_Third_Button.click();
+	}
+	
+	public void clickOnNext_Fourth()
+	{
+		next_Fourth_Button.click();
+	}
+	
+	public void clickOnNext_Fifth()
+	{
+		next_Fifth_Button.click();
+	}
+	
+	
+	
 	public void clickOnBack()
 	{
 		backButton.click();
+	}
+	
+	public void clickOnGoBack()
+	{
+		goBackButton.click();
 	}
 	
 	public void clickOnNext_ForJobRole()
@@ -825,6 +897,67 @@ public class TC_ApprovalPage
 		FilePreview.closeWindow(driver);
 	}
 	
+	public void clickOnCentreAreasButton()
+	{
+		centreAreas_Button.click();
+	}
 	
+	public void clickOnJobRoleAndInfrastructure()
+	{
+		jobRoleButton.click();
+	}
+	
+	
+	public void selectCentreStatus(String centreStatus)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(centreStatusDropDownList, centreStatus);
+	}
+	
+	public void enterCentreComment(String centreComment)
+	{
+		centreCommentTextbox.clear();
+		centreCommentTextbox.sendKeys(centreComment);
+	}
+	
+	public void clickOnCentreStatus_BrowseFile()
+	{
+		centre_BrowseFileButton.click();
+	}
+	
+	public void clickOnCentreStatus_UploadFile()
+	{
+		centre_UploadFileButton.click();
+	}
+	
+	public void selectJobRole_FinalReviewStatus(String finalStatus)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(jobRole_FinalReviewStatusDropDownList, finalStatus);
+	}
+	
+	public void enterJobRole_FinalReviewComment(String finalStatusComment)
+	{
+		jobRole_FinalReviewCommentTextbox.clear();
+		jobRole_FinalReviewCommentTextbox.sendKeys(finalStatusComment);
+	}
+	
+	public void clickOnJobRole_BrowseFile()
+	{
+		jobRole_BrowseFileButton.click();
+	}
+	
+	public void clickOnJobRole_UploadFile()
+	{
+		jobRole_UploadFileButton.click();
+	}
+	
+	public void clickOnSaveAndSubmit()
+	{
+		saveAndSubmitButton.click();
+	}
+	
+	public void clickOnOK_QC()
+	{
+		qc_OKButton.click();
+	}
 
 }

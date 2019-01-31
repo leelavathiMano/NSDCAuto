@@ -13,6 +13,8 @@ public class InspectionAgency_DashboardPage
 	private WebElement createANewUserButton;
 	@FindBy(xpath="//div[@routerlink='view-all-appeal-requests']")
 	private WebElement viewAllAssessmentRequestsButton;
+	@FindBy(xpath="//div[p[text()='All Inspection Users']]")
+	private WebElement viewAllInspectionUserButton;
 
 
 	public InspectionAgency_DashboardPage(WebDriver driver)
@@ -29,6 +31,11 @@ public class InspectionAgency_DashboardPage
 	public void clickOnViewAllAssessmentRequest()
 	{
 		viewAllAssessmentRequestsButton.click();
+	}
+	
+	public void clickOnViewAllInspectionUser()
+	{
+		viewAllInspectionUserButton.click();
 	}
 	
 
