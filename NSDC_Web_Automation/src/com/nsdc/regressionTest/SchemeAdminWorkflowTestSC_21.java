@@ -973,7 +973,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration {
 		so_Dashboard.clickOnSOLogOut();
 		Thread.sleep(6000);
 		lp.clickLogin();
-		elp.performlogin(created_BO_Username, bo_Confirm_Password);
+		elp.performlogin(created_Bo_Username, bo_Confirm_Password);
 		Thread.sleep(10000);
 		bo_Dashboard.clickOnAllApprovalRequests();
 		BusinessOwner_AllApprovalRequestsPage bo_ApprovalRequest = new BusinessOwner_AllApprovalRequestsPage(driver);
@@ -1038,7 +1038,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration {
 			bo_ApprovalRequest.clickOnSTTApproveOrRejectScheme();
 		}
 
-		if (select_A_Training_Type.equals("India Internal")) {
+		else if (select_A_Training_Type.equals("India Internal")) {
 			Thread.sleep(4000);
 			bo_ApprovalRequest.clickOnIndiaInternalAction();
 			Thread.sleep(5000);
@@ -1187,7 +1187,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration {
 		bo_approveOrRejectSchemes.clickOnOk();
 		Thread.sleep(4000);
 
-		bo_Dashboard.clickOnBOProfile();
+	/*	bo_Dashboard.clickOnBOProfile();
 		Thread.sleep(5000);
 		bo_Dashboard.clickOnBOLogOut();
 		lp.clickLogin();
@@ -1291,6 +1291,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration {
 		sa_AddQpsToScheme.clickOnSearch();
 		Thread.sleep(4000);
 		sa_AddQpsToScheme.clickOnAddToScheme();
-
+*/
 	}
 }
+	
