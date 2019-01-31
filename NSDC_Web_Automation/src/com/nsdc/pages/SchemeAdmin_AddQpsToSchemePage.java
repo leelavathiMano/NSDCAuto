@@ -19,6 +19,12 @@ public class SchemeAdmin_AddQpsToSchemePage {
 	private WebElement searchByQpCodeTextBox;
 	@FindBy(xpath = "//button[contains(text(),'Search')]")
 	private WebElement searchButton;
+	@FindBy(xpath = "//a[@href='#']")
+	private WebElement actionButton;
+	@FindBy(xpath= "//div[span[contains(text(),'Add to Scheme')]]")
+	private WebElement addToSchemeButton;
+	@FindBy(xpath="//div[span[contains(text(),'View Details')]]")
+	private WebElement viewDetailsButton;
 
 	public SchemeAdmin_AddQpsToSchemePage(WebDriver driver) {
 		this.driver = driver;
@@ -41,4 +47,17 @@ public class SchemeAdmin_AddQpsToSchemePage {
 		searchButton.click();
 	}
 
+	public void clickOnAction() {
+		actionButton.click();
+	}
+	
+	public void clickOnAddToScheme() {
+		addToSchemeButton.click();
+	}
+	
+	public void clickOnViewDetails() {
+		viewDetailsButton.click();
+	}
+	
+	
 }
