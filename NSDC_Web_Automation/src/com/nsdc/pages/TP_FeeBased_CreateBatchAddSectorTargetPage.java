@@ -109,9 +109,9 @@ public class TP_FeeBased_CreateBatchAddSectorTargetPage
 		createBatchButton.click();
 	}
 	
-	public void selectSector(String sector)
+	public void selectSector(int sno)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
+		SelectDropDownList.selectDropDownListByIndex(sectorDropDownList, sno);
 	}
 	
 	public void selectCourse(String course)

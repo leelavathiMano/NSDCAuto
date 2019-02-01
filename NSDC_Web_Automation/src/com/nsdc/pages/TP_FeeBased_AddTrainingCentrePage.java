@@ -88,103 +88,118 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement geo_LocationTextbox;
 	@FindBy(id="addressProofType")
 	private WebElement addressProofTypeDropDownList;
+	@FindBy(xpath="//div[label[@for='addressProof']]//input[@id='customFile']")
+	private WebElement addressProof_BrowseFileButton;
+	@FindBy(xpath="//div[label[@for='addressProof']]//button[contains(text(),'Upload')]")
+	private WebElement addressProof_UploadFileButton;
 	@FindBy(xpath="//label[input[@formcontrolname='internalConnectivity']]/span")
 	private WebElement internetConectivity_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='library']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='library']]]]]]//span")
 	private WebElement library_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='cafetariaDiningRoom']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='cafetariaDiningRoom']]]]]]//span")
 	private WebElement cafeteria_FacilitycheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='parkingFacility']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='parkingFacility']]]]]]//span")
 	private WebElement parking_FacilityCheckbox;
-	@FindBy(xpath="//label[input[@formcontrolname='powerBackupFacility']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='powerBackupFacility']]]]]]//span")
 	private WebElement powerBackup_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='firstAidKitAvailability']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='firstAidKitAvailability']]]]]]//span")
 	private WebElement firstAidKitAvailablity_FacilityCheckbox;
-	@FindBy(xpath="//label[input[@formcontrolname='residentialTraining']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='residentialTraining']]]]]]//span")
 	private WebElement residentialTraining_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='biometricTrainingAttendance']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='biometricTrainingAttendance']]]]]]//span")
 	private WebElement biometricTraineeAttendance_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='avVideoConFacility']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='avVideoConFacility']]]]]]//span")
 	private WebElement avOrVideoCon_FacilitycheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='staffRoom']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='staffRoom']]]]]]//span")
 	private WebElement staffRoom_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='physicalDisabledFriendly']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='physicalDisabledFriendly']]]]]]//span")
 	private WebElement physicalDisabledFriendly_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='threePhasePowerConnection']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='threePhasePowerConnection']]]]]]//span")
 	private WebElement threePhasePowerConnection_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='counsellingRoomPlacementCell']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='counsellingRoomPlacementCell']]]]]]//span")
 	private WebElement counsellingRoom_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@value='fireSafetyEquipment']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='fireSafetyEquipment']]]]]]//span")
 	private WebElement fireSafetyEquipment_FacilitycheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='cctvFacility']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='cctvFacility']]]]]]//span")
 	private WebElement cctv_FacilityCheckBox;
-	@FindBy(xpath="//label[input[@formcontrolname='nsdcBranding']]/span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentralFacade']]]]]]//span")
 	private WebElement nsdcBranding_FacilityCheckBox;
 	
-	@FindBy(xpath="//app-upload-file[@filetype='internalConnectivityFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='internalConnectivity']]]]]]//input[@id='customFile']")
 	private WebElement internetConectivity_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='internalConnectivityFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='internalConnectivity']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement internetConectivity_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='libraryFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='library']]]]]]//input[@id='customFile']")
 	private WebElement library_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='libraryFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='library']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement library_UploadButton;	
-	@FindBy(xpath="//app-upload-file[@filetype='cafetariaDiningRoomFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='cafetariaDiningRoom']]]]]]//input[@id='customFile']")
 	private WebElement cafetaria_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='cafetariaDiningRoomFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='cafetariaDiningRoom']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement cafetaria_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='parkingFacilityFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='parkingFacility']]]]]]//input[@id='customFile']")
 	private WebElement parkingFacility_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='parkingFacilityFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='parkingFacility']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement parkingFacility_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='powerBackupFacilityFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='powerBackupFacility']]]]]]//input[@id='customFile']")
 	private WebElement powerBackupFacility_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='powerBackupFacilityFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='powerBackupFacility']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement powerBackupFacility_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='firstAidKitAvailabilityFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='firstAidKitAvailability']]]]]]//input[@id='customFile']")
 	private WebElement firstAidKitAvailablity_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='firstAidKitAvailabilityFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='firstAidKitAvailability']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement firstAidKitAvailablity_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='residentialTrainingFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='residentialTraining']]]]]]//input[@id='customFile']")
 	private WebElement residentialTraining_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='residentialTrainingFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='residentialTraining']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement residentialTraining_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='biometricTrainingAttendanceFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='biometricTrainingAttendance']]]]]]//input[@id='customFile']")
 	private WebElement biometricTrainingAttandence_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='biometricTrainingAttendanceFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='biometricTrainingAttendance']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement biometricTrainingAttandence_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='avVideoConFacilityFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='avVideoConFacility']]]]]]//input[@id='customFile']")
 	private WebElement avVideoFacility_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='avVideoConFacilityFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='avVideoConFacility']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement avVideoFacility_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='staffRoomFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='staffRoom']]]]]]//input[@id='customFile']")
 	private WebElement staffRoom_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='staffRoomFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='staffRoom']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement staffRoom_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='physicalDisabledFriendlyFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='physicalDisabledFriendly']]]]]]//input[@id='customFile']")
 	private WebElement physicalDisabledFriendly_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='physicalDisabledFriendlyFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='physicalDisabledFriendly']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement physicalDisabledFriendly_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='threePhasePowerConnectionFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='threePhasePowerConnection']]]]]]//input[@id='customFile']")
 	private WebElement threePhasePowerConnection_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='threePhasePowerConnectionFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='threePhasePowerConnection']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement threePhasePowerConnection_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='fireSafetyEquipmentFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='fireSafetyEquipment']]]]]]//input[@id='customFile']")
 	private WebElement fireSafetyEquipment_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='fireSafetyEquipmentFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='fireSafetyEquipment']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement fireSafetyEquipment_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='counsellingRoomPlacementCellFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='counsellingRoomPlacementCell']]]]]]//input[@id='customFile']")
 	private WebElement counsellingRoom_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='counsellingRoomPlacementCellFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='counsellingRoomPlacementCell']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement counsellingRoom_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='cctvFacilityFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='cctvFacility']]]]]]//input[@id='customFile']")
 	private WebElement cctvFacility_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='cctvFacilityFile']//button[contains(text(),'Upload')]")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='cctvFacility']]]]]]//button[contains(text(),'Upload')]")
 	private WebElement cctvFacility_UploadButton;
-	@FindBy(xpath="//app-upload-file[@filetype='nsdcBrandingDocumentFile']//input[@id='customFile']")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentralFacade']]]]]]//input[@id='customFile']")
 	private WebElement nsdcBranding_BrowseFileButton;
-	@FindBy(xpath="//app-upload-file[@filetype='nsdcBrandingDocumentFile']//button[contains(text(),'Upload')]")
-	private WebElement nsdcBranding_UploadButton;	
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentralFacade']]]]]]//button[contains(text(),'Upload')]")
+	private WebElement nsdcBranding_UploadButton;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentreReception']]]]]]//input[@id='customFile']")
+	private WebElement nsdcBrandingReception_BrowseFileButton;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentreReception']]]]]]//button[contains(text(),'Upload')]")
+	private WebElement nsdcBrandingReception_UploadButton;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingClassroom']]]]]]//input[@id='customFile']")
+	private WebElement nsdcBrandingClassroom_BrowseFileButton;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingClassroom']]]]]]//button[contains(text(),'Upload')]")
+	private WebElement nsdcBrandingClassroom_UploadButton;
+	
+	
+	
 	
     @FindBy(id="firstName")
     private WebElement spocNameTextbox;
@@ -259,6 +274,11 @@ public class TP_FeeBased_AddTrainingCentrePage
     private WebElement oKButton;
     @FindBy(xpath="//button[contains(text(),'Resubmit')]")
     private WebElement resubmitButton;
+    
+    @FindBy(xpath="(//label[input[@name='geographicalLocation']]//span)[1]")
+    private WebElement ruralLocation_RadioButton;
+    @FindBy(xpath="(//label[input[@name='geographicalLocation']]//span)[2]")
+    private WebElement urbanLocation_RadioButton;
 
 	
     public TP_FeeBased_AddTrainingCentrePage(WebDriver driver) 
@@ -309,7 +329,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 		}
 		selectDateButton.click();
 		Thread.sleep(5000);
-		batchesPerDayTextbox.click();
+		tcDuration_EndDateButton.sendKeys(Keys.TAB);
 	}
 	
 	public void enterNumberOfBatchesPerDay(String bathesNumber)throws Exception
@@ -474,6 +494,16 @@ public class TP_FeeBased_AddTrainingCentrePage
 	public void selectAddressProofType(String addressProof)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(addressProofTypeDropDownList, addressProof);
+	}
+	
+	public void clickOnAddressProof_BrowseFile()
+	{
+		addressProof_BrowseFileButton.click();
+	}
+	
+	public void clickOnAddressProof_UploadFile()
+	{
+		addressProof_UploadFileButton.click();
 	}
 	
 	public void clickOnInternetConectivityFacility()
@@ -728,6 +758,26 @@ public class TP_FeeBased_AddTrainingCentrePage
 		 nsdcBranding_UploadButton.click();
 	 }
 	 
+	 public void clickOnNSDCReception_BrowseFile()
+	 {
+		 nsdcBrandingReception_BrowseFileButton.click();
+	 }
+	 
+	 public void clickOnNSDCReception_UploadFile()
+	 {
+		 nsdcBrandingReception_UploadButton.click();
+	 }
+	 
+	 public void clickOnNSDCClassroom_BrowseFile()
+	 {
+		 nsdcBrandingClassroom_BrowseFileButton.click();
+	 }
+	 
+	 public void clickOnNSDCClassroom_UploadFile()
+	 {
+		 nsdcBrandingClassroom_UploadButton.click();
+	 }
+	 
 	 public void enterNameOfSPOC(String spocName)
 	 {
 		 ClearTextUsingBackspace.clearAll(spocNameTextbox);
@@ -912,6 +962,16 @@ public class TP_FeeBased_AddTrainingCentrePage
 	 public void clickOnResubmit()
 	 {
 		 resubmitButton.click();
+	 }
+	 
+	 public void clcikOnRuralLocation()
+	 {
+		 ruralLocation_RadioButton.click();
+	 }
+	 
+	 public void clcikOnUrbanLocation()
+	 {
+		 urbanLocation_RadioButton.click();
 	 }
 
 }
