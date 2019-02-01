@@ -162,12 +162,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		//Platform QP
 		sscTbcP.clickToChoosePlatformQP();
 		Thread.sleep(4000);
-		sscTbcP.selectPlatformTrainingStartDate();
-		Thread.sleep(2000);
+//	sscTbcP.selectPlatformTrainingStartDate();
+//		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW"))
 		{
-			sscTbcP.selectPlatformTrainingEndDateForNewBatch();
-			Thread.sleep(2000);
+//			sscTbcP.selectPlatformTrainingEndDateForNewBatch();
+//			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentStartDateForNewBatch();
 			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentEndDateForNewBatch();
@@ -175,8 +175,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		}
 		else if(batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers"))
 		{
-			sscTbcP.selectPlatformTrainingEndDateForExistingBatch();
-			Thread.sleep(2000);
+//			sscTbcP.selectPlatformTrainingEndDateForExistingBatch();
+//			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentStartDateForExistingBatch();
 			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentEndDateForExistingBatch();
@@ -205,7 +205,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
-		Thread.sleep(4000);
+/*		Thread.sleep(4000);
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		sVbP.selectStateFilter(state);
 		Thread.sleep(2000);
@@ -309,10 +309,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(2000);
+*/		Thread.sleep(2000);
     }
     
-    @Test(dataProvider="totBatchData", dependsOnMethods="totBatchCreationTC_01")
+/*    @Test(dataProvider="totBatchData", dependsOnMethods="totBatchCreationTC_01")
     public void totBatchApprovalTC_02(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime) throws Exception
     {
     	//Assigned TC Login to Accept Batch
@@ -693,7 +693,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		}	   
 		else
  		{
- */			tSp.selectState(state);
+ 			tSp.selectState(state);
  			Thread.sleep(2000);
  			tSp.selectSector(preferredSector1);
  			Thread.sleep(4000);
@@ -1546,10 +1546,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		aVp.clickToGoToApprovedApplicantsSection();
     		Thread.sleep(2000);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), name);
-      /* 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), email);
+      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), email);
        	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[4]")).getText().trim(), trainerID);
        	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[5]")).getText().trim(), mobile);
-       */ 	aVp.clickToGetApplicantActionMenu(trainerID);
+     	aVp.clickToGetApplicantActionMenu(trainerID);
        	 	Thread.sleep(2000);
        	 	aVp.selectViewDetailsOfApplicantOption(trainerID);
        	 	Thread.sleep(2000);
@@ -2011,4 +2011,5 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   		Thread.sleep(6000);
 	   	}
     }
+*/
 }
