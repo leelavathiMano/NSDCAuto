@@ -85,7 +85,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(6000);
         rp.clickConfirmationOkMessage();
         elp.performlogin(username, confirmPassword);
-        Thread.sleep(10000);
+        Thread.sleep(20000);
         TrainerRegistrationPage trainer = new TrainerRegistrationPage(driver);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         trainer.selectGender(gender);
@@ -259,7 +259,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(8000);
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector1+"')]")).getText(), industrial_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+industrial_sector1+"\")]")).getText(), industrial_sector1);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails1+"')]")).getText(), industrialExperienceDetails1);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[1]")).getText(), "Yes");
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector2);
@@ -280,7 +280,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(8000);
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(5000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector2+"')]")).getText(), industrial_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+industrial_sector2+"\")]")).getText(), industrial_sector2);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails2+"')]")).getText(), industrialExperienceDetails2);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[2]")).getText(), "Yes");
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector3);
@@ -301,7 +301,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(10000);
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+industrial_sector3+"\")]")).getText(), industrial_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
         Thread.sleep(2000);
@@ -334,7 +334,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Thread.sleep(8000);
         trainer.clickOnAddTrainingExperienceDetails();
     	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector1+"')]")).getText(), training_sector1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+training_sector1+"\")]")).getText(), training_sector1);
        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails1+"')]")).getText(), trainingExperienceDetails1);
        	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
        	trainer.selectRelevantSectorForTrainingExperience(training_sector2);
@@ -353,7 +353,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(8000);
         trainer.clickOnAddTrainingExperienceDetails();
      	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector2+"')]")).getText(), training_sector2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+training_sector2+"\")]")).getText(), training_sector2);
        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails2+"')]")).getText(), trainingExperienceDetails2);
        	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[4]")).getText(), "Yes");
        	trainer.selectRelevantSectorForTrainingExperience(training_sector3);
@@ -372,7 +372,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Thread.sleep(8000);
        	trainer.clickOnAddTrainingExperienceDetails();
      	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector3+"')]")).getText(), training_sector3);
+       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+training_sector3+"\")]")).getText(), training_sector3);
        	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails3+"')]")).getText(), trainingExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[5]")).getText(), "Yes");
        	trainer.deleteThirdTrainingExperienceDetails();
@@ -413,12 +413,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         trainer.clickAddPreferences();
         Thread.sleep(2000);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[1]")).getText().trim(), preferredJobRole1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[1]")).getText().trim(), preferredJobRole1+" ("+preferredJobRoleCode1+")");
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[2]")).getText().trim(), preferredSector1);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[4]")).getText().trim(), preferredState1);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[5]")).getText().trim(), preferredDistrict1);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
         //preference 2
         Thread.sleep(4000);
         trainer.selectPreferredSector(preferredSector2);
@@ -435,12 +435,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         trainer.clickAddPreferences();
         Thread.sleep(4000);
-     //   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[1]")).getText().trim(), preferredJobRole2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[1]")).getText().trim(), preferredJobRole2+" ("+preferredJobRoleCode2+")");
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[2]")).getText().trim(), preferredSector2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[4]")).getText().trim(), preferredState2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[5]")).getText().trim(), preferredDistrict2);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
         //preference 3
         Thread.sleep(4000);
         trainer.selectPreferredSector(preferredSector3);
@@ -457,12 +457,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         trainer.clickAddPreferences();
         Thread.sleep(2000);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[1]")).getText().trim(), preferredJobRole3+" ("+preferredJobRoleCode3+")");
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[2]")).getText().trim(), preferredSector3);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[4]")).getText().trim(), preferredState3);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[5]")).getText().trim(), preferredDistrict3);
-       // Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[6]")).getText().trim(), preferredSubDistrict3);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[6]")).getText().trim(), preferredSubDistrict3);
         //deleting 3rd preference
         Thread.sleep(4000);
         trainer.clickToDeleteThirdPreference();

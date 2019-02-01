@@ -81,7 +81,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickConfirmationOkMessage();
         elp.performlogin(username, confirmPassword);
-        Thread.sleep(8000);
+        Thread.sleep(20000);
         AssessorRegistrationPage assessor = new AssessorRegistrationPage(driver);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         assessor.selectGender(gender);
@@ -257,7 +257,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(8000);
         assessor.clickOnAddIndustrialExperienceDetails();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector1+"')]")).getText(), industrial_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+industrial_sector1+"\")]")).getText(), industrial_sector1);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails1+"')]")).getText(), industrialExperienceDetails1);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[1]")).getText(), "Yes");
         assessor.selectRelevantSectorForIndustrialExperience(industrial_sector2);
@@ -278,7 +278,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(8000);
         assessor.clickOnAddIndustrialExperienceDetails();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector2+"')]")).getText(), industrial_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+industrial_sector2+"\")]")).getText(), industrial_sector2);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails2+"')]")).getText(), industrialExperienceDetails2);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[2]")).getText(), "Yes");
         assessor.selectRelevantSectorForIndustrialExperience(industrial_sector3);
@@ -299,7 +299,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(8000);
         assessor.clickOnAddIndustrialExperienceDetails();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+industrial_sector3+"\")]")).getText(), industrial_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
         assessor.deleteThirdIndustrialExperienceDetails();
@@ -331,7 +331,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(8000);
         assessor.clickOnAddTrainingExperienceDetails();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector1+"')]")).getText(), training_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+training_sector1+"\")]")).getText(), training_sector1);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails1+"')]")).getText(), trainingExperienceDetails1);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
         assessor.selectRelevantSectorForTrainingExperience(training_sector2);
@@ -350,7 +350,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(8000);
         assessor.clickOnAddTrainingExperienceDetails();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector2+"')]")).getText(), training_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+training_sector2+"\")]")).getText(), training_sector2);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails2+"')]")).getText(), trainingExperienceDetails2);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[4]")).getText(), "Yes");
         assessor.selectRelevantSectorForTrainingExperience(training_sector3);
@@ -369,7 +369,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(8000);
         assessor.clickOnAddTrainingExperienceDetails();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector3+"')]")).getText(), training_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),\""+training_sector3+"\")]")).getText(), training_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails3+"')]")).getText(), trainingExperienceDetails3);
         Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[5]")).getText(), "Yes");
         assessor.deleteThirdTrainingExperienceDetails();

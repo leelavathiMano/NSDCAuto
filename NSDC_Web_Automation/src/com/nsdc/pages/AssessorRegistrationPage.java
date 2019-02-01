@@ -135,7 +135,7 @@ public class AssessorRegistrationPage
     private WebElement preferredDistrictDropdownList;
     @FindBy(xpath="//select[@formcontrolname='subDistrict']")
     private WebElement preferredSubDistrictDropDownList;
-    @FindBy(xpath="//button[contains(text(),'Add Preferences')]")
+    @FindBy(xpath="//button[contains(text(),'Add Training Request')]")
     private WebElement addPreferencesButton;
     @FindBy(xpath="(//button[i[@class='fa fa-trash-o']])[3]")
     private WebElement deleteThirdPreferenceButton;
