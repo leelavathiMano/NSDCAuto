@@ -21,7 +21,7 @@ public class NSDCAdmin_DashboardPage {
 	private WebElement oKButton;
 	@FindBy(xpath = "//span[contains(text(),'NSDCADMIN1')]")
 	private WebElement nSDCAdminProfileButton;
-	@FindBy(xpath = "//span[contains(text(),'NSDCADMIN_000001')]")
+	@FindBy(xpath = "//span[contains(text(),'NSDCADMIN_000003')]")
 	private WebElement nSDCAdminNewProfileButton;
 	@FindBy(xpath = "//div[p[contains(text(),'Create Scheme')]]")
 	private WebElement createSchemeCard;
