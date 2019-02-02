@@ -29,6 +29,8 @@ public class TP_FeeBased_EnrollCandidatesPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'Re-Upload Candidate Sheet')]")
 	private WebElement reUploadCandidateListButton;
+	@FindBy(xpath="//select[@formcontrolname='stage']")
+	private WebElement selectStageDropDownList;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement uploadDetailsButton;
 	@FindBy(xpath="//span[text()='attendance']")
@@ -83,9 +85,9 @@ public class TP_FeeBased_EnrollCandidatesPage
 	private WebElement salarySlip_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
 	private WebElement salarySlip_UploadFileButton;
-	@FindBy(xpath="(//input[@id='customFile'])[6]")
+	@FindBy(xpath="(//input[@id='customFile'])[3]")
 	private WebElement undertakingDocument_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
 	private WebElement undertakingDocument_UploadFileButton;
 	@FindBy(xpath="(//button[text()='Submit'])[4]")
 	private WebElement submit_PlacementDocumentButton;
@@ -93,6 +95,7 @@ public class TP_FeeBased_EnrollCandidatesPage
 	private WebElement close_PlacementDocumentButton;
 	@FindBy(xpath="//button[contains(text(),'Submit For Assessment')]")
 	private WebElement submitForAssessmentButton;
+	
 	
 	public TP_FeeBased_EnrollCandidatesPage(WebDriver driver) 
 	{
@@ -145,6 +148,11 @@ public class TP_FeeBased_EnrollCandidatesPage
 	public void clickOnReUploadCandidateList()
 	{
 		reUploadCandidateListButton.click();
+	}
+	
+	public void selectStage(String stage)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(selectStageDropDownList, stage);
 	}
 	
 	public void clickOnUploadDetails()

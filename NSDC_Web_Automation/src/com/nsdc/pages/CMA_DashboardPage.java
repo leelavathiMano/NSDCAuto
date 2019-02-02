@@ -10,11 +10,11 @@ public class CMA_DashboardPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//div[@ng-reflect-router-link='view-all-tc-requests']")
+	@FindBy(xpath="//div[p[text()='View All TC Add Requests']]")
 	private WebElement viewAllTCRequestButton;
-	@FindBy(xpath="//div[@ng-reflect-router-link='view-all-add-sector-requests']")
+	@FindBy(xpath="//div[p[text()='View All Sector']]")
 	private WebElement viewAllSectorButton;
-	@FindBy(xpath="//div[@ng-reflect-router-link='view-all-add-course-requests']")
+	@FindBy(xpath="//div[p[text()='View All Course Add Requests']]")
 	private WebElement viewAllCourseAddRequestButton;
 	@FindBy(xpath="//span[contains(text(),'Dashboard')]")
 	private WebElement dashboardButton;

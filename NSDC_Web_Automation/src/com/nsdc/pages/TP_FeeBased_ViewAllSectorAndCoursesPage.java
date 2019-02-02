@@ -80,9 +80,9 @@ public class TP_FeeBased_ViewAllSectorAndCoursesPage
 		searchTextbox.sendKeys(search);	
 	}
 	
-	public void selectSector(String sector)
+	public void selectSector(int sno)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
+		SelectDropDownList.selectDropDownListByIndex(sectorDropDownList, sno);
 	}
 	
 	public void enterProposedTrainingTarget(String trainingTarget)

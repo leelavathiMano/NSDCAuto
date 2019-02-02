@@ -76,14 +76,14 @@ public class TP_FeeBased_AddCourseToSectorsPage
 		courseNameTextbox.sendKeys(courseName);
 	}
 	
-	public void selectSector(String sector)
+	public void selectSector(int sno)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
+		SelectDropDownList.selectDropDownListByIndex(sectorDropDownList, sno);
 	}
 	
-	public void selectJobRoleMappingType(String jobRole)
+	public void selectJobRoleMappingType(int sno)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRoleMappingTypeDropDownList, jobRole);
+		SelectDropDownList.selectDropDownListByIndex(jobRoleMappingTypeDropDownList, sno);
 	}
 	
 	public void selectAssociatedQPOrJobRoleName(String jobRoleName)
@@ -116,7 +116,7 @@ public class TP_FeeBased_AddCourseToSectorsPage
 	
 	public void selectMinimumEducationRequired(String minimumEducation)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(minimumEducationRequiredDropDownList, minimumEducation);
+		SelectDropDownList.selectDropDownListByIndex(minimumEducationRequiredDropDownList, 1);
 	}
 	
 	public void enterCourseDuration(String courseDuration)
