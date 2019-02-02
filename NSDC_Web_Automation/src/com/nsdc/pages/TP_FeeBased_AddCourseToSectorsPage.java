@@ -81,14 +81,14 @@ public class TP_FeeBased_AddCourseToSectorsPage
 		SelectDropDownList.selectDropDownListByIndex(sectorDropDownList, sno);
 	}
 	
-	public void selectJobRoleMappingType(int sno)
+	public void selectJobRoleMappingType(String jobRole)
 	{
-		SelectDropDownList.selectDropDownListByIndex(jobRoleMappingTypeDropDownList, sno);
+		SelectDropDownList.selectDropDownListByVisibleText(jobRoleMappingTypeDropDownList, jobRole);
 	}
 	
 	public void selectAssociatedQPOrJobRoleName(String jobRoleName)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(associateQPDropDownList, jobRoleName);
+		SelectDropDownList.selectDropDownListByIndex(associateQPDropDownList, 1);
 	}
 	
 	public void enterNSQFLevel(String nsqfLevel)
