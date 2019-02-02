@@ -20,8 +20,12 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	private WebElement targetAudienceDropdownList;
 	@FindBy(id="chiefGuestTitle")
 	private WebElement chiefGuestTitleDropdownList;
+	@FindBy(id="chiefGuestSalutation")
+	private WebElement chiefGuestSalutationDropdownList;
 	@FindBy(id="chiefGuestName")
 	private WebElement chiefGuestNameTextField;
+	@FindBy(id="eligibilityCriteria")
+	private WebElement eligibilityCriteriaDropdownList;
 	@FindBy(xpath="//input[@placeholder='Select Start Date']")
 	private WebElement rozgarMelaStartDateTextField;
 	@FindBy(xpath="//input[@placeholder='Select End Date']")
@@ -50,7 +54,7 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	private WebElement geoLocationTextField;
 	@FindBy(id="additionalRemarks")
 	private WebElement additionalRemarksTextArea;
-	@FindBy(xpath="//button[contains(text(),'Create Mela & Align Training Centre')]")
+	@FindBy(xpath="//button[contains(text(),'Next')]")
 	private WebElement createMelaAndAlignTrainingCentreButton;
 	@FindBy(xpath="//button[contains(text(),'cancel')]")
 	private WebElement cancelButton;
@@ -75,7 +79,7 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	//Finally creating Rozgar Mela
 	@FindBy(xpath="//button[contains(text(),'Save & Create Rozgar Mela')]")
 	private WebElement saveAndCreateRozgarMelaButton;
-	@FindBy(xpath="//button[contains(text(),'Announce to Stakeholders ')]")
+	@FindBy(xpath="//button[contains(text(),'Announce')]")
 	private WebElement announceToStakeholdersButton;
 	
 	
@@ -95,16 +99,43 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	}
 	public void selectTargetAudience(String targetAudience)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(targetAudienceDropdownList, targetAudience);
+		if(targetAudience.equalsIgnoreCase("PMKVY (Centre)"))
+		{
+			driver.findElement(By.xpath("(//label[input[@type='checkbox']])[1]")).click();
+		}
+		else if(targetAudience.equalsIgnoreCase("PMKVY (State)"))
+		{
+			driver.findElement(By.xpath("(//label[input[@type='checkbox']])[2]")).click();
+		}
+		else if(targetAudience.equalsIgnoreCase("PMKK")) 
+		{
+			driver.findElement(By.xpath("(//label[input[@type='checkbox']])[3]")).click();
+		}
+		else if(targetAudience.equalsIgnoreCase("Fee Based")) 
+		{
+			driver.findElement(By.xpath("(//label[input[@type='checkbox']])[4]")).click();
+		}
+		else 
+		{
+			driver.findElement(By.xpath("(//label[input[@type='checkbox']])[5]")).click();
+		}
 	}
 	public void selectChiefGuestTitle(String chiefGuestTitle)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(chiefGuestTitleDropdownList, chiefGuestTitle);
 	}
+	public void selectChiefGuestSalutation(String chiefGuestSalutation)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(chiefGuestSalutationDropdownList, chiefGuestSalutation);
+	}
 	public void enterChiefGuestName(String chiefGuestName)
 	{
 		chiefGuestNameTextField.clear();
 		chiefGuestNameTextField.sendKeys(chiefGuestName);
+	}
+	public void selectEligibilityCriteria(String eligibilityCriteria)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(eligibilityCriteriaDropdownList, eligibilityCriteria);
 	}
 	public void chooseRozgarMelaStartDate()
 	{
@@ -114,14 +145,16 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	{
 		rozgarMelaEndDateTextField.sendKeys(Keys.ARROW_RIGHT,Keys.ARROW_RIGHT,Keys.ENTER);
 	}
-	public void enterRozgarMelaStartTime(String startTime)
+	public void enterRozgarMelaStartTime(String startTime) throws InterruptedException
 	{
-		rozgarMelaStartTimeTextField.clear();
+		rozgarMelaStartTimeTextField.sendKeys(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE);
+		Thread.sleep(2000);
 		rozgarMelaStartTimeTextField.sendKeys(startTime);
 	}
-	public void enterRozgarMelaEndTime(String endTime)
+	public void enterRozgarMelaEndTime(String endTime) throws InterruptedException
 	{
-		rozgarMelaEndTimeTextField.clear();
+		rozgarMelaEndTimeTextField.sendKeys(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE);
+		Thread.sleep(2000);
 		rozgarMelaEndTimeTextField.sendKeys(endTime);
 	}
 	public void clickMelaDailyTimingLabelToCloseMelaDurationPickers()
@@ -225,4 +258,3 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 		announceToStakeholdersButton.click();
 	}
 }
-

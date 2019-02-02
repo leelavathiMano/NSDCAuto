@@ -58,8 +58,8 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(2000);
 		sscTbcP.selectDomainJobRole(jobRole);
 		Thread.sleep(4000);
-		sscTbcP.selectPlatformJobRole("Trainer");
-		Thread.sleep(4000);
+		sscTbcP.selectPlatformJobRole("Master Trainer");
+		Thread.sleep(20000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
 		Thread.sleep(2000);
@@ -74,10 +74,10 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		//Platform QP
 		sscTbcP.clickToChoosePlatformQP();
 		Thread.sleep(4000);
-		sscTbcP.selectPlatformTrainingStartDate();
-		Thread.sleep(4000);
-		sscTbcP.selectPlatformTrainingEndDateForNewBatch();
-		Thread.sleep(4000);
+//		sscTbcP.selectPlatformTrainingStartDate();
+//		Thread.sleep(4000);
+//		sscTbcP.selectPlatformTrainingEndDateForNewBatch();
+//		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentStartDateForNewBatch();
 		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentEndDateForNewBatch();
@@ -87,9 +87,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		sscTbcP.selectBatchSize("20");
 		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
-		Thread.sleep(4000);
+		Thread.sleep(20000);
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
+		Thread.sleep(20000);
 		//Add Exceptional Training Centre
 		SSC_ExceptionalTraningCentreCreationPage eTCp=new SSC_ExceptionalTraningCentreCreationPage(driver);
 		eTCp.clickAddExceptionalTC();
