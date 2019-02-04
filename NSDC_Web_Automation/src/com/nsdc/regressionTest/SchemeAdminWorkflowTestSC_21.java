@@ -51,7 +51,7 @@ public class SchemeAdminWorkflowTestSC_21 extends TestConfiguration {
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
-		elp.performlogin("NSDCADMIN_000003", "Qwerty@123");
+		elp.performlogin("NSDCADMIN", "Qwerty@123");
 		Thread.sleep(10000);
 	}
 
