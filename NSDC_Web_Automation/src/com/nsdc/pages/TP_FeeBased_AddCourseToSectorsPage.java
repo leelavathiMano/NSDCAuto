@@ -76,9 +76,9 @@ public class TP_FeeBased_AddCourseToSectorsPage
 		courseNameTextbox.sendKeys(courseName);
 	}
 	
-	public void selectSector(int sno)
+	public void selectSector(String sno)
 	{
-		SelectDropDownList.selectDropDownListByIndex(sectorDropDownList, sno);
+		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sno);
 	}
 	
 	public void selectJobRoleMappingType(String jobRole)
@@ -88,7 +88,7 @@ public class TP_FeeBased_AddCourseToSectorsPage
 	
 	public void selectAssociatedQPOrJobRoleName(String jobRoleName)
 	{
-		SelectDropDownList.selectDropDownListByIndex(associateQPDropDownList, 1);
+		SelectDropDownList.selectDropDownListByVisibleText(associateQPDropDownList, jobRoleName);
 	}
 	
 	public void enterNSQFLevel(String nsqfLevel)
