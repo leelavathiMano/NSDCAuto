@@ -12,7 +12,7 @@ public class FDA_SelectedSchemePage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="//button[text()='Download Signed Termsheet:']")
+	@FindBy(xpath="//button[text()='Download Signed Termsheets:']")
 	private WebElement downloadSignedTermsheetButton;
 	@FindBy(xpath="//button[text()='Download Signed Agreement:']")
 	private WebElement downloadSignedProposalButton;

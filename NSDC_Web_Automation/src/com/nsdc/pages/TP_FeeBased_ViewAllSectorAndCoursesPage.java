@@ -23,7 +23,7 @@ public class TP_FeeBased_ViewAllSectorAndCoursesPage
 	private WebElement addedCourseButton;
 	@FindBy(id="generalSearch")
 	private WebElement searchTextbox;
-	@FindBy(id="sector")
+	@FindBy(xpath="//select[@id='sector']")
 	private WebElement sectorDropDownList;
 	@FindBy(id="proposedTrainingTarget")
 	private WebElement proposedTrainingTargetTextbox;
@@ -80,15 +80,9 @@ public class TP_FeeBased_ViewAllSectorAndCoursesPage
 		searchTextbox.sendKeys(search);	
 	}
 	
-<<<<<<< HEAD
-	public void selectSector(String sno)
-	{
-		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sno);
-=======
 	public void selectSector(String sector)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
->>>>>>> 93f93f352f897261e97c45756874b75d680aea04
 	}
 	
 	public void enterProposedTrainingTarget(String trainingTarget)

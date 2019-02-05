@@ -92,7 +92,7 @@ public class TP_FeeBased_BatchDetailsPage
 	public void clickOnEndDate_BatchDuration()throws Exception
 	{
 		Thread.sleep(3000);
-		endDate_BatchDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
+		endDate_BatchDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void selectBatchType(String batchType)
@@ -150,20 +150,19 @@ public class TP_FeeBased_BatchDetailsPage
 	public void clickOnEndDate_TrainingDuration()throws Exception
 	{
 		Thread.sleep(5000);
-		endDate_TrainingDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
+		endDate_TrainingDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void clickOnStartDate_AssessmentDuration()throws Exception
 	{
-		Thread.sleep(3000);
-		startDate_AssessmentDurationTextbox.click();
-		startDate_AssessmentDurationTextbox.sendKeys(Keys.ENTER, Keys.TAB);
+		Thread.sleep(5000);
+		startDate_AssessmentDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void clickOnEndDate_AssessmentDuration()throws Exception
 	{
 		Thread.sleep(3000);
-		endDate_AssessmentDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
+		endDate_AssessmentDurationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void selectAssessmentMode(String assessmentMode)
