@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TrainerApplicantDashboardPage
 {
@@ -22,6 +24,8 @@ public class TrainerApplicantDashboardPage
 	}
 	public void clickToGetApplicantDashboard()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.visibilityOf(applicantDashboardLink));
 		applicantDashboardLink.click();
 	}
 	public void clickSearchAndApplyforAvailableBatches()

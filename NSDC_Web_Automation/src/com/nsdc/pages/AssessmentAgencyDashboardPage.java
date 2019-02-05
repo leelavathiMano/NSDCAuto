@@ -1,9 +1,12 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AssessmentAgencyDashboardPage
 {
@@ -22,7 +25,10 @@ public class AssessmentAgencyDashboardPage
 	}
 	public void clickBatchAssessmentRequests()
 	{
-		batchAssessmentRequestsCardText.click();
+		WebDriverWait wait=new WebDriverWait(driver, 120);
+		wait.until(ExpectedConditions.visibilityOf(batchAssessmentRequestsCardText));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()", batchAssessmentRequestsCardText);
 	}
 	public void clickLinksAssessors()
 	{

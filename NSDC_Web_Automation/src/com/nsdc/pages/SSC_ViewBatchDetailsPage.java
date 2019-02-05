@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SSC_ViewBatchDetailsPage
 {
@@ -192,6 +194,8 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement sendBackBatchRemarksTextArea;
 	@FindBy(xpath="//button[contains(text(),'Submit')]")
 	private WebElement sendBackBatchSubmitButton;
+	@FindBy(xpath="//label[input[@name='confirmation']]")
+	private WebElement confirmationCheckbox;
 		
 	public SSC_ViewBatchDetailsPage(WebDriver driver)
 	{
@@ -199,6 +203,10 @@ public class SSC_ViewBatchDetailsPage
 		PageFactory.initElements(driver,this);
 	}
 	//After Batch creation and Assigning All Actors 
+	public void clickConfirmation()
+	{
+		confirmationCheckbox.click();
+	}
 	public void clickSaveAsDraft()
 	{
 		saveAsDraftButton.click();
@@ -419,6 +427,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickOkForBatchSubmission()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOf(batchSubmitOkButton));
 		batchSubmitOkButton.click();
 	}
 	//Rejection Batches - Two Domain Jobroles and One Platform QP
