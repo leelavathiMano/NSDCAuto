@@ -197,7 +197,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
 		Thread.sleep(4000);
-		Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Toast error Message present, Unable to create Batch! May be some data not entered OR Something went wrong! ");
+		Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Toast error Message present, Unable to create Batch! May be some data not entered properly OR Something went wrong! ");
 		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
 		String[]parts=bacthCreationsuccessfulURL.split("/");
 		String createdBatchID=parts[parts.length-1];
@@ -208,7 +208,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Thread.sleep(4000);
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		sVbP.selectStateFilter(state);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		sVbP.selectDistrictFilter(district);
 		Thread.sleep(2000);
 		sVbP.enterTrainingCentreIDToSearch(tcID);
@@ -297,11 +297,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
+		js.executeScript("window.scrollBy(0,500)", "");
+		sVbP.clickConfirmation();
+		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),2,formatter.format(date));
-		Thread.sleep(4000);
 		sVbP.clickOkForBatchSubmission();
 		Thread.sleep(4000);
 		PostLoginPage plp=new PostLoginPage(driver);
@@ -347,25 +349,72 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		plp.clickOnLogout();
 		Thread.sleep(4000);
 		//Assigned Master Trainer Login To Accept the Batch
-		for(int i=1;i<3;i++)
+		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
+		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
+		if(!pmasterTrainerID.equalsIgnoreCase(dmasterTrainerID))
+		{
+			for(int i=1;i<3;i++)
+			{
+				Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+				lp.clickLogin();
+				if(i==1)
+				{
+					elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
+				}
+				else
+				{
+					if(pmasterTrainerID.equalsIgnoreCase(dmasterTrainerID))
+					{
+						elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
+					}
+				}
+				tDp.clickToGetTrainerDashboard();
+				Thread.sleep(2000);
+				tDp.clickAllBatches();
+				Thread.sleep(4000);
+				tVp.clicktoGoPendingBatchesSection();
+				Thread.sleep(2000);
+				js.executeScript("window.scrollBy(0,200)", "");
+				Thread.sleep(2000);
+				tVp.clickToGetActionMenuOptions(batchID);
+				Thread.sleep(2000);
+				tVp.clickToSelectAcceptBatchOption(batchID);
+				Thread.sleep(4000);
+				if(i==1)
+				{
+					tVp.enterRemarksForAcceptingBatch(dmtBatchAcceptanceRemarks);
+				}
+				else
+				{
+					tVp.enterRemarksForAcceptingBatch(pmtBatchAcceptanceRemarks);
+				}
+				Thread.sleep(4000);	
+				tVp.clickToSubmit();
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+				Date date = new Date();
+				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+				if(i==1)
+				{
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 44, timeFormat.format(date));
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 43, formatter.format(date));
+				}
+				else
+				{
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 50, timeFormat.format(date));
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
+				}
+			}
+		}
+		else
 		{
 			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 			lp.clickLogin();
-			if(i==1)
-			{
-				elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
-			}
-			else
-			{
-				elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
-			}
-			Thread.sleep(10000);
-			TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
+			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
+			Thread.sleep(15000);
 			tDp.clickToGetTrainerDashboard();
 			Thread.sleep(2000);
 			tDp.clickAllBatches();
 			Thread.sleep(4000);
-			TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
 			tVp.clicktoGoPendingBatchesSection();
 			Thread.sleep(2000);
 			js.executeScript("window.scrollBy(0,200)", "");
@@ -374,54 +423,110 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Thread.sleep(2000);
 			tVp.clickToSelectAcceptBatchOption(batchID);
 			Thread.sleep(4000);
-			if(i==1)
-			{
-				tVp.enterRemarksForAcceptingBatch(dmtBatchAcceptanceRemarks);
-			}
-			else
-			{
-				tVp.enterRemarksForAcceptingBatch(pmtBatchAcceptanceRemarks);
-			}
+			tVp.enterRemarksForAcceptingBatch(dmtBatchAcceptanceRemarks);
 			Thread.sleep(4000);	
 			tVp.clickToSubmit();
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
-			if(i==1)
-			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 44, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 43, formatter.format(date));
-			}
-			else
-			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 50, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
-			}
-			Thread.sleep(4000);	
-			tVp.clickOk();
-			Thread.sleep(2000);
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(6000);
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 44, timeFormat.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 43, formatter.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 50, timeFormat.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
 		}
+		Thread.sleep(4000);	
+		tVp.clickOk();
+		Thread.sleep(2000);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		Thread.sleep(6000);
 		//Assigned Assessment Agency Login to Accept and assigning master assessors for a batch
-		for(int i=1;i<3;i++)
+		if(!passessmentAgencyID.equalsIgnoreCase(dassessmentAgencyID))
+		{
+			for(int i=1;i<3;i++)
+			{
+				lp.clickLogin();
+				if(i==1)
+				{
+					elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
+				}
+				else
+				{
+					elp.performlogin(passessmentAgencyID, passessmentAgencyPassword);
+				}
+				AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
+				aDp.clickBatchAssessmentRequests();
+				Thread.sleep(2000);
+				AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
+				aVp.clickToViewPendingBatchRequests();
+				Thread.sleep(2000);
+				aVp.enterBatchIdToSearch(batchID);
+				Thread.sleep(2000);
+				aVp.clickToApplySelectedSearchFilters();
+				Thread.sleep(4000);
+				js.executeScript("window.scrollBy(0,200)", "");
+				Thread.sleep(2000);
+				aVp.clickToGetActionMenuOptions();
+				Thread.sleep(2000);
+				aVp.clickToSelectAcceptBatchOption();
+				Thread.sleep(2000);
+				if(i==1)
+				{
+					aVp.enterRemarksForAcceptingBatch(daaBatchAcceptanceRemarks);
+				}
+				else
+				{
+					aVp.enterRemarksForAcceptingBatch(paaBatchAcceptanceRemarks);
+				}
+				Thread.sleep(2000);		
+				aVp.clickToSubmitBatchAcceptance();
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
+				Date date = new Date();
+				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+				if(i==1)
+				{
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 56, timeFormat.format(date));
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 55, formatter.format(date));
+				}
+				else
+				{
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
+				}
+				Thread.sleep(4000);
+				aVp.clickOk();
+				Thread.sleep(2000);
+				//assigning assessors
+				aVp.clickToViewAcceptedBatches();
+				Thread.sleep(4000);
+				aVp.enterBatchIdToSearch(batchID);
+				Thread.sleep(2000);
+				aVp.clickToApplySelectedSearchFilters();
+				Thread.sleep(4000);
+				js.executeScript("window.scrollBy(0,200)", "");
+				Thread.sleep(2000);
+				aVp.clickToGetActionMenuOptions();
+				Thread.sleep(2000);
+				aVp.clickToSelectAssignAssessorsOption();
+				Thread.sleep(4000);
+				if(i==1)
+				{
+					aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
+					Thread.sleep(2000);
+				}
+				else
+				{
+					aVp.selectMasterAssessorForPlatform(pmasterAssessorName+"("+pmasterAssessorID+")");
+					Thread.sleep(2000);
+				}
+			}
+		}
+		else
 		{
 			lp.clickLogin();
-			if(i==1)
-			{
-				elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
-			}
-			else
-			{
-				elp.performlogin(passessmentAgencyID, passessmentAgencyPassword);
-			}
-			Thread.sleep(8000);
-			js.executeScript("window.scrollBy(0,200)", "");
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
+			elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
-			Thread.sleep(4000);
 			aDp.clickBatchAssessmentRequests();
 			Thread.sleep(2000);
 			AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
@@ -437,29 +542,16 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Thread.sleep(2000);
 			aVp.clickToSelectAcceptBatchOption();
 			Thread.sleep(2000);
-			if(i==1)
-			{
-				aVp.enterRemarksForAcceptingBatch(daaBatchAcceptanceRemarks);
-			}
-			else
-			{
-				aVp.enterRemarksForAcceptingBatch(paaBatchAcceptanceRemarks);
-			}
+			aVp.enterRemarksForAcceptingBatch(daaBatchAcceptanceRemarks);
 			Thread.sleep(2000);		
 			aVp.clickToSubmitBatchAcceptance();
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
-			if(i==1)
-			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 56, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 55, formatter.format(date));
-			}
-			else
-			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
-			}
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 56, timeFormat.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 55, formatter.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
 			Thread.sleep(4000);
 			aVp.clickOk();
 			Thread.sleep(2000);
@@ -476,41 +568,81 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Thread.sleep(2000);
 			aVp.clickToSelectAssignAssessorsOption();
 			Thread.sleep(4000);
-			if(i==1)
-			{
-				aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
-				Thread.sleep(2000);
-			}
-			else
-			{
-				aVp.selectMasterAssessorForPlatform(pmasterAssessorName+"("+pmasterAssessorID+")");
-				Thread.sleep(2000);
-			}
-			aVp.clickToSubmitMasterAssessors();
-			Thread.sleep(4000);
-			aVp.clickOk();
-			Thread.sleep(4000);
-			plp.clickOnProfileLogo();
+			aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
 			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(6000);
+			aVp.selectMasterAssessorForDomain2(dmasterAssessorName+"("+dmasterAssessorID+")");
+			Thread.sleep(2000);
 		}
+		AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
+		aVp.clickToSubmitMasterAssessors();
+		Thread.sleep(4000);
+		aVp.clickOk();
+		Thread.sleep(4000);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		Thread.sleep(6000);
 		//Master Assessor Login to Accept Batches
-		for(int i=1; i<3;i++)
+		if(!pmasterAssessorID.equalsIgnoreCase(dmasterAssessorID))
+		{
+			for(int i=1; i<3;i++)
+			{
+				lp.clickLogin();
+				if(i==1)
+				{
+					elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
+				}
+				else
+				{
+					elp.performlogin(pmasterAssessorID, pmasterAssessorPassword);
+				}
+				AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
+				maDp.clickToGetAssessorDashboard();
+				Thread.sleep(2000);
+				js.executeScript("window.scrollBy(0,500)", "");
+				maDp.clickBatchAssessmentRequests();
+				Thread.sleep(4000);
+				AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
+				maVp.clicktoGoToPendingRequestsSection();
+				Thread.sleep(4000);
+				js.executeScript("window.scrollBy(0,200)", "");
+				Thread.sleep(2000);
+				maVp.clickToGetActionMenuOptions(batchID);
+				Thread.sleep(2000);
+				maVp.clickToSelectAcceptBatchOption(batchID);
+				Thread.sleep(4000);
+				if(i==1)
+				{
+					maVp.enterRemarksForAcceptingBatch(dmaRemarks);
+				}
+				else
+				{
+					maVp.enterRemarksForAcceptingBatch(pmaRemarks);
+				}
+				maVp.clickToSaveAndSubmitBatchAccceptance();
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
+				Date date = new Date();
+				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+				if(i==1)
+				{
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 68, timeFormat.format(date));
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 67, formatter.format(date));
+				}
+				else
+				{
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 74, timeFormat.format(date));
+					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
+				}
+			}
+		}
+		else
 		{
 			lp.clickLogin();
-			if(i==1)
-			{
-				elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
-			}
-			else
-			{
-				elp.performlogin(pmasterAssessorID, pmasterAssessorPassword);
-			}
-			Thread.sleep(8000);
+			elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
 			AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 			maDp.clickToGetAssessorDashboard();
 			Thread.sleep(2000);
+			js.executeScript("window.scrollBy(0,500)", "");
 			maDp.clickBatchAssessmentRequests();
 			Thread.sleep(4000);
 			AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
@@ -522,37 +654,25 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Thread.sleep(2000);
 			maVp.clickToSelectAcceptBatchOption(batchID);
 			Thread.sleep(4000);
-			if(i==1)
-			{
-				maVp.enterRemarksForAcceptingBatch(dmaRemarks);
-			}
-			else
-			{
-				maVp.enterRemarksForAcceptingBatch(pmaRemarks);
-			}
+			maVp.enterRemarksForAcceptingBatch(dmaRemarks);
 			maVp.clickToSaveAndSubmitBatchAccceptance();
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 			Date date = new Date();
 			DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
-			if(i==1)
-			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 68, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 67, formatter.format(date));
-			}
-			else
-			{
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 74, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
-			}
-			Thread.sleep(4000);
-			maVp.clickOk();
-			Thread.sleep(4000);
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(6000);
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 68, timeFormat.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 67, formatter.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 74, timeFormat.format(date));
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
 		}
-    }
+		AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
+		Thread.sleep(4000);
+		maVp.clickOk();
+		Thread.sleep(4000);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		Thread.sleep(6000);
+	}
     
     @DataProvider
     public Object[][] totApplicantsData()
@@ -580,22 +700,17 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   Thread.sleep(2000);
  	   elp.performlogin(trainerID, "Qwerty@123");
  	   TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
- 	   Thread.sleep(8000);
-	   Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainerapplicant"," Login Unsuccessfull!! OR Its taking too much time to load!!! ");
  	   tDp.clickToGetApplicantDashboard();
-	   JavascriptExecutor js=(JavascriptExecutor)driver;
-	   js.executeScript("window.scrollBy(0,200)", "");
- 	   Thread.sleep(2000);
- 	   tDp.clickSearchAndApplyforAvailableBatches();
+	   tDp.clickSearchAndApplyforAvailableBatches();
 	   Thread.sleep(4000);
 	   TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
 /*	   if(serialNum.equals("1"))
  	   {
  		   tSp.clickMyPreferences();
  		   Thread.sleep(4000);
- 		   tSp.clickToGetMyPreferenceActionMenu(preferredSector1);
+ 		   tSp.clickToGetMyPreferenceActionMenu(batchSector);
  		   Thread.sleep(2000);
- 		   tSp.selectSearchAgainstPreference(preferredSector1);
+ 		   tSp.selectSearchAgainstPreference(batchSector);
  		   Thread.sleep(2000);
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[1]")).getText().trim(), batchID);
@@ -634,9 +749,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(4000);
  		   tSp.clickMyPreferences();
 		   Thread.sleep(4000);
-		   tSp.clickToGetMyPreferenceActionMenu(preferredSector1);
+		   tSp.clickToGetMyPreferenceActionMenu(batchSector);
 		   Thread.sleep(2000);
-		   tSp.selectSearchAgainstPreference(preferredSector1);
+		   tSp.selectSearchAgainstPreference(batchSector);
 		   Thread.sleep(2000);
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   tSp.clickToGetBatchActionMenu(batchID);
@@ -655,9 +770,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(2000);
  		   tSp.selectSubDistrict(mandal);
  		   Thread.sleep(2000);
- 		   tSp.selectSector(preferredSector1);
+ 		   tSp.selectSector(batchSector);
  		   Thread.sleep(2000);
- 		   tSp.selectSubSector(preferredSubSector1);
+ 		   tSp.selectSubSector(batchSubSector);
  		   Thread.sleep(2000);
  		   tSp.selectjobRole(domainJobRole);
  		   Thread.sleep(6000);
@@ -695,7 +810,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		{
  */			tSp.selectState(state);
  			Thread.sleep(2000);
- 			tSp.selectSector(preferredSector1);
+ //			tSp.selectSector(batchSector);
  			Thread.sleep(4000);
  			tSp.clickSearch();
  			Thread.sleep(4000);
@@ -714,6 +829,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  			tSp.clickOK();
  //			}
  			Thread.sleep(4000);
+ 			JavascriptExecutor js=(JavascriptExecutor)driver;
  			js.executeScript("window.scrollBy(0,-1000)", "");
  			tSp.clickViewMyBatches();
  			Thread.sleep(4000);
