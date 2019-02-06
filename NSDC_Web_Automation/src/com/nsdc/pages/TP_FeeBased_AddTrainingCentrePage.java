@@ -94,7 +94,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement addressProof_UploadFileButton;
 	@FindBy(xpath="//label[input[@formcontrolname='internalConnectivity']]/span")
 	private WebElement internetConectivity_FacilityCheckBox;
-	@FindBy(xpath="//div[div[div[div[label[input[@value='library']]]]]]//span")
+	@FindBy(xpath="//div[div[div[div[label[input[@value='internalConnectivity']]]]]]//span")
 	private WebElement library_FacilityCheckBox;
 	@FindBy(xpath="//div[div[div[div[label[input[@value='cafetariaDiningRoom']]]]]]//span")
 	private WebElement cafeteria_FacilitycheckBox;
