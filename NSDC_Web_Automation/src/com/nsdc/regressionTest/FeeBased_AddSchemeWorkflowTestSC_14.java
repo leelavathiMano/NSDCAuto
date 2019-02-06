@@ -1067,18 +1067,19 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.clickOnNSDCBranding_BrowseFile();
 			Thread.sleep(5000);
 			UploadFile.upload(facility_Photos);
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCBranding_UploadFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCReception_BrowseFile();
+			Thread.sleep(8000);
 			UploadFile.upload(facility_Photos);
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCReception_UploadFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCClassroom_BrowseFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			UploadFile.upload(facility_Photos);
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCClassroom_UploadFile();
 		}
 		else
@@ -1115,21 +1116,21 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(5000);
 			fbad.clickOnNSDCBranding_UploadFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCBrandingReception();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCReception_BrowseFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			UploadFile.upload(facility_Photos);
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCReception_UploadFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCBrandingClassroom();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCClassroom_BrowseFile();
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			UploadFile.upload(facility_Photos);
-			Thread.sleep(5000);
+			Thread.sleep(8000);
 			fbad.clickOnNSDCClassroom_UploadFile();
 		}
 		
@@ -1213,8 +1214,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02");
 	}
 
-	@Test(dataProvider="cmaApproveTC", dependsOnMethods="addTrainingCentreTC04")
-	public void approveTrainingCentreTC_05(String sno, String cmaUsername, String cmaPassword, String tpID, String tcType, String status, String expectedTCName, String expectedOwnership, String expectedStartDate, String expectedEndDate, String expectedBathesNumber, String expectedStudentNumber, String expectedAnnualCapacity, String expectedCapacityUtilization, String expectedGovernmentTieUp, String expectedCentreCapacity, String expectedCentreArea, String expectedTrainingRooms, String expectedLabNumber, String expectedReceptionArea, String expectedWaitingArea, String expectedMaleWashRooms, String expectedFemaleWashRooms, String expectedUnisexWashRooms, String expectedAirportDistance, String expectedTrainStationDistance, String expectedCityCentreDistance, String expectedTCAddress, String expectedLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedCity, String expectedParliamentryConstituency, String expectedSPOCName, String expectedSPOCEmail, String expectedSPOCMobile, String expectedSPOCDesignation, String expectedSPOCLandLine, String expectedSector, String expectedCourseName, String expectedTarget, String review, String reviewComments) throws Exception
+	@Test(dataProvider="cmaApproveTC")//, dependsOnMethods="addTrainingCentreTC04")
+	public void approveTrainingCentreTC_05(String sno, String cmaUsername, String cmaPassword, String tpID, String tcType, String status, String expectedTCName, String expectedOwnership, String expectedStartDate, String expectedEndDate, String expectedBathesNumber, String expectedStudentNumber, String expectedAnnualCapacity, String expectedCapacityUtilization, String expectedGovernmentTieUp, String expectedCentreCapacity, String expectedCentreArea, String expectedTrainingRooms, String expectedLabNumber, String expectedReceptionArea, String expectedWaitingArea, String expectedMaleWashRooms, String expectedFemaleWashRooms, String expectedUnisexWashRooms, String expectedAirportDistance, String expectedTrainStationDistance, String expectedCityCentreDistance, String expectedTCAddress, String expectedLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedCity, String expectedParliamentryConstituency, String expectedAddressProof, String expectedSPOCName, String expectedSPOCEmail, String expectedSPOCMobile, String expectedSPOCDesignation, String expectedSPOCLandLine, String expectedSector, String expectedCourseName, String expectedTarget, String review, String reviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1236,6 +1237,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		CMA_TrainingCentreInfoPage cmat = new CMA_TrainingCentreInfoPage(driver);
 		Thread.sleep(15000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='trainingCentreName']")).getAttribute("value"), expectedTCName);
+		Assert.assertTrue(driver.findElement(By.xpath("(//input[@name='geographicalLocation'])[1]")).isSelected());
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='ownership']")).getAttribute("value"), expectedOwnership);
 		if(expectedOwnership.equals("Franchise"))
 		{
@@ -1249,17 +1251,17 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value"), expectedStartDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value"), expectedEndDate);	
 		}
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='noOfBatchesPerDay']")).getAttribute("value"), expectedBathesNumber);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='maximumStudentsPerBatch']")).getAttribute("value"), expectedStudentNumber);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='annualCentreTrainingCapacity']")).getAttribute("value"), expectedAnnualCapacity);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='capacityUtilization']")).getAttribute("value"), expectedCapacityUtilization);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='governmentTieUp']")).getAttribute("value"), expectedGovernmentTieUp);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalCapacity']")).getAttribute("value"), expectedCentreCapacity);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='noOfBatchesPerDay']")).getAttribute("value"), expectedBathesNumber);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='maximumStudentsPerBatch']")).getAttribute("value"), expectedStudentNumber);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='annualCentreTrainingCapacity']")).getAttribute("value"), expectedAnnualCapacity);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='capacityUtilization']")).getAttribute("value"), expectedCapacityUtilization);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='governmentTieUp']")).getAttribute("value"), expectedGovernmentTieUp);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='centreCarpetArea']")).getAttribute("value"), expectedCentreArea);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalCapacity']")).getAttribute("value"), expectedCentreCapacity);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalNumberOfTrainingRooms']")).getAttribute("value"), expectedTrainingRooms);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalNumberOfLabs']")).getAttribute("value"), expectedLabNumber);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='receptionCarpetArea']")).getAttribute("value"), expectedReceptionArea);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='waitingAreaCapacity']")).getAttribute("value"), expectedWaitingArea);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='receptionCarpetArea']")).getAttribute("value"), expectedReceptionArea);
+		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='waitingAreaCapacity']")).getAttribute("value"), expectedWaitingArea);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='numberOfMaleWashRooms']")).getAttribute("value"), expectedMaleWashRooms);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='numberOfFemaleWashRooms']")).getAttribute("value"), expectedFemaleWashRooms);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='numberOfTransGenderWashRooms']")).getAttribute("value"), expectedUnisexWashRooms);
@@ -1288,7 +1290,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='tehsil']")).getAttribute("value"), expectedTehsil);
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='city']")).getAttribute("value"), expectedCity);
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='parliamentaryConstituency']")).getAttribute("value"), expectedParliamentryConstituency);
-//		
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='addressProofType']")).getAttribute("value"), expectedAddressProof);
+		Thread.sleep(3000);
+		cmat.clickOnDownloadAddressProof();
+	
 		Thread.sleep(3000);
 		cmat.clickFor_Download_AllFacilities();
 		
@@ -1316,7 +1321,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 //		Thread.sleep(3000);
 	
 		Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+expectedSector+"']")).getText(), expectedSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+expectedCourseName+"']")).getText(), expectedCourseName);
+		//Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+expectedCourseName+"']")).getText(), expectedCourseName);
 		Assert.assertEquals(driver.findElement(By.xpath("//span[text()='"+expectedTarget+"']")).getText(), expectedTarget);
 
 		cmat.selectReview(review);
