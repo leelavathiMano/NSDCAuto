@@ -19,15 +19,15 @@ public class CMA_TrainingCentreInfoPage
 	
 	@FindBy(xpath="//button[text()='Download Franchise Documents']")
 	private WebElement downloadFranchiseDocumentsButton;
-	@FindBy(xpath="//app-upload[div[label[contains(text(),'Training Room Photos:')]]]//p[contains(text(),'Preview')]")
+	@FindBy(xpath="//app-upload[div[label[contains(text(),'Training Room Photos:')]]]//th[contains(text(),'Preview')]")
 	private WebElement preview_TrainingRoomPhotos_Button;
-	@FindBy(xpath="//app-upload[div[label[contains(text(),'Laboratory Room Photos:')]]]//p[contains(text(),'Preview')]")
+	@FindBy(xpath="//app-upload[div[label[contains(text(),'Laboratory Room Photos:')]]]//th[contains(text(),'Preview')]")
 	private WebElement preview_LaboratoryRoomPhotos_Button;
-	@FindBy(xpath="//app-upload[div[label[contains(text(),'Male Washroom Room Photos:')]]]//th[contains(text(),'Preview')]")
+	@FindBy(xpath="//app-upload[div[label[contains(text(),'Male Washroom Photos:')]]]//th[contains(text(),'Preview')]")
 	private WebElement preview_MaleWashRoomPhotos_Button;
-	@FindBy(xpath="//app-upload[div[label[contains(text(),'Female Washroom Room Photos:')]]]//th[contains(text(),'Preview')]")
+	@FindBy(xpath="//app-upload[div[label[contains(text(),'Female Washroom Photos:')]]]//th[contains(text(),'Preview')]")
 	private WebElement preview_FemaleWasRoomPhotos_Button;
-	@FindBy(xpath="//app-upload[div[label[contains(text(),'Unisex Washroom Room Photos:')]]]//th[contains(text(),'Preview')]")
+	@FindBy(xpath="//app-upload[div[label[contains(text(),'Unisex Washroom Photos:')]]]//th[contains(text(),'Preview')]")
 	private WebElement preview_UnisexWasRoomPhotos_Button;
 	@FindBy(xpath="//button[text()='Download Washroom Room Photos:']")
 	private WebElement downloadWahRoomPhotosButton;
@@ -82,6 +82,9 @@ public class CMA_TrainingCentreInfoPage
 	
 	@FindBy(xpath="//p[text()='Adding a Training Centre']")
 	private WebElement addTCText;
+	
+	@FindBy(xpath="//button[contains(text(),'Download Address Proof:')]")
+	private WebElement downloadAddressProofButton;
 	
 	
 	public CMA_TrainingCentreInfoPage(WebDriver driver) 
@@ -297,6 +300,13 @@ public class CMA_TrainingCentreInfoPage
 	{
 		Thread.sleep(3000);
 		close_PreviewButton.click();
+	}
+	
+	public void clickOnDownloadAddressProof() throws Exception
+	{
+		downloadAddressProofButton.click();
+		Thread.sleep(5000);
+		FilePreview.closeWindow(driver);
 	}
 	
 	
