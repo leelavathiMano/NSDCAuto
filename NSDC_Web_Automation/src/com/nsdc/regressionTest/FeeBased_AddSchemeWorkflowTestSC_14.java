@@ -1116,10 +1116,15 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(5000);
 			fbad.clickOnNSDCBranding_UploadFile();
 			Thread.sleep(5000);
+			fbad.clickOnNSDCBrandingReception();
+			Thread.sleep(5000);
 			fbad.clickOnNSDCReception_BrowseFile();
+			Thread.sleep(5000);
 			UploadFile.upload(facility_Photos);
 			Thread.sleep(5000);
 			fbad.clickOnNSDCReception_UploadFile();
+			Thread.sleep(5000);
+			fbad.clickOnNSDCBrandingClassroom();
 			Thread.sleep(5000);
 			fbad.clickOnNSDCClassroom_BrowseFile();
 			Thread.sleep(5000);

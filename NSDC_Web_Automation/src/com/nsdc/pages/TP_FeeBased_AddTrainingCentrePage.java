@@ -92,9 +92,9 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement addressProof_BrowseFileButton;
 	@FindBy(xpath="//div[label[@for='addressProof']]//button[contains(text(),'Upload')]")
 	private WebElement addressProof_UploadFileButton;
-	@FindBy(xpath="//label[input[@formcontrolname='internalConnectivity']]/span")
-	private WebElement internetConectivity_FacilityCheckBox;
 	@FindBy(xpath="//div[div[div[div[label[input[@value='internalConnectivity']]]]]]//span")
+	private WebElement internetConectivity_FacilityCheckBox;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='library']]]]]]//span")
 	private WebElement library_FacilityCheckBox;
 	@FindBy(xpath="//div[div[div[div[label[input[@value='cafetariaDiningRoom']]]]]]//span")
 	private WebElement cafeteria_FacilitycheckBox;
@@ -124,6 +124,10 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement cctv_FacilityCheckBox;
 	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentralFacade']]]]]]//span")
 	private WebElement nsdcBranding_FacilityCheckBox;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingCentreReception']]]]]]//span")
+	private WebElement nsdcBrandingReceptionCheckBox;
+	@FindBy(xpath="//div[div[div[div[label[input[@value='nsdcBrandingClassroom']]]]]]//span")
+	private WebElement nsdcBrandingClassroomCheckBox;
 	
 	@FindBy(xpath="//div[div[div[div[label[input[@value='internalConnectivity']]]]]]//input[@id='customFile']")
 	private WebElement internetConectivity_BrowseFileButton;
@@ -584,6 +588,16 @@ public class TP_FeeBased_AddTrainingCentrePage
 	public void clickOnNSDCBrandingFacility()
 	{
 		nsdcBranding_FacilityCheckBox.click();
+	}
+	
+	public void clickOnNSDCBrandingReception()
+	{
+		nsdcBrandingReceptionCheckBox.click();
+	}
+	
+	public void clickOnNSDCBrandingClassroom()
+	{
+		nsdcBrandingClassroomCheckBox.click();
 	}
 	
 	 public void clickOnAllFacilitiesCheckBoxes()
