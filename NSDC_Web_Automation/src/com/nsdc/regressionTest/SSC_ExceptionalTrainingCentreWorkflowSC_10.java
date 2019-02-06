@@ -12,6 +12,7 @@ import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
+import com.nsdc.pages.SSCAllBatchesPage;
 import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_ExceptionalTraningCentreCreationPage;
 import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
@@ -33,7 +34,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
@@ -42,6 +43,12 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(2000);
+		sscDbP.clickAllBatches();
+		Thread.sleep(5000);
+		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+		sAp.clickToGetBatchActionMenu("442");
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'442')]]//span[contains(text(),'Assign')]")).click();	
+		Thread.sleep(5000);
 		sscDbP.clickCreateBatch();
 		Thread.sleep(6000);
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), sector);
@@ -58,7 +65,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(2000);
 		sscTbcP.selectDomainJobRole(jobRole);
 		Thread.sleep(4000);
-		sscTbcP.selectPlatformJobRole("Master Trainer");
+		sscTbcP.selectPlatformJobRole("Trainer");
 		Thread.sleep(20000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
@@ -74,10 +81,10 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		//Platform QP
 		sscTbcP.clickToChoosePlatformQP();
 		Thread.sleep(4000);
-//		sscTbcP.selectPlatformTrainingStartDate();
-//		Thread.sleep(4000);
-//		sscTbcP.selectPlatformTrainingEndDateForNewBatch();
-//		Thread.sleep(4000);
+		sscTbcP.selectPlatformTrainingStartDate();
+		Thread.sleep(4000);
+		sscTbcP.selectPlatformTrainingEndDateForNewBatch();
+		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentStartDateForNewBatch();
 		Thread.sleep(4000);
 		sscTbcP.selectPlatformAssessmentEndDateForNewBatch();
@@ -89,7 +96,6 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		sscTbcP.clickToCreateBatch();
 		Thread.sleep(20000);
 		sscTbcP.clickOk();
-		Thread.sleep(20000);
 		//Add Exceptional Training Centre
 		SSC_ExceptionalTraningCentreCreationPage eTCp=new SSC_ExceptionalTraningCentreCreationPage(driver);
 		eTCp.clickAddExceptionalTC();
@@ -144,7 +150,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(4000);
 		eTCp.clickToBrowseExceptionalTrainingCentrePhoto();
 		Thread.sleep(4000);
-		UploadFile.upload(exceptionalTCPhoto);
+		UploadFile.uploadingFiveExceptionalTC_Photos(exceptionalTCPhoto);
 		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTrainingCentrePhoto();
 		Thread.sleep(8000);
@@ -253,7 +259,6 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		    Thread.sleep(2000);
 		    plp.clickOnLogout();
 		    Thread.sleep(2000);
-		}
+		} 
 	}
 }
-	

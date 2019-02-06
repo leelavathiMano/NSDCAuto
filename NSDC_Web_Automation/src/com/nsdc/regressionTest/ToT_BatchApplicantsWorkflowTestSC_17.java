@@ -749,9 +749,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(4000);
  		   tSp.clickMyPreferences();
 		   Thread.sleep(4000);
-		   tSp.clickToGetMyPreferenceActionMenu(batchSubSector);
+		   tSp.clickToGetMyPreferenceActionMenu(batchSector);
 		   Thread.sleep(2000);
-		   tSp.selectSearchAgainstPreference(batchSubSector);
+		   tSp.selectSearchAgainstPreference(batchSector);
 		   Thread.sleep(2000);
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   tSp.clickToGetBatchActionMenu(batchID);
@@ -770,7 +770,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(2000);
  		   tSp.selectSubDistrict(mandal);
  		   Thread.sleep(2000);
-// 		   tSp.selectSector(batchSector);
+ 		   tSp.selectSector(batchSector);
  		   Thread.sleep(2000);
  		   tSp.selectSubSector(batchSubSector);
  		   Thread.sleep(2000);
@@ -810,7 +810,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		{
  			tSp.selectState(state);
  			Thread.sleep(2000);
- //			tSp.selectSector(batchSector);
+ 			tSp.selectSector(batchSector);
  			Thread.sleep(4000);
  			tSp.clickSearch();
  			Thread.sleep(4000);
@@ -981,7 +981,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   }
  	   tcVp.clickToGoToAppliedApplicantsSection();
  	   Thread.sleep(2000);
-// 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! Enrolled Trainer Applicant - "+trainerID+" Still present in Applied Applicants Section!!! OR Something went wrong! ");
+ 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! Enrolled Trainer Applicant - "+trainerID+" Still present in Applied Applicants Section!!! OR Something went wrong! ");
  	   tcVp.clickToGoToEnrolledApplicantsSection();
  	   Thread.sleep(4000);
  	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==1,"OMG!!! No show of Enrolled Trainer Applicant - "+trainerID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
