@@ -169,10 +169,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(4000);
         tprp.clickSaveAndNextButton();
         
-        if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        if(year_Of_Establishment.equals("2019") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -207,10 +209,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company")))
+        else if(year_Of_Establishment.equals("2019") && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -245,12 +249,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
+        else if(year_Of_Establishment.equals("2019") && type_Of_The_Organization.equals("Proprietorship"))
         {
         	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
         	tprp.enterPANNumber(pan_Number);
+            Thread.sleep(5000);
+            tprp.clickBrowseButton1();
             Thread.sleep(5000);
             tprp.clickBrowseButton1();
             Thread.sleep(4000);
@@ -277,10 +283,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -317,9 +325,11 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company")))
+        else if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
@@ -357,13 +367,15 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Proprietorship"))
+        else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Proprietorship"))
         {
         	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
         	tprp.enterPANNumber(pan_Number);
         	Thread.sleep(4000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(4000);
             tprp.clickBrowseButton1();
             Thread.sleep(4000);
             UploadFile.upload(upload_PAN);
@@ -390,10 +402,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -438,10 +452,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Company")))
+        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -486,13 +502,15 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Proprietorship"))
+        else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Proprietorship"))
         {
         	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
             //tprp.clickToVerifyAadharNumber();
         	tprp.enterPANNumber(pan_Number);
         	Thread.sleep(5000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(5000);
             tprp.clickBrowseButton1();
             Thread.sleep(4000);
             UploadFile.upload(upload_PAN);
@@ -527,10 +545,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if((year < 2016) && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if((year <= 2016) && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -583,10 +603,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if((year < 2016) && (type_Of_The_Organization.equals("Company")))
+        else if((year <= 2016) && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
             Thread.sleep(3000);
             tprp.clickBrowseButton1();
             Thread.sleep(3000);
@@ -639,7 +661,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if((year < 2016) && type_Of_The_Organization.equals("Proprietorship"))
+        else if((year <= 2016) && type_Of_The_Organization.equals("Proprietorship"))
         {
         	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
@@ -647,7 +669,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	tprp.enterPANNumber(pan_Number);
         	Thread.sleep(5000);
         	tprp.clickBrowseButton1();
-            Thread.sleep(4000);
+        	Thread.sleep(5000);
+        	tprp.clickBrowseButton1();
+            Thread.sleep(5000);
             UploadFile.upload(upload_PAN);
             Thread.sleep(4000);
             tprp.clickUploadButton1();
@@ -698,11 +722,11 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         }
         
         //tprp.clickDownloadButton();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         tprp.clickLogOutButton();
         Thread.sleep(3000);
         
-        Assert.assertEquals(driver.findElement(By.xpath("//li[text()='LOGIN']")).getText(), "LOGIN");
+        Assert.assertEquals(driver.findElement(By.xpath("//li[contains(text(),'LOGIN')]")).getText(), "LOGIN");
     }
     
     @DataProvider
@@ -736,7 +760,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	//ia_vp.selectStatusForRequest(statusForRequest);
     	ia_vp.clickForAssign();
     	Thread.sleep(3000);
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tpID+"']]]//span[text()='In-Process DA']")).getText(), "In-Process DA");
+    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tpID+"']]]//span[text()='DA In Process']")).getText(), "DA In Process");
     	Thread.sleep(3000);
     	PostLoginPage plp = new PostLoginPage(driver);
     	plp.clickOnProfileLogo();
@@ -770,12 +794,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	Thread.sleep(8000);
     	da_tpr.clickForDisplayPreviewofAttachedProofDocumentForAddress();
     	da_tpr.selectReviewCommentsForAddress(addressReview);
-    	Thread.sleep(2000);
+    	Thread.sleep(5000);
     	da_tpr.clickForSaveAndContinue();
     	int yearOfEstablishment = Integer.parseInt(establishment_Year);
     	Thread.sleep(2000);
     	
-    	if(establishment_Year.equals("2018") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+    	if(establishment_Year.equals("2019") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
     		Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -792,7 +816,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 
         }
     	
-    	else if(establishment_Year.equals("2018") && (type_Organization.equals("Company")))
+    	else if(establishment_Year.equals("2019") && (type_Organization.equals("Company")))
     	{
     		Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -808,7 +832,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
     	}
     	
-    	else if(establishment_Year.equals("2017") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+    	else if(establishment_Year.equals("2018") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
     		Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -826,7 +850,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 
         }
     	
-    	else if(establishment_Year.equals("2017") && (type_Organization.equals("Company")))
+    	else if(establishment_Year.equals("2018") && (type_Organization.equals("Company")))
     	{
     		Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -843,7 +867,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
     	}
     	
-        else if(establishment_Year.equals("2016") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(establishment_Year.equals("2017") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -863,7 +887,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         }
     	
-        else if(establishment_Year.equals("2016") && (type_Organization.equals("Company")))
+        else if(establishment_Year.equals("2017") && (type_Organization.equals("Company")))
         {
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -883,7 +907,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         }
     	
-        else if((yearOfEstablishment < 2016) && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if((yearOfEstablishment <= 2016) && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -906,7 +930,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         }
     	
-        else if((yearOfEstablishment < 2016) && (type_Organization.equals("Company")))
+        else if((yearOfEstablishment <= 2016) && (type_Organization.equals("Company")))
         {
         	Thread.sleep(2000);
         	da_tpr.clickOn_First_PreviewAttachedProofDocument();
@@ -929,7 +953,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         }
     	
-        else if(establishment_Year.equals("2018") && type_Organization.equals("Proprietorship"))
+        else if(establishment_Year.equals("2019") && type_Organization.equals("Proprietorship"))
         {
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
@@ -944,7 +968,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	
         }
     	
-        else if(establishment_Year.equals("2017") && type_Organization.equals("Proprietorship"))
+        else if(establishment_Year.equals("2018") && type_Organization.equals("Proprietorship"))
         {
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
@@ -960,7 +984,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 
         }
     	
-        else if(establishment_Year.equals("2016") && type_Organization.equals("Proprietorship"))
+        else if(establishment_Year.equals("2017") && type_Organization.equals("Proprietorship"))
         {
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
@@ -979,7 +1003,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         }
     	
-        else if((yearOfEstablishment < 2016) && type_Organization.equals("Proprietorship"))
+        else if((yearOfEstablishment <= 2016) && type_Organization.equals("Proprietorship"))
         {
         	//da_tpr.selectReviewCommentForAadharNumber(adharReview);
         	Thread.sleep(2000);
@@ -1009,7 +1033,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         }
 
 
-    	Thread.sleep(2000);
+    	Thread.sleep(5000);
     	da_tpr.clickForSaveAndContinue();
     	Thread.sleep(3000);
     	da_tpr.clickForFinalStatusBrowseFile();
