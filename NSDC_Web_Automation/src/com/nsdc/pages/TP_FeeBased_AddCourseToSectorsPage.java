@@ -88,7 +88,7 @@ public class TP_FeeBased_AddCourseToSectorsPage
 	
 	public void selectAssociatedQPOrJobRoleName(String jobRoleName)
 	{
-		SelectDropDownList.selectDropDownListByIndex(associateQPDropDownList, 1);
+		SelectDropDownList.selectDropDownListByVisibleText(associateQPDropDownList, jobRoleName);
 	}
 	
 	public void enterNSQFLevel(String nsqfLevel)

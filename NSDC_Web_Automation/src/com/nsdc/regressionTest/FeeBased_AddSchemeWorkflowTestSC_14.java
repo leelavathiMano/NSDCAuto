@@ -1762,11 +1762,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] addSector()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSectorSC15TC04");
 	}
 
 	@Test(dataProvider="addSector")
-	public void addSectorTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
+	public void addSectorTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1822,11 +1822,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] approveSector()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveSector&CourseSC15TC05");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveSectorSC15TC06");
 	}
 
 	@Test(dataProvider="approveSector")
-	public void approveSectorTC08(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector, String expectedTrainingTarget, String sectorReviewComments, String sectorComments, String expectedCourseName, String expectedAddedSector, String expectedJobRoleMappingType, String expectedJobRoleName, String expectedNSQFLevel, String expectedCourseDescription, String expectedIssuedCertificateName, String expectedMinimumAge, String expectedMinimumEducation, String expectedCourseDuration, String expectedNumberOfHours, String expectedCourseFee, String expectedGradingPrefrences, String qpNosCentre, String courseReviewComments, String courseComments)throws Exception
+	public void approveSectorTC08(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector, String expectedTrainingTarget, String sectorReviewComments, String sectorComments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		Thread.sleep(3000);
@@ -1854,8 +1854,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		tab.click();
 		CMA_SectorInfoPage cmsi = new CMA_SectorInfoPage(driver);
 		Thread.sleep(3000);
-		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedSector);
-		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposedTrainingTarget']")).getAttribute("value"), expectedTrainingTarget);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedSector);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposedTrainingTarget']")).getAttribute("value"), expectedTrainingTarget);
 		cmsi.clickOnDownloadSectorApprovalButton();
 		cmsi.clickOnDownloadAffiliationCertificateFromSSC();
 		cmsi.selectReviewComments(sectorReviewComments);
@@ -1867,7 +1867,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(12000);
 		cmas.clickOnApply();
 		Thread.sleep(3000);
-		//Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
 		
 		Thread.sleep(2000);
 		PostLoginPage plp = new PostLoginPage(driver);
@@ -1881,11 +1881,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] addCourses()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05");
 	}
 
 	@Test(dataProvider="addCourses")
-	public void addCourseTC09(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
+	public void addCourseTC09(String srno, String tpusername, String tppassword, String projectName, String sector, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1921,9 +1921,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			adc.enterCourseName(courseName);
 			nsqfLevel = driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSector&CoursSC15TC04", Integer.parseInt(srno), 13, nsqfLevel);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveSector&CourseSC15TC05", Integer.parseInt(srno), 13, nsqfLevel);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(srno), 15, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05", Integer.parseInt(srno), 9, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveCourseSC15TC07", Integer.parseInt(srno), 9, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(srno), 15, nsqfLevel);
 			//adc.enterCourseDescription(courseDescription);
 			adc.enterNameOfTheCertificateIssued(certificateName);
 			//adc.selectMinimumAge(minimumAge);
@@ -1998,11 +1998,11 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] approveCourses()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveSector&CourseSC15TC05");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveCourseSC15TC07");
 	}
 
 	@Test(dataProvider="approveCourses")
-	public void approveCourseTC10(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector, String expectedTrainingTarget, String sectorReviewComments, String sectorComments, String expectedCourseName, String expectedAddedSector, String expectedJobRoleMappingType, String expectedJobRoleName, String expectedNSQFLevel, String expectedCourseDescription, String expectedIssuedCertificateName, String expectedMinimumAge, String expectedMinimumEducation, String expectedCourseDuration, String expectedNumberOfHours, String expectedCourseFee, String expectedGradingPrefrences, String qpNosCentre, String courseReviewComments, String courseComments)throws Exception
+	public void approveCourseTC10(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector,String expectedCourseName, String expectedJobRoleMappingType, String expectedJobRoleName, String expectedNSQFLevel, String expectedCourseDescription, String expectedIssuedCertificateName, String expectedMinimumAge, String expectedMinimumEducation, String expectedCourseDuration, String expectedNumberOfHours, String expectedCourseFee, String expectedGradingPrefrences, String qpNosCentre, String courseReviewComments, String courseComments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		Thread.sleep(3000);
@@ -2036,8 +2036,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleMappingType']")).getAttribute("value").replace(" ", ""), expectedJobRoleMappingType.replace(" ", ""));
 		if(expectedJobRoleMappingType.equals("QP-NOS"))
 		{
-			//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
-			//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='jobRoleName']")).getAttribute("value"), expectedJobRoleName);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value"), expectedNSQFLevel);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='issuedCertificateName']")).getAttribute("value"), expectedIssuedCertificateName);
 
 		}
@@ -2051,7 +2051,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='minimumEducationRequiredValue']")).getAttribute("value"), expectedMinimumEducation);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseDurationInHours']")).getAttribute("value"), expectedCourseDuration);
-		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='hoursPerDay']")).getAttribute("value"), expectedNumberOfHours);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='hoursPerDay']")).getAttribute("value"), expectedNumberOfHours);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='courseFee']")).getAttribute("value"), expectedCourseFee);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='gradingPreferences']")).getAttribute("value"), expectedGradingPrefrences);
 		cmci.clickOnDownloadCourseApprovalDocument();
@@ -2083,7 +2083,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] linkTrainer()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08");
 	}
 
 	@Test(dataProvider="linkTrainer", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
@@ -2124,8 +2124,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(3000);
 		trainerName = driver.findElement(By.xpath("//input[@id='nameOfTheTrainer']")).getAttribute("value");
 		Thread.sleep(3000);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 5, trainerName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 16, trainerName);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08", Integer.parseInt(sno), 5, trainerName);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(sno), 16, trainerName);
 		Thread.sleep(5000);
 		vat.clickOnGenerateOTP();
 		Thread.sleep(3000);
@@ -2137,13 +2137,13 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(3000);
 		trainersEmail = driver.findElement(By.xpath("(//tr[td[text()='"+trainerName+"']]/td)[3]")).getText();
 		Thread.sleep(3000);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 10, trainersEmail);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 17, trainersEmail);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08", Integer.parseInt(sno), 10, trainersEmail);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(sno), 17, trainersEmail);
 		Thread.sleep(3000);
 		trainersMobile = driver.findElement(By.xpath("(//tr[td[text()='"+trainerName+"']]/td)[4]")).getText();
 		Thread.sleep(3000);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC06", Integer.parseInt(sno), 11, trainersMobile);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 18, trainersMobile);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08", Integer.parseInt(sno), 11, trainersMobile);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(sno), 18, trainersMobile);
 		PostLoginPage plp = new PostLoginPage(driver);
 		Thread.sleep(3000);
 		plp.clickOnProfileLogo();
@@ -2155,7 +2155,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] addAssessmentAgencyAndLinkAssessor()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09");
 	}
 
 	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="linkTrainerTC09")
@@ -2207,7 +2207,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		aai.enterMobileNumberOfSPOC(mobileNumber);
 		aai.clickOnSubmit();
 		asseementAgencyID = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText().replace("Assessment Agency ", "").replace(" successfully added.", "");
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(srno), 18, asseementAgencyID);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09", Integer.parseInt(srno), 18, asseementAgencyID);
 		aai.clickOnOK();
 		Thread.sleep(3000);
 		tpaa.clickOnLinkAssessor();
@@ -2226,8 +2226,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(5000);
 		assessorName = driver.findElement(By.xpath("//input[@id='nameOfAssessor']")).getAttribute("value");
 		Thread.sleep(3000);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC07", Integer.parseInt(srno), 20, assessorName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(srno), 29, assessorName);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09", Integer.parseInt(srno), 20, assessorName);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(srno), 29, assessorName);
 		Thread.sleep(5000);
 		tpaa.clickOnGenerateOTP();
 		Thread.sleep(3000);
@@ -2250,7 +2250,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	@DataProvider
 	public Object[][] createBatchAndEnrollCandidates()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010");
 	}
 
 	@Test(dataProvider="createBatchAndEnrollCandidates")//, dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10")
@@ -2367,8 +2367,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbd.clickOnYesCreateBatch();
 		Thread.sleep(3000);
 		batchID = driver.findElement(By.xpath("//div[@id='swal2-content']")).getText().replace("Batch ID - ", "");
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC08", Integer.parseInt(sno), 23, batchID);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC09", Integer.parseInt(sno), 5, batchID);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(sno), 23, batchID);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "GenerateCertificationSC15TC011", Integer.parseInt(sno), 5, batchID);
 		fbd.clickOnEnrollCandidates();
 		TP_FeeBased_EnrollCandidatesPage fec = new TP_FeeBased_EnrollCandidatesPage(driver);
 		Thread.sleep(3000);
