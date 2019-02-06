@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SSC_ExceptionalTraningCentreCreationPage
 {
@@ -20,11 +22,11 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	private WebElement websiteTextField;
 	@FindBy(xpath="//input[@formcontrolname='trainingCenterCapacity']")
 	private WebElement trainingCentreCapacityTextField;
-	@FindBy(xpath="(//label[input[@type='checkbox']])[1]")
-	private WebElement residentialFacilityAvailableForMaleCheckBox;
 	@FindBy(xpath="(//label[input[@type='checkbox']])[2]")
-	private WebElement residentialFacilityAvailableForFemaleCheckBox;
+	private WebElement residentialFacilityAvailableForMaleCheckBox;
 	@FindBy(xpath="(//label[input[@type='checkbox']])[3]")
+	private WebElement residentialFacilityAvailableForFemaleCheckBox;
+	@FindBy(xpath="(//label[input[@type='checkbox']])[4]")
 	private WebElement residentialFacilityAvailableForTransgenderCheckBox;
 	@FindBy(xpath="(//input[@formcontrolname='contactPersonName'])[1]")
 	private WebElement exceptionalTrainingCentreHeadNameTextField;
@@ -94,6 +96,8 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	}
 	public void clickAddExceptionalTC()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[input[@formcontrolname='confirmation']]")));
 		addExceptionalTCButton.click();
 	}
 	public void enterTrainingPartnerName(String tpName)

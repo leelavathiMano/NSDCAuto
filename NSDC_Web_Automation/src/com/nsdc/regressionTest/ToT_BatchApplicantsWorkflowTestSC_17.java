@@ -704,13 +704,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   tDp.clickSearchAndApplyforAvailableBatches();
 	   Thread.sleep(4000);
 	   TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
-/*	   if(serialNum.equals("1"))
+	   if(serialNum.equals("1"))
  	   {
  		   tSp.clickMyPreferences();
  		   Thread.sleep(4000);
- 		   tSp.clickToGetMyPreferenceActionMenu(batchSector);
+ 		   tSp.clickToGetMyPreferenceActionMenu(batchSubSector);
  		   Thread.sleep(2000);
- 		   tSp.selectSearchAgainstPreference(batchSector);
+ 		   tSp.selectSearchAgainstPreference(batchSubSector);
  		   Thread.sleep(2000);
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[1]")).getText().trim(), batchID);
@@ -749,9 +749,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(4000);
  		   tSp.clickMyPreferences();
 		   Thread.sleep(4000);
-		   tSp.clickToGetMyPreferenceActionMenu(batchSector);
+		   tSp.clickToGetMyPreferenceActionMenu(batchSubSector);
 		   Thread.sleep(2000);
-		   tSp.selectSearchAgainstPreference(batchSector);
+		   tSp.selectSearchAgainstPreference(batchSubSector);
 		   Thread.sleep(2000);
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   tSp.clickToGetBatchActionMenu(batchID);
@@ -770,7 +770,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Thread.sleep(2000);
  		   tSp.selectSubDistrict(mandal);
  		   Thread.sleep(2000);
- 		   tSp.selectSector(batchSector);
+// 		   tSp.selectSector(batchSector);
  		   Thread.sleep(2000);
  		   tSp.selectSubSector(batchSubSector);
  		   Thread.sleep(2000);
@@ -808,7 +808,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		}	   
 		else
  		{
- */			tSp.selectState(state);
+ 			tSp.selectState(state);
  			Thread.sleep(2000);
  //			tSp.selectSector(batchSector);
  			Thread.sleep(4000);
@@ -827,7 +827,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  			Thread.sleep(8000);
  			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
  			tSp.clickOK();
- //			}
+ 			}
  			Thread.sleep(4000);
  			JavascriptExecutor js=(JavascriptExecutor)driver;
  			js.executeScript("window.scrollBy(0,-1000)", "");
@@ -927,7 +927,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
-	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Language Known')]]/div[2]")).getText().trim(), language);
+	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Language Known')]]/div[2]")).getText().trim().replaceAll(" ", ""), language);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Religion')]]/div[1]")).getText().trim(), religion);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Category')]]/div[2]")).getText().trim(), category);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Mobile Number of Applicant')]]/div[1]")).getText().trim(), mobile);
@@ -976,12 +976,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   tcVp.selectEnrollApplicantOption(trainerID);
  		   Thread.sleep(4000);
 		  // Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Applicant enrolled successfully\nYou have successfully enrolled to the "+batchID);
- 		   tcVp.clickOk();
- 		   Thread.sleep(4000);
+// 		   tcVp.clickOk();
+// 		   Thread.sleep(4000);
  	   }
  	   tcVp.clickToGoToAppliedApplicantsSection();
  	   Thread.sleep(2000);
- 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! Enrolled Trainer Applicant - "+trainerID+" Still present in Applied Applicants Section!!! OR Something went wrong! ");
+// 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! Enrolled Trainer Applicant - "+trainerID+" Still present in Applied Applicants Section!!! OR Something went wrong! ");
  	   tcVp.clickToGoToEnrolledApplicantsSection();
  	   Thread.sleep(4000);
  	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==1,"OMG!!! No show of Enrolled Trainer Applicant - "+trainerID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
@@ -1011,7 +1011,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
-		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Language Known')]]/div[2]")).getText().trim(), language);
+		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Language Known')]]/div[2]")).getText().trim().replaceAll(" ", ""), language);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Religion')]]/div[1]")).getText().trim(), religion);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Category')]]/div[2]")).getText().trim(), category);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Mobile Number of Applicant')]]/div[1]")).getText().trim(), mobile);
@@ -1087,7 +1087,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchCreatedDate);
  	   TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
  	   tVp.clickToGetEnrolledBatchActionMenu(batchID);
- 	   Thread.sleep(2000);
+ 	   Thread.sleep(5000);
  	   tVp.selectAddPaymentDetailsForEnrolledBatchOption(batchID);
  	   Thread.sleep(4000);
  	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch ID')]]])[1]/div[1]")).getText().trim(), batchID);

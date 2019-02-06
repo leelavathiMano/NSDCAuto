@@ -17,7 +17,7 @@ public class SSC_DashboardPage
 	private WebElement createTemporaryTrainingCentreButton;
 	@FindBy(xpath="//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")
 	private WebElement createBatchButton;
-	@FindBy(xpath="//strong[text()='All Batches New']")
+	@FindBy(xpath="//strong[text()='All Batches']")
 	private WebElement allBatchesButton;
 	@FindBy(linkText="Rozgar Mela")
 	private WebElement rozgarMelaLink;

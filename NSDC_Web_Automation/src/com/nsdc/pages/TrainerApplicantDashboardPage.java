@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,7 +31,10 @@ public class TrainerApplicantDashboardPage
 	}
 	public void clickSearchAndApplyforAvailableBatches()
 	{
-		searchAndApplyForAvailableBatchesCardText.click();
+		WebDriverWait wait= new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.visibilityOf(searchAndApplyForAvailableBatchesCardText));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()", searchAndApplyForAvailableBatchesCardText);
 	}
 	public void clickViewBatches()
 	{

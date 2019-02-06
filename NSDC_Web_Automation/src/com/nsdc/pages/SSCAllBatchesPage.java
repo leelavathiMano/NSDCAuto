@@ -108,11 +108,4 @@ public class SSCAllBatchesPage
 	{
 		approveBatchCancellationRequestButton.click();
 	}
-}	
-	
-	
-	
-	
-	
-	
-	
+}
