@@ -27,7 +27,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 	}
 	
 	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
-	public void createExceptionalTraningCentreTC_01(String serialNum, String exceptionalTCID, String sscUsername, String sscPassword, String tpName, String exceptionalTCName, String website, String capacity, String residentialFacilityAvailableFor, String exceptionalTCHeadName, String exceptionalTCHeadMobile, String exceptionalTCHeadEmail, String exceptionalTCSPOCName, String exceptionalTCSPOCMobile, String exceptionalTCSPOCEmail, String exceptionalTCSPOCID, String exceptionalTCAddress, String exceptionalTCLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String exceptionalTCPhoto, String exceptionalTCSupportDoc, String sector, String subSector, String jobRole) throws Exception
+	public void createExceptionalTraningCentreTC_01(String serialNum, String exceptionalTCID, String sscUsername, String sscPassword, String batchID, String tpName, String exceptionalTCName, String website, String capacity, String residentialFacilityAvailableFor, String exceptionalTCHeadName, String exceptionalTCHeadMobile, String exceptionalTCHeadEmail, String exceptionalTCSPOCName, String exceptionalTCSPOCMobile, String exceptionalTCSPOCEmail, String exceptionalTCSPOCID, String exceptionalTCAddress, String exceptionalTCLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String exceptionalTCPhoto, String exceptionalTCSupportDoc, String sector, String subSector, String jobRole) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -46,56 +46,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		sscDbP.clickAllBatches();
 		Thread.sleep(5000);
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
-		sAp.clickToGetBatchActionMenu("442");
-		driver.findElement(By.xpath("//tr[td[1][contains(text(),'442')]]//span[contains(text(),'Assign')]")).click();	
+		sAp.clickToGetBatchActionMenu(batchID);
+		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Assign')]")).click();	
 		Thread.sleep(5000);
-		sscDbP.clickCreateBatch();
-		Thread.sleep(6000);
-		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), sector);
-		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
-		sscTbcP.selectSubSector(subSector);
-		Thread.sleep(4000);
-		sscTbcP.selectBatchType("Training of Trainer-New");
-		Thread.sleep(4000);
-		sscTbcP.selectBatchCategory("Regular Batch");
-		Thread.sleep(4000);
-		sscTbcP.selectTrainingStartDateForBatch();
-		Thread.sleep(2000);
-		sscTbcP.selectTrainingEndDateForNewBatch();
-		Thread.sleep(2000);
-		sscTbcP.selectDomainJobRole(jobRole);
-		Thread.sleep(4000);
-		sscTbcP.selectPlatformJobRole("Trainer");
-		Thread.sleep(20000);
-		//Domain QP
-		sscTbcP.clickToChooseDomainQP();
-		Thread.sleep(2000);
-		sscTbcP.selectDomainTrainingStartDate();
-		Thread.sleep(4000);
-		sscTbcP.selectDomainTrainingEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.selectDomainAssessmentStartDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.selectDomainAssessmentEndDateForNewBatch();
-		Thread.sleep(4000);
-		//Platform QP
-		sscTbcP.clickToChoosePlatformQP();
-		Thread.sleep(4000);
-		sscTbcP.selectPlatformTrainingStartDate();
-		Thread.sleep(4000);
-		sscTbcP.selectPlatformTrainingEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.selectPlatformAssessmentStartDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.selectPlatformAssessmentEndDateForNewBatch();
-		Thread.sleep(4000);
-		sscTbcP.clickToViewFees();
-		Thread.sleep(2000);
-		sscTbcP.selectBatchSize("20");
-		Thread.sleep(2000);
-		sscTbcP.clickToCreateBatch();
-		Thread.sleep(20000);
-		sscTbcP.clickOk();
 		//Add Exceptional Training Centre
 		SSC_ExceptionalTraningCentreCreationPage eTCp=new SSC_ExceptionalTraningCentreCreationPage(driver);
 		eTCp.clickAddExceptionalTC();
@@ -236,6 +189,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
 			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
+			SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 			sscTbcP.clickOk();
 			Thread.sleep(4000);
 			PostLoginPage plp=new PostLoginPage(driver);
