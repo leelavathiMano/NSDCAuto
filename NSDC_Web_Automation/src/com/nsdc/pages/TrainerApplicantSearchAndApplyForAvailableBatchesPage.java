@@ -43,10 +43,10 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement searchButton;
 	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
 	private WebElement addJobRoleAndLocationToMyPreferenceButton;
-	@FindBy(xpath="//input[@placeholder='Search for Training Center Name']")
+	@FindBy(xpath="//input[@placeholder='Search for Training Centre Name']")
 	private WebElement searchTextbox;
 	//My Preferences
-	@FindBy(linkText="My Preferences")
+	@FindBy(linkText="Training Requests")
 	private WebElement myPreferencesSectionLink;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
@@ -141,11 +141,11 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void selectSearchAgainstPreference(String preferredSector)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Search Against Preference')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Search Against Training Requests')]")).click();
 	}
 	public void selectRemovePreference(String preferredSector)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Remove Preference')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Remove Training Requests')]")).click();
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{
