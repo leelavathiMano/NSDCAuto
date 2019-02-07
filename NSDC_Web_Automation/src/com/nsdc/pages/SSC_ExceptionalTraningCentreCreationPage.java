@@ -22,6 +22,8 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	private WebElement websiteTextField;
 	@FindBy(xpath="//input[@formcontrolname='trainingCenterCapacity']")
 	private WebElement trainingCentreCapacityTextField;
+	@FindBy(xpath="//input[@formcontrolname='smartId']")
+	private WebElement smartIDTextField;
 	@FindBy(xpath="(//label[input[@type='checkbox']])[2]")
 	private WebElement residentialFacilityAvailableForMaleCheckBox;
 	@FindBy(xpath="(//label[input[@type='checkbox']])[3]")
@@ -119,6 +121,11 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	{
 		trainingCentreCapacityTextField.clear();
 		trainingCentreCapacityTextField.sendKeys(capacity);
+	}
+	public void enterSmartIDforExceptionalTC(String smartID)
+	{
+		smartIDTextField.clear();
+		smartIDTextField.sendKeys(smartID);
 	}
 	public void selectResidentialFacilityAvailableForAll()
 	{

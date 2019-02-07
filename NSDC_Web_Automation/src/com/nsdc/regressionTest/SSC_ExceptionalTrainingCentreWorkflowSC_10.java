@@ -25,9 +25,8 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 	{
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls","ExceptionalTC-Creation");
 	}
-	
 	@Test(dataProvider="sscTemporaryTrainingCentreCreationData")
-	public void createExceptionalTraningCentreTC_01(String serialNum, String exceptionalTCID, String sscUsername, String sscPassword, String batchID, String tpName, String exceptionalTCName, String website, String capacity, String residentialFacilityAvailableFor, String exceptionalTCHeadName, String exceptionalTCHeadMobile, String exceptionalTCHeadEmail, String exceptionalTCSPOCName, String exceptionalTCSPOCMobile, String exceptionalTCSPOCEmail, String exceptionalTCSPOCID, String exceptionalTCAddress, String exceptionalTCLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String exceptionalTCPhoto, String exceptionalTCSupportDoc, String sector, String subSector, String jobRole) throws Exception
+	public void createExceptionalTraningCentreTC_01(String serialNum, String exceptionalTCID, String sscUsername, String sscPassword, String batchID, String tpName, String exceptionalTCName, String website, String capacity, String smartID, String residentialFacilityAvailableFor, String exceptionalTCHeadName, String exceptionalTCHeadMobile, String exceptionalTCHeadEmail, String exceptionalTCSPOCName, String exceptionalTCSPOCMobile, String exceptionalTCSPOCEmail, String exceptionalTCSPOCID, String exceptionalTCAddress, String exceptionalTCLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String exceptionalTCPhoto, String exceptionalTCSupportDoc, String sector, String subSector, String jobRole) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -61,6 +60,8 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreCapacity(capacity);
 		Thread.sleep(4000);
+		eTCp.enterSmartIDforExceptionalTC(smartID);
+		Thread.sleep(3000);
 		eTCp.selectResidentialFacilityAvailableForAll();
 		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreHeadName(exceptionalTCHeadName);
@@ -122,9 +123,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		eTCp.clickToAddJobRole();
 		Thread.sleep(4000);
 		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==1,"OMG!!! No show of Added JobRole record OR Something went wrong! ");
-		//Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'"+sector+"')]]]//td[1]")).getText().trim(), sector);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'"+sector+"')]]]//td[2]")).getText().trim(), subSector);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'"+sector+"')]]]//td[3]")).getText().trim(), jobRole);
 		//Deleting Added JobRole
 		if(serialNum.equals("1"))
 		{
@@ -139,9 +140,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			eTCp.clickToAddJobRole();
 			Thread.sleep(4000);
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[p[contains(text(),'"+jobRole+"')]]]")).size()==1,"OMG!!! No show of Added JobRole record OR Something went wrong! ");
-			//Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+sector+"')])[1]")).getText().trim(), sector);
-			Assert.assertEquals(driver.findElement(By.xpath("(//td/p[contains(text(),'"+subSector+"')])[1]")).getText().trim(), subSector);
-			Assert.assertEquals(driver.findElement(By.xpath("//td/p[contains(text(),'"+jobRole+"')]")).getText().trim(), jobRole);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'"+sector+"')]]]//td[1]")).getText().trim(), sector);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'"+sector+"')]]]//td[2]")).getText().trim(), subSector);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'"+sector+"')]]]//td[3]")).getText().trim(), jobRole);
 		}
 		eTCp.clickToConfirmDeclaration();
 		Thread.sleep(4000);

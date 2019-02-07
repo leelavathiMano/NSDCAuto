@@ -123,7 +123,7 @@ public class UploadFile
             robot.keyRelease(KeyEvent.VK_ENTER);
             robot.delay(500);
             //Selecting All Photos
-            robot.mouseMove(469, 256);
+            robot.mouseMove(635, 285);
             robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_MASK);
             robot.keyPress(KeyEvent.VK_CONTROL);
@@ -180,7 +180,7 @@ public class UploadFile
         	//After Exceptional TC folder window
         	robot.delay(500);
             //Selecting All Photos
-            robot.mouseMove(469, 256);
+            robot.mouseMove(635, 285);
             robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_MASK);
             robot.keyPress(KeyEvent.VK_CONTROL);
