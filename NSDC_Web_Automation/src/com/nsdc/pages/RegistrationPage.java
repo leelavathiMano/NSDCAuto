@@ -10,7 +10,6 @@ import com.nsdc.generic.SelectDropDownList;
 public class RegistrationPage
 {
     WebDriver driver;
-    
     @FindBy(xpath="//select[@id='exampleSelect1']")
     private WebElement UserTypeDropdownList;
     @FindBy(xpath="//input[@name='name']")
@@ -23,19 +22,16 @@ public class RegistrationPage
     private WebElement iAgreeCheckbox;
     @FindBy(xpath="//button[contains(text(),'Register')]")
     private WebElement registerButton;
-    
     @FindBy(xpath="//input[@name='eOTP']")
     private WebElement emailOTPTextbox;
     @FindBy(xpath="//input[@name='mOTP']")
     private WebElement mobileOTPTextbox;
     @FindBy(xpath="//button[contains(text(),'Verify')]")
     private WebElement verifyButton;
-    
     @FindBy(xpath="//span[@class='text-bold']")
     private WebElement usernameLabel;
     @FindBy(xpath="//button[contains(text(),'Login Now')]")
     private WebElement goToLoginButton;
-    
     @FindBy(xpath="//input[@name='oldpassword']")
     private WebElement oldPasswordTextbox;
     @FindBy(xpath="//input[@name='newpassword']")
@@ -44,7 +40,6 @@ public class RegistrationPage
     private WebElement confirmPasswordTextbox;
     @FindBy(xpath="//button[contains(text(),'Reset & Re-login')]")
     private WebElement resetAndReloginButton;
-    
     @FindBy(xpath="//button[text()='OK']")
     private WebElement confirmationOkButton;
     
@@ -53,24 +48,20 @@ public class RegistrationPage
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    
     public void selectDropdownList(String visibleText)
     {
         SelectDropDownList.selectDropDownListByVisibleText(UserTypeDropdownList, visibleText);
     }
-    
     public void enterSPOCName(String spocName)
     {
         spocNameTextbox.clear();
         spocNameTextbox.sendKeys(spocName);
     }
-    
     public void enterEmail(String email)
     {
         emailTextbox.clear();
         emailTextbox.sendKeys(email);
     }
-    
     public void enterMobile(String mobile)
     {
         mobileTextbox.clear();
@@ -80,61 +71,49 @@ public class RegistrationPage
     {
     	iAgreeCheckbox.click();
     }
-    
     public void clickRegister()
     {
         registerButton.click();
     }
-    
     public void enterEmailOTP(String emailOTP)
     {
         emailOTPTextbox.clear();
         emailOTPTextbox.sendKeys(emailOTP);
     }
-    
     public void enterMobileOTP(String mobileOTP)
     {
         mobileOTPTextbox.clear();
         mobileOTPTextbox.sendKeys(mobileOTP);
     }
-    
     public void clickGoToLogin()
     {
         goToLoginButton.click();
     }
-    
     public void clickVerify()
     {
         verifyButton.click();
     }
-    
     public void enterOldPassword(String oldPassword)
     {
     	oldPasswordTextbox.clear();
         oldPasswordTextbox.sendKeys(oldPassword);
     }
-    
     public void enterNewPassword(String newPassword)
     {
     	newPasswordTextbox.clear();
         newPasswordTextbox.sendKeys(newPassword);
     }
-    
     public void enterConfirmPassword(String confirmPassword)
     {
     	confirmPasswordTextbox.clear();
         confirmPasswordTextbox.sendKeys(confirmPassword);
     }
-    
     public void clickResetResubmit()
     {
         resetAndReloginButton.click();
     }
-    
     public void clickConfirmationOkMessage()
     {
         confirmationOkButton.click();
     }
-    
 }
-

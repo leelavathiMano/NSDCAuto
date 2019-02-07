@@ -11,7 +11,6 @@ import com.nsdc.generic.SelectDropDownList;
 public class TrainerRegistrationPage
 {
     WebDriver driver;
-    
     @FindBy(xpath="//input[@placeholder='Enter full name']")
     private WebElement nameTextbox;
     @FindBy(xpath="//select[@formcontrolname='gender']")
@@ -137,7 +136,7 @@ public class TrainerRegistrationPage
     private WebElement preferredDistrictDropdownList;
     @FindBy(xpath="//select[@formcontrolname='subDistrict']")
     private WebElement preferredSubDistrictDropDownList;
-    @FindBy(xpath="//button[contains(text(),'Add Preferences')]")
+    @FindBy(xpath="//button[contains(text(),'Add Training Request')]")
     private WebElement addPreferencesButton;
     @FindBy(xpath="(//button[i[@class='fa fa-trash-o']])[3]")
     private WebElement deleteThirdPreferenceButton;
