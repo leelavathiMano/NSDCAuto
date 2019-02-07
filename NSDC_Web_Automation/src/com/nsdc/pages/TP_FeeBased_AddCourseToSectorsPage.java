@@ -81,6 +81,11 @@ public class TP_FeeBased_AddCourseToSectorsPage
 		SelectDropDownList.selectDropDownListByVisibleText(sectorDropDownList, sector);
 	}
 	
+	public String getSelectedSector() 
+	{
+		return SelectDropDownList.getFirstOptionInDropDownList(sectorDropDownList);
+	}
+	
 	public void selectJobRoleMappingType(String jobRole)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(jobRoleMappingTypeDropDownList, jobRole);
@@ -90,6 +95,11 @@ public class TP_FeeBased_AddCourseToSectorsPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(associateQPDropDownList, jobRoleName);
 	}
+	
+//	public void selectAssociatedQPOrJobRoleName(String jobRoleName)
+//	{
+//		SelectDropDownList.selectDropDownListByIndex(associateQPDropDownList, 1);
+//	}
 	
 	public void enterNSQFLevel(String nsqfLevel)
 	{
@@ -117,6 +127,11 @@ public class TP_FeeBased_AddCourseToSectorsPage
 	public void selectMinimumEducationRequired(String minimumEducation)
 	{
 		SelectDropDownList.selectDropDownListByIndex(minimumEducationRequiredDropDownList, 1);
+	}
+	
+	public String selectFirstMinimumEducation()
+	{
+		return SelectDropDownList.getFirstOptionInDropDownList(minimumEducationRequiredDropDownList);
 	}
 	
 	public void enterCourseDuration(String courseDuration)

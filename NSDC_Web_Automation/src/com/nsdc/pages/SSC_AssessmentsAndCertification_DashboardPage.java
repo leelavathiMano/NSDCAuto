@@ -9,7 +9,7 @@ public class SSC_AssessmentsAndCertification_DashboardPage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="//div[@ng-reflect-router-link='assessment-request-dashboard']")
+	@FindBy(xpath="//div[p[contains(text(),'Assessment Requests')]]")
 	private WebElement assessmentRequestsButton;
 	@FindBy(xpath="//div[@ng-reflect-router-link='certification-request-dashboar']")
 	private WebElement certificationsRequestsButton;
