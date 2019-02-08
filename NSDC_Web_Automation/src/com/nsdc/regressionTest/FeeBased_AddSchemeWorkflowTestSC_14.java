@@ -82,7 +82,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+schemeName+"']]]]//a[contains(text(),'Add Program')]")).click();
 		TP_FeeBasedProgramPage tpfb = new TP_FeeBasedProgramPage(driver);
 		Thread.sleep(3000);
-		//tpfb.clickOnCloseButton();
+		tpfb.clickOnCloseButton();
 		if(srno == 1)
 		{
 			Thread.sleep(5000);
@@ -90,8 +90,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		}
 		else
 		{
-			Thread.sleep(3000);
-			tpfb.clickOnCloseButton();
+//			Thread.sleep(3000);
+//			tpfb.clickOnCloseButton();
 			Thread.sleep(5000);
 			tpfb.selectFinancialModelType(financialModel);
 		}
@@ -2089,7 +2089,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08");
 	}
 
-	@Test(dataProvider="linkTrainer")
+	@Test(dataProvider="linkTrainer", enabled=false)
 	public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -2161,7 +2161,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09");
 	}
 
-	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="linkTrainerTC09")
+	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="linkTrainerTC09", enabled=false)
 	public void addAssessmentAgencyAndLinkAssessorTC10(String srno, String tpUsername, String tpPassword, String projectName, String assessmentAgencyName, String supportingDocumentFile, String assessmentAgencyAddress, String landmark, String pincode, String state, String district, String tehsil, String parliamentryConstoituency, String geoLocation, String firstName, String lastName, String email, String mobileNumber, String asseementAgencyID,  String assessorID, String assessorName, String assessmentAgency, String supportingDocument_Assessor, String mobileOTP, String emailOTP)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
