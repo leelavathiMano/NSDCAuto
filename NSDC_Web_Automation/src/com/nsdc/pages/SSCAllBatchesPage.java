@@ -13,6 +13,10 @@ public class SSCAllBatchesPage
 	private WebElement  pendingBatchesSectionLink;
 	@FindBy(linkText="Published Batches")
 	private WebElement publishedBatchesSectionLink;
+	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
+	private WebElement searchByBatchIDTextField;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchFiltersButton;
 	//Verifying Applied Trainer Batch applicants from SSC End after TC Approval
 	@FindBy(xpath="//*[text()='Batch Details']")
 	private WebElement batchDetailsSectionLink;
@@ -48,6 +52,15 @@ public class SSCAllBatchesPage
 	public void clickToViewAllPublishedBatches()
 	{
 		publishedBatchesSectionLink.click();
+	}
+	public void enterBatchIDToSearch(String batchID)
+	{
+		searchByBatchIDTextField.clear();
+		searchByBatchIDTextField.sendKeys(batchID);
+	}
+	public void clickToGetSearchResult()
+	{
+		applySearchFiltersButton.click();
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{

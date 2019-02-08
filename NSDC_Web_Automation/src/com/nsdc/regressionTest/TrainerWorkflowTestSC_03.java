@@ -171,7 +171,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Personal Information Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(8000);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
         trainer.enterApplicantAddress(address);
@@ -397,7 +396,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Education & Work Details Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(5000);
         //Preference 1
         trainer.selectPreferredSector(preferredSector1);
         Thread.sleep(4000);
@@ -471,7 +469,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in My Preferences & My Associations Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(5000);
         trainer.clickIAgreeCheckbox();
         Thread.sleep(2000);
         trainer.clickSubmitButton();

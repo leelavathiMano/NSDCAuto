@@ -45,6 +45,10 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		sscDbP.clickAllBatches();
 		Thread.sleep(5000);
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+		sAp.enterBatchIDToSearch(batchID);
+		Thread.sleep(5000);
+		sAp.clickToGetSearchResult();
+		Thread.sleep(5000);
 		sAp.clickToGetBatchActionMenu(batchID);
 		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Assign')]")).click();	
 		Thread.sleep(5000);
