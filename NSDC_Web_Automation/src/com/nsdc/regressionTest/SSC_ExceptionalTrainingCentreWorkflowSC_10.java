@@ -152,6 +152,40 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(4000);
 		if(serialNum.equals("1")) //Assigning Created Exceptional TC Directly to a Batch
 		{
+			eTCp.clickToFinallyCreateExceptionalTrainingCentre();
+			Thread.sleep(4000);
+			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Add - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
+			Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! Something went wrong! After clicking Add Button!");
+			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
+			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
+			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
+			SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
+			sscTbcP.clickOk();
+			Thread.sleep(4000);
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
+			plp.clickOnLogout();
+			Thread.sleep(4000);
+			lp.clickLogin();
+			elp.performlogin(createdExceptionalTCID, "ekaushal");
+			Thread.sleep(4000);
+			RegistrationPage rp = new RegistrationPage(driver);
+			rp.enterOldPassword("ekaushal");
+		    rp.enterNewPassword("Qwerty@123");
+		    rp.enterConfirmPassword("Qwerty@123");
+		    rp.clickResetResubmit();
+		    Thread.sleep(2000);
+		    rp.clickConfirmationOkMessage();
+		    elp.performlogin(createdExceptionalTCID, "Qwerty@123");
+		    Thread.sleep(8000);
+		    plp.clickOnProfileLogo();
+		    Thread.sleep(2000);
+		    plp.clickOnLogout();
+		    Thread.sleep(2000);
+		}
+		else
+		{
 			eTCp.clickToAssignCurrentlyCreatingExceptionalTrainingCentre();
 			Thread.sleep(4000);
 			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Assign - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
@@ -184,40 +218,6 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			Thread.sleep(2000);
 			plp.clickOnLogout();
 			Thread.sleep(2000);
-		}
-		else //Add Exceptional TC after Creating Batch
-		{
-			eTCp.clickToFinallyCreateExceptionalTrainingCentre();
-			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Add - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
-			Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! Something went wrong! After clicking Add Button!");
-			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
-			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
-			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
-			SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
-			sscTbcP.clickOk();
-			Thread.sleep(4000);
-			PostLoginPage plp=new PostLoginPage(driver);
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-			Thread.sleep(4000);
-			lp.clickLogin();
-			elp.performlogin(createdExceptionalTCID, "ekaushal");
-			Thread.sleep(4000);
-			RegistrationPage rp = new RegistrationPage(driver);
-			rp.enterOldPassword("ekaushal");
-		    rp.enterNewPassword("Qwerty@123");
-		    rp.enterConfirmPassword("Qwerty@123");
-		    rp.clickResetResubmit();
-		    Thread.sleep(2000);
-		    rp.clickConfirmationOkMessage();
-		    elp.performlogin(createdExceptionalTCID, "Qwerty@123");
-		    Thread.sleep(8000);
-		    plp.clickOnProfileLogo();
-		    Thread.sleep(2000);
-		    plp.clickOnLogout();
-		    Thread.sleep(2000);
 		} 
 	}
 }
