@@ -93,6 +93,8 @@ public class TrainingPartnerRegistrationPage
     
     @FindBy(xpath="//input[@name='account-number']")
     private WebElement panTextbox;
+    @FindBy(xpath="//button[contains(text(),'Verify')]")
+    private WebElement panVerifyButton;
     @FindBy(xpath="(//input[@id='customFile'])[1]")
     private WebElement browseButton1;
     @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
@@ -355,6 +357,11 @@ public class TrainingPartnerRegistrationPage
     {
     	panTextbox.clear();
     	panTextbox.sendKeys(pan_Number);
+    }
+    
+    public void clickOnPANVerify()
+    {
+    	panVerifyButton.click();
     }
     
     public void clickBrowseButton1()
