@@ -81,7 +81,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickConfirmationOkMessage();
         elp.performlogin(username, confirmPassword);
-        Thread.sleep(8000);
+        Thread.sleep(15000);
         AssessorRegistrationPage assessor = new AssessorRegistrationPage(driver);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         assessor.selectGender(gender);
@@ -171,7 +171,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Personal Information Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(8000);        
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
         assessor.enterApplicantAddress(address);
@@ -191,7 +190,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Contact & Address Details Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(8000);
         assessor.selectEducationAttained(education1);
         Thread.sleep(2000);
         assessor.enterDetailsOfEducation(edu_details1);
@@ -394,7 +392,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Education & Work Details Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(6000);
         //preference 1
         assessor.selectPreferredSector(preferredSector1);
         Thread.sleep(4000);
@@ -410,12 +407,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(4000);
         assessor.clickAddPreferences();
         Thread.sleep(2000);
-       // Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[1]")).getText().trim(), preferredJobRole1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[1]")).getText().trim(), preferredJobRole1+" ("+preferredJobRoleCode1+")");
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[2]")).getText().trim(), preferredSector1);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[4]")).getText().trim(), preferredState1);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[5]")).getText().trim(), preferredDistrict1);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
         //preference 2
         Thread.sleep(4000);
         assessor.selectPreferredSector(preferredSector2);
@@ -432,12 +429,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(4000);
         assessor.clickAddPreferences();
         Thread.sleep(2000);
-     //   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[1]")).getText().trim(), preferredJobRole2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[1]")).getText().trim(), preferredJobRole2+" ("+preferredJobRoleCode2+")");
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[2]")).getText().trim(), preferredSector2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[4]")).getText().trim(), preferredState2);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[5]")).getText().trim(), preferredDistrict2);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
         //preference 3
         Thread.sleep(4000);
         assessor.selectPreferredSector(preferredSector3);
@@ -454,12 +451,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(4000);
         assessor.clickAddPreferences();
         Thread.sleep(2000);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[1]")).getText().trim(), preferredJobRole3+" ("+preferredJobRoleCode3+")");
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[2]")).getText().trim(), preferredSector3);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[4]")).getText().trim(), preferredState3);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[5]")).getText().trim(), preferredDistrict3);
-      //  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[6]")).getText().trim(), preferredSubDistrict3);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[6]")).getText().trim(), preferredSubDistrict3);
         //deleting 3rd preference
         Thread.sleep(2000);
         assessor.clickToDeleteThirdPreference();
@@ -468,7 +465,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         assessor.clickOnSaveAndContinue();
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in My Preferences & My Associations Section, Its Blocking further Applicant Registration Process!!!");
-    	Thread.sleep(6000);
         assessor.clickIAgreeCheckbox();
         Thread.sleep(2000);
         assessor.clickSubmitButton();
@@ -488,7 +484,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	lp.clickLogin();
     	EnterLoginPage elp=new EnterLoginPage(driver);
     	elp.performlogin(createdAssessorID, confirmPassword);
-    	Thread.sleep(2000);
+    	Thread.sleep(10000);
     	AssessorMyProfilePage aMpP=new AssessorMyProfilePage(driver);
     	aMpP.clickProfile();
     	Thread.sleep(2000);
