@@ -18,6 +18,10 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement browseButton1;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement uploadButton1;
+	@FindBy(xpath="//input[@formcontrolname='phone']")
+	private WebElement mobileNumberTextField;
+	@FindBy(xpath="//input[@formcontrolname='email']")
+	private WebElement emailTextField;
 	@FindBy(id="dob")
 	private WebElement dobTextbox;
 	@FindBy(xpath="//span[@class='input-group-text']")
@@ -151,6 +155,16 @@ public class TrainingPartner_CandidateRegistrationPage
 	public void clickToUploadProfilePicture()
 	{
 		uploadButton1.click();
+	}
+	public void enterMobileNumber(String mobileNumber)
+	{
+		mobileNumberTextField.clear();
+		mobileNumberTextField.sendKeys(mobileNumber);
+	}
+	public void enterEmailID(String emailID)
+	{
+		emailTextField.clear();
+		emailTextField.sendKeys(emailID);
 	}
 	public void clickToChooseGender(String gender)
 	{
