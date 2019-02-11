@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import com.nsdc.generic.AddingDaysToCurrentDate;
 import com.nsdc.generic.SelectDropDownList;
+import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
 
 public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage 
 {
@@ -119,7 +119,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	private WebElement rplatformAssessmentEndDateTextField;
 	@FindBy(xpath="(//div[@class='input-group-append'])[14]")
 	private WebElement rclosePlatformAssessmentEndDateCalenderIcon;
-			
+	@FindBy(xpath="(//select[@class='custom-select'])[1]")
+	private WebElement monthDropdownList;
+	@FindBy(xpath="(//select[@class='custom-select'])[2]")
+	private WebElement yearDropdownList;
 	
 	public SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(WebDriver driver)
 	{
@@ -139,96 +142,21 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		SelectDropDownList.selectDropDownListByVisibleText(batchCategoryDropdownList, batchCategory);
 	}
 	//Batch Duration
-	public void selectTrainingStartDateForBatch() throws InterruptedException
+	public void selectTrainingStartDateForBatch(String batchStartDate) throws InterruptedException
 	{
-		trainingStartDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, batchStartDate, trainingStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseTrainingStartDateCalender()
 	{
 		closeTrainingStartDateCalenderIcon.click();
 	}
-	public void selectTrainingEndDateForNewBatch() throws InterruptedException 
+	public void selectTrainingEndDateForNewBatch(String batchEndDate) throws InterruptedException 
 	{
-		trainingEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, batchEndDate, trainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectTrainingEndDateForExistingBatch() throws InterruptedException
+	public void selectTrainingEndDateForExistingBatch(String batchEndDate) throws InterruptedException
 	{	
-		trainingEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, batchEndDate, trainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseTrainingEndDateCalender()
 	{
@@ -254,224 +182,46 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		domainBaseQpRadioButton.click();
 	}
 	//Domain Training Dates
-	public void selectDomainTrainingStartDate() throws InterruptedException
+	public void selectDomainTrainingStartDate(String domainTrainingStartDate) throws InterruptedException
 	{
-		domainTrainingStartDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainTrainingStartDate, domainTrainingStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickTocloseDomainTrainingStartDateCalender()
 	{
 		closeDomainTrainingStartDateCalenderIcon.click();
 	}
-	public void selectDomainTrainingEndDateForNewBatch() throws InterruptedException
+	public void selectDomainTrainingEndDateForNewBatch(String domainTrainingEndDate) throws InterruptedException
 	{
-		domainTrainingEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainTrainingEndDate, domainTrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectDomainTrainingEndDateForExistingBatch() throws InterruptedException
+	public void selectDomainTrainingEndDateForExistingBatch(String domainTrainingEndDate) throws InterruptedException
 	{
-		domainTrainingEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainTrainingEndDate, domainTrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseDomainTrainingEndDateCalender()
 	{
 		closeDomainTrainingEndDateCalenderIcon.click();
 	}
 	//Domain Assessment Dates
-	public void selectDomainAssessmentStartDateForNewBatch() throws InterruptedException
+	public void selectDomainAssessmentStartDateForNewBatch(String domainAssessmentStartDate) throws InterruptedException
 	{
-		domainAssessmentStartDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessmentStartDate, domainAssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectDomainAssessmentStartDateForExistingBatch() throws InterruptedException
+	public void selectDomainAssessmentStartDateForExistingBatch(String domainAssessmentStartDate) throws InterruptedException
 	{
-		domainAssessmentStartDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(17)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessmentStartDate, domainAssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseDomainAssessmentstartDateCalender()
 	{
 		closeDomainAssessmentStartDateCalenderIcon.click();
 	}
-	public void selectDomainAssessmentEndDateForNewBatch() throws InterruptedException
+	public void selectDomainAssessmentEndDateForNewBatch(String domainAssessmentEndDate) throws InterruptedException
 	{
-		domainAssessmentEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessmentEndDate, domainAssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectDomainAssessmentEndDateForExistingBatch() throws InterruptedException
+	public void selectDomainAssessmentEndDateForExistingBatch(String domainAssessmentEndDate) throws InterruptedException
 	{
-		domainAssessmentEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessmentEndDate, domainAssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseDomainAssessmentEndDateCalender()
 	{
@@ -483,218 +233,46 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		platformBaseQpRadioButton.click();
 	}
 	//Platform Training Dates
-	public void selectPlatformTrainingStartDate() throws InterruptedException
+	public void selectPlatformTrainingStartDate(String platformTrainingStartDate) throws InterruptedException
 	{
-		platformTrainingStartDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(19)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformTrainingStartDate, platformTrainingStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToclosePlatformTrainingStartDateCalender()
 	{
 		closePlatformTrainingStartDateCalenderIcon.click();
 	}
-	public void selectPlatformTrainingEndDateForNewBatch() throws InterruptedException
+	public void selectPlatformTrainingEndDateForNewBatch(String platformTrainingEndDate) throws InterruptedException
 	{
-		platformTrainingEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformTrainingEndDate, platformTrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectPlatformTrainingEndDateForExistingBatch() throws InterruptedException
+	public void selectPlatformTrainingEndDateForExistingBatch(String platformTrainingEndDate) throws InterruptedException
 	{
-		platformTrainingEndDateTextField.click();
-		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(24)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformTrainingEndDate, platformTrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToClosePlatformTrainingEndDateCalender()
 	{
 		closePlatformTrainingEndDateCalenderIcon.click();
 	}
 	//Platform Assessment Dates
-	public void selectPlatformAssessmentStartDateForNewBatch() throws InterruptedException
+	public void selectPlatformAssessmentStartDateForNewBatch(String platformAssessmentStartDate) throws InterruptedException
 	{
-		platformAssessmentStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentStartDate, platformAssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectPlatformAssessmentStartDateForExistingBatch() throws InterruptedException
+	public void selectPlatformAssessmentStartDateForExistingBatch(String platformAssessmentStartDate) throws InterruptedException
 	{
-		platformAssessmentStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentStartDate, platformAssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToClosePlatformAssessmentstartDateCalender()
 	{
 		closePlatformAssessmentStartDateCalenderIcon.click();
 	}
-	public void selectPlatformAssessmentEndDateForNewBatch() throws InterruptedException
+	public void selectPlatformAssessmentEndDateForNewBatch(String platformAssessmentEndDate) throws InterruptedException
 	{
-		platformAssessmentEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentEndDate, platformAssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectPlatformAssessmentEndDateForExistingBatch() throws InterruptedException
+	public void selectPlatformAssessmentEndDateForExistingBatch(String platformAssessmentEndDate) throws InterruptedException
 	{
-		platformAssessmentEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentEndDate, platformAssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToClosePlatformAssessmentEndDateCalender()
 	{
@@ -741,216 +319,45 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+createdBatchID+"')]]//a/span[contains(text(),'View Details')]")).click();
 	}
 	//Rejection Batch Elements Function
-	public void selectDomain2TrainingStartDate() throws InterruptedException
+	public void selectDomain2TrainingStartDate(String domainTrainingStartDate) throws InterruptedException
 	{
-		domain2TrainingStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainTrainingStartDate, domain2TrainingStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickTocloseDomain2TrainingStartDateCalender()
 	{
 		closeDomain2TrainingStartDateCalenderIcon.click();
 	}
-	public void selectDomain2TrainingEndDateForNewBatch() throws InterruptedException
+	public void selectDomain2TrainingEndDateForNewBatch(String domainTrainingEndDate) throws InterruptedException
 	{
-		domain2TrainingEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainTrainingEndDate, domain2TrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectDomain2TrainingEndDateForExistingBatch() throws InterruptedException
+	public void selectDomain2TrainingEndDateForExistingBatch(String domainTrainingEndDate) throws InterruptedException
 	{
-		domain2TrainingEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainTrainingEndDate, domain2TrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseDomain2TrainingEndDateCalender()
 	{
 		closeDomain2TrainingEndDateCalenderIcon.click();
 	}
-	public void selectDomain2AssessmentStartDateForNewBatch() throws InterruptedException
+	public void selectDomain2AssessmentStartDateForNewBatch(String domainAssessemntStartDate) throws InterruptedException
 	{
-		domain2AssessmentStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessemntStartDate, domain2AssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectDomain2AssessmentStartDateForExistingBatch() throws InterruptedException
+	public void selectDomain2AssessmentStartDateForExistingBatch(String domainAssessemntStartDate) throws InterruptedException
 	{
-		domain2AssessmentStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessemntStartDate, domain2AssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseDomain2AssessmentstartDateCalender()
 	{
 		closeDomain2AssessmentStartDateCalenderIcon.click();
 	}
-	public void selectDomain2AssessmentEndDateForNewBatch() throws InterruptedException
+	public void selectDomain2AssessmentEndDateForNewBatch(String domainAssessemntEndDate) throws InterruptedException
 	{
-		domain2AssessmentEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessemntEndDate, domain2AssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectDomain2AssessmentEndDateForExistingBatch() throws InterruptedException
+	public void selectDomain2AssessmentEndDateForExistingBatch(String domainAssessemntEndDate) throws InterruptedException
 	{
-		domain2AssessmentEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, domainAssessemntEndDate, domain2AssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloseDomain2AssessmentEndDateCalender()
 	{
@@ -961,214 +368,45 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		rplatformBaseQpRadioButton.click();
 	}
-	public void selectrPlatformTrainingStartDate() throws InterruptedException
+	public void selectrPlatformTrainingStartDate(String platformTrainingStartDate) throws InterruptedException
 	{
-		rplatformTrainingStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(15)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformTrainingStartDate, rplatformTrainingStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickTocloserPlatformTrainingStartDateCalender()
 	{
 		rclosePlatformTrainingStartDateCalenderIcon.click();
 	}
-	public void selectrPlatformTrainingEndDateForNewBatch() throws InterruptedException
+	public void selectrPlatformTrainingEndDateForNewBatch(String platformTrainingEndDate) throws InterruptedException
 	{
-		rplatformTrainingEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformTrainingEndDate, rplatformTrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectrPlatformTrainingEndDateForExistingBatch() throws InterruptedException
+	public void selectrPlatformTrainingEndDateForExistingBatch(String platformTrainingEndDate) throws InterruptedException
 	{
-		rplatformTrainingEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformTrainingEndDate, rplatformTrainingEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloserPlatformTrainingEndDateCalender()
 	{
 		rclosePlatformTrainingEndDateCalenderIcon.click();
 	}
-	public void selectrPlatformAssessmentStartDateForNewBatch() throws InterruptedException
+	public void selectrPlatformAssessmentStartDateForNewBatch(String platformAssessmentStartDate) throws InterruptedException
 	{
-		rplatformAssessmentStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(23)+"']")).click();
-			}
-		}
-		
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentStartDate, rplatformAssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectrPlatformAssessmentStartDateForExistingBatch() throws InterruptedException
+	public void selectrPlatformAssessmentStartDateForExistingBatch(String platformAssessmentStartDate) throws InterruptedException
 	{
-		rplatformAssessmentStartDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(16)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentStartDate, rplatformAssessmentStartDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloserPlatformAssessmentstartDateCalender()
 	{
 		rclosePlatformAssessmentStartDateCalenderIcon.click();
 	}
-	public void selectrPlatformAssessmentEndDateForNewBatch() throws InterruptedException
+	public void selectrPlatformAssessmentEndDateForNewBatch(String platformAssessmentEndDate) throws InterruptedException
 	{
-		rplatformAssessmentEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(25)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentEndDate, rplatformAssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
-	public void selectrPlatformAssessmentEndDateForExistingBatch() throws InterruptedException
+	public void selectrPlatformAssessmentEndDateForExistingBatch(String platformAssessmentEndDate) throws InterruptedException
 	{
-		rplatformAssessmentEndDateTextField.click();
-		if(driver.findElements(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).size()>1)
-		{
-			if(driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[2]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-		}
-		else
-		{
-			if(driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).getAttribute("class").contains("mute"))
-			{
-				driver.findElement(By.xpath("(//div[button[@class='btn btn-link ngb-dp-arrow-btn']])[2]")).click();
-				Thread.sleep(2000);
-				driver.findElement(By.xpath("(//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"'])[1]")).click();
-			}
-			else
-			{
-				driver.findElement(By.xpath("//div[text()='"+AddingDaysToCurrentDate.addDaysToCurrentDate(18)+"']")).click();
-			}
-		}
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, platformAssessmentEndDate, rplatformAssessmentEndDateTextField, monthDropdownList, yearDropdownList);
 	}
 	public void clickToCloserPlatformAssessmentEndDateCalender()
 	{
