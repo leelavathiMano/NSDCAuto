@@ -121,7 +121,7 @@ public class UploadFile
             //Press Enter key to close the Goto window and Upload window
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-            robot.delay(500);
+            robot.delay(600);
             //Selecting All Photos
             robot.mouseMove(635, 285);
             robot.mousePress(InputEvent.BUTTON1_MASK);
