@@ -1053,7 +1053,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	
     	lp.clickLogin();
     	elp.performlogin(tpID, tpPassword);
-    	//Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Add a Training Centre')]")).getText(), "Add a Training Centre");
+    	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Add a Training Centre')]")).getText(), "Add a Training Centre");
     }
     
     //TP Rejection Flow

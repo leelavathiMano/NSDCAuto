@@ -71,7 +71,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="addTrainingCentre")
-	public void addTrainingCentreTC_01(String srno, String tpUsername, String tpPassword, String processType, String tcType, String tcName, String tcAddress, String landmark, String pincode, String state, String district, String tehsil, String city, String parliamentryConstituency, String geoLocation, String addressProof, String addressProofFile, String SPOC_Name, String SPOC_EmailAddress, String spoc_MobileNumber, String centreHeadName, String centreHeadEmail, String centreHeadMobile, String pmkkHubID, String mOU_File, String tcID, String pmkkSPOC_ID, String pmkkSPOC_Password, String reviewComment)throws Exception
+	public void addTrainingCentreTC_01(String srno, String tpUsername, String tpPassword, String processType, String tcType, String tcName, String tcAddress, String landmark, String pincode, String state, String district, String tehsil, String city, String parliamentryConstituency, String geoLocation, String addressProof, String addressProofFile, String SPOC_Name, String SPOC_EmailAddress, String spoc_MobileNumber, String centreHeadName, String centreHeadEmail, String centreHeadMobile, String pmkkHubID, String mOU_File, String mobileOTP, String emailOTP, String tcID, String pmkkSPOC_ID, String pmkkSPOC_Password, String reviewComment)throws Exception
 	{
 		int sno = Integer.parseInt(srno);
 		LoginPage lp = new LoginPage(driver);
@@ -157,13 +157,19 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		
 
 		Thread.sleep(3000);
-		atc.clickOnSubmit();
+		atc.clickOnGenerateOTP();
 		Thread.sleep(3000);
-		atc.clickOnYesAddTrainingCentre();
+		atc.enterMobileOTP(mobileOTP);
+		atc.enterEmailOTP(emailOTP);
+		Thread.sleep(3000);
+		atc.clickOnVerifyOTP();
+		//atc.clickOnSubmit();
+		//Thread.sleep(3000);
+		//atc.clickOnYesAddTrainingCentre();
 		Thread.sleep(3000);
 		atc.clickOnClose();
 		tcID = driver.findElement(By.xpath("(//td[@data-field='RecordID']/span)[1]")).getText();
-		ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", sno, 25, tcID);
+		ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", sno, 27, tcID);
 		ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_SC15TC02", sno, 1, tcID);
 		ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_BillPaymentSC15TC03", sno, 1, tcID);
 		ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", sno, 1, tcID);
@@ -1076,7 +1082,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04");
 	}
 	
-	@Test(dataProvider="tcApproval", enabled=false)
+	@Test(dataProvider="tcApproval")//, enabled=false)
 	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);

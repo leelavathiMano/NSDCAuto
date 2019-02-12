@@ -68,6 +68,17 @@ public class AddTrainingCentrePage
 	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
+	@FindBy(xpath="//button[contains(text(),'Generate OTP')]")
+	private WebElement generateOTPButton;
+	
+	@FindBy(xpath="//input[@formcontrolname='mobileOTP']")
+	private WebElement mobileOTPTextbox;
+	@FindBy(xpath="//input[@formcontrolname='emailOTP']")
+	private WebElement emailOTPTextbox;
+	@FindBy(xpath="//button[contains(text(),'Verify')]")
+	private WebElement verifyOTPButton;
+	@FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
+	private WebElement cancelOTPButton;
 	
 	@FindBy(xpath="//button[text()='Yes, Add Training Centre']")
 	private WebElement yesAddTrainingCentreButton;
@@ -225,6 +236,33 @@ public class AddTrainingCentrePage
 	public void clickOnCancel()
 	{
 		cancelButton.click();
+	}
+	
+	public void clickOnGenerateOTP()
+	{
+		generateOTPButton.click();
+	}
+	
+	public void enterMobileOTP(String mobileOTP)
+	{
+		mobileOTPTextbox.clear();
+		mobileOTPTextbox.sendKeys(mobileOTP);
+	}
+	
+	public void enterEmailOTP(String emailOTP)
+	{
+		emailOTPTextbox.clear();
+		emailOTPTextbox.sendKeys(emailOTP);
+	}
+	
+	public void clickOnVerifyOTP()
+	{
+		verifyOTPButton.click();
+	}
+	
+	public void clickOnCancelOTP()
+	{
+		cancelOTPButton.click();
 	}
 	
 	public void clickOnYesAddTrainingCentre()

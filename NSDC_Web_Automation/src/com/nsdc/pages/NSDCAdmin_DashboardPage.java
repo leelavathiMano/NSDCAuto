@@ -11,9 +11,9 @@ public class NSDCAdmin_DashboardPage {
 
 	@FindBy(xpath = "//div[p[contains(text(),'User Management')]]")
 	private WebElement userManagementCard;
-	@FindBy(xpath = "//div[@ng-reflect-router-link='tcregistrationrules']")
+	@FindBy(xpath = "//div[p[text()='TC Registration']]")
 	private WebElement tcRegistrationButton;
-	@FindBy(xpath = "//div[@ng-reflect-router-link='tpregistrationrules']")
+	@FindBy(xpath = "//div[p[text()='TP Registration']]")
 	private WebElement tpRegistrationButton;
 	@FindBy(xpath = "//div[@class='m-widget17__items m-widget17__items-col4 clickable']")
 	private WebElement schemeApproval_SOButton;
