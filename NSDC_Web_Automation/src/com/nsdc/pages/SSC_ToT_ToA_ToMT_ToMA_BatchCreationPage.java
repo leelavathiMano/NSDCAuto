@@ -1,5 +1,11 @@
 package com.nsdc.pages;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -140,6 +146,23 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	public void selectBatchCategory(String batchCategory)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchCategoryDropdownList, batchCategory);
+	}
+	public static void fileSave(String filePath)
+	{
+		try
+		{
+			//open file
+        	HSSFWorkbook wb = new HSSFWorkbook(new FileInputStream(new File(filePath)));
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
+            //save file
+            FileOutputStream out = new FileOutputStream(filePath);
+            wb.write(out);
+            out.close();
+            wb = new HSSFWorkbook(new FileInputStream(new File(filePath)));
+		}catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
 	}
 	//Batch Duration
 	public void selectTrainingStartDateForBatch(String batchStartDate) throws InterruptedException

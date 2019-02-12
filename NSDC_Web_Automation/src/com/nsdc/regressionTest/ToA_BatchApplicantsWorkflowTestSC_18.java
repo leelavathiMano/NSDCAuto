@@ -79,6 +79,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	@DataProvider()
     public Object[][] toaBatchData()
     {
+		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls");
     	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches");
     }
 	

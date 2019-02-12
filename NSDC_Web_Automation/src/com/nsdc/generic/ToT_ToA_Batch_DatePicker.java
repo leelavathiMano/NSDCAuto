@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 
 public class ToT_ToA_Batch_DatePicker 
 {
-	public static void chooseDate(WebDriver driver, String date, WebElement dateTextField, WebElement monthDropdownList, WebElement yearDropdownList )
+	public static void chooseDate(WebDriver driver, String date, WebElement dateTextField, WebElement monthDropdownList, WebElement yearDropdownList ) throws InterruptedException
 	{
 		dateTextField.click();
+		Thread.sleep(2000);
 		String parts[]=date.split("-");
 		String day=parts[0].replaceAll("0", "");
 		int month=Integer.parseInt(parts[1]);
