@@ -29,6 +29,10 @@ public class Candidate_ProfilePage
 	private WebElement guardianRelationDropDownList;
 	@FindBy(xpath="//input[@id='parentName']")
 	private WebElement guardianNameTextbox;
+	@FindBy(xpath="//input[@id='aadhar']")
+	private WebElement aadharNumberTextbox;
+	@FindBy(xpath="//button[contains(text(),'Verify')]")
+	private WebElement verifyButton;
 	@FindBy(xpath="//select[@id='alternateIdType']")
 	private WebElement alternateID_TypeDropDownList;
 	@FindBy(xpath="//input[@id='alternateIdNumber']")
@@ -224,6 +228,17 @@ public class Candidate_ProfilePage
 	{
 		guardianNameTextbox.clear();
 		guardianNameTextbox.sendKeys(guardianname);
+	}
+	
+	public void enterAadharNumber(String aadharNumber)
+	{
+		aadharNumberTextbox.clear();
+		aadharNumberTextbox.sendKeys(aadharNumber);
+	}
+	
+	public void clickOnVerify()
+	{
+		verifyButton.click();
 	}
 	
 	public void selectAlternateID_Type(String idtype)

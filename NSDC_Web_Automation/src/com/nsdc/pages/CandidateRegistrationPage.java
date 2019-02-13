@@ -191,12 +191,12 @@ public class CandidateRegistrationPage
 	
 	public void selectCIOType(String cioType)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(cioTypeDropDownList, cioType);
+		SelectDropDownList.selectDropDownListByIndex(cioTypeDropDownList, 1);
 	}
 	
 	public void selectCIOName(String cioName)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(cioNameDropDownList, cioName);
+		SelectDropDownList.selectDropDownListByIndex(cioNameDropDownList, 1);
 	}
 	
 	public void clickOnIntrestedInPMKVYTraining()

@@ -26,7 +26,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="candidateProfileData")
-	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String landmark, String tehsil, String villageORCity, String parliamentryConstituency, String educationName, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
+	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String aadharNumber, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String landmark, String tehsil, String villageORCity, String parliamentryConstituency, String educationName, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		//lp.clickLogin();
@@ -64,7 +64,11 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 			UploadFile.upload(profilePicture);
 			Thread.sleep(3000);
 			crp.selectCIOType(cioType);
+			String cIOType = driver.findElement(By.xpath("//select[@formcontrolname='cioType']")).getText();
+			ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 16, cIOType);		
 			crp.selectCIOName(cioName);
+			String cIOName = driver.findElement(By.xpath("//select[@formcontrolname='cioName']")).getText();
+			ReadWriteData.setExcelData("./TestData/Workflow/Candidate-Workflow.xls", "CandidateProfileSC11TC01", Integer.parseInt(sno), 17, cIOName);
 			Thread.sleep(3000);
 			crp.clickOnIntrestedInPMKVYTraining();
 			crp.clickOnIAgree();
@@ -121,6 +125,10 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value"), dob);
 		cpp.selectRelationWithGuardian(guardianRelation);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='parentName']")).getAttribute("value"), guardianName);
+		Thread.sleep(3000);
+		cpp.enterAadharNumber(aadharNumber);
+		cpp.clickOnVerify();
+		Thread.sleep(3000);
 		cpp.selectAlternateID_Type(idtype);
 		Thread.sleep(4000);
 		cpp.enterAlternateID_Number(idNumber);
@@ -173,7 +181,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='state'])[2]")).getAttribute("value").substring(3).replace(" ", ""), state.replace(" ", ""));
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='district'])[2]")).getAttribute("value").substring(3).replace(" ", ""), district.replace(" ", ""));
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='tehsil'])[2]")).getAttribute("value").substring(3).replace(" ", ""), tehsil.replace(" ", ""));
-		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='city'])[2]")).getAttribute("value").substring(3).replace(" ", ""), villageORCity.replace(" ", ""));
+		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='city'])[2]")).getAttribute("value").substring(3).replace(" ", "").replace(":", ""), villageORCity.replace(" ", ""));
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='parliamentaryConstituency'])[2]")).getAttribute("value").substring(3).replace(" ", ""), parliamentryConstituency.replace(" ", ""));
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
