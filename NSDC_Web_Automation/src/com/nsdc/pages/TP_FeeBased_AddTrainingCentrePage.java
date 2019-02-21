@@ -458,7 +458,7 @@ public class TP_FeeBased_AddTrainingCentrePage
 	
 	public void enterPincode(String pincode)
 	{
-		pincodeTextbox.clear();
+		ClearTextUsingBackspace.clearAll(pincodeTextbox);
 		pincodeTextbox.sendKeys(pincode);
 	}
 	
@@ -491,8 +491,8 @@ public class TP_FeeBased_AddTrainingCentrePage
 	{
 		ClearTextUsingBackspace.clearAll(geo_LocationTextbox);
 		geo_LocationTextbox.sendKeys(geoLocation);
-		Thread.sleep(3000);
-		geo_LocationTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+		Thread.sleep(5000);
+		geo_LocationTextbox.sendKeys(Keys.ENTER);
 	}
 	
 	public void selectAddressProofType(String addressProof)

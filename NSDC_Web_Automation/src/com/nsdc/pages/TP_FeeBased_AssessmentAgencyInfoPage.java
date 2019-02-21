@@ -68,7 +68,7 @@ public class TP_FeeBased_AssessmentAgencyInfoPage
 	public void enterStartDate()
 	{
 		startDateTextbox.click();
-		startDateTextbox.sendKeys(Keys.ENTER, Keys.TAB);
+		startDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void enterEndDate()
