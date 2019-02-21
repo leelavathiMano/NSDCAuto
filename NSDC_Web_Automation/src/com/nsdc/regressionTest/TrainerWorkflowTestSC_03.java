@@ -253,14 +253,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.clickOnBrowseForIndustrialExperienceProofDocument();
         Thread.sleep(4000);
         UploadFile.upload(industrialDocument1);
-        Thread.sleep(4000);
+        Thread.sleep(6000);
         trainer.clickOnUploadForIndustrialExperienceProofDocument();
         Thread.sleep(8000);
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector1+"')]")).getText(), industrial_sector1);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails1+"')]")).getText(), industrialExperienceDetails1);
-        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[1]")).getText(), "Yes");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[2]")).getText(), industrial_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[3]")).getText(), industrialExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[4]")).getText(), industriesDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[5]")).getText(), industrial_years1+" years "+industrial_months1+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[6]")).getText(), "Yes");
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector2);
         Thread.sleep(2000);
         trainer.selectYearsForIndustrialExperience(industrial_years2);
@@ -279,9 +281,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(8000);
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(5000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector2+"')]")).getText(), industrial_sector2);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails2+"')]")).getText(), industrialExperienceDetails2);
-        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[2]")).getText(), "Yes");
+    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[2]")).getText(), industrial_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[3]")).getText(), industrialExperienceDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[4]")).getText(), industriesDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[5]")).getText(), industrial_years2+" years "+industrial_months2+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[6]")).getText(), "Yes");
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector3);
         Thread.sleep(2000);
         trainer.selectYearsForIndustrialExperience(industrial_years3);
@@ -300,11 +304,14 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(10000);
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector3+"')]")).getText(), industrial_sector3);
-        Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrialExperienceDetails3+"')]")).getText(), industrialExperienceDetails3);
-        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
+    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[2]")).getText(), industrial_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[3]")).getText(), industrialExperienceDetails3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[4]")).getText(), industriesDetails3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[5]")).getText(), industrial_years3+" years "+industrial_months3+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[6]")).getText(), "Yes");
         Thread.sleep(2000);
         trainer.deleteThirdIndustrialExperienceDetails();
+        Assert.assertTrue(driver.findElements(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]")).size()==0,"OMG!!! Deleted Third Industrial Experience details record present ");
         int totalIndustrialMonths=((Integer.parseInt(industrial_years1)+Integer.parseInt(industrial_years2))*12)+Integer.parseInt(industrial_months1)+Integer.parseInt(industrial_months2);
       	int finalIndustrialMonths=totalIndustrialMonths%12;
     	int finalIndustrialYears=(totalIndustrialMonths-finalIndustrialMonths)/12;
@@ -333,10 +340,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Thread.sleep(8000);
         trainer.clickOnAddTrainingExperienceDetails();
     	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector1+"')]")).getText(), training_sector1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails1+"')]")).getText(), trainingExperienceDetails1);
-       	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[3]")).getText(), "Yes");
-       	trainer.selectRelevantSectorForTrainingExperience(training_sector2);
+    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[2]")).getText(), training_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[3]")).getText(), trainingExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[4]")).getText(), trainingExperienceYears1+" years "+trainingExperienceMonths1+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[5]")).getText(), "Yes");
+        trainer.selectRelevantSectorForTrainingExperience(training_sector2);
         Thread.sleep(2000);
        	trainer.selectyearsForTrainingExperience(trainingExperienceYears2);
         Thread.sleep(2000);
@@ -352,9 +360,10 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(8000);
         trainer.clickOnAddTrainingExperienceDetails();
      	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector2+"')]")).getText(), training_sector2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails2+"')]")).getText(), trainingExperienceDetails2);
-       	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[4]")).getText(), "Yes");
+     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[2]")).getText(), training_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[3]")).getText(), trainingExperienceDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[4]")).getText(), trainingExperienceYears2+" years "+trainingExperienceMonths2+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[5]")).getText(), "Yes");
        	trainer.selectRelevantSectorForTrainingExperience(training_sector3);
         Thread.sleep(2000);
         trainer.selectyearsForTrainingExperience(trainingExperienceYears3);
@@ -371,10 +380,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Thread.sleep(8000);
        	trainer.clickOnAddTrainingExperienceDetails();
      	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector3+"')]")).getText(), training_sector3);
-       	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+trainingExperienceDetails3+"')]")).getText(), trainingExperienceDetails3);
-        Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'Yes')])[5]")).getText(), "Yes");
+     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[1]//td[2]")).getText(), training_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[1]//td[3]")).getText(), trainingExperienceDetails3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[1]//td[4]")).getText(), trainingExperienceYears3+" years "+trainingExperienceMonths3+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[1]//td[5]")).getText(), "Yes");
        	trainer.deleteThirdTrainingExperienceDetails();
+        Assert.assertTrue(driver.findElements(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[1]")).size()==0,"OMG!!! Deleted Third Training Experience details record present ");
        	int totalTrainingMonths=((Integer.parseInt(trainingExperienceYears1)+Integer.parseInt(trainingExperienceYears2))*12)+Integer.parseInt(trainingExperienceMonths1)+Integer.parseInt(trainingExperienceMonths2);
       	int finalTrainingMonths=totalTrainingMonths%12;
     	int finalTrainingYears=(totalTrainingMonths-finalTrainingMonths)/12;
@@ -525,17 +536,19 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[6]")).getText().contains(training_sector2));
        	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[8]")).getText().contains(trainingExperienceDetails2));
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[9]")).getText().trim(), trainingExperienceYears2+" years "+trainingExperienceMonths2+" months");
-  /*   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
+     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[2]")).getText().trim(), preferredSector1);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredDistrict1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredSubDistrict1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredState1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredDistrict1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[1]")).getText().trim(), preferredJobRole2+", "+preferredJobRoleCode2);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[2]")).getText().trim(), preferredSector2);
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
-   */ 	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredState2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredDistrict2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
       	//Edit Profile
        	tMpP.clickEditProfile();
     	Thread.sleep(2000);
@@ -562,9 +575,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         	String selectedLanguage3=selectedLanguages.get(2).getText();
         	Assert.assertEquals((selectedLanguage1+","+selectedLanguage2+","+selectedLanguage3), language);
     	}
-      	Assert.assertEquals(tMpP.getReligion(), religion);
+    	Select selectedReligion=new Select(driver.findElement(By.xpath("//select[@formcontrolname='religion']")));
+      	Assert.assertEquals(selectedReligion.getFirstSelectedOption().getText().trim(), religion);
        	Assert.assertEquals(tMpP.getCategory(), category);
-       	Assert.assertEquals(tMpP.getDisability(), disability);
+       	Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@formcontrolname='type']")));
+       	Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText().trim(), disability);
        	String aadharPan = aadhaarOrPAN.toLowerCase();
         if(aadharPan.equals("aadhaar"))
         {
@@ -594,11 +609,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Thread.sleep(2000);
        	tMpP.clickSaveChanges1();
        	Thread.sleep(4000);
-      //tMpP.clickOK();
-      //Thread.sleep(4000);
+       	tMpP.clickOK();
+       	Thread.sleep(4000);
        	//Trainer Contact and Address verification
        	JavascriptExecutor js=(JavascriptExecutor)driver;
-       	js.executeScript("window.scrollBy(0,-1000)","");
+       	js.executeScript("window.scrollBy(0,-1500)","");
        	Thread.sleep(2000);
        	tMpP.clickContactAndAddress();
        	Thread.sleep(4000);
@@ -607,10 +622,20 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Assert.assertEquals(tMpP.getAddressOfApplicant(), address);
        	Assert.assertEquals(tMpP.getNearByLandMark(), landmark);
        	Assert.assertEquals(tMpP.getPincode(), pincode);
-       	Assert.assertEquals(tMpP.getState(), state);
-       	Assert.assertEquals(tMpP.getDistrict(), city);
-       	Assert.assertEquals(tMpP.getTehsil(), mandal);
-       	Assert.assertEquals(tMpP.getParlimentaryConstituency(), parliamentaryConstituency);
+       	Select selectedState=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[1]")));
+       	Assert.assertEquals(selectedState.getFirstSelectedOption().getText().trim(), state);
+       	Select selectedDistrict=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[1]")));
+       	Assert.assertEquals(selectedDistrict.getFirstSelectedOption().getText().trim(), city);
+       	Select selectedSubDistrict=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='mandal'])[1]")));
+       	Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), mandal);
+       	Select selectedParlimentaryConstituency=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='parliamentConstituency'])[1]")));
+       	Assert.assertEquals(selectedParlimentaryConstituency.getFirstSelectedOption().getText().trim(), parliamentaryConstituency);
+     	tMpP.clickSaveChanges2();
+       	Thread.sleep(4000);
+       	tMpP.clickOK();
+       	Thread.sleep(4000);
+       	js.executeScript("window.scrollBy(0,-1500)","");
+       	Thread.sleep(2000);
        	//Education & Work verification
        	Thread.sleep(2000);
        	tMpP.clickEducationAndWork();
@@ -623,12 +648,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details2+"')]")).getText().trim(), edu_details2);
     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education2+"']]/td[4]")).getText().trim(), "Yes");
     	//Adding Education Record
-    	tMpP.clickToAddEducationDetails();
+//    	tMpP.clickToAddEducationDetails();
     	Thread.sleep(2000);
-    	tMpP.selectEducationAttained("Others");
+    	tMpP.selectEducationAttained(education3);
     	Thread.sleep(2000);
     	Assert.assertFalse(driver.findElements(By.xpath("//label[contains(text(),'Details of Education:')]")).size()==0, "OMG!!! Education Details Fields should be displayed in case of Other Education Attained Type!! ");
-    	tMpP.enterDetailsOfEducation("Others Education Selected");
+    	tMpP.enterDetailsOfEducation(edu_details3);
     	Thread.sleep(2000);
     	tMpP.clickToBrowseForEducationProofDocument();
     	Thread.sleep(4000);
@@ -638,43 +663,32 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	Thread.sleep(8000);
     	tMpP.clickToSubmitEducationDetails();
     	Thread.sleep(2000);
-    	Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'Others')]")).size()!=0,"OMG!!! No show of Added Educational Record for Profile of "+createdTrainerID+" !!! ");
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Others')]")).getText().trim(), "Others");
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Others Education Selected')]")).getText().trim(), "Others Education Selected");
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='Others']]/td[4]")).getText().trim(), "Yes");
+    	Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+education3+"')]")).size()!=0,"OMG!!! No show of Added Educational Record for Profile of "+createdTrainerID+" !!! ");
+    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText().trim(), education3);
+    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+edu_details3+"')]")).getText().trim(), edu_details3);
+    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+education3+"']]/td[4]")).getText().trim(), "Yes");
     	//Industrial Records
-        int totalIndustrialMonths=((Integer.parseInt(industrial_years1)+Integer.parseInt(industrial_years2))*12)+Integer.parseInt(industrial_months1)+Integer.parseInt(industrial_months2);
-       	int finalIndustrialMonths=totalIndustrialMonths%12;
-     	int finalIndustrialYears=(totalIndustrialMonths-finalIndustrialMonths)/12;
-     	if(finalIndustrialMonths==0)
-     	{
-     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),finalIndustrialYears+" years Total Training Experience");
-     	}
-     	else
-     	{
-     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[1]")).getText(),finalIndustrialYears+" years "+finalIndustrialMonths+" months Total Training Experience");	
-     	}
-     	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+industrial_sector1+"')])[1]")).getText().trim(), industrial_sector1);
-       	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+industrialExperienceDetails1+"')])[1]")).getText().trim(), industrialExperienceDetails1);
-       	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+industriesDetails1+"')])[1]")).getText().trim(), industriesDetails1);
-   		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[text()='"+industrial_sector1+"']]/td[5])[1]")).getText().trim(), industrial_years1+" "+"Year"+" "+industrial_months1+" "+"months");
-    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[text()='"+industrial_sector1+"']]/td[6])[1]")).getText().trim(), "Yes");
+     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[2]")).getText(), industrial_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[3]")).getText(), industrialExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[4]")).getText(), industriesDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[5]")).getText(), industrial_years1+" Year "+industrial_months1+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[6]")).getText(), "Yes");
       	//industrial record 2
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+industrial_sector2+"')]")).getText().trim(), industrial_sector2);
-    	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+industrialExperienceDetails2+"')])[2]")).getText().trim(), industrialExperienceDetails2);
-       	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+industriesDetails2+"')])[2]")).getText().trim(), industriesDetails2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+industrial_sector2+"']]/td[5]")).getText().trim(), industrial_years2+" "+"Year"+" "+industrial_months2+" "+"months");
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+industrial_sector2+"']]/td[6]")).getText().trim(), "Yes");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[2]")).getText(), industrial_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[3]")).getText(), industrialExperienceDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[4]")).getText(), industriesDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[5]")).getText(), industrial_years2+" Year "+industrial_months2+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[6]")).getText(), "Yes");
        	//Adding 3rd industrial record
-    	tMpP.clickToAddIndustrialExperienceDetails();
+//    	tMpP.clickToAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
-    	tMpP.selectIndustrialSector();
+    	tMpP.selectIndustrialSector(industrial_sector3);
     	Thread.sleep(2000);
-    	tMpP.selectIndustrialYears();
+    	tMpP.selectIndustrialYears(industrial_years3);
     	Thread.sleep(2000);
-    	tMpP.selectIndustrialMonths();
+    	tMpP.selectIndustrialMonths(industrial_months3);
     	Thread.sleep(2000);
-    	tMpP.enterDetailsOfIndustrialExperience();
+    	tMpP.enterDetailsOfIndustrialExperience(industrialExperienceDetails3);
     	Thread.sleep(2000);
     	tMpP.clickToBrowseForIndustrilExperienceProofDocument();
     	Thread.sleep(4000);
@@ -684,41 +698,31 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	Thread.sleep(8000);
     	tMpP.clickToSubmitIndustrialExperienceDetails();
     	Thread.sleep(2000);
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Apparel')]")).getText().trim(), "Apparel");
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Industrial Experience in Apparel Sector')]")).getText().trim(), "Industrial Experience in Apparel Sector");
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='Apparel']]/td[5]")).getText().trim(), "11 months");
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='Apparel']]/td[6]")).getText().trim(), "Yes");
+    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[2]")).getText(), industrial_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[3]")).getText(), industrialExperienceDetails3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[4]")).getText(), "");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[5]")).getText(), industrial_years3+" Year "+industrial_months3+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[6]")).getText(), "Yes");
     	//Training Records
-       	int totalTrainingMonths=((Integer.parseInt(trainingExperienceYears1)+Integer.parseInt(trainingExperienceYears2))*12)+Integer.parseInt(trainingExperienceMonths1)+Integer.parseInt(trainingExperienceMonths2);
-       	int finalTrainingMonths=totalTrainingMonths%12;
-     	int finalTrainingYears=(totalTrainingMonths-finalTrainingMonths)/12;
-     	if(finalTrainingMonths==0)
-     	{
-     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),finalTrainingYears+" Years Total Training Experience");
-     	}
-     	else
-     	{
-     		Assert.assertEquals(driver.findElement(By.xpath("(//span[@class='m--font-info'])[2]")).getText(),finalTrainingYears+" Years "+finalTrainingMonths+" months Total Training Experience");
-     	}
-     	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+training_sector1+"')])[2]")).getText().trim(), training_sector1);
-    	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+trainingExperienceDetails1+"')])[1]")).getText().trim(), trainingExperienceDetails1);
-    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]/td[4]")).getText().trim(), trainingExperienceYears1+" "+"Year"+" "+trainingExperienceMonths1+" "+"months");
-        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]/td[5]")).getText().trim(), "Yes");
+       	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[2]")).getText(), training_sector1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[3]")).getText(), trainingExperienceDetails1);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[4]")).getText(), trainingExperienceYears1+" Year "+trainingExperienceMonths1+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[5]")).getText(), "Yes");
     	//training record 2
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+training_sector2+"')]")).getText().trim(), training_sector2);
-    	Assert.assertEquals(driver.findElement(By.xpath("(//td[contains(text(),'"+trainingExperienceDetails2+"')])[1]")).getText().trim(), trainingExperienceDetails2);
-    	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+training_sector2+"')]]/td[4]")).getText().trim(), trainingExperienceYears2+" "+"Year"+" "+trainingExperienceMonths2+" "+"months");
-        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+training_sector2+"')]]/td[5]")).getText().trim(), "Yes");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[2]")).getText(), training_sector2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[3]")).getText(), trainingExperienceDetails2);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[4]")).getText(), trainingExperienceYears2+" Year "+trainingExperienceMonths2+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[5]")).getText(), "Yes");
     	//Adding 3rd Training Experience Details Record 
-    	tMpP.clickToAddTrainingExperienceDetails();
+//    	tMpP.clickToAddTrainingExperienceDetails();
     	Thread.sleep(2000);
-    	tMpP.selectTrainingSector();
+    	tMpP.selectTrainingSector(training_sector3);
     	Thread.sleep(2000);
-    	tMpP.selectTrainingYears();
+    	tMpP.selectTrainingYears(trainingExperienceYears3);
     	Thread.sleep(2000);
-    	tMpP.selectTrainingMonths();
+    	tMpP.selectTrainingMonths(trainingExperienceMonths3);
     	Thread.sleep(2000);
-    	tMpP.enterDetailsOfTrainingExperience();
+    	tMpP.enterDetailsOfTrainingExperience(trainingExperienceDetails3);
     	Thread.sleep(2000);
     	tMpP.clickToBrowseForTrainingExperienceProofDocument();
     	Thread.sleep(4000);
@@ -728,25 +732,99 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	Thread.sleep(8000);
     	tMpP.clickToSubmitTrainingExperienceDetails();
     	Thread.sleep(4000);
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Apparel')]")).getText().trim(), "Apparel");
-    	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Training Experience in Apparel Sector')]")).getText().trim(), "Training Experience in Apparel Sector");
-    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Apparel')]])[2]/td[4]")).getText().trim(), "11 months");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Apparel')]])[2]/td[5]")).getText().trim(), "Yes");
-    	tMpP.clickCurriculumVitaeBrowse();
-    	Thread.sleep(2000);
-    	UploadFile.upload(photoFile);
-    	Thread.sleep(4000);
-    	tMpP.clickCurriculumVitaeUpload();
-    	Thread.sleep(8000);
-    	tMpP.clickSaveChanges2();
-    	Thread.sleep(4000);
-      //tMpP.clickOK();
-      //Thread.sleep(4000);
-       	js.executeScript("window.scrollBy(0,-1500)","");
+    	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[2]//td[2]")).getText(), training_sector3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[2]//td[3]")).getText(), trainingExperienceDetails3);
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[2]//td[4]")).getText(), trainingExperienceYears3+" Year "+trainingExperienceMonths3+" months");
+        Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[2]//td[5]")).getText(), "Yes");
+       	tMpP.clickCurriculumVitaeBrowse();
        	Thread.sleep(2000);
-       	tMpP.clickMyAssociations();
+       	UploadFile.upload(photoFile);
+       	Thread.sleep(4000);
+       	tMpP.clickCurriculumVitaeUpload();
+       	Thread.sleep(8000);
+       	tMpP.clickSaveChanges3();
+    	Thread.sleep(4000);
+    	tMpP.clickOK();
+    	Thread.sleep(4000);
+       	js.executeScript("window.scrollBy(0,-3000)","");
+       	Thread.sleep(5000);
+       	tMpP.clickTrainingRequests();
        	Thread.sleep(2000);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[@class='m-datatable__body']/span")).getText(), "No Associations with any Training Centre is found");
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[1]")).getText().trim(), preferredJobRole1+" ("+preferredJobRoleCode1+")");
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[2]")).getText().trim(), preferredSector1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[4]")).getText().trim(), preferredState1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[5]")).getText().trim(), preferredDistrict1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[1]")).getText().trim(), preferredJobRole2+" ("+preferredJobRoleCode2+")");
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[2]")).getText().trim(), preferredSector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[4]")).getText().trim(), preferredState2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[5]")).getText().trim(), preferredDistrict2);
+        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
+       	tMpP.clickSaveChanges4();
+       	Thread.sleep(4000);
+       	tMpP.clickOK();
+    	Thread.sleep(10000);
+    	//Verifying updated data
+    	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of the Applicant')]]/span[2]")).getText().trim(), name);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), dob.replaceAll("/", "-"));
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), gender);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Languages Known')]]/span[2]")).getText().replaceAll(" ", "").replaceAll(",", ""), language.replaceAll(",", ""));
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Religion')]]/span[2]")).getText().trim(), religion);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), category);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mobile Number')]]/span[2]")).getText().trim(), mobile);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Email')]]/span[2]")).getText().trim(), email);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Applicant Address')]]/span[2]")).getText().trim(), address);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Landmark')]]/span[2]")).getText().trim(), landmark);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), pincode);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), state);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), city);
+      	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mandal')]]/span[2]")).getText().trim(), mandal);
+      	//Education
+      	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains(education1));
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[3]")).getText().trim(), edu_details1);
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[4]")).getText().contains(edu_document1));
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[5]")).getText().contains(education2));
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[7]")).getText().trim(), edu_details2);
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[8]")).getText().contains(edu_document2));
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[9]")).getText().contains(education3));
+        Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[11]")).getText().trim(), edu_details3);
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[12]")).getText().contains(edu_document3));
+        //Industrial Experience
+      	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[1]")).getText().contains(industrial_sector1));
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[3]")).getText().trim(), industrialExperienceDetails1);
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[4]")).getText().trim(), industrial_years1+" years "+industrial_months1+" months");
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[6]")).getText().contains(industrial_sector2));
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[8]")).getText().trim(), industrialExperienceDetails2);
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[9]")).getText().trim(), industrial_years2+" years "+industrial_months2+" months");
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[10]")).getText().contains(industrial_sector3));
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[12]")).getText().trim(), industrialExperienceDetails3);
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Industrial Experience Details')]]]]//span)[13]")).getText().trim(), industrial_years3+" years "+industrial_months3+" months");
+       	//Training Experience
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[1]")).getText().contains(training_sector1));
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[3]")).getText().contains(trainingExperienceDetails1));
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[4]")).getText().trim(), trainingExperienceYears1+" years "+trainingExperienceMonths1+" months");
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[6]")).getText().contains(training_sector2));
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[8]")).getText().contains(trainingExperienceDetails2));
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[9]")).getText().trim(), trainingExperienceYears2+" years "+trainingExperienceMonths2+" months");
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[10]")).getText().contains(training_sector3));
+       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[12]")).getText().contains(trainingExperienceDetails3));
+       	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[13]")).getText().trim(), trainingExperienceYears3+" years "+trainingExperienceMonths3+" months");
+       	//Training Requests/My Preferences
+     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
+      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[2]")).getText().trim(), preferredSector1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredState1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredDistrict1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[6]")).getText().trim(), preferredSubDistrict1);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[1]")).getText().trim(), preferredJobRole2+", "+preferredJobRoleCode2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[2]")).getText().trim(), preferredSector2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredState2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredDistrict2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[6]")).getText().trim(), preferredSubDistrict2);
+       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
        	PostLoginPage plp=new PostLoginPage(driver);
        	plp.clickOnProfileLogo();
        	Thread.sleep(2000);
@@ -755,7 +833,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     }
     
     @Test(dataProvider="registrationData", dependsOnMethods="trainerRegistrationTC_01")
- 	public void addMyPreferences_03(String serialNum,String createdTrainerID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredJobRoleCode3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3) throws Exception
+ 	public void addMyPreferencesTC_03(String serialNum,String createdTrainerID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredJobRoleCode3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3) throws Exception
  	{
  	   LoginPage lp=new LoginPage(driver);
  	   EnterLoginPage elp=new EnterLoginPage(driver);
@@ -773,39 +851,108 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  	   tDp.clickSearchAndApplyforAvailableBatches();
 	   Thread.sleep(4000);
 	   TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
-	   tSp.selectState(state);
-	   Thread.sleep(2000);
-	   tSp.selectDistrict(city);
- 	   Thread.sleep(2000);
- 	   tSp.selectSubDistrict(mandal);
- 	   Thread.sleep(2000);
- 	   tSp.selectSector(preferredSector3);
- 	   Thread.sleep(2000);
- 	   tSp.selectSubSector(preferredSubSector3);
- 	   Thread.sleep(2000);
- 	   tSp.selectjobRole(preferredJobRole3);
- 	   Thread.sleep(6000);
- 	   //Add My Search Preferences
- 	   tSp.clickAddJobRoleAndLocationToMyPreference();
- 	   Thread.sleep(4000);
- 	   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Preference Added Successfully");
- 	   tSp.clickOK();
- 	   Thread.sleep(2000);
- 	   js.executeScript("window.scrollBy(0,-200)", "");
- 	   Thread.sleep(2000);
- 	   tSp.clickMyPreferences();
- 	   Thread.sleep(4000);
- 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==1);
- 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
- 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[2]")).getText().trim(), preferredSector3);
- 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
- 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[4]")).getText().trim(), state);
- 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[5]")).getText().trim(), city);
- 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[6]")).getText().trim(), mandal);
- 	   PostLoginPage plp=new PostLoginPage(driver);
+	   if(serialNum.equals("1"))
+	   {
+		   tSp.selectState(preferredState3);
+		   Thread.sleep(2000);
+		   tSp.selectDistrict(preferredDistrict3);
+	 	   Thread.sleep(2000);
+	 	   tSp.selectSubDistrict(preferredSubDistrict3);
+	 	   Thread.sleep(2000);
+	 	   tSp.selectSector(preferredSector3);
+	 	   Thread.sleep(2000);
+	 	   tSp.selectSubSector(preferredSubSector3);
+	 	   Thread.sleep(2000);
+	 	   tSp.selectjobRole(preferredJobRole3);
+	 	   Thread.sleep(6000);
+	 	   //Add My Search Preferences
+	 	   tSp.clickAddJobRoleAndLocationToMyPreference();
+	 	   Thread.sleep(4000);
+	 	   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Training Request Submitted Successfully");
+	 	   tSp.clickOK();
+	 	   Thread.sleep(2000);
+	 	   js.executeScript("window.scrollBy(0,-200)", "");
+	 	   Thread.sleep(2000);
+	 	   tSp.clickMyPreferences();
+	 	   Thread.sleep(4000);
+	 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==1);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[2]")).getText().trim(), preferredSector3);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[4]")).getText().trim(), preferredState3);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[5]")).getText().trim(), preferredDistrict3);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[6]")).getText().trim(), preferredSubDistrict3);
+	   }
+	   else
+	   {
+		  tSp.clickMyPreferences(); 
+		  Thread.sleep(5000);
+		  tSp.clickAddTrainingRequests();
+		  Thread.sleep(5000);
+		  tSp.selectAddTrainingRequestsSector(preferredSector3);
+		  Thread.sleep(2000);
+		  tSp.selectAddTrainingRequestsSubSector(preferredSubSector3);
+		  Thread.sleep(2000);
+		  tSp.selectAddTrainingRequestsJobRole(preferredJobRole3);
+		  Thread.sleep(2000);
+		  tSp.selectAddTrainingRequestsState(preferredState3);
+		  Thread.sleep(2000);
+		  tSp.selectAddTrainingRequestsDistrict(preferredDistrict3);
+		  Thread.sleep(2000);
+		  tSp.selectAddTrainingRequestsSubDistrict(preferredSubDistrict3);
+		  Thread.sleep(2000);
+		  tSp.clickToAddTrainingRequest();
+		  Thread.sleep(5000);
+		  Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Training Request Submitted Successfully");
+		  tSp.clickOK();
+		  Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==1);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[2]")).getText().trim(), preferredSector3);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[4]")).getText().trim(), preferredState3);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[5]")).getText().trim(), preferredDistrict3);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[6]")).getText().trim(), preferredSubDistrict3);
+	   }
+	   PostLoginPage plp=new PostLoginPage(driver);
  	   plp.clickOnProfileLogo();
  	   Thread.sleep(2000);
  	   plp.clickOnLogout();
  	   Thread.sleep(2000);
  	}
+    
+    @Test(dataProvider="registrationData", dependsOnMethods="trainerRegistrationTC_01")
+    public void removeTrainingRequestTC_04(String serialNum,String createdTrainerID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredJobRoleCode3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3) throws Exception
+    {
+    	LoginPage lp=new LoginPage(driver);
+    	EnterLoginPage elp=new EnterLoginPage(driver);
+    	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+    	lp.clickLogin();
+ 	   	Thread.sleep(2000);
+ 	   	elp.performlogin(createdTrainerID, "Qwerty@123");
+ 	   	TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
+ 	   	Thread.sleep(8000);
+ 	   	Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainerapplicant"," Login Unsuccessfull!! OR Its taking too much time to load!!! ");
+ 	   	tDp.clickToGetApplicantDashboard();
+ 	   	JavascriptExecutor js=(JavascriptExecutor)driver;
+ 	   	js.executeScript("window.scrollBy(0,200)", "");
+ 	   	Thread.sleep(2000);
+ 	   	tDp.clickSearchAndApplyforAvailableBatches();
+ 	   	Thread.sleep(4000);
+ 	   	TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
+ 	   	tSp.clickMyPreferences(); 
+ 	   	Thread.sleep(5000);
+ 	   	tSp.clickToGetMyPreferenceActionMenu(preferredSector1);
+ 	   	tSp.selectRemovePreference(preferredSector1);
+ 	   	tSp.clickToFinallyRemoveTrainingRequest();
+ 	 	Thread.sleep(5000);
+ 	   	Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Preferences deleted successfully");
+ 	   	tSp.clickOK();
+ 	   	Thread.sleep(5000);
+ 	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector1+"')]]")).size()==0,"OMG!!! Deleted Training Request of Sector "+preferredSector1+" Still Present");
+ 	   	PostLoginPage plp=new PostLoginPage(driver);
+ 	   	plp.clickOnProfileLogo();
+ 	   	Thread.sleep(2000);
+ 	   	plp.clickOnLogout();
+ 	   	Thread.sleep(2000);
+    }
 }

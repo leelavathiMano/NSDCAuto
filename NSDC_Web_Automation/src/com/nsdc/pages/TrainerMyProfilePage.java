@@ -20,8 +20,8 @@ public class TrainerMyProfilePage
 	private WebElement contactAndAddressLink;
 	@FindBy(linkText="Education & Work")
 	private WebElement educationAndWorkLink;
-	@FindBy(linkText="My Associations")
-	private WebElement myAssociationsLink;
+	@FindBy(xpath="//a[contains(text(),'Training Requests')]")
+	private WebElement trainingRequestsLink;
 	@FindBy(xpath="//div[label[contains(text(),'Name of the Applicant')]]/div/input")
 	private WebElement nameOfTheApplicantTextBox;
 	@FindBy(xpath="//div[label[contains(text(),'Gender')]]/div/input")
@@ -40,10 +40,10 @@ public class TrainerMyProfilePage
 	private WebElement aadharNumberVerificationStatusText;
 	@FindBy(xpath="//div[label[contains(text(),'PAN')]]/div/label")
 	private WebElement panNumberVerificationStatusText;
-	@FindBy(xpath="(//input[@id='customFile'])[1]")
-	private WebElement browseFilebutton1;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
-	private WebElement uploadButton1;
+	@FindBy(xpath="//div[label[contains(text(),'Upload New Photograph:')]]//input[@id='customFile']")
+	private WebElement photoFileBrowseButton;
+	@FindBy(xpath="//div[label[contains(text(),'Upload New Photograph:')]]//button[contains(text(),'Upload')]")
+	private WebElement uploadPhotoFileButton;
 	@FindBy(xpath="//div[label[contains(text(),'Select Applicant Category:')]]/div/select")
 	private WebElement applicantCategoryMultiSelectDropdown;
 	@FindBy(xpath="(//button[contains(text(),'Save changes')])[1]")
@@ -75,11 +75,11 @@ public class TrainerMyProfilePage
 	private WebElement educationAttainedDropdownList;	
 	@FindBy(xpath="(//input[@formcontrolname='details'])[1]")
 	private WebElement	detailsOfEducationTextfield;	
-	@FindBy(xpath="(//input[@id='customFile'])[3]")
+	@FindBy(xpath="(//div[label[contains(text(),'Upload Proof Document:')]]//input[@id='customFile'])[1]")
 	private WebElement educationProofDocBrowseButton;	
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
+	@FindBy(xpath="(//div[label[contains(text(),'Upload Proof Document:')]]//button[contains(text(),'Upload')])[1]")
 	private WebElement educationProofDocUploadButton;
-	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[1]")
+	@FindBy(xpath="(//button[contains(text(),'Add')])[1]")
 	private WebElement educationDetailsSaveAndSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[1]")
 	private WebElement educationDetailsCloseButton;
@@ -98,11 +98,11 @@ public class TrainerMyProfilePage
 	private WebElement indutryMonthsDropdownList;
 	@FindBy(xpath="(//input[@formcontrolname='details'])[2]")
 	private WebElement industryExperienceDetailsTextfield;
-	@FindBy(xpath="(//input[@id='customFile'])[4]")
+	@FindBy(xpath="(//div[label[contains(text(),'Upload Proof Document:')]]//input[@id='customFile'])[2]")
 	private WebElement industrialExperienceProofDocBrowseButton;	
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
+	@FindBy(xpath="(//div[label[contains(text(),'Upload Proof Document:')]]//button[contains(text(),'Upload')])[2]")
 	private WebElement industrialExperienceProofDocUploadButton;
-	@FindBy(xpath="(//button[contains(text(),'Save & Submit')])[2]")
+	@FindBy(xpath="(//button[contains(text(),'Add')])[2]")
 	private WebElement industrialExperienceDetailsSaveAndSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[2]")
 	private WebElement industrialExperienceDetailsCloseButton;
@@ -121,11 +121,11 @@ public class TrainerMyProfilePage
 	private WebElement trainingMonthsDropdownList;
 	@FindBy(xpath="(//input[@formcontrolname='details'])[3]")
 	private WebElement trainingExperienceDetailsTextfield;
-	@FindBy(xpath="(//input[@id='customFile'])[5]")
+	@FindBy(xpath="(//div[label[contains(text(),'Upload Proof Document:')]]//input[@id='customFile'])[3]")
 	private WebElement trainingExperienceProofDocBrowseButton;	
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[5]")
+	@FindBy(xpath="(//div[label[contains(text(),'Upload Proof Document:')]]//button[contains(text(),'Upload')])[3]")
 	private WebElement trainingExperienceProofDocUploadButton;
-	@FindBy(xpath="(//button[contains(text(),'Submit')])[3]")
+	@FindBy(xpath="(//button[contains(text(),'Add')])[3]")
 	private WebElement trainingExperienceDetailsSaveAndSubmitButton;
 	@FindBy(xpath="(//button[contains(text(),'Close')])[3]")
 	private WebElement trainingExperienceDetailsCloseButton;
@@ -133,12 +133,16 @@ public class TrainerMyProfilePage
 	private WebElement deleteAddedThirdTrainingExperienceDetailsButton;	
 	@FindBy(xpath="(//i[@class='la la-trash delete-icon'])[6]")
 	private WebElement deleteAddedThirdTrainingExperienceDetailsRecordInCaseOfUneducatedButton;
-	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	@FindBy(xpath="//div[label[contains(text(),'Upload Curriculum Vitae(CV) or Resume Document:')]]//input[@id='customFile']")
 	private WebElement curriculumVitaeBrowseButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	@FindBy(xpath="//div[label[contains(text(),'Upload Curriculum Vitae(CV) or Resume Document:')]]//button[contains(text(),'Upload')]")
 	private WebElement curriculumVitaeUploadButton;
 	@FindBy(xpath="(//button[contains(text(),'Save changes')])[2]")
 	private WebElement saveChangesButton2;
+	@FindBy(xpath="(//button[contains(text(),'Save changes')])[3]")
+	private WebElement saveChangesButton3;
+	@FindBy(xpath="(//button[contains(text(),'Save changes')])[4]")
+	private WebElement saveChangesButton4;
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
 	private WebElement cancelButton2;
 	@FindBy(xpath="//button[text()='Search & Apply']")
@@ -192,11 +196,11 @@ public class TrainerMyProfilePage
 	}
 	public void clickBrowseFile()
 	{
-		browseFilebutton1.click();
+		photoFileBrowseButton.click();
 	}
 	public void clickUploadfile()
 	{
-		uploadButton1.click();
+		uploadPhotoFileButton.click();
 		
 	}
 	public void clickSaveChanges1()
@@ -248,8 +252,7 @@ public class TrainerMyProfilePage
 	{
 		educationAndWorkLink.click();
 	}
-	
-	
+		
 	public void clickCurriculumVitaeBrowse()
 	{
 		curriculumVitaeBrowseButton.click();
@@ -258,13 +261,22 @@ public class TrainerMyProfilePage
 	{
 		curriculumVitaeUploadButton.click();
 	}
+	
 	public void clickSaveChanges2()
 	{
 		saveChangesButton2.click();
 	}
-	public void clickMyAssociations()
+	public void clickSaveChanges3()
 	{
-		myAssociationsLink.click();
+		saveChangesButton3.click();
+	}
+	public void clickSaveChanges4()
+	{
+		saveChangesButton4.click();
+	}
+	public void clickTrainingRequests()
+	{
+		trainingRequestsLink.click();
 	}
 	public void clickToAddEducationDetails()
 	{
@@ -307,22 +319,22 @@ public class TrainerMyProfilePage
 	{
 		addIndustrilExperienceDetailsButton.click();
 	}
-	public void selectIndustrialSector()
+	public void selectIndustrialSector(String industrialExperienceSector)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(indutrySectorDropdownList, "Apparel");
+		SelectDropDownList.selectDropDownListByVisibleText(indutrySectorDropdownList, industrialExperienceSector);
 	}
-	public void selectIndustrialYears()
+	public void selectIndustrialYears(String industrialExperienceYears)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(industryYearsDropdownList, "0");
+		SelectDropDownList.selectDropDownListByVisibleText(industryYearsDropdownList, industrialExperienceYears);
 	}
-	public void selectIndustrialMonths()
+	public void selectIndustrialMonths(String industrialExperienceMonths)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(indutryMonthsDropdownList, "11");
+		SelectDropDownList.selectDropDownListByVisibleText(indutryMonthsDropdownList, industrialExperienceMonths);
 	}
-	public void enterDetailsOfIndustrialExperience()
+	public void enterDetailsOfIndustrialExperience(String industrialExperienceDetails)
 	{
 		industryExperienceDetailsTextfield.clear();
-		industryExperienceDetailsTextfield.sendKeys("Industrial Experience in Apparel Sector");
+		industryExperienceDetailsTextfield.sendKeys(industrialExperienceDetails);
 	}
 	public void clickToBrowseForIndustrilExperienceProofDocument()
 	{
@@ -352,22 +364,22 @@ public class TrainerMyProfilePage
 	{
 		addTrainingExperienceDetailsButton.click();
 	}
-	public void selectTrainingSector()
+	public void selectTrainingSector(String trainingExperienceSector)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(trainingSectorDropdownList, "Apparel");
+		SelectDropDownList.selectDropDownListByVisibleText(trainingSectorDropdownList, trainingExperienceSector);
 	}
-	public void selectTrainingYears()
+	public void selectTrainingYears(String trainingExperienceYears)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(trainingYearsDropdownList, "0");
+		SelectDropDownList.selectDropDownListByVisibleText(trainingYearsDropdownList, trainingExperienceYears);
 	}
-	public void selectTrainingMonths()
+	public void selectTrainingMonths(String trainingExperienceMonths)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(trainingMonthsDropdownList, "11");
+		SelectDropDownList.selectDropDownListByVisibleText(trainingMonthsDropdownList, trainingExperienceMonths);
 	}
-	public void enterDetailsOfTrainingExperience()
+	public void enterDetailsOfTrainingExperience(String trainingExperienceDetails)
 	{
 		trainingExperienceDetailsTextfield.clear();
-		trainingExperienceDetailsTextfield.sendKeys("Training Experience in Apparel Sector");
+		trainingExperienceDetailsTextfield.sendKeys(trainingExperienceDetails);
 	}
 	public void clickToBrowseForTrainingExperienceProofDocument()
 	{

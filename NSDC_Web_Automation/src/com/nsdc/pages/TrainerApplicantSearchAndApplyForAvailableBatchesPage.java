@@ -41,7 +41,7 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	//@FindBy(xpath="//button[contains(text(),'Search')]")
 	@FindBy(xpath="(//button[@type='submit'])[1]")
 	private WebElement searchButton;
-	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to My Preference')]")
+	@FindBy(xpath="//button[contains(text(),'Add Job Role & Location to Training Requests')]")
 	private WebElement addJobRoleAndLocationToMyPreferenceButton;
 	@FindBy(xpath="//input[@placeholder='Search for Training Centre Name']")
 	private WebElement searchTextbox;
@@ -58,6 +58,24 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement goBackButton;
 	@FindBy(xpath="//button[contains(text(),'View My Batches')]")
 	private WebElement viewMyBatchesButton;
+	@FindBy(xpath="//button[contains(text(),'Add Training Requests')]")
+	private WebElement addTrainingRequestsButton;
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[2]")
+	private WebElement addTrainingRequestSectorDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[2]")
+	private WebElement addTrainingRequestSubSectorDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[2]")
+	private WebElement addTrainingRequestJobRoleDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='state'])[2]")
+	private WebElement addTrainingRequestStateDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='district'])[2]")
+	private WebElement addTrainingRequestDistrictDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[2]")
+	private WebElement addTrainingRequestSubDistrictDropdownList;
+	@FindBy(xpath="(//button[contains(text(),'Add Training Request')])[2]")
+	private WebElement addTrainingRequestButton;
+	@FindBy(xpath="//button[contains(text(),'Yes, delete it!')]")
+	private WebElement yesDeleteItButton;
 	
 	public TrainerApplicantSearchAndApplyForAvailableBatchesPage(WebDriver driver)
 	{
@@ -186,5 +204,41 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	public void selectAcceptedBatchProvideFeedbackOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Provide Feedback')]")).click();
+	}
+	public void selectAddTrainingRequestsSector(String sector)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSectorDropdownList, sector);
+	}
+	public void selectAddTrainingRequestsSubSector(String subSector)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSubSectorDropdownList, subSector);
+	}
+	public void selectAddTrainingRequestsJobRole(String jobrole)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestJobRoleDropdownList, jobrole);
+	}
+	public void selectAddTrainingRequestsState(String state)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestStateDropdownList, state);
+	}
+	public void selectAddTrainingRequestsDistrict(String district)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestDistrictDropdownList, district);
+	}
+	public void selectAddTrainingRequestsSubDistrict(String subDistrict)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSubDistrictDropdownList, subDistrict);
+	}
+	public void clickAddTrainingRequests()
+	{
+		addTrainingRequestsButton.click();
+	}
+	public void clickToAddTrainingRequest()
+	{
+		addTrainingRequestButton.click();
+	}
+	public void clickToFinallyRemoveTrainingRequest()
+	{
+		yesDeleteItButton.click();
 	}
 }
