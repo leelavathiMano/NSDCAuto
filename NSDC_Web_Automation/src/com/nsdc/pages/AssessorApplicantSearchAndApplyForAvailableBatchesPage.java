@@ -58,6 +58,24 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	private WebElement goBackButton;
 	@FindBy(xpath="//button[contains(text(),'View My Batches')]")
 	private WebElement viewMyBatchesButton;
+	@FindBy(xpath="//button[contains(text(),'Add Training Requests')]")
+	private WebElement addTrainingRequestsButton;
+	@FindBy(xpath="(//select[@formcontrolname='sector'])[2]")
+	private WebElement addTrainingRequestSectorDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='subSector'])[2]")
+	private WebElement addTrainingRequestSubSectorDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='jobRole'])[2]")
+	private WebElement addTrainingRequestJobRoleDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='state'])[2]")
+	private WebElement addTrainingRequestStateDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='district'])[2]")
+	private WebElement addTrainingRequestDistrictDropdownList;
+	@FindBy(xpath="(//select[@formcontrolname='subDistrict'])[2]")
+	private WebElement addTrainingRequestSubDistrictDropdownList;
+	@FindBy(xpath="(//button[contains(text(),'Add Training Request')])[2]")
+	private WebElement addTrainingRequestButton;
+	@FindBy(xpath="//button[contains(text(),'Yes, delete it!')]")
+	private WebElement yesDeleteItButton;
 	
 	public AssessorApplicantSearchAndApplyForAvailableBatchesPage(WebDriver driver)
 	{
@@ -141,11 +159,11 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void selectSearchAgainstPreference(String preferredSector)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Search Against Training request')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Search Against Training Requests')]")).click();
 	}
 	public void selectRemovePreference(String preferredSector)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Remove Training Request')]")).click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[contains(text(),'Remove Training Requests')]")).click();
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{
@@ -179,12 +197,48 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
-	public void selectAcceptedBatchViewDetailsOption(String batchID)
+	public void selectAcceptedBatchViewDetails(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'View Details')]")).click();
 	}
 	public void selectAcceptedBatchProvideFeedbackOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Provide Feedback')]")).click();
+	}
+	public void selectAddTrainingRequestsSector(String sector)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSectorDropdownList, sector);
+	}
+	public void selectAddTrainingRequestsSubSector(String subSector)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSubSectorDropdownList, subSector);
+	}
+	public void selectAddTrainingRequestsJobRole(String jobrole)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestJobRoleDropdownList, jobrole);
+	}
+	public void selectAddTrainingRequestsState(String state)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestStateDropdownList, state);
+	}
+	public void selectAddTrainingRequestsDistrict(String district)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestDistrictDropdownList, district);
+	}
+	public void selectAddTrainingRequestsSubDistrict(String subDistrict)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSubDistrictDropdownList, subDistrict);
+	}
+	public void clickAddTrainingRequests()
+	{
+		addTrainingRequestsButton.click();
+	}
+	public void clickToAddTrainingRequest()
+	{
+		addTrainingRequestButton.click();
+	}
+	public void clickToFinallyRemoveTrainingRequest()
+	{
+		yesDeleteItButton.click();
 	}
 }

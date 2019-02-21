@@ -147,14 +147,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(batchCategoryDropdownList, batchCategory);
 	}
+	@SuppressWarnings("resource")
 	public static void fileSave(String filePath)
 	{
 		try
 		{
-			//open file
         	HSSFWorkbook wb = new HSSFWorkbook(new FileInputStream(new File(filePath)));
             XSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
-            //save file
             FileOutputStream out = new FileOutputStream(filePath);
             wb.write(out);
             out.close();

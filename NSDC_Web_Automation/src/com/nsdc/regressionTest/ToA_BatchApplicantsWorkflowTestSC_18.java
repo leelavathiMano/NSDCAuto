@@ -841,7 +841,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   //Accepted Batch - View Details Data Verification
 	   aSp.clickToGetAcceptedBatchActionMenu(batchID);
 	   Thread.sleep(2000);
-	   aSp.selectAcceptedBatchViewDetailsOption(batchID);
+	   aSp.selectAcceptedBatchViewDetails(batchID);
 	   Thread.sleep(4000);
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch ID')]]])[1]/div[1]")).getText().trim(), batchID);
 	   Assert.assertEquals(driver.findElement(By.xpath("(//div[label[b[contains(text(),'Batch Name')]]])[1]/div[2]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");

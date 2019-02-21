@@ -11,7 +11,11 @@ public class ToT_ToA_Batch_DatePicker
 		dateTextField.click();
 		Thread.sleep(2000);
 		String parts[]=date.split("-");
-		String day=parts[0].replaceAll("0", "");
+		String day=parts[0];
+		if(day.startsWith("0"))
+		{
+			day=day.replace("0", "");
+		}
 		int month=Integer.parseInt(parts[1]);
 		String year=parts[2];
 		SelectDropDownList.selectDropDownListByVisibleText(yearDropdownList, year);

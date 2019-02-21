@@ -85,7 +85,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode+"')]")).isDisplayed(),"OMG!!! DomainJobRoleCode not displayed OR Something is wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+domainJobRole+"')]")).getText().trim(), domainJobRole);
 		sscTbcP.selectDomainTrainingStartDate(dTrainingStartDate);
@@ -259,7 +259,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+createdBatchID+")\nis successfully assigned to   "+dassessmentAgencyName+"\nState : "+state+"\nDistrict :"+district);
+//		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+createdBatchID+")\nis successfully assigned to   "+dassessmentAgencyID+"\nState : "+state+"\nDistrict :"+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+dassessmentAgencyID+"')]")).getText().trim(), dassessmentAgencyName+" ( "+dassessmentAgencyID+" )");
@@ -282,13 +282,12 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+createdBatchID+")\nis successfully assigned to   "+passessmentAgencyName+"\nState : "+state+"\nDistrict :"+district);
+//		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+createdBatchID+")\nis successfully assigned to   "+passessmentAgencyID+"\nState : "+state+"\nDistrict :"+district);
 		sscTbcP.clickOk();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+passessmentAgencyID+"')])[1]")).getText().trim(), passessmentAgencyName+" ( "+passessmentAgencyID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
 		js.executeScript("window.scrollBy(0,500)", "");
-		sVbP.clickConfirmation();
 		Thread.sleep(2000);
 		sVbP.clickSaveAsDraft();
 		Thread.sleep(4000);
@@ -318,6 +317,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		sscTbcP.selectAssignOption(createdBatchID);
 		Thread.sleep(2000);
+		sVbP.clickConfirmation();
+		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
@@ -343,32 +344,32 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[2]")).getText().trim(), tcID);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[4]")).getText().trim(), tpName);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[5]")).getText().trim(), state);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
+//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Pending");
 		//Verifying Assigned Domain QP Master Trainer Details
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dmasterTrainerID+"')]]])[1]/td[1]")).getText().trim(), domainJobRoleCode);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dmasterTrainerID+"')]]])[1]/td[2]")).getText().trim(), domainJobRole);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dmasterTrainerID+"')]]])[1]/td[3]")).getText().trim(), dTrainingStartDate+" to "+dTrainingEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dmasterTrainerID+"')]]])[1]/td[4]")).getText().trim(), dmasterTrainerName+" ("+dmasterTrainerID+")");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dmasterTrainerID+"')]]])[1]/td[5]")).getText().trim(), "Pending");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[1]")).getText().trim(), domainJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[2]")).getText().trim(), domainJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[3]")).getText().trim(), dTrainingStartDate+" to "+dTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[4]")).getText().trim(), dmasterTrainerName+" ("+dmasterTrainerID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[5]")).getText().trim(), "Pending");
 		//Verifying Assigned Platform QP Master Trainer Details
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+pmasterTrainerID+"')]]])[1]/td[1]")).getText().trim(), platformJobRoleCode);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+pmasterTrainerID+"')]]])[1]/td[2]")).getText().trim(), platformJobRole);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+pmasterTrainerID+"')]]])[1]/td[3]")).getText().trim(), pTrainingStartDate+" to "+pTrainingEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+pmasterTrainerID+"')]]])[1]/td[4]")).getText().trim(), pmasterTrainerName+" ("+pmasterTrainerID+")");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+pmasterTrainerID+"')]]])[1]/td[5]")).getText().trim(), "Pending");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[1]")).getText().trim(), platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[2]")).getText().trim(), platformJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[3]")).getText().trim(), pTrainingStartDate+" to "+pTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[4]")).getText().trim(), pmasterTrainerName+" ("+pmasterTrainerID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[5]")).getText().trim(), "Pending");
 		//Verifying Assigned Domain QP Assessment Agency Details
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dassessmentAgencyID+"')]]])[1]/td[1]")).getText().trim(), domainJobRoleCode);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dassessmentAgencyID+"')]]])[1]/td[2]")).getText().trim(), domainJobRole);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dassessmentAgencyID+"')]]])[1]/td[3]")).getText().trim(), dAssessmentStartDate+" to "+dAssessmentEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dassessmentAgencyID+"')]]])[1]/td[4]")).getText().trim(), dassessmentAgencyName+" ("+dassessmentAgencyID+")");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+dassessmentAgencyID+"')]]])[1]/td[5]")).getText().trim(), "Pending");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[1]")).getText().trim(), domainJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[2]")).getText().trim(), domainJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[3]")).getText().trim(), dAssessmentStartDate+" to "+dAssessmentEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[4]")).getText().trim(), dassessmentAgencyName+" ("+dassessmentAgencyID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[5]")).getText().trim(), "Pending");
 		//Verifying Assigned Platform QP Assessment Agency Details
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+passessmentAgencyID+"')]]])[1]/td[1]")).getText().trim(), platformJobRoleCode);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+passessmentAgencyID+"')]]])[1]/td[2]")).getText().trim(), platformJobRole);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+passessmentAgencyID+"')]]])[1]/td[3]")).getText().trim(), pAssessmentStartDate+" to "+pAssessmentEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+passessmentAgencyID+"')]]])[1]/td[4]")).getText().trim(), passessmentAgencyName+" ("+passessmentAgencyID+")");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+passessmentAgencyID+"')]]])[1]/td[5]")).getText().trim(), "Pending");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[1]")).getText().trim(), platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[2]")).getText().trim(), platformJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[3]")).getText().trim(), pAssessmentStartDate+" to "+pAssessmentEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[4]")).getText().trim(), passessmentAgencyName+" ("+passessmentAgencyID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[5]")).getText().trim(), "Pending");
 		PostLoginPage plp=new PostLoginPage(driver);
 		Thread.sleep(2000);
 		plp.clickOnProfileLogo();
@@ -502,6 +503,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
 				tVp.clicktoGoPendingBatchesSection();
 				Thread.sleep(2000);
+				tVp.enterBatchIDToSearch(batchID);
+				Thread.sleep(2000);
+				tVp.clickToGetSearchFilterResult();
+				Thread.sleep(2000);
 				JavascriptExecutor js=(JavascriptExecutor)driver;
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
@@ -553,6 +558,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
+				tVp.enterBatchIDToSearch(batchID);
+				Thread.sleep(2000);
+				tVp.clickToGetSearchFilterResult();
+				Thread.sleep(2000);
 				tVp.clickToGetActionMenuOptions(batchID);
 				Thread.sleep(4000);
 				tVp.clickToSelectAcceptBatchOption(batchID);
@@ -594,6 +603,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				}
 				//verifying accepted batches
 				js.executeScript("window.scrollBy(0,-500)", "");
+				Thread.sleep(2000);
+				tVp.enterBatchIDToSearch(batchID);
+				Thread.sleep(2000);
+				tVp.clickToGetSearchFilterResult();
 				Thread.sleep(2000);
 				tVp.clickToGoToAcceptedBatchesSection();
 				Thread.sleep(4000);
@@ -653,7 +666,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		}
 		else
 		{
-			lp.clickLogin();
 			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
 			Thread.sleep(4000);
 			TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
@@ -667,9 +679,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			JavascriptExecutor js=(JavascriptExecutor)driver;
 			js.executeScript("window.scrollBy(0,200)", "");
 			Thread.sleep(2000);
+			tVp.enterBatchIDToSearch(batchID);
+			Thread.sleep(2000);
+			tVp.clickToGetSearchFilterResult();
+			Thread.sleep(2000);
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Pending Requests Section of Master Trainer - "+dmasterTrainerID);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), domainJobRole+"("+domainJobRoleCode+")");
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), dTrainingStartDate+" to "+dTrainingEndDate);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), domainJobRole+"("+domainJobRoleCode+"),\n"+platformJobRole+"("+platformJobRoleCode+")");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), dTrainingStartDate+" to "+dTrainingEndDate+",\n"+pTrainingStartDate+" to "+pTrainingEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[1]")).getText().trim(), batchID);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchType);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), tcName+" ("+tcID+")");
@@ -687,8 +703,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Type')]]/td[3]")).getText().trim(), batchType);
 			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[1]")).getText().trim(), domainJobRole);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Job Role Code')]]/td[3]")).getText().trim(), domainJobRoleCode);
-			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[2]")).getText().trim(), platformJobRole);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Job Role Code')]]/td[4]")).getText().trim(), platformJobRoleCode);
+			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[4]")).getText().trim(), platformJobRole);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Job Role Code')]]/td[5]")).getText().trim(), platformJobRoleCode);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Status')]]/td[3]")).getText().trim(), "Accepted");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[1]")).getText().trim(), tcName);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[2]")).getText().trim(), tcID);

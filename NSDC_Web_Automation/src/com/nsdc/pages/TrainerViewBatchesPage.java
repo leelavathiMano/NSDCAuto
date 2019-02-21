@@ -61,9 +61,7 @@ public class TrainerViewBatchesPage
 	private WebElement submitBatchAttendanceToSSCFinalButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;
-	
-	
-		
+			
 	public TrainerViewBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;

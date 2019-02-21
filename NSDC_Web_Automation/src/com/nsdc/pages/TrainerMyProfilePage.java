@@ -194,14 +194,13 @@ public class TrainerMyProfilePage
 	{
 		return panNumberVerificationStatusText.getText();
 	}
-	public void clickBrowseFile()
+	public void clickToBrowsePhotoFile()
 	{
 		photoFileBrowseButton.click();
 	}
-	public void clickUploadfile()
+	public void clickToUploadPhotoFile()
 	{
 		uploadPhotoFileButton.click();
-		
 	}
 	public void clickSaveChanges1()
 	{
