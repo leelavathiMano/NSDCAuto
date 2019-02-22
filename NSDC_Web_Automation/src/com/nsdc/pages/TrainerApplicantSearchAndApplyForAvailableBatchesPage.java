@@ -46,7 +46,7 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	@FindBy(xpath="//input[@placeholder='Search for Training Centre Name']")
 	private WebElement searchTextbox;
 	//My Preferences
-	@FindBy(linkText="Training Requests")
+	@FindBy(xpath="//a[contains(text(),'Training Requests')]")
 	private WebElement myPreferencesSectionLink;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
 	private WebElement cancelButton;

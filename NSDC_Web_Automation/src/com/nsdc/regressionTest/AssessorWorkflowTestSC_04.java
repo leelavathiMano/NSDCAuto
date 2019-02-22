@@ -903,6 +903,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 		  Thread.sleep(5000);
 		  Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Training Request Submitted Successfully");
 		  aSp.clickOK();
+		  Thread.sleep(2000);
+		  aSp.clickMyPreferences(); 
+		  Thread.sleep(2000);
 		  Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==1);
 	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
 	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[2]")).getText().trim(), preferredSector3);
