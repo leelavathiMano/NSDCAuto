@@ -33,7 +33,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(20000);
+		Thread.sleep(25000);
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
@@ -43,7 +43,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(2000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.enterBatchIDToSearch(batchID);
 		Thread.sleep(5000);
