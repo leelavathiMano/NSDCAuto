@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -91,7 +93,8 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -100,7 +103,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(2000);
 		sscDbP.clickCreateBatch();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);

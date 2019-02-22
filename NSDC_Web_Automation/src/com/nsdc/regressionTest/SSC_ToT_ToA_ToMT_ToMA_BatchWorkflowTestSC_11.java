@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -49,7 +51,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -58,7 +61,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickCreateBatch();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
@@ -1493,7 +1496,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -1502,7 +1506,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-new","OMG!!! Navigation to All Batches New PAge is unsuccessfull OR its taking too much time to load!!! ");
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.clickToViewAllPublishedBatches();
@@ -1597,7 +1601,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -1606,7 +1611,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickCreateBatch();
-		Thread.sleep(6000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
@@ -3153,7 +3158,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		lp.clickLogin();
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -3161,7 +3167,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-new","OMG!!! Navigation to All Batches New PAge is unsuccessfull OR its taking too much time to load!!! ");
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.clickToViewAllPublishedBatches();
@@ -3284,7 +3290,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		lp.clickLogin();
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -3292,7 +3299,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-new","OMG!!! Navigation to All Batches New PAge is unsuccessfull OR its taking too much time to load!!! ");
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.clickToViewAllPublishedBatches();		
@@ -3528,7 +3535,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		lp.clickLogin();
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -3536,7 +3544,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-new","OMG!!! Navigation to All Batches New PAge is unsuccessfull OR its taking too much time to load!!! ");
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.clickToViewAllPublishedBatches();
@@ -3634,7 +3642,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		lp.clickLogin();
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(10000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickToTToAToMTToMA();
@@ -3642,7 +3651,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(4000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-new","OMG!!! Navigation to All Batches New PAge is unsuccessfull OR its taking too much time to load!!! ");
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.clickToViewAllPublishedBatches();
@@ -3843,12 +3852,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
      	   	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
       	 	lp.clickLogin();
       	 	elp.performlogin(sscUsername, sscPassword);
-      	 	Thread.sleep(10000);
+      	 	WebDriverWait wait=new WebDriverWait(driver,60);
+    		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
       	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
       	 	js.executeScript("window.scrollBy(0,200)", "");
       	 	Thread.sleep(4000);
       	 	sDp.clickAllBatches();
-      	 	Thread.sleep(4000);
+    		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
       	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
       	 	sAp.clickToViewAllPublishedBatches();
       	 	Thread.sleep(6000);

@@ -2,6 +2,8 @@ package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -33,7 +35,8 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		Thread.sleep(25000);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
@@ -43,7 +46,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(2000);
 		sscDbP.clickAllBatches();
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.enterBatchIDToSearch(batchID);
 		Thread.sleep(5000);
