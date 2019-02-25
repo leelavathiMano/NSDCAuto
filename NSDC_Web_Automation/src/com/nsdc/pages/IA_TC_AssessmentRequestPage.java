@@ -38,6 +38,8 @@ public class IA_TC_AssessmentRequestPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//select[@formcontrolname='centreInspector']")
 	private WebElement assignTo_CentreInspector_DropDownList;
+	@FindBy(xpath="//select[@formcontrolname='qualityControl']")
+	private WebElement assignTo_QC_DropDownList;
 	@FindBy(xpath="//input[@formcontrolname='inspectionDate']")
 	private WebElement InspectionDateTextbox;
 	@FindBy(xpath="(//label[contains(text(),'SPOC Name')])[5]")
@@ -120,6 +122,11 @@ public class IA_TC_AssessmentRequestPage
 	public void selectForAssign_CentreInspector(String ciUsername)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(assignTo_CentreInspector_DropDownList, ciUsername);
+	}
+	
+	public void selectForAssign_QC(String qcUsername)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(assignTo_QC_DropDownList, qcUsername);
 	}
 	
 	public void enterForInspectionDate()

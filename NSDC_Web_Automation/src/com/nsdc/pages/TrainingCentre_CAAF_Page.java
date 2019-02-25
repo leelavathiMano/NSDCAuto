@@ -753,6 +753,8 @@ public class TrainingCentre_CAAF_Page
     @FindBy(xpath="//b[contains(text(),'Get Application Link')]")
     private WebElement getApplicationLinkButton;
     
+    @FindBy(xpath="//label[input[@class='ng-untouched ng-pristine ng-valid']]//span")
+    private WebElement iAgreeCheckBox;
     @FindBy(xpath="//button[contains(text(),'Save & Continue to Payment')]")
     private WebElement payment_SaveAndContinueButton;
     @FindBy(xpath="//button[contains(text(),'Previous')]")
@@ -1689,7 +1691,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnLaboratoryEquippedwith_ALL()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=10;i<20;i++)
+     	for(int i=10;i<21;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1801,7 +1803,7 @@ public class TrainingCentre_CAAF_Page
     public void clickOnHybridEquippedwith_ALL()
     {
     	 List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=20;i<30;i++)
+     	for(int i=21;i<31;i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -2803,6 +2805,11 @@ public class TrainingCentre_CAAF_Page
     public void clickOnSaveAndContinueToPayment()
     {
         payment_SaveAndContinueButton.click();
+    }
+    
+    public void clickOnIAgree()
+    {
+    	iAgreeCheckBox.click();
     }
     
     public void clickOnPrevious()

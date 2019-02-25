@@ -36,6 +36,8 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	private WebElement cancelButton;
 	@FindBy(xpath="//select[@formcontrolname='centreInspector']")
 	private WebElement assignTo_CentreInspector_DropDownList;
+	@FindBy(xpath="//select[@formcontrolname='qualityControl']")
+	private WebElement assignTo_QC_DropDownList;
 	@FindBy(xpath="//input[@formcontrolname='inspectionDate']")
 	private WebElement InspectionDateTextbox;
 	@FindBy(xpath="(//label[contains(text(),'SPOC Name')])[3]")
@@ -113,6 +115,11 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 	public void selectForAssign_CentreInspector(String ciUsername)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(assignTo_CentreInspector_DropDownList, ciUsername);
+	}
+	
+	public void selectForAssign_QC(String qcUsername)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(assignTo_QC_DropDownList, qcUsername);
 	}
 	
 	public void enterForInspectionDate()

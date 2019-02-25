@@ -12,7 +12,7 @@ public class SA_ViewJobRoleRecommendationRequestPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//input[@placeholder='trainingCentreName']")
+	@FindBy(xpath="//input[@placeholder=' Enter Training Centre Name']")
 	private WebElement tcNameTextbox;
 	@FindBy(xpath="//select[@formcontroname='jobRole']")
 	private WebElement jobRoleDropDownList;
