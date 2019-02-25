@@ -101,6 +101,8 @@ public class TrainingPartnerRegistrationPage
     private WebElement uploadButton1;
     @FindBy(xpath="//input[@placeholder='Enter GST Account Number']")
     private WebElement gstTextbox;
+    @FindBy(xpath="(//button[contains(text(),'Verify')])[2]")
+    private WebElement gst_VerifyButton;
     @FindBy(xpath="(//input[@id='customFile'])[2]")
     private WebElement browseButton2;
     @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
@@ -378,6 +380,11 @@ public class TrainingPartnerRegistrationPage
     {
     	gstTextbox.clear();
     	gstTextbox.sendKeys(gst_Number);
+    }
+    
+    public void clickOnGST_Verify()
+    {
+    	gst_VerifyButton.click();
     }
     
     public void clickBrowseButton2()

@@ -224,6 +224,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
             Thread.sleep(3000);
+            tprp.clickOnGST_Verify();
+            Thread.sleep(3000);
             tprp.clickBrowseButton2();
             Thread.sleep(3000);
             UploadFile.upload(upload_GST);
@@ -339,6 +341,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(3000);
+            tprp.clickOnGST_Verify();
             Thread.sleep(3000);
             tprp.clickBrowseButton2();
             Thread.sleep(3000);
@@ -466,6 +470,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(3000);
+            tprp.clickOnGST_Verify();
             Thread.sleep(3000);
             tprp.clickBrowseButton2();
             Thread.sleep(3000);
@@ -617,6 +623,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickUploadButton1();
             Thread.sleep(3000);
             tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(3000);
+            tprp.clickOnGST_Verify();
             Thread.sleep(3000);
             tprp.clickBrowseButton2();
             Thread.sleep(3000);
@@ -1043,9 +1051,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	da_tpr.clickForFinalStatusUploadFile();
     	Thread.sleep(8000);
     	da_tpr.clickForSaveAndContinue();
-    	Thread.sleep(2000);
+    	Thread.sleep(5000);
     	da_tpr.clickForOK();
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
      	plp.clickOnProfileLogo();
     	plp.clickOnLogout();
     	Thread.sleep(2000);
