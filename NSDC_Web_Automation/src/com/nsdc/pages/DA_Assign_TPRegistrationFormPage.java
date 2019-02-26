@@ -86,6 +86,8 @@ public class DA_Assign_TPRegistrationFormPage
 	private WebElement finalStatus_UploadFileButton;
 	@FindBy(css=".swal2-confirm.btn.btn-success.m-btn.m-btn--custom")
 	private WebElement okButton;
+	@FindBy(xpath="//button[contains(text(),'OK')]")
+	private WebElement ok_SecondButton;
 	
 	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[1]")
 	private WebElement attachedProofDocument_First_PreviewButton;
@@ -299,6 +301,11 @@ public class DA_Assign_TPRegistrationFormPage
 	public void clickForOK()
 	{
 		okButton.click();
+	}
+	
+	public void clickOnSecond_OK()
+	{
+		ok_SecondButton.click();
 	}
 	
 	public void clickOn_First_PreviewAttachedProofDocument()throws Exception

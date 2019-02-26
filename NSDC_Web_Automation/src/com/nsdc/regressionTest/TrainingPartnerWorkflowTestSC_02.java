@@ -1053,7 +1053,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	da_tpr.clickForSaveAndContinue();
     	Thread.sleep(5000);
     	da_tpr.clickForOK();
-    	Thread.sleep(4000);
+    	Thread.sleep(3000);
+    	da_tpr.clickOnSecond_OK();
+    	Thread.sleep(5000);
      	plp.clickOnProfileLogo();
     	plp.clickOnLogout();
     	Thread.sleep(2000);

@@ -14,6 +14,8 @@ import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.AssessmentAgencyDashboardPage;
+import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
 import com.nsdc.pages.CMA_AddCourseRequestsPage;
 import com.nsdc.pages.CMA_AddSectorRequestPage;
 import com.nsdc.pages.CMA_CourseInfoPage;
@@ -1079,7 +1081,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02");
 	}
 
-	@Test(dataProvider="cmaApproveTC", dependsOnMethods="addTrainingCentreTC04")
+	@Test(dataProvider="cmaApproveTC")//, dependsOnMethods="addTrainingCentreTC04")
 	public void approveTrainingCentreTC_05(String sno, String cmaUsername, String cmaPassword, String tpID, String tcType, String status, String expectedTCName, String expectedOwnership, String expectedStartDate, String expectedEndDate, String expectedBathesNumber, String expectedStudentNumber, String expectedAnnualCapacity, String expectedCapacityUtilization, String expectedGovernmentTieUp, String expectedCentreCapacity, String expectedCentreArea, String expectedTrainingRooms, String expectedLabNumber, String expectedReceptionArea, String expectedWaitingArea, String expectedMaleWashRooms, String expectedFemaleWashRooms, String expectedUnisexWashRooms, String expectedAirportDistance, String expectedTrainStationDistance, String expectedCityCentreDistance, String expectedTCAddress, String expectedLandmark, String expectedPincode, String expectedState, String expectedDistrict, String expectedTehsil, String expectedCity, String expectedParliamentryConstituency, String expectedAddressProof, String expectedSPOCName, String expectedSPOCEmail, String expectedSPOCMobile, String expectedSPOCDesignation, String expectedSPOCLandLine, String expectedSector, String expectedCourseName, String expectedTarget, String review, String reviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1593,7 +1595,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSectorSC15TC04");
 	}
 
-	@Test(dataProvider="addSector", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
+	@Test(dataProvider="addSector")//, dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
 	public void addSectorTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1653,7 +1655,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveSectorSC15TC06");
 	}
 
-	@Test(dataProvider="approveSector", dependsOnMethods="addSectorTC07")
+	@Test(dataProvider="approveSector")//, dependsOnMethods="addSectorTC07")
 	public void approveSectorTC08(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector, String expectedTrainingTarget, String sectorReviewComments, String sectorComments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1712,7 +1714,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05");
 	}
 
-	@Test(dataProvider="addCourses",dependsOnMethods="approveSectorTC08")
+	@Test(dataProvider="addCourses")//,dependsOnMethods="approveSectorTC08")
 	public void addCourseTC09(String srno, String tpusername, String tppassword, String projectName, String sector, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1832,7 +1834,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveCourseSC15TC07");
 	}
 
-	@Test(dataProvider="approveCourses",dependsOnMethods="addCourseTC09")
+	@Test(dataProvider="approveCourses")//,dependsOnMethods="addCourseTC09")
 	public void approveCourseTC10(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector,String expectedCourseName, String expectedJobRoleMappingType, String expectedJobRoleName, String expectedNSQFLevel, String expectedCourseDescription, String expectedIssuedCertificateName, String expectedMinimumAge, String expectedMinimumEducation, String expectedCourseDuration, String expectedNumberOfHours, String expectedCourseFee, String expectedGradingPrefrences, String qpNosCentre, String courseReviewComments, String courseComments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1917,7 +1919,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08");
 	}
 
-	@Test(dataProvider="linkTrainer", dependsOnMethods="approveCourseTC10")
+	@Test(dataProvider="linkTrainer")//, dependsOnMethods="approveCourseTC10")
 	public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1989,7 +1991,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09");
 	}
 
-	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="linkTrainerTC09")
+	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor")//, dependsOnMethods="linkTrainerTC09")
 	public void addAssessmentAgencyAndLinkAssessorTC10(String srno, String tpUsername, String tpPassword, String projectName, String assessmentAgencyName, String supportingDocumentFile, String assessmentAgencyAddress, String landmark, String pincode, String state, String district, String tehsil, String parliamentryConstoituency, String geoLocation, String firstName, String lastName, String email, String mobileNumber, String asseementAgencyID,  String assessorID, String assessorName, String assessmentAgency, String supportingDocument_Assessor, String mobileOTP, String emailOTP)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -2058,7 +2060,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		assessorName = driver.findElement(By.xpath("//input[@id='nameOfAssessor']")).getAttribute("value");
 		Thread.sleep(3000);
 		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09", Integer.parseInt(srno), 20, assessorName);
-		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(srno), 33, assessorName);
+		//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(srno), 33, assessorName);
 		Thread.sleep(5000);
 		tpaa.clickOnGenerateOTP();
 		Thread.sleep(3000);
@@ -2084,8 +2086,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010");
 	}
 
-	@Test(dataProvider="createBatchAndEnrollCandidates", dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10")
-	public void createBatchAndEnrollCandidateTC11(String sno, String tpUsername, String tpPassword, String candidateRegistrationFile, String pageNo, String projectName, String tcName, String sector, String course, String target, String batchName, String batchSize, String batchType, String courseName, String expectedSector, String expectedAssociatedQP, String expectedNSQFLevel, String trainerName, String expectedTrainersEmail, String expectedTrainersMobile, String assessmentMode, String trainingFee, String feePaidBy, String batchID, String firstStage, String candidateList, String secondStage, String sscUsername, String sscPassword, String sectorCode, String assessmentAgencyID, String aaPassword, String assessorID, String asPassword, String assessmentAgency, String assessor, String thirdStage, String fourthStage, String certificateFile, String placementDocument, String appointmentLetter, String salarySlip, String undertakingDocument) throws Exception
+	@Test(dataProvider="createBatchAndEnrollCandidates")//, dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10")
+	public void createBatchAndEnrollCandidateTC11(String sno, String tpUsername, String tpPassword, String candidateRegistrationFile, String pageNo, String projectName, String tcName, String sector, String course, String target, String batchName, String batchSize, String batchType, String courseName, String expectedSector, String expectedAssociatedQP, String expectedNSQFLevel, String trainerName, String expectedTrainersEmail, String expectedTrainersMobile, String assessmentMode, String trainingFee, String feePaidBy, String batchID, String firstStage, String candidateList, String secondStage, String sscUsername, String sscPassword, String sectorCode, String assessmentAgency, String aaPassword, String remarksForAcceptingBatch, String assessorID, String asPassword, String assessmentAgencyID, String assessor, String thirdStage, String fourthStage, String certificateFile, String placementDocument, String appointmentLetter, String salarySlip, String undertakingDocument) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -2288,41 +2290,55 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("//tr[td[span[span[text()='"+batchID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 			driver.findElement(By.xpath("//tr[td[span[span[text()='"+batchID+"']]]]//a[contains(text(),'Assign Assessment Agency')]")).click();
-			svb.selectAssessmentAgency(assessmentAgencyID);
+			svb.selectAssessmentAgency(assessmentAgency);
 			svb.clickOnSubmit_ApproveMarksheet();
 			Thread.sleep(3000);
 			svb.clickOnOK();
 			Thread.sleep(3000);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
-//			lp.clickLogin();
-//			elp.performlogin(assessmentAgencyID, aaPassword);
-//			AssessmentAgencyDashboardPage aad = new AssessmentAgencyDashboardPage(driver);
-//			Thread.sleep(3000);
-//			aad.clickOnFeeBasedAssessmentRequest();
-//			AssessmentAgencyViewBatchesPage avb = new AssessmentAgencyViewBatchesPage(driver);
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Accept/Reject Batch')]")).click();
+			lp.clickLogin();
+			elp.performlogin(assessmentAgencyID, aaPassword);
+			AssessmentAgencyDashboardPage aad = new AssessmentAgencyDashboardPage(driver);
+			Thread.sleep(3000);
+			aad.clickOnAssessmentRequest();
+			AssessmentAgencyViewBatchesPage avb = new AssessmentAgencyViewBatchesPage(driver);
+			Thread.sleep(3000);
+			avb.enterBatchIdToSearch(batchID);
+			Thread.sleep(3000);
+			avb.clickToApplySelectedSearchFilters();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn ellipsis-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Accept Batch')]")).click();
 //			Thread.sleep(3000);
 //			avb.clickToAcceptBatch();
 //			avb.clickToSaveAndSubmit();
-//			Thread.sleep(3000);
-//			avb.clickOk();
-//			Thread.sleep(3000);
-//			avb.clickToViewAcceptedBatches();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Assign Assessor')]")).click();
-//			Thread.sleep(3000);
-//			//avb.selectAssessorsToBeAssignedForBatches(assessorID);
-//			Thread.sleep(2000);
-//			avb.clickToSaveAndSubmit();
-//			Thread.sleep(3000);
-//			avb.clickOk();
-//			Thread.sleep(3000);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout();
+			Thread.sleep(3000);
+			avb.enterRemarksForAcceptingBatch(remarksForAcceptingBatch);
+			Thread.sleep(3000);
+			avb.clickToSubmitBatchAcceptance();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(text(),'Request Accepted Successfully')]")).getText(), "Request Accepted Successfully");
+			Assert.assertEquals(driver.findElement(By.xpath("//b[text()='BatchId - "+batchID+"']")).getText(), "BatchId - "+batchID+"");
+			Thread.sleep(3000);
+			avb.clickOk();
+			Thread.sleep(3000);
+			avb.clickToViewAcceptedBatches();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[@class='btn m-btn ellipsis-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Assign Assessor')]")).click();
+			Thread.sleep(3000);
+			avb.selectMasterAssessorForDomain1(assessorID);
+			Thread.sleep(2000);
+			avb.clickOnSubmit_ForAssessor();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//b[contains(text(),'Assigned Successfully')]")).getText(), "Assigned Successfully ");
+			Assert.assertEquals(driver.findElement(By.xpath("//b[text()='Ekaushal Batch 1']")).getText(), batchName);
+			Thread.sleep(3000);
+			avb.clickOk();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
 			/*lp.clickLogin();
 			elp.performlogin(assessorID, asPassword);
 			AssessorDashboardPage adp = new AssessorDashboardPage(driver);

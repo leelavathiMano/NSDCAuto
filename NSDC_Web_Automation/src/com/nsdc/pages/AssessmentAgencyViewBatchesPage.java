@@ -78,6 +78,9 @@ public class AssessmentAgencyViewBatchesPage
 	@FindBy(linkText="Approved Applicants")
 	private WebElement approvedApplicantsSectionLinkText;
 	
+	@FindBy(xpath="//div[div[h5[contains(text(),'Assign Assessor')]]]//button[contains(text(),'Submit')]")
+	private WebElement submit_ForAssessorButton;
+	
 	public AssessmentAgencyViewBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -231,5 +234,11 @@ public class AssessmentAgencyViewBatchesPage
 	public void selectViewDetailsOfApplicantOption(String applicantID)
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'View Details')]")).click();
+	}
+	
+	
+	public void clickOnSubmit_ForAssessor()
+	{
+		submit_ForAssessorButton.click();
 	}
 }
