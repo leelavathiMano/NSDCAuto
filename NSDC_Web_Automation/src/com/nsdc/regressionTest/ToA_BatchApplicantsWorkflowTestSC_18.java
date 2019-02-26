@@ -218,7 +218,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(4000);
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		sVbP.selectStateFilter(state);
-		Thread.sleep(2000);
 		sVbP.selectDistrictFilter(district);
 		Thread.sleep(2000);
 		sVbP.enterTrainingCentreIDToSearch(tcID);
