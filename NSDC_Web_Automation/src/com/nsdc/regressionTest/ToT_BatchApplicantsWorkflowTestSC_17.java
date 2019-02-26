@@ -78,16 +78,16 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	String platformMasterAssessorID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 38); 
 	String platformMasterAssessorName=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 39); 
 	String platformMasterAssessorPassword=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 40);
-	String configBatchStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 41);
-	String configBatchEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 42);
-	String configDomainTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 43);
-	String configDomainTrainingEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 44);
-	String configDomainAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 45);
-	String configDomainAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 46);
-	String configPlatformTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 47);
-	String configPlatformTrainingEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 48);
-	String configPlatformAssessemntStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 49);
-	String configPlatformAssessemntEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 50);
+	String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 41);
+	String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 42);
+	String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 43);
+	String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 44);
+	String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 45);
+	String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 46);
+	String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 47);
+	String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 48);
+	String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 49);
+	String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 50);
 	@DataProvider()
     public Object[][] totBatchData()
     {

@@ -30,7 +30,7 @@ public class ReadWriteData
             Row r = st.getRow(rowIndex);
             Cell c = r.getCell(cellIndex);
             TestData = c.toString();
-        }
+         }
         catch(Exception e)
         {
         	
@@ -100,5 +100,23 @@ public class ReadWriteData
         }
     }*/
     
+    public static String getToT_ToA_ConfigData(String fileFilepath, String sheetName, int rowIndex, int cellIndex)
+    {
+        String TestData = null;
+        try
+        {
+            File f = new File(fileFilepath);
+            FileInputStream fis = new FileInputStream(f);
+            Workbook wb = WorkbookFactory.create(fis);
+            Sheet st = wb.getSheet(sheetName);
+            Row r = st.getRow(rowIndex);
+            Cell c = r.getCell(cellIndex);
+            TestData = c.getStringCellValue();
+         }
+        catch(Exception e)
+        {
+        	
+        }
+        return TestData;
+    }
 }
-

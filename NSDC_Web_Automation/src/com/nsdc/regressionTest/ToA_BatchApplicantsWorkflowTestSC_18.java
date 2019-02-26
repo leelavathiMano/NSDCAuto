@@ -78,16 +78,16 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	String platformMasterAssessorID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 38); 
 	String platformMasterAssessorName=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 39); 
    	String platformMasterAssessorPassword=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 40);
-   	String configBatchStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 41);
-	String configBatchEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 42);
-	String configDomainTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 43);
-	String configDomainTrainingEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 44);
-	String configDomainAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 45);
-	String configDomainAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 46);
-	String configPlatformTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 47);
-	String configPlatformTrainingEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 48);
-	String configPlatformAssessemntStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 49);
-	String configPlatformAssessemntEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 50);
+   	String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 41);
+	String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 42);
+	String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 43);
+	String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 44);
+	String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 45);
+	String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 46);
+	String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 47);
+	String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 48);
+	String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 49);
+	String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 50);
 	@DataProvider()
     public Object[][] toaBatchData()
     {
@@ -103,15 +103,15 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		WebDriverWait wait=new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 		sscDbP.clickToTToAToMTToMA();
 		Thread.sleep(2000);
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,200)", "");
 		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]"))));
 		sscDbP.clickCreateBatch();
 		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
@@ -134,10 +134,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
 			Thread.sleep(2000);
 		}
-		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
-		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
-		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
-		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
+//		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
+//		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
+//		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
+//		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
 		Thread.sleep(2000);
 		sscTbcP.selectPlatformJobRole(platformJobRole);
