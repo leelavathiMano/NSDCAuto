@@ -32,14 +32,32 @@ public class CandidateSync
 		Dimension winsize = appDriver.manage().window().getSize();
 		
 		int startx = (winsize.width * 0)/100;
-		int endx = (winsize.width * 25)/100;
+		int endx = (winsize.width * 15)/100;
 		int starty = (winsize.width * 0)/100;
-		int endy = (winsize.width * 40)/100;
+		int endy = (winsize.width * 80)/100;
 		
 		TouchAction act = new TouchAction(appDriver);
 		act.press(new PointOption().withCoordinates(startx, starty)).waitAction(waitOptions(Duration.ofSeconds(2))).moveTo(point(endx, endy)).release().perform();
 		Thread.sleep(3000);
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public static void scrollScreenForMobileForDone(AppiumDriver appDriver) throws Exception 
+	{
+		Thread.sleep(2000);
+		Dimension winsize = appDriver.manage().window().getSize();
+		
+		int startx = (winsize.width * 0)/100;
+		int endx = (winsize.width * 25)/100;
+		int starty = (winsize.width * 0)/100;
+		int endy = (winsize.width * 35)/100;
+		
+		TouchAction act = new TouchAction(appDriver);
+		act.press(new PointOption().withCoordinates(startx, starty)).waitAction(waitOptions(Duration.ofSeconds(2))).moveTo(point(endx, endy)).release().perform();
+		Thread.sleep(3000);
+	}
+	
+	
 	@SuppressWarnings("rawtypes")
 	public static void scrollScreenForMobileUp(AppiumDriver appDriver) throws Exception 
 	{
@@ -64,99 +82,99 @@ public class CandidateSync
     
     @SuppressWarnings("rawtypes")
 	@Test(dataProvider="registrationData")
-    public void cansync(String fullName, String Guardianname, String MobileNumber,String gender, String pincode) throws MalformedURLException, Exception
+    public void cansync(String fullName, String Guardianname, String EmailAddress, String MobileNumber,String gender, String pincode) throws MalformedURLException, Exception
 
 	{
 		   DesiredCapabilities cap = new DesiredCapabilities();
 	        
-           cap.setCapability("platformName", "Android");
-           cap.setCapability("platformVersion", "8.1.0");
-           cap.setCapability("deviceName", "032872488T062365");
-           cap.setCapability("appPackage", "com.sdms.candidate_offline");
-           cap.setCapability("appActivity", "com.sdms.candidate_offline.MainActivity");
-           cap.setCapability("noReset", "true");
+		        cap.setCapability("platformName", "Android");
+	           cap.setCapability("platformVersion", "8.1.0");
+	           cap.setCapability("deviceName", "032872488T062365");
+	           cap.setCapability("appPackage", "com.sdms.candidate_offline");
+	           cap.setCapability("appActivity", "com.sdms.candidate_offline.MainActivity");
+	           cap.setCapability("noReset", "true");
 
-           AndroidDriver driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap);
-          
-           driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-           //driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
-           //driver.findElement(By.xpath("//android.widget.Button[@text='Sync Down Master Data']")).click();
-          // driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
-           ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
-           ((StartsActivity)driver).currentActivity();
-           driver.findElement(By.xpath("//android.widget.Button[@text='Register']")).click();
-           driver.findElement(By.xpath("//android.widget.Image[@text='registrationlogo']")).click();
-          // ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
-          // ((StartsActivity)driver).currentActivity();
-          // driver.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
-           driver.findElementById("com.mediatek.camera:id/rlk_camera_switcher").click();
-           driver.findElementById("com.mediatek.camera:id/shutter_button").click();
-           driver.findElementById("com.mediatek.camera:id/done_button").click();
-           Thread.sleep(4000);
-           driver.findElementById("userName").clear();
-           driver.findElementById("userName").sendKeys(fullName);
-           driver.findElementById("guardianName").clear();
-           driver.findElementById("guardianName").sendKeys(Guardianname);
-         //driver.findElementById("email").clear();
-         //driver.findElementById("email").sendKeys(EmailAddress);
-           driver.findElementById("mobileNumber").clear();
-           driver.findElementById("mobileNumber").sendKeys(MobileNumber);
-           Thread.sleep(4000);
-           driver.findElementById("gender").click();
-           driver.findElement(By.xpath("//android.view.View[@text='"+gender+"']")).click();
-           driver.findElementById("dob").click();
-           Thread.sleep(10000);
-           CandidateSync.scrollScreenForMobile(driver);
-           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'DONE')]")).click();
-           Thread.sleep(6000);
-           driver.findElement(By.xpath("(//android.widget.Spinner)[3]")).click();
-           Thread.sleep(7000);
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
-           Thread.sleep(5000);
-           driver.findElementById("pincode").clear();
-           driver.findElementById("pincode").sendKeys(pincode);
-           CandidateSync.scrollScreenForMobile(driver);
-           driver.findElement(By.xpath("(//android.widget.Spinner)[4]")).click();
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
-           Thread.sleep(6000);
-           driver.findElement(By.xpath("(//android.widget.Spinner)[5]")).click();
-           //Thread.sleep(6000);
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[5]")).click();
-           CandidateSync.scrollScreenForMobile(driver);
-           driver.findElementById("program").click();
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[2]")).click();
-           Thread.sleep(4000);
-           driver.findElementById("organation").click();
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[3]")).click();
-           driver.findElementById("cio").click();
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[3]")).click();
-          Thread.sleep(4000);
-          CandidateSync.scrollScreenForMobile(driver);
-           driver.findElement(By.xpath("(//android.widget.RadioButton)[1]")).click();
-           CandidateSync.scrollScreenForMobile(driver);
-           driver.findElement(By.xpath("//android.widget.Button[@text='Submit Details']")).click();
-          // Thread.sleep(4000);
-           Assert.assertEquals(driver.findElement(By.xpath("//android.view.View[@text='User registered successfully.']")).getText().trim(), "User registered successfully.");
-           Thread.sleep(4000);
-           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'OKAY')]")).click();
-           Thread.sleep(8000);
-        /*   CandidateSync.scrollScreenForMobileUp(driver);
-         //  Thread.sleep(3000);
-           CandidateSync.scrollScreenForMobileUp(driver);
-         //  Thread.sleep(3000);
-           CandidateSync.scrollScreenForMobileUp(driver);
-           CandidateSync.scrollScreenForMobileUp(driver);
-           //  Thread.sleep(3000);
-             CandidateSync.scrollScreenForMobileUp(driver);
-           //  Thread.sleep(3000);
-             CandidateSync.scrollScreenForMobileUp(driver);
-           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'arrow back')]")).click();
-           Thread.sleep(4000);
-           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'View Registered Data')]")).click();
-           Thread.sleep(5000);
-           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'Sync')]")).click();
-           Thread.sleep(3000);
-           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'OKAY')]")).click();*/
+	           AndroidDriver driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap);
+	          
+	           driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+	           ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
+	           ((StartsActivity)driver).currentActivity();
+	           driver.findElement(By.xpath("//android.widget.Button[@text='Register']")).click();
+	           driver.findElement(By.xpath("//android.widget.Image[@text='registrationlogo']")).click();
+	           driver.findElementById("com.mediatek.camera:id/rlk_camera_switcher").click();
+	           driver.findElementById("com.mediatek.camera:id/shutter_button").click();
+	           driver.findElementById("com.mediatek.camera:id/done_button").click();
+	           Thread.sleep(4000);
+	           driver.findElementById("userName").clear();
+	           driver.findElementById("userName").sendKeys(fullName);
+	           driver.findElementById("guardianName").clear();
+	           driver.findElementById("guardianName").sendKeys(Guardianname);
+	           driver.findElementById("email").clear();
+	          driver.findElementById("email").sendKeys(EmailAddress);
+	           driver.findElementById("mobileNumber").clear();
+	           driver.findElementById("mobileNumber").sendKeys(MobileNumber);
+	           Thread.sleep(4000);
+	           driver.findElementById("gender").click();
+	           driver.findElement(By.xpath("//android.view.View[@text='"+gender+"']")).click();
+	           driver.findElementById("dob").click();
+	           Thread.sleep(2000);
+	           CandidateSync.scrollScreenForMobile(driver);
+	           ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
+	           ((StartsActivity)driver).currentActivity();
+	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'DONE')]")).click();
+	           Thread.sleep(6000);
+	           CandidateSync.scrollScreenForMobile(driver);
+	           driver.findElement(By.xpath("(//android.widget.Spinner)[3]")).click();
+	           Thread.sleep(7000);
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
+	           Thread.sleep(5000);
+	           driver.findElementById("pincode").clear();
+	           driver.findElementById("pincode").sendKeys(pincode);
+	           Thread.sleep(3000);
+	          CandidateSync.scrollScreenForMobile(driver);
+	          CandidateSync.scrollScreenForMobile(driver);
+	          Thread.sleep(3000);
+	           driver.findElement(By.xpath("(//android.widget.Spinner)[4]")).click();
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
+	           Thread.sleep(6000);
+	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync.scrollScreenForMobile(driver);
+	           driver.findElement(By.xpath("(//android.widget.Spinner)[5]")).click();
+	           Thread.sleep(6000);
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[5]")).click();
+	           CandidateSync.scrollScreenForMobileForDone(driver);
+	           driver.findElementById("program").click();
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[2]")).click();
+	           Thread.sleep(4000);
+	           driver.findElementById("organation").click();
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[3]")).click();
+	           driver.findElementById("cio").click();
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[3]")).click();
+	          Thread.sleep(4000);
+	           CandidateSync.scrollScreenForMobileForDone(driver);
+	           driver.findElement(By.xpath("(//android.widget.RadioButton)[1]")).click();
+	           driver.findElement(By.xpath("//android.widget.Button[@text='Submit Details']")).click();
+	           Assert.assertEquals(driver.findElement(By.xpath("//android.view.View[@text='User registered successfully.']")).getText().trim(), "User registered successfully.");
+	           Thread.sleep(4000);
+	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'OKAY')]")).click();
+	           Thread.sleep(8000);
+	        /*   CandidateSync.scrollScreenForMobileUp(driver);
+	         //  Thread.sleep(3000);
+	           CandidateSync.scrollScreenForMobileUp(driver);
+	         //  Thread.sleep(3000);
+	           CandidateSync.scrollScreenForMobileUp(driver);
+	           CandidateSync.scrollScreenForMobileUp(driver);
+	           //  Thread.sleep(3000);
+	             CandidateSync.scrollScreenForMobileUp(driver);
+	           //  Thread.sleep(3000);
+	             CandidateSync.scrollScreenForMobileUp(driver);
+	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'arrow back')]")).click();
+	           Thread.sleep(4000);
+	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'View Registered Data')]")).click();
+	           Thread.sleep(5000);
+	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'Sync')]")).click();
+	           Thread.sleep(3000);
+	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'OKAY')]")).click();*/
 
-}
-}
+	}
+	}
