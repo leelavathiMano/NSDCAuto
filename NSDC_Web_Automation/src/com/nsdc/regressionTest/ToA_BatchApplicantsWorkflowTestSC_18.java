@@ -107,13 +107,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
-		sscDbP.clickToTToAToMTToMA();
-		Thread.sleep(2000);
-		Thread.sleep(2000);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,150)", "");
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]"))));
 		sscDbP.clickCreateBatch();
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
@@ -134,10 +131,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
 			Thread.sleep(2000);
 		}
-//		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
-//		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
-//		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
-//		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
+		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
+		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
 		Thread.sleep(2000);
 		sscTbcP.selectPlatformJobRole(platformJobRole);
@@ -310,6 +307,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
+		js.executeScript("window.scrollBy(0,500)", "");
+		sVbP.clickConfirmation();
+		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  

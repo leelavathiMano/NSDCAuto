@@ -3,13 +3,16 @@ package com.nsdc.generic;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ToT_ToA_Batch_DatePicker 
 {
 	public static void chooseDate(WebDriver driver, String date, WebElement dateTextField, WebElement monthDropdownList, WebElement yearDropdownList ) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(dateTextField));
 		dateTextField.click();
-		System.out.println(date);
 		Thread.sleep(2000);
 		String parts[]=date.split("-");
 		String day=parts[0];

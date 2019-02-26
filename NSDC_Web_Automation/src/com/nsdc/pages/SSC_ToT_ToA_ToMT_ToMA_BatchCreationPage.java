@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.nsdc.generic.SelectDropDownList;
 import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
@@ -137,6 +139,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void selectSubSector(String subSector)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(subSectorDropdownList));
 		SelectDropDownList.selectDropDownListByVisibleText(subSectorDropdownList, subSector);
 	}
 	public void selectBatchType(String batchType)

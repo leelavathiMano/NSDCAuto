@@ -222,11 +222,15 @@ public class SSC_ViewBatchDetailsPage
 	//Search For Training Centre
 	public void selectStateFilter(String sateFilter)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(stateFilterList));
 		stateFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+sateFilter+"')])[1]")).click();
 	}
 	public void selectDistrictFilter(String districtFilter)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(districtFilterList));
 		districtFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+districtFilter+"')])[1]")).click();
 	}
@@ -265,12 +269,16 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void selectDomainMasterTrainerStateFilter(String state) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerStateFilterList));
 		domainMasterTrainerStateFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
 	}
 	public void selectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerDistrictFilterList));
 		domainMasterTrainerDistrictFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
@@ -303,12 +311,16 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectPlatformMasterTrainerStateFilter(String state) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(platformMasterTrainerStateFilterList));
 		platformMasterTrainerStateFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
 	}	
 	public void selectPlatformMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(platformMasterTrainerDistrictFilterList));
 		platformMasterTrainerDistrictFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
@@ -341,12 +353,16 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(domainAssessmentAgencyStateFilterList));
 		domainAssessmentAgencyStateFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
 	}
 	public void selectDomainAssessmentAgencyDistrictFilter(String district) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(domainAssessmentAgencyDistrictFilterList));
 		domainAssessmentAgencyDistrictFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
@@ -366,6 +382,8 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void clickToFinallyAssignSelectedDomainAssessmentAgency()
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(domainAssignSelectedAssessmentAgencyButton));
 		domainAssignSelectedAssessmentAgencyButton.click();
 	}
 	//Assigning Platform QP Assessment Agency
@@ -379,12 +397,16 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(platformAssessmentAgencyStateFilterList));
 		platformAssessmentAgencyStateFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[2]")).click();
 	}	
 	public void selectPlatformAssessmentAgencyDistrictFilter(String district) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(platformAssessmentAgencyDistrictFilterList));
 		platformAssessmentAgencyDistrictFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
