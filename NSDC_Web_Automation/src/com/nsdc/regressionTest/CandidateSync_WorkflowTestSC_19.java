@@ -24,7 +24,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class CandidateSync
+public class CandidateSync_WorkflowTestSC_19
 {
 	@SuppressWarnings("rawtypes")
 	public static void scrollScreenForMobile(AppiumDriver appDriver) throws Exception 
@@ -119,12 +119,12 @@ public class CandidateSync
 	           driver.findElement(By.xpath("//android.view.View[@text='"+gender+"']")).click();
 	           driver.findElementById("dob").click();
 	           Thread.sleep(2000);
-	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	           ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
 	           ((StartsActivity)driver).currentActivity();
 	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'DONE')]")).click();
 	           Thread.sleep(6000);
-	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	           driver.findElement(By.xpath("(//android.widget.Spinner)[3]")).click();
 	           Thread.sleep(7000);
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
@@ -132,18 +132,18 @@ public class CandidateSync
 	           driver.findElementById("pincode").clear();
 	           driver.findElementById("pincode").sendKeys(pincode);
 	           Thread.sleep(3000);
-	          CandidateSync.scrollScreenForMobile(driver);
-	          CandidateSync.scrollScreenForMobile(driver);
+	          CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
+	          CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	          Thread.sleep(3000);
 	           driver.findElement(By.xpath("(//android.widget.Spinner)[4]")).click();
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
 	           Thread.sleep(6000);
-	           CandidateSync.scrollScreenForMobile(driver);
-	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	           driver.findElement(By.xpath("(//android.widget.Spinner)[5]")).click();
 	           Thread.sleep(6000);
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[5]")).click();
-	           CandidateSync.scrollScreenForMobileForDone(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobileForDone(driver);
 	           driver.findElementById("program").click();
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[2]")).click();
 	           Thread.sleep(4000);
@@ -152,7 +152,7 @@ public class CandidateSync
 	           driver.findElementById("cio").click();
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[3]")).click();
 	          Thread.sleep(4000);
-	           CandidateSync.scrollScreenForMobileForDone(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobileForDone(driver);
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[1]")).click();
 	           driver.findElement(By.xpath("//android.widget.Button[@text='Submit Details']")).click();
 	           Assert.assertEquals(driver.findElement(By.xpath("//android.view.View[@text='User registered successfully.']")).getText().trim(), "User registered successfully.");
@@ -226,12 +226,12 @@ public class CandidateSync
 	           driver.findElement(By.xpath("//android.view.View[@text='"+gender+"']")).click();
 	           driver.findElementById("dob").click();
 	           Thread.sleep(2000);
-	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	           ((AppiumDriver)driver).runAppInBackground(Duration.ofSeconds(2));
 	           ((StartsActivity)driver).currentActivity();
 	           driver.findElement(By.xpath("//android.widget.Button[contains(@text,'DONE')]")).click();
 	           Thread.sleep(6000);
-	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	           driver.findElement(By.xpath("(//android.widget.Spinner)[3]")).click();
 	           Thread.sleep(7000);
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
@@ -239,18 +239,18 @@ public class CandidateSync
 	           driver.findElementById("pincode").clear();
 	           driver.findElementById("pincode").sendKeys(pincode);
 	           Thread.sleep(3000);
-	          CandidateSync.scrollScreenForMobile(driver);
-	          CandidateSync.scrollScreenForMobile(driver);
+	          CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
+	          CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	          Thread.sleep(3000);
 	           driver.findElement(By.xpath("(//android.widget.Spinner)[4]")).click();
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[4]")).click();
 	           Thread.sleep(6000);
-	           CandidateSync.scrollScreenForMobile(driver);
-	           CandidateSync.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobile(driver);
 	           driver.findElement(By.xpath("(//android.widget.Spinner)[5]")).click();
 	           Thread.sleep(6000);
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[5]")).click();
-	           CandidateSync.scrollScreenForMobileForDone(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobileForDone(driver);
 	           driver.findElementById("program").click();
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[2]")).click();
 	           Thread.sleep(4000);
@@ -259,7 +259,7 @@ public class CandidateSync
 	           driver.findElementById("cio").click();
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[3]")).click();
 	          Thread.sleep(4000);
-	           CandidateSync.scrollScreenForMobileForDone(driver);
+	           CandidateSync_WorkflowTestSC_19.scrollScreenForMobileForDone(driver);
 	           driver.findElement(By.xpath("(//android.widget.RadioButton)[1]")).click();
 	           driver.findElement(By.xpath("//android.widget.Button[@text='Submit Details']")).click();
 	           Assert.assertEquals(driver.findElement(By.xpath("//android.view.View[@text='User registered successfully.']")).getText().trim(), "User registered successfully.");
