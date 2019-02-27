@@ -82,7 +82,7 @@ public class CandidateSync
     
     @SuppressWarnings("rawtypes")
 	@Test(dataProvider="registrationData")
-    public void cansync(String fullName, String Guardianname, String EmailAddress, String MobileNumber,String gender, String pincode) throws MalformedURLException, Exception
+    public void canSyncOfflineTC_01(String fullName, String Guardianname, String EmailAddress, String MobileNumber,String gender, String pincode) throws MalformedURLException, Exception
 
 	{
 		   DesiredCapabilities cap = new DesiredCapabilities();
