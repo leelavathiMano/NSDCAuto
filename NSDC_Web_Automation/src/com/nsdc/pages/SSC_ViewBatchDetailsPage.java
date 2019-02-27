@@ -229,7 +229,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectDistrictFilter(String districtFilter)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,120);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.visibilityOf(districtFilterList));
 		wait.until(ExpectedConditions.elementToBeClickable(districtFilterList));
 		districtFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+districtFilter+"')])[1]")).click();

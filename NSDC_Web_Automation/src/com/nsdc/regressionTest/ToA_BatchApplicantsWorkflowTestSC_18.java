@@ -141,7 +141,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(2000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
-		Thread.sleep(2000);
 		sscTbcP.selectDomainTrainingStartDate(configDomainTrainingStartDate);
 		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
@@ -219,7 +218,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		sVbP.selectStateFilter(state);
 		sVbP.selectDistrictFilter(district);
-		Thread.sleep(2000);
 		sVbP.enterTrainingCentreIDToSearch(tcID);
 		Thread.sleep(2000);
 		sVbP.clickToGetSearchFilterResult();
@@ -373,12 +371,12 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				{
 					elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
 				}
-				Thread.sleep(4000);
+				Thread.sleep(15000);
 				TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
 				tDp.clickToGetTrainerDashboard();
 				Thread.sleep(2000);
 				tDp.clickAllBatches();
-				Thread.sleep(4000);
+				Thread.sleep(6000);
 				TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
 				tVp.clicktoGoPendingBatchesSection();
 				Thread.sleep(2000);
@@ -422,13 +420,15 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		}
 		else
 		{
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			lp.clickLogin();
 			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
-			Thread.sleep(4000);
+			Thread.sleep(15000);
 			TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
 			tDp.clickToGetTrainerDashboard();
 			Thread.sleep(2000);
 			tDp.clickAllBatches();
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 			TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
 			tVp.clicktoGoPendingBatchesSection();
 			Thread.sleep(2000);
@@ -470,7 +470,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				{
 					elp.performlogin(passessmentAgencyID, passessmentAgencyPassword);
 				}
-				Thread.sleep(2000);
+				Thread.sleep(15000);
 				js.executeScript("window.scrollBy(0,200)", "");
 				Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
 				AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
@@ -551,8 +551,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		}
 		else
 		{
+			lp.clickLogin();
 			elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
-			Thread.sleep(2000);
+			Thread.sleep(15000);
 			js.executeScript("window.scrollBy(0,200)", "");
 			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
@@ -623,7 +624,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				{
 					elp.performlogin(pmasterAssessorID, pmasterAssessorPassword);
 				}
-				Thread.sleep(8000);
+				Thread.sleep(15000);
 				AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 				maDp.clickToGetAssessorDashboard();
 				Thread.sleep(2000);
@@ -671,8 +672,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		}
 		else
 		{
+			lp.clickLogin();
 			elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
-			Thread.sleep(8000);
+			Thread.sleep(15000);
 			AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 			maDp.clickToGetAssessorDashboard();
 			Thread.sleep(2000);
@@ -705,6 +707,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			Thread.sleep(2000);
 		}
 	}
+    
    @DataProvider
    public Object[][] toaApplicantsData()
    {

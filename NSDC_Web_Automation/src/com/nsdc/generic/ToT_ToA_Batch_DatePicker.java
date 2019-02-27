@@ -1,6 +1,7 @@
 package com.nsdc.generic;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,9 +11,10 @@ public class ToT_ToA_Batch_DatePicker
 {
 	public static void chooseDate(WebDriver driver, String date, WebElement dateTextField, WebElement monthDropdownList, WebElement yearDropdownList ) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,180);
+		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.elementToBeClickable(dateTextField));
-		dateTextField.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", dateTextField);
 		Thread.sleep(2000);
 		String parts[]=date.split("-");
 		String day=parts[0];
