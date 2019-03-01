@@ -92,7 +92,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement  facility_SecurityGuardCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[2]")
     private WebElement facility_WellConditionCheckBox;
-    @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[3]")
+    @FindBy(xpath="(//div[label[contains(text(),'Aadhar-Enabled Biometric Attendance System:')]]//span)[2]")
     private WebElement facility_BiometricCheckBox;
     @FindBy(xpath="(//label[@class='m-checkbox m-checkbox--default col-md-6']/span)[4]")
     private WebElement facility_WallAndRoofConditionCheckBox;
@@ -458,6 +458,18 @@ public class TrainingCentre_CAAF_Page
     private WebElement associatedLaboratory_Second_DropDownList;
     @FindBy(xpath="(//select[option[text()='Select Hybrid']])[2]")
     private WebElement associatedHybrid_Second_DropDownList;
+    @FindBy(xpath="(//select[option[text()='Select Classroom']])[3]")
+    private WebElement associateClassroom_Third_DropDownList;
+    @FindBy(xpath="(//select[option[text()='Select Laboratory']])[3]")
+    private WebElement associatedLaboratory_Third_DropDownList;
+    @FindBy(xpath="(//select[option[text()='Select Hybrid']])[3]")
+    private WebElement associatedHybrid_Third_DropDownList;
+    @FindBy(xpath="(//select[option[text()='Select Classroom']])[4]")
+    private WebElement associateClassroom_Fourth_DropDownList;
+    @FindBy(xpath="(//select[option[text()='Select Laboratory']])[4]")
+    private WebElement associatedLaboratory_Fourth_DropDownList;
+    @FindBy(xpath="(//select[option[text()='Select Hybrid']])[4]")
+    private WebElement associatedHybrid_Fourth_DropDownList;
     @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[1]")
     private WebElement first_AvailableQuantity_EquipmentTextbox;
     @FindBy(xpath="(//input[@formcontrolname='availabilityQuantity'])[2]")
@@ -985,6 +997,16 @@ public class TrainingCentre_CAAF_Page
     	
     }
     
+    public void clickOn_FacilitiesAvailableAtCentre()
+    {
+    	List<WebElement> ele = driver.findElements(By.xpath("//div[label[contains(text(),'Facilities Available at the centre:')]]//span"));
+    	for(int i=0;i<ele.size();i++)
+    	{
+    		WebElement ele1 = ele.get(i);
+    		ele1.click();
+    	}
+    }
+    
     public void clickOnFacility_SecurityGuard()
     {
         facility_SecurityGuardCheckBox.click();
@@ -1306,6 +1328,36 @@ public class TrainingCentre_CAAF_Page
      	}
     }
     
+    public void clickOn_AvailablityOfFireFightingEquipment()
+    {
+    	List <WebElement> element = driver.findElements(By.xpath("//div[label[contains(text(),'Availability of Fire Fighting Equipment:')]]//span"));
+    	for(int i=1;i<element.size();i++)
+    	{
+    		WebElement ele = element.get(i);
+    		ele.click();
+    	}
+    }
+    
+    public void clickOn_AreaIsDisplayingWith()
+    {
+    	List<WebElement> element =driver.findElements(By.xpath("//div[label[contains(text(),'Area is Displaying with:')]]//span"));
+    	for(int i=1;i<element.size();i++)
+    	{
+    		WebElement ele = element.get(i);
+    		ele.click();
+    	}
+    }
+    
+    public void clickOn_FirstAidKitContainsItem()
+    {
+    	List<WebElement> element = driver.findElements(By.xpath("//div[label[contains(text(),'First Aid Kit Contain items:')]]//span"));
+    	for(int i=1;i<element.size();i++)
+    	{
+    		WebElement ele = element.get(i);
+    		ele.click();
+    	}
+    }
+    
     public void selectForSafeDrinkingWater(String drinkingDater)
     {
     	SelectDropDownList.selectDropDownListByVisibleText(safeDrinkingWaterDropDownList, drinkingDater);
@@ -1519,8 +1571,8 @@ public class TrainingCentre_CAAF_Page
     
     public void clickOnClassRoomEquippedwith_ALL()
     {
-    	 List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=0;i<10;i++)
+    	 List <WebElement> element = driver.findElements(By.xpath("//div[div[h3[contains(text(),'Classroom Details')]]]//label[@class='m-checkbox m-checkbox--default col-md-6']"));
+     	for(int i=0;i<element.size();i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1690,8 +1742,8 @@ public class TrainingCentre_CAAF_Page
     
     public void clickOnLaboratoryEquippedwith_ALL()
     {
-    	 List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=10;i<21;i++)
+    	 List <WebElement> element = driver.findElements(By.xpath("//div[div[h3[contains(text(),'Laboratory Details')]]]//label[@class='m-checkbox m-checkbox--default col-md-6']"));
+     	for(int i=0;i<element.size();i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -1802,8 +1854,8 @@ public class TrainingCentre_CAAF_Page
     
     public void clickOnHybridEquippedwith_ALL()
     {
-    	 List <WebElement> element = driver.findElements(By.xpath("//label[@class='m-checkbox m-checkbox--default col-md-6']/span"));
-     	for(int i=21;i<31;i++)
+    	 List <WebElement> element = driver.findElements(By.xpath("//div[div[h3[contains(text(),'Hybrid Details')]]]//label[@class='m-checkbox m-checkbox--default col-md-6']"));
+     	for(int i=0;i<element.size();i++)
      	{
      		WebElement ele = element.get(i);
      		ele.click();
@@ -2008,6 +2060,36 @@ public class TrainingCentre_CAAF_Page
     public void select_Second_AssociatedHybrid(String hybrid)
     {
     	SelectDropDownList.selectDropDownListByVisibleText(associatedHybrid_Second_DropDownList, hybrid);
+    }
+    
+    public void select_Third_AssociatedClassroom(String classroom)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(associateClassroom_Third_DropDownList, classroom);
+    }
+    
+    public void select_Third_AssociatedLaboratory(String laboratory)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(associatedLaboratory_Third_DropDownList, laboratory);
+    }
+    
+    public void select_Third_AssociatedHybrid(String hybrid)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(associatedHybrid_Third_DropDownList, hybrid);
+    }
+    
+    public void select_Fourth_AssociatedClassroom(String classroom)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(associateClassroom_Fourth_DropDownList, classroom);
+    }
+    
+    public void select_Fourth_AssociatedLaboratory(String laboratory)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(associatedLaboratory_Fourth_DropDownList, laboratory);
+    }
+    
+    public void select_Fourth_AssociatedHybrid(String hybrid)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(associatedHybrid_Fourth_DropDownList, hybrid);
     }
     
     public void enter_First_AvailableQuantityForEquipment(String firstQuantity)

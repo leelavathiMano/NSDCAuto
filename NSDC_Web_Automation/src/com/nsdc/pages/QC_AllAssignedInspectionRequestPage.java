@@ -12,6 +12,8 @@ public class QC_AllAssignedInspectionRequestPage
 	
 	@FindBy(xpath="//input[@formcontrolname='tcId']")
 	private WebElement searchByKeywordTextbox;
+	@FindBy(xpath="//button[text()='Apply']")
+	private WebElement applyButton;
 	
 	
 	
@@ -26,6 +28,11 @@ public class QC_AllAssignedInspectionRequestPage
 	{
 		searchByKeywordTextbox.clear();
 		searchByKeywordTextbox.sendKeys(keyword);
+	}
+	
+	public void clickOnApply()
+	{
+		applyButton.click();
 	}
 
 }
