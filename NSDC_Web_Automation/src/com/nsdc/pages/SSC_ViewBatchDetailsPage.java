@@ -1,6 +1,7 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -230,9 +231,9 @@ public class SSC_ViewBatchDetailsPage
 	public void selectDistrictFilter(String districtFilter)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.visibilityOf(districtFilterList));
 		wait.until(ExpectedConditions.elementToBeClickable(districtFilterList));
-		districtFilterList.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", districtFilterList);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+districtFilter+"')])[1]")).click();
 	}
 	public void enterTrainingCentreIDToSearch(String trainingCentreIDToSearchFor) throws InterruptedException
