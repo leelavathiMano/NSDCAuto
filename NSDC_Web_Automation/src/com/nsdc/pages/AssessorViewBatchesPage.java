@@ -46,7 +46,10 @@ public class AssessorViewBatchesPage
 	private WebElement batchDetailsSectionLinkText;
 	@FindBy(linkText="Approved Applicants")
 	private WebElement approvedApplicantsSectionLinkText;
-		
+	@FindBy(id="Search")
+	private WebElement searchForBatchIDTextField;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchFiltersButton;
 	public AssessorViewBatchesPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -133,4 +136,13 @@ public class AssessorViewBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[span[contains(text(),'View Details')]]")).click();
 	}	
+	public void enterBatchIDToSearch(String batchID)
+	{
+		searchForBatchIDTextField.clear();
+		searchForBatchIDTextField.sendKeys(batchID);
+	}
+	public void clickToGetSearchResult()
+	{
+		applySearchFiltersButton.click();
+	}
 }

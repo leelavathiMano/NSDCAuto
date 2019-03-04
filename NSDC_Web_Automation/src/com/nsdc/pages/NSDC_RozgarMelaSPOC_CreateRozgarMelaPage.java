@@ -1,12 +1,14 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import com.nsdc.generic.SelectDropDownList;
 
 public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
@@ -81,7 +83,6 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	private WebElement saveAndCreateRozgarMelaButton;
 	@FindBy(xpath="//button[contains(text(),'Announce')]")
 	private WebElement announceToStakeholdersButton;
-	
 	
 	public NSDC_RozgarMelaSPOC_CreateRozgarMelaPage(WebDriver driver)
 	{
@@ -182,18 +183,26 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	}
 	public void selectDistrict(String district)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("district")));
 		SelectDropDownList.selectDropDownListByVisibleText(districtDropdownList, district);
 	}
 	public void selectTehsil(String tehsil)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("tehsil")));
 		SelectDropDownList.selectDropDownListByVisibleText(tehsilDropdownList, tehsil);
 	}
 	public void selectVillage(String village)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("city")));
 		SelectDropDownList.selectDropDownListByVisibleText(cityVillageDropdownList, village);
 	}
 	public void selectParlimentaryConstituency(String parlimentaryConstituency)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("parliamentaryConstituency")));
 		SelectDropDownList.selectDropDownListByVisibleText(parliamentaryConstituencyDropdownList, parlimentaryConstituency);
 	}
 	public void enterGeoLocation(String geoLocation)
@@ -225,36 +234,51 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	//Align TC
 	public void clickToSelectAllTrainingCentres()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(selectAllTrainingCentreCheckbox));
 		selectAllTrainingCentreCheckbox.click();
 	}
 	public void clickToAlignSelectedTrainingCentres()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(alignSelectedTrainingCentresButton));
 		alignSelectedTrainingCentresButton.click();
 	}
 	public void clickOK()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	public void clickSaveAndAlignSSCs()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(saveAndAlignSSCsButton));
 		saveAndAlignSSCsButton.click();
 	}
 	//Align SSCs
 	public void clickToSelectAllSSCs()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//th[label[input[@type='checkbox']]]")));
 		selectAllSSCsCheckbox.click();
 	}
 	public void clickToAlignSelectedSSCs()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Align Selected SSCs')]")));
 		alignSelectedSSCsButton.click();
 	}
 	//finally creating rozgar mela
 	public void clickToSaveAndCreateRozgarMela()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(saveAndCreateRozgarMelaButton));
 		saveAndCreateRozgarMelaButton.click();
 	}
 	public void clickAnnounceToStakeholders()
 	{
-		announceToStakeholdersButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",announceToStakeholdersButton);
 	}
 }

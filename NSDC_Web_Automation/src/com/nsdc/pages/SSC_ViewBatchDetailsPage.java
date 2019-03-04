@@ -99,7 +99,7 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement domainSearchByAssessmentAgencyIDTextField;
 	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
 	private WebElement domainSearchFilterButton2;
-	@FindBy(xpath="(//td[input[@type='radio']])[5]")
+	@FindBy(xpath="(//input[@type='radio'])[5]")
 	private WebElement domainAssessmentAgencyRadioButton;
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement domainAssignSelectedAssessmentAgencyButton;
@@ -114,7 +114,7 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement platformSearchByAssessmentAgencyIDTextField;
 	@FindBy(xpath="(//button[contains(text(),'Search')])[4]")
 	private WebElement platformSearchFilterButton2;
-	@FindBy(xpath="(//td[input[@type='radio']])[5]")
+	@FindBy(xpath="(//input[@type='radio'])[5]")
 	private WebElement platformAssessmentAgencyRadioButton;
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[3]")
 	private WebElement platformAssignSelectedAssessmentAgencyButton;

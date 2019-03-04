@@ -633,6 +633,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 				maVp.clicktoGoToPendingRequestsSection();
 				Thread.sleep(4000);
+				maVp.enterBatchIDToSearch(batchID);
+				Thread.sleep(4000);
+				maVp.clickToGetSearchResult();
+				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
 				maVp.clickToGetActionMenuOptions(batchID);
@@ -682,6 +686,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			Thread.sleep(4000);
 			AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 			maVp.clicktoGoToPendingRequestsSection();
+			Thread.sleep(4000);
+			maVp.enterBatchIDToSearch(batchID);
+			Thread.sleep(4000);
+			maVp.clickToGetSearchResult();
 			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
 			Thread.sleep(2000);

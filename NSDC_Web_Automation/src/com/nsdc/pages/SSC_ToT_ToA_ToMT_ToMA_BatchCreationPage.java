@@ -334,6 +334,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void clickBatchAction(String createdBatchID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+createdBatchID+"')]]//a)[1]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+createdBatchID+"')]]//a)[1]")).click();
 	}
 	public void selectAssignOption(String createdBatchID)
