@@ -231,6 +231,7 @@ public class SSC_ViewBatchDetailsPage
 	public void selectDistrictFilter(String districtFilter)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//angular2-multiselect[@formcontrolname='district'])[1]/div")));
 		wait.until(ExpectedConditions.elementToBeClickable(districtFilterList));
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", districtFilterList);
