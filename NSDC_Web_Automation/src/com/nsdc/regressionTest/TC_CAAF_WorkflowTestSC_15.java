@@ -80,7 +80,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
 		Thread.sleep(15000);
 		tpdp.clickOnAddTrainingCentre();
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		tpdp.selectForProcessType(processType);
 		tpdp.selectTrainingCentreType(tcType);
 		tpdp.clickOnSaveAndContinue();
