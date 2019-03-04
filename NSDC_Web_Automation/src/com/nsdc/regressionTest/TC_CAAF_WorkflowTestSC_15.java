@@ -270,13 +270,13 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.selectTC_District(tcDistrict);
 		caaf.selectTC_Tehsil(tcTehsil);
 		caaf.selectTC_ParliamentryConstituency(tcParliamentry);
-		caaf.selectTC_AddressProofType(tcAddressProof);
-		Thread.sleep(3000);
-		caaf.clickOnTC_AddressProof_BrowseFile();
-		Thread.sleep(3000);
-		UploadFile.upload(addressProofFile);
-		Thread.sleep(3000);
-		caaf.clickOnTC_AddresssProof_UploadFile();
+//		caaf.selectTC_AddressProofType(tcAddressProof);
+//		Thread.sleep(3000);
+//		caaf.clickOnTC_AddressProof_BrowseFile();
+//		Thread.sleep(3000);
+//		UploadFile.upload(addressProofFile);
+//		Thread.sleep(3000);
+//		caaf.clickOnTC_AddresssProof_UploadFile();
 		Thread.sleep(3000);
 		caaf.selectTCAreaClassificationOfCentre(tcAreaClassificationCentre);
 		caaf.selectIsEntireCentreAtGroundFloor(centreAtGroundFloor);
@@ -443,7 +443,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		}
 
 		
-		for(int i=0; i<2; i++)
+		for(int i=0; i<1; i++)
 		{
 			Thread.sleep(5000);
 			caaf.clickOnAddJobRole();
@@ -629,7 +629,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		Thread.sleep(5000);
 		caaf.clickOnSaveAndNext();
 		Thread.sleep(3000);
-		caaf.clickOn_OK_ForMobileApp();
+//		caaf.clickOn_OK_ForMobileApp();
 
 		
 		PostLoginPage plp = new PostLoginPage(driver);
@@ -981,8 +981,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04");
 	}
 	
-	@Test(dataProvider="tcApproval")//, enabled=false)
-	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username) throws Exception
+	@Test(dataProvider="tcApproval", enabled=false)
+	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1028,449 +1028,449 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		}
 		else if(tc_Type.equals("NON PMKK"))
 		{
-//			elp.performlogin(ia_Username, password);
-//			InspectionAgency_DashboardPage iad = new InspectionAgency_DashboardPage(driver);
-//			Thread.sleep(8000);
-//			iad.clickOnViewAllAssessmentRequest();
-//			IA_TC_AssessmentRequestPage iatc = new IA_TC_AssessmentRequestPage(driver);
-//			Thread.sleep(3000);
-//			iatc.clickOnViewAllTCRequest();
-//			Thread.sleep(3000);
-//			iatc.enterForSearch(tc_ID);
-//			iatc.selectStage(stage);
-//			//iatc.enterDateForAssign();
-//			iatc.clickOnApply();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			if(assignTo.equals("Assign To DA"))
-//			{
-//				Thread.sleep(3000);
-//				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign To DA')]")).click();
-//				Thread.sleep(3000);
-//				iatc.selectAssignTo_DA(daUsername);
-//				Thread.sleep(3000);
-//				iatc.clickOnAssign();
-//				//iatc.enterForSearch(tc_ID);
-//				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='In-Process DA']")).getText(), "In-Process DA");
-//				PostLoginPage plp = new PostLoginPage(driver);
-//				Thread.sleep(3000);
-//				plp.clickOnProfileLogo();
-//				plp.clickOnLogout();
-//				
-//				lp.clickLogin();
-//				elp.performlogin(daUsername, password);
-//				DA_DashboardPage dap = new DA_DashboardPage(driver);
-//				Thread.sleep(10000);
-//				dap.clickOnViewAllAssessmentRequest();
-//				DA_TCRequestPage datc = new DA_TCRequestPage(driver);
-//				Thread.sleep(5000);
-//				datc.clickOnViewAllTCRequest();
-//				Thread.sleep(3000);
-//				datc.enterForSearch(tc_ID);
-//				//datc.selectstage(stage);
-//				datc.clickOnApply();
-//				Thread.sleep(3000);
-//				datc.clickOnAction();
-//				datc.clickOnViewQuickDetails();
-//				Thread.sleep(3000);
-//				//datc.clickOnReview();
-//				datc.clickOnAction();
-//				Thread.sleep(3000);
-//				datc.clickOnTakeAction();
-//				
-//				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
-//				Thread.sleep(3000);
-//				datr.clickOn_First_PreviewAttachedProofDocument();
-//				Thread.sleep(3000);
-//				datr.select_First_ReviewComments(address_ReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_First();
-//				
-//				if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
-//				{
-//					Thread.sleep(3000);
-//					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FrontView_Image();
-//					datr.clickOn_LeftView_Image();
-//					datr.clickOn_RightView_Image();
-//					datr.clickOn_InternetConectivity_Image();
-//					datr.clickOn_PowerBackup_Image();
-//					Thread.sleep(3000);
-//					datr.select_Third_ReviewComments(menResidential_ReviewComments);
-//					datr.select_Fourth_ReviewComments(womenResidential_ReviewComments);
-//					datr.select_Fifth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DifferentyAbledWashroom_Image();
-//					datr.clickOn_Ramp_Image();
-//					datr.clickOn_Lift_Image();
-//					Thread.sleep(3000);
-//					datr.select_Sixth_ReviewComments(hygiene_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DailyInspection_Image();
-//					datr.clickOn_SafeDrinking_Image();
-//					datr.select_Seventh_ReviewComments(medical_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FireFightingEquipment_Image();
-//					datr.clickOn_FirstAidKit_Image();
-//					Thread.sleep(3000);
-//					datr.clickOnSaveAndNext_Second();
-//				}
-//				
-//				else if((menResidential.equals("No")) && (womenResidential.equals("No")))
-//				{
-//					Thread.sleep(3000);
-//					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FrontView_Image();
-//					datr.clickOn_LeftView_Image();
-//					datr.clickOn_RightView_Image();
-//					datr.clickOn_InternetConectivity_Image();
-//					datr.clickOn_PowerBackup_Image();
-//					Thread.sleep(3000);
-//					datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DifferentyAbledWashroom_Image();
-//					datr.clickOn_Ramp_Image();
-//					datr.clickOn_Lift_Image();
-//					Thread.sleep(3000);
-//					datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DailyInspection_Image();
-//					datr.clickOn_SafeDrinking_Image();
-//					datr.select_Fifth_ReviewComments(medical_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FireFightingEquipment_Image();
-//					datr.clickOn_FirstAidKit_Image();
-//					Thread.sleep(3000);
-//					datr.clickOnSaveAndNext_Second();
-//				}
-//				
-//				else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
-//				{
-//					Thread.sleep(3000);
-//					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FrontView_Image();
-//					datr.clickOn_LeftView_Image();
-//					datr.clickOn_RightView_Image();
-//					datr.clickOn_InternetConectivity_Image();
-//					datr.clickOn_PowerBackup_Image();
-//					Thread.sleep(3000);
-//					datr.select_Third_ReviewComments(menResidential_ReviewComments);
-//					datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DifferentyAbledWashroom_Image();
-//					datr.clickOn_Ramp_Image();
-//					datr.clickOn_Lift_Image();
-//					Thread.sleep(3000);
-//					datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DailyInspection_Image();
-//					datr.clickOn_SafeDrinking_Image();
-//					datr.select_Sixth_ReviewComments(medical_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FireFightingEquipment_Image();
-//					datr.clickOn_FirstAidKit_Image();
-//					Thread.sleep(3000);
-//					datr.clickOnSaveAndNext_Second();
-//				}
-//				
-//				Thread.sleep(3000);
-//				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-//				for(int i=0;i<elements.size();i++)
-//				{
-//					WebElement e1 = elements.get(i);
-//					e1.click();
-//					Thread.sleep(3000);
-//					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
-//				
-//					List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
-//					{
-//						
-//							for(int j=0;j<ele2.size();j++)
-//							{
-//								WebElement rvw = ele2.get(j);
-//								Thread.sleep(3000);								
-//								SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
-//								if(j==3)
-//								{
-//									Thread.sleep(3000);
-//									datr.clickOn_FirstView_FirstImage();
-//									datr.clickOn_SecondView_FirstImage();
-//								}
-//								else if(j==6)
-//								{
-//									Thread.sleep(3000);
-//									datr.clickOn_FirstView_SecondImage();
-//									datr.clickOn_SecondView_SecondImage();
-//								}
-//								else if(j==11)
-//								{
-//									Thread.sleep(3000);
-//									datr.clickOn_SSCCertificate_Image();
-//									datr.clickOn_HighestQualification_Image();
-//									datr.clickOn_NIESBUD_Image();
-//									datr.clickOn_IndustrialExperience_Image();
-//								}	
-//							}
-//					}		
-//							Thread.sleep(10000);
-//							datr.clickOnNext_ForJobRole();
-//							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-//				}
-//				
-//				JavascriptExecutor js = (JavascriptExecutor) driver;
-//				js.executeScript("scroll(900, 0)");
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_Third();
-//				
-//				List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
-//				for(int i=0; i<ele3.size(); i++)
-//				{
-//					WebElement revw1 = ele3.get(i);
-//					Thread.sleep(3000);
-//					SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
-//					Thread.sleep(3000);
-//					driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
-//					Thread.sleep(3000);
-//					FilePreview.closeWindow(driver);
-//					driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
-//					Thread.sleep(3000);
-//					FilePreview.closeWindow(driver);	
-//				}
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_Fourth();
-//				
-//				List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support staff')]]]]//select[option[text()='Select Review Comments']]"));
-//				for(int i=0; i<ele4.size(); i++)
-//				{
-//					WebElement revw2 = ele4.get(i);
-//					Thread.sleep(3000);
-//					SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
-//				}
-//				
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_Fifth();
-//				
-//				Thread.sleep(3000);
-//				datr.selectFinalReviewStatus(finalStatus);
-//				datr.enterFinalStatusReviewComments(finalReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOnBrowseFile_ForFinalStatus();
-//				Thread.sleep(3000);
-//				UploadFile.upload(finalStatusFile);
-//				Thread.sleep(3000);
-//				datr.clickOnUploadFile_ForFinalStatus();
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndContinue();
-//				Thread.sleep(5000);
-//				datr.clickOnOK();
-//				
-//				Thread.sleep(5000);
-//				plp.clickOnProfileLogo();
-//				plp.clickOnLogout();
-//			}
-//			else
-//			{
-//				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Take Action')]")).click();
-//				
-//				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
-//				Thread.sleep(3000);
-//				datr.clickOn_First_PreviewAttachedProofDocument();
-//				Thread.sleep(3000);
-//				datr.select_First_ReviewComments(address_ReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_First();
-//				
-//				if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
-//				{
-//					Thread.sleep(3000);
-//					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FrontView_Image();
-//					datr.clickOn_LeftView_Image();
-//					datr.clickOn_RightView_Image();
-//					datr.clickOn_InternetConectivity_Image();
-//					datr.clickOn_PowerBackup_Image();
-//					Thread.sleep(3000);
-//					datr.select_Third_ReviewComments(menResidential_ReviewComments);
-//					datr.select_Fourth_ReviewComments(womenResidential_ReviewComments);
-//					datr.select_Fifth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DifferentyAbledWashroom_Image();
-//					datr.clickOn_Ramp_Image();
-//					datr.clickOn_Lift_Image();
-//					Thread.sleep(3000);
-//					datr.select_Sixth_ReviewComments(hygiene_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DailyInspection_Image();
-//					datr.clickOn_SafeDrinking_Image();
-//					datr.select_Seventh_ReviewComments(medical_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FireFightingEquipment_Image();
-//					datr.clickOn_FirstAidKit_Image();
-//					Thread.sleep(3000);
-//					datr.clickOnSaveAndNext_Second();
-//				}
-//				
-//				else if((menResidential.equals("No")) && (womenResidential.equals("No")))
-//				{
-//					Thread.sleep(3000);
-//					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FrontView_Image();
-//					datr.clickOn_LeftView_Image();
-//					datr.clickOn_RightView_Image();
-//					datr.clickOn_InternetConectivity_Image();
-//					datr.clickOn_PowerBackup_Image();
-//					Thread.sleep(3000);
-//					datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DifferentyAbledWashroom_Image();
-//					datr.clickOn_Ramp_Image();
-//					datr.clickOn_Lift_Image();
-//					Thread.sleep(3000);
-//					datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DailyInspection_Image();
-//					datr.clickOn_SafeDrinking_Image();
-//					datr.select_Fifth_ReviewComments(medical_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FireFightingEquipment_Image();
-//					datr.clickOn_FirstAidKit_Image();
-//					Thread.sleep(3000);
-//					datr.clickOnSaveAndNext_Second();
-//				}
-//				
-//				else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
-//				{
-//					Thread.sleep(3000);
-//					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FrontView_Image();
-//					datr.clickOn_LeftView_Image();
-//					datr.clickOn_RightView_Image();
-//					datr.clickOn_InternetConectivity_Image();
-//					datr.clickOn_PowerBackup_Image();
-//					Thread.sleep(3000);
-//					datr.select_Third_ReviewComments(menResidential_ReviewComments);
-//					datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DifferentyAbledWashroom_Image();
-//					datr.clickOn_Ramp_Image();
-//					datr.clickOn_Lift_Image();
-//					Thread.sleep(3000);
-//					datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_DailyInspection_Image();
-//					datr.clickOn_SafeDrinking_Image();
-//					datr.select_Sixth_ReviewComments(medical_ReviewComments);
-//					Thread.sleep(3000);
-//					datr.clickOn_FireFightingEquipment_Image();
-//					datr.clickOn_FirstAidKit_Image();
-//					Thread.sleep(3000);
-//					datr.clickOnSaveAndNext_Second();
-//				}
-//				
-//				Thread.sleep(3000);
-//				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-//				for(int i=0;i<elements.size();i++)
-//				{
-//					WebElement e1 = elements.get(i);
-//					e1.click();
-//					Thread.sleep(3000);
-//					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
-//				
-//					List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
-//					{
-//						
-//							for(int j=0;j<ele2.size();j++)
-//							{
-//								WebElement rvw = ele2.get(j);
-//								Thread.sleep(3000);								
-//								SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
-//								if(j==3)
-//								{
-//									Thread.sleep(3000);
-//									datr.clickOn_FirstView_FirstImage();
-//									datr.clickOn_SecondView_FirstImage();
-//								}
-//								else if(j==6)
-//								{
-//									Thread.sleep(3000);
-//									datr.clickOn_FirstView_SecondImage();
-//									datr.clickOn_SecondView_SecondImage();
-//								}
-//								else if(j==11)
-//								{
-//									Thread.sleep(3000);
-//									datr.clickOn_SSCCertificate_Image();
-//									datr.clickOn_HighestQualification_Image();
-//									datr.clickOn_NIESBUD_Image();
-//									datr.clickOn_IndustrialExperience_Image();
-//								}	
-//							}
-//					}		
-//							Thread.sleep(10000);
-//							datr.clickOnNext_ForJobRole();
-//							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-//				}
-//				
-//				JavascriptExecutor js = (JavascriptExecutor) driver;
-//				js.executeScript("scroll(900, 0)");
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_Third();
-//				
-//				List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
-//				for(int i=0; i<ele3.size(); i++)
-//				{
-//					WebElement revw1 = ele3.get(i);
-//					Thread.sleep(3000);
-//					SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
-//					Thread.sleep(3000);
-//					driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
-//					Thread.sleep(3000);
-//					FilePreview.closeWindow(driver);
-//					driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
-//					Thread.sleep(3000);
-//					FilePreview.closeWindow(driver);	
-//				}
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_Fourth();
-//				
-//				List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support staff')]]]]//select[option[text()='Select Review Comments']]"));
-//				for(int i=0; i<ele4.size(); i++)
-//				{
-//					WebElement revw2 = ele4.get(i);
-//					Thread.sleep(3000);
-//					SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
-//				}
-//				
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndNext_Fifth();
-//				
-//				Thread.sleep(3000);
-//				datr.selectFinalReviewStatus(finalStatus);
-//				datr.enterFinalStatusReviewComments(finalReviewComments);
-//				Thread.sleep(3000);
-//				datr.clickOnBrowseFile_ForFinalStatus();
-//				Thread.sleep(3000);
-//				UploadFile.upload(finalStatusFile);
-//				Thread.sleep(3000);
-//				datr.clickOnUploadFile_ForFinalStatus();
-//				Thread.sleep(3000);
-//				datr.clickOnSaveAndContinue();
-//				Thread.sleep(3000);
-//				datr.clickOnOK();
-//				
-//				PostLoginPage plp = new PostLoginPage(driver);
-//				Thread.sleep(3000);
-//				plp.clickOnProfileLogo();
-//				plp.clickOnLogout();
-//			}
-//			
-//			
+			elp.performlogin(ia_Username, password);
+			InspectionAgency_DashboardPage iad = new InspectionAgency_DashboardPage(driver);
+			Thread.sleep(8000);
+			iad.clickOnViewAllAssessmentRequest();
+			IA_TC_AssessmentRequestPage iatc = new IA_TC_AssessmentRequestPage(driver);
+			Thread.sleep(3000);
+			iatc.clickOnViewAllTCRequest();
+			Thread.sleep(3000);
+			iatc.enterForSearch(tc_ID);
+			iatc.selectStage(stage);
+			//iatc.enterDateForAssign();
+			iatc.clickOnApply();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			if(assignTo.equals("Assign To DA"))
+			{
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign To DA')]")).click();
+				Thread.sleep(3000);
+				iatc.selectAssignTo_DA(daUsername);
+				Thread.sleep(3000);
+				iatc.clickOnAssign();
+				//iatc.enterForSearch(tc_ID);
+				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='In-Process DA']")).getText(), "In-Process DA");
+				PostLoginPage plp = new PostLoginPage(driver);
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				lp.clickLogin();
+				elp.performlogin(daUsername, password);
+				DA_DashboardPage dap = new DA_DashboardPage(driver);
+				Thread.sleep(10000);
+				dap.clickOnViewAllAssessmentRequest();
+				DA_TCRequestPage datc = new DA_TCRequestPage(driver);
+				Thread.sleep(5000);
+				datc.clickOnViewAllTCRequest();
+				Thread.sleep(3000);
+				datc.enterForSearch(tc_ID);
+				//datc.selectstage(stage);
+				datc.clickOnApply();
+				Thread.sleep(3000);
+				datc.clickOnAction();
+				datc.clickOnViewQuickDetails();
+				Thread.sleep(3000);
+				//datc.clickOnReview();
+				datc.clickOnAction();
+				Thread.sleep(3000);
+				datc.clickOnTakeAction();
+				
+				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
+				Thread.sleep(3000);
+				datr.clickOn_First_PreviewAttachedProofDocument();
+				Thread.sleep(3000);
+				datr.select_First_ReviewComments(address_ReviewComments);
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_First();
+				
+				if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
+				{
+					Thread.sleep(3000);
+					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FrontView_Image();
+					datr.clickOn_LeftView_Image();
+					datr.clickOn_RightView_Image();
+					datr.clickOn_InternetConectivity_Image();
+					datr.clickOn_PowerBackup_Image();
+					Thread.sleep(3000);
+					datr.select_Third_ReviewComments(menResidential_ReviewComments);
+					datr.select_Fourth_ReviewComments(womenResidential_ReviewComments);
+					datr.select_Fifth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DifferentyAbledWashroom_Image();
+					datr.clickOn_Ramp_Image();
+					datr.clickOn_Lift_Image();
+					Thread.sleep(3000);
+					datr.select_Sixth_ReviewComments(hygiene_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DailyInspection_Image();
+					datr.clickOn_SafeDrinking_Image();
+					datr.select_Seventh_ReviewComments(medical_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FireFightingEquipment_Image();
+					datr.clickOn_FirstAidKit_Image();
+					Thread.sleep(3000);
+					datr.clickOnSaveAndNext_Second();
+				}
+				
+				else if((menResidential.equals("No")) && (womenResidential.equals("No")))
+				{
+					Thread.sleep(3000);
+					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FrontView_Image();
+					datr.clickOn_LeftView_Image();
+					datr.clickOn_RightView_Image();
+					datr.clickOn_InternetConectivity_Image();
+					datr.clickOn_PowerBackup_Image();
+					Thread.sleep(3000);
+					datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DifferentyAbledWashroom_Image();
+					datr.clickOn_Ramp_Image();
+					datr.clickOn_Lift_Image();
+					Thread.sleep(3000);
+					datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DailyInspection_Image();
+					datr.clickOn_SafeDrinking_Image();
+					datr.select_Fifth_ReviewComments(medical_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FireFightingEquipment_Image();
+					datr.clickOn_FirstAidKit_Image();
+					Thread.sleep(3000);
+					datr.clickOnSaveAndNext_Second();
+				}
+				
+				else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
+				{
+					Thread.sleep(3000);
+					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FrontView_Image();
+					datr.clickOn_LeftView_Image();
+					datr.clickOn_RightView_Image();
+					datr.clickOn_InternetConectivity_Image();
+					datr.clickOn_PowerBackup_Image();
+					Thread.sleep(3000);
+					datr.select_Third_ReviewComments(menResidential_ReviewComments);
+					datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DifferentyAbledWashroom_Image();
+					datr.clickOn_Ramp_Image();
+					datr.clickOn_Lift_Image();
+					Thread.sleep(3000);
+					datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DailyInspection_Image();
+					datr.clickOn_SafeDrinking_Image();
+					datr.select_Sixth_ReviewComments(medical_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FireFightingEquipment_Image();
+					datr.clickOn_FirstAidKit_Image();
+					Thread.sleep(3000);
+					datr.clickOnSaveAndNext_Second();
+				}
+				
+				Thread.sleep(3000);
+				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				for(int i=0;i<elements.size();i++)
+				{
+					WebElement e1 = elements.get(i);
+					e1.click();
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
+				
+					List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
+					{
+						
+							for(int j=0;j<ele2.size();j++)
+							{
+								WebElement rvw = ele2.get(j);
+								Thread.sleep(3000);								
+								SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
+								if(j==3)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_FirstView_FirstImage();
+									datr.clickOn_SecondView_FirstImage();
+								}
+								else if(j==6)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_FirstView_SecondImage();
+									datr.clickOn_SecondView_SecondImage();
+								}
+								else if(j==11)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_SSCCertificate_Image();
+									datr.clickOn_HighestQualification_Image();
+									datr.clickOn_NIESBUD_Image();
+									datr.clickOn_IndustrialExperience_Image();
+								}	
+							}
+					}		
+							Thread.sleep(10000);
+							datr.clickOnNext_ForJobRole();
+							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				}
+				
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("scroll(900, 0)");
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_Third();
+				
+				List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele3.size(); i++)
+				{
+					WebElement revw1 = ele3.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
+					Thread.sleep(3000);
+					FilePreview.closeWindow(driver);
+					driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
+					Thread.sleep(3000);
+					FilePreview.closeWindow(driver);	
+				}
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_Fourth();
+				
+				List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support staff')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele4.size(); i++)
+				{
+					WebElement revw2 = ele4.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
+				}
+				
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_Fifth();
+				
+				Thread.sleep(3000);
+				datr.selectFinalReviewStatus(finalStatus);
+				datr.enterFinalStatusReviewComments(finalReviewComments);
+				Thread.sleep(3000);
+				datr.clickOnBrowseFile_ForFinalStatus();
+				Thread.sleep(3000);
+				UploadFile.upload(finalStatusFile);
+				Thread.sleep(3000);
+				datr.clickOnUploadFile_ForFinalStatus();
+				Thread.sleep(3000);
+				datr.clickOnSaveAndContinue();
+				Thread.sleep(5000);
+				datr.clickOnOK();
+				
+				Thread.sleep(5000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+			}
+			else
+			{
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Take Action')]")).click();
+				
+				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
+				Thread.sleep(3000);
+				datr.clickOn_First_PreviewAttachedProofDocument();
+				Thread.sleep(3000);
+				datr.select_First_ReviewComments(address_ReviewComments);
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_First();
+				
+				if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
+				{
+					Thread.sleep(3000);
+					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FrontView_Image();
+					datr.clickOn_LeftView_Image();
+					datr.clickOn_RightView_Image();
+					datr.clickOn_InternetConectivity_Image();
+					datr.clickOn_PowerBackup_Image();
+					Thread.sleep(3000);
+					datr.select_Third_ReviewComments(menResidential_ReviewComments);
+					datr.select_Fourth_ReviewComments(womenResidential_ReviewComments);
+					datr.select_Fifth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DifferentyAbledWashroom_Image();
+					datr.clickOn_Ramp_Image();
+					datr.clickOn_Lift_Image();
+					Thread.sleep(3000);
+					datr.select_Sixth_ReviewComments(hygiene_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DailyInspection_Image();
+					datr.clickOn_SafeDrinking_Image();
+					datr.select_Seventh_ReviewComments(medical_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FireFightingEquipment_Image();
+					datr.clickOn_FirstAidKit_Image();
+					Thread.sleep(3000);
+					datr.clickOnSaveAndNext_Second();
+				}
+				
+				else if((menResidential.equals("No")) && (womenResidential.equals("No")))
+				{
+					Thread.sleep(3000);
+					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FrontView_Image();
+					datr.clickOn_LeftView_Image();
+					datr.clickOn_RightView_Image();
+					datr.clickOn_InternetConectivity_Image();
+					datr.clickOn_PowerBackup_Image();
+					Thread.sleep(3000);
+					datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DifferentyAbledWashroom_Image();
+					datr.clickOn_Ramp_Image();
+					datr.clickOn_Lift_Image();
+					Thread.sleep(3000);
+					datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DailyInspection_Image();
+					datr.clickOn_SafeDrinking_Image();
+					datr.select_Fifth_ReviewComments(medical_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FireFightingEquipment_Image();
+					datr.clickOn_FirstAidKit_Image();
+					Thread.sleep(3000);
+					datr.clickOnSaveAndNext_Second();
+				}
+				
+				else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
+				{
+					Thread.sleep(3000);
+					datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FrontView_Image();
+					datr.clickOn_LeftView_Image();
+					datr.clickOn_RightView_Image();
+					datr.clickOn_InternetConectivity_Image();
+					datr.clickOn_PowerBackup_Image();
+					Thread.sleep(3000);
+					datr.select_Third_ReviewComments(menResidential_ReviewComments);
+					datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DifferentyAbledWashroom_Image();
+					datr.clickOn_Ramp_Image();
+					datr.clickOn_Lift_Image();
+					Thread.sleep(3000);
+					datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_DailyInspection_Image();
+					datr.clickOn_SafeDrinking_Image();
+					datr.select_Sixth_ReviewComments(medical_ReviewComments);
+					Thread.sleep(3000);
+					datr.clickOn_FireFightingEquipment_Image();
+					datr.clickOn_FirstAidKit_Image();
+					Thread.sleep(3000);
+					datr.clickOnSaveAndNext_Second();
+				}
+				
+				Thread.sleep(3000);
+				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				for(int i=0;i<elements.size();i++)
+				{
+					WebElement e1 = elements.get(i);
+					e1.click();
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
+				
+					List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
+					{
+						
+							for(int j=0;j<ele2.size();j++)
+							{
+								WebElement rvw = ele2.get(j);
+								Thread.sleep(3000);								
+								SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
+								if(j==3)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_FirstView_FirstImage();
+									datr.clickOn_SecondView_FirstImage();
+								}
+								else if(j==6)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_FirstView_SecondImage();
+									datr.clickOn_SecondView_SecondImage();
+								}
+								else if(j==11)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_SSCCertificate_Image();
+									datr.clickOn_HighestQualification_Image();
+									datr.clickOn_NIESBUD_Image();
+									datr.clickOn_IndustrialExperience_Image();
+								}	
+							}
+					}		
+							Thread.sleep(10000);
+							datr.clickOnNext_ForJobRole();
+							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				}
+				
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("scroll(900, 0)");
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_Third();
+				
+				List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele3.size(); i++)
+				{
+					WebElement revw1 = ele3.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
+					Thread.sleep(3000);
+					FilePreview.closeWindow(driver);
+					driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
+					Thread.sleep(3000);
+					FilePreview.closeWindow(driver);	
+				}
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_Fourth();
+				
+				List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support staff')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele4.size(); i++)
+				{
+					WebElement revw2 = ele4.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
+				}
+				
+				Thread.sleep(3000);
+				datr.clickOnSaveAndNext_Fifth();
+				
+				Thread.sleep(3000);
+				datr.selectFinalReviewStatus(finalStatus);
+				datr.enterFinalStatusReviewComments(finalReviewComments);
+				Thread.sleep(3000);
+				datr.clickOnBrowseFile_ForFinalStatus();
+				Thread.sleep(3000);
+				UploadFile.upload(finalStatusFile);
+				Thread.sleep(3000);
+				datr.clickOnUploadFile_ForFinalStatus();
+				Thread.sleep(3000);
+				datr.clickOnSaveAndContinue();
+				Thread.sleep(3000);
+				datr.clickOnOK();
+				
+				PostLoginPage plp = new PostLoginPage(driver);
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+			}
+			
+			
 		}
 		
 		else if(tc_Type.equals("PMKK") || tc_Type.equals("PMKK SPOKE"))
@@ -1919,783 +1919,918 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		
 			
 		}
+	}
+	
+	
+	
+	
 		
-		
-//		lp.clickLogin();
-//		elp.performlogin(tc_ID, password);
-		TC_DashboardPage tcd = new TC_DashboardPage(driver);
-//		Thread.sleep(8000);
-//		tcd.clickOnMyCAAFSubmit();
-		TC_MySchemesPage tcm = new TC_MySchemesPage(driver);
-//		Thread.sleep(3000);
-//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[text()='"+sector+"']")).getText(), sector);
-//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Deemed Ready')]")).getText(), "Deemed Ready");
-//		Thread.sleep(3000);
-//		driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[contains(text(),'Apply for Scheme')]")).click();
-//		Thread.sleep(3000);
-//		tcm.selectScheme_ForJobRoleName(scheme);
-//		tcm.clickOnBrowseFileForScheme();
-//		Thread.sleep(3000);
-//		UploadFile.upload(schemeFile);
-//		Thread.sleep(3000);
-//		tcm.clickOnUploadFileForScheme();
-//		Thread.sleep(3000);
-//		tcm.clickOnSubmit();
-//		Thread.sleep(3000);
-//		tcm.clickOnOK();
-//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[text()='PMKVY']")).getText(), scheme);
-//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Scheme Approval Pending')]")).getText(), "Scheme Approval Pending");
-//		Thread.sleep(3000);
-//		Thread.sleep(3000);
-		PostLoginPage plp = new PostLoginPage(driver);
-//		plp.clickOnProfileLogo();
-//		plp.clickOnLogout();
-//		
-//		lp.clickLogin();
-//		elp.performlogin(sa_Username, password);
-//		SA_DashboardPage sad = new SA_DashboardPage(driver);
-//		Thread.sleep(8000);
-//		sad.clickOnJobRoleSchemeRecommendationRequest();
-//		SA_ViewJobRoleRecommendationRequestPage sav = new SA_ViewJobRoleRecommendationRequestPage(driver);
-//		Thread.sleep(3000);
-//		sav.enterTrainingCentreName(tc_Name);
-//		sav.selectStatus(stage);
-//		sav.clickOnApply();
-//		Thread.sleep(3000);
-//		driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[contains(text(),'View Submitted CAAF')]")).click();
-//		//sav.clickOnBack();
-//		Thread.sleep(3000);
-//		driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[contains(text(),'View Job Role Details')]")).click();
-//		Thread.sleep(5000);
-//		sav.clickOnGoBack();
-//		Thread.sleep(3000);
-//		sav.enterTrainingCentreName(tc_Name);
-//		sav.selectStatus(stage);
-//		sav.clickOnApply();
-//		Thread.sleep(3000);
-//		driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();		
-//		driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[contains(text(),'Approve/Reject')]")).click();
-//		Thread.sleep(3000);
-//		sav.clickOnApproved();
-//		Thread.sleep(3000);
-//		sav.clickOnSubmit();
-//		Thread.sleep(3000);
-//		sav.clickOnOK();
-//		Thread.sleep(3000);
-//		sav.clickOnReset();
-//		Thread.sleep(3000);
-//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//span[text()='Approved']")).getText(), "Approved");
-//		Thread.sleep(3000);
-//		plp.clickOnProfileLogo();
-//		plp.clickOnLogout();
-		
-		if(tc_Type.equals("NON PMKK"))
-		{
-//			lp.clickLogin();
-//			elp.performlogin(tc_ID, password);
-//			Thread.sleep(8000);
-//			tcd.clickOnMyCAAFSubmit();
-//			Thread.sleep(5000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Scheme Approved')]")).getText(), "Scheme Approved");
-//			Thread.sleep(3000);
-//			tcm.clickOnSubmitForInspection();
-//			Thread.sleep(3000);
-//			tcm.clickOnOK();
-//			
-//			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
-////			tcbi.enterCity(city);
-////			tcbi.selectCountry(Country);
-////			Thread.sleep(3000);
-////			if(paymentMethod.equals("Credit Card"))
-////			{
-////				tcbi.clickOnCreditCard();
-////				Thread.sleep(3000);
-////				tcbi.enterCreditCardNumber(creditCardNumber);
-////				tcbi.selectMonth_ForCreditCard(month_CreditCard);
-////				tcbi.selectYear_ForCreditCard(year_CreditCard);
-////				tcbi.enterCVVForCreditCard(cvv_CreditCard);
-////				Thread.sleep(3000);
-////				tcbi.clickOnMakePaymentForCreditCard();
-////			}
-////			else if(paymentMethod.equals("Debit Card"))
-////			{
-////				tcbi.clickOnDebitCard();
-////				Thread.sleep(3000);
-////				tcbi.enterDebitCardNumber(debitCardNumber);
-////				tcbi.selectMonth_ForDebitCard(month_DebitCard);
-////				tcbi.selectYear_ForDebitCard(year_DebitCard);
-////				tcbi.enterCVVForDebitCard(cvv_DebitCard);
-////				Thread.sleep(3000);
-////				tcbi.clickOnMakePaymentForDebitCard();
-////			}
-////			else if(paymentMethod.equals("Net Banking"))
-////			{
-////				tcbi.clickOnNetBanking();
-////				Thread.sleep(3000);
-////				tcbi.selectBankName(bankName);
-////				Thread.sleep(3000);
-////				tcbi.clickOnMakePaymentForNetBanking();
-////			}
-////			Thread.sleep(3000);
-////			tcbi.clickOnReturnToTheMerchantSite();
-//			Thread.sleep(5000);
-//			tcbi.clickOnContinue();
-//			
-//			Thread.sleep(3000);
-//			tcm.clickOnOK();
-//			Thread.sleep(3000);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout();
-//			
-//			lp.clickLogin();
-//			elp.performlogin(ia_Username, password);
-//			InspectionAgency_DashboardPage iad = new InspectionAgency_DashboardPage(driver);
-//			Thread.sleep(8000);
-//			iad.clickOnViewAllAssessmentRequest();
-//			IA_TC_AssessmentRequestPage iatc = new IA_TC_AssessmentRequestPage(driver);
-//			Thread.sleep(3000);
-//			iatc.clickOnViewAllTCRequest();
-//			Thread.sleep(3000);
-//			iatc.enterForSearch(tc_ID);
-//			Thread.sleep(3000);
-//			iatc.clickOnApply();
-//			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='Inspection Request']")).getText(), "Inspection Request");
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign Inspection Date')]")).click();
-//			Thread.sleep(3000);
-//			iatc.selectForAssign_CentreInspector(ci_Username);
-//			Thread.sleep(3000);
-//			iatc.selectForAssign_QC(qc_Username);
-//			Thread.sleep(3000);
-//			iatc.enterForInspectionDate();
-//			Thread.sleep(3000);
-//			iatc.clickOnSpocName();
-//			Thread.sleep(3000);
-//			inspectionDate = driver.findElement(By.xpath("//input[@formcontrolname='inspectionDate']")).getAttribute("value");
-//			ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 43, inspectionDate);
-//			Thread.sleep(3000);
-//			iatc.clickOnAssign_ForCI();
-//			Thread.sleep(3000);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout();
-//			
-//			lp.clickLogin();
-//			elp.performlogin(tc_ID, password);
-//			Thread.sleep(8000);
-//			tcd.clickOnMyCAAFSubmit();
-//			Thread.sleep(8000);
-//			tcm.clickOnAcceptInspectionDate();
-//			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", "").replace("-", "/"), inspectionDate);
-//			Thread.sleep(3000);
-//			tcm.clickOnAcceptProposedInspectionDate();
-//			Thread.sleep(3000);
-//			tcm.clickOnSubmit_ForInspectionDate();
-//			Thread.sleep(3000);
-//			tcm.clickOnOK();
-//			Thread.sleep(3000);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout();
-//			
-//			
-//			//CI Mobile app
-//
-//			
-//			
-//			lp.clickLogin();
-			elp.performlogin(qc_Username, password);
-			QC_DashboardPage qcd = new QC_DashboardPage(driver);
+	@DataProvider
+	public Object[][] tcSchemeApprovalAndInspection()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04");
+	}
+	
+	@Test(dataProvider="tcSchemeApprovalAndInspection", enabled=false)
+	public void approveSchemeUnderTC_05(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments) throws Exception
+	{
+			LoginPage lp = new LoginPage(driver);			
+			lp.clickLogin();
+			EnterLoginPage elp = new EnterLoginPage(driver);
+			elp.performlogin(tc_ID, password);
+			TC_DashboardPage tcd = new TC_DashboardPage(driver);
 			Thread.sleep(8000);
-			qcd.clickOnViewAllAssessmentRequest();
-			QC_AllAssignedInspectionRequestPage qca = new QC_AllAssignedInspectionRequestPage(driver);
-			Thread.sleep(4000);
-			qca.enterForSearchByKeyword(tc_ID);
+			tcd.clickOnMyCAAFSubmit();
+			TC_MySchemesPage tcm = new TC_MySchemesPage(driver);
 			Thread.sleep(3000);
-			qca.clickOnApply();
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[text()='"+sector+"']")).getText(), sector);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Deemed Ready')]")).getText(), "Deemed Ready");
 			Thread.sleep(3000);
-			//Assert.assertEquals(driver.findElement(By.xpath("")), "");
-			driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-			driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[contains(text(),'Take Action')]")).click();
+			driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[contains(text(),'Apply for Scheme')]")).click();
+			Thread.sleep(3000);
+			tcm.selectScheme_ForJobRoleName(scheme);
+			tcm.clickOnBrowseFileForScheme();
+			Thread.sleep(3000);
+			UploadFile.upload(schemeFile);
+			Thread.sleep(3000);
+			tcm.clickOnUploadFileForScheme();
+			Thread.sleep(3000);
+			tcm.clickOnSubmit();
+			Thread.sleep(3000);
+			tcm.clickOnOK();
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[text()='PMKVY']")).getText(), scheme);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Scheme Approval Pending')]")).getText(), "Scheme Approval Pending");
+			Thread.sleep(3000);
+			Thread.sleep(3000);
+			PostLoginPage plp = new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
 			
-			TC_ApprovalPage datr = new TC_ApprovalPage(driver);
+			lp.clickLogin();
+			elp.performlogin(sa_Username, password);
+			SA_DashboardPage sad = new SA_DashboardPage(driver);
+			Thread.sleep(8000);
+			sad.clickOnJobRoleSchemeRecommendationRequest();
+			SA_ViewJobRoleRecommendationRequestPage sav = new SA_ViewJobRoleRecommendationRequestPage(driver);
 			Thread.sleep(3000);
-			datr.clickOn_First_PreviewAttachedProofDocument();
+			sav.enterTrainingCentreName(tc_Name);
+			sav.selectStatus(stage);
+			sav.clickOnApply();
 			Thread.sleep(3000);
-			//datr.select_First_ReviewComments(address_ReviewComments);
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[contains(text(),'View Submitted CAAF')]")).click();
+			//sav.clickOnBack();
 			Thread.sleep(3000);
-			datr.clickOnNext_First();
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[contains(text(),'View Job Role Details')]")).click();
+			Thread.sleep(5000);
+			sav.clickOnGoBack();
+			Thread.sleep(3000);
+			sav.enterTrainingCentreName(tc_Name);
+			sav.selectStatus(stage);
+			sav.clickOnApply();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();		
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//a[contains(text(),'Approve/Reject')]")).click();
+			Thread.sleep(3000);
+			sav.clickOnApproved();
+			Thread.sleep(3000);
+			sav.clickOnSubmit();
+			Thread.sleep(3000);
+			sav.clickOnOK();
+			Thread.sleep(3000);
+			sav.clickOnReset();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_Name+"']]]//span[text()='Approved']")).getText(), "Approved");
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
 			
-			if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
+			if(tc_Type.equals("NON PMKK"))
 			{
+				lp.clickLogin();
+				elp.performlogin(tc_ID, password);
+				Thread.sleep(8000);
+				tcd.clickOnMyCAAFSubmit();
+				Thread.sleep(5000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Scheme Approved')]")).getText(), "Scheme Approved");
 				Thread.sleep(3000);
-				//datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+				tcm.clickOnSubmitForInspection();
 				Thread.sleep(3000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
+				tcm.clickOnOK();
+				
+				TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
+	//			tcbi.enterCity(city);
+	//			tcbi.selectCountry(Country);
+	//			Thread.sleep(3000);
+	//			if(paymentMethod.equals("Credit Card"))
+	//			{
+	//				tcbi.clickOnCreditCard();
+	//				Thread.sleep(3000);
+	//				tcbi.enterCreditCardNumber(creditCardNumber);
+	//				tcbi.selectMonth_ForCreditCard(month_CreditCard);
+	//				tcbi.selectYear_ForCreditCard(year_CreditCard);
+	//				tcbi.enterCVVForCreditCard(cvv_CreditCard);
+	//				Thread.sleep(3000);
+	//				tcbi.clickOnMakePaymentForCreditCard();
+	//			}
+	//			else if(paymentMethod.equals("Debit Card"))
+	//			{
+	//				tcbi.clickOnDebitCard();
+	//				Thread.sleep(3000);
+	//				tcbi.enterDebitCardNumber(debitCardNumber);
+	//				tcbi.selectMonth_ForDebitCard(month_DebitCard);
+	//				tcbi.selectYear_ForDebitCard(year_DebitCard);
+	//				tcbi.enterCVVForDebitCard(cvv_DebitCard);
+	//				Thread.sleep(3000);
+	//				tcbi.clickOnMakePaymentForDebitCard();
+	//			}
+	//			else if(paymentMethod.equals("Net Banking"))
+	//			{
+	//				tcbi.clickOnNetBanking();
+	//				Thread.sleep(3000);
+	//				tcbi.selectBankName(bankName);
+	//				Thread.sleep(3000);
+	//				tcbi.clickOnMakePaymentForNetBanking();
+	//			}
+	//			Thread.sleep(3000);
+	//			tcbi.clickOnReturnToTheMerchantSite();
+				Thread.sleep(5000);
+				tcbi.clickOnContinue();
+				
 				Thread.sleep(3000);
-				datr.select_First_ReviewComments(menResidential_ReviewComments);
-				datr.select_Second_ReviewComments(womenResidential_ReviewComments);
-				datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+				tcm.clickOnOK();
 				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				lp.clickLogin();
+				elp.performlogin(ia_Username, password);
+				InspectionAgency_DashboardPage iad = new InspectionAgency_DashboardPage(driver);
+				Thread.sleep(8000);
+				iad.clickOnViewAllAssessmentRequest();
+				IA_TC_AssessmentRequestPage iatc = new IA_TC_AssessmentRequestPage(driver);
 				Thread.sleep(3000);
-				datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
+				iatc.clickOnViewAllTCRequest();
 				Thread.sleep(3000);
-				datr.clickOn_DailyInspection_Image();
-				datr.clickOn_SafeDrinking_Image();
-				datr.select_Fifth_ReviewComments(medical_ReviewComments);
+				iatc.enterForSearch(tc_ID);
 				Thread.sleep(3000);
-				datr.clickOn_FireFightingEquipment_Image();
-				datr.clickOn_FirstAidKit_Image();
+				iatc.clickOnApply();
 				Thread.sleep(3000);
-				datr.clickOnNext_Second();
-			}
-			
-			else if((menResidential.equals("No")) && (womenResidential.equals("No")))
-			{
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='Inspection Request']")).getText(), "Inspection Request");
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign Inspection Date')]")).click();
+				Thread.sleep(3000);
+				iatc.selectForAssign_CentreInspector(ci_Username);
+				Thread.sleep(3000);
+				iatc.selectForAssign_QC(qc_Username);
+				Thread.sleep(3000);
+				iatc.enterForInspectionDate();
+				Thread.sleep(3000);
+				iatc.clickOnSpocName();
+				Thread.sleep(3000);
+				inspectionDate = driver.findElement(By.xpath("//input[@formcontrolname='inspectionDate']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 43, inspectionDate);
+				Thread.sleep(3000);
+				iatc.clickOnAssign_ForCI();
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				lp.clickLogin();
+				elp.performlogin(tc_ID, password);
+				Thread.sleep(8000);
+				tcd.clickOnMyCAAFSubmit();
+				Thread.sleep(8000);
+				tcm.clickOnAcceptInspectionDate();
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", "").replace("-", "/"), inspectionDate);
+				Thread.sleep(3000);
+				tcm.clickOnAcceptProposedInspectionDate();
+				Thread.sleep(3000);
+				tcm.clickOnSubmit_ForInspectionDate();
+				Thread.sleep(3000);
+				tcm.clickOnOK();
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				
+				//CI Mobile app
+	
+				
+				
+				lp.clickLogin();
+				elp.performlogin(qc_Username, password);
+				QC_DashboardPage qcd = new QC_DashboardPage(driver);
+				Thread.sleep(8000);
+				qcd.clickOnViewAllAssessmentRequest();
+				QC_AllAssignedInspectionRequestPage qca = new QC_AllAssignedInspectionRequestPage(driver);
+				Thread.sleep(4000);
+				qca.enterForSearchByKeyword(tc_ID);
+				Thread.sleep(3000);
+				qca.clickOnApply();
+				Thread.sleep(3000);
+				//Assert.assertEquals(driver.findElement(By.xpath("")), "");
+				driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+				driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[contains(text(),'Take Action')]")).click();
+				
+				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
+				Thread.sleep(3000);
+				//datr.clickOn_First_PreviewAttachedProofDocument();
+				Thread.sleep(3000);
+				//datr.select_First_ReviewComments(address_ReviewComments);
+				Thread.sleep(3000);
+				datr.clickOnNext_First();
+				
+				if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
+				{
+					JavascriptExecutor js = (JavascriptExecutor) driver;
+					js.executeScript("scroll(900, 0)");
+					Thread.sleep(3000);
+					List<WebElement> tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					for(int i=0; i<tcimg.size(); i++)
+					{
+						WebElement img = tcimg.get(i);
+						Thread.sleep(5000);
+						img.click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+						if(i==9)
+						{
+							Thread.sleep(3000);
+							datr.select_First_ReviewComments(menResidential_ReviewComments);
+							datr.select_Second_ReviewComments(womenResidential_ReviewComments);
+							datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+						}
+						if(i==15)
+						{
+							Thread.sleep(3000);
+							datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
+						}
+						if(i==19)
+						{
+							Thread.sleep(3000);
+							datr.select_Fifth_ReviewComments(medical_ReviewComments);
+						}
+						//tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					}
+					
+					Thread.sleep(3000);
+					datr.clickOnNext_Second();
+				}
+				
+				else if((menResidential.equals("No")) && (womenResidential.equals("No")))
+				{
+					JavascriptExecutor js = (JavascriptExecutor) driver;
+					js.executeScript("scroll(900, 0)");
+					List<WebElement> tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					for(int i=0; i<tcimg.size(); i++)
+					{
+						WebElement img = tcimg.get(i);
+						img.click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+						if(i==9)
+						{
+							Thread.sleep(3000);
+							datr.select_First_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+						}
+						if(i==15)
+						{
+							Thread.sleep(3000);
+							datr.select_Second_ReviewComments(hygiene_ReviewComments);
+						}
+						if(i==19)
+						{
+							Thread.sleep(3000);
+							datr.select_Third_ReviewComments(medical_ReviewComments);
+						}
+						
+					}	
+					Thread.sleep(3000);
+					datr.clickOnNext_Second();
+				}
+				
+				else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
+				{
+					JavascriptExecutor js = (JavascriptExecutor) driver;
+					js.executeScript("scroll(900, 0)");
+					List<WebElement> tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					for(int i=0; i<tcimg.size(); i++)
+					{
+						WebElement img = tcimg.get(i);
+						img.click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+						if(i==9)
+						{
+							Thread.sleep(3000);
+							datr.select_Third_ReviewComments(menResidential_ReviewComments);
+							datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+						}
+						if(i==15)
+						{
+							Thread.sleep(3000);
+							datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
+						}
+						if(i==19)
+						{
+							Thread.sleep(3000);
+							datr.select_Sixth_ReviewComments(medical_ReviewComments);
+						}
+						Thread.sleep(3000);
+						datr.clickOnNext_Second();
+					}
+					Thread.sleep(3000);
+					datr.clickOnNext_Second();
+				}
+				
+				Thread.sleep(5000);
+				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				for(int i=0;i<elements.size();i++)
+				{
+					WebElement e1 = elements.get(i);
+					e1.click();
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
+				
+					List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
+					{
+						
+							for(int j=0;j<ele2.size();j++)
+							{
+								WebElement rvw = ele2.get(j);
+								Thread.sleep(3000);								
+								SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
+								if(j==3)
+								{
+	//								Thread.sleep(3000);
+	//								datr.clickOn_FirstView_FirstImage();
+	//								datr.clickOn_SecondView_FirstImage();
+								}
+								else if(j==6)
+								{
+	//								Thread.sleep(3000);
+	//								datr.clickOn_FirstView_SecondImage();
+	//								datr.clickOn_SecondView_SecondImage();
+								}
+								else if(j==11)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_SSCCertificate_Image();
+									datr.clickOn_HighestQualification_Image();
+									datr.clickOn_NIESBUD_Image();
+									datr.clickOn_IndustrialExperience_Image();
+								}	
+							}
+					}		
+							Thread.sleep(10000);
+	//						datr.clickOnNext_ForJobRole();
+							JavascriptExecutor js = (JavascriptExecutor) driver;
+							js.executeScript("scroll(900, 0)");
+							Thread.sleep(3000);
+							datr.clickOnGoBack();
+							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				}
+				
 				JavascriptExecutor js = (JavascriptExecutor) driver;
 				js.executeScript("scroll(900, 0)");
 				Thread.sleep(3000);
-				//datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+				datr.clickOnNext_Third();
+				
 				Thread.sleep(5000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
+				List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele3.size(); i++)
+				{
+					WebElement revw1 = ele3.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
+					Thread.sleep(3000);
+	//				driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
+	//				Thread.sleep(3000);
+	//				FilePreview.closeWindow(driver);
+	//				driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
+	//				Thread.sleep(3000);
+	//				FilePreview.closeWindow(driver);	
+				}
 				Thread.sleep(3000);
-				datr.select_First_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+				datr.clickOnNext_Fourth();
+				
+				Thread.sleep(5000);
+				List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support Staff ')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele4.size(); i++)
+				{
+					WebElement revw2 = ele4.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
+				}
+				
 				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
+				datr.clickOnNext_Fifth();
+				
+				Thread.sleep(5000);
+				datr.selectCentreStatus(centreStatus);
+				datr.enterCentreComment(centreComment);
+				datr.clickOnCentreStatus_BrowseFile();
 				Thread.sleep(3000);
-				datr.select_Second_ReviewComments(hygiene_ReviewComments);
+				UploadFile.upload(centreStatusFile);
 				Thread.sleep(3000);
-				datr.clickOn_DailyInspection_Image();
-				datr.clickOn_SafeDrinking_Image();
-				datr.select_Third_ReviewComments(medical_ReviewComments);
+				datr.clickOnCentreStatus_UploadFile();
+				
+				List<WebElement> ele5 = driver.findElements(By.xpath("//div[label[contains(text(),'Job Role')]]//input[@placeholder='Selected Job Role']"));
+				for(int i=0; i<ele5.size(); i++)
+				{
+					Thread.sleep(3000);
+					datr.selectJobRole_FinalReviewStatus(jobRoleStatus);
+					datr.enterJobRole_FinalReviewComment(jobRoleComment);
+					Thread.sleep(3000);
+					datr.clickOnJobRole_BrowseFile();
+					Thread.sleep(3000);
+					UploadFile.upload(jobRoleStatusFile);
+					Thread.sleep(3000);
+					datr.clickOnJobRole_UploadFile();
+				}
 				Thread.sleep(3000);
-				datr.clickOn_FireFightingEquipment_Image();
-				datr.clickOn_FirstAidKit_Image();
+				datr.clickOnSaveAndSubmit();
 				Thread.sleep(3000);
-				datr.clickOnNext_Second();
+				datr.clickOnOK();
+				Thread.sleep(3000);
+				datr.clickOnOK_QC();
+				
+				Thread.sleep(4000);
+				qca.enterForSearchByKeyword(tc_ID);
+				Thread.sleep(3000);
+				qca.clickOnApply();
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//span[text()='Marked']")).getText(), "Marked");
+				
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+							
 			}
 			
-			else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
+			else if(tc_Type.equals("PMKK") || tc_Type.equals("PMKK SPOKE"))
 			{
+				lp.clickLogin();
+				elp.performlogin(tc_ID, password);
+				Thread.sleep(8000);
+				tcd.clickOnMyCAAFSubmit();
+				Thread.sleep(5000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approved");
 				Thread.sleep(3000);
-				datr.select_Second_ReviewComments(approachRoad_ReviewComments);
+				tcm.clickOnSubmitForInspection();
 				Thread.sleep(3000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
+				tcm.clickOnOK();
+				
+				TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
+	//			tcbi.enterCity(city);
+	//			tcbi.selectCountry(Country);
+	//			Thread.sleep(3000);
+	//			if(paymentMethod.equals("Credit Card"))
+	//			{
+	//				tcbi.clickOnCreditCard();
+	//				Thread.sleep(3000);
+	//				tcbi.enterCreditCardNumber(creditCardNumber);
+	//				tcbi.selectMonth_ForCreditCard(month_CreditCard);
+	//				tcbi.selectYear_ForCreditCard(year_CreditCard);
+	//				tcbi.enterCVVForCreditCard(cvv_CreditCard);
+	//				Thread.sleep(3000);
+	//				tcbi.clickOnMakePaymentForCreditCard();
+	//			}
+	//			else if(paymentMethod.equals("Debit Card"))
+	//			{
+	//				tcbi.clickOnDebitCard();
+	//				Thread.sleep(3000);
+	//				tcbi.enterDebitCardNumber(debitCardNumber);
+	//				tcbi.selectMonth_ForDebitCard(month_DebitCard);
+	//				tcbi.selectYear_ForDebitCard(year_DebitCard);
+	//				tcbi.enterCVVForDebitCard(cvv_DebitCard);
+	//				Thread.sleep(3000);
+	//				tcbi.clickOnMakePaymentForDebitCard();
+	//			}
+	//			else if(paymentMethod.equals("Net Banking"))
+	//			{
+	//				tcbi.clickOnNetBanking();
+	//				Thread.sleep(3000);
+	//				tcbi.selectBankName(bankName);
+	//				Thread.sleep(3000);
+	//				tcbi.clickOnMakePaymentForNetBanking();
+	//			}
+	//			Thread.sleep(3000);
+	//			tcbi.clickOnReturnToTheMerchantSite();
+				Thread.sleep(5000);
+				tcbi.clickOnContinue();
+				
 				Thread.sleep(3000);
-				datr.select_Third_ReviewComments(menResidential_ReviewComments);
-				datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+				tcm.clickOnOK();
 				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				lp.clickLogin();
+				elp.performlogin(pmkkSPOKEUsername, password);
+				PMKKSPOC_DashboardPage pmkk = new PMKKSPOC_DashboardPage(driver);
+				Thread.sleep(5000);
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("scroll(0, 900)");
+				Thread.sleep(8000);
+				pmkk.clickOnViewAllAssessmentRequest();
+				PMKKSPOC_AssignedInspectionRequestPage pmir = new PMKKSPOC_AssignedInspectionRequestPage(driver);
 				Thread.sleep(3000);
-				datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
+				pmir.enterForSearch(tc_ID);
 				Thread.sleep(3000);
-				datr.clickOn_DailyInspection_Image();
-				datr.clickOn_SafeDrinking_Image();
-				datr.select_Sixth_ReviewComments(medical_ReviewComments);
+				pmir.clickOnApply();
 				Thread.sleep(3000);
-				datr.clickOn_FireFightingEquipment_Image();
-				datr.clickOn_FirstAidKit_Image();
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='Inspection Request']")).getText(), "Inspection Request");
 				Thread.sleep(3000);
-				datr.clickOnNext_Second();
-			}
-			
-			Thread.sleep(3000);
-			List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-			for(int i=0;i<elements.size();i++)
-			{
-				WebElement e1 = elements.get(i);
-				e1.click();
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign Inspection Date')]")).click();
 				Thread.sleep(3000);
-				driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
-			
-				List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
+				pmir.selectForAssign_CentreInspector(ci_Username);
+				Thread.sleep(3000);
+				pmir.selectForAssign_QC(qc_Username);
+				Thread.sleep(3000);
+				pmir.enterForInspectionDate();
+				Thread.sleep(3000);
+				inspectionDate = driver.findElement(By.xpath("//input[@formcontrolname='inspectionDate']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 43, inspectionDate);
+				Thread.sleep(3000);
+				pmir.clickOnAssign_ForCI();
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='Inspection Date Assigned']")).getText(), "Inspection Date Assigned");
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				lp.clickLogin();
+				elp.performlogin(tc_ID, password);
+				Thread.sleep(8000);
+				tcd.clickOnMyCAAFSubmit();
+				Thread.sleep(8000);
+				tcm.clickOnAcceptInspectionDate();
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", ""), inspectionDate);
+				Thread.sleep(3000);
+				tcm.clickOnAcceptProposedInspectionDate();
+				Thread.sleep(3000);
+				tcm.clickOnSubmit_ForInspectionDate();
+				Thread.sleep(3000);
+				tcm.clickOnOK();
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				//CI Mobileapp
+				
+				
+				lp.clickLogin();
+				elp.performlogin(qc_Username, password);
+				
+				QC_DashboardPage qcd = new QC_DashboardPage(driver);
+				Thread.sleep(8000);
+				qcd.clickOnViewAllAssessmentRequest();
+				QC_AllAssignedInspectionRequestPage qca = new QC_AllAssignedInspectionRequestPage(driver);
+				Thread.sleep(4000);
+				qca.enterForSearchByKeyword(tc_ID);
+				Thread.sleep(3000);
+				qca.clickOnApply();
+				Thread.sleep(3000);
+				//Assert.assertEquals(driver.findElement(By.xpath("")), "");
+				driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+				driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[contains(text(),'Take Action')]")).click();
+				
+				TC_ApprovalPage datr = new TC_ApprovalPage(driver);
+				Thread.sleep(3000);
+				//datr.clickOn_First_PreviewAttachedProofDocument();
+				Thread.sleep(3000);
+				//datr.select_First_ReviewComments(address_ReviewComments);
+				Thread.sleep(3000);
+				datr.clickOnNext_First();
+				
+				if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
 				{
 					
-						for(int j=0;j<ele2.size();j++)
-						{
-							WebElement rvw = ele2.get(j);
-							Thread.sleep(3000);								
-							SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
-							if(j==3)
-							{
-//								Thread.sleep(3000);
-//								datr.clickOn_FirstView_FirstImage();
-//								datr.clickOn_SecondView_FirstImage();
-							}
-							else if(j==6)
-							{
-//								Thread.sleep(3000);
-//								datr.clickOn_FirstView_SecondImage();
-//								datr.clickOn_SecondView_SecondImage();
-							}
-							else if(j==11)
-							{
-								Thread.sleep(3000);
-								datr.clickOn_SSCCertificate_Image();
-								datr.clickOn_HighestQualification_Image();
-								datr.clickOn_NIESBUD_Image();
-								datr.clickOn_IndustrialExperience_Image();
-							}	
-						}
-				}		
-						Thread.sleep(10000);
-//						datr.clickOnNext_ForJobRole();
-						JavascriptExecutor js = (JavascriptExecutor) driver;
-						js.executeScript("scroll(900, 0)");
+					js.executeScript("scroll(900, 0)");
+					Thread.sleep(3000);
+					List<WebElement> tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					for(int i=0; i<tcimg.size(); i++)
+					{
+						WebElement img = tcimg.get(i);
+						Thread.sleep(5000);
+						img.click();
 						Thread.sleep(3000);
-						datr.clickOnGoBack();
-						elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+						FilePreview.closeWindow(driver);
+						if(i==9)
+						{
+							Thread.sleep(3000);
+							datr.select_First_ReviewComments(menResidential_ReviewComments);
+							datr.select_Second_ReviewComments(womenResidential_ReviewComments);
+							datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+						}
+						if(i==15)
+						{
+							Thread.sleep(3000);
+							datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
+						}
+						if(i==19)
+						{
+							Thread.sleep(3000);
+							datr.select_Fifth_ReviewComments(medical_ReviewComments);
+						}
+						
+					}
+					
+					Thread.sleep(3000);
+					datr.clickOnNext_Second();
+				}
+				
+				else if((menResidential.equals("No")) && (womenResidential.equals("No")))
+				{
+					js.executeScript("scroll(900, 0)");
+					Thread.sleep(3000);
+					List<WebElement> tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					for(int i=0; i<tcimg.size(); i++)
+					{
+						WebElement img = tcimg.get(i);
+						Thread.sleep(5000);
+						img.click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+						if(i==9)
+						{
+							Thread.sleep(3000);
+							datr.select_First_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+						}
+						if(i==15)
+						{
+							Thread.sleep(3000);
+							datr.select_Second_ReviewComments(hygiene_ReviewComments);
+						}
+						if(i==19)
+						{
+							Thread.sleep(3000);
+							datr.select_Third_ReviewComments(medical_ReviewComments);
+						}
+						
+					}	
+					Thread.sleep(3000);
+					datr.clickOnNext_Second();
+				}
+				
+				else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
+				{
+					js.executeScript("scroll(900, 0)");
+					Thread.sleep(3000);
+					List<WebElement> tcimg = driver.findElements(By.xpath("//figure[@class='image-alignment']"));
+					for(int i=0; i<tcimg.size(); i++)
+					{
+						WebElement img = tcimg.get(i);
+						Thread.sleep(5000);
+						img.click();
+						Thread.sleep(3000);
+						FilePreview.closeWindow(driver);
+						if(i==9)
+						{
+							Thread.sleep(3000);
+							datr.select_Third_ReviewComments(menResidential_ReviewComments);
+							datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
+						}
+						if(i==15)
+						{
+							Thread.sleep(3000);
+							datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
+						}
+						if(i==19)
+						{
+							Thread.sleep(3000);
+							datr.select_Sixth_ReviewComments(medical_ReviewComments);
+						}
+						Thread.sleep(3000);
+						datr.clickOnNext_Second();
+					}
+					Thread.sleep(3000);
+					datr.clickOnNext_Second();
+				}
+				
+				Thread.sleep(5000);
+				List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				for(int i=0;i<elements.size();i++)
+				{
+					WebElement e1 = elements.get(i);
+					e1.click();
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
+				
+					List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
+					{
+						
+							for(int j=0;j<ele2.size();j++)
+							{
+								WebElement rvw = ele2.get(j);
+								Thread.sleep(3000);								
+								SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
+								if(j==3)
+								{
+	//								Thread.sleep(3000);
+	//								datr.clickOn_FirstView_FirstImage();
+	//								datr.clickOn_SecondView_FirstImage();
+								}
+								else if(j==6)
+								{
+	//								Thread.sleep(3000);
+	//								datr.clickOn_FirstView_SecondImage();
+	//								datr.clickOn_SecondView_SecondImage();
+								}
+								else if(j==11)
+								{
+									Thread.sleep(3000);
+									datr.clickOn_SSCCertificate_Image();
+									datr.clickOn_HighestQualification_Image();
+									datr.clickOn_NIESBUD_Image();
+									datr.clickOn_IndustrialExperience_Image();
+								}	
+							}
+					}		
+							Thread.sleep(10000);
+	//						datr.clickOnNext_ForJobRole();
+							js.executeScript("scroll(900, 0)");
+							Thread.sleep(3000);
+							datr.clickOnGoBack();
+							elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				}
+				
+				js.executeScript("scroll(900, 0)");
+				Thread.sleep(3000);
+				datr.clickOnNext_Third();
+				
+				Thread.sleep(5000);
+				List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele3.size(); i++)
+				{
+					WebElement revw1 = ele3.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
+					Thread.sleep(3000);
+	//				driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
+	//				Thread.sleep(3000);
+	//				FilePreview.closeWindow(driver);
+	//				driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
+	//				Thread.sleep(3000);
+	//				FilePreview.closeWindow(driver);	
+				}
+				Thread.sleep(3000);
+				datr.clickOnNext_Fourth();
+				
+				Thread.sleep(5000);
+				List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support Staff ')]]]]//select[option[text()='Select Review Comments']]"));
+				for(int i=0; i<ele4.size(); i++)
+				{
+					WebElement revw2 = ele4.get(i);
+					Thread.sleep(3000);
+					SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
+				}
+				
+				Thread.sleep(3000);
+				datr.clickOnNext_Fifth();
+				
+				Thread.sleep(5000);
+				datr.selectCentreStatus(centreStatus);
+				datr.enterCentreComment(centreComment);
+				datr.clickOnCentreStatus_BrowseFile();
+				Thread.sleep(3000);
+				UploadFile.upload(centreStatusFile);
+				Thread.sleep(3000);
+				datr.clickOnCentreStatus_UploadFile();
+				
+				List<WebElement> ele5 = driver.findElements(By.xpath("//div[label[contains(text(),'Job Role')]]//input[@placeholder='Selected Job Role']"));
+				for(int i=0; i<ele5.size(); i++)
+				{
+					Thread.sleep(3000);
+					datr.selectJobRole_FinalReviewStatus(jobRoleStatus);
+					datr.enterJobRole_FinalReviewComment(jobRoleComment);
+					Thread.sleep(3000);
+					datr.clickOnJobRole_BrowseFile();
+					Thread.sleep(3000);
+					UploadFile.upload(jobRoleStatusFile);
+					Thread.sleep(3000);
+					datr.clickOnJobRole_UploadFile();
+				}
+				Thread.sleep(3000);
+				datr.clickOnSaveAndSubmit();
+				Thread.sleep(3000);
+				datr.clickOnOK();
+				Thread.sleep(3000);
+				datr.clickOnOK_QC();
+				
+				Thread.sleep(4000);
+				qca.enterForSearchByKeyword(tc_ID);
+				Thread.sleep(3000);
+				qca.clickOnApply();
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//span[text()='Marked']")).getText(), "Marked");
+				
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
 			}
 			
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("scroll(900, 0)");
+		}
+	
+		
+		
+	@DataProvider
+	public Object[][] tcAccrediationFromSSC()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04");
+	}
+	
+	@Test(dataProvider="tcAccrediationFromSSC", enabled=false)
+	public void tcAccrediatedFromSSC_06(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments) throws Exception
+		{	
+				
+			LoginPage lp = new LoginPage(driver);
+			lp.clickLogin();
+			EnterLoginPage elp = new EnterLoginPage(driver);
+			elp.performlogin(ssc_Username, password);
+			SSC_DashboardPage ssdp = new SSC_DashboardPage(driver);
+			Thread.sleep(8000);
+			ssdp.clickOnAccrediationAndAffiliation();
+			SSC_AccrediationAndAffiliationPage ssa = new SSC_AccrediationAndAffiliationPage(driver);
+			Thread.sleep(5000);
+			ssa.clickOnAllAffiliationsCAAF();
+			SSC_AccrediationAndAffiliation_CAAFRequestPage ssca = new SSC_AccrediationAndAffiliation_CAAFRequestPage(driver);
 			Thread.sleep(3000);
-			datr.clickOnNext_Third();
+		//	ssca.enterSearchByKeywords(tc_ID);
+		//	Thread.sleep(3000);
+		//	ssca.clickOnApply();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='New Request']")).getText(), "New Request");
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a")).click();
+			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Take Action')]")).click();
 			
-			List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
-			for(int i=0; i<ele3.size(); i++)
+			Thread.sleep(3000);
+			List<WebElement> cls = driver.findElements(By.xpath("//div[div[contains(text(),'Classroom Details:')]]//label[input[@formcontrolname='sscVerifiedClassRoom']]"));
+			for(int i=0; i<cls.size(); i++)
 			{
-				WebElement revw1 = ele3.get(i);
-				Thread.sleep(3000);
-				SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
-				Thread.sleep(3000);
-//				driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
-//				Thread.sleep(3000);
-//				FilePreview.closeWindow(driver);
-//				driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
-//				Thread.sleep(3000);
-//				FilePreview.closeWindow(driver);	
+				WebElement cls1 = cls.get(i);
+				cls1.click();
 			}
-			Thread.sleep(3000);
-			datr.clickOnNext_Fourth();
 			
-			List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support staff')]]]]//select[option[text()='Select Review Comments']]"));
-			for(int i=0; i<ele4.size(); i++)
+			Thread.sleep(3000);
+			List<WebElement> lab = driver.findElements(By.xpath("//div[div[contains(text(),'Laboratory Details:')]]//label[input[@formcontrolname='sscVerifiedLaboratory']]"));
+			for(int i=0; i<lab.size(); i++)
 			{
-				WebElement revw2 = ele4.get(i);
-				Thread.sleep(3000);
-				SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
+				WebElement lab1 = lab.get(i);
+				lab1.click();
 			}
 			
 			Thread.sleep(3000);
-			datr.clickOnNext_Fifth();
-			
-			Thread.sleep(3000);
-			datr.selectCentreStatus(centreStatus);
-			datr.enterCentreComment(centreComment);
-			datr.clickOnCentreStatus_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(centreStatusFile);
-			Thread.sleep(3000);
-			datr.clickOnCentreStatus_UploadFile();
-			
-			List<WebElement> ele5 = driver.findElements(By.xpath("//div[label[contains(text(),'Job Role')]]//input[@placeholder='Selected Job Role']"));
-			for(int i=0; i<ele5.size(); i++)
+			List<WebElement> hyb = driver.findElements(By.xpath("//div[div[contains(text(),'Hybrid Details:')]]//label[input[@formcontrolname='sscVerifiedHybrid']]"));
+			for(int i=0; i<hyb.size(); i++)
 			{
-				Thread.sleep(3000);
-				datr.selectJobRole_FinalReviewStatus(jobRoleStatus);
-				datr.enterJobRole_FinalReviewComment(jobRoleComment);
-				Thread.sleep(3000);
-				datr.clickOnJobRole_BrowseFile();
-				Thread.sleep(3000);
-				UploadFile.upload(jobRoleStatusFile);
-				Thread.sleep(3000);
-				datr.clickOnJobRole_UploadFile();
+				WebElement hyb1 = hyb.get(i);
+				hyb1.click();
 			}
-			Thread.sleep(3000);
-			datr.clickOnSaveAndSubmit();
-			Thread.sleep(3000);
-			datr.clickOnOK_QC();
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//span[text()='Marked']")).getText(), "Marked");
 			
 			Thread.sleep(3000);
+			List<WebElement> eqp = driver.findElements(By.xpath("//div[div[label[contains(text(),'Equipments Details')]]]//label[input[@formcontrolname='markVerified']]"));
+			for(int i=0; i<eqp.size(); i++)
+			{
+				WebElement eqp1 = eqp.get(i);
+				eqp1.click();
+			}
+			
+			Thread.sleep(3000);
+			ssca.clickOnTOTCertifiedTrainer_Yes();
+			Thread.sleep(3000);
+			ssca.clickOnNEISCertifiedTrainer_Yes();
+			Thread.sleep(3000);
+			ssca.select_First_FinalReviewStatus(sscFinalReview);
+			Thread.sleep(3000);
+			ssca.clickOn_First_BrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(sscReviewFile);
+			Thread.sleep(3000);
+			ssca.clickOn_First_UploadFile();
+			Thread.sleep(3000);
+			ssca.enter_First_FinalReviewComments(sscFinalReviewComments);
+			Thread.sleep(3000);
+			ssca.clickOnSubmit();
+			Thread.sleep(3000);
+			ssca.clickOnOK();
+			Thread.sleep(3000);
+			PostLoginPage plp = new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
 						
-		}
-		
-		else if(tc_Type.equals("PMKK") || tc_Type.equals("PMKK SPOKE"))
-		{
-			lp.clickLogin();
-			elp.performlogin(tc_ID, password);
-			Thread.sleep(8000);
-			tcd.clickOnMyCAAFSubmit();
-			Thread.sleep(5000);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//b")).getText(), "Scheme Approved");
-			Thread.sleep(3000);
-			tcm.clickOnSubmitForInspection();
-			Thread.sleep(3000);
-			tcm.clickOnOK();
+			tcID = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 1);
 			
-			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
-//			tcbi.enterCity(city);
-//			tcbi.selectCountry(Country);
-//			Thread.sleep(3000);
-//			if(paymentMethod.equals("Credit Card"))
-//			{
-//				tcbi.clickOnCreditCard();
-//				Thread.sleep(3000);
-//				tcbi.enterCreditCardNumber(creditCardNumber);
-//				tcbi.selectMonth_ForCreditCard(month_CreditCard);
-//				tcbi.selectYear_ForCreditCard(year_CreditCard);
-//				tcbi.enterCVVForCreditCard(cvv_CreditCard);
-//				Thread.sleep(3000);
-//				tcbi.clickOnMakePaymentForCreditCard();
-//			}
-//			else if(paymentMethod.equals("Debit Card"))
-//			{
-//				tcbi.clickOnDebitCard();
-//				Thread.sleep(3000);
-//				tcbi.enterDebitCardNumber(debitCardNumber);
-//				tcbi.selectMonth_ForDebitCard(month_DebitCard);
-//				tcbi.selectYear_ForDebitCard(year_DebitCard);
-//				tcbi.enterCVVForDebitCard(cvv_DebitCard);
-//				Thread.sleep(3000);
-//				tcbi.clickOnMakePaymentForDebitCard();
-//			}
-//			else if(paymentMethod.equals("Net Banking"))
-//			{
-//				tcbi.clickOnNetBanking();
-//				Thread.sleep(3000);
-//				tcbi.selectBankName(bankName);
-//				Thread.sleep(3000);
-//				tcbi.clickOnMakePaymentForNetBanking();
-//			}
-//			Thread.sleep(3000);
-//			tcbi.clickOnReturnToTheMerchantSite();
-			Thread.sleep(5000);
-			tcbi.clickOnContinue();
-			
-			Thread.sleep(3000);
-			tcm.clickOnOK();
-			Thread.sleep(3000);
-			plp.clickOnProfileLogo();
-			plp.clickOnLogout();
-			
-			lp.clickLogin();
-			elp.performlogin(pmkkSPOKEUsername, password);
-			PMKKSPOC_DashboardPage pmkk = new PMKKSPOC_DashboardPage(driver);
-			Thread.sleep(5000);
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("scroll(0, 900)");
-			Thread.sleep(8000);
-			pmkk.clickOnViewAllAssessmentRequest();
-			PMKKSPOC_AssignedInspectionRequestPage pmir = new PMKKSPOC_AssignedInspectionRequestPage(driver);
-			Thread.sleep(3000);
-			pmir.enterForSearch(tc_ID);
-			Thread.sleep(3000);
-			pmir.clickOnApply();
-			Thread.sleep(3000);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='Inspection Request']")).getText(), "Inspection Request");
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-			driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Assign Inspection Date')]")).click();
-			Thread.sleep(3000);
-			pmir.selectForAssign_CentreInspector(ci_Username);
-			Thread.sleep(3000);
-			pmir.selectForAssign_QC(qc_Username);
-			Thread.sleep(3000);
-			pmir.enterForInspectionDate();
-			Thread.sleep(3000);
-			inspectionDate = driver.findElement(By.xpath("//input[@formcontrolname='inspectionDate']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 43, inspectionDate);
-			Thread.sleep(3000);
-			pmir.clickOnAssign_ForCI();
-			Thread.sleep(3000);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='Inspection Date Assigned']")).getText(), "Inspection Date Assigned");
-			Thread.sleep(3000);
-			plp.clickOnProfileLogo();
-			plp.clickOnLogout();
-			
-			lp.clickLogin();
-			elp.performlogin(tc_ID, password);
-			Thread.sleep(8000);
-			tcd.clickOnMyCAAFSubmit();
-			Thread.sleep(8000);
-			tcm.clickOnAcceptInspectionDate();
-			Thread.sleep(3000);
-			Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", ""), inspectionDate);
-			Thread.sleep(3000);
-			tcm.clickOnAcceptProposedInspectionDate();
-			Thread.sleep(3000);
-			tcm.clickOnSubmit_ForInspectionDate();
-			Thread.sleep(3000);
-			tcm.clickOnOK();
-			Thread.sleep(3000);
-			plp.clickOnProfileLogo();
-			plp.clickOnLogout();
-			
-			//CI Mobileapp
-			
-			
-			lp.clickLogin();
-			elp.performlogin(qc_Username, password);
-			
-			QC_DashboardPage qcd = new QC_DashboardPage(driver);
-			Thread.sleep(8000);
-			qcd.clickOnViewAllAssessmentRequest();
-			QC_AllAssignedInspectionRequestPage qca = new QC_AllAssignedInspectionRequestPage(driver);
-			Thread.sleep(4000);
-			qca.enterForSearchByKeyword(tc_ID);
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-			driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[contains(text(),'Take Action')]")).click();
-			
-			TC_ApprovalPage datr = new TC_ApprovalPage(driver);
-			Thread.sleep(3000);
-			datr.clickOn_First_PreviewAttachedProofDocument();
-			Thread.sleep(3000);
-			//datr.select_First_ReviewComments(address_ReviewComments);
-			Thread.sleep(3000);
-			datr.clickOnNext_First();
-			
-			if((menResidential.equals("Yes")) && (womenResidential.equals("Yes")))
-			{
-				Thread.sleep(3000);
-				//datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
-				Thread.sleep(3000);
-				datr.select_First_ReviewComments(menResidential_ReviewComments);
-				datr.select_Second_ReviewComments(womenResidential_ReviewComments);
-				datr.select_Third_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
-				Thread.sleep(3000);
-				datr.select_Fourth_ReviewComments(hygiene_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DailyInspection_Image();
-				datr.clickOn_SafeDrinking_Image();
-				datr.select_Fifth_ReviewComments(medical_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FireFightingEquipment_Image();
-				datr.clickOn_FirstAidKit_Image();
-				Thread.sleep(3000);
-				datr.clickOnNext_Second();
-			}
-			
-			else if((menResidential.equals("No")) && (womenResidential.equals("No")))
-			{
-				js.executeScript("scroll(900, 0)");
-				Thread.sleep(3000);
-				//datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-				Thread.sleep(5000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
-				Thread.sleep(3000);
-				datr.select_First_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
-				Thread.sleep(3000);
-				datr.select_Second_ReviewComments(hygiene_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DailyInspection_Image();
-				datr.clickOn_SafeDrinking_Image();
-				datr.select_Third_ReviewComments(medical_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FireFightingEquipment_Image();
-				datr.clickOn_FirstAidKit_Image();
-				Thread.sleep(3000);
-				datr.clickOnNext_Second();
-			}
-			
-			else if(((menResidential.equals("No")) && (womenResidential.equals("Yes"))) || ((menResidential.equals("Yes")) && (womenResidential.equals("No"))))
-			{
-				Thread.sleep(3000);
-				datr.select_Second_ReviewComments(approachRoad_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FrontView_Image();
-				datr.clickOn_LeftView_Image();
-				datr.clickOn_RightView_Image();
-				datr.clickOn_InternetConectivity_Image();
-				datr.clickOn_PowerBackup_Image();
-				Thread.sleep(3000);
-				datr.select_Third_ReviewComments(menResidential_ReviewComments);
-				datr.select_Fourth_ReviewComments(diffrentlyAbledFacilities_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DifferentyAbledWashroom_Image();
-				datr.clickOn_Ramp_Image();
-				datr.clickOn_Lift_Image();
-				Thread.sleep(3000);
-				datr.select_Fifth_ReviewComments(hygiene_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_DailyInspection_Image();
-				datr.clickOn_SafeDrinking_Image();
-				datr.select_Sixth_ReviewComments(medical_ReviewComments);
-				Thread.sleep(3000);
-				datr.clickOn_FireFightingEquipment_Image();
-				datr.clickOn_FirstAidKit_Image();
-				Thread.sleep(3000);
-				datr.clickOnNext_Second();
-			}
-			
-			Thread.sleep(3000);
-			List<WebElement> elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-			for(int i=0;i<elements.size();i++)
-			{
-				WebElement e1 = elements.get(i);
-				e1.click();
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("(//a[contains(text(),'Take Action')])["+(i+1)+"]")).click();
-			
-				List<WebElement> ele2 = driver.findElements(By.xpath("//div[div[div[div[h3[contains(text(),'Job Role Name(QPCode)')]]]]]//select[option[text()='Select Review Comments']]"));
-				{
-					
-						for(int j=0;j<ele2.size();j++)
-						{
-							WebElement rvw = ele2.get(j);
-							Thread.sleep(3000);								
-							SelectDropDownList.selectDropDownListByVisibleText(rvw, reviewComments);
-							if(j==3)
-							{
-//								Thread.sleep(3000);
-//								datr.clickOn_FirstView_FirstImage();
-//								datr.clickOn_SecondView_FirstImage();
-							}
-							else if(j==6)
-							{
-//								Thread.sleep(3000);
-//								datr.clickOn_FirstView_SecondImage();
-//								datr.clickOn_SecondView_SecondImage();
-							}
-							else if(j==11)
-							{
-								Thread.sleep(3000);
-								datr.clickOn_SSCCertificate_Image();
-								datr.clickOn_HighestQualification_Image();
-								datr.clickOn_NIESBUD_Image();
-								datr.clickOn_IndustrialExperience_Image();
-							}	
-						}
-				}		
-						Thread.sleep(10000);
-//						datr.clickOnNext_ForJobRole();
-						js.executeScript("scroll(900, 0)");
-						Thread.sleep(3000);
-						datr.clickOnGoBack();
-						elements = driver.findElements(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-			}
-			
-			js.executeScript("scroll(900, 0)");
-			Thread.sleep(3000);
-			datr.clickOnNext_Third();
-			
-			List<WebElement> ele3 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Centre Area Type')]]]]//select[option[text()='Select Review Comments']]"));
-			for(int i=0; i<ele3.size(); i++)
-			{
-				WebElement revw1 = ele3.get(i);
-				Thread.sleep(3000);
-				SelectDropDownList.selectDropDownListByVisibleText(revw1, reviewComments);
-				Thread.sleep(3000);
-//				driver.findElement(By.xpath("(//div[contains(text(),'View 1')])["+(i+1)+"]")).click();
-//				Thread.sleep(3000);
-//				FilePreview.closeWindow(driver);
-//				driver.findElement(By.xpath("(//div[contains(text(),'View 2')])["+(i+1)+"]")).click();
-//				Thread.sleep(3000);
-//				FilePreview.closeWindow(driver);	
-			}
-			Thread.sleep(3000);
-			datr.clickOnNext_Fourth();
-			
-			List<WebElement> ele4 = driver.findElements(By.xpath("//div[div[div[h4[contains(text(),'Type of Support staff')]]]]//select[option[text()='Select Review Comments']]"));
-			for(int i=0; i<ele4.size(); i++)
-			{
-				WebElement revw2 = ele4.get(i);
-				Thread.sleep(3000);
-				SelectDropDownList.selectDropDownListByVisibleText(revw2, reviewComments);
-			}
-			
-			Thread.sleep(3000);
-			datr.clickOnNext_Fifth();
-			
-			Thread.sleep(3000);
-			datr.selectCentreStatus(centreStatus);
-			datr.enterCentreComment(centreComment);
-			datr.clickOnCentreStatus_BrowseFile();
-			Thread.sleep(3000);
-			UploadFile.upload(centreStatusFile);
-			Thread.sleep(3000);
-			datr.clickOnCentreStatus_UploadFile();
-			
-			List<WebElement> ele5 = driver.findElements(By.xpath("//div[label[contains(text(),'Job Role')]]//input[@placeholder='Selected Job Role']"));
-			for(int i=0; i<ele5.size(); i++)
-			{
-				Thread.sleep(3000);
-				datr.selectJobRole_FinalReviewStatus(jobRoleStatus);
-				datr.enterJobRole_FinalReviewComment(jobRoleComment);
-				Thread.sleep(3000);
-				datr.clickOnJobRole_BrowseFile();
-				Thread.sleep(3000);
-				UploadFile.upload(jobRoleStatusFile);
-				Thread.sleep(3000);
-				datr.clickOnJobRole_UploadFile();
-			}
-			Thread.sleep(3000);
-			datr.clickOnSaveAndSubmit();
-			Thread.sleep(3000);
-			datr.clickOnOK_QC();
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//span[text()='Marked']")).getText(), "Marked");
-			
-			Thread.sleep(3000);
-			plp.clickOnProfileLogo();
-			plp.clickOnLogout();	
-			
-		}
-		
-		lp.clickLogin();
-		elp.performlogin(ssc_Username, password);
-		SSC_DashboardPage ssdp = new SSC_DashboardPage(driver);
-		Thread.sleep(8000);
-		ssdp.clickOnAccrediationAndAffiliation();
-		SSC_AccrediationAndAffiliationPage ssa = new SSC_AccrediationAndAffiliationPage(driver);
-		Thread.sleep(5000);
-		ssa.clickOnAllAffiliationsCAAF();
-		SSC_AccrediationAndAffiliation_CAAFRequestPage ssca = new SSC_AccrediationAndAffiliation_CAAFRequestPage(driver);
-		Thread.sleep(3000);
-		ssca.enterSearchByKeywords(tc_ID);
-		Thread.sleep(3000);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//td[text()='New Request']")).getText(), "New Request");
-		driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a")).click();
-		driver.findElement(By.xpath("//tr[td[text()='"+tc_ID+"']]//a[text()='Action Affilations']")).click();
-		
-		
-		tcID = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TCApprovalSC15TC04", Integer.parseInt(sno), 1);
-		
 	}	
 	
 		
