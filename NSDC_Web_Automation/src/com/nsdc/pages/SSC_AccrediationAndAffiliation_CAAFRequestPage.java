@@ -11,8 +11,10 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="//input[@placeholder='Search by keyword']")
+	@FindBy(xpath="//input[@placeholder='search by TC ID']")
 	private WebElement searchByKeywordTextbox;
+	@FindBy(xpath="//button[text()='Apply']")
+	private WebElement applyButton;
 	@FindBy(xpath="(//button[contains(text(),'Download Attached Images from TC')])[1]")
 	private WebElement downloadAttachedImagesFromTC_First_Button;
 	@FindBy(xpath="(//button[contains(text(),'Download Attached Images from TC')])[2]")
@@ -54,27 +56,37 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
 	private WebElement fourth_UploadFile_Button;
 	
-	@FindBy(xpath="(//select[@formcontrolname='finalReviewType'])[1]")
+	@FindBy(xpath="(//select[option[text()='Select Review Comments']])[1]")
 	private WebElement first_finalReviewStatus_DropDownList;
-	@FindBy(xpath="(//select[@formcontrolname='finalReviewType'])[2]")
+	@FindBy(xpath="(//select[option[text()='Select Review Comments']])[2]")
 	private WebElement second_finalReviewStatus_DropDownList;
 	@FindBy(xpath="(//input[@class='ng-untouched ng-pristine ng-valid'])[1]")
 	private WebElement first_EditAndSwitchFinalStatus_CheckBox;
 	@FindBy(xpath="(//input[@class='ng-untouched ng-pristine ng-valid'])[2]")
 	private WebElement second_EditAndSwitchFinalStatus_CheckBox;
-	@FindBy(xpath="(//textarea[@formcontrolname='finalReviewComment'])[1]")
+	@FindBy(xpath="(//textarea[@formcontrolname='reviewComments'])[1]")
 	private WebElement first_finalReviewComment_Textbox;
-	@FindBy(xpath="(//textarea[@formcontrolname='finalReviewComment'])[2]")
+	@FindBy(xpath="(//textarea[@formcontrolname='reviewComments'])[2]")
 	private WebElement second_finalReviewComment_Textbox;
-	@FindBy(xpath="//button[@type='submit']")
-	private WebElement saveButton;
+	@FindBy(xpath="(//button[@class='btn btn-next'])[1]")
+	private WebElement submitButton;
 	@FindBy(xpath="//button[contains(text(),'Back')]")
 	private WebElement backButton;
 	@FindBy(xpath="(//button[@class='btn btn-primary'])[1]")
 	private WebElement continueButton;
 	@FindBy(xpath="//button[contains(text(),'Close')]")
 	private WebElement closeButton;
+	@FindBy(xpath="//button[text()='OK']")
+	private WebElement okButton;
 	
+	@FindBy(xpath="(//input[@formcontrolname='totCertified'])[1]")
+	private WebElement trainerToTCertified_Yes_RadioButton;
+	@FindBy(xpath="(//input[@formcontrolname='totCertified'])[2]")
+	private WebElement trainerToTCertified_No_RadioButton;
+	@FindBy(xpath="(//input[@formcontrolname='neisbubCertified'])[1]")
+	private WebElement trainerNEISCertified_Yes_RadioButton;
+	@FindBy(xpath="(//input[@formcontrolname='neisbubCertified'])[2]")
+	private WebElement trainerNEISCertified_No_RadioButton;
 	
 	
 	
@@ -88,6 +100,11 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 	{
 		searchByKeywordTextbox.clear();
 		searchByKeywordTextbox.sendKeys(keywords);
+	}
+	
+	public void clickOnApply()
+	{
+		applyButton.click();
 	}
 	
 	public void clickOn_First_DownloadAttachedImagesFromTC()
@@ -226,9 +243,9 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 		second_finalReviewComment_Textbox.sendKeys(finalComments);
 	}
 	
-	public void clickOnSave()
+	public void clickOnSubmit()
 	{
-		saveButton.click();
+		submitButton.click();
 	}
 	
 	public void clickOnBack()
@@ -244,6 +261,32 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 	public void clickOnClose()
 	{
 		closeButton.click();
+	}
+	
+	public void clickOnOK()
+	{
+		
+		okButton.click();
+	}
+	
+	public void clickOnTOTCertifiedTrainer_Yes()
+	{
+		trainerToTCertified_Yes_RadioButton.click();
+	}
+	
+	public void clickOnTOTCertifiedTrainer_No()
+	{
+		trainerToTCertified_No_RadioButton.click();
+	}
+	
+	public void clickOnNEISCertifiedTrainer_Yes()
+	{
+		trainerNEISCertified_Yes_RadioButton.click();
+	}
+	
+	public void clickOnNEISCertifiedTrainer_No()
+	{
+		trainerNEISCertified_No_RadioButton.click();
 	}
 	
 
