@@ -19,6 +19,7 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguration
 {
+	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 	@DataProvider
 	public Object[][] bulkCandidateRegistrationData()
 	{
@@ -28,7 +29,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	public void bulkCandidateRegistrationTC_01(String serialNum, String trainingPartnerID, String trainingPartnerPassword, String bulkExcelFile) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
@@ -162,7 +162,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	public void tpIndividualCandidateRegistrationTC_02(String serialNum, String candidateID, String trainingPartnerID, String trainingPartnerPassword, String namePrefix, String fullName, String profilePicture, String mobileNumber, String emailID, String gender, String dob, String guardianRelation, String guardianName, String maritalStatus, String placeOfBirth, String cast, String religion, String isDisabled, String disablity, String disabilityProofDoc, String address, String village, String state, String district, String subDistrict, String pincode, String parlimentaryConstituency, String identificationType, String identificationIDnumber, String identificationProof, String isCommunicationAddressSameAsPermanentAddress, String cAddress, String cVillage, String cState, String cDistrict, String cSubDistrict, String cPincode, String cParlimentaryConstituency, String education1, String specialisation1, String yearOfPassing1, String education1Proof, String education2, String specialisation2, String othersEducationName, String yearOfPassing2, String education2Proof, String education3, String specialisation3, String yearOfPassing3, String education3Proof , String hearAboutUs, String sector1, String subSector1, String jobRole1, String jobRoleCode1, String sector2, String subSector2, String jobRole2, String jobRoleCode2, String sector3, String subSector3, String jobRole3) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
