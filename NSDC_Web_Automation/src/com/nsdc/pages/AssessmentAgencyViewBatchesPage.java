@@ -77,9 +77,12 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement batchDetailsSectionLinkText;
 	@FindBy(linkText="Approved Applicants")
 	private WebElement approvedApplicantsSectionLinkText;
-	
 	@FindBy(xpath="//div[div[h5[contains(text(),'Assign Assessor')]]]//button[contains(text(),'Submit')]")
 	private WebElement submit_ForAssessorButton;
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
+	private WebElement acceptedTCActionDropdownMenu;
+	@FindBy(xpath="//span[contains(text(),'View Details')]")
+	private WebElement viewDetailsOfAcceptedTC_Option;
 	
 	public AssessmentAgencyViewBatchesPage(WebDriver driver)
 	{
@@ -119,6 +122,15 @@ public class AssessmentAgencyViewBatchesPage
 	public void clickToGoBack()
 	{
 		goBackButton.click();
+	}
+	public void selectThisToViewDetailsOfAcceptedTC()
+	{
+		acceptedTCActionDropdownMenu.click();
+		viewDetailsOfAcceptedTC_Option.click();
+	}
+	public void clickOkToCloseAcceptedTCDetailsView()
+	{
+		driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
 	}
 	public void clickToSelectAcceptBatchOption()
 	{

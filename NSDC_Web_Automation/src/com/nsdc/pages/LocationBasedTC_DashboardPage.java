@@ -1,9 +1,12 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LocationBasedTC_DashboardPage
 {
@@ -40,6 +43,8 @@ public class LocationBasedTC_DashboardPage
 	}
 	public void clickToViewBatches()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//strong[text()='View Batches']")));
 		viewBatchesButton.click();
 	}
 	public void clickAssociatedTrainers()
@@ -50,5 +55,4 @@ public class LocationBasedTC_DashboardPage
 	{
 		tcSPOC_ChangeCard.click();
 	}
-
 }

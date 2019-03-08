@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TrainerViewBatchesPage
 {
@@ -73,14 +75,20 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToGoToAcceptedBatchesSection()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Accepted")));
 		acceptedBatchesLink.click();
 	}
 	public void clickToGoToRejectedBatchesSection()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Rejected")));
 		rejectedBatchesLink.click();
 	}
 	public void clickToGetActionMenuOptions(String batchID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")));
 		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
 	public void clickToSelectViewDetailsOption(String batchID)

@@ -1,11 +1,13 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import com.nsdc.generic.SelectDropDownList;
 
 public class AssessorRegistrationPage 
@@ -151,12 +153,10 @@ public class AssessorRegistrationPage
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    
     public void selectGender(String gender)
     {
         SelectDropDownList.selectDropDownListByVisibleText(genderDropDownList, gender);
     }
-    
     public void selectDateOfBirth() throws Exception
     {
         //dobTextBox.clear();
@@ -168,296 +168,250 @@ public class AssessorRegistrationPage
         calendarButton.click();
         Thread.sleep(2000);
     }
-    
     public void selectAnyKnownLanguage(String language)
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, language);
     }
-    
     public void selectTwoKnownLanguages()
     {
-    	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
     	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
+    	SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
     }
-    
     public void selectAllLanguages()
     {
-        SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "English");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Hindi");
+        SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_Language, "Kannada");
     }
-    
     public void selectReligion(String religion)
     {
         SelectDropDownList.selectDropDownListByVisibleText(religionDropDownList, religion);
     }
-    
     public void selectCategory(String category)
     {
         SelectDropDownList.selectDropDownListByVisibleText(categoryDropDownList, category);
     }
-    
     public void selectDisability(String disability)
     {
         SelectDropDownList.selectDropDownListByVisibleText(disabilityDropDownList, disability);
     }
-    
     public void clickOnBrowseForUploadDisabilityDocument()
     {
         disability_BrowseFileButton.click();
     }
-    
     public void clickOnUploadButtonForUploadDisabilityDocument()
     {
         disability_UploadButton.click();
     }
-    
     public void clickOnAadharNumberRadioButton()
     {
         aadhaarNumberRadioButton.click();
     }
-    
     public void enterAadharNumber(String aadhar)
     {
         aadhaarNumberTextBox.clear();
         aadhaarNumberTextBox.sendKeys(aadhar);
     }
-    
     public void clickOnValidateAadharNumber()
     {
         validateButton.click();
     }
-    
     public void clickOnPanNumberRadioButton()
     {
         panNumberRadioButton.click();
     }
-    
     public void enterPanNumber(String PAN_number)
     {
         panNumberTextBox.clear();
         panNumberTextBox.sendKeys(PAN_number);
     }
-    
     public void clickOnBrowseFileButtonForUploadPanDocument()
     {
         panDocument_BrowseFileButton.click();
     }
-    
     public void clickOnUploadButtonToUploadPan()
     {
         panDocument_uploadButton.click();
     }
-    
     public void clickOnBrowseFileButtonToUploadPhoto()
     {
-        uploadYourPhoto_browseFileButton.click();
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", uploadYourPhoto_browseFileButton);
     }
-    
     public void clickOnUploadButtonToUploadPhoto()
     {
         uploadYourPhoto_uploadButton.click();
     }
-    
     public void selectAnyApplicantCategory(String applicant_Category)
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_ApplicantCategory, applicant_Category);
     }
-    
     public void selectAllApplicantCategory()
     {
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_ApplicantCategory, "Master Assessor");
         SelectDropDownList.selectDropDownListByVisibleText(multiSelectDropDownList_ApplicantCategory, "Assessor");
-        
     }
-    
     public void clickOnSaveAndContinue()
     {
-        saveAndContinueButton.click();
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", saveAndContinueButton);
     }
-    
     public void enterApplicantAddress(String address)
     {
         applicantAddressTextBox.clear();
         applicantAddressTextBox.sendKeys(address);
     }
-    
     public void enterNearbyLandmark(String landmark)
     {
         nearbyLandmarkTextBox.clear();
         nearbyLandmarkTextBox.sendKeys(landmark);
     }
-    
     public void enterPincode(String pincode)
     {
         pincodeTextBox.clear();
         pincodeTextBox.sendKeys(pincode);
     }
-    
     public void selectStateOrUnionTerritory(String state)
     {
         SelectDropDownList.selectDropDownListByVisibleText(stateOrUnionTerritoryDropDownList, state);
     }
-    
     public void selectDistrictOrCity(String city)
     {
         SelectDropDownList.selectDropDownListByVisibleText(districtOrCityDropDownList, city);
     }
-    
     public void selectTehsilOrMandal(String mandal)
     {
         SelectDropDownList.selectDropDownListByVisibleText(tehsilOrMandalDropDownList, mandal);
     }
-    
     public void selectParliamentaryConstituency(String parliamentaryConstituency)
     {
         SelectDropDownList.selectDropDownListByVisibleText(parliamentaryConstituencyDropDownList, parliamentaryConstituency);
     }
-    
     public void clickOnBack()
     {
         backButton.click();
     }
-    
     public void selectEducationAttained(String education)
     {
         SelectDropDownList.selectDropDownListByVisibleText(educationAttainedDropDownList, education);
     }
-    
     public void enterDetailsOfEducation(String edu_details)
     {
         detailsOfEducationTextBox.clear();
         detailsOfEducationTextBox.sendKeys(edu_details);
     }
-    
     public void clickOnBrowseForUploadEducationProofDocument()
     {
         educationProofDocument_browseButton.click();
     }
-    
     public void clickOnUploadForUploadEducationProofDocument()
     {
         educationProofDocument_uploadButton.click();
     }
-    
     public void clickOnAddEducationDetailsButton()
     {
-        clickToAddEducationDetailsButton.click();
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+    	wait.until(ExpectedConditions.elementToBeClickable(clickToAddEducationDetailsButton));
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", clickToAddEducationDetailsButton);
     }
-    
     public void deleteThirdEducationDetails()
     {
         deleteThirdEducationDetailsButton.click();
     }
-    
     public void selectRelevantSectorForIndustrialExperience(String industrial_sector)
     {
         SelectDropDownList.selectDropDownListByVisibleText(industrialExperience_relevantSectorDropDownList, industrial_sector);
     }
-    
     public void selectYearsForIndustrialExperience(String industrial_years)
     {
         SelectDropDownList.selectDropDownListByVisibleText(industrialExperience_TotalYearsOfExperienceDropDownList, industrial_years);
     }
-    
     public void selectMonthsForIndustrialExperience(String industrial_months)
     {
         SelectDropDownList.selectDropDownListByVisibleText(industrialExperience_TotalMonthsOfExperienceDropDownList, industrial_months);
     }
-    
     public void enterDetailsOfIndustrialExperience(String industrialExperienceDetails)
     {
         industrialExperience_detailsOfExperienceTextBox.clear();
         industrialExperience_detailsOfExperienceTextBox.sendKeys(industrialExperienceDetails);
     }
-    
     public void enterDetailsOfIndustriesForIndustrialExperienceTextBox(String industriesDetails)
     {
         industrialExperience_detailsOfIndustriesTextBox.clear();
         industrialExperience_detailsOfIndustriesTextBox.sendKeys(industriesDetails);
     }
-    
     public void clickOnBrowseForIndustrialExperienceProofDocument()
     {
         industrialExperienceProofDocument_browseButton.click();
     }
-    
     public void clickOnUploadForIndustrialExperienceProofDocument()
     {
         industrialExperienceProofDocument_uploadButton.click();
     }
-    
     public void clickOnAddIndustrialExperienceDetails()
     {
-        clickToAddIndustrialExperienceDetailsButton.click();
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+    	wait.until(ExpectedConditions.elementToBeClickable(clickToAddIndustrialExperienceDetailsButton));
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", clickToAddIndustrialExperienceDetailsButton);
     }
-    
     public void deleteThirdIndustrialExperienceDetailsWithoutEducationDetail()
     {
         deleteThirdIndustrialExperienceDetailsWithoutEducationDetailButton.click();
     }
-    
     public void deleteThirdIndustrialExperienceDetails()
     {
         deleteThirdIndustrialExperienceDetailsButton.click();
     }
-    
     public void selectRelevantSectorForTrainingExperience(String training_sector)
     {
         SelectDropDownList.selectDropDownListByVisibleText(trainingExperience_relevantSectorDropDownList, training_sector);
     }
-    
     public void selectyearsForTrainingExperience(String trainingExperienceYears)
     {
         SelectDropDownList.selectDropDownListByVisibleText(trainingExperience_TotalYearsOfExperienceDropDownList, trainingExperienceYears);
     }
-    
     public void selectMonthsForTrainingExperience(String trainingExperienceMonths)
     {
         SelectDropDownList.selectDropDownListByVisibleText(trainingExperience_TotalMonthsOfExperienceDropDownList, trainingExperienceMonths);
     }
-    
     public void enterTrainingExperienceDetails(String trainingExperienceDetails)
     {
         trainingExperience_detailsOfExperienceTextBox.clear();
         trainingExperience_detailsOfExperienceTextBox.sendKeys(trainingExperienceDetails);
     }
-    
     public void clickOnBrowseForTrainingExperienceProofDocument()
     {
         trainingExperienceProofDocument_browseButton.click();
     }
-    
     public void clickOnUploadForTrainingExperienceProofDocument()
     {
         trainingExperienceProofDocument_uploadButton.click();
     }
-    
     public void clickOnAddTrainingExperienceDetails()
     {
-        clickToAddTrainingExperienceDetailsButton.click();
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+    	wait.until(ExpectedConditions.elementToBeClickable(clickToAddTrainingExperienceDetailsButton));
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", clickToAddTrainingExperienceDetailsButton);
     }
-    
     public void deleteThirdTrainingExperienceWithoutEducationDetails()
     {
         deleteThirdTrainingExperienceDetailsWithoutEducationDetailButton.click();
     }
-    
     public void deleteThirdTrainingExperienceDetails()
     {
         deleteThirdTrainingExperienceDetailsButton.click();
     }
-    
     public void clickOnBrowseForCurriculumVitaeOrResume()
     {
         curriculumVitaeOrResume_browseButton.click();
     }
-    
     public void clickOnUploadForCurriculumVitaeOrResume()
     {
         curriculumVitaeOrResume_uploadButton.click();
     }
-    
     public void selectPreferredSector(String preferredSector)
     {
     	SelectDropDownList.selectDropDownListByVisibleText(preferredSectorDropdownList, preferredSector);
@@ -494,12 +448,10 @@ public class AssessorRegistrationPage
     {
         iAgreeCheckbox.click();
     }
-    
     public void clickSubmitButton()
     {
         submitButton.click();
     }
-    
     public void clickLogOutButton()
     {
         logOutButton.click();

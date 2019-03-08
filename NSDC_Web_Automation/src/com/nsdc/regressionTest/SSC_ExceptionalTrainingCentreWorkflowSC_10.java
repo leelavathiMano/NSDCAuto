@@ -36,7 +36,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
 		WebDriverWait wait=new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ToT, ToA, ToMT,ToMA")));
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
@@ -67,8 +67,11 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreCapacity(capacity);
 		Thread.sleep(4000);
-		eTCp.enterSmartIDforExceptionalTC(smartID);
-		Thread.sleep(3000);
+		if(!smartID.equalsIgnoreCase("N/A"))
+		{
+			eTCp.enterSmartIDforExceptionalTC(smartID);
+			Thread.sleep(3000);
+		}
 		eTCp.selectResidentialFacilityAvailableForAll();
 		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreHeadName(exceptionalTCHeadName);
@@ -89,24 +92,39 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTCSPOCIDProof();
 		Thread.sleep(8000);
-		eTCp.enterExceptionalTCAddress(exceptionalTCAddress);
-		Thread.sleep(4000);
-		eTCp.enterExceptionalTCLandmark(exceptionalTCLandmark);
-		Thread.sleep(4000);
+		if(!exceptionalTCAddress.equalsIgnoreCase("N/A"))
+		{
+			eTCp.enterExceptionalTCAddress(exceptionalTCAddress);
+			Thread.sleep(4000);
+		}
+		if(!exceptionalTCLandmark.equalsIgnoreCase("N/A"))
+		{
+			eTCp.enterExceptionalTCLandmark(exceptionalTCLandmark);
+			Thread.sleep(4000);
+		}
 		Assert.assertTrue(driver.findElement(By.xpath("//div[span[span[contains(text(),'"+country+"')]]]")).getAttribute("class").contains("disabled"),"OMG!!! Country dropdown is not disabled OR Something went wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+country+"')]")).getText().trim(), country);
 		eTCp.selectExceptionalTCState(state);
 		Thread.sleep(4000);
 		eTCp.selectExsceptionalTCDistrict(district);
 		Thread.sleep(4000);
-		eTCp.selectExceptionalTCSubDistrict(subDistrict);
-		Thread.sleep(4000);
-		eTCp.selectExceptionalTCConstituency(constituency);
-		Thread.sleep(4000);
+		if(!subDistrict.equalsIgnoreCase("N/A"))
+		{
+			eTCp.selectExceptionalTCSubDistrict(subDistrict);
+			Thread.sleep(4000);
+		}
+		if(!constituency.equalsIgnoreCase("N/A"))
+		{
+			eTCp.selectExceptionalTCConstituency(constituency);
+			Thread.sleep(4000);
+		}
 		eTCp.enterExceptionalTrainingCentreGeoLocation(geoLocation);
 		Thread.sleep(4000);
-		eTCp.enterExceptionalTrainingCentreVillage(village);
-		Thread.sleep(4000);
+		if(!village.equalsIgnoreCase("N/A"))
+		{
+			eTCp.enterExceptionalTrainingCentreVillage(village);
+			Thread.sleep(4000);
+		}
 		eTCp.enterExceptionalTrainingCentrePincode(pincode);
 		Thread.sleep(4000);
 		eTCp.clickToBrowseExceptionalTrainingCentrePhoto();

@@ -18,8 +18,10 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement acceptedBatchesLink;
 	@FindBy(linkText="Rejected")
 	private WebElement rejectedBatchesLink;
-	@FindBy(xpath="//input[@placeholder='Search by Keyword']")
+	@FindBy(id="Search")
 	private WebElement searchForBatchIDTextfield;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchfilterButton;
 	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
 	private WebElement actionMenuLink;
 	@FindBy(xpath="//span[contains(text(),'View Batch Details')]")
@@ -93,6 +95,10 @@ public class LocationBasedTC_ViewBatchesPage
 		searchForBatchIDTextfield.clear();
 		Thread.sleep(2000);
 		searchForBatchIDTextfield.sendKeys(batchID);
+	}
+	public void clickToGetSearchResult()
+	{
+		applySearchfilterButton.click();
 	}
 	public void clikToGetBatchActionMenu(String batchID)
 	{
