@@ -4,7 +4,9 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -85,7 +87,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(6000);
         rp.clickConfirmationOkMessage();
         elp.performlogin(username, confirmPassword);
-        Thread.sleep(15000);
+        WebDriverWait wait=new WebDriverWait(driver, 60);
+       	wait.until(ExpectedConditions.elementToBeClickable(By.id("dob")));
         TrainerRegistrationPage trainer = new TrainerRegistrationPage(driver);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         trainer.selectGender(gender);
@@ -96,11 +99,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         String selectedDateOfBirth=driver.findElement(By.id("dob")).getAttribute("value");
         ReadWriteData.setExcelData("./TestData/Workflow/Trainer-Workflow.xls", "TrainerRegistration", Integer.parseInt(serialNum), 12, selectedDateOfBirth);   
-        if(language.equals("Kannada,English,Hindi"))
+        if(language.equals("English,Hindi,Kannada"))
         {
         	trainer.selectAllLanguages();
         }
-        else if(language.equals("Kannada,Hindi"))
+        else if(language.equals("Hindi,Kannada"))
         {
         	trainer.selectTwoKnownLanguages();
         }
@@ -126,7 +129,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         	UploadFile.upload(disabilityFile);
            	Thread.sleep(4000);
            	trainer.clickOnUploadButtonForUploadDisabilityDocument();
-           	Thread.sleep(8000);
+           	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         }
         Thread.sleep(2000);
         String aadharPan = aadhaarOrPAN.toLowerCase();
@@ -150,7 +153,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
            UploadFile.upload(uploadPanDocument);
            Thread.sleep(4000);
            trainer.clickOnUploadButtonToUploadPan();
-           Thread.sleep(8000);
+           wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         }
         Thread.sleep(2000);
         trainer.clickOnBrowseFileButtonToUploadPhoto();
@@ -158,7 +161,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(photoFile);
         Thread.sleep(5000);
         trainer.clickOnUploadButtonToUploadPhoto();
-        Thread.sleep(8000);
+      	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         if(applicant_Category.equals("Trainer,Master Trainer"))
         {
           	trainer.selectAllApplicantCategory();
@@ -169,7 +173,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         }
         Thread.sleep(5000);
         trainer.clickOnSaveAndContinue();
-        Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Personal Information Section, Its Blocking further Applicant Registration Process!!!");
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
@@ -181,14 +184,22 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	Thread.sleep(2000);
         trainer.selectStateOrUnionTerritory(state);
     	Thread.sleep(4000);
-        trainer.selectDistrictOrCity(city);
-    	Thread.sleep(2000);
-        trainer.selectTehsilOrMandal(mandal);
-    	Thread.sleep(2000);
-        trainer.selectParliamentaryConstituency(parliamentaryConstituency);
-        Thread.sleep(2000);
+    	if(!city.isEmpty())
+        {
+    		 trainer.selectDistrictOrCity(city);
+             Thread.sleep(2000);
+        }
+        if(!mandal.isEmpty())
+        {
+        	 trainer.selectTehsilOrMandal(mandal);
+             Thread.sleep(2000);
+        }
+        if(!parliamentaryConstituency.isEmpty())
+        {
+        	trainer.selectParliamentaryConstituency(parliamentaryConstituency);
+         	Thread.sleep(2000);
+        }
         trainer.clickOnSaveAndContinue();
-        Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Contact & Address Details Section, Its Blocking further Applicant Registration Process!!!");
     	Thread.sleep(8000);
     	trainer.selectEducationAttained(education1);
@@ -200,7 +211,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(edu_document1);
         Thread.sleep(4000);
         trainer.clickOnUploadForUploadEducationProofDocument();
-        Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddEducationDetailsButton();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education1+"')]")).getText(), education1);
@@ -216,7 +227,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(edu_document2);
         Thread.sleep(4000);
         trainer.clickOnUploadForUploadEducationProofDocument();
-        Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddEducationDetailsButton();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education2+"')]")).getText(), education2);
@@ -232,7 +243,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(edu_document3);
         Thread.sleep(5000);
         trainer.clickOnUploadForUploadEducationProofDocument();
-        Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddEducationDetailsButton();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText(), education3);
@@ -241,11 +252,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         trainer.deleteThirdEducationDetails();
         Thread.sleep(2000);
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector1);
-        Thread.sleep(2000);
         trainer.selectYearsForIndustrialExperience(industrial_years1);
-        Thread.sleep(2000);
         trainer.selectMonthsForIndustrialExperience(industrial_months1);
-        Thread.sleep(2000);
         trainer.enterDetailsOfIndustrialExperience(industrialExperienceDetails1);
         Thread.sleep(2000);
         trainer.enterDetailsOfIndustriesForIndustrialExperienceTextBox(industriesDetails1);
@@ -255,7 +263,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(industrialDocument1);
         Thread.sleep(6000);
         trainer.clickOnUploadForIndustrialExperienceProofDocument();
-        Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[2]")).getText(), industrial_sector1);
@@ -264,11 +272,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[5]")).getText(), industrial_years1+" years "+industrial_months1+" months");
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector1+"')]])[1]//td[6]")).getText(), "Yes");
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector2);
-        Thread.sleep(2000);
         trainer.selectYearsForIndustrialExperience(industrial_years2);
-        Thread.sleep(2000);
         trainer.selectMonthsForIndustrialExperience(industrial_months2);
-        Thread.sleep(2000);
         trainer.enterDetailsOfIndustrialExperience(industrialExperienceDetails2);
         Thread.sleep(2000);
         trainer.enterDetailsOfIndustriesForIndustrialExperienceTextBox(industriesDetails2);
@@ -278,7 +283,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(industrialDocument2);
         Thread.sleep(4000);
         trainer.clickOnUploadForIndustrialExperienceProofDocument();
-        Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(5000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[2]")).getText(), industrial_sector2);
@@ -287,11 +292,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[5]")).getText(), industrial_years2+" years "+industrial_months2+" months");
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector2+"')]])[1]//td[6]")).getText(), "Yes");
         trainer.selectRelevantSectorForIndustrialExperience(industrial_sector3);
-        Thread.sleep(2000);
         trainer.selectYearsForIndustrialExperience(industrial_years3);
-        Thread.sleep(2000);
         trainer.selectMonthsForIndustrialExperience(industrial_months3);
-        Thread.sleep(2000);
         trainer.enterDetailsOfIndustrialExperience(industrialExperienceDetails3);
         Thread.sleep(2000);
         trainer.enterDetailsOfIndustriesForIndustrialExperienceTextBox(industriesDetails3);
@@ -301,7 +303,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(industrialDocument3);
         Thread.sleep(5000);
         trainer.clickOnUploadForIndustrialExperienceProofDocument();
-        Thread.sleep(10000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddIndustrialExperienceDetails();
     	Thread.sleep(2000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[2]")).getText(), industrial_sector3);
@@ -325,11 +327,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	}
     	Thread.sleep(2000);
     	trainer.selectRelevantSectorForTrainingExperience(training_sector1);
-    	Thread.sleep(2000);
        	trainer.selectyearsForTrainingExperience(trainingExperienceYears1);
-        Thread.sleep(2000);
        	trainer.selectMonthsForTrainingExperience(trainingExperienceMonths1);
-        Thread.sleep(2000);
        	trainer.enterTrainingExperienceDetails(trainingExperienceDetails1);
         Thread.sleep(2000);
        	trainer.clickOnBrowseForTrainingExperienceProofDocument();
@@ -337,7 +336,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	UploadFile.upload(trainingDocument1);
        	Thread.sleep(5000);
        	trainer.clickOnUploadForTrainingExperienceProofDocument();
-       	Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddTrainingExperienceDetails();
     	Thread.sleep(2000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[2]")).getText(), training_sector1);
@@ -345,11 +344,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[4]")).getText(), trainingExperienceYears1+" years "+trainingExperienceMonths1+" months");
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector1+"')]])[2]//td[5]")).getText(), "Yes");
         trainer.selectRelevantSectorForTrainingExperience(training_sector2);
-        Thread.sleep(2000);
        	trainer.selectyearsForTrainingExperience(trainingExperienceYears2);
-        Thread.sleep(2000);
        	trainer.selectMonthsForTrainingExperience(trainingExperienceMonths2);
-        Thread.sleep(2000);
        	trainer.enterTrainingExperienceDetails(trainingExperienceDetails2);
         Thread.sleep(2000);
        	trainer.clickOnBrowseForTrainingExperienceProofDocument();
@@ -357,7 +353,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(trainingDocument2);
         Thread.sleep(5000);
         trainer.clickOnUploadForTrainingExperienceProofDocument();
-        Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnAddTrainingExperienceDetails();
      	Thread.sleep(2000);
      	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[2]")).getText(), training_sector2);
@@ -365,11 +361,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[4]")).getText(), trainingExperienceYears2+" years "+trainingExperienceMonths2+" months");
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector2+"')]])[2]//td[5]")).getText(), "Yes");
        	trainer.selectRelevantSectorForTrainingExperience(training_sector3);
-        Thread.sleep(2000);
         trainer.selectyearsForTrainingExperience(trainingExperienceYears3);
-        Thread.sleep(2000);
        	trainer.selectMonthsForTrainingExperience(trainingExperienceMonths3);
-        Thread.sleep(2000);
        	trainer.enterTrainingExperienceDetails(trainingExperienceDetails3);
         Thread.sleep(2000);
        	trainer.clickOnBrowseForTrainingExperienceProofDocument();
@@ -377,7 +370,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	UploadFile.upload(trainingDocument3);
        	Thread.sleep(5000);
        	trainer.clickOnUploadForTrainingExperienceProofDocument();
-       	Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
        	trainer.clickOnAddTrainingExperienceDetails();
      	Thread.sleep(2000);
      	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[1]//td[2]")).getText(), training_sector3);
@@ -403,9 +396,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         UploadFile.upload(resume);
         Thread.sleep(5000);
         trainer.clickOnUploadForCurriculumVitaeOrResume();
-        Thread.sleep(10000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         trainer.clickOnSaveAndContinue();
-        Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Education & Work Details Section, Its Blocking further Applicant Registration Process!!!");
         //Preference 1
         trainer.selectPreferredSector(preferredSector1);
@@ -416,10 +408,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         trainer.selectPreferredState(preferredState1);
         Thread.sleep(4000);
-        trainer.selectPreferredDistrict(preferredDistrict1);
-        Thread.sleep(4000);
-        trainer.selectPreferredSubDistrict(preferredSubDistrict1);
-        Thread.sleep(4000);
+        if(!preferredDistrict1.equalsIgnoreCase("N/A"))
+        {
+        	trainer.selectPreferredDistrict(preferredDistrict1);
+            Thread.sleep(4000);
+        }
+        if(!preferredSubDistrict1.equalsIgnoreCase("N/A"))
+        {
+        	trainer.selectPreferredSubDistrict(preferredSubDistrict1);
+            Thread.sleep(4000);
+        }
         trainer.clickAddPreferences();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState1+"')]]/td[1]")).getText().trim(), preferredJobRole1+" ("+preferredJobRoleCode1+")");
@@ -438,10 +436,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         trainer.selectPreferredState(preferredState2);
         Thread.sleep(4000);
-        trainer.selectPreferredDistrict(preferredDistrict2);
-        Thread.sleep(4000);
-        trainer.selectPreferredSubDistrict(preferredSubDistrict2);
-        Thread.sleep(4000);
+        if(!preferredDistrict2.equalsIgnoreCase("N/A"))
+        {
+        	trainer.selectPreferredDistrict(preferredDistrict2);
+            Thread.sleep(4000);
+        }
+        if(!preferredSubDistrict2.equalsIgnoreCase("N/A"))
+        {
+        	trainer.selectPreferredSubDistrict(preferredSubDistrict2);
+            Thread.sleep(4000);
+        }
         trainer.clickAddPreferences();
         Thread.sleep(4000);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState2+"')]]/td[1]")).getText().trim(), preferredJobRole2+" ("+preferredJobRoleCode2+")");
@@ -460,10 +464,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         trainer.selectPreferredState(preferredState3);
         Thread.sleep(4000);
-        trainer.selectPreferredDistrict(preferredDistrict3);
-        Thread.sleep(4000);
-        trainer.selectPreferredSubDistrict(preferredSubDistrict3);
-        Thread.sleep(4000);
+        if(!preferredDistrict3.equalsIgnoreCase("N/A"))
+        {
+        	trainer.selectPreferredDistrict(preferredDistrict3);
+            Thread.sleep(4000);
+        }
+        if(!preferredSubDistrict3.equalsIgnoreCase("N/A"))
+        {
+        	trainer.selectPreferredSubDistrict(preferredSubDistrict3);
+            Thread.sleep(4000);
+        }
         trainer.clickAddPreferences();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredState3+"')]]/td[1]")).getText().trim(), preferredJobRole3+" ("+preferredJobRoleCode3+")");
@@ -478,7 +488,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(4000);
         Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+preferredJobRole3+"')]")).size()==0,"OMG!!! deleted third preference still present OR Something is wrong! ");
         trainer.clickOnSaveAndContinue();
-        Thread.sleep(2000);
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in My Preferences & My Associations Section, Its Blocking further Applicant Registration Process!!!");
         trainer.clickIAgreeCheckbox();
         Thread.sleep(2000);
@@ -595,7 +604,8 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	UploadFile.upload(photoFile);
     	Thread.sleep(4000);
     	tMpP.clickToUploadPhotoFile();
-    	Thread.sleep(8000);
+    	WebDriverWait wait=new WebDriverWait(driver, 60);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
        	Select select2=new Select(driver.findElement(By.xpath("//div[label[contains(text(),'Select Applicant Category:')]]/div/select")));
        	List<WebElement> selectedApplicantCategories=select2.getAllSelectedOptions();
        	if(selectedApplicantCategories.size()==1)
@@ -617,7 +627,9 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	Thread.sleep(2000);
        	tMpP.clickContactAndAddress();
        	Thread.sleep(4000);
+    	Assert.assertFalse(driver.findElement(By.xpath("//div[label[contains(text(),'Mobile Number of Applicant:')]]/div/input")).isEnabled(),"OMG!!! Edit Profile - Mobile Number field should not be editable!");
        	Assert.assertEquals(tMpP.getMobileNumOfApplicant(), mobile);
+    	Assert.assertFalse(driver.findElement(By.xpath("//div[label[contains(text(),'Email Address of Applicant:')]]/div/input")).isEnabled(),"OMG!!! Edit Profile - Email field should not be editable!");
        	Assert.assertEquals(tMpP.getEmailOfApplicant(), email);
        	Assert.assertEquals(tMpP.getAddressOfApplicant(), address);
        	Assert.assertEquals(tMpP.getNearByLandMark(), landmark);
@@ -660,7 +672,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	UploadFile.upload(photoFile);
     	Thread.sleep(5000);
     	tMpP.clickToUploadSelectedEducationProofDoc();
-    	Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
     	tMpP.clickToSubmitEducationDetails();
     	Thread.sleep(2000);
     	Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+education3+"')]")).size()!=0,"OMG!!! No show of Added Educational Record for Profile of "+createdTrainerID+" !!! ");
@@ -695,7 +707,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	UploadFile.upload(photoFile);
     	Thread.sleep(5000);
     	tMpP.clickToUploadSelectedIndustrialExperienceProofDoc();
-    	Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
     	tMpP.clickToSubmitIndustrialExperienceDetails();
     	Thread.sleep(2000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[2]")).getText(), industrial_sector3);
@@ -729,7 +741,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     	UploadFile.upload(photoFile);
     	Thread.sleep(5000);
     	tMpP.clickToUploadSelectedTrainingExperienceProofDoc();
-    	Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
     	tMpP.clickToSubmitTrainingExperienceDetails();
     	Thread.sleep(4000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[2]//td[2]")).getText(), training_sector3);
@@ -741,7 +753,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
        	UploadFile.upload(photoFile);
        	Thread.sleep(4000);
        	tMpP.clickCurriculumVitaeUpload();
-       	Thread.sleep(8000);
+       	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
        	tMpP.clickSaveChanges3();
     	Thread.sleep(4000);
     	tMpP.clickOK();
@@ -855,10 +867,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 	   {
 		   tSp.selectState(preferredState3);
 		   Thread.sleep(2000);
-		   tSp.selectDistrict(preferredDistrict3);
-	 	   Thread.sleep(2000);
-	 	   tSp.selectSubDistrict(preferredSubDistrict3);
-	 	   Thread.sleep(2000);
+		   if(!preferredDistrict3.equalsIgnoreCase("N/A"))
+		   {
+			   tSp.selectDistrict(preferredDistrict3);
+		 	   Thread.sleep(2000);
+		   }
+		   if(!preferredSubDistrict3.equalsIgnoreCase("N/A"))
+		   {
+			   tSp.selectSubDistrict(preferredSubDistrict3);
+		 	   Thread.sleep(2000);
+		   }
 	 	   tSp.selectSector(preferredSector3);
 	 	   Thread.sleep(2000);
 	 	   tSp.selectSubSector(preferredSubSector3);
@@ -897,10 +915,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
 		  Thread.sleep(2000);
 		  tSp.selectAddTrainingRequestsState(preferredState3);
 		  Thread.sleep(2000);
-		  tSp.selectAddTrainingRequestsDistrict(preferredDistrict3);
-		  Thread.sleep(2000);
-		  tSp.selectAddTrainingRequestsSubDistrict(preferredSubDistrict3);
-		  Thread.sleep(2000);
+		  if(!preferredDistrict3.equalsIgnoreCase("N/A"))
+		  {
+			  tSp.selectAddTrainingRequestsDistrict(preferredDistrict3);
+			  Thread.sleep(2000);
+		  }
+		  if(!preferredSubDistrict3.equalsIgnoreCase("N/A"))
+		  {
+			  tSp.selectAddTrainingRequestsSubDistrict(preferredSubDistrict3);
+			  Thread.sleep(2000);
+		  }
 		  tSp.clickToAddTrainingRequest();
 		  Thread.sleep(5000);
 		  Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Training Request Submitted Successfully");

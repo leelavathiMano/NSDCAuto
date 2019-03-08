@@ -1,11 +1,13 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import com.nsdc.generic.SelectDropDownList;
 
 public class TrainerRegistrationPage
@@ -249,7 +251,8 @@ public class TrainerRegistrationPage
     }
     public void clickOnSaveAndContinue()
     {
-        saveAndContinueButton.click();
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", saveAndContinueButton);
     }
     public void enterApplicantAddress(String address)
     {
@@ -305,7 +308,10 @@ public class TrainerRegistrationPage
     }
     public void clickOnAddEducationDetailsButton()
     {
-        clickToAddEducationDetailsButton.click();
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+    	wait.until(ExpectedConditions.elementToBeClickable(clickToAddEducationDetailsButton));
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", clickToAddEducationDetailsButton);
     }
     public void deleteThirdEducationDetails()
     {
@@ -343,7 +349,10 @@ public class TrainerRegistrationPage
     }
     public void clickOnAddIndustrialExperienceDetails()
     {
-        clickToAddIndustrialExperienceDetailsButton.click();
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+    	wait.until(ExpectedConditions.elementToBeClickable(clickToAddIndustrialExperienceDetailsButton));
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", clickToAddIndustrialExperienceDetailsButton);
     }
     public void deleteThirdIndustrialExperienceDetailsWithoutEducationDetail()
     {
@@ -380,7 +389,10 @@ public class TrainerRegistrationPage
     }
     public void clickOnAddTrainingExperienceDetails()
     {
-        clickToAddTrainingExperienceDetailsButton.click();
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+    	wait.until(ExpectedConditions.elementToBeClickable(clickToAddTrainingExperienceDetailsButton));
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();", clickToAddTrainingExperienceDetailsButton);
     }
     public void deleteThirdTrainingExperienceWithoutEducationDetails()
     {
