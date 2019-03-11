@@ -190,6 +190,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void selectDomainJobRole(String domainJobRole) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(domainJobRoleCheckBoxList));
 		domainJobRoleCheckBoxList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+domainJobRole+"')])[1]")).click();
@@ -198,6 +200,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void selectPlatformJobRole(String platformJobRole) throws InterruptedException
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(platformJobRoleList));
 		platformJobRoleList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[text()='"+platformJobRole+"']")).click();
@@ -330,6 +334,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void clickOk()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	public void clickBatchAction(String createdBatchID)

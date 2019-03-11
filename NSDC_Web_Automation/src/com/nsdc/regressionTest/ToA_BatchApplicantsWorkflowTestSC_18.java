@@ -89,9 +89,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 49);
 	String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 50);
 	@DataProvider()
-    public Object[][] toaBatchData()
+    public Object[][] toaBatchData() throws Exception
     {
-		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls");
+		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 0, batchSector);
     	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches");
     }
 	
@@ -136,7 +136,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
-		Thread.sleep(2000);
 		sscTbcP.selectPlatformJobRole(platformJobRole);
 		Thread.sleep(2000);
 		//Domain QP
@@ -205,19 +204,19 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sscTbcP.selectBatchSize(batchSize);
 		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
-		Thread.sleep(4000);
-		Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Toast error Message present, Unable to create Batch! May be some data not entered OR Something went wrong! ");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
 		String[]parts=bacthCreationsuccessfulURL.split("/");
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),1,createdBatchID);
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
-		Thread.sleep(4000);
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
+		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.selectStateFilter(state);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.selectDistrictFilter(district);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
 		Thread.sleep(2000);
 		sVbP.clickToGetSearchFilterResult();
@@ -225,7 +224,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
 		Thread.sleep(2000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Master Trainer for domain QP
@@ -233,10 +231,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(2000);
 		sVbP.selectDomainAssignMasterTrainerOption();
 		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
+//		sVbP.selectDomainMasterTrainerStateFilter(state);
+//		Thread.sleep(2000);
+//		sVbP.selectDomainMasterTrainerDistrictFilter(district);
+//		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		Thread.sleep(2000);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
@@ -244,7 +242,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sVbP.clickToChooseDomainMasterTrainer();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Platform QP Master Trainer
@@ -252,10 +249,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(2000);
 		sVbP.selectPlatformAssignMasterTrainerOption();
 		Thread.sleep(2000);
-		sVbP.selectPlatformMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
+//		sVbP.selectPlatformMasterTrainerStateFilter(state);
+//		Thread.sleep(2000);
+//		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
+//		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
 		Thread.sleep(2000);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
@@ -263,7 +260,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sVbP.clickToChoosePlatformMasterTrainer();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Domain QP Assessment Agency
@@ -271,10 +267,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(2000);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
 		Thread.sleep(2000);
-		sVbP.selectDomainAssessmentAgencyStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
-		Thread.sleep(2000);
+//		sVbP.selectDomainAssessmentAgencyStateFilter(state);
+//		Thread.sleep(2000);
+//		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
+//		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
 		Thread.sleep(2000);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
@@ -282,7 +278,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sVbP.clickToChooseDomainAssessmentAgency();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Platform QP Assessment Agency
@@ -290,10 +285,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Thread.sleep(2000);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
 		Thread.sleep(2000);
-		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
-		Thread.sleep(2000);
+//		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
+//		Thread.sleep(2000);
+//		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
+//		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
 		Thread.sleep(2000);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
@@ -301,7 +296,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sVbP.clickToChoosePlatformAssessmentAgency();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,500)", "");
@@ -311,7 +305,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),2,formatter.format(date));
-		Thread.sleep(4000);
 		sVbP.clickOkForBatchSubmission();
 		Thread.sleep(4000);
 		PostLoginPage plp=new PostLoginPage(driver);

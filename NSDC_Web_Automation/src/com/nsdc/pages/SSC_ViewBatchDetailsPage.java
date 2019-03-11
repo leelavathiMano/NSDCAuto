@@ -222,7 +222,7 @@ public class SSC_ViewBatchDetailsPage
 	//Search For Training Centre
 	public void selectStateFilter(String sateFilter)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,120);
+		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.elementToBeClickable(stateFilterList));
 		stateFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+sateFilter+"')])[1]")).click();
@@ -230,14 +230,14 @@ public class SSC_ViewBatchDetailsPage
 	public void selectDistrictFilter(String districtFilter)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//angular2-multiselect[@formcontrolname='district'])[1]/div")));
-		driver.findElement(By.xpath("(//angular2-multiselect[@formcontrolname='district'])[1]/div")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(districtFilterList));
+		districtFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+districtFilter+"')])[1]")).click();
 	}
 	public void enterTrainingCentreIDToSearch(String trainingCentreIDToSearchFor) throws InterruptedException
 	{
 		searchByTrainingCentreIDTextField.clear();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		searchByTrainingCentreIDTextField.sendKeys(trainingCentreIDToSearchFor);
 	}
 	public void selectExceptionalTrainingCentreTypeFilter() throws InterruptedException

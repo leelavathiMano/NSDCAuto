@@ -208,21 +208,21 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sscTbcP.selectBatchSize(batchSize);
 		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
-		Thread.sleep(4000);
-		Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Toast error Message present, Unable to create Batch! May be some data not entered properly OR Something went wrong! ");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
 		String[]parts=bacthCreationsuccessfulURL.split("/");
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),1,createdBatchID);
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
-		Thread.sleep(4000);
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
+		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.selectStateFilter(state);
-		Thread.sleep(5000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sVbP.selectStateFilter(state);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.selectDistrictFilter(district);
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
 		Thread.sleep(2000);
 		sVbP.clickToGetSearchFilterResult();
@@ -230,7 +230,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
 		Thread.sleep(2000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Master Trainer for domain QP
@@ -238,10 +237,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Thread.sleep(2000);
 		sVbP.selectDomainAssignMasterTrainerOption();
 		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
+//		sVbP.selectDomainMasterTrainerStateFilter(state);
+//		Thread.sleep(2000);
+//		sVbP.selectDomainMasterTrainerDistrictFilter(district);
+//		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		Thread.sleep(2000);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
@@ -249,7 +248,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseDomainMasterTrainer();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Platform QP Master Trainer
@@ -257,10 +255,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Thread.sleep(2000);
 		sVbP.selectPlatformAssignMasterTrainerOption();
 		Thread.sleep(2000);
-		sVbP.selectPlatformMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
+//		sVbP.selectPlatformMasterTrainerStateFilter(state);
+//		Thread.sleep(2000);
+//		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
+//		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
 		Thread.sleep(2000);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
@@ -268,7 +266,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChoosePlatformMasterTrainer();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Domain QP Assessment Agency
@@ -287,7 +284,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseDomainAssessmentAgency();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		//Assigning Platform QP Assessment Agency
@@ -306,7 +302,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChoosePlatformAssessmentAgency();
 		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
-		Thread.sleep(4000);
 		sscTbcP.clickOk();
 		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,500)", "");
