@@ -219,8 +219,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.selectStateFilter(state);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		sVbP.selectStateFilter(state);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.selectDistrictFilter(district);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
