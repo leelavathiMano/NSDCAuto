@@ -196,7 +196,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.selectDistrictFilter(district);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
-		Thread.sleep(2000);
 		sVbP.clickToGetSearchFilterResult();
 		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
 		sVbP.clickToSubmitSelectedTrainingCentre();
@@ -212,7 +211,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 //		sVbP.selectDomainMasterTrainerDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
 		sVbP.clickToChooseDomainMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
@@ -228,7 +226,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 //		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
 		sVbP.clickToChoosePlatformMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
@@ -244,7 +241,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 //		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
 		sVbP.clickToChooseDomainAssessmentAgency();
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
@@ -260,7 +256,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 //		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
 		sVbP.clickToChoosePlatformAssessmentAgency();
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
