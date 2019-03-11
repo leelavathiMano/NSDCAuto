@@ -25,7 +25,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class CandidateSync_WorkflowTestSC_19
+public class CandidateSync_WorkflowTestSC_19 
 {
 
 public String createdCandidateId;
