@@ -205,6 +205,8 @@ public class SSC_ViewBatchDetailsPage
 	//After Batch creation and Assigning All Actors 
 	public void clickConfirmation()
 	{
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.elementToBeClickable(confirmationCheckbox));
 		confirmationCheckbox.click();
 	}
 	public void clickSaveAsDraft()
@@ -252,10 +254,14 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToChooseResultedTrainingCentreToAssign(String searchedTrainingCentreID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[contains(text(),'"+searchedTrainingCentreID+"')]]/td/input[@type='radio']")));
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+searchedTrainingCentreID+"')]]/td/input[@type='radio']")).click();
 	}
 	public void clickToSubmitSelectedTrainingCentre()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(submitSelectedTrainingCentreButton));
 		submitSelectedTrainingCentreButton.click();
 	}
 	//Assigning Domain QP Master Trainer
@@ -269,7 +275,7 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void selectDomainMasterTrainerStateFilter(String state) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,120);
+		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerStateFilterList));
 		domainMasterTrainerStateFilterList.click();
 		Thread.sleep(2000);
@@ -294,10 +300,14 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void clickToChooseDomainMasterTrainer()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerRadioButton));
 		domainMasterTrainerRadioButton.click();
 	}
 	public void clickToFinallyAssignSelectedDomainMasterTrainer()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(domainAssignSelectedMasterTrainerButton));
 		domainAssignSelectedMasterTrainerButton.click();
 	}	
 	//Assigning Platform QP Master Trainer
@@ -336,10 +346,14 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToChoosePlatformMasterTrainer()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(platformMasterTrainerRadioButton));
 		platformMasterTrainerRadioButton.click();
 	}
 	public void clickToFinallyAssignSelectedPlatformMasterTrainer()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(platformAssignSelectedMasterTrainerButton));
 		platformAssignSelectedMasterTrainerButton.click();
 	}	
 	//Assigning Domain Assessment Agency
@@ -378,6 +392,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToChooseDomainAssessmentAgency()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(domainAssessmentAgencyRadioButton));
 		domainAssessmentAgencyRadioButton.click();
 	}	
 	public void clickToFinallyAssignSelectedDomainAssessmentAgency()
@@ -422,10 +438,14 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void clickToChoosePlatformAssessmentAgency()
 	{
+		WebDriverWait wait=new WebDriverWait(driver,120);
+		wait.until(ExpectedConditions.elementToBeClickable(platformAssessmentAgencyRadioButton));
 		platformAssessmentAgencyRadioButton.click();
 	}
 	public void clickToFinallyAssignSelectedPlatformAssessmentAgency()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(platformAssignSelectedAssessmentAgencyButton));
 		platformAssignSelectedAssessmentAgencyButton.click();
 	}
 	//ReAssign TC

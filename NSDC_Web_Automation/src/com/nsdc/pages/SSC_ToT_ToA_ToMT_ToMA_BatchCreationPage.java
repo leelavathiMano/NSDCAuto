@@ -209,6 +209,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	//Domain QP
 	public void clickToChooseDomainQP()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(domainBaseQpRadioButton));
 		domainBaseQpRadioButton.click();
 	}
 	//Domain Training Dates
@@ -260,6 +262,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	//Platform QP
 	public void clickToChoosePlatformQP()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(platformBaseQpRadioButton));
 		platformBaseQpRadioButton.click();
 	}
 	//Platform Training Dates
