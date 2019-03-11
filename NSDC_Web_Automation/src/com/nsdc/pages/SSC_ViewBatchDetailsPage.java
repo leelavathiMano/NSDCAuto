@@ -55,6 +55,8 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement trainingCentreTypeList;
 	@FindBy(xpath="(//button[contains(text(),'Search')])[1]")
 	private WebElement searchFilterButton1;
+	@FindBy(xpath="(//input[@type='radio'])[5]")
+	private WebElement resultedTrainingCentreradioButton;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
 	private WebElement submitSelectedTrainingCentreButton;	
 	//Assign Master Trainer
@@ -254,12 +256,12 @@ public class SSC_ViewBatchDetailsPage
 		wait.until(ExpectedConditions.elementToBeClickable(searchFilterButton1));
 		searchFilterButton1.click();
 	}
-	public void clickToChooseResultedTrainingCentreToAssign(String searchedTrainingCentreID)
+	public void clickToChooseResultedTrainingCentreToAssign()
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+searchedTrainingCentreID+"')]]/td/input[@type='radio']")));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[contains(text(),'"+searchedTrainingCentreID+"')]]/td/input[@type='radio']")));
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+searchedTrainingCentreID+"')]]/td/input[@type='radio']")).click();
+		wait.until(ExpectedConditions.visibilityOf(resultedTrainingCentreradioButton));
+		wait.until(ExpectedConditions.elementToBeClickable(resultedTrainingCentreradioButton));
+		resultedTrainingCentreradioButton.click();
 	}
 	public void clickToSubmitSelectedTrainingCentre()
 	{

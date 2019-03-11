@@ -36,6 +36,7 @@ import com.nsdc.testConfig.TestConfiguration;
 public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfiguration
 {
 	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
+	String configBatchType=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 0);
 	String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 65);
 	String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 66);
 	String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 67);
@@ -50,7 +51,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 	@DataProvider
 	public Object[][] sscBatchCreationData() throws Exception
 	{
-		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 0, configBatchType);
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation");
 	}
 	
@@ -73,55 +74,39 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchType(batchType);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchCategory(batchCategory);
-		Thread.sleep(4000);
 		sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectTrainingEndDateForNewBatch(configBatchEndDate);
-			Thread.sleep(2000);
 		}
 		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
 			sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
-			Thread.sleep(2000);
 		}
 		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 9, trainingStartDate);
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 10, trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
-		Thread.sleep(2000);
 		sscTbcP.selectPlatformJobRole(platformJobRole);
-		Thread.sleep(2000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
-		Thread.sleep(5000);
 		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode+"')]")).isDisplayed(),"OMG!!! DomainJobRoleCode not displayed OR Something is wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+domainJobRole+"')]")).getText().trim(), domainJobRole);
 		sscTbcP.selectDomainTrainingStartDate(configDomainTrainingStartDate);
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectDomainTrainingEndDateForNewBatch(configDomainTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentStartDateForNewBatch(configDomainAssessmentStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentEndDateForNewBatch(configDomainAssessmentEndDate);
-			Thread.sleep(2000);
 		}
 		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
 			sscTbcP.selectDomainTrainingEndDateForExistingBatch(configDomainTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentStartDateForExistingBatch(configDomainAssessmentStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentEndDateForExistingBatch(configDomainAssessmentEndDate);
-			Thread.sleep(2000);
 		}
 		String domainTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
 		String domainTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
@@ -133,28 +118,20 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 18, domainAssessmentEndDate);
 		//Platform QP
 		sscTbcP.clickToChoosePlatformQP();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode+"')]")).isDisplayed(),"OMG!!! DomainJobRoleCode not displayed OR Something is wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+platformJobRole+"')]")).getText().trim(), platformJobRole);
 		sscTbcP.selectPlatformTrainingStartDate(configPlatformTrainingStartDate);
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectPlatformTrainingEndDateForNewBatch(configPlatformTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentStartDateForNewBatch(configPlatformAssessemntStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentEndDateForNewBatch(configPlatformAssessemntEndDate);
-			Thread.sleep(2000);
 			}
 		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
 			sscTbcP.selectPlatformTrainingEndDateForExistingBatch(configPlatformTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentStartDateForExistingBatch(configPlatformAssessemntStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentEndDateForExistingBatch(configPlatformAssessemntEndDate);
-			Thread.sleep(2000);
 		}
 		String platformTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
 		String platformTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
@@ -166,19 +143,14 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 22, platformAssessmentEndDate);
 		sscTbcP.isFeesReadOnly();
 		sscTbcP.clickToViewFees();
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='batchFees']")).getAttribute("value"), expectedBatchFees);
-		Thread.sleep(2000);
 		sscTbcP.clickToGetInDetailBatchFees();
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'Fee Applicable for Program')]]]/td[2]")).getText().trim(), expectedBatchFees);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'No. Of Additional Technical QP(0) X Rate(800)')]]]/td[2]")).getText().trim(), "0");
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'No. Of Additional Non-Technical QP(0) X Rate(600)')]]]/td[2]")).getText().trim(), "0");
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'Total Fee of the Program')]]]/td[2]")).getText().trim(), expectedBatchFees);
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
 		sscTbcP.selectBatchSize(batchSize);
-		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
@@ -187,7 +159,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 1, createdBatchID);
 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+") is successfully created");
 		sscTbcP.clickOk();
-		Thread.sleep(5000);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssccreate-new-batchbatch-assignment"+createdBatchID,"OMG!!! No show of Batch Assignment Page OR Something is wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Name')]]]/div[3]")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")");
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[span[contains(text(),'Sector')]]]/div[3])[1]")).getText().trim(), expectedSector);
@@ -202,143 +173,106 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sVbP.selectDistrictFilter(district);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
-		Thread.sleep(4000);
 		sVbP.clickToGetSearchFilterResult();
-		Thread.sleep(4000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+tcID+"')]")).size()==1,"OMG!!! No show of Searched training Centre - "+tcID);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcName+"')]")).getText().trim(), tcName);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tpName+"')]")).getText().trim(), tpName);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+state+"')]")).getText().trim(), state);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
-		Thread.sleep(2000);
-		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
-		Thread.sleep(4000);
+		sVbP.clickToChooseResultedTrainingCentreToAssign();
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Training Centre Assigned\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+tcName+"\nState : "+state+"\nDistrict : "+district);
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[1]")).getText().contains(tcName));
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[4]")).getText().trim(), tpName);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[5]")).getText().trim(), state);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Assigned");
 		//Assigning Master Trainer for Domain QP
-		Thread.sleep(2000);
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
-		Thread.sleep(2000);
 		sVbP.selectDomainAssignMasterTrainerOption();
-		Thread.sleep(2000);
 //		sVbP.selectDomainMasterTrainerStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectDomainMasterTrainerDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+dmasterTrainerID+" for Domain QP -"+domainJobRoleCode);
 		sVbP.clickToChooseDomainMasterTrainer();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+dmasterTrainerID+"\nState : "+domainMasterTrainerState+"\nDistrict : "+domainMasterTrainerDistrict);
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+dmasterTrainerID+"')]")).getText().trim(), dmasterTrainerName+" ( "+dmasterTrainerID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]]//span[contains(text(),'Assigned')])[1]")).getText().trim(), "Assigned");
 		//Assigning Master Trainer for Platform QP
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
-		Thread.sleep(2000);
 		sVbP.selectPlatformAssignMasterTrainerOption();
-		Thread.sleep(2000);
 //		sVbP.selectPlatformMasterTrainerStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+pmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+pmasterTrainerID+" for Platform QP -"+platformJobRoleCode);
 		sVbP.clickToChoosePlatformMasterTrainer();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Master Trainer Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+pmasterTrainerID+"\nState : "+platformMasterTrainerState+"\nDistrict : "+platformMasterTrainerDistrict);
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+pmasterTrainerID+"')])[1]")).getText().trim(), pmasterTrainerName+" ( "+pmasterTrainerID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]]//span[contains(text(),'Assigned')])[1]")).getText().trim(), "Assigned");
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
-		Thread.sleep(2000);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
-		Thread.sleep(2000);
 //		sVbP.selectDomainAssessmentAgencyStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dassessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+dassessmentAgencyID+" for Domain QP -"+domainJobRoleCode);
 		sVbP.clickToChooseDomainAssessmentAgency();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+dassessmentAgencyID+"\nState : "+domainAssessementAgencyState+"\nDistrict : "+domainAssessmentAgencyDistrict);
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+dassessmentAgencyID+"')]")).getText().trim(), dassessmentAgencyName+" ( "+dassessmentAgencyID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
-		Thread.sleep(2000);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
-		Thread.sleep(2000);
 //		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+passessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+passessmentAgencyID+" for Platform QP -"+platformJobRoleCode);
 		sVbP.clickToChoosePlatformAssessmentAgency();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Assessment Agency Assigned Successfully\n"+batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")\nis successfully assigned to   "+passessmentAgencyID+"\nState : "+platformAssessmentAgencyState+"\nDistrict : "+platformAssessemntAgencyDistrict);
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+passessmentAgencyID+"')])[1]")).getText().trim(), passessmentAgencyName+" ( "+passessmentAgencyID+" )");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
 		js.executeScript("window.scrollBy(0,500)", "");
-		Thread.sleep(2000);
 		sVbP.clickSaveAsDraft();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//h2[@id='swal2-title']")).getText().trim(), "Saved as Draft");
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='swal2-content']")).getText().trim(), "success");
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//checking presence of created batches of status draft
 		js.executeScript("window.scrollBy(0,-500)", "");
-		Thread.sleep(2000);
 		sscDbP.clickToTToAToMTToMA();
-		Thread.sleep(2000);
 		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(2000);
 		sscDbP.clickAllBatches();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.enterBatchIDToSearch(createdBatchID);
-		Thread.sleep(2000);
 		sAp.clickToGetSearchResult();
-		Thread.sleep(5000);
 		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]")).size()==0,"OMG! Batch - "+createdBatchID+" not found in All Batches Section of "+sscUsername+" !!! ");		
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[1]")).getText().trim(),createdBatchID);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[contains(text(),'"+batchType+"')]")).getText().trim(), batchType);
@@ -349,11 +283,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Draft");
 		//Submitting Batch 
 		sscTbcP.clickBatchAction(createdBatchID);
-		Thread.sleep(2000);
 		sscTbcP.selectAssignOption(createdBatchID);
-		Thread.sleep(2000);
 		sVbP.clickConfirmation();
-		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
@@ -367,7 +298,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscTbcP.clickBatchAction(createdBatchID);
 		Thread.sleep(2000);
 		sscTbcP.clickViewDetailsOption(createdBatchID);
-		Thread.sleep(5000);
 		//Verifying Batch Details
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch ID')]]/td[3]")).getText().trim(), createdBatchID);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
@@ -406,11 +336,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[4]")).getText().trim(), passessmentAgencyName+" ("+passessmentAgencyID+")");
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[5]")).getText().trim(), "Pending");
 		PostLoginPage plp=new PostLoginPage(driver);
-		Thread.sleep(2000);
 		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(2000);
 	}
 	
 	@Test(dataProvider="sscBatchCreationData", dependsOnMethods="sscBatchCreationTC_01")
@@ -1890,7 +1817,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+state+"')]")).getText().trim(), state);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
 		Thread.sleep(2000);
-		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
+		sVbP.clickToChooseResultedTrainingCentreToAssign();
 		Thread.sleep(4000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		Thread.sleep(4000);
@@ -2151,7 +2078,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(2000);
 				sVbP.clickToGetSearchFilterResult();
 				Thread.sleep(2000);
-				sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
+				sVbP.clickToChooseResultedTrainingCentreToAssign();
 				Thread.sleep(2000);
 				sVbP.clickToSubmitReAssignedTC();
 				Thread.sleep(2000);
@@ -2909,7 +2836,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+tcID+"')]")).size()==1,"OMG!!! No show of Searched training Centre - "+tcID);
 		Thread.sleep(2000);
-		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
+		sVbP.clickToChooseResultedTrainingCentreToAssign();
 		Thread.sleep(4000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		Thread.sleep(4000);

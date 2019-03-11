@@ -114,22 +114,16 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 		sscTbcP.selectSubSector(subSector);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchType(batchType);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchCategory(batchCategory);
-		Thread.sleep(2000);
 		sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectTrainingEndDateForNewBatch(configBatchEndDate);
-			Thread.sleep(2000);
 		}
 		else if(batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
 			sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
-			Thread.sleep(2000);
 		}
 		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
@@ -137,28 +131,20 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
 		sscTbcP.selectPlatformJobRole(platformJobRole);
-		Thread.sleep(2000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
 		sscTbcP.selectDomainTrainingStartDate(configDomainTrainingStartDate);
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectDomainTrainingEndDateForNewBatch(configDomainTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentStartDateForNewBatch(configDomainAssessmentStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentEndDateForNewBatch(configDomainAssessmentEndDate);
-			Thread.sleep(2000);
 		}
 		else if(batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
 			sscTbcP.selectDomainTrainingEndDateForExistingBatch(configDomainTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentStartDateForExistingBatch(configDomainAssessmentStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectDomainAssessmentEndDateForExistingBatch(configDomainAssessmentEndDate);
-			Thread.sleep(2000);
 		}
 		String domainTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
 		String domainTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
@@ -170,26 +156,18 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),18,domainAssessmentEndDate);
 		//Platform QP
 		sscTbcP.clickToChoosePlatformQP();
-		Thread.sleep(2000);
 		sscTbcP.selectPlatformTrainingStartDate(configPlatformTrainingStartDate);
-		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
 			sscTbcP.selectPlatformTrainingEndDateForNewBatch(configPlatformTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentStartDateForNewBatch(configPlatformAssessemntStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentEndDateForNewBatch(configPlatformAssessemntEndDate);
-			Thread.sleep(2000);
 		}
 		else if(batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
 			sscTbcP.selectPlatformTrainingEndDateForExistingBatch(configPlatformTrainingEndDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentStartDateForExistingBatch(configPlatformAssessemntStartDate);
-			Thread.sleep(2000);
 			sscTbcP.selectPlatformAssessmentEndDateForExistingBatch(configPlatformAssessemntEndDate);
-			Thread.sleep(2000);
 		}
 		String platformTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
 		String platformTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
@@ -200,9 +178,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),21,platformAssessmentStartDate);
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),22,platformAssessmentEndDate);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='batchFees']")).getAttribute("value"), expectedBatchFees);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchSize(batchSize);
-		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
@@ -218,101 +194,69 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		sVbP.selectDistrictFilter(district);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
-		Thread.sleep(2000);
 		sVbP.clickToGetSearchFilterResult();
-		Thread.sleep(2000);
-		sVbP.clickToChooseResultedTrainingCentreToAssign(tcID);
-		Thread.sleep(2000);
+		sVbP.clickToChooseResultedTrainingCentreToAssign();
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//Assigning Master Trainer for domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
-		Thread.sleep(2000);
 		sVbP.selectDomainAssignMasterTrainerOption();
-		Thread.sleep(2000);
 //		sVbP.selectDomainMasterTrainerStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectDomainMasterTrainerDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
-		Thread.sleep(2000);
 		sVbP.clickToChooseDomainMasterTrainer();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//Assigning Platform QP Master Trainer
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
-		Thread.sleep(2000);
 		sVbP.selectPlatformAssignMasterTrainerOption();
-		Thread.sleep(2000);
 //		sVbP.selectPlatformMasterTrainerStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
-		Thread.sleep(2000);
 		sVbP.clickToChoosePlatformMasterTrainer();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
-		Thread.sleep(2000);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
-		Thread.sleep(2000);
 //		sVbP.selectDomainAssessmentAgencyStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
 		sVbP.clickToChooseDomainAssessmentAgency();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
-		Thread.sleep(2000);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
-		Thread.sleep(2000);
 //		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
 //		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
 		sVbP.clickToChoosePlatformAssessmentAgency();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.clickConfirmation();
-		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),2,formatter.format(date));
 		sVbP.clickOkForBatchSubmission();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 		PostLoginPage plp=new PostLoginPage(driver);
-		Thread.sleep(4000);
 		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(2000);
     }
     
     @Test(dataProvider="toaBatchData", dependsOnMethods="toaBatchCreationTC_01")
