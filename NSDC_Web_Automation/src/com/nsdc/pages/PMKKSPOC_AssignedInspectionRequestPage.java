@@ -97,9 +97,14 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 		takeActionButton.click();
 	}
 	
+//	public void selectAssignTo_DA(String daUsername)
+//	{
+//		SelectDropDownList.selectDropDownListByVisibleText(assignTo_DA_DropDownList, daUsername);
+//	}
+	
 	public void selectAssignTo_DA(String daUsername)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(assignTo_DA_DropDownList, daUsername);
+		SelectDropDownList.selectDropDownListByIndex(assignTo_DA_DropDownList, 1);
 	}
 	
 	public void clickOnAssign()
@@ -112,14 +117,24 @@ public class PMKKSPOC_AssignedInspectionRequestPage
 		cancelButton.click();
 	}
 	
+//	public void selectForAssign_CentreInspector(String ciUsername)
+//	{
+//		SelectDropDownList.selectDropDownListByVisibleText(assignTo_CentreInspector_DropDownList, ciUsername);
+//	}
+	
 	public void selectForAssign_CentreInspector(String ciUsername)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(assignTo_CentreInspector_DropDownList, ciUsername);
+		SelectDropDownList.selectDropDownListByIndex(assignTo_CentreInspector_DropDownList, 1);
 	}
+	
+//	public void selectForAssign_QC(String qcUsername)
+//	{
+//		SelectDropDownList.selectDropDownListByVisibleText(assignTo_QC_DropDownList, qcUsername);
+//	}
 	
 	public void selectForAssign_QC(String qcUsername)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(assignTo_QC_DropDownList, qcUsername);
+		SelectDropDownList.selectDropDownListByIndex(assignTo_QC_DropDownList, 1);
 	}
 	
 	public void enterForInspectionDate()

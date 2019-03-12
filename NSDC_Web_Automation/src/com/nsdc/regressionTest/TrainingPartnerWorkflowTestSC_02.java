@@ -77,6 +77,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.selectTypeOfTheOrganization(type_Of_The_Organization);
         if(type_Of_The_Organization.equals("Government Institute"))
         {
+        	Thread.sleep(2000);
+            tprp.clickBrowseFile();
+            Thread.sleep(2000);
+            UploadFile.upload(uploadFilePath);
+            Thread.sleep(2000);
+            tprp.clickUploadFile();
+            Thread.sleep(5000);
             tprp.enterLandline(landLine);
         }
         else
@@ -731,9 +738,15 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         //tprp.clickDownloadButton();
         Thread.sleep(10000);
-        tprp.clickLogOutButton();
+        tprp.clcikOnGoToDashboard();
+        //tprp.clickLogOutButton();
         Thread.sleep(3000);
+        Assert.assertEquals(driver.findElement(By.xpath("//p[text()='Action DA Comments']")).getText(), "Action DA Comments");
         
+        PostLoginPage plp = new PostLoginPage(driver);
+        plp.clickOnProfileLogo();
+        plp.clickOnLogout();
+        Thread.sleep(3000);
         Assert.assertEquals(driver.findElement(By.xpath("//li[contains(text(),'LOGIN')]")).getText(), "LOGIN");
     }
     

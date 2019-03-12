@@ -175,54 +175,80 @@ public class TC_ApprovalPage
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
 	
-	
-	@FindBy(xpath="//div[text()='1.Front View']")
+	@FindBy(xpath="//figure[figcaption[text()='Address Proof']]")
+	private WebElement addressProof_Image_Button;
+	@FindBy(xpath="//figure[figcaption[text()='Front View']]")
 	private WebElement frontView_Image_Button;
-	@FindBy(xpath="//div[text()='2.Left View']")
+	@FindBy(xpath="//figure[figcaption[text()='Left View']]")
 	private WebElement leftView_Image_Button;	
-	@FindBy(xpath="//div[text()='3.Right View']")
+	@FindBy(xpath="//figure[figcaption[text()='Right View']]")
 	private WebElement rightView_Image_Button;
-	@FindBy(xpath="//div[text()='4.Internet Bill']")
+	@FindBy(xpath="//figure[figcaption[text()='Internet Bill']]")
 	private WebElement internetConectivity_Image_Button;
-	@FindBy(xpath="//div[text()='5.Power Backup']")
+	@FindBy(xpath="//figure[figcaption[text()='Power Backup']]")
 	private WebElement powerBackup_Image_Button;
-	@FindBy(xpath="//div[text()='1.Functional Washroom for DifferentlyAbled']")
+	@FindBy(xpath="//figure[figcaption[text()='Functional Washroom for DifferentlyAbled']]")
 	private WebElement washroom_Image_Button;
-	@FindBy(xpath="//div[text()='2.Ramp']")
+	@FindBy(xpath="//figure[figcaption[text()='Ramp']]")
 	private WebElement ramp_Image_Button;
-	@FindBy(xpath="//div[text()='3.Lift']")
+	@FindBy(xpath="//figure[figcaption[text()='Lift']]")
 	private WebElement lift_Image_Button;
-	@FindBy(xpath="//div[text()='1.Daily Inspection']")
+	@FindBy(xpath="//figure[figcaption[text()='Daily Inspection']]")
 	private WebElement dailyInspection_Image_Button;
-	@FindBy(xpath="//div[text()='2.Safe Drinking']")
+	@FindBy(xpath="//figure[figcaption[text()='Safe Drinking']]")
 	private WebElement safeDrinking_Image_Button;
-	@FindBy(xpath="//div[text()='1.Fire Fighting Equipment']")
+	@FindBy(xpath="//figure[figcaption[text()='Fire Fighting Equipment']]")
 	private WebElement fireFightingEquipment_Image_Button;
-	@FindBy(xpath="//div[text()='2.First Aid Kit']")
+	@FindBy(xpath="//figure[figcaption[text()='First Aid Kit']]")
 	private WebElement firstAidKit_Image_Button;
 	
-	@FindBy(xpath="(//div[text()='1.View 1'])[1]")
+	@FindBy(xpath="(//figure[figcaption[text()='Front View']])[2]")
+	private WebElement frontView_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Left View']])[2]")
+	private WebElement leftView_CIImage_Button;	
+	@FindBy(xpath="(//figure[figcaption[text()='Right View']])[2]")
+	private WebElement rightView_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Internet Bill']])[2]")
+	private WebElement internetConectivity_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Power Backup']])[2]")
+	private WebElement powerBackup_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Functional Washroom for DifferentlyAbled']])[2]")
+	private WebElement washroom_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Ramp']])[2]")
+	private WebElement ramp_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Lift']])[2]")
+	private WebElement lift_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Daily Inspection']])[2]")
+	private WebElement dailyInspection_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Safe Drinking']])[2]")
+	private WebElement safeDrinking_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='Fire Fighting Equipment']])[2]")
+	private WebElement fireFightingEquipment_CIImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='First Aid Kit']])[2]")
+	private WebElement firstAidKit_CIImage_Button;
+	
+	@FindBy(xpath="(//figure[figcaption[text()='View 1']])[1]")
 	private WebElement firstView_FirstImage_Button;
-	@FindBy(xpath="(//div[text()='1.View 2'])[1]")
+	@FindBy(xpath="(//figure[figcaption[text()='View 2']])[1]")
 	private WebElement secondView_FirstImage_Button;
-	@FindBy(xpath="(//div[text()='1.View 1'])[2]")
+	@FindBy(xpath="(//figure[figcaption[text()='View 1']])[2]")
 	private WebElement firstView_SecondImage_Button;
-	@FindBy(xpath="(//div[text()='1.View 2'])[2]")
+	@FindBy(xpath="(//figure[figcaption[text()='View 2']])[2]")
 	private WebElement secondView_SecondImage_Button;
-	@FindBy(xpath="//div[text()='1.SSC Certificate']")
+	@FindBy(xpath="(//figure[figcaption[text()='View 1']])[3]")
+	private WebElement firstView_ThirdImage_Button;
+	@FindBy(xpath="(//figure[figcaption[text()='View 2']])[3]")
+	private WebElement secondView_ThirdImage_Button;
+	@FindBy(xpath="//figure[figcaption[text()='SSC Certificate']]")
 	private WebElement sscCertificate_Image_Button;
-	@FindBy(xpath="//div[text()='2.Highest Qualification Certificate']")
+	@FindBy(xpath="//figure[figcaption[text()='Highest Qualification Certificate']]")
 	private WebElement highestQualificationCertificate_Image_Button;
-	@FindBy(xpath="//div[text()='3.NIESBUD/other agency certificate of entrepreneurship']")
+	@FindBy(xpath="//figure[figcaption[text()='NIESBUD/other agency certificate of entrepreneurship']]")
 	private WebElement nIESBUD_Image_Button;
-	@FindBy(xpath="//div[text()='4.Industrial Experiance']")
+	@FindBy(xpath="//figure[figcaption[text()='Industrial Experiance']]")
 	private WebElement industrialExperience_Image_Button;
 	
 	
-	@FindBy(xpath="(//div[text()='1.View 1'])[3]")
-	private WebElement firstView_ThirdImage_Button;
-	@FindBy(xpath="(//div[text()='1.View 2'])[3]")
-	private WebElement secondView_ThirdImage_Button;
 	@FindBy(xpath="(//div[text()='1.View 1'])[4]")
 	private WebElement firstView_FourthImage_Button;
 	@FindBy(xpath="(//div[text()='1.View 2'])[4]")
@@ -687,6 +713,13 @@ public class TC_ApprovalPage
 		okButton.click();
 	}
 	
+	public void clickOn_AddressProof_Image()throws Exception
+	{
+		addressProof_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
 	public void clickOn_FrontView_Image()throws Exception
 	{
 		frontView_Image_Button.click();
@@ -696,6 +729,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_LeftView_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		leftView_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -703,6 +737,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_RightView_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		rightView_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -710,6 +745,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_InternetConectivity_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		internetConectivity_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -717,6 +753,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_PowerBackup_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		powerBackup_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -724,6 +761,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_DifferentyAbledWashroom_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		washroom_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -731,6 +769,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_Ramp_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		ramp_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -738,6 +777,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_Lift_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		lift_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -745,6 +785,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_DailyInspection_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		dailyInspection_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -752,6 +793,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_SafeDrinking_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		safeDrinking_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -759,6 +801,7 @@ public class TC_ApprovalPage
 	
 	public void clickOn_FireFightingEquipment_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		fireFightingEquipment_Image_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
@@ -766,7 +809,104 @@ public class TC_ApprovalPage
 	
 	public void clickOn_FirstAidKit_Image()throws Exception
 	{
+		Thread.sleep(3000);
 		firstAidKit_Image_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FrontView_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		frontView_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_LeftView_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		leftView_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_RightView_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		rightView_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_InternetConectivity_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		internetConectivity_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_PowerBackup_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		powerBackup_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_DifferentyAbledWashroom_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		washroom_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_Ramp_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		ramp_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_Lift_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		lift_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_DailyInspection_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		dailyInspection_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_SafeDrinking_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		safeDrinking_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FireFightingEquipment_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		fireFightingEquipment_CIImage_Button.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
+	}
+	
+	public void clickOn_FirstAidKit_CIImage()throws Exception
+	{
+		Thread.sleep(3000);
+		firstAidKit_CIImage_Button.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
 	}

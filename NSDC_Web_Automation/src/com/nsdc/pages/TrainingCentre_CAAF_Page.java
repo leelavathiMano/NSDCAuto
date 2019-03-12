@@ -268,6 +268,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement pMKVYCentreIdTextbox;*/
     @FindBy(xpath="//button[contains(text(),'Save & Next')]")
     private WebElement saveAndNextButton;
+    @FindBy(xpath="//button[contains(text(),'Save & Continue')]")
+    private WebElement saveAndContinueButton;
     @FindBy(xpath="//button[text()='Save As Draft']")
     private WebElement saveAsDraftButton;
     
@@ -781,6 +783,8 @@ public class TrainingCentre_CAAF_Page
     private WebElement logOutButton;
     @FindBy(xpath="//button[text()='Download Submitted Form']")
     private WebElement downloadSubmittedFormButton;
+    @FindBy(xpath="//button[text()='Go to Dashboard']")
+    private WebElement goToDashboardPageButton;
     
     @FindBy(xpath="//button[contains(text(),'Ok')]")
     private WebElement ok_MobileApp_Button;
@@ -1544,6 +1548,11 @@ public class TrainingCentre_CAAF_Page
     public void clickOnSaveAndNext()
     {
         saveAndNextButton.click();
+    }
+    
+    public void clickOnSaveAndContinue()
+    {
+    	saveAndContinueButton.click();
     }
     
     public void clickOnSaveAsDraft()
@@ -2922,6 +2931,11 @@ public class TrainingCentre_CAAF_Page
     public void clickOnDownloadSubmittedForm()
     {
     	downloadSubmittedFormButton.click();
+    }
+    
+    public void clcikOnGoToDashboard()
+    {
+    	goToDashboardPageButton.click();
     }
     
     public void clickOn_OK_ForMobileApp()

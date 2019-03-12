@@ -24,7 +24,7 @@ public class TC_MySchemesPage
 	private WebElement appealButton;
 	@FindBy(xpath="//div[span[strong[contains(text(),' Re-Inspection ')]]]")
 	private WebElement reInspectionButton;
-	@FindBy(xpath="//div[span[strong[contains(text(),'Accept Inspection Date')]]]")
+	@FindBy(xpath="//div[span[strong[contains(text(),'Accept/Reject Inspection Date')]]]")
 	private WebElement acceptInspectionDateButton;
 	@FindBy(xpath="//div[span[strong[contains(text(),'Apply for Refund')]]]")
 	private WebElement applyForRefundButton;
@@ -127,9 +127,14 @@ public class TC_MySchemesPage
 		applyScheme_ForJobRoleButton.click();
 	}
 	
+//	public void selectScheme_ForJobRoleName(String scheme)
+//	{
+//		SelectDropDownList.selectDropDownListByVisibleText(selectSchemeDropDownList, scheme);
+//	}
+	
 	public void selectScheme_ForJobRoleName(String scheme)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(selectSchemeDropDownList, scheme);
+		SelectDropDownList.selectDropDownListByIndex(selectSchemeDropDownList, 1);
 	}
 	
 	public void clickOnBrowseFileForScheme()

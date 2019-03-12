@@ -146,7 +146,10 @@ public class TrainingPartnerRegistrationPage
     private WebElement logOutButton;
     @FindBy(xpath="//button[(text()='Download Submitted Form')]")
     private WebElement downloadButton;
-    
+    @FindBy(xpath="//button[text()='Go to Dashboard']")
+    private WebElement goToDashboardPageButton;
+    @FindBy(xpath="//button[(text()='Download Receipt')]")
+    private WebElement downloadReceiptButton;
     
     public TrainingPartnerRegistrationPage(WebDriver driver)
     {
@@ -484,6 +487,16 @@ public class TrainingPartnerRegistrationPage
     public void clickDownloadButton()
     {
         downloadButton.click();
+    }
+    
+    public void clcikOnGoToDashboard()
+    {
+    	goToDashboardPageButton.click();
+    }
+    
+    public void clickOnDownloadReciept()
+    {
+    	downloadReceiptButton.click();
     }
     
 }

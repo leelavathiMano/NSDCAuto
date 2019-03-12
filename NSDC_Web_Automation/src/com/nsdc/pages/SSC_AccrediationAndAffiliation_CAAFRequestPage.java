@@ -56,7 +56,7 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
 	private WebElement fourth_UploadFile_Button;
 	
-	@FindBy(xpath="(//select[option[text()='Select Review Comments']])[1]")
+	@FindBy(xpath="(//select[option[contains(text(),'Select Review Comments')]])[1]")
 	private WebElement first_finalReviewStatus_DropDownList;
 	@FindBy(xpath="(//select[option[text()='Select Review Comments']])[2]")
 	private WebElement second_finalReviewStatus_DropDownList;
