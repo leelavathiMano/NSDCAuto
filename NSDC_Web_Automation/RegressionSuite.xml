@@ -20,7 +20,6 @@
       	<class name="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_15"/>
       	<class name="com.nsdc.regressionTest.ToT_BatchApplicantsWorkflowTestSC_17"/>
       	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/>
-      	<class name="com.nsdc.regressionTest.CandidateSync_WorkflowTestSC_19"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
