@@ -30,6 +30,8 @@ public class TrainerDashboardPage
 	}
 	public void clickAllBatches()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(allBatchesButton));
 		allBatchesButton.click();
 	}
 	public void clickUpdateBatchStatus()

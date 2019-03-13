@@ -39,7 +39,7 @@ public class TrainerViewBatchesPage
 	@FindBy(linkText="Approved Applicants")
 	private WebElement approvedApplicantsSectionLinkText;
 	//On-going Batch
-	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
+	@FindBy(name="KeywordSearch")
 	private WebElement searchByBatchIDTextField;
 	@FindBy(xpath="//button[contains(text(),'Apply')]")
 	private WebElement applySearchFilterButton;
@@ -71,23 +71,36 @@ public class TrainerViewBatchesPage
 	}
 	public void clicktoGoPendingBatchesSection()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(pendingBatchesLink));
 		pendingBatchesLink.click();
 	}
 	public void clickToGoToAcceptedBatchesSection()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Accepted")));
 		acceptedBatchesLink.click();
 	}
 	public void clickToGoToRejectedBatchesSection()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Rejected")));
 		rejectedBatchesLink.click();
 	}
+	public void enterBatchIDToSearch(String batchID)
+	{
+		searchByBatchIDTextField.clear();
+		searchByBatchIDTextField.sendKeys(batchID);
+	}
+	public void clickToGetSearchFilterResult()
+	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(applySearchFilterButton));
+		applySearchFilterButton.click();
+	}
 	public void clickToGetActionMenuOptions(String batchID)
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")));
 		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
@@ -109,6 +122,8 @@ public class TrainerViewBatchesPage
 	}
 	public void enterRemarksForAcceptingBatch(String remarks)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(remarksForAcceptingBatchTextArea));
 		remarksForAcceptingBatchTextArea.clear();
 		remarksForAcceptingBatchTextArea.sendKeys(remarks);
 	}
@@ -120,6 +135,8 @@ public class TrainerViewBatchesPage
 	}
 	public void enterRemarksForRejectingBatch(String remarksForRejectingBatch)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(remarksForRejectingBatchTextArea));
 		remarksForRejectingBatchTextArea.clear();
 		remarksForRejectingBatchTextArea.sendKeys(remarksForRejectingBatch);
 	}
@@ -137,6 +154,8 @@ public class TrainerViewBatchesPage
 	}
 	public void clickOk()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	//After SSC Approving Batch
@@ -157,15 +176,6 @@ public class TrainerViewBatchesPage
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'View Details')]")).click();
 	}
 	//On-Going Batch
-	public void enterBatchIDToSearch(String batchID)
-	{
-		searchByBatchIDTextField.clear();
-		searchByBatchIDTextField.sendKeys(batchID);
-	}
-	public void clickToGetSearchFilterResult()
-	{
-		applySearchFilterButton.click();
-	}
 	public void clickToSelectUploadAttendanceOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Upload Attendance')]")).click();

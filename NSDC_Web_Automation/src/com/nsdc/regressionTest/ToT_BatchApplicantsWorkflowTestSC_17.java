@@ -264,7 +264,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		plp.clickOnLogout();
     }
     
-    @Test(dataProvider="totBatchData", dependsOnMethods="totBatchCreationTC_01")
+    @Test(dataProvider="totBatchData")//, dependsOnMethods="totBatchCreationTC_01")
     public void totBatchApprovalTC_02(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime) throws Exception
     {
     	//Assigned TC Login to Accept Batch
@@ -273,31 +273,28 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(tcID, tcPassword);
-		Thread.sleep(8000);
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainers");
 		lTcDp.clickToViewBatches();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Pending Requests")));
 		js.executeScript("window.scrollBy(0,200)","");
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
 		lTcVbP.clikToGetBatchActionMenu(batchID);
-		Thread.sleep(2000);
 		lTcVbP.selectAcceptBatchOption(batchID);
-		Thread.sleep(2000);
 		lTcVbP.enterRemarksForAcceptingBatch(tcBatchAcceptanceRemarks);
-		Thread.sleep(2000);
 		lTcVbP.clickToAcceptBatch();
-		Thread.sleep(4000);
 		lTcVbP.clickOk();
-		Thread.sleep(2000);
 		PostLoginPage plp=new PostLoginPage(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 		//Assigned Master Trainer Login To Accept the Batch
 		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
 		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
@@ -319,17 +316,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 					}
 				}
 				tDp.clickToGetTrainerDashboard();
-				Thread.sleep(2000);
 				tDp.clickAllBatches();
-				Thread.sleep(4000);
 				tVp.clicktoGoPendingBatchesSection();
-				Thread.sleep(2000);
 				js.executeScript("window.scrollBy(0,200)", "");
-				Thread.sleep(2000);
+				tVp.enterBatchIDToSearch(batchID);
+				tVp.clickToGetSearchFilterResult();
 				tVp.clickToGetActionMenuOptions(batchID);
-				Thread.sleep(2000);
 				tVp.clickToSelectAcceptBatchOption(batchID);
-				Thread.sleep(4000);
 				if(i==1)
 				{
 					tVp.enterRemarksForAcceptingBatch(dmtBatchAcceptanceRemarks);
@@ -338,7 +331,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				{
 					tVp.enterRemarksForAcceptingBatch(pmtBatchAcceptanceRemarks);
 				}
-				Thread.sleep(4000);	
 				tVp.clickToSubmit();
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 				Date date = new Date();
@@ -360,21 +352,16 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 			lp.clickLogin();
 			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
-			Thread.sleep(15000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 			tDp.clickToGetTrainerDashboard();
-			Thread.sleep(2000);
 			tDp.clickAllBatches();
-			Thread.sleep(4000);
 			tVp.clicktoGoPendingBatchesSection();
-			Thread.sleep(2000);
 			js.executeScript("window.scrollBy(0,200)", "");
-			Thread.sleep(2000);
+			tVp.enterBatchIDToSearch(batchID);
+			tVp.clickToGetSearchFilterResult();
 			tVp.clickToGetActionMenuOptions(batchID);
-			Thread.sleep(2000);
 			tVp.clickToSelectAcceptBatchOption(batchID);
-			Thread.sleep(4000);
 			tVp.enterRemarksForAcceptingBatch(dmtBatchAcceptanceRemarks);
-			Thread.sleep(4000);	
 			tVp.clickToSubmit();
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			Date date = new Date();
@@ -384,13 +371,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 50, timeFormat.format(date));
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
 		}
-		Thread.sleep(4000);	
 		tVp.clickOk();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(6000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 		//Assigned Assessment Agency Login to Accept and assigning master assessors for a batch
 		if(!passessmentAgencyID.equalsIgnoreCase(dassessmentAgencyID))
 		{
@@ -407,20 +393,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				}
 				AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 				aDp.clickBatchAssessmentRequests();
-				Thread.sleep(2000);
 				AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 				aVp.clickToViewPendingBatchRequests();
-				Thread.sleep(2000);
 				aVp.enterBatchIdToSearch(batchID);
-				Thread.sleep(2000);
 				aVp.clickToApplySelectedSearchFilters();
-				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
-				Thread.sleep(2000);
 				aVp.clickToGetActionMenuOptions();
-				Thread.sleep(2000);
 				aVp.clickToSelectAcceptBatchOption();
-				Thread.sleep(2000);
 				if(i==1)
 				{
 					aVp.enterRemarksForAcceptingBatch(daaBatchAcceptanceRemarks);
@@ -429,7 +408,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				{
 					aVp.enterRemarksForAcceptingBatch(paaBatchAcceptanceRemarks);
 				}
-				Thread.sleep(2000);		
 				aVp.clickToSubmitBatchAcceptance();
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 				Date date = new Date();
@@ -444,31 +422,21 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
 					ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
 				}
-				Thread.sleep(4000);
 				aVp.clickOk();
-				Thread.sleep(2000);
 				//assigning assessors
 				aVp.clickToViewAcceptedBatches();
-				Thread.sleep(4000);
 				aVp.enterBatchIdToSearch(batchID);
-				Thread.sleep(2000);
 				aVp.clickToApplySelectedSearchFilters();
-				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
-				Thread.sleep(2000);
 				aVp.clickToGetActionMenuOptions();
-				Thread.sleep(2000);
 				aVp.clickToSelectAssignAssessorsOption();
-				Thread.sleep(4000);
 				if(i==1)
 				{
 					aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
-					Thread.sleep(2000);
 				}
 				else
 				{
 					aVp.selectMasterAssessorForPlatform(pmasterAssessorName+"("+pmasterAssessorID+")");
-					Thread.sleep(2000);
 				}
 			}
 		}
@@ -478,22 +446,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 			aDp.clickBatchAssessmentRequests();
-			Thread.sleep(2000);
 			AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 			aVp.clickToViewPendingBatchRequests();
-			Thread.sleep(2000);
 			aVp.enterBatchIdToSearch(batchID);
-			Thread.sleep(2000);
 			aVp.clickToApplySelectedSearchFilters();
-			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
-			Thread.sleep(2000);
 			aVp.clickToGetActionMenuOptions();
-			Thread.sleep(2000);
 			aVp.clickToSelectAcceptBatchOption();
-			Thread.sleep(2000);
 			aVp.enterRemarksForAcceptingBatch(daaBatchAcceptanceRemarks);
-			Thread.sleep(2000);		
 			aVp.clickToSubmitBatchAcceptance();
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
 			Date date = new Date();
@@ -502,36 +462,25 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 55, formatter.format(date));
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
-			Thread.sleep(4000);
 			aVp.clickOk();
-			Thread.sleep(2000);
 			//assigning assessors
 			aVp.clickToViewAcceptedBatches();
-			Thread.sleep(4000);
 			aVp.enterBatchIdToSearch(batchID);
-			Thread.sleep(2000);
 			aVp.clickToApplySelectedSearchFilters();
-			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
-			Thread.sleep(5000);
 			aVp.clickToGetActionMenuOptions();
-			Thread.sleep(2000);
 			aVp.clickToSelectAssignAssessorsOption();
-			Thread.sleep(4000);
 			aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
-			Thread.sleep(2000);
 			aVp.selectMasterAssessorForDomain2(dmasterAssessorName+"("+dmasterAssessorID+")");
-			Thread.sleep(2000);
 		}
 		AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 		aVp.clickToSubmitMasterAssessors();
-		Thread.sleep(4000);
 		aVp.clickOk();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(6000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 		//Master Assessor Login to Accept Batches
 		if(!pmasterAssessorID.equalsIgnoreCase(dmasterAssessorID))
 		{
@@ -548,23 +497,15 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				}
 				AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 				maDp.clickToGetAssessorDashboard();
-				Thread.sleep(2000);
 				js.executeScript("window.scrollBy(0,500)", "");
 				maDp.clickBatchAssessmentRequests();
-				Thread.sleep(4000);
 				AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 				maVp.clicktoGoToPendingRequestsSection();
-				Thread.sleep(4000);
 				maVp.enterBatchIDToSearch(batchID);
-				Thread.sleep(4000);
 				maVp.clickToGetSearchResult();
-				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
-				Thread.sleep(2000);
 				maVp.clickToGetActionMenuOptions(batchID);
-				Thread.sleep(2000);
 				maVp.clickToSelectAcceptBatchOption(batchID);
-				Thread.sleep(4000);
 				if(i==1)
 				{
 					maVp.enterRemarksForAcceptingBatch(dmaRemarks);
@@ -595,23 +536,15 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
 			AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 			maDp.clickToGetAssessorDashboard();
-			Thread.sleep(2000);
 			js.executeScript("window.scrollBy(0,500)", "");
 			maDp.clickBatchAssessmentRequests();
-			Thread.sleep(4000);
 			AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 			maVp.clicktoGoToPendingRequestsSection();
-			Thread.sleep(4000);
 			maVp.enterBatchIDToSearch(batchID);
-			Thread.sleep(4000);
 			maVp.clickToGetSearchResult();
-			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
-			Thread.sleep(2000);
 			maVp.clickToGetActionMenuOptions(batchID);
-			Thread.sleep(2000);
 			maVp.clickToSelectAcceptBatchOption(batchID);
-			Thread.sleep(4000);
 			maVp.enterRemarksForAcceptingBatch(dmaRemarks);
 			maVp.clickToSaveAndSubmitBatchAccceptance();
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
@@ -623,13 +556,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
 		}
 		AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
-		Thread.sleep(4000);
 		maVp.clickOk();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		Thread.sleep(6000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 	}
     
     @DataProvider

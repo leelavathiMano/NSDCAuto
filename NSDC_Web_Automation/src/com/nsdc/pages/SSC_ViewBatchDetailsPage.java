@@ -207,7 +207,7 @@ public class SSC_ViewBatchDetailsPage
 	//After Batch creation and Assigning All Actors 
 	public void clickConfirmation()
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(confirmationCheckbox));
 		confirmationCheckbox.click();
 	}
@@ -226,14 +226,14 @@ public class SSC_ViewBatchDetailsPage
 	//Search For Training Centre
 	public void selectStateFilter(String sateFilter)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(stateFilterList));
 		stateFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+sateFilter+"')])[1]")).click();
 	}
 	public void selectDistrictFilter(String districtFilter)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(districtFilterList));
 		districtFilterList.click();
 		driver.findElement(By.xpath("(//label[contains(text(),'"+districtFilter+"')])[1]")).click();
@@ -252,20 +252,20 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToGetSearchFilterResult()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(searchFilterButton1));
 		searchFilterButton1.click();
 	}
 	public void clickToChooseResultedTrainingCentreToAssign()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(resultedTrainingCentreradioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(resultedTrainingCentreradioButton));
 		resultedTrainingCentreradioButton.click();
 	}
 	public void clickToSubmitSelectedTrainingCentre()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(submitSelectedTrainingCentreButton));
 		submitSelectedTrainingCentreButton.click();
 	}
@@ -280,7 +280,7 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void selectDomainMasterTrainerStateFilter(String state) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerStateFilterList));
 		domainMasterTrainerStateFilterList.click();
 		Thread.sleep(2000);
@@ -288,7 +288,7 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectDomainMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerDistrictFilterList));
 		domainMasterTrainerDistrictFilterList.click();
 		Thread.sleep(2000);
@@ -301,31 +301,33 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToGetDomainMasterSearchFilterResult()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainSearchFilterButton1));
 		domainSearchFilterButton1.click();
 	}	
 	public void clickToChooseDomainMasterTrainer()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(domainMasterTrainerRadioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(domainMasterTrainerRadioButton));
 		domainMasterTrainerRadioButton.click();
 	}
 	public void clickToFinallyAssignSelectedDomainMasterTrainer()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainAssignSelectedMasterTrainerButton));
 		domainAssignSelectedMasterTrainerButton.click();
 	}	
 	//Assigning Platform QP Master Trainer
 	public void clickPlatformMasterTrainerAction(String platformJobRole)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
 	public void selectPlatformAssignMasterTrainerOption()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssignMasterTrainerActionOptionLink));
 		platformAssignMasterTrainerActionOptionLink.click();
 	}
@@ -339,7 +341,7 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void selectPlatformMasterTrainerDistrictFilter(String district) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformMasterTrainerDistrictFilterList));
 		platformMasterTrainerDistrictFilterList.click();
 		Thread.sleep(2000);
@@ -352,37 +354,39 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void clickToGetPlatformMasterSearchFilterResult()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformSearchFilterButton1));
 		platformSearchFilterButton1.click();
 	}
 	public void clickToChoosePlatformMasterTrainer()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(platformMasterTrainerRadioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(platformMasterTrainerRadioButton));
 		platformMasterTrainerRadioButton.click();
 	}
 	public void clickToFinallyAssignSelectedPlatformMasterTrainer()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssignSelectedMasterTrainerButton));
 		platformAssignSelectedMasterTrainerButton.click();
 	}	
 	//Assigning Domain Assessment Agency
 	public void clickDomainAssessmentAgencyAction(String domainJobRole)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
 	public void selectDomainAssignAssessmentAgencyOption()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainAssignAssessmentAgencyActionOptionLink));
 		domainAssignAssessmentAgencyActionOptionLink.click();
 	}
 	public void selectDomainAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainAssessmentAgencyStateFilterList));
 		domainAssessmentAgencyStateFilterList.click();
 		Thread.sleep(2000);
@@ -390,7 +394,7 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void selectDomainAssessmentAgencyDistrictFilter(String district) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainAssessmentAgencyDistrictFilterList));
 		domainAssessmentAgencyDistrictFilterList.click();
 		Thread.sleep(2000);
@@ -403,37 +407,39 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToGetDomainAssessmentAgencySearchFilterResult()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainSearchFilterButton2));
 		domainSearchFilterButton2.click();
 	}
 	public void clickToChooseDomainAssessmentAgency()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(domainAssessmentAgencyRadioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(domainAssessmentAgencyRadioButton));
 		domainAssessmentAgencyRadioButton.click();
 	}	
 	public void clickToFinallyAssignSelectedDomainAssessmentAgency()
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(domainAssignSelectedAssessmentAgencyButton));
 		domainAssignSelectedAssessmentAgencyButton.click();
 	}
 	//Assigning Platform QP Assessment Agency
 	public void clickPlatformAssessmentAgencyAction(String platformJobRole)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
 	public void selectPlatformAssignAssessmentAgencyOption()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssignAssessmentAgencyActionOptionLink));
 		platformAssignAssessmentAgencyActionOptionLink.click();
 	}
 	public void selectPlatformAssessmentAgencyStateFilter(String state) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssessmentAgencyStateFilterList));
 		platformAssessmentAgencyStateFilterList.click();
 		Thread.sleep(2000);
@@ -441,7 +447,7 @@ public class SSC_ViewBatchDetailsPage
 	}	
 	public void selectPlatformAssessmentAgencyDistrictFilter(String district) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssessmentAgencyDistrictFilterList));
 		platformAssessmentAgencyDistrictFilterList.click();
 		Thread.sleep(2000);
@@ -454,20 +460,20 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToGetPlatformAssessmentAgencySearchFilterResult()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformSearchFilterButton2));
 		platformSearchFilterButton2.click();
 	}	
 	public void clickToChoosePlatformAssessmentAgency()
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.visibilityOf(platformAssessmentAgencyRadioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssessmentAgencyRadioButton));
 		platformAssessmentAgencyRadioButton.click();
 	}
 	public void clickToFinallyAssignSelectedPlatformAssessmentAgency()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(platformAssignSelectedAssessmentAgencyButton));
 		platformAssignSelectedAssessmentAgencyButton.click();
 	}

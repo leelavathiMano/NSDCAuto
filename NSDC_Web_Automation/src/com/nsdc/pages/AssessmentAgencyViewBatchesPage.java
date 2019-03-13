@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nsdc.generic.SelectDropDownList;
 
@@ -91,10 +93,14 @@ public class AssessmentAgencyViewBatchesPage
 	}
 	public void clickToViewPendingBatchRequests()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(pendingRequestsLink));
 		pendingRequestsLink.click();
 	}
 	public void clickToViewAcceptedBatches()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(acceptedBatchesLink));
 		acceptedBatchesLink.click();
 	}
 	public void clickToViewRejectedBatches()
@@ -103,6 +109,8 @@ public class AssessmentAgencyViewBatchesPage
 	}
 	public void clickToGetActionMenuOptions()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(actionMenuDropdownLink));
 		actionMenuDropdownLink.click();
 	}
 	public void enterBatchIdToSearch(String batchID) throws InterruptedException
@@ -113,6 +121,8 @@ public class AssessmentAgencyViewBatchesPage
 	}
 	public void clickToApplySelectedSearchFilters()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(applySearchFilterButton));
 		applySearchFilterButton.click();
 	}
 	public void clickToSelectViewBatchDetailsOption()
@@ -142,6 +152,8 @@ public class AssessmentAgencyViewBatchesPage
 	}
 	public void enterRemarksForAcceptingBatch(String remarksForAcceptingBatch)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(remarksForAcceptingBatchTextArea));
 		remarksForAcceptingBatchTextArea.clear();
 		remarksForAcceptingBatchTextArea.sendKeys(remarksForAcceptingBatch);
 	}
@@ -170,6 +182,8 @@ public class AssessmentAgencyViewBatchesPage
 	}
 	public void clickOk()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	public void clickToSelectAssignAssessorsOption()
@@ -178,14 +192,20 @@ public class AssessmentAgencyViewBatchesPage
 	}
 	public void selectMasterAssessorForDomain1(String dmasterAssessorNameID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(domain1AssessorsDropdownList));
 		SelectDropDownList.selectDropDownListByVisibleText(domain1AssessorsDropdownList, dmasterAssessorNameID);
 	}
 	public void selectMasterAssessorForDomain2(String dmasterAssessorNameID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(domain2AssessorsDropdownList));
 		SelectDropDownList.selectDropDownListByVisibleText(domain2AssessorsDropdownList, dmasterAssessorNameID);
 	}
 	public void selectMasterAssessorForPlatform(String pmasterAssessorNameID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(platformAssessorsDropdownList));
 		SelectDropDownList.selectDropDownListByVisibleText(platformAssessorsDropdownList, pmasterAssessorNameID);
 	}
 	public void clickToSubmitMasterAssessors()
