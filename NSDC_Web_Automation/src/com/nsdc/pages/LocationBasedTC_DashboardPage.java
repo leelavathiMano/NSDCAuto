@@ -1,6 +1,7 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,7 +46,8 @@ public class LocationBasedTC_DashboardPage
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//strong[text()='View Batches']")));
-		viewBatchesButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", viewBatchesButton);
 	}
 	public void clickAssociatedTrainers()
 	{
