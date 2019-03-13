@@ -15,11 +15,10 @@ public class Screenshot
         Date d = new Date();
       
         String date = d.toString().replace(":", "_");
-        String currentUrl = driver.getCurrentUrl();
-        String url = currentUrl.toString().replace(":", "_").replace("//", "_").replace(".", "_").replace("/", "_");
+        String currentUrl = driver.getCurrentUrl().toString().replace(":", "_").replace("//", "_").replace(".", "_").replace("/", "_");
         EventFiringWebDriver edriver = new EventFiringWebDriver(driver);
         File  scrImg = edriver.getScreenshotAs(OutputType.FILE);
-        File tarpath = new File("./Screenshots/"+ url +" " +name+" "+date+".jpg");
+        File tarpath = new File("./Screenshots/"+ currentUrl +" " +name+" "+date+".jpg");
         FileHandler.copy(scrImg, tarpath);
     }
     
