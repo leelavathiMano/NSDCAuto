@@ -1,6 +1,7 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,7 +67,8 @@ public class SSCAllBatchesPage
 	}
 	public void clickToGetSearchResult()
 	{
-		applySearchFiltersButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",applySearchFiltersButton);
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{

@@ -25,13 +25,13 @@ public class TrainerApplicantDashboardPage
 	}
 	public void clickToGetApplicantDashboard()
 	{
-		WebDriverWait wait= new WebDriverWait(driver,60);
+		WebDriverWait wait= new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.visibilityOf(applicantDashboardLink));
 		applicantDashboardLink.click();
 	}
 	public void clickSearchAndApplyforAvailableBatches()
 	{
-		WebDriverWait wait= new WebDriverWait(driver,60);
+		WebDriverWait wait= new WebDriverWait(driver,15);
 		wait.until(ExpectedConditions.visibilityOf(searchAndApplyForAvailableBatchesCardText));
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click()", searchAndApplyForAvailableBatchesCardText);

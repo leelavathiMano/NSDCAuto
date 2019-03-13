@@ -50,7 +50,8 @@ public class SSC_DashboardPage
 	}
 	public void clickAllBatches()
 	{
-		allBatchesButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",allBatchesButton);
 	}
 	public void clickRozgarMela()
 	{

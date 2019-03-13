@@ -190,28 +190,40 @@ public class LocationBasedTC_ViewBatchesPage
 	}
 	public void clickToViewAllAcceptedBatches()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(acceptedBatchesLink));
 		acceptedBatchesLink.click();
 	}
 	public void clickToViewAllRejectedBatches()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(rejectedBatchesLink));
 		rejectedBatchesLink.click();
 	}
 	public void clickToGoToBatchDetailsSection()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(batchDetailsSectionLink));
 		batchDetailsSectionLink.click();
 	}
 	public void clickToGoToEnrolledApplicantsSection()
 	{
-		enrolledApplicantsSectionLink.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", enrolledApplicantsSectionLink);
 	}
 	public void clickToGoToAppliedApplicantsSection()
 	{
-		appliedApplicantsSectionLink.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", appliedApplicantsSectionLink);
 	}
 	//Applied Candidates Section
 	public void clickToGetApplicantActionMenu(String createdAssessorID)
 	{
-		driver.findElement(By.xpath("(//tr[td[text()='"+createdAssessorID+"']]//a)[1]")).click();
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[text()='"+createdAssessorID+"']]//a)[1]")));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("(//tr[td[text()='"+createdAssessorID+"']]//a)[1]")));
+		
 	}
 	public void selectViewDetailsOfApplicantOption(String createdAssessorID)
 	{
@@ -227,14 +239,21 @@ public class LocationBasedTC_ViewBatchesPage
 	}
 	public void clickToSelectApplicantToBeEnrolled(String createdAssessorID)
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+createdAssessorID+"']]//label[input[@name='Checkbox']]/span")).click();
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[text()='"+createdAssessorID+"']]//label[input[@name='Checkbox']]/span")));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//tr[td[text()='"+createdAssessorID+"']]//label[input[@name='Checkbox']]/span")));		
 	}
 	public void clickToEnrollAllSelectedApplicants()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(enrollSelectedApplicantsButton));
 		enrollSelectedApplicantsButton.click();
 	}
 	public void clickToFinallyEnrollSelectedApplicants()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(yesButton));
 		yesButton.click();
 	}
 	public void selectReasonForRejectingApplicant() throws InterruptedException
