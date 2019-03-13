@@ -284,8 +284,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.enterToSearchForBatchID(batchID);
 		lTcVbP.clickToGetSearchResult();
-		lTcVbP.clikToGetBatchActionMenu(batchID);
-		lTcVbP.selectAcceptBatchOption(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectAcceptBatchOption();
 		lTcVbP.enterRemarksForAcceptingBatch(tcBatchAcceptanceRemarks);
 		lTcVbP.clickToAcceptBatch();
 		lTcVbP.clickOk();
@@ -803,9 +803,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), batchSize);
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
- 	   tcVp.clikToGetBatchActionMenu(batchID);
+ 	   tcVp.clikToGetBatchActionMenu();
  	   Thread.sleep(4000);
- 	   tcVp.selectEnrollApplicantsOption(batchID);
+ 	   tcVp.selectEnrollApplicantsOption();
  	   Thread.sleep(4000);
  	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+trainerID+"']]")).size()==1,"OMG!!! No show of Trainer Applicant - "+trainerID+" who has applied for the Batch - "+batchID+" OR Something went wrong! ");
  	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), trainerID);
@@ -1334,9 +1334,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
   	   	Thread.sleep(4000);
   	   	Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
   	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Approved");
-  	   	tcVp.clikToGetBatchActionMenu(batchID);
+  	   	tcVp.clikToGetBatchActionMenu();
   	   	Thread.sleep(4000);
-  	   	tcVp.selectViewBatchDetailsOption(batchID);
+  	   	tcVp.selectViewBatchDetailsOption();
   	   	Thread.sleep(6000);
   	   	tcVp.clickToGoToBatchDetailsSection();
   		Thread.sleep(2000);
@@ -1962,9 +1962,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		tcVp.clickToViewAllAcceptedBatches();
  	   		Thread.sleep(4000);
  	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
- 	   		tcVp.clikToGetBatchActionMenu(batchID);
+ 	   		tcVp.clikToGetBatchActionMenu();
  	   		Thread.sleep(4000);
- 	   		tcVp.selectEnrollApplicantsOption(batchID);
+ 	   		tcVp.selectEnrollApplicantsOption();
  	   		Thread.sleep(4000);
  	   		tcVp.clickToGetApplicantActionMenu(trainerID);
  	   		Thread.sleep(4000);
@@ -2065,9 +2065,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		tcVp.clickToViewAllAcceptedBatches();
  	   		Thread.sleep(4000);
  	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
- 	   		tcVp.clikToGetBatchActionMenu(batchID);
+ 	   		tcVp.clikToGetBatchActionMenu();
  	   		Thread.sleep(4000);
- 	   		tcVp.selectEnrollApplicantsOption(batchID);
+ 	   		tcVp.selectEnrollApplicantsOption();
  	   		Thread.sleep(6000);
  	   		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==1,"OMG!!! No show of Trainer Applicant - "+trainerID+" in Applied Applicants Section!!! OR Something went wrong! ");
  	   		tcVp.clickToGetApplicantActionMenu(trainerID);

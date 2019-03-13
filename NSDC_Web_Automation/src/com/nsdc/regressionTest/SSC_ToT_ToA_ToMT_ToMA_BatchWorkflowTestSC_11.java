@@ -368,9 +368,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText(), batchStartDate+" to "+batchEndDate);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText(), "Pending for Publish");
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectViewBatchDetailsOption(batchID);
+		lTcVbP.selectViewBatchDetailsOption();
 		Thread.sleep(4000);
 		//Asserting view Batch Details
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID:')]]]/label[2]")).getText().trim(), batchID);
@@ -396,9 +396,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		lTcVbP.clickToGetSearchResult();
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectAcceptBatchOption(batchID);
+		lTcVbP.selectAcceptBatchOption();
 		Thread.sleep(2000);
 		lTcVbP.enterRemarksForAcceptingBatch(tcBatchAcceptanceRemarks);
 		Thread.sleep(2000);
@@ -424,9 +424,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText(), batchSize);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText(), batchStartDate+" to "+batchEndDate);
 		Assert.assertNotSame(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Accepted");
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectViewBatchDetailsOption(batchID);
+		lTcVbP.selectViewBatchDetailsOption();
 		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID:')]]]/label[2]")).getText().trim(), batchID);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch Name:')]]]/label[2]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
@@ -2021,9 +2021,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText(), batchStartDate+" to "+batchEndDate);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText(), "Pending for Publish");
 				Thread.sleep(4000);
-				lTcVbP.clikToGetBatchActionMenu(batchID);
+				lTcVbP.clikToGetBatchActionMenu();
 				Thread.sleep(2000);
-				lTcVbP.selectRejectBatchOption(batchID);
+				lTcVbP.selectRejectBatchOption();
 				Thread.sleep(4000);
 				lTcVbP.selectReasonForRejectingBatch(tcReasonForRejectingBatch);
 				Thread.sleep(4000);
@@ -2974,9 +2974,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,200)","");
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectAcceptBatchOption(batchID);
+		lTcVbP.selectAcceptBatchOption();
 		Thread.sleep(2000);
 		lTcVbP.enterRemarksForAcceptingBatch("TC Accepted Batch");
 		Thread.sleep(2000);
@@ -3121,9 +3121,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.clickToViewAllAcceptedBatches();
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectRaiseRescheduleRequestOption(batchID);
+		lTcVbP.selectRaiseRescheduleRequestOption();
 		Thread.sleep(4000);
 		lTcVbP.clickToBrowseForBatchRescheduleSupportingDocument();
 		Thread.sleep(4000);
@@ -3228,9 +3228,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.clickToViewAllAcceptedBatches();
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectRaiseRescheduleRequestOption(batchID);
+		lTcVbP.selectRaiseRescheduleRequestOption();
 		Thread.sleep(4000);
 		lTcVbP.clickToBrowseForBatchRescheduleSupportingDocument();
 		Thread.sleep(4000);
@@ -3360,9 +3360,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.clickToViewAllAcceptedBatches();
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectRaiseRescheduleRequestOption(batchID);
+		lTcVbP.selectRaiseRescheduleRequestOption();
 		Thread.sleep(4000);
 		lTcVbP.clickToBrowseForBatchRescheduleSupportingDocument();
 		Thread.sleep(4000);
@@ -3560,9 +3560,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(4000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rTrainingStartDate+" to "+rTrainingEndDate);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectViewBatchDetailsOption(batchID);
+		lTcVbP.selectViewBatchDetailsOption();
 		Thread.sleep(4000);
 		//Asserting view Batch Details
 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID:')]]]/label[2]")).getText().trim(), batchID);
@@ -3604,9 +3604,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.clickToViewAllAcceptedBatches();
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectRaiseCancellationRequest(batchID);
+		lTcVbP.selectRaiseCancellationRequest();
 		Thread.sleep(4000);
 		lTcVbP.clickToBrowseForBatchCancellationSupportingDocument();
 		Thread.sleep(4000);
@@ -3711,9 +3711,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.clickToViewAllAcceptedBatches();
 		Thread.sleep(4000);
-		lTcVbP.clikToGetBatchActionMenu(batchID);
+		lTcVbP.clikToGetBatchActionMenu();
 		Thread.sleep(2000);
-		lTcVbP.selectRaiseCancellationRequest(batchID);
+		lTcVbP.selectRaiseCancellationRequest();
 		Thread.sleep(4000);
 		lTcVbP.clickToBrowseForBatchCancellationSupportingDocument();
 		Thread.sleep(4000);
@@ -3862,9 +3862,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
  	   		tcVp.clickToViewAllAcceptedBatches();
  	   		Thread.sleep(4000);
  	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
- 	   		tcVp.clikToGetBatchActionMenu(batchID);
+ 	   		tcVp.clikToGetBatchActionMenu();
  	   		Thread.sleep(4000);
- 	   		tcVp.selectEnrollApplicantsOption(batchID);
+ 	   		tcVp.selectEnrollApplicantsOption();
  	   		Thread.sleep(4000);
  	   		tcVp.clickToGetApplicantActionMenu(createdTrainerID);
  	   		Thread.sleep(4000);
@@ -3915,9 +3915,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), batchSize);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
-     	   	tcVp.clikToGetBatchActionMenu(batchID);
+     	   	tcVp.clikToGetBatchActionMenu();
      	   	Thread.sleep(2000);
-     	   	tcVp.selectEnrollApplicantsOption(batchID);
+     	   	tcVp.selectEnrollApplicantsOption();
      	   	Thread.sleep(4000);
      	   	tcVp.clickToGoToEnrolledApplicantsSection();
      	   	Thread.sleep(4000);
@@ -4010,9 +4010,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), batchSize);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Sent Back by SSC");
-     	   	tcVp.clikToGetBatchActionMenu(batchID);
+     	   	tcVp.clikToGetBatchActionMenu();
      	   	Thread.sleep(2000);
-     	   	tcVp.selectReEnrollApplicantsOption(batchID);
+     	   	tcVp.selectReEnrollApplicantsOption();
      	   	Thread.sleep(4000);
      	   	tcVp.clickToGoToAppliedApplicantsSection();
      	   	Thread.sleep(4000);

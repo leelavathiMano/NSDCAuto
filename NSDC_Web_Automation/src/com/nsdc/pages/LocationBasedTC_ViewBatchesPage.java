@@ -1,13 +1,13 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.nsdc.generic.SelectDropDownList;
 
 public class LocationBasedTC_ViewBatchesPage
@@ -47,6 +47,10 @@ public class LocationBasedTC_ViewBatchesPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
+	@FindBy(xpath="//span[contains(text(),'Enroll Applicants')]")
+	private WebElement enrollApplicantsOption;
+	@FindBy(xpath="//span[contains(text(),'Re-Enroll Applicants')]")
+	private WebElement reEnrollApplicantsOption;
 	//view batch details option resulted page
 	@FindBy(linkText="Batch Details")
 	private WebElement batchDetailsSectionLink;
@@ -70,6 +74,8 @@ public class LocationBasedTC_ViewBatchesPage
 	@FindBy(xpath="(//button[contains(text(),'Reject Candidate')])[2]")
 	private WebElement rejectApplicantButton;
 	//Reschedule Elements
+	@FindBy(xpath="//span[contains(text(),'Raise Reschedule Request')]")
+	private WebElement raiseRescheduleRequestOption;
 	@FindBy(id="customFile")
 	private WebElement batchRescheduleSupportingDocumentBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
@@ -79,6 +85,8 @@ public class LocationBasedTC_ViewBatchesPage
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[3]")
 	private WebElement batchRescheduleSubmitButton;
 	//Cancellation Elements
+	@FindBy(xpath="//span[contains(text(),'Raise Cancellation Request')]")
+	private WebElement raiseCancellationRequestOption;
 	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement batchCancellationSupportingDocumentBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
@@ -105,43 +113,40 @@ public class LocationBasedTC_ViewBatchesPage
 		wait.until(ExpectedConditions.elementToBeClickable(applySearchfilterButton));
 		applySearchfilterButton.click();
 	}
-	public void clikToGetBatchActionMenu(String batchID)
+	public void clikToGetBatchActionMenu()
 	{
-		//actionMenu.click();
 		WebDriverWait wait=new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")));
-		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(actionMenuLink));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", actionMenuLink);
 	}
-	public void selectViewBatchDetailsOption(String batchID)
+	public void selectViewBatchDetailsOption()
 	{
-		//viewBatchDetailsOption.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'View Batch Details')]")).click();
+		viewBatchDetailsOption.click();
 	}
-	public void selectAcceptBatchOption(String batchID)
+	public void selectAcceptBatchOption()
 	{
-		//acceptOrRejectBatchOption.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Accept')]")).click();
+		acceptBatchOption.click();
 	}
-	public void selectRejectBatchOption(String batchID)
+	public void selectRejectBatchOption()
 	{
-		//acceptOrRejectBatchOption.click();
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Reject')]")).click();
+		rejectBatchOption.click();
 	}
-	public void selectRaiseRescheduleRequestOption(String batchID)
+	public void selectRaiseRescheduleRequestOption()
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Raise Reschedule Request')]")).click();
+		raiseRescheduleRequestOption.click();
 	}
-	public void selectRaiseCancellationRequest(String batchID)
+	public void selectRaiseCancellationRequest()
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a/span[contains(text(),'Raise Cancellation Request')]")).click();
+		raiseCancellationRequestOption.click();
 	}
-	public void selectEnrollApplicantsOption(String batchID)
+	public void selectEnrollApplicantsOption()
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a//span[contains(text(),'Enroll Applicants')]")).click();
+		enrollApplicantsOption.click();
 	}
-	public void selectReEnrollApplicantsOption(String batchID)
+	public void selectReEnrollApplicantsOption()
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a//span[contains(text(),'Re-Enroll Applicants')]")).click();
+		reEnrollApplicantsOption.click();
 	}
 	public void clickToGoToDashboard()
 	{
