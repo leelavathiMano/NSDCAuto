@@ -531,6 +531,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickOk()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	//Master Trainer and Assessment Agency Action Menu - View Comments, View Attendence and Reassign Actors

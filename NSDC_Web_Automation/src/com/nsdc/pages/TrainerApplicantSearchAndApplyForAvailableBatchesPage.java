@@ -196,6 +196,8 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void clickOK()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	public void clickGoBack()

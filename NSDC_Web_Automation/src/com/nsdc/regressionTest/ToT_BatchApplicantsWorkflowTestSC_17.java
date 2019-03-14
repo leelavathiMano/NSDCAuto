@@ -671,6 +671,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		   tSp.clickToGetMyPreferenceActionMenu(batchSector);
 		   tSp.selectSearchAgainstPreference(batchSector);
+ 		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   tSp.clickToGetBatchActionMenu(batchID);
  		   tSp.selectApplyToBatch(batchID);
@@ -889,6 +890,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   tcVp.selectEnrollApplicantOption(trainerID);
  		   tcVp.clickOk();
  	   }
+ 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   tcVp.clickToGoToAppliedApplicantsSection();
  	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! Enrolled Trainer Applicant - "+trainerID+" Still present in Applied Applicants Section!!! OR Something went wrong! ");
@@ -960,7 +962,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   plp.clickOnProfileLogo();
  	   Thread.sleep(2000);
  	   plp.clickOnLogout();
- 	   Thread.sleep(2000);
     }
     
     //Applicant Adding Fees Payment Details After TC Approval
@@ -1076,7 +1077,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		plp.clickOnProfileLogo();
     		Thread.sleep(2000);
     		plp.clickOnLogout();
-    		Thread.sleep(2000);
     	}
     }
   

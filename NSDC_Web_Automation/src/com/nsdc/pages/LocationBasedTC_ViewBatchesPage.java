@@ -248,7 +248,8 @@ public class LocationBasedTC_ViewBatchesPage
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(enrollSelectedApplicantsButton));
-		enrollSelectedApplicantsButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",enrollSelectedApplicantsButton);
 	}
 	public void clickToFinallyEnrollSelectedApplicants()
 	{
