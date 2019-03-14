@@ -1021,7 +1021,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		tVp.enterPaymentReferenceNumber(paymentReferenceNumber);
     		tVp.selectDateOfPayment();
     		String dateOfPayment=driver.findElement(By.xpath("//input[@formcontrolname='dateOfPayment']")).getAttribute("value");
-    		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "totApplicantsData", Integer.parseInt(serialNum), 2, dateOfPayment);
+    		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", Integer.parseInt(serialNum), 2, dateOfPayment);
     		Assert.assertFalse(driver.findElement(By.xpath("//input[@formcontrolname='amount']")).isEnabled(),"OMG!!! Fees TextField should be disabled OR Something went wrong!");
     		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='amount']")).getAttribute("value").trim(), batchFees);
     		tVp.enterPaymentRemarks(paymentRemarks);
