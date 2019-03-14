@@ -318,8 +318,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 					elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
 				}
 				tDp.clickToGetTrainerDashboard();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				tDp.clickAllBatches();
 				tVp.clicktoGoPendingBatchesSection();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				tVp.enterBatchIDToSearch(batchID);
 				tVp.clickToGetSearchFilterResult();
@@ -349,7 +351,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				}
 				tVp.clickOk();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 				plp.clickOnProfileLogo();
 				Thread.sleep(2000);
 				plp.clickOnLogout();
@@ -363,8 +364,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 			tDp.clickToGetTrainerDashboard();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			tDp.clickAllBatches();
 			tVp.clicktoGoPendingBatchesSection();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			tVp.enterBatchIDToSearch(batchID);
 			tVp.clickToGetSearchFilterResult();
@@ -381,7 +384,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 49, formatter.format(date));
 			tVp.clickOk();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
