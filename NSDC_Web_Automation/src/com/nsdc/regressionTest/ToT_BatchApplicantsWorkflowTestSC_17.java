@@ -281,11 +281,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
 		lTcDp.clickToViewBatches();
-		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Pending Requests")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		js.executeScript("window.scrollBy(0,200)","");
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.enterToSearchForBatchID(batchID);
 		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		lTcVbP.clikToGetBatchActionMenu();
 		lTcVbP.selectAcceptBatchOption();
 		lTcVbP.enterRemarksForAcceptingBatch(tcBatchAcceptanceRemarks);
@@ -293,7 +294,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		lTcVbP.clickOk();
 		PostLoginPage plp=new PostLoginPage(driver);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
@@ -318,8 +318,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				tDp.clickToGetTrainerDashboard();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				tDp.clickAllBatches();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-				tVp.clicktoGoPendingBatchesSection();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				tVp.enterBatchIDToSearch(batchID);
@@ -367,8 +365,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			tDp.clickAllBatches();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			tVp.clicktoGoPendingBatchesSection();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			tVp.enterBatchIDToSearch(batchID);
 			tVp.clickToGetSearchFilterResult();
@@ -409,10 +405,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				aDp.clickBatchAssessmentRequests();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
-				aVp.clickToViewPendingBatchRequests();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				aVp.enterBatchIdToSearch(batchID);
 				aVp.clickToApplySelectedSearchFilters();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				aVp.clickToGetActionMenuOptions();
 				aVp.clickToSelectAcceptBatchOption();
@@ -445,6 +440,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				aVp.enterBatchIdToSearch(batchID);
 				aVp.clickToApplySelectedSearchFilters();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				aVp.clickToGetActionMenuOptions();
 				aVp.clickToSelectAssignAssessorsOption();
@@ -459,7 +455,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				aVp.clickToSubmitMasterAssessors();
 				aVp.clickOk();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 				plp.clickOnProfileLogo();
 				Thread.sleep(2000);
 				plp.clickOnLogout();
@@ -474,10 +469,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			aDp.clickBatchAssessmentRequests();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
-			aVp.clickToViewPendingBatchRequests();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			aVp.clickToGetActionMenuOptions();
 			aVp.clickToSelectAcceptBatchOption();
@@ -497,6 +491,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			aVp.clickToGetActionMenuOptions();
 			aVp.clickToSelectAssignAssessorsOption();
@@ -505,7 +500,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			aVp.clickToSubmitMasterAssessors();
 			aVp.clickOk();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
@@ -532,10 +526,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				maDp.clickBatchAssessmentRequests();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
-				maVp.clicktoGoToPendingRequestsSection();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				maVp.enterBatchIDToSearch(batchID);
 				maVp.clickToGetSearchResult();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				maVp.clickToGetActionMenuOptions(batchID);
 				maVp.clickToSelectAcceptBatchOption(batchID);
@@ -563,7 +556,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				}
 				maVp.clickOk();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 				plp.clickOnProfileLogo();
 				Thread.sleep(2000);
 				plp.clickOnLogout();
@@ -581,10 +573,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			maDp.clickBatchAssessmentRequests();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
-			maVp.clicktoGoToPendingRequestsSection();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			maVp.enterBatchIDToSearch(batchID);
 			maVp.clickToGetSearchResult();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			maVp.clickToGetActionMenuOptions(batchID);
 			maVp.clickToSelectAcceptBatchOption(batchID);
@@ -599,7 +590,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 73, formatter.format(date));
 			maVp.clickOk();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@data-dropdown-toggle='click']")));
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
