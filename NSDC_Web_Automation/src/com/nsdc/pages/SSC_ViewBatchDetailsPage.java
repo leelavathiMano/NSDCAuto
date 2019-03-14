@@ -1,6 +1,7 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -177,6 +178,8 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement approvedApplicantsSectionText;
 	@FindBy(xpath="//button[contains(text(),'Approve Applicants')]")
 	private WebElement approveApplicantsButton;
+	@FindBy(xpath="//button[contains(text(),'Approve without Payment')]")
+	private WebElement approveWithoutPaymentButton;
 	@FindBy(xpath="//button[contains(text(),'View Payment Details')]")
 	private WebElement viewPaymentDetailsButton;
 	@FindBy(xpath="//button[contains(text(),'Go Back')]")
@@ -261,7 +264,8 @@ public class SSC_ViewBatchDetailsPage
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(resultedTrainingCentreradioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(resultedTrainingCentreradioButton));
-		resultedTrainingCentreradioButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", resultedTrainingCentreradioButton);
 	}
 	public void clickToSubmitSelectedTrainingCentre()
 	{
@@ -272,6 +276,8 @@ public class SSC_ViewBatchDetailsPage
 	//Assigning Domain QP Master Trainer
 	public void clickDomainMasterTrainerAction(String domanJobRole)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
 	public void selectDomainAssignMasterTrainerOption()
@@ -525,6 +531,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickOk()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	//Master Trainer and Assessment Agency Action Menu - View Comments, View Attendence and Reassign Actors
@@ -684,15 +692,18 @@ public class SSC_ViewBatchDetailsPage
 	//Approving And Rejecting Applicants
 	public void clickTogoToBatchDetailsSection()
 	{
-		batchDetailsSectionText.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",batchDetailsSectionText);
 	}
 	public void clickToGoToEnrolledApplicantsSection()
 	{
-		enrolledApplicantsSectionText.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",enrolledApplicantsSectionText);
 	}
 	public void clickToGoToApprovedApplicantsSection()
 	{
-		approvedApplicantsSectionText.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",approvedApplicantsSectionText);
 	}
 	public void clickToSelectApplicantToBeApproved(String applicantID)
 	{
@@ -710,10 +721,15 @@ public class SSC_ViewBatchDetailsPage
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Approve Applicant')]")).click();
 	}
+	public void selectApproveWithoutPaymentOption(String applicantID)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'Approve without Payment')]")).click();
+	}
 	public void clickToApproveAllSelectedApplicants()
 	{
 		approveApplicantsButton.click();
 	}
+	
 	public void clickToViewPaymentDetails()
 	{
 		viewPaymentDetailsButton.click();
@@ -757,5 +773,9 @@ public class SSC_ViewBatchDetailsPage
 	public void clickToSubmitSendBackBatch()
 	{
 		sendBackBatchSubmitButton.click();
+	}
+	public void clickToApproveAllSelectedUnpaidApplicants()
+	{
+		approveWithoutPaymentButton.click();
 	}
 }

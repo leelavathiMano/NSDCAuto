@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.nsdc.generic.SelectDropDownList;
 
 public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
@@ -143,18 +146,26 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void clickSearchBatches()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(searchBatchesSectionLink));
 		searchBatchesSectionLink.click();
 	}
 	public void clickMyPreferences()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(myPreferencesSectionLink));
 		myPreferencesSectionLink.click();
 	}
 	public void clickAddJobRoleAndLocationToMyPreference()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(addJobRoleAndLocationToMyPreferenceButton));
 		addJobRoleAndLocationToMyPreferenceButton.click();
 	}
 	public void clickToGetMyPreferenceActionMenu(String preferredSector)
 	{
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[i[@class='la la-ellipsis-h']]")));
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
 	}
 	public void selectSearchAgainstPreference(String preferredSector)
@@ -167,6 +178,8 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void clickToGetBatchActionMenu(String batchID)
 	{
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]//a[i]")));
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]//a[i]")).click();
 	}
 	public void selectViewBatchDetails(String batchID)
@@ -195,6 +208,8 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void clickToGetAcceptedBatchActionMenu(String batchID)
 	{
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")));
 		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
 	public void selectAcceptedBatchViewDetails(String batchID)

@@ -32,6 +32,10 @@ public class TrainerApplicantViewBatchesPage
 	private WebElement submitPaymetDetailsButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;	
+	@FindBy(id="Search")
+	private WebElement searchForBatchIDTextField;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchFilterButton;
 	
 	public TrainerApplicantViewBatchesPage(WebDriver driver)
 	{
@@ -41,6 +45,15 @@ public class TrainerApplicantViewBatchesPage
 	public void clickToGoToApplicantDashboard()
 	{
 		applicantDashboardLink.click();
+	}
+	public void enterBatchIDTosearch(String batchID)
+	{
+		searchForBatchIDTextField.clear();
+		searchForBatchIDTextField.sendKeys(batchID);
+	}
+	public void clickToGetSearchResult()
+	{
+		applySearchFilterButton.click();
 	}
 	public void clickToGetRejectedBatchActionMenu(String batchID)
 	{
@@ -72,38 +85,38 @@ public class TrainerApplicantViewBatchesPage
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Provide Feedback')]")).click();
 	}
 	//Payment
-		public void selectPaymentMode(String paymentMode)
-		{
-			SelectDropDownList.selectDropDownListByVisibleText(modeOfPaymentDropdownList, paymentMode);
-		}
-		public void selectBankName(String bankName)
-		{
-			SelectDropDownList.selectDropDownListByVisibleText(bankNameDropdownList, bankName);
-		}
-		public void enterPaymentReferenceNumber(String paymentReferenceNumber)
-		{
-			referenceNumberTextField.clear();
-			referenceNumberTextField.sendKeys(paymentReferenceNumber);
-		}
-		public void selectDateOfPayment() throws InterruptedException
-		{
-			dateOfPaymentTextField.click();
-			Thread.sleep(2000);
-			driver.findElement(By.xpath("//td[@class='today day']")).click();
-			Thread.sleep(2000);
-			closePaymentDateCalenderIcon.click();
-		}
-		public void enterPaymentRemarks(String paymentRemarks)
-		{
-			paymentRemarksTextArea.clear();
-			paymentRemarksTextArea.sendKeys(paymentRemarks);
-		}
-		public void clickToSubmitPaymentDetails()
-		{
-			submitPaymetDetailsButton.click();
-		}
-		public void clickOK()
-		{
-			okButton.click();
-		}
+	public void selectPaymentMode(String paymentMode)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(modeOfPaymentDropdownList, paymentMode);
+	}
+	public void selectBankName(String bankName)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(bankNameDropdownList, bankName);
+	}
+	public void enterPaymentReferenceNumber(String paymentReferenceNumber)
+	{
+		referenceNumberTextField.clear();
+		referenceNumberTextField.sendKeys(paymentReferenceNumber);
+	}
+	public void selectDateOfPayment() throws InterruptedException
+	{
+		dateOfPaymentTextField.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//td[@class='today day']")).click();
+		Thread.sleep(2000);
+		closePaymentDateCalenderIcon.click();
+	}
+	public void enterPaymentRemarks(String paymentRemarks)
+	{
+		paymentRemarksTextArea.clear();
+		paymentRemarksTextArea.sendKeys(paymentRemarks);
+	}
+	public void clickToSubmitPaymentDetails()
+	{
+		submitPaymetDetailsButton.click();
+	}
+	public void clickOK()
+	{
+		okButton.click();
+	}	
 }
