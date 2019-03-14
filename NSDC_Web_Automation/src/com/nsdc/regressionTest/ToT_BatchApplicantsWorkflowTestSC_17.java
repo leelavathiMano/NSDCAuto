@@ -950,7 +950,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     @Test(dataProvider="totApplicantsData", dependsOnMethods="tcApprovingToT_ApplicantsTC_04")
     public void batchFeesPaymentByToT_ApplicantsTC_05(String serialNum, String trainerID, String paymentDate, String userType, String name, String email, String mobile, String TrainerPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String paymentMode, String bankName, String paymentReferenceNumber, String paymentRemarks) throws Exception
     {
-    	if(!serialNum.endsWith("1"))
+    	if((!serialNum.endsWith("1")) && (!serialNum.endsWith("3")))
     	{
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
     		LoginPage lp=new LoginPage(driver);
@@ -1077,12 +1077,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	JavascriptExecutor js=(JavascriptExecutor)driver;
    	 	js.executeScript("window.scrollBy(0,200)", "");
    	 	sDp.clickAllBatches();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
    	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
    	 	sAp.clickToViewAllPublishedBatches();
    	 	String batchID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 1);
    	 	String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 9);
    	 	String batchEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 10);
-	   	sAp.enterBatchIDToSearch(batchID);
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	sAp.enterBatchIDToSearch(batchID);
 	   	sAp.clickToGetSearchResult();
 	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Submitted for Approval");
@@ -1160,13 +1162,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	if(!paymentMode.equalsIgnoreCase("N/A"))
    	 	{
    	 	sVp.clickToViewPaymentDetails();
+ 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID')]]]/div[2]")).getText().trim(), batchID);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Mode of Payment')]]]/div[2]")).getText().trim(), paymentMode);
    	 	if(!paymentMode.equalsIgnoreCase("cash"))
    	 	{
    	  	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Name of the Bank')]]]/div[2]")).getText().trim(), bankName);
    	 	}
- 	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
+// 	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Reference No')]]]/div[2]")).getText().trim(), paymentReferenceNumber);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Amount')]]]/div[2]")).getText().trim(), batchFees);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Any Remarks')]]]/div[2]")).getText().trim(), paymentRemarks);
@@ -1182,20 +1185,41 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	if(serialNum.equals("1"))
    	 	{
    	 		sVp.clickToSelectApplicantToBeApproved(trainerID);
-   	 		sVp.clickToApproveAllSelectedApplicants();
-   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-   	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 		if(paymentMode.equalsIgnoreCase("N/A"))
+   	 		{
+   	 			sVp.clickToApproveAllSelectedApplicants();
+   	 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
+   	 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(),"Only paid candidates can be approved");
+   	 			sVp.clickToApproveAllSelectedUnpaidApplicants();
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 		}
+   	 		else
+   	 		{
+   	 			sVp.clickToApproveAllSelectedApplicants();
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 		}
    	 	}
    	 	else
    	 	{
    	 		sVp.clickToGetApplicantActionMenu(trainerID);
-   	 		sVp.selectApproveOfApplicantOption(trainerID);
-   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
- 	 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved\nApplicant successfully approved for "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
-   	 		sVp.clickOk();
-   	 		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 		if(paymentMode.equalsIgnoreCase("N/A"))
+   	 		{
+   	 			sVp.selectApproveWithoutPaymentOption(trainerID);
+   	 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+   	 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved\nApplicant successfully approved for "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
+   	 			sVp.clickOk();
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 		}
+   	 		else
+   	 		{
+   	 			sVp.selectApproveOfApplicantOption(trainerID);
+   	 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+   	 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved\nApplicant successfully approved for "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
+	 			sVp.clickOk();
+	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 		}
    	 	}
- 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
    	 	js.executeScript("window.scrollBy(0,-1000)", "");
    	 	sVp.clickToGoToApprovedApplicantsSection();
    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -1286,7 +1310,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 			{
    	 				Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Name of the Bank')]]]/div[2]")).getText().trim(), bankName);
    	 			}
-   	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
+// 	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Reference No')]]]/div[2]")).getText().trim(), paymentReferenceNumber);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Amount')]]]/div[2]")).getText().trim(), batchFees);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Any Remarks')]]]/div[2]")).getText().trim(), paymentRemarks);
