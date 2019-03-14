@@ -259,7 +259,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),2,formatter.format(date));
 		sVbP.clickOkForBatchSubmission();
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//li[@data-dropdown-toggle='click']"))));
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
