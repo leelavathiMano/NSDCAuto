@@ -264,7 +264,8 @@ public class SSC_ViewBatchDetailsPage
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(resultedTrainingCentreradioButton));
 		wait.until(ExpectedConditions.elementToBeClickable(resultedTrainingCentreradioButton));
-		resultedTrainingCentreradioButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", resultedTrainingCentreradioButton);
 	}
 	public void clickToSubmitSelectedTrainingCentre()
 	{
