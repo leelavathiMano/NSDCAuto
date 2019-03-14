@@ -200,7 +200,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseResultedTrainingCentreToAssign();
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Assigning Master Trainer for domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
 		Thread.sleep(2000);
@@ -215,6 +215,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseDomainMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Assigning Platform QP Master Trainer
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
 		sVbP.selectPlatformAssignMasterTrainerOption();
@@ -227,6 +228,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChoosePlatformMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
@@ -239,8 +241,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseDomainAssessmentAgency();
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		sscTbcP.clickOk();
-		//Assigning Platform QP Assessment Agency
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
 //		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
@@ -252,6 +254,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChoosePlatformAssessmentAgency();
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.clickConfirmation();
 		sVbP.clickToSubmitBatch();
@@ -259,7 +262,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),2,formatter.format(date));
 		sVbP.clickOkForBatchSubmission();
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//li[@data-dropdown-toggle='click']"))));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
