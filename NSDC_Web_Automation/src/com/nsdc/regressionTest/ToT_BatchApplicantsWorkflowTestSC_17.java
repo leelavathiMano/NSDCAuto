@@ -240,6 +240,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		sscTbcP.clickOk();
 		//Assigning Platform QP Assessment Agency
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
 //		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
