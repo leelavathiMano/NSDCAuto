@@ -1,9 +1,12 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AssessorApplicantDashboardPage 
 {
@@ -22,11 +25,16 @@ public class AssessorApplicantDashboardPage
 	}
 	public void clickToGetApplicantDashboard()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(applicantDashboardLink));
 		applicantDashboardLink.click();
 	}
 	public void clickSearchAndApplyforAvailableBatches()
 	{
-		searchAndApplyForAvailableBatchesCardText.click();
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.visibilityOf(searchAndApplyForAvailableBatchesCardText));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()", searchAndApplyForAvailableBatchesCardText);
 	}
 	public void clickViewBatches()
 	{

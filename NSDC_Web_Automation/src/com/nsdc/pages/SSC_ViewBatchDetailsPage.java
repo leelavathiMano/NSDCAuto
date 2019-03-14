@@ -276,6 +276,8 @@ public class SSC_ViewBatchDetailsPage
 	//Assigning Domain QP Master Trainer
 	public void clickDomainMasterTrainerAction(String domanJobRole)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domanJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[1]")).click();
 	}
 	public void selectDomainAssignMasterTrainerOption()

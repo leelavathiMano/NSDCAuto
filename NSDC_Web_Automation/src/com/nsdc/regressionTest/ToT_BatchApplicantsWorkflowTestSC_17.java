@@ -203,9 +203,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Assigning Master Trainer for domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
-		Thread.sleep(2000);
 		sVbP.selectDomainAssignMasterTrainerOption();
-		Thread.sleep(2000);
 //		sVbP.selectDomainMasterTrainerStateFilter(state);
 //		Thread.sleep(2000);
 //		sVbP.selectDomainMasterTrainerDistrictFilter(district);
