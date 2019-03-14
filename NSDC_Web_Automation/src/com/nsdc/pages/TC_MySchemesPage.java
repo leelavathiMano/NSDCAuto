@@ -59,6 +59,16 @@ public class TC_MySchemesPage
 	@FindBy(xpath="(//button[contains(text(),'Cancel')])[3]")
 	private WebElement cancel_ForInspectionDateButton;
 	
+	@FindBy(xpath="(//textarea[@formcontrolname='reviewComments'])[1]")
+	private WebElement tc_CommentTextbox;
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	private WebElement tcComment_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	private WebElement tcComment_UploadFileButton;
+	@FindBy(xpath="(//button[@class='btn btn-next'])[4]")
+	private WebElement submit_ForSSCReviewButton;
+	@FindBy(xpath="(//button[contains(text(),'Cancel')])[4]")
+	private WebElement cancel_ForSSCReviewButton;
 	
 	public TC_MySchemesPage(WebDriver driver) 
 	{
@@ -185,6 +195,32 @@ public class TC_MySchemesPage
 	public void clickOnCabcel_ForInspectionDate()
 	{
 		cancel_ForInspectionDateButton.click();
+	}
+	
+	public void enterTC_CommentForSSC(String tcComment)
+	{
+		tc_CommentTextbox.clear();
+		tc_CommentTextbox.sendKeys(tcComment);
+	}
+	
+	public void clickOnTCComment_BrowseFile()
+	{
+		tcComment_BrowseFileButton.click();
+	}
+	
+	public void clickOnTCComment_UploadFile()
+	{
+		tcComment_UploadFileButton.click();
+	}
+	
+	public void clickOnSubmit_ForSSCReview()
+	{
+		submit_ForSSCReviewButton.click();
+	}
+	
+	public void clickOnCancel_ForSSCReview()
+	{
+		cancel_ForSSCReviewButton.click();
 	}
 
 }

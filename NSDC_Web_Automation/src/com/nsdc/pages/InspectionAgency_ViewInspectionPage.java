@@ -79,9 +79,14 @@ public class InspectionAgency_ViewInspectionPage
 		takeAction_Button.click();
 	}
 	
+//	public void selectForAssignTo_Second(String assignTo)
+//	{
+//		SelectDropDownList.selectDropDownListByVisibleText(assignToDropDownList, assignTo);
+//	}
+	
 	public void selectForAssignTo_Second(String assignTo)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(assignToDropDownList, assignTo);
+		SelectDropDownList.selectDropDownListByIndex(assignToDropDownList, 1);
 	}
 	
 	public void selectStatusForRequest(String statusForRequest)

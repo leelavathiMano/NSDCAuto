@@ -141,7 +141,7 @@ public class TrainingPartnerRegistrationPage
     @FindBy(xpath="//button[contains(text(),'Save & Continue')]")
     private WebElement saveAndContinueButton;
     @FindBy(xpath="//button[text()='OK']")
-    private WebElement paymentOKButton;
+    private WebElement okButton;
     @FindBy(xpath="//button[contains(text(),'Logout')]")
     private WebElement logOutButton;
     @FindBy(xpath="//button[(text()='Download Submitted Form')]")
@@ -469,9 +469,9 @@ public class TrainingPartnerRegistrationPage
     	saveAndContinueToPaymentButton.click();
     }
     
-    public void clickPaymentOkButton()
+    public void clickOnOkButton()
     {
-        paymentOKButton.click();
+    	okButton.click();
     }
     
     public void clickSaveAndContinueButton()

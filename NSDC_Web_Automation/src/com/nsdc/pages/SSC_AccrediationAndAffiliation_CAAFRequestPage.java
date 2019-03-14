@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nsdc.generic.FilePreview;
 import com.nsdc.generic.SelectDropDownList;
 
 public class SSC_AccrediationAndAffiliation_CAAFRequestPage 
@@ -88,6 +89,8 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 	@FindBy(xpath="(//input[@formcontrolname='neisbubCertified'])[2]")
 	private WebElement trainerNEISCertified_No_RadioButton;
 	
+	@FindBy(xpath="//button[contains(text(),'View  Submitted Document')]")
+	private WebElement viewSubmittedDocumentByTCButton;
 	
 	
 	public SSC_AccrediationAndAffiliation_CAAFRequestPage(WebDriver driver)
@@ -287,6 +290,13 @@ public class SSC_AccrediationAndAffiliation_CAAFRequestPage
 	public void clickOnNEISCertifiedTrainer_No()
 	{
 		trainerNEISCertified_No_RadioButton.click();
+	}
+	
+	public void clickOnViewSubmittedDocument_ByTC() throws Exception
+	{
+		viewSubmittedDocumentByTCButton.click();
+		Thread.sleep(3000);
+		FilePreview.closeWindow(driver);
 	}
 	
 

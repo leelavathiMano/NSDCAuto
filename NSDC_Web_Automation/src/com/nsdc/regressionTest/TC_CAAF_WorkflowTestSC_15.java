@@ -166,8 +166,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		atc.enterEmailOTP(emailOTP);
 		Thread.sleep(3000);
 		atc.clickOnVerifyOTP();
-		//Thread.sleep(3000);
-		//atc.clickOnCancelOTP();
+//		Thread.sleep(3000);
+//		atc.clickOnCancelOTP();
 		js.executeScript("scroll(0, 1200)");
 		Thread.sleep(5000);
 		atc.clickOnSubmit();
@@ -653,264 +653,264 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	@Test(dataProvider="tc_CAAF_BillPayment",enabled=false)
 	public void tc_CAAF_MobileUploadTC_03(String sno, String tcUsername, String tcPassword, String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,  String tcType) throws Exception
 	{
-        appDriver = CreateAppiumDriver.getDriverInstance();
-		
-		int srno = Integer.parseInt(sno);
-		
-		//String emailID = "TC_003787";//ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 1);
-		//String password = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 2);
-		
-		//UsersScreen us = new UsersScreen(appDriver);
-		//us.getTrainingCentreButton().click();
-		
-		Thread.sleep(8000);
-		((AppiumDriver)appDriver).runAppInBackground(Duration.ofSeconds(2));
-        ((StartsActivity)appDriver).currentActivity();
-		LoginScreen ls = new LoginScreen(appDriver);
-		RemoteWebElement number = (RemoteWebElement)driver.findElement(By.id("lb-0")); 
-	    number.sendKeys("TCjhjdfjdsf");
-        //ls.getEmailTextbox().clear();
-       // Thread.sleep(3000);
-		ls.getEmailTextbox().sendKeys(tcUsername);
-		Thread.sleep(3000);
-		ls.getPasswordTextbox().clear();
-		ls.getPasswordTextbox().click();
-		ls.getPasswordTextbox().sendKeys(tcPassword);
-		ls.getLoginButton().click();
-		
-		TC_CAAF_DashboardScreen sd = new TC_CAAF_DashboardScreen(appDriver);
-		sd.getGeneralDeatilsButton().click();
-		sd.getEnableGPSButton().click();
-		
-		TC_CAAF_GeneralDetails_UploadImagesScreen gd_uis = new TC_CAAF_GeneralDetails_UploadImagesScreen(appDriver);
-		List <WebElement> elements = gd_uis.getUpLoadFileButtons();
-		for(int i=0; i<elements.size(); i++)
-		{
-			WebElement e1 = elements.get(i);
-			if(i==0)
-			{
-				e1.click();
-				gd_uis.getDeviceStorageAccessButton().click();
-				MobileHandlers.clickPicture(appDriver);
-			}
-			else if(i==9)
-			{
-				MobileHandlers.scrollScreen(appDriver);
-				MobileHandlers.scrollScreen(appDriver);
-				e1.click();
-				MobileHandlers.clickPicture(appDriver);
-			}
-			else
-			{
-				e1.click();
-				MobileHandlers.clickPicture(appDriver);
-			}
-					
-		}		
-		gd_uis.getSubmitButton().click();
-		gd_uis.getOkButton().click();
-		
-		sd.getTrainersButton().click();
-		
-		TC_CAAF_Trainers_UploadImagesScreen trainer_uis = new TC_CAAF_Trainers_UploadImagesScreen(appDriver);
-		List <WebElement> trainerButtons = trainer_uis.getTrainerButtons();
-		
-		for(int i=1; i<trainerButtons.size(); i++)
-		{
-			WebElement e1 = trainerButtons.get(i);
-			e1.click();
-			
-			trainer_uis.getProfilePicButton().click();
-			MobileHandlers.clickPicture(appDriver);	
-			
-			List <WebElement> uploadButtons = trainer_uis.getUploadFileButtons();
-			for(int j=0; j<uploadButtons.size(); j++)
-			{
-				WebElement e2 = uploadButtons.get(j);
-				e2.click();
-				if(j==2)
-				{
-					MobileHandlers.scrollScreen(appDriver);
-					MobileHandlers.scrollScreen(appDriver);
-					MobileHandlers.scrollScreen(appDriver);
-					trainer_uis.getHighestQualificationButton().click();
-					MobileHandlers.clickPicture(appDriver);	
-					e2.click();
-				}
-				MobileHandlers.clickPicture(appDriver);	
-			}
-			
-			trainer_uis.getSubmitButton().click();
-			trainer_uis.getOkButton().click();
-			
-			if(i<trainerButtons.size()-1)
-			{
-				sd.getTrainersButton().click();
-			}
-		}
-		
-		sd.getClassroomButton().click();
-		
-		TC_CAAF_Clasroom_UploadImagesScreen classroom_uis = new TC_CAAF_Clasroom_UploadImagesScreen(appDriver);
-		List <WebElement> classroomButtons = classroom_uis.getClassroomButtons();
-		
-		for(int i=1; i<classroomButtons.size(); i++)
-		{
-			WebElement e1 = classroomButtons.get(i);
-			e1.click();
-			MobileHandlers.scrollScreen(appDriver);
-			
-			List <WebElement> uploadButtons = classroom_uis.getUploadFileButtons();
-			for(int j=0; j<uploadButtons.size(); j++)
-			{
-				WebElement e2 = uploadButtons.get(j);
-				e2.click();
-				MobileHandlers.clickPicture(appDriver);	
-			}
-			
-			List <WebElement> uploadVideoButtons = classroom_uis.getUploadVideoButtons();
-			for(int k=0; k<uploadVideoButtons.size(); k++)
-			{
-				WebElement e3 = uploadVideoButtons.get(k);
-				e3.click();
-				MobileHandlers.recordVideo(appDriver);
-				MobileHandlers.scrollScreen(appDriver);
-			}
-			
-			classroom_uis.getSubmitButton().click();
-			classroom_uis.getOkButton().click();
-			
-			if(i<classroomButtons.size()-1)
-			{
-				sd.getClassroomButton().click();
-			}
-		}
-		
-		sd.getLaboratoryDetailsButton().click();
-		
-		TC_CAAF_Lab_UploadImagesScreen lab_uis = new TC_CAAF_Lab_UploadImagesScreen(appDriver);
-		List <WebElement> labButtons = lab_uis.getLabButtons();
-		
-		for(int i=1; i<labButtons.size(); i++)
-		{
-			WebElement e1 = labButtons.get(i);
-			e1.click();
-			MobileHandlers.scrollScreen(appDriver);
-			
-			List <WebElement> uploadButtons = lab_uis.getUploadFileButtons();
-			for(int j=0; j<uploadButtons.size(); j++)
-			{
-				WebElement e2 = uploadButtons.get(j);
-				e2.click();
-				MobileHandlers.clickPicture(appDriver);	
-			}
-			
-			List <WebElement> uploadVideoButtons = lab_uis.getUploadVideoButtons();
-			for(int k=0; k<uploadVideoButtons.size(); k++)
-			{
-				WebElement e3 = uploadVideoButtons.get(k);
-				e3.click();
-				MobileHandlers.recordVideo(appDriver);
-				MobileHandlers.scrollScreen(appDriver);
-			}
-			
-			lab_uis.getSubmitButton().click();
-			lab_uis.getOkButton().click();
-			
-			if(i<labButtons.size()-1)
-			{
-				sd.getLaboratoryDetailsButton().click();
-			}
-		}
-		
-		sd.getCentreAreaButton().click();
-		
-		TC_CAAF_CentreArea_UploadImagesScreen centreArea_uis = new TC_CAAF_CentreArea_UploadImagesScreen(appDriver);
-		List <WebElement> facilitiesButtons = centreArea_uis.getFacilitiesButtons();
-		
-		for(int i=1; i<facilitiesButtons.size(); i++)
-		{
-			WebElement e1 = facilitiesButtons.get(i);
-			e1.click();
-			MobileHandlers.scrollScreen(appDriver);
-			
-			List <WebElement> uploadButtons = centreArea_uis.getUploadFileButtons();
-			for(int j=0; j<uploadButtons.size(); j++)
-			{
-				WebElement e2 = uploadButtons.get(j);
-				e2.click();
-				MobileHandlers.clickPicture(appDriver);	
-			}
-			
-			List <WebElement> uploadVideoButtons = centreArea_uis.getUploadVideoButtons();
-			for(int k=0; k<uploadVideoButtons.size(); k++)
-			{
-				WebElement e3 = uploadVideoButtons.get(k);
-				e3.click();
-				MobileHandlers.recordVideo(appDriver);
-				MobileHandlers.scrollScreen(appDriver);
-			}
-			
-			centreArea_uis.getSubmitButton().click();
-			centreArea_uis.getOkButton().click();
-			
-			if(i<facilitiesButtons.size()-1)
-			{
-				sd.getCentreAreaButton().click();
-			}
-		}
-		
-		sd.getResidentialFacilitiesButton().click();
-		
-		TC_CAAF_Residential_UploadImagesScreen residential_uis = new TC_CAAF_Residential_UploadImagesScreen(appDriver);
-		residential_uis.getOkButton().click();
-		residential_uis.getAddButton().click();
-		residential_uis.getFacilityDecriptionTextbox().clear();
-		residential_uis.getFacilityDecriptionTextbox().sendKeys("Facility description");
-		
-		List <WebElement> uploadButtons1 = residential_uis.getUploadFileButtons();
-		for(int i=0; i<uploadButtons1.size(); i++)
-		{
-			WebElement e1 = uploadButtons1.get(i);
-			e1.click();
-			MobileHandlers.clickPicture(appDriver);
-		}
-		
-		MobileHandlers.scrollScreen(appDriver);
-		MobileHandlers.scrollScreen(appDriver);
-		
-		List <WebElement> uploadVideoButtons1 = residential_uis.getUploadVideoButtons();
-		for(int j=0; j<uploadVideoButtons1.size(); j++)
-		{
-			WebElement e2 = uploadVideoButtons1.get(j);
-			e2.click();
-			MobileHandlers.recordVideo(appDriver);
-			MobileHandlers.scrollScreen(appDriver);
-		}
-		
-		residential_uis.getSubmitButton().click();
-		residential_uis.getOkButton().click();
-		
-		sd.getFacilitiesButton().click();
-		
-		TC_CAAF_Facilities_UploadImagesScreen facilities_uis = new TC_CAAF_Facilities_UploadImagesScreen(appDriver);
-		
-		List <WebElement> uploadButtons2 = facilities_uis.getUploadFileButtons();
-		for(int i=0; i<uploadButtons2.size(); i++)
-		{
-			if(i==3)
-			{
-				MobileHandlers.scrollScreen(appDriver);
-				MobileHandlers.scrollScreen(appDriver);
-				MobileHandlers.scrollScreen(appDriver);
-			}
-			WebElement e1 = uploadButtons2.get(i);
-			e1.click();
-			MobileHandlers.clickPicture(appDriver);	
-		}
-		
-		facilities_uis.getSubmitButton().click();
-		facilities_uis.getOkButton().click();
+//        appDriver = CreateAppiumDriver.getDriverInstance();
+//		
+//		int srno = Integer.parseInt(sno);
+//		
+//		//String emailID = "TC_003787";//ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 1);
+//		//String password = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 2);
+//		
+//		//UsersScreen us = new UsersScreen(appDriver);
+//		//us.getTrainingCentreButton().click();
+//		
+//		Thread.sleep(8000);
+//		((AppiumDriver)appDriver).runAppInBackground(Duration.ofSeconds(2));
+//        ((StartsActivity)appDriver).currentActivity();
+//		LoginScreen ls = new LoginScreen(appDriver);
+//		RemoteWebElement number = (RemoteWebElement)driver.findElement(By.id("lb-0")); 
+//	    number.sendKeys("TCjhjdfjdsf");
+//        //ls.getEmailTextbox().clear();
+//       // Thread.sleep(3000);
+//		ls.getEmailTextbox().sendKeys(tcUsername);
+//		Thread.sleep(3000);
+//		ls.getPasswordTextbox().clear();
+//		ls.getPasswordTextbox().click();
+//		ls.getPasswordTextbox().sendKeys(tcPassword);
+//		ls.getLoginButton().click();
+//		
+//		TC_CAAF_DashboardScreen sd = new TC_CAAF_DashboardScreen(appDriver);
+//		sd.getGeneralDeatilsButton().click();
+//		sd.getEnableGPSButton().click();
+//		
+//		TC_CAAF_GeneralDetails_UploadImagesScreen gd_uis = new TC_CAAF_GeneralDetails_UploadImagesScreen(appDriver);
+//		List <WebElement> elements = gd_uis.getUpLoadFileButtons();
+//		for(int i=0; i<elements.size(); i++)
+//		{
+//			WebElement e1 = elements.get(i);
+//			if(i==0)
+//			{
+//				e1.click();
+//				gd_uis.getDeviceStorageAccessButton().click();
+//				MobileHandlers.clickPicture(appDriver);
+//			}
+//			else if(i==9)
+//			{
+//				MobileHandlers.scrollScreen(appDriver);
+//				MobileHandlers.scrollScreen(appDriver);
+//				e1.click();
+//				MobileHandlers.clickPicture(appDriver);
+//			}
+//			else
+//			{
+//				e1.click();
+//				MobileHandlers.clickPicture(appDriver);
+//			}
+//					
+//		}		
+//		gd_uis.getSubmitButton().click();
+//		gd_uis.getOkButton().click();
+//		
+//		sd.getTrainersButton().click();
+//		
+//		TC_CAAF_Trainers_UploadImagesScreen trainer_uis = new TC_CAAF_Trainers_UploadImagesScreen(appDriver);
+//		List <WebElement> trainerButtons = trainer_uis.getTrainerButtons();
+//		
+//		for(int i=1; i<trainerButtons.size(); i++)
+//		{
+//			WebElement e1 = trainerButtons.get(i);
+//			e1.click();
+//			
+//			trainer_uis.getProfilePicButton().click();
+//			MobileHandlers.clickPicture(appDriver);	
+//			
+//			List <WebElement> uploadButtons = trainer_uis.getUploadFileButtons();
+//			for(int j=0; j<uploadButtons.size(); j++)
+//			{
+//				WebElement e2 = uploadButtons.get(j);
+//				e2.click();
+//				if(j==2)
+//				{
+//					MobileHandlers.scrollScreen(appDriver);
+//					MobileHandlers.scrollScreen(appDriver);
+//					MobileHandlers.scrollScreen(appDriver);
+//					trainer_uis.getHighestQualificationButton().click();
+//					MobileHandlers.clickPicture(appDriver);	
+//					e2.click();
+//				}
+//				MobileHandlers.clickPicture(appDriver);	
+//			}
+//			
+//			trainer_uis.getSubmitButton().click();
+//			trainer_uis.getOkButton().click();
+//			
+//			if(i<trainerButtons.size()-1)
+//			{
+//				sd.getTrainersButton().click();
+//			}
+//		}
+//		
+//		sd.getClassroomButton().click();
+//		
+//		TC_CAAF_Clasroom_UploadImagesScreen classroom_uis = new TC_CAAF_Clasroom_UploadImagesScreen(appDriver);
+//		List <WebElement> classroomButtons = classroom_uis.getClassroomButtons();
+//		
+//		for(int i=1; i<classroomButtons.size(); i++)
+//		{
+//			WebElement e1 = classroomButtons.get(i);
+//			e1.click();
+//			MobileHandlers.scrollScreen(appDriver);
+//			
+//			List <WebElement> uploadButtons = classroom_uis.getUploadFileButtons();
+//			for(int j=0; j<uploadButtons.size(); j++)
+//			{
+//				WebElement e2 = uploadButtons.get(j);
+//				e2.click();
+//				MobileHandlers.clickPicture(appDriver);	
+//			}
+//			
+//			List <WebElement> uploadVideoButtons = classroom_uis.getUploadVideoButtons();
+//			for(int k=0; k<uploadVideoButtons.size(); k++)
+//			{
+//				WebElement e3 = uploadVideoButtons.get(k);
+//				e3.click();
+//				MobileHandlers.recordVideo(appDriver);
+//				MobileHandlers.scrollScreen(appDriver);
+//			}
+//			
+//			classroom_uis.getSubmitButton().click();
+//			classroom_uis.getOkButton().click();
+//			
+//			if(i<classroomButtons.size()-1)
+//			{
+//				sd.getClassroomButton().click();
+//			}
+//		}
+//		
+//		sd.getLaboratoryDetailsButton().click();
+//		
+//		TC_CAAF_Lab_UploadImagesScreen lab_uis = new TC_CAAF_Lab_UploadImagesScreen(appDriver);
+//		List <WebElement> labButtons = lab_uis.getLabButtons();
+//		
+//		for(int i=1; i<labButtons.size(); i++)
+//		{
+//			WebElement e1 = labButtons.get(i);
+//			e1.click();
+//			MobileHandlers.scrollScreen(appDriver);
+//			
+//			List <WebElement> uploadButtons = lab_uis.getUploadFileButtons();
+//			for(int j=0; j<uploadButtons.size(); j++)
+//			{
+//				WebElement e2 = uploadButtons.get(j);
+//				e2.click();
+//				MobileHandlers.clickPicture(appDriver);	
+//			}
+//			
+//			List <WebElement> uploadVideoButtons = lab_uis.getUploadVideoButtons();
+//			for(int k=0; k<uploadVideoButtons.size(); k++)
+//			{
+//				WebElement e3 = uploadVideoButtons.get(k);
+//				e3.click();
+//				MobileHandlers.recordVideo(appDriver);
+//				MobileHandlers.scrollScreen(appDriver);
+//			}
+//			
+//			lab_uis.getSubmitButton().click();
+//			lab_uis.getOkButton().click();
+//			
+//			if(i<labButtons.size()-1)
+//			{
+//				sd.getLaboratoryDetailsButton().click();
+//			}
+//		}
+//		
+//		sd.getCentreAreaButton().click();
+//		
+//		TC_CAAF_CentreArea_UploadImagesScreen centreArea_uis = new TC_CAAF_CentreArea_UploadImagesScreen(appDriver);
+//		List <WebElement> facilitiesButtons = centreArea_uis.getFacilitiesButtons();
+//		
+//		for(int i=1; i<facilitiesButtons.size(); i++)
+//		{
+//			WebElement e1 = facilitiesButtons.get(i);
+//			e1.click();
+//			MobileHandlers.scrollScreen(appDriver);
+//			
+//			List <WebElement> uploadButtons = centreArea_uis.getUploadFileButtons();
+//			for(int j=0; j<uploadButtons.size(); j++)
+//			{
+//				WebElement e2 = uploadButtons.get(j);
+//				e2.click();
+//				MobileHandlers.clickPicture(appDriver);	
+//			}
+//			
+//			List <WebElement> uploadVideoButtons = centreArea_uis.getUploadVideoButtons();
+//			for(int k=0; k<uploadVideoButtons.size(); k++)
+//			{
+//				WebElement e3 = uploadVideoButtons.get(k);
+//				e3.click();
+//				MobileHandlers.recordVideo(appDriver);
+//				MobileHandlers.scrollScreen(appDriver);
+//			}
+//			
+//			centreArea_uis.getSubmitButton().click();
+//			centreArea_uis.getOkButton().click();
+//			
+//			if(i<facilitiesButtons.size()-1)
+//			{
+//				sd.getCentreAreaButton().click();
+//			}
+//		}
+//		
+//		sd.getResidentialFacilitiesButton().click();
+//		
+//		TC_CAAF_Residential_UploadImagesScreen residential_uis = new TC_CAAF_Residential_UploadImagesScreen(appDriver);
+//		residential_uis.getOkButton().click();
+//		residential_uis.getAddButton().click();
+//		residential_uis.getFacilityDecriptionTextbox().clear();
+//		residential_uis.getFacilityDecriptionTextbox().sendKeys("Facility description");
+//		
+//		List <WebElement> uploadButtons1 = residential_uis.getUploadFileButtons();
+//		for(int i=0; i<uploadButtons1.size(); i++)
+//		{
+//			WebElement e1 = uploadButtons1.get(i);
+//			e1.click();
+//			MobileHandlers.clickPicture(appDriver);
+//		}
+//		
+//		MobileHandlers.scrollScreen(appDriver);
+//		MobileHandlers.scrollScreen(appDriver);
+//		
+//		List <WebElement> uploadVideoButtons1 = residential_uis.getUploadVideoButtons();
+//		for(int j=0; j<uploadVideoButtons1.size(); j++)
+//		{
+//			WebElement e2 = uploadVideoButtons1.get(j);
+//			e2.click();
+//			MobileHandlers.recordVideo(appDriver);
+//			MobileHandlers.scrollScreen(appDriver);
+//		}
+//		
+//		residential_uis.getSubmitButton().click();
+//		residential_uis.getOkButton().click();
+//		
+//		sd.getFacilitiesButton().click();
+//		
+//		TC_CAAF_Facilities_UploadImagesScreen facilities_uis = new TC_CAAF_Facilities_UploadImagesScreen(appDriver);
+//		
+//		List <WebElement> uploadButtons2 = facilities_uis.getUploadFileButtons();
+//		for(int i=0; i<uploadButtons2.size(); i++)
+//		{
+//			if(i==3)
+//			{
+//				MobileHandlers.scrollScreen(appDriver);
+//				MobileHandlers.scrollScreen(appDriver);
+//				MobileHandlers.scrollScreen(appDriver);
+//			}
+//			WebElement e1 = uploadButtons2.get(i);
+//			e1.click();
+//			MobileHandlers.clickPicture(appDriver);	
+//		}
+//		
+//		facilities_uis.getSubmitButton().click();
+//		facilities_uis.getOkButton().click();
 		
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1008,7 +1008,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="tcApproval", enabled=false)
-	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerTOTCerified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM) throws Exception
+	public void approveTrainingCentreTC_04(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerTOTCerified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM, String tcComment, String tcCommentFile, String sscFinalReview_Second, String sscFinalReviewComments_Second) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -2004,7 +2004,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="tcSchemeApprovalAndInspection", enabled=false)
-	public void approveSchemeUnderTC_05(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerTOTCertified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM) throws Exception
+	public void approveSchemeUnderTC_05(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerTOTCertified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM, String tcComment, String tcCommentFile, String sscFinalReview_Second, String sscFinalReviewComments_Second) throws Exception
 	{
 			LoginPage lp = new LoginPage(driver);			
 			lp.clickLogin();
@@ -3088,7 +3088,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="tcAccrediationFromSSC", enabled=false)
-	public void tcAccrediatedFromSSC_06(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerToTCertified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM) throws Exception
+	public void tcAccrediatedFromSSC_06(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerToTCertified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM, String tcComment, String tcCommentFile, String sscFinalReview_Second, String sscFinalReviewComments_Second) throws Exception
 		{	
 				
 			LoginPage lp = new LoginPage(driver);
@@ -3206,6 +3206,95 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			PostLoginPage plp = new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
+			
+			if(sscFinalReview.equals("Reach out IA(preferred,if any further clarification is required)"))
+			{
+				
+			}
+			
+			else if(sscFinalReview.equals("Reach out TC(If any further clarification is required)"))
+			{
+				elp.performlogin(tc_ID, password);
+				Thread.sleep(3000);
+				TC_DashboardPage tcd = new TC_DashboardPage(driver);
+				Thread.sleep(8000);
+				tcd.clickOnMyCAAFSubmit();
+				TC_MySchemesPage tcm = new TC_MySchemesPage(driver);
+				Thread.sleep(5000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'SSC ASkED MORE DETAILS')]")).getText(), "SSC ASkED MORE DETAILS");
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("(//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a)[1]")).click();
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//a[contains(text(),'Provide Clarification')]")).click();
+				Thread.sleep(5000);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'SSC Review')]]//textarea")).getAttribute("value"), sscFinalReviewComments);
+				Thread.sleep(3000);
+				tcm.enterTC_CommentForSSC(tcComment);
+				Thread.sleep(3000);
+				tcm.clickOnTCComment_BrowseFile();
+				Thread.sleep(3000);
+				UploadFile.upload(tcCommentFile);
+				Thread.sleep(3000);
+				tcm.clickOnSubmit_ForSSCReview();
+				Thread.sleep(3000);
+				tcm.clickOnOK();
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+jobRoleName+"')]]]//span[contains(text(),'Additional Details Sent-SSC')]")).getText(), "Additional Details Sent-SSC");
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+				lp.clickLogin();
+				elp.performlogin(ssc_Username, password);
+				Thread.sleep(8000);
+				ssdp.clickOnAccrediationAndAffiliation();
+				Thread.sleep(5000);
+				ssa.clickOnAllAffiliationsCAAF();
+				Thread.sleep(3000);
+			//	ssca.enterSearchByKeywords(tc_ID);
+			//	Thread.sleep(3000);
+			//	ssca.clickOnApply();
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//span[text()='New Request']")).getText(), "New Request");
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a")).click();
+				driver.findElement(By.xpath("//tr[td[span[text()='"+tc_ID+"']]]//a[contains(text(),'Take Action')]")).click();
+				
+				Thread.sleep(3000);
+				Assert.assertTrue(driver.findElement(By.xpath("//div[div[contains(text(),'Classroom Details:')]]//label[input[@formcontrolname='sscVerifiedClassRoom']]")).isSelected());
+				Thread.sleep(3000);
+				Assert.assertTrue(driver.findElement(By.xpath("//div[div[contains(text(),'Laboratory Details:')]]//label[input[@formcontrolname='sscVerifiedLaboratory']]")).isSelected());
+				Thread.sleep(3000);
+				Assert.assertTrue(driver.findElement(By.xpath("//div[div[contains(text(),'Hybrid Details:')]]//label[input[@formcontrolname='sscVerifiedHybrid']]")).isSelected());
+				Thread.sleep(3000);
+				Assert.assertTrue(driver.findElement(By.xpath("//div[div[label[contains(text(),'Equipment Details')]]]//label[input[@formcontrolname='markVerified']]")).isSelected());
+				Thread.sleep(3000);
+				Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Details Received from TC:')]]//textarea")).getAttribute("value"), tcComment);
+				Thread.sleep(3000);
+				ssca.clickOnViewSubmittedDocument_ByTC();
+				
+				Thread.sleep(5000);
+				ssca.clickOnTOTCertifiedTrainer_Yes();
+				Thread.sleep(3000);
+				ssca.clickOnNEISCertifiedTrainer_Yes();
+				Thread.sleep(3000);
+				ssca.select_First_FinalReviewStatus(sscFinalReview_Second);
+				Thread.sleep(3000);
+				ssca.clickOn_First_BrowseFile();
+				Thread.sleep(3000);
+				UploadFile.upload(sscReviewFile);
+				Thread.sleep(3000);
+				ssca.clickOn_First_UploadFile();
+				Thread.sleep(3000);
+				ssca.enter_First_FinalReviewComments(sscFinalReviewComments_Second);
+				
+				Thread.sleep(3000);
+				ssca.clickOnSubmit();
+				Thread.sleep(3000);
+				ssca.clickOnOK();
+				Thread.sleep(3000);
+				plp.clickOnProfileLogo();
+				plp.clickOnLogout();
+				
+			}
 					
 	}	
 	
@@ -3218,24 +3307,14 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="continousMoniteringFee", enabled=false)
-	public void tc_ContinousMoniteringFeeTC_07(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerToTCertified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM) throws Exception
+	public void tc_ContinousMoniteringFeeTC_07(String sno, String tc_ID, String password, String tc_Name, String tc_Type, String ha_Username, String recommendationLetter, String ia_Username, String stage, String assignTo, String daUsername, String menResidential, String womenResidential, String address_ReviewComments, String approachRoad_ReviewComments, String menResidential_ReviewComments, String womenResidential_ReviewComments, String diffrentlyAbledFacilities_ReviewComments, String hygiene_ReviewComments, String medical_ReviewComments, String reviewComments, String finalStatus, String finalReviewComments, String finalStatusFile, String pmkkSPOKEUsername, String sector, String jobRoleName, String scheme, String schemeFile, String sa_Username,  String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,String ci_Username, String inspectionDate, String qc_Username, String centreStatus, String centreComment, String centreStatusFile, String jobRoleStatus, String jobRoleComment, String jobRoleStatusFile, String ssc_Username, String trainerToTCertified, String trainerNEISBUDCertified, String sscFinalReview, String sscReviewFile, String sscFinalReviewComments, String assignTo_CM, String tcComment, String tcCommentFile, String sscFinalReview_Second, String sscFinalReviewComments_Second) throws Exception
 		{	
 			LoginPage lp = new LoginPage(driver);
 			lp.clickLogin();
 			EnterLoginPage elp = new EnterLoginPage(driver);
 			
-			if(sscFinalReview.equals("Reach out IA(preferred,if any further clarification is required)"))
-			{
-				
-			}
+//			if((sscFinalReview.equals("Accrediated")) || (sscFinalReview.equals("Conditionally Accrediated")) || (sscFinalReview_Second.equals("Accrediated")) || (sscFinalReview_Second.equals("Conditionally Accrediated")))
 			
-			else if(sscFinalReview.equals("Reach out TC(If any further clarification is required)"))
-			{
-				
-			}
-		
-			else if((sscFinalReview.equals("Accrediated")) || (sscFinalReview.equals("Conditionally Accrediated")))
-			{
 				elp.performlogin(tc_ID, password);
 				Thread.sleep(3000);
 				TC_DashboardPage tcd = new TC_DashboardPage(driver);
@@ -3539,7 +3618,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 					plp.clickOnLogout();
 				
 				
-			}
+			
 			
 			
 					
