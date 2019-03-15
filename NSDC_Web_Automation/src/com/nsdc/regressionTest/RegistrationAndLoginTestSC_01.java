@@ -42,7 +42,7 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickVerify();
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the Username and Password to the registered email address and mobile Number. Please login with those credentials.");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='text-Center sucess-msg']")).getText(), "We have sent the Username and Password to the registered email address. Please login with those credentials.");
         
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
         rp.clickGoToLogin();
