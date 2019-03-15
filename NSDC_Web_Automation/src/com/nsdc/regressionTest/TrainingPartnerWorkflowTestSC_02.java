@@ -1562,6 +1562,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueButton();
             Thread.sleep(2000);
         }
+        Thread.sleep(10000);
      }
     
     @DataProvider
@@ -1570,7 +1571,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
          return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TP_Rejection");
     }
      
-    @Test(dataProvider="tpRejectionData")//,dependsOnMethods="rejectionTPCreationTC_03")
+    @Test(dataProvider="tpRejectionData",dependsOnMethods="rejectionTPCreationTC_03")
     public void tpRejectionTC_04(String serialNum, String tpID, String iaUsername, String password, String tpEmail, String tpMobile, String daName, String statusOption, String daUserName, String daPassword, String searchKeywords, String nameOfOrganization, String nameOfOrganizationReviewComments, String nameOfOrganizationComments, String typeOfOrganization, String typeOfOrganizationReviewComments, String typeOfOrganizationComments, String addressOfOrganization, String nearByLandmark, String pincode, String sateOrUnionTerritory, String district, String tehsilMandalBlock, String townVillage, String parlimentaryConsistuency, String addressProofOfOrganization, String addressOfTheOrganizationReviewComments, String addressOfTheOrganizationComments, String yearOfEstablishment, String panCardNumber, String panCardReviewComments, String panCardComments, String gstNumber, String gstNumberReviewComments, String gstNumberComments,String aadharNumber, String aadharNumReviewComments, String aadharNumComments, String yearOfEstablishmentReviewcomments, String yearOfEstablishmentComments, String prvisionalCertificateReviewComments, String prvisionalCertificateComment, String turnOver1, String financialYear1ReviewComments, String financialYear1Comments, String turnOver2, String financialYear2ReviewComments, String financialYear2Comments, String turnOver3, String financialYear3ReviewComments, String financialYear3Comments, String reviewStatus, String finalReviewstatusComments, String finalReviewStatusFile, String tpDaAssert, String updateOrganizationType, String updateYearOfEstablishment, String uploadYearOfEstablishment, String updatePAN, String uploadPAN, String updateGSTNumber, String uploadGST, String updateFinancialYear1TurnOver, String uploadFinancialYear1, String updateFinancialYear2TurnOver, String uploadFinancialYear2, String updateFinancialYear3TurnOver, String uploadFinancialYear3, String updateAadharNum, String uploadProvisional) throws Exception
     {
  	   	//Rejecting TP 3 Times - Nope updated->>>>>>>Multiple Times, No restriction for TP-Form Submit
