@@ -66,7 +66,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         rp.enterNewPassword(newPassword);
         rp.enterConfirmPassword(confirmPassword);
         rp.clickResetResubmit();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         rp.clickConfirmationOkMessage();
         
         elp.performlogin(username, confirmPassword);
