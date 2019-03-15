@@ -481,6 +481,7 @@ public class TrainingPartnerRegistrationPage
     
     public void clickLogOutButton()
     {
+    	
         logOutButton.click();
     }
     
