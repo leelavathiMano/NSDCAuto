@@ -83,6 +83,8 @@ public class TrainingPartnerReEditRegistrationPage
 	private WebElement yearOfEstablishmentFileBrowseButton;
 	@FindBy(xpath="//app-upload-file[@filetype='yearOfEstablishmentFile']//button[contains(text(),'Upload')]")
 	private WebElement yearOfEstablishmentFileUploadButton;
+	@FindBy(xpath="//button[text()='OK']")
+	private WebElement okbutton;
 	
 	public TrainingPartnerReEditRegistrationPage(WebDriver driver)
     {
@@ -235,5 +237,8 @@ public class TrainingPartnerReEditRegistrationPage
 	{
 		turnOver3FileUploadButton.click();
 	}
-	
+	public void clickOk()
+	{
+		okbutton.click();
+	}
 }
