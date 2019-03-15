@@ -23,7 +23,7 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
     }
     
     @Test(dataProvider="createNewUser_Data")
-    public void createNewUserTC_01(String IA_username, String IA_password, String type, String name, String email, String mobileNo, String aadhar, String id, String upload_addressProof) throws Exception
+    public void createNewUserTC_01(String IA_username, String IA_password, String type, String name, String email, String mobileNo, String aadhar, String identityType, String identityNumber, String identityProofDocument, String id, String upload_addressProof) throws Exception
     {
     	//DatabaseConnection.deleteUsersCreatedByIA(email);
         //Thread.sleep(2000);
@@ -34,7 +34,7 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         Thread.sleep(4000);
         
         InspectionAgency_DashboardPage dashboard = new InspectionAgency_DashboardPage(driver);
-        Thread.sleep(3000);
+        Thread.sleep(8000);
         dashboard.clickOnCreateANewUser();
         Thread.sleep(2000);
         InspectionAgency_CreateUserPage user = new InspectionAgency_CreateUserPage(driver);
@@ -42,8 +42,18 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         user.enterFullName(name);
         user.enterEmailAddress(email);
         user.enterMobileNumber(mobileNo);
-        user.enterAadhaarNumber(aadhar);
-        user.clickOnVerifyAadhar();
+        //user.enterAadhaarNumber(aadhar);
+        //user.clickOnVerifyAadhar();
+        Thread.sleep(3000);
+        user.selectForIdentityType(identityType);
+        user.enterIdentityNumber(identityNumber);
+        Thread.sleep(3000);
+        user.clickOnIdentityProof_BrowseFile();
+        Thread.sleep(3000);
+        UploadFile.upload(identityProofDocument);
+        Thread.sleep(3000);
+        user.clickOnIndentityProof_UploadFile();
+        
         Thread.sleep(3000);
         user.enterEmployeeId(id);
         user.clickOnBrowseForAddressProof();

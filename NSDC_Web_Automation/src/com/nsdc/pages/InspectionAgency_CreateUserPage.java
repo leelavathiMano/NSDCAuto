@@ -27,9 +27,9 @@ public class InspectionAgency_CreateUserPage
 	private WebElement verifyAadharNumberButton;
 	@FindBy(xpath="//input[@formcontrolname='employeeId']")	
 	private WebElement employeeIdTextBox;
-	@FindBy(id="customFile")
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement addressProof_browseButton;
-	@FindBy(css=".btn.btn-outline-success")
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
 	private WebElement addressProof_uploadButton;
 	@FindBy(xpath="//label[input[@formcontrolname='changeStatusChecked']]/span")
 	private WebElement iAgreeCheckBox;
@@ -39,6 +39,15 @@ public class InspectionAgency_CreateUserPage
 	private WebElement closeButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement okButton;
+	@FindBy(xpath="//select[@formcontrolname='identityType']")
+	private WebElement identityTypeDropdownList;
+	@FindBy(xpath="//input[@formcontrolname='identityNumber']")
+	private WebElement identityNumberTextbox;
+	@FindBy(xpath="(//input[@id='customFile'])[1]")
+	private WebElement identityProofDocument_BrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	private WebElement identityProofDocument_UploadFileButton;
+	
 	
 	public InspectionAgency_CreateUserPage(WebDriver driver)
 	{
@@ -119,6 +128,27 @@ public class InspectionAgency_CreateUserPage
 	public void clickOnOk()
 	{
 		okButton.click();
+	}
+	
+	public void selectForIdentityType(String identityType)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(identityTypeDropdownList, identityType);
+	}
+	
+	public void enterIdentityNumber(String identityNumber)
+	{
+		identityNumberTextbox.clear();
+		identityNumberTextbox.sendKeys(identityNumber);
+	}
+	
+	public void clickOnIdentityProof_BrowseFile()
+	{
+		identityProofDocument_BrowseFileButton.click();
+	}
+	
+	public void clickOnIndentityProof_UploadFile()
+	{
+		identityProofDocument_UploadFileButton.click();
 	}
 	
 }
