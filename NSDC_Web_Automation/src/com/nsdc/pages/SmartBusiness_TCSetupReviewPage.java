@@ -161,6 +161,28 @@ public class SmartBusiness_TCSetupReviewPage
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement oKButton;
 	
+	@FindBy(xpath="(//select[@formcontrolname='appealAmountIsRequired'])[1]")
+	private WebElement appealFee_first_DropDownList;
+	@FindBy(xpath="(//select[@formcontrolname='appealAmountIsRequired'])[2]")
+	private WebElement appealFee_second_DropDownList;
+	@FindBy(xpath="(//select[@formcontrolname='appealAmountIsRequired'])[3]")
+	private WebElement appealFee_third_DropDownList;
+	@FindBy(xpath="(//select[@formcontrolname='appealAmountIsRequired'])[4]")
+	private WebElement appealFee_fourth_DropDownList;
+	@FindBy(xpath="(//select[@formcontrolname='appealAmountIsRequired'])[5]")
+	private WebElement appealFee_fifth_DropDownList;
+	
+	@FindBy(xpath="(//input[@formcontrolname='appealAmount'])[1]")
+	private WebElement appealAmount_first_Textbox;
+	@FindBy(xpath="(//input[@formcontrolname='appealAmount'])[2]")
+	private WebElement appealAmount_second_Textbox;
+	@FindBy(xpath="(//input[@formcontrolname='appealAmount'])[3]")
+	private WebElement appealAmount_third_Textbox;
+	@FindBy(xpath="(//input[@formcontrolname='appealAmount'])[4]")
+	private WebElement appealAmount_fourth_Textbox;
+	@FindBy(xpath="(//input[@formcontrolname='appealAmount'])[5]")
+	private WebElement appealAmount_fifth_Textbox;
+	
 	
 	public SmartBusiness_TCSetupReviewPage(WebDriver driver)
     {
@@ -556,6 +578,61 @@ public class SmartBusiness_TCSetupReviewPage
 	public void clickForOK()
 	{
 		oKButton.click();
+	}
+	
+	public void select_First_AppealFee(String appealFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(appealFee_first_DropDownList, appealFee);
+	}
+	
+	public void select_Second_AppealFee(String appealFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(appealFee_second_DropDownList, appealFee);
+	}
+	
+	public void select_Third_AppealFee(String appealFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(appealFee_third_DropDownList, appealFee);
+	}
+	
+	public void select_Fourth_AppealFee(String appealFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(appealFee_fourth_DropDownList, appealFee);
+	}
+	
+	public void select_Fifth_AppealFee(String appealFee)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(appealFee_fifth_DropDownList, appealFee);
+	}
+	
+	public void enter_First_AppealAmount(String appealAmount)
+	{
+		appealAmount_first_Textbox.clear();
+		appealAmount_first_Textbox.sendKeys(appealAmount);
+	}
+	
+	public void enter_Second_AppealAmount(String appealAmount)
+	{
+		appealAmount_second_Textbox.clear();
+		appealAmount_second_Textbox.sendKeys(appealAmount);
+	}
+	
+	public void enter_Third_AppealAmount(String appealAmount)
+	{
+		appealAmount_third_Textbox.clear();
+		appealAmount_third_Textbox.sendKeys(appealAmount);
+	}
+	
+	public void enter_Fourth_AppealAmount(String appealAmount)
+	{
+		appealAmount_fourth_Textbox.clear();
+		appealAmount_fourth_Textbox.sendKeys(appealAmount);
+	}
+	
+	public void enter_Fifth_AppealAmount(String appealAmount)
+	{
+		appealAmount_fifth_Textbox.clear();
+		appealAmount_fifth_Textbox.sendKeys(appealAmount);
 	}
 
 }

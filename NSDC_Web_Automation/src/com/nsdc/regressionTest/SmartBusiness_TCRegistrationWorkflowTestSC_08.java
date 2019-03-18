@@ -30,7 +30,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     }
 	
 	@Test(dataProvider="smartBusinessTCRegistrationRuleSetUpData")
-	public void smartBusinessTCRuleSetupTC_01(String sno, String sbUsername, String sbPassword, String raccrediationFee, String raccrediationFeeAmount, String rcontinuousMonitoringFee, String rconinuousMonitoringFeeAmount, String runBlockingFee, String runBlockingFeeAmount, String raffiliationFee, String raffiliationFeeAmount, String gaccrediationFee, String gaccrediationFeeAmount, String gcontinuousMonitoringFee, String gconinuousMonitoringFeeAmount, String gunBlockingFee, String gunBlockingFeeAmount, String gaffiliationFee, String gaffiliationFeeAmount, String first_TCType, String first_AccrediationFee, String first_AccreditationFeeAmount, String first_ContinuousMonitoringFee, String first_ContinousMonitoringFeeAmount, String first_UNBlockingFee, String first_UnblockingFeeAmount, String first_AffiliationFee, String first_AffiliationFeeAmount, String second_TCType, String second_AccrediationFee, String second_AccreditationFeeAmount, String second_ContinuousMonitoringFee, String second_ContinousMonitoringFeeAmount, String second_UNBlockingFee, String second_UnblockingFeeAmount, String second_AffiliationFee, String second_AffiliationFeeAmount, String third_TCType, String third_AccrediationFee, String third_AccreditationFeeAmount, String third_ContinuousMonitoringFee, String third_ContinousMonitoringFeeAmount, String third_UNBlockingFee, String third_UnblockingFeeAmount, String third_AffiliationFee, String third_AffiliationFeeAmount, String blockedAttemptAllowedNumber, String durationOfBlock, String advanceInspectionNotification, String onSiteInspection, String daysForReplyBackOnAssessment, String refundPercentageForOneweek, String refundPercentageForThreeWeek, String refundPercentageOnInspectionDate, String refundPercentageOnFirstDNR, String refundPercentageOnSecondDNR, String effective_date) throws Exception
+	public void smartBusinessTCRuleSetupTC_01(String sno, String sbUsername, String sbPassword, String raccrediationFee, String raccrediationFeeAmount, String rcontinuousMonitoringFee, String rconinuousMonitoringFeeAmount, String runBlockingFee, String runBlockingFeeAmount, String raffiliationFee, String raffiliationFeeAmount, String rAppealFee, String rAppealFeeAmount, String gaccrediationFee, String gaccrediationFeeAmount, String gcontinuousMonitoringFee, String gconinuousMonitoringFeeAmount, String gunBlockingFee, String gunBlockingFeeAmount, String gaffiliationFee, String gaffiliationFeeAmount, String gAppealFee, String gAppealFeeAmount, String first_TCType, String first_AccrediationFee, String first_AccreditationFeeAmount, String first_ContinuousMonitoringFee, String first_ContinousMonitoringFeeAmount, String first_UNBlockingFee, String first_UnblockingFeeAmount, String first_AffiliationFee, String first_AffiliationFeeAmount, String first_AppealFee, String first_AppealFeeAmount, String second_TCType, String second_AccrediationFee, String second_AccreditationFeeAmount, String second_ContinuousMonitoringFee, String second_ContinousMonitoringFeeAmount, String second_UNBlockingFee, String second_UnblockingFeeAmount, String second_AffiliationFee, String second_AffiliationFeeAmount, String second_AppealFee, String second_AppealFeeAmount, String third_TCType, String third_AccrediationFee, String third_AccreditationFeeAmount, String third_ContinuousMonitoringFee, String third_ContinousMonitoringFeeAmount, String third_UNBlockingFee, String third_UnblockingFeeAmount, String third_AffiliationFee, String third_AffiliationFeeAmount, String third_AppealFee, String third_AppealFeeAmount, String blockedAttemptAllowedNumber, String durationOfBlock, String advanceInspectionNotification, String onSiteInspection, String daysForReplyBackOnAssessment, String refundPercentageForOneweek, String refundPercentageForThreeWeek, String refundPercentageOnInspectionDate, String refundPercentageOnFirstDNR, String refundPercentageOnSecondDNR, String effective_date) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -40,6 +40,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		Thread.sleep(8000);
 		sbd.clickOnTCRegistrationSetup();
 		SmartBusiness_TCSetupReviewPage sbtc = new SmartBusiness_TCSetupReviewPage(driver);
+		
 		if(raccrediationFee.equals("Yes"))
 		{
 			sbtc.selectForRegularTCAccrediationFee(raccrediationFee);
@@ -76,6 +77,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		{
 			sbtc.selectForRegularTCAffiliationFeePerJobRole(raffiliationFee);	
 		}
+		if(rAppealFee.equals("Yes"))
+		{
+			sbtc.select_First_AppealFee(rAppealFee);
+			sbtc.enter_First_AppealAmount(rAppealFeeAmount);
+		}
+		else
+		{
+			sbtc.select_First_AppealFee(rAppealFee);
+		}
+		
+		
 		if(gaccrediationFee.equals("Yes"))
 		{
 			sbtc.selectForGovernmentTCAccrediationFee(gaccrediationFee);
@@ -112,6 +124,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		{
 			sbtc.selectForGovernmentTCAffiliationFeePerJobRole(gaffiliationFee);
 		}
+		if(gAppealFee.equals("Yes"))
+		{
+			sbtc.select_Second_AppealFee(gAppealFee);
+			sbtc.enter_Second_AppealAmount(gAppealFeeAmount);
+		}
+		else
+		{
+			sbtc.select_Second_AppealFee(gAppealFee);
+		}
+		
+		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("scroll(900, 0)");
 		Thread.sleep(3000);
@@ -158,6 +181,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		{
 			sbtc.selectFirst_TCAffiliationFeePerJobRole(first_AffiliationFee);			
 		}
+		if(first_AppealFee.equals("Yes"))
+		{
+			sbtc.select_Third_AppealFee(first_AppealFee);
+			sbtc.enter_Third_AppealAmount(first_AppealFeeAmount);
+		}
+		else
+		{
+			sbtc.select_Third_AppealFee(first_AppealFee);
+		}
+		
+		
 		Thread.sleep(3000);
 		sbtc.clickOnSaveAndSubmit();
 		JavascriptExecutor jvs = (JavascriptExecutor) driver;
@@ -206,6 +240,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		{
 			sbtc.selectSecond_TCAffiliationFeePerJobRole(second_AffiliationFee);		
 		}
+		if(second_AppealFee.equals("Yes"))
+		{
+			sbtc.select_Fourth_AppealFee(second_AppealFee);
+			sbtc.enter_Fourth_AppealAmount(second_AppealFeeAmount);
+		}
+		else
+		{
+			sbtc.select_Fourth_AppealFee(second_AppealFee);
+		}
+		
+		
 		Thread.sleep(3000);
 		sbtc.clickOnSaveAndSubmit();
 		JavascriptExecutor jsx = (JavascriptExecutor) driver;
@@ -254,6 +299,16 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		{
 			sbtc.selectThird_TCAffiliationFeePerJobRole(third_AffiliationFee);	
 		}
+		if(third_AppealFee.equals("Yes"))
+		{
+			sbtc.select_Fifth_AppealFee(third_AppealFee);
+			sbtc.enter_Fifth_AppealAmount(third_AppealFeeAmount);
+		}
+		else
+		{
+			sbtc.select_Fifth_AppealFee(third_AppealFee);
+		}
+		
 		Thread.sleep(3000);
 		sbtc.clickOnSaveAndSubmit();
 		Thread.sleep(3000);
@@ -274,9 +329,9 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
 		sbtc.clickForEffectiveDate();
 		sbtc.clickOnCalenderIconButton();
 		effective_date = driver.findElement(By.xpath("//input[@placeholder='Pick your Date']")).getAttribute("value");
-		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCRuleSC08TC01", Integer.parseInt(sno), 56, effective_date);
-		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC02", Integer.parseInt(sno), 47, effective_date);
-		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC03", Integer.parseInt(sno), 38, effective_date);
+		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCRuleSC08TC01", Integer.parseInt(sno), 66, effective_date);
+		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC02", Integer.parseInt(sno), 55, effective_date);
+		ReadWriteData.setExcelData("./TestData/Workflow/SmartBusiness-Workflow.xls", "SmartBusinessTCApprovalSC08TC03", Integer.parseInt(sno), 44, effective_date);
 		Thread.sleep(3000);
 		sbtc.clickForSubmit();
 		Thread.sleep(3000);
@@ -297,7 +352,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     }
     
     @Test(dataProvider="tcRuleSetupSmartAdminApproval", dependsOnMethods="smartBusinessTCRuleSetupTC_01")
-    public void smartBusinessTCRuleApprovalTC_02(String sno, String sdUsername, String sdPassword, String expectedRaccrediationFee, String expectedRaccrediationFeeAmount, String expectedRcontinuousMonitoringFee, String expectedRconinuousMonitoringFeeAmount, String expectedRunBlockingFee, String expectedRunBlockingFeeAmount, String expectedRaffiliationFee, String expectedRaffiliationFeeAmount, String expectedGaccrediationFee, String expectedGaccrediationFeeAmount, String expectedGcontinuousMonitoringFee, String expectedGconinuousMonitoringFeeAmount, String expectedGunBlockingFee, String expectedGunBlockingFeeAmount, String expectedGaffiliationFee, String expectedGaffiliationFeeAmount, String first_TCType, String expectedFirst_AccrediationFee, String expectedFirst_AccreditationFeeAmount, String expectedFirst_ContinuousMonitoringFee, String expectedFirst_ContinousMonitoringFeeAmount, String expectedFirst_UNBlockingFee, String expectedFirst_UnblockingFeeAmount, String expectedFirst_AffiliationFee, String expectedFirst_AffiliationFeeAmount, String second_TCType, String expectedSecond_AccrediationFee, String expectedSecond_AccreditationFeeAmount, String expectedSecond_ContinuousMonitoringFee, String expectedSecond_ContinousMonitoringFeeAmount, String expectedSecond_UNBlockingFee, String expectedSecond_UnblockingFeeAmount, String expectedSecond_AffiliationFee, String expectedSecond_AffiliationFeeAmount, String expectedBlockedAttemptAllowedNumber, String expectedDurationOfBlock, String expectedAdvanceInspectionNotification, String expectedOnSiteInspection, String expectedDaysForReplyBackOnAssessment, String expectedRefundPercentageForOneweek, String expectedRefundPercentageForThreeWeek, String expectedRefundPercentageOnInspectionDate, String expectedRefundPercentageOnFirstDNR, String expectedRefundPercentageOnSecondDNR, String effective_date, String comments) throws Exception
+    public void smartBusinessTCRuleApprovalTC_02(String sno, String sdUsername, String sdPassword, String expectedRaccrediationFee, String expectedRaccrediationFeeAmount, String expectedRcontinuousMonitoringFee, String expectedRconinuousMonitoringFeeAmount, String expectedRunBlockingFee, String expectedRunBlockingFeeAmount, String expectedRaffiliationFee, String expectedRaffiliationFeeAmount, String expectedRAppealFee, String expectedRAppealFeeAmount, String expectedGaccrediationFee, String expectedGaccrediationFeeAmount, String expectedGcontinuousMonitoringFee, String expectedGconinuousMonitoringFeeAmount, String expectedGunBlockingFee, String expectedGunBlockingFeeAmount, String expectedGaffiliationFee, String expectedGaffiliationFeeAmount, String expectedGAppealFee, String expectedGAppealFeeAmount, String first_TCType, String expectedFirst_AccrediationFee, String expectedFirst_AccreditationFeeAmount, String expectedFirst_ContinuousMonitoringFee, String expectedFirst_ContinousMonitoringFeeAmount, String expectedFirst_UNBlockingFee, String expectedFirst_UnblockingFeeAmount, String expectedFirst_AffiliationFee, String expectedFirst_AffiliationFeeAmount, String expectedFirst_AppealFee, String expectedFirst_AppealFeeAmount, String second_TCType, String expectedSecond_AccrediationFee, String expectedSecond_AccreditationFeeAmount, String expectedSecond_ContinuousMonitoringFee, String expectedSecond_ContinousMonitoringFeeAmount, String expectedSecond_UNBlockingFee, String expectedSecond_UnblockingFeeAmount, String expectedSecond_AffiliationFee, String expectedSecond_AffiliationFeeAmount, String expectedSecond_AppealFee, String expectedSecond_AppealFeeAmount, String expectedBlockedAttemptAllowedNumber, String expectedDurationOfBlock, String expectedAdvanceInspectionNotification, String expectedOnSiteInspection, String expectedDaysForReplyBackOnAssessment, String expectedRefundPercentageForOneweek, String expectedRefundPercentageForThreeWeek, String expectedRefundPercentageOnInspectionDate, String expectedRefundPercentageOnFirstDNR, String expectedRefundPercentageOnSecondDNR, String effective_date, String comments) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
@@ -344,6 +399,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[1]")).getAttribute("value"), expectedRaffiliationFee);   		
     	}
+    	if(expectedRAppealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[1]")).getAttribute("value"), expectedRAppealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedRAppealFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[1]")).getAttribute("value"), expectedRAppealFee);
+    	}
+    	
+    	
     	if(expectedGaccrediationFee.equals("Yes"))
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[2]")).getAttribute("value"), expectedGaccrediationFee);
@@ -380,6 +446,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[2]")).getAttribute("value"), expectedGaffiliationFee);	
     	}
+    	if(expectedGAppealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[2]")).getAttribute("value"), expectedGAppealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedGAppealFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[2]")).getAttribute("value"), expectedGAppealFee);  		
+    	}
+    	
+    	
     	if(expectedFirst_AccrediationFee.equals("Yes")) 
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AccrediationFee);
@@ -416,6 +493,18 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AffiliationFee);   		
     	}
+    	if(expectedFirst_AppealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AppealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedFirst_AppealFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[3]")).getAttribute("value"), expectedFirst_AppealFee);    		
+    	}
+    	
+    	
+    	
     	if(expectedSecond_AccrediationFee.equals("Yes")) 
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AccrediationFee);
@@ -452,6 +541,16 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AffiliationFee);   		
     	}
+    	if(expectedSecond_AppealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AppealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'4. Training Centre Type "+second_TCType+"')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedSecond_AppealFeeAmount);    		
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[4]")).getAttribute("value"), expectedSecond_AppealFee);    		
+    	}
+    	
     	Thread.sleep(3000);
     	sdtc.clickOnSecond_TCType_Remove();
     	Thread.sleep(3000);
@@ -500,7 +599,7 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     }
     
     @Test(dataProvider="tcRuleSetupNSDCApproval", dependsOnMethods="smartBusinessTCRuleApprovalTC_02")
-    public void smartBusinessTCRuleApprovalTC_03(String sno, String nsdcUsername, String nsdcPassword, String expectedNSDCRaccrediationFee, String expectedNSDCRaccrediationFeeAmount, String expectedNSDCRcontinuousMonitoringFee, String expectedNSDCRconinuousMonitoringFeeAmount, String expectedNSDCRunBlockingFee, String expectedNSDCRunBlockingFeeAmount, String expectedNSDCRaffiliationFee, String expectedNSDCRaffiliationFeeAmount, String expectedNSDCGaccrediationFee, String expectedNSDCGaccrediationFeeAmount, String expectedNSDCGcontinuousMonitoringFee, String expectedNSDCGconinuousMonitoringFeeAmount, String expectedNSDCGunBlockingFee, String expectedNSDCGunBlockingFeeAmount, String expectedNSDCGaffiliationFee, String expectedNSDCGaffiliationFeeAmount, String first_TCType, String expectedNSDCFirst_AccrediationFee, String expectedNSDCFirst_AccreditationFeeAmount, String expectedNSDCFirst_ContinuousMonitoringFee, String expectedNSDCFirst_ContinousMonitoringFeeAmount, String expectedNSDCFirst_UNBlockingFee, String expectedNSDCFirst_UnblockingFeeAmount, String expectedNSDCFirst_AffiliationFee, String expectedNSDCFirst_AffiliationFeeAmount, String expectedNSDCBlockedAttemptAllowedNumber, String expectedNSDCDurationOfBlock, String expectedNSDCAdvanceInspectionNotification, String expectedNSDCOnSiteInspection, String expectedNSDCDaysForReplyBackOnAssessment, String expectedNSDCRefundPercentageForOneweek, String expectedNSDCRefundPercentageForThreeWeek, String expectedNSDCRefundPercentageOnInspectionDate, String expectedNSDCRefundPercentageOnFirstDNR, String expectedNSDCRefundPercentageOnSecondDNR, String effective_date, String reviewComments) throws Exception
+    public void smartBusinessTCRuleApprovalTC_03(String sno, String nsdcUsername, String nsdcPassword, String expectedNSDCRaccrediationFee, String expectedNSDCRaccrediationFeeAmount, String expectedNSDCRcontinuousMonitoringFee, String expectedNSDCRconinuousMonitoringFeeAmount, String expectedNSDCRunBlockingFee, String expectedNSDCRunBlockingFeeAmount, String expectedNSDCRaffiliationFee, String expectedNSDCRaffiliationFeeAmount, String expectedNSDCRappealFee, String expectedNSDCRappealFeeAmount, String expectedNSDCGaccrediationFee, String expectedNSDCGaccrediationFeeAmount, String expectedNSDCGcontinuousMonitoringFee, String expectedNSDCGconinuousMonitoringFeeAmount, String expectedNSDCGunBlockingFee, String expectedNSDCGunBlockingFeeAmount, String expectedNSDCGaffiliationFee, String expectedNSDCGaffiliationFeeAmount, String expectedNSDCGappealFee, String expectedNSDCGappealFeeAmount, String first_TCType, String expectedNSDCFirst_AccrediationFee, String expectedNSDCFirst_AccreditationFeeAmount, String expectedNSDCFirst_ContinuousMonitoringFee, String expectedNSDCFirst_ContinousMonitoringFeeAmount, String expectedNSDCFirst_UNBlockingFee, String expectedNSDCFirst_UnblockingFeeAmount, String expectedNSDCFirst_AffiliationFee, String expectedNSDCFirst_AffiliationFeeAmount, String expectedNSDCFirst_AppealFee, String expectedNSDCFirst_AppealFeeAmount, String expectedNSDCBlockedAttemptAllowedNumber, String expectedNSDCDurationOfBlock, String expectedNSDCAdvanceInspectionNotification, String expectedNSDCOnSiteInspection, String expectedNSDCDaysForReplyBackOnAssessment, String expectedNSDCRefundPercentageForOneweek, String expectedNSDCRefundPercentageForThreeWeek, String expectedNSDCRefundPercentageOnInspectionDate, String expectedNSDCRefundPercentageOnFirstDNR, String expectedNSDCRefundPercentageOnSecondDNR, String effective_date, String reviewComments) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
@@ -547,6 +646,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRaffiliationFee);
     	}
+    	if(expectedNSDCRappealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRappealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'1. Training Centre Type Reg')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedNSDCRappealFeeAmount);   		
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[1]")).getAttribute("value"), expectedNSDCRappealFee);   		
+    	}
+    	
+    	
     	if(expectedNSDCGaccrediationFee.equals("Yes"))
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGaccrediationFee);
@@ -583,6 +693,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGaffiliationFee);
     	}
+    	if(expectedNSDCGappealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGappealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'2. Training Centre Type Govenment')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedNSDCGappealFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[2]")).getAttribute("value"), expectedNSDCGappealFee);    		
+    	}
+    	
+    	
     	if(expectedNSDCFirst_AccrediationFee.equals("Yes")) 
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='accredationAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AccrediationFee);
@@ -619,6 +740,17 @@ public class SmartBusiness_TCRegistrationWorkflowTestSC_08 extends TestConfigura
     	{
     		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='affilationAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AffiliationFee);   		
     	}
+    	if(expectedNSDCFirst_AppealFee.equals("Yes"))
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AppealFee);
+    		Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'3. Training Centre Type "+first_TCType+"')]]//input[@formcontrolname='appealAmount']")).getAttribute("value"), expectedNSDCFirst_AppealFeeAmount);
+    	}
+    	else
+    	{
+    		Assert.assertEquals(driver.findElement(By.xpath("(//select[@formcontrolname='appealAmountIsRequired'])[3]")).getAttribute("value"), expectedNSDCFirst_AppealFee);
+
+    	}
+    	
     	Thread.sleep(3000);
     	nstc.clickOnFirst_TCType_Remove();
     	Thread.sleep(3000);
