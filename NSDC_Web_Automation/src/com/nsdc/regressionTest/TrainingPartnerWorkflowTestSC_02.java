@@ -1681,73 +1681,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	        	da_tpr.enterAdditionalCommentForGST(gstNumberComments);
 	        	Thread.sleep(2000);
 		 	}
-     		//Year Of Establishment verification
-    		if(!typeOfOrganization.equals("Government Institute") || !updateOrganizationType.equalsIgnoreCase("Government Institute"))
+     		//government
+    		if(!typeOfOrganization.equals("Government Institute"))
      	   	{
-    			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value").trim(), yearOfEstablishment);
-     			if(yearOfEstablishment.equals("2018"))
-        		{
-        			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
-         		 	Thread.sleep(2000);
-         		 	da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
-         		 	Thread.sleep(2000);
-         		 	da_tpr.selectReviewCommentForProvisionalCertificate(prvisionalCertificateReviewComments);
-         		 	Thread.sleep(2000);
-         		 	da_tpr.enterAdditionalCommentForProvisionalCertificate(prvisionalCertificateComment);
-         		 	Thread.sleep(2000);
-         		}
-         	   	else if(yearOfEstablishment.equals("2017"))
-         	   	{
-         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
-         	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
-     		 		Thread.sleep(2000);
-         	   	}    	   	
-         	   	else if(yearOfEstablishment.equals("2016"))
-         	   	{
-         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
-         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
-         	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.selectReviewCommentForSecondFinancialYear(financialYear2ReviewComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
-     		 		Thread.sleep(2000);
-     		 	}
-         	   	else if(Integer.parseInt(yearOfEstablishment)<2016)
-         	   	{
-         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
-         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
-         		 	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[3]")).getAttribute("value").trim(), turnOver3);
-         	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.selectReviewCommentForSecondFinancialYear(financialYear2ReviewComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.selectReviewCommentForThirdFinancialYear(financialYear3ReviewComments);
-     		 		Thread.sleep(2000);
-     		 		da_tpr.enterAdditionalCommentForThirdFinancialYear(financialYear3Comments);
-     		 		Thread.sleep(2000);
-     		 	}
-        		da_tpr.clickForSaveAndContinue();
+    			da_tpr.clickForSaveAndContinue();
         		Thread.sleep(4000);
      	   	}
     		//Final Review things
@@ -1828,10 +1765,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	    		Assert.assertEquals(selectedState.getFirstSelectedOption().getText().trim(), sateOrUnionTerritory);
 	    		Select selectedDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='district']")));
 	    		Assert.assertEquals(selectedDistrict.getFirstSelectedOption().getText().trim(), district);
-//	    		Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
-//issue	    	Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
-//issue	    		Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='village']")));
-//	    		Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), townVillage);
+	    		if(serialNum.equalsIgnoreCase("1"))
+	    		{
+	    			Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
+		    		Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
+		    		Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='village']")));
+		    		Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), townVillage);
+	    		}
 	    		Select selectedParlimentary=new Select(driver.findElement(By.xpath("//select[@formcontrolname='parliamentaryConstituency']")));
 	    		Assert.assertEquals(selectedParlimentary.getFirstSelectedOption().getText().trim(), parlimentaryConsistuency);
 	    		Select selectedaddressProof=new Select(driver.findElement(By.xpath("//select[@formcontrolname='addressProof']")));
