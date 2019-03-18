@@ -701,12 +701,12 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 			Thread.sleep(5000);
 			tpms.clickOnApprovalInProgress();
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-			Thread.sleep(3000);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newProjectName+"']]]]//span[text()='Resubmitted']")).getText(), "Resubmitted");
+//			Thread.sleep(3000);
+//			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+//			Thread.sleep(3000);
+//			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+//			Thread.sleep(3000);
+//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newProjectName+"']]]]//span[text()='Resubmitted']")).getText(), "Resubmitted");
 			PostLoginPage plp = new PostLoginPage(driver);
 			Thread.sleep(3000);
 			plp.clickOnProfileLogo();
@@ -1059,7 +1059,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.enterTarget(target);
 		Thread.sleep(3000);
 		fbad.clickOnSubmit_SectorTarget();
-		Thread.sleep(12000);
+		Thread.sleep(15000);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("scroll(0,900)");
 		fbad.clickOnSubmit();
 		Thread.sleep(3000);
 		fbad.clickOnYesAddTrainingCentre();
@@ -1595,7 +1597,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSectorSC15TC04");
 	}
 
-	@Test(dataProvider="addSector", dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
+	@Test(dataProvider="addSector")//, dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
 	public void addSectorTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
