@@ -1922,7 +1922,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	}
 
 	@Test(dataProvider="linkTrainer", dependsOnMethods="approveCourseTC10", enabled=false)
-	public void linkTrainerTC09(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
+	public void linkTrainerTC11(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -1994,7 +1994,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	}
 
 	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="approveCourseTC10")
-	public void addAssessmentAgencyAndLinkAssessorTC10(String srno, String tpUsername, String tpPassword, String projectName, String assessmentAgencyName, String supportingDocumentFile, String assessmentAgencyAddress, String landmark, String pincode, String state, String district, String tehsil, String parliamentryConstoituency, String geoLocation, String firstName, String lastName, String email, String mobileNumber, String asseementAgencyID,  String assessorID, String assessorName, String assessmentAgency, String supportingDocument_Assessor, String mobileOTP, String emailOTP)throws Exception
+	public void addAssessmentAgencyAndLinkAssessorTC12(String srno, String tpUsername, String tpPassword, String projectName, String assessmentAgencyName, String supportingDocumentFile, String assessmentAgencyAddress, String landmark, String pincode, String state, String district, String tehsil, String parliamentryConstoituency, String geoLocation, String firstName, String lastName, String email, String mobileNumber, String asseementAgencyID,  String assessorID, String assessorName, String assessmentAgency, String supportingDocument_Assessor, String mobileOTP, String emailOTP)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
@@ -2088,8 +2088,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010");
 	}
 
-	@Test(dataProvider="createBatchAndEnrollCandidates", dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC10", enabled=false)
-	public void createBatchAndEnrollCandidateTC11(String sno, String tpUsername, String tpPassword, String candidateRegistrationFile, String pageNo, String projectName, String tcName, String sector, String course, String target, String batchName, String batchSize, String batchType, String courseName, String expectedSector, String expectedAssociatedQP, String expectedNSQFLevel, String trainerName, String expectedTrainersEmail, String expectedTrainersMobile, String assessmentMode, String trainingFee, String feePaidBy, String batchID, String firstStage, String candidateList, String secondStage, String sscUsername, String sscPassword, String sectorCode, String assessmentAgency, String aaPassword, String remarksForAcceptingBatch, String assessorID, String asPassword, String assessmentAgencyID, String assessor, String thirdStage, String fourthStage, String certificateFile, String placementDocument, String appointmentLetter, String salarySlip, String undertakingDocument) throws Exception
+	@Test(dataProvider="createBatchAndEnrollCandidates", dependsOnMethods="addAssessmentAgencyAndLinkAssessorTC12", enabled=false)
+	public void createBatchAndEnrollCandidateTC13(String sno, String tpUsername, String tpPassword, String candidateRegistrationFile, String pageNo, String projectName, String tcName, String sector, String course, String target, String batchName, String batchSize, String batchType, String courseName, String expectedSector, String expectedAssociatedQP, String expectedNSQFLevel, String trainerName, String expectedTrainersEmail, String expectedTrainersMobile, String assessmentMode, String trainingFee, String feePaidBy, String batchID, String firstStage, String candidateList, String secondStage, String sscUsername, String sscPassword, String sectorCode, String assessmentAgency, String aaPassword, String remarksForAcceptingBatch, String assessorID, String asPassword, String assessmentAgencyID, String assessor, String thirdStage, String fourthStage, String certificateFile, String placementDocument, String appointmentLetter, String salarySlip, String undertakingDocument) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
