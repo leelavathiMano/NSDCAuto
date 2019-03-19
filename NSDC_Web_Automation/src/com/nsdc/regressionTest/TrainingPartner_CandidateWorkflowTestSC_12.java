@@ -322,8 +322,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Thread.sleep(4000);
 		tpCrp.enterSecondSpecialisation(specialisation2);
 		Thread.sleep(4000);
-		tpCrp.enterEducationNameInCaseOFOthers(othersEducationName);
-		Thread.sleep(4000);
+//		tpCrp.enterEducationNameInCaseOFOthers(othersEducationName);
+//		Thread.sleep(4000);
 		tpCrp.selectSecondYearOfPassing(yearOfPassing2);
 		Thread.sleep(4000);
 		tpCrp.clickToBrowseSecondEducationProof();
@@ -480,7 +480,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Select selectedEducation2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[2]")));
 		Assert.assertEquals(selectedEducation2.getFirstSelectedOption().getText(), education2);
 		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='specialization'])[2]")).getAttribute("value").trim(), specialisation2);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='educationName']")).getAttribute("value").trim(), othersEducationName);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='educationName']")).getAttribute("value").trim(), othersEducationName);
 		Select selectedYearOfPassing2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[2]")));
 		Assert.assertEquals(selectedYearOfPassing2.getFirstSelectedOption().getText(), yearOfPassing2);
 		Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), education2Proof);
