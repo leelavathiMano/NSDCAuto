@@ -31,7 +31,11 @@ public class AssessorApplicantViewBatchesPage
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
 	private WebElement submitPaymetDetailsButton;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
-	private WebElement okButton;
+	private WebElement okButton;	
+	@FindBy(id="Search")
+	private WebElement searchForBatchIDTextField;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applySearchFilterButton;
 	
 	public AssessorApplicantViewBatchesPage(WebDriver driver)
 	{
@@ -41,6 +45,15 @@ public class AssessorApplicantViewBatchesPage
 	public void clickToGoToApplicantDashboard()
 	{
 		applicantDashboardLink.click();
+	}
+	public void enterBatchIDTosearch(String batchID)
+	{
+		searchForBatchIDTextField.clear();
+		searchForBatchIDTextField.sendKeys(batchID);
+	}
+	public void clickToGetSearchResult()
+	{
+		applySearchFilterButton.click();
 	}
 	public void clickToGetRejectedBatchActionMenu(String batchID)
 	{
@@ -70,7 +83,7 @@ public class AssessorApplicantViewBatchesPage
 	public void selectProvideFeedbackOption(String batchID)
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[contains(text(),'Provide Feedback')]")).click();
-	}	
+	}
 	//Payment
 	public void selectPaymentMode(String paymentMode)
 	{
@@ -105,5 +118,5 @@ public class AssessorApplicantViewBatchesPage
 	public void clickOK()
 	{
 		okButton.click();
-	}
+	}	
 }
