@@ -272,8 +272,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterTC_PinCode(tcPinCode);
 		caaf.selectTC_State(tcState);
 		caaf.selectTC_District(tcDistrict);
-		caaf.selectTC_Tehsil(tcTehsil);
-		caaf.selectTC_ParliamentryConstituency(tcParliamentry);
+//		caaf.selectTC_Tehsil(tcTehsil);
+//		caaf.selectTC_ParliamentryConstituency(tcParliamentry);
 //		caaf.selectTC_AddressProofType(tcAddressProof);
 //		Thread.sleep(3000);
 //		caaf.clickOnTC_AddressProof_BrowseFile();
@@ -317,38 +317,38 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterFirst_BriefAboutTheAffiliation(firstAboutAffiliation);
 		Thread.sleep(3000);
 		caaf.clickOnAddAnotherAffiliation();
-//		Thread.sleep(3000);
-//		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
-//		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
-//		caaf.enterFirst_Affiliation_StartDate();
-//		caaf.enterFirst_Affiliation_EndDate();
-//		caaf.enterFirst_BriefAboutTheAffiliation(secondAboutAffiliation);
-//		Thread.sleep(3000);
-//		caaf.clickOnAddAnotherAffiliation();
-//		Thread.sleep(3000);
-//		caaf.enterFirst_NameofAffiliation(thirdAffiliationName);
-//		caaf.selectFirst_TypeOfAffiliation(thirdAffiliationType);
-//		caaf.enterFirst_Affiliation_StartDate();
-//		caaf.enterFirst_Affiliation_EndDate();
-//		caaf.enterFirst_BriefAboutTheAffiliation(thirdAboutAffiliation);
-//		Thread.sleep(3000);
-//		caaf.clickOnAddAnotherAffiliation();
-//		Thread.sleep(3000);
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("scroll(0, 900)");
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationName+"']")).getText(), firstAffiliationName);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationType+"']")).getText(), firstAffiliationType);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAboutAffiliation+"']")).getText(), firstAboutAffiliation);
-//		
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationName+"']")).getText(), secondAffiliationName);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationType+"']")).getText(), secondAffiliationType);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAboutAffiliation+"']")).getText(), secondAboutAffiliation);
-//
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationName+"']")).getText(), thirdAffiliationName);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationType+"']")).getText(), thirdAffiliationType);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAboutAffiliation+"']")).getText(), thirdAboutAffiliation);
-//		Thread.sleep(2000);
-//		caaf.clickOnRemove_ThirdAffiliation();
+		Thread.sleep(3000);
+		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
+		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
+		caaf.enterFirst_Affiliation_StartDate();
+		caaf.enterFirst_Affiliation_EndDate();
+		caaf.enterFirst_BriefAboutTheAffiliation(secondAboutAffiliation);
+		Thread.sleep(3000);
+		caaf.clickOnAddAnotherAffiliation();
+		Thread.sleep(3000);
+		caaf.enterFirst_NameofAffiliation(thirdAffiliationName);
+		caaf.selectFirst_TypeOfAffiliation(thirdAffiliationType);
+		caaf.enterFirst_Affiliation_StartDate();
+		caaf.enterFirst_Affiliation_EndDate();
+		caaf.enterFirst_BriefAboutTheAffiliation(thirdAboutAffiliation);
+		Thread.sleep(3000);
+		caaf.clickOnAddAnotherAffiliation();
+		Thread.sleep(3000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("scroll(0, 900)");
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationName+"']")).getText(), firstAffiliationName);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationType+"']")).getText(), firstAffiliationType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAboutAffiliation+"']")).getText(), firstAboutAffiliation);
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationName+"']")).getText(), secondAffiliationName);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationType+"']")).getText(), secondAffiliationType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAboutAffiliation+"']")).getText(), secondAboutAffiliation);
+
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationName+"']")).getText(), thirdAffiliationName);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationType+"']")).getText(), thirdAffiliationType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAboutAffiliation+"']")).getText(), thirdAboutAffiliation);
+		Thread.sleep(2000);
+		caaf.clickOnRemove_ThirdAffiliation();
 
 		
 		caaf.selectMen_ResidentialAreaAvailable(menResidentialArea);
@@ -474,8 +474,6 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Thread.sleep(10000);
 			caaf.clickOnAdd_ForJobRole();	
 		}
-		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("scroll(0, 900)");
 		
 //			Thread.sleep(3000);
@@ -530,35 +528,35 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			SelectDropDownList.selectDropDownListByVisibleText(hyb1, first_Hybrid);
 		}
 		
-		Thread.sleep(3000);
-		if(driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText().equals(firstJobRoleName))
-		{
-			Thread.sleep(3000);
-			List<WebElement> eqp = driver.findElements(By.xpath("//input[@formcontrolname='availabilityQuantity']"));
-			for(int i=0;i<eqp.size();i++)
-			{
-				WebElement eqp_qnt = eqp.get(i);
-				eqp_qnt.sendKeys(fourthQuantity);
-			}
-			
-			List<WebElement> eqr = driver.findElements(By.xpath("//input[@formcontrolname='remarks']"));
-			for(int i=0;i<eqr.size();i++)
-			{
-				WebElement eqp_rmk = eqr.get(i);
-				eqp_rmk.sendKeys(firstRemark);
-			}
-			
-			Thread.sleep(5000);
-			caaf.clickOnSaveAndNext();
-		}
-		else
-		{
-			Thread.sleep(5000);
-			caaf.clickOnSaveAndNext();
-		}
+//		Thread.sleep(3000);
+//		if(driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText().equals(firstJobRoleName))
+//		{
+//			Thread.sleep(3000);
+//			List<WebElement> eqp = driver.findElements(By.xpath("//input[@formcontrolname='availabilityQuantity']"));
+//			for(int i=0;i<eqp.size();i++)
+//			{
+//				WebElement eqp_qnt = eqp.get(i);
+//				eqp_qnt.sendKeys(fourthQuantity);
+//			}
+//			
+//			List<WebElement> eqr = driver.findElements(By.xpath("//input[@formcontrolname='remarks']"));
+//			for(int i=0;i<eqr.size();i++)
+//			{
+//				WebElement eqp_rmk = eqr.get(i);
+//				eqp_rmk.sendKeys(firstRemark);
+//			}
+//			
+//			Thread.sleep(5000);
+//			caaf.clickOnSaveAndNext();
+//		}
+//		else
+//		{
+//			Thread.sleep(5000);
+//			caaf.clickOnSaveAndNext();
+//		}
 		
-//		Thread.sleep(5000);
-//		caaf.clickOnSaveAndNext();
+		Thread.sleep(5000);
+		caaf.clickOnSaveAndNext();
 		
 		
 		
