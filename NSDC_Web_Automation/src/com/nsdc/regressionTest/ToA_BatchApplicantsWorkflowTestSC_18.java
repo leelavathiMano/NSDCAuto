@@ -408,6 +408,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 				aVp.enterBatchIdToSearch(batchID);
 				aVp.clickToApplySelectedSearchFilters();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				aVp.clickToGetActionMenuOptions();
 				aVp.clickToSelectAcceptBatchOption();
@@ -438,6 +439,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				aVp.clickToViewAcceptedBatches();
 				aVp.enterBatchIdToSearch(batchID);
 				aVp.clickToApplySelectedSearchFilters();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				aVp.clickToGetActionMenuOptions();
 				aVp.clickToSelectAssignAssessorsOption();
@@ -468,6 +470,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			aVp.clickToGetActionMenuOptions();
 			aVp.clickToSelectAcceptBatchOption();
@@ -486,6 +489,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			aVp.clickToGetActionMenuOptions();
 			aVp.clickToSelectAssignAssessorsOption();
@@ -521,6 +525,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				maVp.clicktoGoToPendingRequestsSection();
 				maVp.enterBatchIDToSearch(batchID);
 				maVp.clickToGetSearchResult();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				maVp.clickToGetActionMenuOptions(batchID);
 				maVp.clickToSelectAcceptBatchOption(batchID);
@@ -566,6 +571,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			maVp.clicktoGoToPendingRequestsSection();
 			maVp.enterBatchIDToSearch(batchID);
 			maVp.clickToGetSearchResult();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			maVp.clickToGetActionMenuOptions(batchID);
 			maVp.clickToSelectAcceptBatchOption(batchID);
