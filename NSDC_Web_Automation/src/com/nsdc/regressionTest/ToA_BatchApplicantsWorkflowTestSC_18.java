@@ -484,6 +484,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 62, timeFormat.format(date));
 			ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
 			aVp.clickOk();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			//assigning assessors
 			aVp.clickToViewAcceptedBatches();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
