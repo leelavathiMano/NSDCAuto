@@ -141,7 +141,7 @@ public class AssessorRegistrationPage
     private WebElement addPreferencesButton;
     @FindBy(xpath="(//button[i[@class='fa fa-trash-o']])[3]")
     private WebElement deleteThirdPreferenceButton;
-    @FindBy(xpath="//span[@_ngcontent-c12='']")
+    @FindBy(xpath="//label[input[@type='checkbox']]")
     private WebElement iAgreeCheckbox;
     @FindBy(xpath="(//button[@class='btn btn-primary'])[1]")
     private WebElement submitButton;
@@ -446,7 +446,7 @@ public class AssessorRegistrationPage
     }
     public void clickIAgreeCheckbox()
     {
-        iAgreeCheckbox.click();
+    	iAgreeCheckbox.click();
     }
     public void clickSubmitButton()
     {

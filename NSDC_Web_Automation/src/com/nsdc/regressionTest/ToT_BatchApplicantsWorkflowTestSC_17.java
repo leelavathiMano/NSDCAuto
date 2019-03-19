@@ -675,6 +675,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   tSp.clickToGetBatchActionMenu(batchID);
  		   tSp.selectApplyToBatch(batchID);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 		   wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
  		   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
  		   tSp.clickOK();
  	   }
@@ -720,6 +721,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   tSp.clickToGetBatchActionMenu(batchID);
  		   tSp.selectApplyToBatch(batchID);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 		   wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
  		   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
  		   tSp.clickOK();
  		}	   
@@ -741,6 +743,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			tSp.clickToGetBatchActionMenu(batchID);
  			tSp.selectApplyToBatch(batchID);
   		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+  		    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
  			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
  			tSp.clickOK();
  		}
@@ -1985,7 +1988,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
 			tSp.clickToGetBatchActionMenu(batchID);
 			tSp.selectApplyToBatch(batchID);
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
 			tSp.clickOK();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			PostLoginPage plp=new PostLoginPage(driver);

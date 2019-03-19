@@ -35,7 +35,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     @Test(dataProvider="registrationData")
     public void assessorRegistrationTC_01(String serialNum,String createdAssessorID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredJobRoleCode3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3) throws Exception
     {
-    	//DatabaseConnection.deleteAssessor(email);
     	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
@@ -83,7 +82,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickConfirmationOkMessage();
         elp.performlogin(username, confirmPassword);
-        Thread.sleep(15000);
+    	WebDriverWait wait=new WebDriverWait(driver, 60);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("dob"))); 
         AssessorRegistrationPage assessor = new AssessorRegistrationPage(driver);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         assessor.selectGender(gender);
@@ -112,7 +112,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         assessor.selectCategory(category);
         Thread.sleep(2000);
-        WebDriverWait wait=new WebDriverWait(driver, 60);
         if(disability.equals("None"))
         {
             assessor.selectDisability(disability);
@@ -168,7 +167,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.selectAnyApplicantCategory(applicant_Category);
         }
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         assessor.clickOnSaveAndContinue();
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Personal Information Section, Its Blocking further Applicant Registration Process!!!");
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
@@ -479,7 +478,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         Thread.sleep(2000);
         assessor.clickToDeleteThirdPreference();
         Thread.sleep(4000);
-//      Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredJobRole3+"')]]")).size()==0,"OMG!!! deleted third preference still present OR Something is wrong! ");
+        Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredJobRole3+"')]]")).size()==0,"OMG!!! deleted third preference still present OR Something is wrong! ");
         assessor.clickOnSaveAndContinue();
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in My Preferences & My Associations Section, Its Blocking further Applicant Registration Process!!!");
         assessor.clickIAgreeCheckbox();
@@ -940,7 +939,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
  	   Thread.sleep(2000);
     }
     
-    @Test(dataProvider="registrationData", dependsOnMethods="assessorRegistrationTC_01")
+    @Test(dataProvider="registrationData", dependsOnMethods="addMyPreferencesTC_03")
     public void removeTrainingRequestTC_04(String serialNum,String createdAssessorID,String userType, String name, String email, String mobile, String emailOTP, String mobileOTP,String oldPassword, String newPassword, String confirmPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String education3, String edu_details3, String edu_document3, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String industrial_sector3, String industrial_years3, String industrial_months3, String industrialExperienceDetails3, String industriesDetails3, String industrialDocument3, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String training_sector3, String trainingExperienceYears3, String trainingExperienceMonths3, String trainingExperienceDetails3, String trainingDocument3, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String preferredSector3, String preferredSubSector3, String preferredJobRole3, String preferredJobRoleCode3, String preferredState3, String preferredDistrict3, String preferredSubDistrict3) throws Exception
     {
     	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
@@ -961,14 +960,14 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
   	   	AssessorApplicantSearchAndApplyForAvailableBatchesPage aSp=new AssessorApplicantSearchAndApplyForAvailableBatchesPage(driver);
   	   	aSp.clickMyPreferences(); 
 	   	Thread.sleep(5000);
-	   	aSp.clickToGetMyPreferenceActionMenu(preferredSector1);
-	   	aSp.selectRemovePreference(preferredSector1);
+	   	aSp.clickToGetMyPreferenceActionMenu(preferredSector3);
+	   	aSp.selectRemovePreference(preferredSector3);
 	   	aSp.clickToFinallyRemoveTrainingRequest();
 	 	Thread.sleep(5000);
 	   	Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Preferences deleted successfully");
 	   	aSp.clickOK();
 	   	Thread.sleep(5000);
-	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector1+"')]]")).size()==0,"OMG!!! Deleted Training Request of Sector "+preferredSector1+" Still Present");
+	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==0,"OMG!!! Deleted Training Request of Sector "+preferredSector3+" Still Present");
 	   	PostLoginPage plp=new PostLoginPage(driver);
 	   	plp.clickOnProfileLogo();
 	   	Thread.sleep(2000);

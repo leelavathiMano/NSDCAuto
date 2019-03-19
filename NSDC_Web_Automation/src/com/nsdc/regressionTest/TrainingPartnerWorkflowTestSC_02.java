@@ -1702,7 +1702,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
      	   		Thread.sleep(5000);
     		}
       	   	da_tpr.clickForSaveAndContinue();
-      	   	Thread.sleep(4000);
+      	   	Thread.sleep(6000);
       	   	da_tpr.clickForOK();
 	     	Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! something went wrong after clicking Final Review Save and Continue button! ");
 	    	Thread.sleep(4000);
@@ -1714,7 +1714,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
    	   		dv.enterKeywordForTPID(tpID);
    	   		Thread.sleep(2000);
    	   		dv.clickOnApply();
-   	   		Thread.sleep(2000);
+   	   		Thread.sleep(6000);
       	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+tpID+"')]]]/td[8]")).getText().trim(), "Deemed Not Ready");
       	   	plp.clickOnProfileLogo();
       	   	Thread.sleep(2000);
@@ -1724,7 +1724,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
       	   	lp.clickLogin();
       	   	Thread.sleep(2000);
       	   	elp.performlogin(tpID, "Qwerty@123");
-      	   	Thread.sleep(8000);
+      	   	Thread.sleep(10000);
       	   	TrainingPartnerReEditRegistrationPage tpREp=new TrainingPartnerReEditRegistrationPage(driver);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Action DA Comments')]")).getText(), tpDaAssert);
      	   	js.executeScript("window.scrollBy(0,200)", "");
