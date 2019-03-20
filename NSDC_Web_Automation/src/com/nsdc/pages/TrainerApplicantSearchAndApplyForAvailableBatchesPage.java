@@ -1,13 +1,13 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.nsdc.generic.SelectDropDownList;
 
 public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
@@ -166,7 +166,8 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		WebDriverWait wait= new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[i[@class='la la-ellipsis-h']]")));
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector+"')]]//a[i[@class='la la-ellipsis-h']]")));
 	}
 	public void selectSearchAgainstPreference(String preferredSector)
 	{

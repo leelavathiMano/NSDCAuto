@@ -38,6 +38,7 @@ public class TrainerApplicantDashboardPage
 	}
 	public void clickViewBatches()
 	{
-		viewBatchesCardText.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()", viewBatchesCardText);
 	}
 }

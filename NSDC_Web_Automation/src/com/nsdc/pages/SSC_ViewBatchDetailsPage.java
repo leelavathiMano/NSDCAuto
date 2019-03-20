@@ -711,7 +711,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToGetApplicantActionMenu(String applicnatID)
 	{
-		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicnatID+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicnatID+"')]]//a[i[@class='la la-ellipsis-h']]")));
 	}
 	public void selectViewDetailsOfApplicantOption(String applicantID)
 	{
