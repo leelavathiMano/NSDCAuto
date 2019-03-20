@@ -1218,7 +1218,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 		else
    	 		{
    	 			sVp.clickToApproveAllSelectedApplicants();
-   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
 //   	 	}
 //   	 	else

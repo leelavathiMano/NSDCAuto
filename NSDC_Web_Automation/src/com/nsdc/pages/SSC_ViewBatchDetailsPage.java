@@ -730,7 +730,6 @@ public class SSC_ViewBatchDetailsPage
 	{
 		approveApplicantsButton.click();
 	}
-	
 	public void clickToViewPaymentDetails()
 	{
 		viewPaymentDetailsButton.click();
@@ -760,7 +759,10 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToApproveBatch()
 	{
-		approveBatchButton.click();
+		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(approveBatchButton));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", approveBatchButton);
 	}
 	public void clickToSendBackBatch()
 	{
