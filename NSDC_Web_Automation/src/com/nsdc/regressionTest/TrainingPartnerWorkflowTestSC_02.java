@@ -1286,12 +1286,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickUploadButton1();
             Thread.sleep(3000);
-            tprp.clickBrowseButton2();
-            Thread.sleep(2000);
-            UploadFile.upload(upload_provisional);
-            Thread.sleep(2000);
-            tprp.clickUploadButton2();
-            Thread.sleep(3000);
+//            tprp.clickBrowseButton2();
+//            Thread.sleep(2000);
+//            UploadFile.upload(upload_provisional);
+//            Thread.sleep(2000);
+//            tprp.clickUploadButton2();
+//            Thread.sleep(3000);
          	tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
             tprp.clickIAgreeCheckBox();
@@ -1317,12 +1317,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(2000);
             tprp.clickUploadButton2();
             Thread.sleep(3000);
-          	tprp.clickBrowseButton3();
-            Thread.sleep(2000);
-            UploadFile.upload(upload_provisional);
-            Thread.sleep(2000);
-            tprp.clickUploadButton3();
-            Thread.sleep(3000);
+//          	tprp.clickBrowseButton3();
+//            Thread.sleep(2000);
+//            UploadFile.upload(upload_provisional);
+//            Thread.sleep(2000);
+//            tprp.clickUploadButton3();
+//            Thread.sleep(3000);
             tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
             tprp.clickIAgreeCheckBox();
@@ -1788,7 +1788,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+panCardComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for PAN ");
 	    			if(yearOfEstablishment.equals("2018"))
 	    			{
-	    				
+	    				Thread.sleep(2000);
 	    			}
 	    			else if(yearOfEstablishment.equals("2017"))
 	    			{
