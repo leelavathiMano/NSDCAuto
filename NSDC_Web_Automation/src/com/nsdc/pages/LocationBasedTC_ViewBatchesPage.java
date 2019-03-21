@@ -273,11 +273,13 @@ public class LocationBasedTC_ViewBatchesPage
 	}
 	public void clickGoBack()
 	{
-		goBackButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",goBackButton);
 	}
 	public void clickToSendBatchForApproval()
 	{
-		sendBatchForApprovalButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();",sendBatchForApprovalButton);
 	}
 	//Batch Reschedule
 	public void clickToBrowseForBatchRescheduleSupportingDocument()
