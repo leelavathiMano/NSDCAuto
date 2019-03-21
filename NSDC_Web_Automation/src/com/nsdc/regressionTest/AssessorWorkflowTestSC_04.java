@@ -127,6 +127,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             Thread.sleep(4000);
             assessor.clickOnUploadButtonForUploadDisabilityDocument();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         }
         String aadharPan = aadhaarOrPAN.toLowerCase();
         if(aadharPan.equals("aadhaar"))
@@ -151,6 +152,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             Thread.sleep(4000);
             assessor.clickOnUploadButtonToUploadPan();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         }
         Thread.sleep(2000);
         assessor.clickOnBrowseFileButtonToUploadPhoto();
