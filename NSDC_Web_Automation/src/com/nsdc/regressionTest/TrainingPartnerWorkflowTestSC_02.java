@@ -198,13 +198,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             //UploadFile.upload(upload_GST);
             //Thread.sleep(3000);
             //tprp.clickUploadButton2();
-            Thread.sleep(3000);
-            tprp.clickBrowseButton2();
-            Thread.sleep(3000);
-            
-            UploadFile.upload(upload_provisional);
-            Thread.sleep(3000);
-            tprp.clickUploadButton2();
+//            Thread.sleep(3000);
+//            tprp.clickBrowseButton2();
+//            Thread.sleep(3000);
+//            
+//            UploadFile.upload(upload_provisional);
+//            Thread.sleep(3000);
+//            tprp.clickUploadButton2();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -244,13 +244,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             UploadFile.upload(upload_GST);
             Thread.sleep(3000);
             tprp.clickUploadButton2();
-            Thread.sleep(3000);
-            tprp.clickBrowseButton3();
-            Thread.sleep(3000);
-            
-            UploadFile.upload(upload_provisional);
-            Thread.sleep(3000);
-            tprp.clickUploadButton3();
+//            Thread.sleep(3000);
+//            tprp.clickBrowseButton3();
+//            Thread.sleep(3000);
+//            
+//            UploadFile.upload(upload_provisional);
+//            Thread.sleep(3000);
+//            tprp.clickUploadButton3();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -281,12 +281,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
             tprp.clickUploadButton1();
             
-            Thread.sleep(4000);
-            tprp.clickBrowseButton2();
-            Thread.sleep(3000);
-            UploadFile.upload(upload_provisional);
-            Thread.sleep(3000);
-            tprp.clickUploadButton2();
+//            Thread.sleep(4000);
+//            tprp.clickBrowseButton2();
+//            Thread.sleep(3000);
+//            UploadFile.upload(upload_provisional);
+//            Thread.sleep(3000);
+//            tprp.clickUploadButton2();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
