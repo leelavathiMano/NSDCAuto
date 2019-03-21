@@ -152,10 +152,11 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
             assessor.clickOnUploadButtonToUploadPan();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         }
+        Thread.sleep(2000);
         assessor.clickOnBrowseFileButtonToUploadPhoto();
         Thread.sleep(4000);
         UploadFile.upload(photoFile);
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         assessor.clickOnUploadButtonToUploadPhoto();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
