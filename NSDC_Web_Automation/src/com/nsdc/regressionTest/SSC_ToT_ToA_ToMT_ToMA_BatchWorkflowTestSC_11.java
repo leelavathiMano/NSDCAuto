@@ -4089,7 +4089,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Thread.sleep(4000);
 			tVp.clickToGoToBatchAttendanceSection();
 			Thread.sleep(2000);
-			tVp.selectplatformJobRole(platformJobRole);
+			tVp.selectPlatformJobRole(platformJobRole);
 			Thread.sleep(4000);
 			tVp.clickToBrowseForAttendanceFile();
 			Thread.sleep(4000);
