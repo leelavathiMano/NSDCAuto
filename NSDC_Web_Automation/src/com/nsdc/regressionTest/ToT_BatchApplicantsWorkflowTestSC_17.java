@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AssessmentAgencyDashboardPage;
 import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
 import com.nsdc.pages.AssessorDashboardPage;
@@ -673,7 +674,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! Search Against My Preference is not resulting batch - "+batchID);
  		   tSp.clickToGetBatchActionMenu(batchID);
- 		   tSp.selectApplyToBatch(batchID);
+		   tSp.selectApplyToBatch(batchID);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
  		   Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applied Successfully");
@@ -1376,7 +1377,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
   	   	tcDp.clickToViewBatches();
   	   	LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
   	   	tcVp.clickToViewAllAcceptedBatches();
-  	   	Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+  	   	WebDriverWait wait=new WebDriverWait(driver, 60);
+  	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+  	   	tcVp.enterToSearchForBatchID(batchID);
+  	   	tcVp.clickToGetSearchResult();
+  	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+  	   	Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! SSC Approved Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
   	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Approved");
   	   	tcVp.clikToGetBatchActionMenu();
   	   	tcVp.selectViewBatchDetailsOption();
@@ -1479,12 +1485,19 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         		tDp.clickAllBatches();
         		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
         		tVp.clickToGoToAcceptedBatchesSection();
+        		WebDriverWait wait=new WebDriverWait(driver, 60);
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		JavascriptExecutor js=(JavascriptExecutor)driver;
         		js.executeScript("window.scrollBy(0,200)", "");
+        		tVp.enterBatchIDToSearch(batchID);
+        		tVp.clickToGetSearchFilterResult();
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Approved");
         		tVp.clickToGetActionMenuOptions(batchID);
         		tVp.clickToSelectViewDetailsOption(batchID);
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		tVp.clickToGoToBatchDetailsSection();
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), batchStartDate+" to "+batchEndDate);
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector & Sub Sector')]]/td[3]")).getText().trim(), batchSector+" | "+batchSubSector);
@@ -1508,12 +1521,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
         		//Applicant Details Verification
         		tVp.clickToGoToApprovedApplicantsSection();
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[1]")).getText().trim(), trainerID);
            	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), name);
            	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), email);
            	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[4]")).getText().trim(), mobile);
            	 	tVp.clickToGetApplicantActionMenu(trainerID);
            	 	tVp.selectViewDetailsOfApplicantOption(trainerID);
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
            	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
            	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
            	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -1570,11 +1585,17 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		tDp.clickAllBatches();
     		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
     		tVp.clickToGoToAcceptedBatchesSection();
+    		WebDriverWait wait=new WebDriverWait(driver, 60);
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		JavascriptExecutor js=(JavascriptExecutor)driver;
     		js.executeScript("window.scrollBy(0,200)", "");
+    		tVp.enterBatchIDToSearch(batchID);
+    		tVp.clickToGetSearchFilterResult();
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Approved");
     		tVp.clickToGetActionMenuOptions(batchID);
     		tVp.clickToSelectViewDetailsOption(batchID);
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		tVp.clickToGoToBatchDetailsSection();
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), batchStartDate+" to "+batchEndDate);
@@ -1593,6 +1614,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
             Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
             //Applicant Details Verification
             tVp.clickToGoToApprovedApplicantsSection();
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
             Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[1]")).getText().trim(), trainerID);
             Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), name);
             Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), email);
@@ -2109,4 +2131,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   		plp.clickOnLogout();
 	   	}
     }
+    
+    
  }
