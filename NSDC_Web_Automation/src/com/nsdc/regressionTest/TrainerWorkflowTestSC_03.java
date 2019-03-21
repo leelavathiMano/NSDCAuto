@@ -176,10 +176,16 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast toast-error']")).size()==0,"OMG!!! Toast Error Message Present in Personal Information Section, Its Blocking further Applicant Registration Process!!!");
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value"), mobile);
         Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value"), email);
-        trainer.enterApplicantAddress(address);
-    	Thread.sleep(5000);
-        trainer.enterNearbyLandmark(landmark);
-    	Thread.sleep(2000);
+        if(!address.equalsIgnoreCase("N/A"))
+        {
+        	trainer.enterApplicantAddress(address);
+        	Thread.sleep(5000);
+        }
+        if(!landmark.equalsIgnoreCase("N/A"))
+        {
+        	trainer.enterNearbyLandmark(landmark);
+        	Thread.sleep(2000);
+        }
         trainer.enterPincode(pincode);
     	Thread.sleep(2000);
         trainer.selectStateOrUnionTerritory(state);
@@ -189,12 +195,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
     		 trainer.selectDistrictOrCity(city);
              Thread.sleep(2000);
         }
-        if(!mandal.isEmpty())
+        if(!mandal.equalsIgnoreCase("N/A"))
         {
         	 trainer.selectTehsilOrMandal(mandal);
              Thread.sleep(2000);
         }
-        if(!parliamentaryConstituency.isEmpty())
+        if(!parliamentaryConstituency.equalsIgnoreCase("N/A"))
         {
         	trainer.selectParliamentaryConstituency(parliamentaryConstituency);
          	Thread.sleep(2000);
