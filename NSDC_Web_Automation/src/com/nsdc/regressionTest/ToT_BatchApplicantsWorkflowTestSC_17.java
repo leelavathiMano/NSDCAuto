@@ -12,7 +12,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
-import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AssessmentAgencyDashboardPage;
 import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
 import com.nsdc.pages.AssessorDashboardPage;
@@ -263,6 +262,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
 		plp.clickOnLogout();
     }
     
@@ -1327,6 +1327,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 		if(!paymentMode.equalsIgnoreCase("N/A"))
    	 		{
    	 			sVp.clickToViewPaymentDetails();
+   	   	 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID')]]]/div[2]")).getText().trim(), batchID);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Mode of Payment')]]]/div[2]")).getText().trim(), paymentMode);
    	 			if(!paymentMode.equalsIgnoreCase("cash"))
@@ -2127,10 +2128,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
 	   		plp.clickOnProfileLogo();
-	   		Thread.sleep(2000);
+	   		Thread.sleep(3000);
 	   		plp.clickOnLogout();
 	   	}
     }
-    
-    
- }
+}

@@ -46,7 +46,7 @@ public class TrainerViewBatchesPage
 	@FindBy(linkText="Batch Attendance")
 	private WebElement batchAttendanceSectionLinkText;
 	@FindBy(xpath="//angular2-multiselect[@formcontrolname='jobRole']/div")
-	private WebElement platformJobRoleList;
+	private WebElement jobRoleList;
 	@FindBy(name="uploadFile")
 	private WebElement browseForAttendanceButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
@@ -184,9 +184,14 @@ public class TrainerViewBatchesPage
 	{
 		batchAttendanceSectionLinkText.click();
 	}
-	public void selectplatformJobRole(String platformJobRole)
+	public void selectDomainJobRole(String domainJobRole)
 	{
-		platformJobRoleList.click();
+		jobRoleList.click();
+		driver.findElement(By.xpath("//label[contains(text(),'"+domainJobRole+"')]")).click();
+	}
+	public void selectPlatformJobRole(String platformJobRole)
+	{
+		jobRoleList.click();
 		driver.findElement(By.xpath("//label[contains(text(),'"+platformJobRole+"')]")).click();
 	}
 	public void clickToBrowseForAttendanceFile()
@@ -197,7 +202,7 @@ public class TrainerViewBatchesPage
 	{
 		uploadAttendanceButton.click();
 	}
-	//
+	
 	public void clickToBrowseForAttendanceSupportFile()
 	{
 		browseForAttendanceSupportingDocButton.click();

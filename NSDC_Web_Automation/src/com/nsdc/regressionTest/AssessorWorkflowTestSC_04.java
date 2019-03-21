@@ -522,12 +522,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), category);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mobile Number')]]/span[2]")).getText().trim(), mobile);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Email')]]/span[2]")).getText().trim(), email);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Applicant Address')]]/span[2]")).getText().trim(), address);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Landmark')]]/span[2]")).getText().trim(), landmark);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Applicant Address')]]/span[2]")).getText().trim(), address);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Landmark')]]/span[2]")).getText().trim(), landmark);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), pincode);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), state);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), city);
-      	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mandal')]]/span[2]")).getText().trim(), mandal);
+     	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), city);
+//    	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mandal')]]/span[2]")).getText().trim(), mandal);
       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains(education1));
         Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[3]")).getText().trim(), edu_details1);
         Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[4]")).getText().contains(edu_document1));
@@ -549,15 +549,15 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[2]")).getText().trim(), preferredSector1);
      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
-//  	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredState1);
-     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredDistrict1);
-     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredSubDistrict1);
+//state column not present  	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredState1);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredDistrict1);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredSubDistrict1);
      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[1]")).getText().trim(), preferredJobRole2+", "+preferredJobRoleCode2);
      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[2]")).getText().trim(), preferredSector2);
      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
-//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredState2);
-     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
-     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
+//state column not present     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredState2);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
     	//Edit Profile
        	aMpP.clickEditProfile();
@@ -607,7 +607,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	aMpP.clickToUploadPhotoFile();
     	WebDriverWait wait=new WebDriverWait(driver, 60);
        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-    	Select select2=new Select(driver.findElement(By.xpath("//div[label[contains(text(),'Select Applicant Category:')]]/div/select")));
+       	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+       	Select select2=new Select(driver.findElement(By.xpath("//div[label[contains(text(),'Select Applicant Category:')]]/div/select")));
     	List<WebElement> selectedApplicantCategories=select2.getAllSelectedOptions();
     	if(selectedApplicantCategories.size()==1)
     	{
@@ -628,21 +629,33 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(2000);
     	aMpP.clickContactAndAddress();
     	Thread.sleep(4000);
-    	Assert.assertFalse(driver.findElement(By.xpath("//div[label[contains(text(),'Mobile Number of Applicant:')]]/div/input")).isEnabled(),"OMG!!! Edit Profile - Mobile Number field should not be editable!");
+//    	Assert.assertFalse(driver.findElement(By.xpath("//div[label[contains(text(),'Mobile Number of Applicant:')]]/div/input")).isEnabled(),"OMG!!! Edit Profile - Mobile Number field should not be editable!");
     	Assert.assertEquals(aMpP.getMobileNumOfApplicant(), mobile);
-    	Assert.assertFalse(driver.findElement(By.xpath("//div[label[contains(text(),'Email Address of Applicant:')]]/div/input")).isEnabled(),"OMG!!! Edit Profile - Email field should not be editable!");
+//    	Assert.assertFalse(driver.findElement(By.xpath("//div[label[contains(text(),'Email Address of Applicant:')]]/div/input")).isEnabled(),"OMG!!! Edit Profile - Email field should not be editable!");
     	Assert.assertEquals(aMpP.getEmailOfApplicant(), email);
-    	Assert.assertEquals(aMpP.getAddressOfApplicant(), address);
-    	Assert.assertEquals(aMpP.getNearByLandMark(), landmark);
+    	if(!address.equalsIgnoreCase("N/A"))
+    	{
+    		Assert.assertEquals(aMpP.getAddressOfApplicant(), address);
+    	}
+    	if(!landmark.equalsIgnoreCase("N/A"))
+    	{
+    		Assert.assertEquals(aMpP.getNearByLandMark(), landmark);
+    	}
     	Assert.assertEquals(aMpP.getPincode(), pincode);
     	Select selectedState=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='state'])[1]")));
        	Assert.assertEquals(selectedState.getFirstSelectedOption().getText().trim(), state);
        	Select selectedDistrict=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='district'])[1]")));
        	Assert.assertEquals(selectedDistrict.getFirstSelectedOption().getText().trim(), city);
-       	Select selectedSubDistrict=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='mandal'])[1]")));
-       	Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), mandal);
-       	Select selectedParlimentaryConstituency=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='parliamentConstituency'])[1]")));
-       	Assert.assertEquals(selectedParlimentaryConstituency.getFirstSelectedOption().getText().trim(), parliamentaryConstituency);
+       	if(!mandal.equalsIgnoreCase("N/A"))
+       	{
+       		Select selectedSubDistrict=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='mandal'])[1]")));
+           	Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), mandal);
+       	}
+       	if(!parliamentaryConstituency.equalsIgnoreCase("N/A"))
+       	{
+       		Select selectedParlimentaryConstituency=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='parliamentConstituency'])[1]")));
+           	Assert.assertEquals(selectedParlimentaryConstituency.getFirstSelectedOption().getText().trim(), parliamentaryConstituency);
+       	}
        	aMpP.clickSaveChanges2();
        	Thread.sleep(4000);
        	aMpP.clickOK();
@@ -674,7 +687,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(5000);
     	aMpP.clickToUploadSelectedEducationProofDoc();
        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-    	aMpP.clickToSubmitEducationDetails();
+       	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+       	aMpP.clickToSubmitEducationDetails();
     	Thread.sleep(2000);
     	Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+education3+"')]")).size()!=0,"OMG!!! No show of Added Educational Record for Profile of "+createdAssessorID+" !!! ");
     	Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+education3+"')]")).getText().trim(), education3);
@@ -709,7 +723,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(5000);
     	aMpP.clickToUploadSelectedIndustrialExperienceProofDoc();
        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-    	aMpP.clickToSubmitIndustrialExperienceDetails();
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+       	aMpP.clickToSubmitIndustrialExperienceDetails();
     	Thread.sleep(2000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[2]")).getText(), industrial_sector3);
         Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+industrial_sector3+"')]])[1]//td[3]")).getText(), industrialExperienceDetails3);
@@ -743,6 +758,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Thread.sleep(5000);
     	aMpP.clickToUploadSelectedTrainingExperienceProofDoc();
        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
     	aMpP.clickToSubmitTrainingExperienceDetails();
     	Thread.sleep(4000);
     	Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+training_sector3+"')]])[2]//td[2]")).getText(), training_sector3);
@@ -755,6 +771,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Thread.sleep(4000);
        	aMpP.clickCurriculumVitaeUpload();
        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
        	aMpP.clickSaveChanges3();
     	Thread.sleep(4000);
     	aMpP.clickOK();
@@ -788,12 +805,12 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Category')]]/span[2]")).getText().trim(), category);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mobile Number')]]/span[2]")).getText().trim(), mobile);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Email')]]/span[2]")).getText().trim(), email);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Applicant Address')]]/span[2]")).getText().trim(), address);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Landmark')]]/span[2]")).getText().trim(), landmark);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Applicant Address')]]/span[2]")).getText().trim(), address);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Landmark')]]/span[2]")).getText().trim(), landmark);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Pincode')]]/span[2]")).getText().trim(), pincode);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'State')]]/span[2]")).getText().trim(), state);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), city);
-      	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mandal')]]/span[2]")).getText().trim(), mandal);
+//    	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mandal')]]/span[2]")).getText().trim(), mandal);
       	//Education
       	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[1]")).getText().contains(education1));
         Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Education Details')]]]]//span)[3]")).getText().trim(), edu_details1);
@@ -825,19 +842,19 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
        	Assert.assertTrue(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[13]")).getText().contains(trainingExperienceDetails3));
        	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[div[h5[contains(text(),'Added Training Experience Details')]]]]//span)[14]")).getText().trim(), trainingExperienceYears3+" years "+trainingExperienceMonths3+" months");
        	//Training Requests/My Preferences
-     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
-      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[2]")).getText().trim(), preferredSector1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
-//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredState1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredDistrict1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredSubDistrict1);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[1]")).getText().trim(), preferredJobRole2+", "+preferredJobRoleCode2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[2]")).getText().trim(), preferredSector2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
-//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredState2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
+//     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[1]")).getText().trim(), preferredJobRole1+", "+preferredJobRoleCode1);
+//      	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[2]")).getText().trim(), preferredSector1);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[3]")).getText().trim(), preferredSubSector1);
+//no state column     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredState1);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[4]")).getText().trim(), preferredDistrict1);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole1+"')]]/td[5]")).getText().trim(), preferredSubDistrict1);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[1]")).getText().trim(), preferredJobRole2+", "+preferredJobRoleCode2);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[2]")).getText().trim(), preferredSector2);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
+//no state column     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredState2);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
+//       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
     	PostLoginPage plp=new PostLoginPage(driver);
     	plp.clickOnProfileLogo();
     	Thread.sleep(2000);
@@ -895,7 +912,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 	 	   aSp.clickMyPreferences();
 	 	   Thread.sleep(4000);
 	 	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==1);
-	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
+	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3+" ("+preferredJobRoleCode3+")");
 	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[2]")).getText().trim(), preferredSector3);
 	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
 	 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[4]")).getText().trim(), preferredState3);
@@ -934,7 +951,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 		  aSp.clickMyPreferences(); 
 		  Thread.sleep(2000);
 		  Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]")).size()==1);
-	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3);
+	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[1]")).getText().trim(), preferredJobRole3+" ("+preferredJobRoleCode3+")");
 	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[2]")).getText().trim(), preferredSector3);
 	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[3]")).getText().trim(), preferredSubSector3);
 	 	  Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredSector3+"')]]/td[4]")).getText().trim(), preferredState3);
