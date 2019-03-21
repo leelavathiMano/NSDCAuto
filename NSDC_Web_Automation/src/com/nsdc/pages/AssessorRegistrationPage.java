@@ -235,8 +235,7 @@ public class AssessorRegistrationPage
     }
     public void clickOnBrowseFileButtonToUploadPhoto()
     {
-    	JavascriptExecutor js=(JavascriptExecutor)driver;
-    	js.executeScript("arguments[0].click();", uploadYourPhoto_browseFileButton);
+    	uploadYourPhoto_browseFileButton.click();
     }
     public void clickOnUploadButtonToUploadPhoto()
     {
