@@ -528,7 +528,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[5]")).getText().trim(), state);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
-				tVp.clickGoBackFromBatchDetails();
+				tVp.clickGoBack();
 				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
@@ -684,7 +684,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[5]")).getText().trim(), state);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
-			tVp.clickGoBackFromBatchDetails();
+			tVp.clickGoBack();
 			Thread.sleep(4000);
 			js.executeScript("window.scrollBy(0,200)", "");
 			Thread.sleep(2000);
@@ -4158,7 +4158,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			tVp.clickToFinallySubmitBatchAttendanceToSSC();
 			Thread.sleep(4000);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Attendance Already Submitted to SSC");
-			tVp.clickGoBackFromBatchDetails();
+			tVp.clickGoBack();
 			Thread.sleep(4000);
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
