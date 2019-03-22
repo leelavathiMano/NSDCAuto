@@ -150,6 +150,8 @@ public class TrainingPartnerRegistrationPage
     private WebElement goToDashboardPageButton;
     @FindBy(xpath="//button[(text()='Download Receipt')]")
     private WebElement downloadReceiptButton;
+    @FindBy(xpath="//button[text()='Continue']")
+    private WebElement continueButton;
     
     public TrainingPartnerRegistrationPage(WebDriver driver)
     {
@@ -498,6 +500,11 @@ public class TrainingPartnerRegistrationPage
     public void clickOnDownloadReciept()
     {
     	downloadReceiptButton.click();
+    }
+    
+    public void clickOnContinue()
+    {
+    	continueButton.click();
     }
     
 }

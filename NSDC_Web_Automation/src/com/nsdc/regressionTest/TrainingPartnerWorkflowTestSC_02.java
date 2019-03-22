@@ -18,6 +18,7 @@ import com.nsdc.pages.InspectionAgency_ViewInspectionPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RegistrationPage;
+import com.nsdc.pages.TC_CAAF_BillingInformationPage;
 import com.nsdc.pages.TrainingPartnerReEditRegistrationPage;
 import com.nsdc.pages.TrainingPartnerRegistrationPage;
 import com.nsdc.testConfig.TestConfiguration;
@@ -32,7 +33,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     }
     
     @Test(dataProvider="tpProfileData")
-    public void tpRegistrationsTC_01(String sno, String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String tpid, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional) throws Exception
+    public void tpRegistrationsTC_01(String sno, String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String tpid, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional, String city1, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName) throws Exception
     {
         String year_Establishment = year_Of_Establishment;
         int year = Integer.parseInt(year_Establishment);
@@ -768,6 +769,49 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
+//        if(!type_Of_The_Organization.equals("Government Institute"))
+//        {
+//			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
+//			Thread.sleep(3000);
+//			tcbi.enterCity(city1);
+//			tcbi.selectCountry(Country);
+//			Thread.sleep(3000);
+//			if(paymentMethod.equals("Credit Card"))
+//			{
+//				tcbi.clickOnCreditCard();
+//				Thread.sleep(3000);
+//				tcbi.enterCreditCardNumber(creditCardNumber);
+//				tcbi.selectMonth_ForCreditCard(month_CreditCard);
+//				tcbi.selectYear_ForCreditCard(year_CreditCard);
+//				tcbi.enterCVVForCreditCard(cvv_CreditCard);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForCreditCard();
+//			}
+//			else if(paymentMethod.equals("Debit Card"))
+//			{
+//				tcbi.clickOnDebitCard();
+//				Thread.sleep(3000);
+//				tcbi.enterDebitCardNumber(debitCardNumber);
+//				tcbi.selectMonth_ForDebitCard(month_DebitCard);
+//				tcbi.selectYear_ForDebitCard(year_DebitCard);
+//				tcbi.enterCVVForDebitCard(cvv_DebitCard);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForDebitCard();
+//			}
+//			else if(paymentMethod.equals("Net Banking"))
+//			{
+//				tcbi.clickOnNetBanking();
+//				Thread.sleep(3000);
+//				tcbi.selectBankName(bankName);
+//				Thread.sleep(3000);
+//				tcbi.clickOnMakePaymentForNetBanking();
+//			}
+//			Thread.sleep(3000);
+//			tcbi.clickOnReturnToTheMerchantSite();
+//			
+//        }
+        
+        
         //tprp.clickDownloadButton();
         Thread.sleep(10000);
         tprp.clcikOnGoToDashboard();
@@ -863,9 +907,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	//Thread.sleep(2000);
         	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
-    		Thread.sleep(2000);
-    		da_tpr.clickOn_Third_PreviewAttachedProofDocument();
-    		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+//    		Thread.sleep(2000);
+//    		da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+//    		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
 
         }
     	
@@ -880,9 +924,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         	da_tpr.clickOn_Third_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);  
-    		Thread.sleep(2000);
-    		da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
-    		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+//    		Thread.sleep(2000);
+//    		da_tpr.clickOn_Fourth_PreviewAttachedProofDocument();
+//    		da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
     	}
     	
     	else if(establishment_Year.equals("2017") && (type_Organization.equals("Firm") || type_Organization.equals("Society") || type_Organization.equals("Trust") || type_Organization.equals("Limited Liability Partnership (LLP)")))
@@ -1015,9 +1059,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(2000);
         	da_tpr.clickOn_Second_PreviewAttachedProofDocument();
         	da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
-        	Thread.sleep(2000);
-        	da_tpr.clickOn_Third_PreviewAttachedProofDocument();
-        	da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
+//        	Thread.sleep(2000);
+//        	da_tpr.clickOn_Third_PreviewAttachedProofDocument();
+//        	da_tpr.selectReviewCommentForProvisionalCertificate(provisionalReview);
         	
         }
     	
