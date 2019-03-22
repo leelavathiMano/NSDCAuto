@@ -116,7 +116,7 @@ public class TrainerViewBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'Reject Batch')]")).click();
 	}
-	public void clickGoBackFromBatchDetails()
+	public void clickGoBack()
 	{
 		goBackButton.click();
 	}
@@ -200,27 +200,34 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToUploadChoosedAttendanceFile()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(uploadAttendanceButton));
 		uploadAttendanceButton.click();
 	}
-	
 	public void clickToBrowseForAttendanceSupportFile()
 	{
 		browseForAttendanceSupportingDocButton.click();
 	}
 	public void clickToUploadChoosedAttendanceSupportFile()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(uploadAttendanceSupportDocButton));
 		uploadAttendanceSupportDocButton.click();
 	}
 	public void clickToDeleteUploadedAttendanceSupportDoc()
 	{
-		deleteAttendanceSupportDocButton.click();
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(deleteAttendanceSupportDocButton));
 	}
 	public void clickToSubmitBatchAttendanceToSSC()
 	{
-		submitBatchAttendanceToSSCButton.click();
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(submitBatchAttendanceToSSCButton));
 	}
 	public void clickToFinallySubmitBatchAttendanceToSSC()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(submitBatchAttendanceToSSCFinalButton));
 		submitBatchAttendanceToSSCFinalButton.click();
 	}
 	public void clickToCancel()
