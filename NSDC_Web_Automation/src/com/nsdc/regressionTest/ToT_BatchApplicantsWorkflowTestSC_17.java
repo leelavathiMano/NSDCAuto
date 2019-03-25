@@ -2195,7 +2195,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[3]")).getText().trim(),"Completed");
         	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"100.00%");
         	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==2);
-//        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==0);
         	     }
         	}
         	tVp.clickToBrowseForAttendanceSupportFile();
@@ -2298,7 +2297,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         		if(j==5)
         		{
         			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[3]")).getText().trim(),"Dropout");
-        	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"50.00%");
+        	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"66.67%");
         	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==4);
         	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==2);
         	     }
@@ -2307,7 +2306,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[3]")).getText().trim(),"Completed");
         	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"100.00%");
         	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==6);
-//        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==0);
         	     }
         	}
     		tVp.clickToSubmitBatchAttendanceToSSC();
