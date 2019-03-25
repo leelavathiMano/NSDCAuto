@@ -2169,6 +2169,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		//Checking Download Template
     		tVp.clickToDownloadAttendanceTemplate();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToBrowseForAttendanceFile();
         	UploadFile.upload(domainJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceFile();
