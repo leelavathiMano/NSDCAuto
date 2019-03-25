@@ -2156,7 +2156,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		tDp.clickAllBatches();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToGoToAcceptedBatchesSection();
-    		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Apply')]")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.enterBatchIDToSearch(batchID);
     		tVp.clickToGetSearchFilterResult();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
