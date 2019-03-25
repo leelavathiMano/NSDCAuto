@@ -2236,7 +2236,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     	}
     }
     
-    @Test(dataProvider="totBatchData")//, dependsOnMethods="attendanceUploadByDomainMasterTrainerTC_13")
+    @Test(dataProvider="totBatchData")//, dependsOnMethods="masterAssessorVerifyingSSCApprovedBatchAndApplicantsTC_10")
     public void attendanceUploadByPlatformMasterTrainerTC_14(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime, String domainJobRoleAttendance, String platformJobRoleAttendance) throws Exception
     {
     	if(serialNo.equals("1"))
@@ -2310,16 +2310,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 //        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==0);
         	     }
         	}
-//        	tVp.clickToBrowseForAttendanceSupportFile();
-//        	Thread.sleep(2000);
-//        	UploadFile.upload(domainJobRoleAttendance);
-//        	tVp.clickToUploadChoosedAttendanceSupportFile();
-//        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-//        	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-//        	JavascriptExecutor js=(JavascriptExecutor)driver;
-//            js.executeScript("window.scrollBy(0,-200)", "");
-//        	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRoleAttendance+"')]]")).isDisplayed());
-//    		js.executeScript("window.scrollBy(0,-1000)", "");
     		tVp.clickToSubmitBatchAttendanceToSSC();
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
