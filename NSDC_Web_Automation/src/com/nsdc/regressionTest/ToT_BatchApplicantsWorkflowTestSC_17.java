@@ -2217,13 +2217,16 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).isDisplayed());
     		js.executeScript("window.scrollBy(0,-1000)", "");
     		tVp.clickToSubmitBatchAttendanceToSSC();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
     		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
     		tVp.clickOk();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
     		//Checking Attendance Submission already done 
     		tVp.clickToSubmitBatchAttendanceToSSC();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
     		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Attendance Already Submitted to SSC");
@@ -2241,20 +2244,20 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     	if(serialNo.equals("1"))
     	{
     		batchID="833";
-    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");   
-    		Calendar cal = Calendar.getInstance();    
-    		cal.setTime(dateFormat.parse(pTrainingStartDate));
-    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 2, pTrainingStartDate.replaceAll("-", "/"));
-    		cal.add(Calendar.DATE, 1 );
-    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 3, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-    		cal.add(Calendar.DATE, 1);
-    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 4, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-    		cal.add(Calendar.DATE, 1);
-    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 5, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-    		cal.add(Calendar.DATE, 1);
-    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 6, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-    		cal.add(Calendar.DATE, 1);
-    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 7, pTrainingEndDate.replaceAll("-", "/"));
+//    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");   
+//    		Calendar cal = Calendar.getInstance();    
+//    		cal.setTime(dateFormat.parse(pTrainingStartDate));
+//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 2, pTrainingStartDate.replaceAll("-", "/"));
+//    		cal.add(Calendar.DATE, 1 );
+//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 3, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+//    		cal.add(Calendar.DATE, 1);
+//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 4, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+//    		cal.add(Calendar.DATE, 1);
+//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 5, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+//    		cal.add(Calendar.DATE, 1);
+//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 6, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+//    		cal.add(Calendar.DATE, 1);
+//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 7, pTrainingEndDate.replaceAll("-", "/"));
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
     		LoginPage lp=new LoginPage(driver);
     		lp.clickLogin();
@@ -2309,7 +2312,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	     }
         	}
     		tVp.clickToSubmitBatchAttendanceToSSC();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
     		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
     		tVp.clickOk();
