@@ -2153,6 +2153,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
     		tDp.clickToGetTrainerDashboard();
     		tDp.clickAllBatches();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToGoToAcceptedBatchesSection();
     		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Apply')]")));
     		tVp.enterBatchIDToSearch(batchID);
