@@ -2167,6 +2167,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.selectDomainJobRole(domainJobRole);
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		//Checking Download Template
+    		tVp.clickToDownloadAttendanceTemplate();
     		tVp.clickToBrowseForAttendanceFile();
         	UploadFile.upload(domainJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceFile();
@@ -2202,11 +2204,20 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	UploadFile.upload(domainJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceSupportFile();
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-        	JavascriptExecutor js=(JavascriptExecutor)driver;
+        	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).isDisplayed());
+        	tVp.clickToDeleteUploadedAttendanceSupportDoc();
+        	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).size()==0);
+        	tVp.clickToBrowseForAttendanceSupportFile();
+        	UploadFile.upload(domainJobRoleAttendance);
+        	tVp.clickToUploadChoosedAttendanceSupportFile();
+        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+			JavascriptExecutor js=(JavascriptExecutor)driver;
             js.executeScript("window.scrollBy(0,-200)", "");
         	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).isDisplayed());
     		js.executeScript("window.scrollBy(0,-1000)", "");
     		tVp.clickToSubmitBatchAttendanceToSSC();
+    		//On-Going Training Period Batch - Actually Attendance should be submitted at the end of Training
+    		//tVp.clickToCancel();
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
     		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
@@ -2220,6 +2231,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		plp.clickOnProfileLogo();
     		Thread.sleep(2000);
     		plp.clickOnLogout();
+
     	}
     }
 }

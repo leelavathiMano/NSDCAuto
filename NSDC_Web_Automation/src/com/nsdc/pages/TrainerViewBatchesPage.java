@@ -43,6 +43,8 @@ public class TrainerViewBatchesPage
 	private WebElement searchByBatchIDTextField;
 	@FindBy(xpath="//button[contains(text(),'Apply')]")
 	private WebElement applySearchFilterButton;
+	@FindBy(xpath="//button[contains(text(),'Download Template')]")
+	private WebElement downloadTemplateButton;
 	@FindBy(linkText="Batch Attendance")
 	private WebElement batchAttendanceSectionLinkText;
 	@FindBy(xpath="//angular2-multiselect[@formcontrolname='jobRole']/div")
@@ -194,6 +196,10 @@ public class TrainerViewBatchesPage
 		jobRoleList.click();
 		driver.findElement(By.xpath("//label[contains(text(),'"+platformJobRole+"')]")).click();
 	}
+	public void clickToDownloadAttendanceTemplate()
+	{
+		downloadTemplateButton.click();
+	}
 	public void clickToBrowseForAttendanceFile()
 	{
 		browseForAttendanceButton.click();
@@ -218,11 +224,13 @@ public class TrainerViewBatchesPage
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(deleteAttendanceSupportDocButton));
+		deleteAttendanceSupportDocButton.click();
 	}
 	public void clickToSubmitBatchAttendanceToSSC()
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(submitBatchAttendanceToSSCButton));
+		submitBatchAttendanceToSSCButton.click();
 	}
 	public void clickToFinallySubmitBatchAttendanceToSSC()
 	{
