@@ -2220,12 +2220,11 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).isDisplayed());
     		js.executeScript("window.scrollBy(0,-1000)", "");
     		tVp.clickToSubmitBatchAttendanceToSSC();
-    		//On-Going Training Period Batch - Actually Attendance should be submitted at the end of Training
-    		//tVp.clickToCancel();
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
     		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
     		tVp.clickOk();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
     		//Checking Attendance Submission already done 
     		tVp.clickToSubmitBatchAttendanceToSSC();
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
