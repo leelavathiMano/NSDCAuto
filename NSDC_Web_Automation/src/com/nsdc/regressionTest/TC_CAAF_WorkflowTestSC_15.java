@@ -447,13 +447,17 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		}
 
 		
-		for(int i=0; i<1; i++)
+		for(int i=0; i<2; i++)
 		{
 			Thread.sleep(5000);
 			caaf.clickOnAddJobRole();
 			Thread.sleep(3000);
 			caaf.selectSectorForJobRole(firstSector);
 			caaf.selectForJobRoleName(firstJobRoleName);
+			if(i==1)
+			{
+				caaf.selectForJobRoleName(secondJobRoleName);
+			}
 			caaf.selectForTraineeToTrainerRatio(traineeToTrainerRatio);
 			caaf.selectParallelBathcesNumber(parallelBatchesNumber);
 			caaf.enterBriefAboutJobRole(jobRole);
@@ -474,8 +478,8 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			Thread.sleep(10000);
 			caaf.clickOnAdd_ForJobRole();	
 		}
-		js.executeScript("scroll(0, 900)");
-		
+//		js.executeScript("scroll(0, 900)");
+//		
 //			Thread.sleep(3000);
 //			caaf.clickOnAddJobRole();
 //			Thread.sleep(3000);
@@ -528,35 +532,30 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			SelectDropDownList.selectDropDownListByVisibleText(hyb1, first_Hybrid);
 		}
 		
-//		Thread.sleep(3000);
-//		if(driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText().equals(firstJobRoleName))
-//		{
-//			Thread.sleep(3000);
-//			List<WebElement> eqp = driver.findElements(By.xpath("//input[@formcontrolname='availabilityQuantity']"));
-//			for(int i=0;i<eqp.size();i++)
-//			{
-//				WebElement eqp_qnt = eqp.get(i);
-//				eqp_qnt.sendKeys(fourthQuantity);
-//			}
-//			
-//			List<WebElement> eqr = driver.findElements(By.xpath("//input[@formcontrolname='remarks']"));
-//			for(int i=0;i<eqr.size();i++)
-//			{
-//				WebElement eqp_rmk = eqr.get(i);
-//				eqp_rmk.sendKeys(firstRemark);
-//			}
-//			
-//			Thread.sleep(5000);
-//			caaf.clickOnSaveAndNext();
-//		}
-//		else
-//		{
-//			Thread.sleep(5000);
-//			caaf.clickOnSaveAndNext();
-//		}
+		Thread.sleep(3000);
+		if(driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText().equals(firstJobRoleName))
+		{
+			Thread.sleep(3000);
+			List<WebElement> eqp = driver.findElements(By.xpath("//input[@formcontrolname='availabilityQuantity']"));
+			for(int i=0;i<eqp.size();i++)
+			{
+				WebElement eqp_qnt = eqp.get(i);
+				eqp_qnt.sendKeys(fourthQuantity);
+			}
+			
+			List<WebElement> eqr = driver.findElements(By.xpath("//input[@formcontrolname='remarks']"));
+			for(int i=0;i<eqr.size();i++)
+			{
+				WebElement eqp_rmk = eqr.get(i);
+				eqp_rmk.sendKeys(firstRemark);
+			}
+			
+			Thread.sleep(5000);
+			caaf.clickOnSaveAndNext();
+		}
 		
-		Thread.sleep(5000);
-		caaf.clickOnSaveAndNext();
+//		Thread.sleep(5000);
+//		caaf.clickOnSaveAndNext();
 		
 		
 		
@@ -1891,6 +1890,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 								{
 									Thread.sleep(3000);
 									datr.clickOn_FirstView_FirstImage();
+									Thread.sleep(3000);
 									datr.clickOn_SecondView_FirstImage();
 								}
 								else if(j==6)
