@@ -2210,10 +2210,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         	tVp.clickToDeleteUploadedAttendanceSupportDoc();
         	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).size()==0);
         	tVp.clickToBrowseForAttendanceSupportFile();
+        	Thread.sleep(2000);
         	UploadFile.upload(domainJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceSupportFile();
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
-			JavascriptExecutor js=(JavascriptExecutor)driver;
+        	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        	JavascriptExecutor js=(JavascriptExecutor)driver;
             js.executeScript("window.scrollBy(0,-200)", "");
         	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).isDisplayed());
     		js.executeScript("window.scrollBy(0,-1000)", "");
