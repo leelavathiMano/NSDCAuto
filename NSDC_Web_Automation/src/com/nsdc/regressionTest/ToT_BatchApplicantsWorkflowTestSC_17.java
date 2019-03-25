@@ -2152,6 +2152,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
     		elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
     		tDp.clickToGetTrainerDashboard();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tDp.clickAllBatches();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		tVp.clickToGoToAcceptedBatchesSection();
