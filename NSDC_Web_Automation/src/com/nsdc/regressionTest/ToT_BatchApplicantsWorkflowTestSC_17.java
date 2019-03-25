@@ -2,6 +2,7 @@ package com.nsdc.regressionTest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -2186,11 +2187,8 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         		{
         			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[3]")).getText().trim(),"Dropout");
         	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"50.00%");
-        	     	if(j==1)
-        	     	{
-        	     		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==1);
-        	     		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==1);
-        	     	}
+        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==1);
+        	   		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==1);
         	     }
         	     else
         	     {
@@ -2235,6 +2233,103 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		Thread.sleep(2000);
     		plp.clickOnLogout();
 
+    	}
+    }
+    
+    @Test(dataProvider="totBatchData")//, dependsOnMethods="attendanceUploadByDomainMasterTrainerTC_13")
+    public void attendanceUploadByPlatformMasterTrainerTC_14(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime, String domainJobRoleAttendance, String platformJobRoleAttendance) throws Exception
+    {
+    	if(serialNo.equals("1"))
+    	{
+    		batchID="833";
+    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");   
+    		Calendar cal = Calendar.getInstance();    
+    		cal.setTime(dateFormat.parse(pTrainingStartDate));
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 2, pTrainingStartDate.replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1 );
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 3, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 4, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 5, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 6, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 7, pTrainingEndDate.replaceAll("-", "/"));
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+    		LoginPage lp=new LoginPage(driver);
+    		lp.clickLogin();
+    		EnterLoginPage elp=new EnterLoginPage(driver);
+    		WebDriverWait wait=new WebDriverWait(driver, 60);
+    		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
+			TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
+    		elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
+    		tDp.clickToGetTrainerDashboard();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		tDp.clickAllBatches();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		tVp.clickToGoToAcceptedBatchesSection();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		tVp.enterBatchIDToSearch(batchID);
+    		tVp.clickToGetSearchFilterResult();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Accepted Section of Master Trainer - "+pmasterTrainerID);
+    		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Batch on Going");
+    		tVp.clickToGetActionMenuOptions(batchID);
+    		tVp.clickToSelectUploadAttendanceOption(batchID);
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		tVp.selectDomainJobRole(platformJobRole);
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		//Checking Download Template
+    		tVp.clickToDownloadAttendanceTemplate();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		tVp.clickToBrowseForAttendanceFile();
+        	UploadFile.upload(platformJobRoleAttendance);
+        	tVp.clickToUploadChoosedAttendanceFile();
+        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+            Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance uploaded successfully");
+    		tVp.clickOk();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		//Verifying Uploaded Attendance Data for each applicant
+    		for(int j=1; j<6; j++)
+        	{
+        		String applicantName =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", j, 4);
+        		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[2]")).getText().trim(), applicantName);
+        		if(j==5)
+        		{
+        			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[3]")).getText().trim(),"Dropout");
+        	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"50.00%");
+        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==4);
+        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==2);
+        	     }
+        	     else
+        	     {
+        	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[3]")).getText().trim(),"Completed");
+        	     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantName+"']]/td[4]")).getText().trim(),"100.00%");
+        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='P']]")).size()==6);
+//        	     	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantName+"']]/td[b[text()='A']]")).size()==0);
+        	     }
+        	}
+//        	tVp.clickToBrowseForAttendanceSupportFile();
+//        	Thread.sleep(2000);
+//        	UploadFile.upload(domainJobRoleAttendance);
+//        	tVp.clickToUploadChoosedAttendanceSupportFile();
+//        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+//        	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+//        	JavascriptExecutor js=(JavascriptExecutor)driver;
+//            js.executeScript("window.scrollBy(0,-200)", "");
+//        	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRoleAttendance+"')]]")).isDisplayed());
+//    		js.executeScript("window.scrollBy(0,-1000)", "");
+    		tVp.clickToSubmitBatchAttendanceToSSC();
+    		tVp.clickToFinallySubmitBatchAttendanceToSSC();
+    		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+    		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
+    		tVp.clickOk();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
+    		PostLoginPage plp=new PostLoginPage(driver);
+    		plp.clickOnProfileLogo();
+    		Thread.sleep(2000);
+    		plp.clickOnLogout();
     	}
     }
 }
