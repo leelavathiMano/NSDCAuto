@@ -2159,7 +2159,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Apply')]")));
     		tVp.enterBatchIDToSearch(batchID);
     		tVp.clickToGetSearchFilterResult();
-    		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Apply')]")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Accepted Section of Master Trainer - "+dmasterTrainerID);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Batch on Going");
     		tVp.clickToGetActionMenuOptions(batchID);
