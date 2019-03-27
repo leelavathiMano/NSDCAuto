@@ -49,7 +49,7 @@ public class TrainerViewBatchesPage
 	private WebElement batchAttendanceSectionLinkText;
 	@FindBy(xpath="//angular2-multiselect[@formcontrolname='jobRole']/div")
 	private WebElement jobRoleList;
-	@FindBy(name="uploadFile")
+	@FindBy(xpath="(//input[@id='customFile'])[1]")
 	private WebElement browseForAttendanceButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement uploadAttendanceButton;
