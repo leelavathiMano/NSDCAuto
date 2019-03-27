@@ -1,6 +1,7 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -202,9 +203,9 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToBrowseForAttendanceFile()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(browseForAttendanceButton));
-		browseForAttendanceButton.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", browseForAttendanceButton);
+//		browseForAttendanceButton.click();
 	}
 	public void clickToUploadChoosedAttendanceFile()
 	{
