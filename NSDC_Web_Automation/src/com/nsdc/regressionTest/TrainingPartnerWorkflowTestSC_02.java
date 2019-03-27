@@ -1618,7 +1618,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     @Test(dataProvider="tpRejectionData",dependsOnMethods="rejectionTPCreationTC_03")
     public void tpRejectionTC_04(String serialNum, String tpID, String iaUsername, String password, String tpEmail, String tpMobile, String daName, String statusOption, String daUserName, String daPassword, String searchKeywords, String nameOfOrganization, String nameOfOrganizationReviewComments, String nameOfOrganizationComments, String typeOfOrganization, String typeOfOrganizationReviewComments, String typeOfOrganizationComments, String addressOfOrganization, String nearByLandmark, String pincode, String sateOrUnionTerritory, String district, String tehsilMandalBlock, String townVillage, String parlimentaryConsistuency, String addressProofOfOrganization, String addressOfTheOrganizationReviewComments, String addressOfTheOrganizationComments, String yearOfEstablishment, String panCardNumber, String panCardReviewComments, String panCardComments, String gstNumber, String gstNumberReviewComments, String gstNumberComments,String aadharNumber, String aadharNumReviewComments, String aadharNumComments, String yearOfEstablishmentReviewcomments, String yearOfEstablishmentComments, String prvisionalCertificateReviewComments, String prvisionalCertificateComment, String turnOver1, String financialYear1ReviewComments, String financialYear1Comments, String turnOver2, String financialYear2ReviewComments, String financialYear2Comments, String turnOver3, String financialYear3ReviewComments, String financialYear3Comments, String reviewStatus, String finalReviewstatusComments, String finalReviewStatusFile, String tpDaAssert, String updateOrganizationType, String updateYearOfEstablishment, String uploadYearOfEstablishment, String updatePAN, String uploadPAN, String updateGSTNumber, String uploadGST, String updateFinancialYear1TurnOver, String uploadFinancialYear1, String updateFinancialYear2TurnOver, String uploadFinancialYear2, String updateFinancialYear3TurnOver, String uploadFinancialYear3, String updateAadharNum, String uploadProvisional) throws Exception
     {
- 	   	//Rejecting TP 3 Times - Nope updated->>>>>>>Multiple Times, No restriction for TP-Form Submit
+    	//Rejecting TP 3 Times - Nope updated->>>>>>>Multiple Times, No restriction for TP-Form Submit
      	for(int i=1;i<4;i++)
        	{
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
@@ -1713,22 +1713,86 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
      		 	da_tpr.enterAdditionalCommentForPAN(panCardComments);
      		 	Thread.sleep(2000);
      	   	}
-     	   	else if(typeOfOrganization.equals("Company") || updateOrganizationType.equals("Company"))
+     	   	else if(typeOfOrganization.equals("Company"))
     	   	{
      	   		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Account Number']")).getAttribute("value").trim(), panCardNumber);
      	   		da_tpr.selectReviewCommentForPAN(panCardReviewComments);
 		 		Thread.sleep(2000);
 		 		da_tpr.enterAdditionalCommentForPAN(panCardComments);
 		 		Thread.sleep(2000);
+		 		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='GST Number']")).getAttribute("value").trim(), gstNumber);
 		 		da_tpr.selectReviewCommentsForGST(gstNumberReviewComments);
 	        	Thread.sleep(2000);
 	        	da_tpr.enterAdditionalCommentForGST(gstNumberComments);
 	        	Thread.sleep(2000);
 		 	}
-     		//government
+     		//Year Of Establishment verification
     		if(!typeOfOrganization.equals("Government Institute"))
      	   	{
-    			da_tpr.clickForSaveAndContinue();
+    			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value").trim(), yearOfEstablishment);
+     			if(yearOfEstablishment.equals("2018"))
+        		{
+//        			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+//         		 	Thread.sleep(2000);
+//         		 	da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+//         		 	Thread.sleep(2000);
+//         		 	da_tpr.selectReviewCommentForProvisionalCertificate(prvisionalCertificateReviewComments);
+//         		 	Thread.sleep(2000);
+//         		 	da_tpr.enterAdditionalCommentForProvisionalCertificate(prvisionalCertificateComment);
+         		 	Thread.sleep(2000);
+         		}
+         	   	else if(yearOfEstablishment.equals("2017"))
+         	   	{
+         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
+         	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
+     		 		Thread.sleep(2000);
+         	   	}    	   	
+         	   	else if(yearOfEstablishment.equals("2016"))
+         	   	{
+         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
+         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
+         	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForSecondFinancialYear(financialYear2ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
+     		 		Thread.sleep(2000);
+     		 	}
+         	   	else if(Integer.parseInt(yearOfEstablishment)<2016)
+         	   	{
+         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
+         	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
+         		 	Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[3]")).getAttribute("value").trim(), turnOver3);
+         	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForFirstFinancialYear(financialYear1ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForSecondFinancialYear(financialYear2ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.selectReviewCommentForThirdFinancialYear(financialYear3ReviewComments);
+     		 		Thread.sleep(2000);
+     		 		da_tpr.enterAdditionalCommentForThirdFinancialYear(financialYear3Comments);
+     		 		Thread.sleep(2000);
+     		 	}
+        		da_tpr.clickForSaveAndContinue();
         		Thread.sleep(4000);
      	   	}
     		//Final Review things
@@ -1746,7 +1810,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
      	   		Thread.sleep(5000);
     		}
       	   	da_tpr.clickForSaveAndContinue();
-      	   	Thread.sleep(6000);
+      	   	Thread.sleep(4000);
       	   	da_tpr.clickForOK();
 	     	Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! something went wrong after clicking Final Review Save and Continue button! ");
 	    	Thread.sleep(4000);
@@ -1758,7 +1822,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
    	   		dv.enterKeywordForTPID(tpID);
    	   		Thread.sleep(2000);
    	   		dv.clickOnApply();
-   	   		Thread.sleep(6000);
+   	   		Thread.sleep(2000);
       	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[contains(text(),'"+tpID+"')]]]/td[8]")).getText().trim(), "Deemed Not Ready");
       	   	plp.clickOnProfileLogo();
       	   	Thread.sleep(2000);
@@ -1768,7 +1832,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
       	   	lp.clickLogin();
       	   	Thread.sleep(2000);
       	   	elp.performlogin(tpID, "Qwerty@123");
-      	   	Thread.sleep(10000);
+      	   	Thread.sleep(8000);
       	   	TrainingPartnerReEditRegistrationPage tpREp=new TrainingPartnerReEditRegistrationPage(driver);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Action DA Comments')]")).getText(), tpDaAssert);
      	   	js.executeScript("window.scrollBy(0,200)", "");
@@ -1809,13 +1873,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	    		Assert.assertEquals(selectedState.getFirstSelectedOption().getText().trim(), sateOrUnionTerritory);
 	    		Select selectedDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='district']")));
 	    		Assert.assertEquals(selectedDistrict.getFirstSelectedOption().getText().trim(), district);
-	    		if(serialNum.equalsIgnoreCase("1"))
-	    		{
-	    			Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
-		    		Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
-		    		Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='village']")));
-		    		Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), townVillage);
-	    		}
+//	    		Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
+//issue	    	Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
+//issue	    		Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='village']")));
+//	    		Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), townVillage);
 	    		Select selectedParlimentary=new Select(driver.findElement(By.xpath("//select[@formcontrolname='parliamentaryConstituency']")));
 	    		Assert.assertEquals(selectedParlimentary.getFirstSelectedOption().getText().trim(), parlimentaryConsistuency);
 	    		Select selectedaddressProof=new Select(driver.findElement(By.xpath("//select[@formcontrolname='addressProof']")));
@@ -1832,7 +1893,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+panCardComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for PAN ");
 	    			if(yearOfEstablishment.equals("2018"))
 	    			{
-	    				Thread.sleep(2000);
+	    				
 	    			}
 	    			else if(yearOfEstablishment.equals("2017"))
 	    			{
