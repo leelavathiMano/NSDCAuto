@@ -1873,10 +1873,13 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	    		Assert.assertEquals(selectedState.getFirstSelectedOption().getText().trim(), sateOrUnionTerritory);
 	    		Select selectedDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='district']")));
 	    		Assert.assertEquals(selectedDistrict.getFirstSelectedOption().getText().trim(), district);
-//	    		Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
-//issue	    	Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
-//issue	    		Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='village']")));
-//	    		Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), townVillage);
+	    		if(serialNum.equals("1"))
+	    		{
+	    			Select selectedSubDistrict=new Select(driver.findElement(By.xpath("//select[@formcontrolname='subDistrict']")));
+		    		Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText().trim(), tehsilMandalBlock);
+		    		Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='village']")));
+		    		Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), townVillage);
+		    	}
 	    		Select selectedParlimentary=new Select(driver.findElement(By.xpath("//select[@formcontrolname='parliamentaryConstituency']")));
 	    		Assert.assertEquals(selectedParlimentary.getFirstSelectedOption().getText().trim(), parlimentaryConsistuency);
 	    		Select selectedaddressProof=new Select(driver.findElement(By.xpath("//select[@formcontrolname='addressProof']")));
