@@ -202,6 +202,8 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToBrowseForAttendanceFile()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(browseForAttendanceButton));
 		browseForAttendanceButton.click();
 	}
 	public void clickToUploadChoosedAttendanceFile()

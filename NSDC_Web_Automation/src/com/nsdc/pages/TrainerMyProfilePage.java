@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import com.nsdc.generic.SelectDropDownList;
 
 public class TrainerMyProfilePage
@@ -260,7 +261,6 @@ public class TrainerMyProfilePage
 	{
 		curriculumVitaeUploadButton.click();
 	}
-	
 	public void clickSaveChanges2()
 	{
 		saveChangesButton2.click();
@@ -411,6 +411,8 @@ public class TrainerMyProfilePage
 	}
 	public void clickOK()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 }
