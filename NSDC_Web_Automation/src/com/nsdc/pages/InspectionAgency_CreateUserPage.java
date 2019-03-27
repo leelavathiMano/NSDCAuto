@@ -21,6 +21,16 @@ public class InspectionAgency_CreateUserPage
 	private WebElement emailAddressTextBox;
 	@FindBy(xpath="//input[@formcontrolname='mobile']")
 	private WebElement mobileNumberTextBox;
+	@FindBy(xpath="//button[contains(text(),'Generate OTP')]")
+	private WebElement generateOTPButton;
+	@FindBy(xpath="//input[@formcontrolname='mobileOTP']")
+	private WebElement mobileOTPTextbox;
+	@FindBy(xpath="//input[@formcontrolname='emailOTP']")
+	private WebElement emailOTPTextbox;
+	@FindBy(xpath="//button[contains(text(),'Verify')]")
+	private WebElement verifyButton;
+	@FindBy(xpath="//button[contains(text(),'Cancel')]")
+	private WebElement cancelButton;
 	@FindBy(xpath="//input[@formcontrolname='aadhar']")
 	private WebElement aadhaarNumberTextBox;
 	@FindBy(xpath="//button[contains(text(),'Verify')]")
@@ -47,6 +57,7 @@ public class InspectionAgency_CreateUserPage
 	private WebElement identityProofDocument_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement identityProofDocument_UploadFileButton;
+
 	
 	
 	public InspectionAgency_CreateUserPage(WebDriver driver)
@@ -81,6 +92,33 @@ public class InspectionAgency_CreateUserPage
 	{
 		mobileNumberTextBox.clear();
 		mobileNumberTextBox.sendKeys(mobileNo);
+	}
+	
+	public void clickOnGenerateOTP()
+	{
+		generateOTPButton.click();
+	}
+	
+	public void enterMobileOTP(String mobileOTP)
+	{
+		mobileOTPTextbox.clear();
+		mobileOTPTextbox.sendKeys(mobileOTP);
+	}
+	
+	public void enterEmailOTP(String emailOTP)
+	{
+		emailOTPTextbox.clear();
+		emailOTPTextbox.sendKeys(emailOTP);
+	}
+	
+	public void clickOnVerify()
+	{
+		verifyButton.click();
+	}
+	
+	public void clickOnCancel()
+	{
+		cancelButton.click();
 	}
 	
 	public void enterAadhaarNumber(String aadhar)
@@ -150,5 +188,6 @@ public class InspectionAgency_CreateUserPage
 	{
 		identityProofDocument_UploadFileButton.click();
 	}
+	
 	
 }

@@ -11,7 +11,7 @@ import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.InspectionAgency_CreateUserPage;
 import com.nsdc.pages.InspectionAgency_DashboardPage;
 import com.nsdc.pages.LoginPage;
-import com.nsdc.testConfig.DatabaseConnection;
+import com.nsdc.pages.PostLoginPage;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
@@ -23,7 +23,7 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
     }
     
     @Test(dataProvider="createNewUser_Data")
-    public void createNewUserTC_01(String IA_username, String IA_password, String type, String name, String email, String mobileNo, String aadhar, String identityType, String identityNumber, String identityProofDocument, String id, String upload_addressProof) throws Exception
+    public void createNewUserTC_01(String IA_username, String IA_password, String type, String name, String email, String mobileNo, String mobileOTP, String emailOTP, String aadhar, String identityType, String identityNumber, String identityProofDocument, String id, String upload_addressProof) throws Exception
     {
     	//DatabaseConnection.deleteUsersCreatedByIA(email);
         //Thread.sleep(2000);
@@ -42,6 +42,15 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         user.enterFullName(name);
         user.enterEmailAddress(email);
         user.enterMobileNumber(mobileNo);
+        Thread.sleep(3000);
+        user.clickOnGenerateOTP();
+        Thread.sleep(3000);
+        user.enterMobileOTP(mobileOTP);
+        user.enterEmailOTP(emailOTP);
+        Thread.sleep(3000);
+        user.clickOnVerify();
+        Thread.sleep(3000);
+        user.clickOnOk();
         //user.enterAadhaarNumber(aadhar);
         //user.clickOnVerifyAadhar();
         Thread.sleep(3000);
@@ -68,6 +77,12 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         Thread.sleep(2000);
         Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),' has been successfully created')]")).isDisplayed());
         user.clickOnOk();
+        
+        PostLoginPage plp = new PostLoginPage(driver);
+        Thread.sleep(3000);
+        plp.clickOnProfileLogo();
+        plp.clickOnLogout();
+        
     }
     
 }
