@@ -203,9 +203,7 @@ public class TrainerViewBatchesPage
 	}
 	public void clickToBrowseForAttendanceFile()
 	{
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", browseForAttendanceButton);
-//		browseForAttendanceButton.click();
+		browseForAttendanceButton.click();
 	}
 	public void clickToUploadChoosedAttendanceFile()
 	{
