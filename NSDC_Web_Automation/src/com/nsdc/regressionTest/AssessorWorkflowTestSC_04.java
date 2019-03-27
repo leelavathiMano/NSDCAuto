@@ -509,7 +509,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	lp.clickLogin();
     	EnterLoginPage elp=new EnterLoginPage(driver);
     	elp.performlogin(createdAssessorID, confirmPassword);
-    	Thread.sleep(10000);
+    	WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     	AssessorMyProfilePage aMpP=new AssessorMyProfilePage(driver);
     	aMpP.clickProfile();
     	Thread.sleep(2000);
@@ -605,7 +606,6 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	UploadFile.upload(photoFile);
     	Thread.sleep(4000);
     	aMpP.clickToUploadPhotoFile();
-    	WebDriverWait wait=new WebDriverWait(driver, 60);
        	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
        	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
        	Select select2=new Select(driver.findElement(By.xpath("//div[label[contains(text(),'Select Applicant Category:')]]/div/select")));
