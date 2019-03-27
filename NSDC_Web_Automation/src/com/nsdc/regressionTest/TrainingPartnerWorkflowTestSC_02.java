@@ -1732,10 +1732,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value").trim(), yearOfEstablishment);
      			if(yearOfEstablishment.equals("2018"))
         		{
-//        			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
-//         		 	Thread.sleep(2000);
-//         		 	da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
-//         		 	Thread.sleep(2000);
+        			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
+         		 	Thread.sleep(2000);
+         		 	da_tpr.enterAdditionalCommentForEstablishmentYear(yearOfEstablishmentComments);
+         		 	Thread.sleep(2000);
 //         		 	da_tpr.selectReviewCommentForProvisionalCertificate(prvisionalCertificateReviewComments);
 //         		 	Thread.sleep(2000);
 //         		 	da_tpr.enterAdditionalCommentForProvisionalCertificate(prvisionalCertificateComment);
