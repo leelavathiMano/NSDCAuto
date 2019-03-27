@@ -2,7 +2,6 @@ package com.nsdc.regressionTest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,13 +13,6 @@ import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
-import com.nsdc.mobile.ui.aos.Assessor_BatchProfile_Info;
-import com.nsdc.mobile.ui.object.Assessor_AcceptedRequestsScreen;
-import com.nsdc.mobile.ui.object.Assessor_BatchProfile_InfoScreen;
-import com.nsdc.mobile.ui.object.Assessor_ChooseYourUserGroupScreen;
-import com.nsdc.mobile.ui.object.Assessor_List_Of_JobRoleScreen;
-import com.nsdc.mobile.ui.object.Assessor_LoginScreen;
-import com.nsdc.mobile.ui.object.Assessor_MyDashboardScreen;
 import com.nsdc.pages.AssessmentAgencyDashboardPage;
 import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
 import com.nsdc.pages.AssessorDashboardPage;
@@ -39,9 +31,7 @@ import com.nsdc.pages.TrainerApplicantSearchAndApplyForAvailableBatchesPage;
 import com.nsdc.pages.TrainerApplicantViewBatchesPage;
 import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerViewBatchesPage;
-import com.nsdc.testConfig.CreateAppiumDriver;
 import com.nsdc.testConfig.TestConfiguration;
-import io.appium.java_client.AppiumDriver;
 
 public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 {
