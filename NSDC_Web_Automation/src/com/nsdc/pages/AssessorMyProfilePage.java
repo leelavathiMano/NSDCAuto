@@ -416,6 +416,8 @@ public class AssessorMyProfilePage
 	}
 	public void clickOK()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 }
