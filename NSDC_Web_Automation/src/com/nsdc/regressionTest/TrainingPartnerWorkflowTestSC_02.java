@@ -1832,7 +1832,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
       	   	lp.clickLogin();
       	   	Thread.sleep(2000);
       	   	elp.performlogin(tpID, "Qwerty@123");
-      	   	Thread.sleep(8000);
+      	   	Thread.sleep(10000);
       	   	TrainingPartnerReEditRegistrationPage tpREp=new TrainingPartnerReEditRegistrationPage(driver);
      	   	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Action DA Comments')]")).getText(), tpDaAssert);
      	   	js.executeScript("window.scrollBy(0,200)", "");
