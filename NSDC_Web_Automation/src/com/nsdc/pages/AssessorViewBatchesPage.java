@@ -79,7 +79,7 @@ public class AssessorViewBatchesPage
 	}
 	public void clickToSelectViewBatchDetailsOption(String batchID)
 	{
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'View Details')]")).click();
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//span[contains(text(),'View Batch Details')]")).click();
 	}
 	public void clickToSelectAcceptBatchOption(String batchID)
 	{
