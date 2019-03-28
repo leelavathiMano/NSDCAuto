@@ -1189,10 +1189,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Batch Name')]]]]/div[4]/span")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Training Centre Name')]]]]/div[2]/div/div[1]/span")).getText().trim(), tcName);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Training Centre Name')]]]]/div[2]/div/div[2]/span")).getText().trim(), "State : "+state+", District : "+district);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[strong[contains(text(),'Job Role:')]]/span")).getText().trim(), domainJobRole);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[strong[contains(text(),'Proposed Dates')]]]/label")).getText().trim(), dAssessmentStartDate+" To "+dAssessmentEndDate);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[strong[contains(text(),'Job Role:')]]/span")).getText().trim(), platformJobRole);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[strong[contains(text(),'Proposed Dates')]]]/label")).getText().trim(), pAssessmentStartDate+" To "+pAssessmentEndDate);
+			Assert.assertEquals(driver.findElement(By.xpath("(//div[strong[contains(text(),'Job Role:')]]/span)[1]")).getText().trim(), domainJobRole);
+			Assert.assertEquals(driver.findElement(By.xpath("(//div[span[strong[contains(text(),'Proposed Dates')]]]/label)[1]")).getText().trim(), dAssessmentStartDate+" To "+dAssessmentEndDate);
+			Assert.assertEquals(driver.findElement(By.xpath("(//div[strong[contains(text(),'Job Role:')]]/span)[2]")).getText().trim(), platformJobRole);
+			Assert.assertEquals(driver.findElement(By.xpath("(//div[span[strong[contains(text(),'Proposed Dates')]]]/label)[2]")).getText().trim(), pAssessmentStartDate+" To "+pAssessmentEndDate);
 			aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
 			Thread.sleep(2000);
 			aVp.selectMasterAssessorForPlatform(pmasterAssessorName+"("+pmasterAssessorID+")");
