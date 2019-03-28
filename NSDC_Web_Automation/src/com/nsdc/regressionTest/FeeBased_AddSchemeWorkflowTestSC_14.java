@@ -1061,13 +1061,13 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.clickOnSubmit_SectorTarget();
 		Thread.sleep(15000);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("scroll(0,900)");
+		js.executeScript("scroll(0, 900)");
 		fbad.clickOnSubmit();
 		Thread.sleep(3000);
 		fbad.clickOnYesAddTrainingCentre();
 		Thread.sleep(3000);
 		//fbad.clickOnOK();
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 		fbd.clickOnViewTrainingCentres();
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
 		PostLoginPage plp = new PostLoginPage(driver);
@@ -1105,6 +1105,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		
 		CMA_TrainingCentreInfoPage cmat = new CMA_TrainingCentreInfoPage(driver);
 		Thread.sleep(15000);
+		
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='trainingCentreName']")).getAttribute("value"), expectedTCName);
 		Assert.assertTrue(driver.findElement(By.xpath("(//input[@name='geographicalLocation'])[1]")).isSelected());
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='ownership']")).getAttribute("value"), expectedOwnership);
@@ -1150,7 +1151,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 //		Thread.sleep(3000);
 //		JavascriptExecutor js = (JavascriptExecutor) driver;
 //		js.executeScript("scroll(0, 500)");
-//		Thread.sleep(3000);
+//		Thread.sleep(5000);
 //		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='address1']")).getAttribute("value"), expectedTCAddress);
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='landmark']")).getAttribute("value"), expectedLandmark);
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='pincode']")).getAttribute("value"), expectedPincode);
@@ -1921,7 +1922,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08");
 	}
 
-	@Test(dataProvider="linkTrainer", dependsOnMethods="approveCourseTC10", enabled=false)
+	@Test(dataProvider="linkTrainer", dependsOnMethods="approveCourseTC10")
 	public void linkTrainerTC11(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1993,7 +1994,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "AddAssessmentAgencySC15TC09");
 	}
 
-	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="approveCourseTC10")
+	@Test(dataProvider="addAssessmentAgencyAndLinkAssessor", dependsOnMethods="linkTrainerTC11", enabled=false)
 	public void addAssessmentAgencyAndLinkAssessorTC12(String srno, String tpUsername, String tpPassword, String projectName, String assessmentAgencyName, String supportingDocumentFile, String assessmentAgencyAddress, String landmark, String pincode, String state, String district, String tehsil, String parliamentryConstoituency, String geoLocation, String firstName, String lastName, String email, String mobileNumber, String asseementAgencyID,  String assessorID, String assessorName, String assessmentAgency, String supportingDocument_Assessor, String mobileOTP, String emailOTP)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);

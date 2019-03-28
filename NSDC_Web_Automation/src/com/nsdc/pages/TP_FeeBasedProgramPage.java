@@ -440,7 +440,7 @@ public class TP_FeeBasedProgramPage
 	
 	public void selectMinimumEducationRequired(String minimumEducation)
 	{
-		SelectDropDownList.selectDropDownListByIndex(minimumEducationRequiredDropDownList, 1);
+		SelectDropDownList.selectDropDownListByIndex(minimumEducationRequiredDropDownList, 3);
 	}
 	
 	public void enterCourseDuration(String courseDuration)
