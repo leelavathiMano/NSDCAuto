@@ -179,8 +179,8 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	public void clickToGetBatchActionMenu(String batchID)
 	{
 		WebDriverWait wait= new WebDriverWait(driver,30);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]//a[i]")));
-		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]//a[i]")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[text()='"+batchID+"']]//a[i]")));
+		driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]//a[i]")).click();
 	}
 	public void selectViewBatchDetails(String batchID)
 	{
