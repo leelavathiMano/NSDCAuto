@@ -58,7 +58,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="addScheme_FeeBased")
-	public void addSchemeTC_01(String sno, String tpUsername, String tpPassword, String schemeName, String financialModel, String fundedBy, String projectDuration, String agreementOrDisbursementDate, String projectID, String projectName, String proposingOrganisation, String implementingOrganisation, String promoterDetails, String target, String assessmentMode, String startDate, String endDate, String loanAmount, String moratoriumPeriod, String loanduration, String interestRate, String signedTermsheetFile, String signedProposalFile, String otherSupportingFile, String sector, String trainingTarget, String addSectorUndertakingFile, String affiliationCertificate, String courseName, String sector_AddCourse, String jobRole, String jobRoleName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String numberOfHours, String courseFee, String gradingPrefrences, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanFile, String stampPaper, String state, String district) throws Exception
+	public void addSchemeTC_01(String sno, String tpUsername, String tpPassword, String schemeName, String financialModel, String fundedBy, String projectDuration, String agreementOrDisbursementDate, String projectID, String projectName, String proposingOrganisation, String implementingOrganisation, String promoterDetails, String target, String assessmentMode, String startDate, String endDate, String loanAmount, String moratoriumPeriod, String loanduration, String interestRate, String signedTermsheetFile, String signedProposalFile, String otherSupportingFile, String sector, String trainingTarget, String addSectorUndertakingFile, String affiliationCertificate, String courseName, String sector_AddCourse, String jobRole, String jobRoleName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String numberOfHours, String courseFee, String gradingPrefrences, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanFile, String stampPaper, String state, String district, String tpWithProject) throws Exception
 	{
 		int srno = Integer.parseInt(sno);
 		LoginPage lp = new LoginPage(driver);
@@ -77,7 +77,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		TP_FeeBasedProgramPage tpfb = new TP_FeeBasedProgramPage(driver);
 		Thread.sleep(3000);
 		//tpfb.clickOnCloseButton();
-		if(srno == 1)
+		if(tpWithProject.equals("No"))
 		{
 			Thread.sleep(5000);
 			tpfb.selectFinancialModelType(financialModel);
