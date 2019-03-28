@@ -64,16 +64,16 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscTbcP.selectBatchType(batchType);
 		sscTbcP.selectBatchCategory(batchCategory);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls");
-		String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 65);
-		String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 66);
-		String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 67);
-		String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 68);
-		String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 69);
-		String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 70);
-		String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 71);
-		String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 72);
-		String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 73);
-		String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 74);
+		String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 58);
+		String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 59);
+		String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 60);
+		String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 61);
+		String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 62);
+		String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 63);
+		String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 64);
+		String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 65);
+		String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 66);
+		String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 67);
 		sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
@@ -1646,7 +1646,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection");
 	}
 	@Test(dataProvider="batchRejectionData")
-	public void rejectionBatchCreationTC_07(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole1, String domainJobRoleCode1, String domainJobRole2, String domainJobRoleCode2, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String domainJobRole2Fees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String d1masterTrainerID, String d1masterTrainerName, String d1masterTrainerPassword, String d1mtReasonForRejection, String d1mtBatchRejectionRemarks, String d1mtRemarksDate, String d1mtRemarksTime, String d2masterTrainerID, String d2masterTrainerName, String d2masterTrainerPassword, String d2mtReasonForRejection, String d2mtBatchRejectionRemarks, String d2mtRemarksDate, String d2mtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime, String assessmentAgencyReAssignedDate) throws Exception
+	public void rejectionBatchCreationTC_07(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtReasonForRejection, String dmtBatchRejectionRemarks, String dmtRemarksDate, String dmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime, String assessmentAgencyReAssignedDate) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -1655,7 +1655,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		elp.performlogin(sscUsername, sscPassword);
 		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
@@ -1670,16 +1669,16 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscTbcP.selectBatchCategory(batchCategory);
 		Thread.sleep(2000);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls");
-		String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 65);
-		String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 66);
-		String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 67);
-		String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 68);
-		String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 69);
-		String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 70);
-		String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 71);
-		String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 72);
-		String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 73);
-		String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 74);
+		String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 58);
+		String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 59);
+		String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 60);
+		String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 61);
+		String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 62);
+		String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 63);
+		String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 64);
+		String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 65);
+		String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 66);
+		String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 67);
 		sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
 		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
@@ -1696,17 +1695,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 9, trainingStartDate);
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 10, trainingEndDate);
-		sscTbcP.selectDomainJobRole(domainJobRole1);
-		Thread.sleep(2000);
-		sscTbcP.selectDomainJobRole(domainJobRole2);
+		sscTbcP.selectDomainJobRole(domainJobRole);
 		Thread.sleep(2000);
 		sscTbcP.selectPlatformJobRole(platformJobRole);
 		Thread.sleep(2000);
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
 		Thread.sleep(4000);
-		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode1+"')]")).isDisplayed(),"OMG!!! Domain QP Code not displayed OR Something is wrong! ");
-		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+domainJobRole1+"')]")).getText().trim(), domainJobRole1);
 		sscTbcP.selectDomainTrainingStartDate(configDomainTrainingStartDate);
 		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
@@ -1731,36 +1726,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		String domainTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
 		String domainAssessmentStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
 		String domainAssessmentEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 17, domainTrainingStartDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 18, domainTrainingEndDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 19, domainAssessmentStartDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 20, domainAssessmentEndDate);
-		//Domain JobRole 2 Dates
-		sscTbcP.selectDomain2TrainingStartDate(configDomainTrainingStartDate);
-		Thread.sleep(2000);
-		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
-		{
-			sscTbcP.selectDomain2TrainingEndDateForNewBatch(configDomainTrainingEndDate);
-			Thread.sleep(2000);
-			sscTbcP.selectDomain2AssessmentStartDateForNewBatch(configDomainAssessmentStartDate);
-			Thread.sleep(2000);
-			sscTbcP.selectDomain2AssessmentEndDateForNewBatch(configDomainAssessmentEndDate);
-			Thread.sleep(2000);
-		}
-		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
-		{
-			sscTbcP.selectDomain2TrainingEndDateForExistingBatch(configDomainTrainingEndDate);
-			Thread.sleep(2000);
-			sscTbcP.selectDomain2AssessmentStartDateForExistingBatch(configDomainAssessmentStartDate);
-			Thread.sleep(2000);
-			sscTbcP.selectDomain2AssessmentEndDateForExistingBatch(configDomainAssessmentEndDate);
-			Thread.sleep(2000);
-		}
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 15, domainTrainingStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 16, domainTrainingEndDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 17, domainAssessmentStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 18, domainAssessmentEndDate);
 		//Platform QP
 		sscTbcP.clickToChooserPlatformQP();
 		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+platformJobRoleCode+"')]")).isDisplayed(),"OMG!!! Platform QP Code not displayed OR Something is wrong! ");
-		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+platformJobRole+"')]")).getText().trim(), platformJobRole);
 		sscTbcP.selectrPlatformTrainingStartDate(configPlatformTrainingStartDate);
 		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
@@ -1785,24 +1757,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		String platformTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
 		String platformAssessmentStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
 		String platformAssessmentEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 21, platformTrainingStartDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 22, platformTrainingEndDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 23, platformAssessmentStartDate);
-		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 24, platformAssessmentEndDate);
-		sscTbcP.isFeesReadOnly();
-		sscTbcP.clickToViewFees();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='batchFees']")).getAttribute("value"), expectedBatchFees);
-		Thread.sleep(2000);
-		sscTbcP.clickToGetInDetailBatchFees();
-		Thread.sleep(2000);
-		int oneDomainAndOnePlatformQpFees=Integer.parseInt(expectedBatchFees)-Integer.parseInt(domainJobRole2Fees);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'Fee Applicable for Program')]]]/td[2]")).getText().trim(), Integer.toString(oneDomainAndOnePlatformQpFees));
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'No. Of Additional Technical QP(1) X Rate(800)')]]]/td[2]")).getText().trim(), domainJobRole2Fees);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'No. Of Additional Non-Technical QP(0) X Rate(600)')]]]/td[2]")).getText().trim(), "0");
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'Total Fee of the Program')]]]/td[2]")).getText().trim(), expectedBatchFees);
-		sscTbcP.clickOk();
-		Thread.sleep(2000);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 19, platformTrainingStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 20, platformTrainingEndDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 21, platformAssessmentStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 22, platformAssessmentEndDate);
 		sscTbcP.selectBatchSize(batchSize);
 		Thread.sleep(2000);
 		sscTbcP.clickToCreateBatch();
@@ -1813,177 +1771,64 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 1, createdBatchID);
 		Thread.sleep(4000);
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Name')]]]/div[3]")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")");
-		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[span[contains(text(),'Sector')]]]/div[3])[1]")).getText().trim(), expectedSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Sub Sector')]]]/div[3]")).getText().trim(), subSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Type')]]]/div[3]")).getText().trim(), batchType);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Date')]]]/div[3]")).getText().trim(), trainingStartDate+" to "+trainingEndDate);
 		//STEP 2 OF BATCH CREATION -> Assigning Training Centre  and Assigning To Batches
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
-		Thread.sleep(4000);
+		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.selectStateFilter(state);
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.selectDistrictFilter(district);
-		Thread.sleep(2000);
 		sVbP.enterTrainingCentreIDToSearch(tcID);
-		Thread.sleep(4000);
 		sVbP.clickToGetSearchFilterResult();
-		Thread.sleep(4000);
-		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+tcID+"')]")).size()==1,"OMG!!! No show of Searched training Centre - "+tcID);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcName+"')]")).getText().trim(), tcName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tpName+"')]")).getText().trim(), tpName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+state+"')]")).getText().trim(), state);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.clickToChooseResultedTrainingCentreToAssign();
-		Thread.sleep(4000);
 		sVbP.clickToSubmitSelectedTrainingCentre();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcName+"')]")).getText().trim(), tcName);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[4]")).getText().trim(), tpName);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+state+"')]")).getText().trim(), state);
-		Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+district+"')]")).getText().trim(), district);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Assigned");
-		//Assigning Master Trainer for Domain QP 1
-		Thread.sleep(2000);
-		sVbP.clickDomainMasterTrainerAction(domainJobRole1);
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Master Trainer for Domain QP
+		sVbP.clickDomainMasterTrainerAction(domainJobRole);
 		sVbP.selectDomainAssignMasterTrainerOption();
-		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
-		sVbP.enterDomainMasterTrainerIDToSearch(d1masterTrainerID);
-		Thread.sleep(2000);
+		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
-		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+d1masterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+d1masterTrainerID+" for Domain QP -"+domainJobRoleCode1);
+		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+dmasterTrainerID+" for Domain QP -"+domainJobRoleCode);
 		sVbP.clickToChooseDomainMasterTrainer();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+d1masterTrainerID+"')]")).getText().trim(), d1masterTrainerName+" ( "+d1masterTrainerID+" )");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode1+"')]]//span[contains(text(),'Assigned')])[1]")).getText().trim(), "Assigned");
-		//Assigning Master Trainer for Domain QP 2
-		Thread.sleep(2000);
-		sVbP.clickDomainMasterTrainerAction(domainJobRole2);
-		Thread.sleep(2000);
-		sVbP.selectDomain2AssignMasterTrainerOption();
-		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
-		sVbP.enterDomainMasterTrainerIDToSearch(d2masterTrainerID);
-		Thread.sleep(2000);
-		sVbP.clickToGetDomainMasterSearchFilterResult();
-		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+d2masterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+d2masterTrainerID+" for Domain QP -"+domainJobRole2);
-		sVbP.clickToChooseDomainMasterTrainer();
-		Thread.sleep(2000);
-		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
-		Thread.sleep(2000);
-		sscTbcP.clickOk();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+d2masterTrainerID+"')]")).getText().trim(), d2masterTrainerName+" ( "+d2masterTrainerID+" )");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode2+"')]]//span[contains(text(),'Assigned')])[1]")).getText().trim(), "Assigned");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Assigning Master Trainer for Platform QP
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
-		Thread.sleep(2000);
-		sVbP.selectrPlatformAssignMasterTrainerOption();
-		Thread.sleep(2000);
-		sVbP.selectPlatformMasterTrainerStateFilter(state);
-		Thread.sleep(2000);
-		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
-		Thread.sleep(2000);
+		sVbP.selectPlatformAssignMasterTrainerOption();
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+pmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+pmasterTrainerID+" for Platform QP -"+platformJobRoleCode);
 		sVbP.clickToChoosePlatformMasterTrainer();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		Thread.sleep(4000);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+pmasterTrainerID+"')])[1]")).getText().trim(), pmasterTrainerName+" ( "+pmasterTrainerID+" )");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]]//span[contains(text(),'Assigned')])[1]")).getText().trim(), "Assigned");
-		//Assigning Domain QP 1 Assessment Agency
-		sVbP.clickDomainAssessmentAgencyAction(domainJobRole1);
-		Thread.sleep(2000);
-		sVbP.selectDomain1AssignAssessmentAgencyOption();
-		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Domain QP Assessment Agency
+		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
+		sVbP.selectDomainAssignAssessmentAgencyOption();
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dassessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+dassessmentAgencyID+" for Domain QP -"+domainJobRoleCode1);
+		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dassessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+dassessmentAgencyID+" for Domain QP -"+domainJobRoleCode);
 		sVbP.clickToChooseDomainAssessmentAgency();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+dassessmentAgencyID+"')])[1]")).getText().trim(), dassessmentAgencyName+" ( "+dassessmentAgencyID+" )");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode1+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
-		//Assigning Domain QP 2 Assessment Agency
-		sVbP.clickDomainAssessmentAgencyAction(domainJobRole2);
-		Thread.sleep(2000);
-		sVbP.selectDomain2AssignAssessmentAgencyOption();
-		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
-		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
-		Thread.sleep(2000);
-		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dassessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+dassessmentAgencyID+" for Domain QP -"+domainJobRoleCode2);
-		sVbP.clickToChooseDomainAssessmentAgency();
-		Thread.sleep(2000);
-		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
-		Thread.sleep(2000);
-		sscTbcP.clickOk();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("(//td/div/span[contains(text(),'"+dassessmentAgencyID+"')])[2]")).getText().trim(), dassessmentAgencyName+" ( "+dassessmentAgencyID+" )");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode2+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
-		Thread.sleep(2000);
-		sVbP.selectrPlatformAssignAssessmentAgencyOption();
-		Thread.sleep(2000);
-//		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
+		sVbP.selectPlatformAssignAssessmentAgencyOption();
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
-		Thread.sleep(2000);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+passessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+passessmentAgencyID+" for Platform QP -"+platformJobRoleCode);
 		sVbP.clickToChoosePlatformAssessmentAgency();
-		Thread.sleep(2000);
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//td/div/span[contains(text(),'"+passessmentAgencyID+"')]")).getText().trim(), passessmentAgencyName+" ( "+passessmentAgencyID+" )");
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]]//span[contains(text(),'Assigned')])[2]")).getText().trim(), "Assigned");
-		js.executeScript("window.scrollBy(0,500)", "");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.clickConfirmation();
 		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
@@ -1992,8 +1837,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 2,formatter.format(date));
 		Thread.sleep(4000);
 		sVbP.clickViewAllBatchesAfterBatchSubmission();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending for Publish");
+		Thread.sleep(5000);
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
@@ -2001,7 +1845,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 	}
 	
 	@Test(dataProvider="batchRejectionData", dependsOnMethods="rejectionBatchCreationTC_07")
-	public void trainingCentreBatchRejectionTC_08(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole1, String domainJobRoleCode1, String domainJobRole2, String domainJobRoleCode2, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String domainJobRole2Fees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String d1masterTrainerID, String d1masterTrainerName, String d1masterTrainerPassword, String d1mtReasonForRejection, String d1mtBatchRejectionRemarks, String d1mtRemarksDate, String d1mtRemarksTime, String d2masterTrainerID, String d2masterTrainerName, String d2masterTrainerPassword, String d2mtReasonForRejection, String d2mtBatchRejectionRemarks, String d2mtRemarksDate, String d2mtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime, String assessmentAgencyReAssignedDate) throws Exception
+	public void trainingCentreBatchRejectionTC_08(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtReasonForRejection, String dmtBatchRejectionRemarks, String dmtRemarksDate, String dmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime, String assessmentAgencyReAssignedDate) throws Exception
 	{
 		if(serialNum.equals("1"))
 		{
@@ -2017,20 +1861,12 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				JavascriptExecutor js=(JavascriptExecutor)driver;
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(4000);
-				Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainers");
 				lTcDp.clickToViewBatches();
 				Thread.sleep(4000);
-				Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingcentretraining-of-trainersview-batchs","OMG!!! View All Batches Card, navigation to Pending Requests section is unsuccessful OR Something went wrong! ");
 				js.executeScript("window.scrollBy(0,200)","");
 				Thread.sleep(2000);
 				LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in Pending Requests section! OR Something is wrong! ");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(),batchID);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), batchType);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole1+" ("+domainJobRoleCode1+"),\n"+domainJobRole2+" ("+domainJobRoleCode2+"),\n"+platformJobRole+" ("+platformJobRoleCode+")");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText(), batchSize);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText(), batchStartDate+" to "+batchEndDate);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText(), "Pending for Publish");
 				Thread.sleep(4000);
 				lTcVbP.clikToGetBatchActionMenu();
 				Thread.sleep(2000);
@@ -2054,11 +1890,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				js.executeScript("window.scrollBy(0,200)","");
 				Thread.sleep(2000);
 				Assert.assertTrue(driver.findElements(By.xpath("//td[text()='"+batchID+"']")).size()==1,"OMG!!! rejected batch - "+batchID+" is not shown in Rejected batches section! OR Something is wrong! ");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(),batchID);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), batchType);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole1+" ("+domainJobRoleCode1+"),\n"+domainJobRole2+" ("+domainJobRoleCode2+"),\n"+platformJobRole+" ("+platformJobRoleCode+")");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText(), batchSize);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText(), batchStartDate+" to "+batchEndDate);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText(), "Rejected");
 				PostLoginPage plp=new PostLoginPage(driver);
 				plp.clickOnProfileLogo();
@@ -2070,7 +1901,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				lp.clickLogin();
 				elp.performlogin(sscUsername, sscPassword);
 				Thread.sleep(12000);
-				Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 				SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 				sscDbP.clickToTToAToMTToMA();
 				Thread.sleep(2000);
@@ -2128,7 +1958,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 	}
 	
 	@Test(dataProvider="batchRejectionData", dependsOnMethods="rejectionBatchCreationTC_07")
-	public void masterTrainerBatchRejectionTC_09(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole1, String domainJobRoleCode1, String domainJobRole2, String domainJobRoleCode2, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String domainJobRole2Fees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String d1masterTrainerID, String d1masterTrainerName, String d1masterTrainerPassword, String d1mtReasonForRejection, String d1mtBatchRejectionRemarks, String d1mtRemarksDate, String d1mtRemarksTime, String d2masterTrainerID, String d2masterTrainerName, String d2masterTrainerPassword, String d2mtReasonForRejection, String d2mtBatchRejectionRemarks, String d2mtRemarksDate, String d2mtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime, String assessmentAgencyReAssignedDate) throws Exception
+	public void masterTrainerBatchRejectionTC_09(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcReasonForRejectingBatch, String tcRejectionRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtReasonForRejection, String dmtBatchRejectionRemarks, String dmtRemarksDate, String dmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaReasonForRejectingBatch, String daaRejectionRemarks, String daaRemarksDate, String daaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaReasonForRejectingBatch, String dmaRejectionRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtReasonForRejectingBatch, String pmtBatchRejectiRemarks, String pmtRemarksDate, String pmtRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaReasonForRejectingBatch, String paaBatchRejectionRemarks, String paaRemarksDate, String paaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaReasonForRejectingBatch, String pmaRejectionRemarks, String pmaRemarksDate, String pmaRemarksTime, String assessmentAgencyReAssignedDate) throws Exception
 	{
 		if(serialNum.equals("2"))
 		{
@@ -2138,7 +1968,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				LoginPage lp=new LoginPage(driver);
 				lp.clickLogin();
 				EnterLoginPage elp=new EnterLoginPage(driver);
-				elp.performlogin(d1masterTrainerID, d1masterTrainerPassword);
+				elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
 				Thread.sleep(4000);
 				TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
 				tDp.clickToGetTrainerDashboard();
@@ -2151,34 +1981,26 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				JavascriptExecutor js=(JavascriptExecutor)driver;
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
-				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Pending Requests Section of Master Trainer - "+d1masterTrainerID);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[1]")).getText().trim(), batchID);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchType);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), domainJobRole1+"("+domainJobRoleCode1+")");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), tcName+" ("+tcID+")");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), state );
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), district);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), dTrainingStartDate+" to "+dTrainingEndDate);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Pending for Publish");
+				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Pending Requests Section of Master Trainer - "+dmasterTrainerID);
 				tVp.clickToGetActionMenuOptions(batchID);
 				Thread.sleep(2000);
 				tVp.clickToSelectRejectBatchOption(batchID);
 				Thread.sleep(4000);
-				tVp.selectReasonForRejectingBatch(d1mtReasonForRejection);
+				tVp.selectReasonForRejectingBatch(dmtReasonForRejection);
 				Thread.sleep(2000);	
-				tVp.enterRemarksForRejectingBatch(d1mtBatchRejectionRemarks);
+				tVp.enterRemarksForRejectingBatch(dmtBatchRejectionRemarks);
 				Thread.sleep(4000);	
 				tVp.clickToSubmitBatchRejection();
 				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 				Date date = new Date();
 				DateFormat timeFormat = new SimpleDateFormat("hh:mm a");
-				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 58, timeFormat.format(date));
-				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 57, formatter.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 55, timeFormat.format(date));
+				ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 54, formatter.format(date));
 				Thread.sleep(4000);	
 				Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Request Rejected\nYou have rejected request for\nBatch - "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 				tVp.clickOk();
 				Thread.sleep(2000);
-				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in Pending Requests Section of Master Trainer - "+d1masterTrainerID);
+				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Rejected Batch - "+batchID+" should not be shown in Pending Requests Section of Master Trainer - "+dmasterTrainerID);
 				//verifying rejected batches
 				js.executeScript("window.scrollBy(0,-500)", "");
 				Thread.sleep(2000);
@@ -2186,14 +2008,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(4000);
 				js.executeScript("window.scrollBy(0,300)", "");
 				Thread.sleep(2000);
-				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Rejected Section of Master Trainer - "+d1masterTrainerID);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[1]")).getText().trim(), batchID);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchType);
-				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), domainJobRole+"("+domainJobRoleCode+")");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), tcName+" ("+tcID+")");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), state );
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), district);
-				//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), dTrainingStartDate+" to "+dTrainingEndDate);
+				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Rejected Section of Master Trainer - "+dmasterTrainerID);
 				tVp.clickToGetActionMenuOptions(batchID);
 				Thread.sleep(2000);
 				tVp.clickToSelectViewDetailsOption(batchID);
@@ -2202,8 +2017,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), batchStartDate+" to "+batchEndDate);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector & Sub Sector')]]/td[3]")).getText().trim(), expectedSector+" | "+subSector);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Type')]]/td[3]")).getText().trim(), batchType);
-				Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[1]")).getText().trim(), domainJobRole1);
-				Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role Code')]]/td[3])[1]")).getText().trim(), domainJobRoleCode1);
+				Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[1]")).getText().trim(), domainJobRole);
+				Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role Code')]]/td[3])[1]")).getText().trim(), domainJobRoleCode);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Status')]]/td[3]")).getText().trim(), "Pending");
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[1]")).getText().trim(), tcName);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[2]")).getText().trim(), tcID);
@@ -2221,7 +2036,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(2000);
 				elp.performlogin(sscUsername, sscPassword);
 				Thread.sleep(3000);
-				Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","Login Unsuccessfull");
 				js.executeScript("window.scrollBy(0,200)", "");
 				Thread.sleep(2000);
 				SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
@@ -2240,22 +2054,22 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 				Assert.assertEquals(driver.findElement(By.xpath("//div[b[contains(text(),'Status of Training Centre')]]/span")).getText().trim(), "Pending");
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Pending");
-				Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode1+"')]])[1]/td[5]")).getText().trim(), "Rejected");
-				sVbP.selectViewDomainMasterTrainerCommentsOption(domainJobRole1);
+				Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[5]")).getText().trim(), "Rejected");
+				sVbP.selectViewDomainMasterTrainerCommentsOption(domainJobRole);
 				Thread.sleep(2000);
 				String masterTrainerRejectCommentsDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 57);
 				String masterTrainerRejectCommentsTime=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 58);
-				Assert.assertEquals(driver.findElement(By.xpath("//p[b[contains(text(),'Rejection Reason')]]")).getText().trim(), "Rejection Reason: "+d1mtReasonForRejection);
-				Assert.assertEquals(driver.findElement(By.xpath("//p[b[contains(text(),'Comments by Master Trainer')]]")).getText().trim(), "Comments by Master Trainer on "+masterTrainerRejectCommentsDate+" at "+masterTrainerRejectCommentsTime.toLowerCase()+": "+d1mtBatchRejectionRemarks);
+				Assert.assertEquals(driver.findElement(By.xpath("//p[b[contains(text(),'Rejection Reason')]]")).getText().trim(), "Rejection Reason: "+dmtReasonForRejection);
+				Assert.assertEquals(driver.findElement(By.xpath("//p[b[contains(text(),'Comments by Master Trainer')]]")).getText().trim(), "Comments by Master Trainer on "+masterTrainerRejectCommentsDate+" at "+masterTrainerRejectCommentsTime.toLowerCase()+": "+dmtBatchRejectionRemarks);
 				sVbP.clickToCloseDomainMasterTrainerViewCommentsWindow();
 				Thread.sleep(2000);
-				sVbP.selectReAssignDomainMasterTrainerOption(domainJobRoleCode1);
+				sVbP.selectReAssignDomainMasterTrainerOption(domainJobRoleCode);
 				Thread.sleep(2000);
 				sVbP.selectReAssignMasterTrainerState(state);
 				Thread.sleep(2000);
 				sVbP.selectReAssignMasterTrainerDistrict(district);
 				Thread.sleep(2000);
-				sVbP.enterDomainMasterTrainerIDToSearch(d1masterTrainerID);
+				sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 				Thread.sleep(2000);
 				sVbP.clickToGetSearchFilterResult();
 				Thread.sleep(2000);
@@ -2265,7 +2079,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Thread.sleep(2000);
 				if(i==3)
 				{
-					Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().equals("Cannot Assign Master Trainer"), "OMG!!! There is no toast message regarding Cannot Reassign Master Trainer for this Batch - "+batchID+" as 3 times this batch got rejected by master trainer - "+d1masterTrainerID+" !!!!  ");
+					Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().equals("Cannot Assign Master Trainer"), "OMG!!! There is no toast message regarding Cannot Reassign Master Trainer for this Batch - "+batchID+" as 3 times this batch got rejected by master trainer - "+dmasterTrainerID+" !!!!  ");
 					sVbP.clickToCancel();
 					Thread.sleep(4000);
 				}
