@@ -29,7 +29,6 @@ import com.nsdc.pages.FDA_OnboardingRequestPage;
 import com.nsdc.pages.FDA_SelectedSchemePage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
-import com.nsdc.pages.RegistrationPage;
 import com.nsdc.pages.SSC_AssessmentsAndCertification_DashboardPage;
 import com.nsdc.pages.SSC_AssessmentsAndCertifications_ViewAllBatchesPage;
 import com.nsdc.pages.SSC_DashboardPage;
@@ -65,18 +64,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
-		elp.performlogin(tpUsername, "ekaushal");
-		 RegistrationPage rp = new RegistrationPage(driver);
-	        Thread.sleep(2000);
-	        rp.enterOldPassword("ekaushal");
-	        rp.enterNewPassword(tpPassword);
-	        rp.enterConfirmPassword(tpPassword);
-	        rp.clickResetResubmit();
-	        Thread.sleep(2000);
-	        rp.clickConfirmationOkMessage();
-	        
-	        elp.performlogin(tpUsername, tpPassword);
-		
+		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpd = new TrainingPartnerDashboardPage(driver);
 		Thread.sleep(10000);
 		tpd.clickOnMySchemes();
@@ -461,7 +449,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow.xls", "FeeBasedAddSchemeSC14TC03");
 	}
 	
-	@Test(dataProvider="resubmitAndReviewScheme", dependsOnMethods="daApproveSchemeTC_02", enabled=false)
+	@Test(dataProvider="resubmitAndReviewScheme", dependsOnMethods="daApproveSchemeTC_02")
 	public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String tpPassword, String daComments, String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, String newProjectDuration, String newAgreementDate, String newDisbursementDate, String newProjectID, String newProjectName, String newProposingOrganisation, String newImplementingOrganisation, String newPromoterDetails, String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newLoanAmount, String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, String newSignedTermsheetFile, String newSignedProposalFile, String newOtherSupportingFile, String newSector, String newTrainingTarget, String newAddSectorUndertakingFile, String newAffiliationCertificate, String newCourseName, String newJobRole, String newJobRoleName, String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge, String newMinimumEducation, String newCourseDuration, String newNumberOfHours, String newCourseFee, String newGradingPrefrences, String newCourseApprovalFile, String newAffiliationFile, String newWorkOrderFile, String newChallanFile, String newStampPaper, String newState, String newDistrict, String fDAUsername, String fDAPassword, String newComments, String newReviewComments) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -857,7 +845,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01");
 	}
 
-	@Test(dataProvider="addTrainingCentre", dependsOnMethods="daApproveSchemeTC_02")
+	@Test(dataProvider="addTrainingCentre")
 	public void addTrainingCentreTC04(String sno, String tpUsername, String tpPassword, String projectName, String trainingCentreType, String trainingCentreName, String ownership, String franchiseDocument, String startDate, String endDate, String bathesNumber, String studentNumber, String annualCapacity, String capacityUtilization, String governmentTieUp, String centreCapacity, String centreArea, String trainingRooms, String labNumber, String receptionArea, String waitingArea, String maleWashRooms, String femaleWashRooms, String unisexWashRooms, String airportDistance, String trainStationDistance, String cityCentreDistance, String tcAddress, String landmark, String pincode, String state, String district, String tehsil, String city, String parliamentryConstituency, String geoLocation, String addressProof, String addressProofFile, String facility_Photos, String spocName, String spocEmail, String spocMobile, String spocDesignation, String spocLandLine, String srNo_TCRoom, String tcRoomPhotos, String laboratory_SrNo, String laboratoryPhotos, String maleWashRoom_SrNo, String maleWashRoomPhotos, String femaleWashRoom_SrNo, String femaleWashRoomPhotos, String unisexWashRoom_SrNo, String unisexWashRoomPhotos, String sector, String course, String target) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -871,10 +859,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();
 		TP_FeeBased_DashboardPage fbd = new TP_FeeBased_DashboardPage(driver);
 		Thread.sleep(5000);
 		fbd.clickOnViewTrainingCentres();
@@ -1064,15 +1050,15 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Thread.sleep(3000);
 		fbad.clickOnCafetariaPhotos_UploadFile();
 		Thread.sleep(10000);*/
-//		Thread.sleep(3000);
-//		fbad.clickOnAddSectorTarget();
-//		Thread.sleep(3000);
-//		fbad.selectSector(sector);
-//		Thread.sleep(3000);
-//		fbad.selectCourse(course);
-//		fbad.enterTarget(target);
-//		Thread.sleep(3000);
-//		fbad.clickOnSubmit_SectorTarget();
+		Thread.sleep(3000);
+		fbad.clickOnAddSectorTarget();
+		Thread.sleep(3000);
+		fbad.selectSector(sector);
+		Thread.sleep(3000);
+		fbad.selectCourse(course);
+		fbad.enterTarget(target);
+		Thread.sleep(3000);
+		fbad.clickOnSubmit_SectorTarget();
 		Thread.sleep(15000);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("scroll(0, 900)");
@@ -1246,7 +1232,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03");
 	}
 
-	@Test(dataProvider="resubmitAndReviewTC", dependsOnMethods="approveTrainingCentreTC_05", enabled=false)
+	@Test(dataProvider="resubmitAndReviewTC", dependsOnMethods="approveTrainingCentreTC_05")
 	public void resubmitAndReviewTrainingCentreTC06(String sno, String tpUsername, String tpPassword, String projectName, String tcName, String tcReview, String newTrainingCentreName, String newOwnership, String franchiseDocument, String newStartDate, String newEndDate, String newBathesNumber, String newStudentNumber, String newAnnualCapacity, String newCapacityUtilization, String newGovernmentTieUp, String newCentreCapacity, String newCentreArea, String newTrainingRooms, String newLabNumber, String newReceptionArea, String newWaitingArea, String newMaleWashRooms, String newFemaleWashRooms, String newUnisexWashRooms, String newAirportDistance, String newTrainStationDistance, String newCityCentreDistance, String newTCAddress, String newLandmark, String newPincode, String newState, String newDistrict, String newTehsil, String newCity, String newParliamentryConstituency, String geoLocation, String newAddressProof, String addressProofFile,  String facility_Photos, String newSpocName, String newSpocEmail, String newSpocMobile, String newSpocDesignation, String newSpocLandLine, String srNo_TCRoom, String newTCRoomPhotos, String laboratory_SrNo, String newLaboratoryPhotos,String maleWashRoom_SrNo, String newMaleWashRoomPhotos, String femaleWashRoom_SrNo, String newFemaleWashRoomPhotos, String unisexWashRoom_SrNo, String newUnisexWashRoomPhotos, String newSector, String newCourse, String newTarget, String cmaUsername, String cmaPassword, String tcType, String status, String review, String reviewComments)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1612,7 +1598,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddSectorSC15TC04");
 	}
 
-	@Test(dataProvider="addSector", dependsOnMethods="approveTrainingCentreTC_05")
+	@Test(dataProvider="addSector")//, dependsOnMethods="resubmitAndReviewTrainingCentreTC06")
 	public void addSectorTC07(String srno, String tpusername, String tppassword, String projectName, String addedSector, String sector, String trainingTarget, String undertakingFile, String affiliationCertificate) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -1626,10 +1612,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
 		Thread.sleep(4000);
-		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();		
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();		
 		TP_FeeBased_DashboardPage tpfb = new TP_FeeBased_DashboardPage(driver);
 		Thread.sleep(3000);
 		tpfb.clickOnViewSectorAndCourses();
@@ -1747,10 +1731,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
 		Thread.sleep(4000);
-		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();		
 		TP_FeeBased_DashboardPage tpfb = new TP_FeeBased_DashboardPage(driver);
 		Thread.sleep(3000);
 		tpfb.clickOnViewSectorAndCourses();
@@ -1940,7 +1922,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "TPFeeBasedLinkTrainerSC15TC08");
 	}
 
-	@Test(dataProvider="linkTrainer", dependsOnMethods="approveCourseTC10", enabled=false)
+	@Test(dataProvider="linkTrainer", dependsOnMethods="approveCourseTC10")
 	public void linkTrainerTC11(String sno, String tpUsername, String tpPassword, String projectName, String trainerSDMSID, String trainerName, String tcName, String supportingDocument, String mobileOTP, String emailOTP, String trainersEmail, String trainersMobile)throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
