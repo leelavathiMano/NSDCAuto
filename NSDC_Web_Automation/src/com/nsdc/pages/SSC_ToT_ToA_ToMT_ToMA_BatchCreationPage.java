@@ -7,7 +7,6 @@ import java.io.IOException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -205,19 +204,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		wait.until(ExpectedConditions.elementToBeClickable(platformJobRoleList));
 		platformJobRoleList.click();
 		Thread.sleep(2000);
-		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
-		{
-			JavascriptExecutor js=(JavascriptExecutor)driver;
-			js.executeScript("window.scrollBy(0,-1000)", "");
-			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		}
-		else
-		{
-			driver.findElement(By.xpath("//label[text()='"+platformJobRole+"']")).click();
-		}
+		driver.findElement(By.xpath("//label[text()='"+platformJobRole+"']")).click();
 	}
 	//Domain QP
 	public void clickToChooseDomainQP()

@@ -133,7 +133,38 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
-		sscTbcP.selectPlatformJobRole(platformJobRole);
+		//Sometimes platform job role will not be available
+		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
+		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
+		{
+			js.executeScript("window.scrollBy(0,-1000)", "");
+			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			sscTbcP.selectSubSector(subSector);
+			sscTbcP.selectBatchType(batchType);
+			sscTbcP.selectBatchCategory(batchCategory);
+			sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
+			if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW"))
+			{
+				sscTbcP.selectTrainingEndDateForNewBatch(configBatchEndDate);
+			}
+			else if(batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers"))
+			{
+				sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
+			}
+			trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
+			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
+			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
+			sscTbcP.selectDomainJobRole(domainJobRole);
+			sscTbcP.selectPlatformJobRole(platformJobRole);
+		}
+		else
+		{
+			sscTbcP.selectPlatformJobRole(platformJobRole);
+		}
 		//Domain QP
 		sscTbcP.clickToChooseDomainQP();
 		sscTbcP.selectDomainTrainingStartDate(configDomainTrainingStartDate);
