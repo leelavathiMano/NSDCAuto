@@ -202,7 +202,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(platformJobRoleList));
-		platformJobRoleList.click();
+//		platformJobRoleList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[text()='"+platformJobRole+"']")).click();
 	}
