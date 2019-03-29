@@ -134,6 +134,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 		sscTbcP.selectDomainJobRole(domainJobRole);
 		//Sometimes platform job role will not be available
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")));
 		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
 		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
 		{
