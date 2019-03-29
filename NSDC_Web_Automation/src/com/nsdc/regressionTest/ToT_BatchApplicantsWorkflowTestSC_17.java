@@ -2,6 +2,7 @@ package com.nsdc.regressionTest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -2140,14 +2141,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   	}
     }
     
-    @Test(dataProvider="totBatchData")//, dependsOnMethods="masterAssessorVerifyingSSCApprovedBatchAndApplicantsTC_10")
+    @Test(dataProvider="totBatchData", dependsOnMethods="masterAssessorVerifyingSSCApprovedBatchAndApplicantsTC_10")
     public void attendanceUploadByDomainMasterTrainerTC_13(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime, String domainJobRoleAttendance, String platformJobRoleAttendance, String domainJobRoleLevel, String platformJobRoleLevel, String tcSPOCName) throws Exception
     {
     	if(serialNo.equals("1"))
     	{
-    		batchID="833";
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+domainJobRoleAttendance, "Sheet1", 0, 2, dTrainingStartDate.replaceAll("-", "/"));
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+domainJobRoleAttendance, "Sheet1", 0, 3, dTrainingEndDate.replaceAll("-", "/"));
+//    		batchID="833";
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+domainJobRoleAttendance, "Sheet1", 0, 2, dTrainingStartDate.replaceAll("-", "/"));
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+domainJobRoleAttendance, "Sheet1", 0, 3, dTrainingEndDate.replaceAll("-", "/"));
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
     		LoginPage lp=new LoginPage(driver);
     		lp.clickLogin();
@@ -2174,9 +2175,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		//Checking Download Template
     		tVp.clickToDownloadAttendanceTemplate();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
-    		Thread.sleep(4000);
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		tVp.clickToBrowseForAttendanceFile();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         	UploadFile.upload(domainJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceFile();
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
@@ -2243,26 +2244,26 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     	}
     }
     
-    @Test(dataProvider="totBatchData")//, dependsOnMethods="masterAssessorVerifyingSSCApprovedBatchAndApplicantsTC_10")
+    @Test(dataProvider="totBatchData", dependsOnMethods="masterAssessorVerifyingSSCApprovedBatchAndApplicantsTC_10")
     public void attendanceUploadByPlatformMasterTrainerTC_14(String serialNo,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcName, String tcPassword, String tcTrainingPartnerName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String tcPincode, String mandal, String district, String state, String parlimentaryConstituency, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmtRemarksDate, String dmtRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmtRemarksDate, String pmtRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String daaRemarksDate, String daaRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String paaRemarksDate, String paaRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmaRemarks, String dmaRemarksDate, String dmaRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmaRemarks, String pmaRemarksDate, String pmaRemarksTime, String domainJobRoleAttendance, String platformJobRoleAttendance, String domainJobRoleLevel, String platformJobRoleLevel, String tcSPOCName) throws Exception
     {
     	if(serialNo.equals("1"))
     	{
-    		batchID="833";
-//    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");   
-//    		Calendar cal = Calendar.getInstance();    
-//    		cal.setTime(dateFormat.parse(pTrainingStartDate));
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 2, pTrainingStartDate.replaceAll("-", "/"));
-//    		cal.add(Calendar.DATE, 1 );
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 3, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-//    		cal.add(Calendar.DATE, 1);
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 4, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-//    		cal.add(Calendar.DATE, 1);
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 5, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-//    		cal.add(Calendar.DATE, 1);
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 6, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
-//    		cal.add(Calendar.DATE, 1);
-//    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 7, pTrainingEndDate.replaceAll("-", "/"));
+//   		batchID="833";
+    		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");   
+    		Calendar cal = Calendar.getInstance();    
+    		cal.setTime(dateFormat.parse(pTrainingStartDate));
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 2, pTrainingStartDate.replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1 );
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 3, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 4, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 5, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 6, dateFormat.format(cal.getTime()).replaceAll("-", "/"));
+    		cal.add(Calendar.DATE, 1);
+    		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+platformJobRoleAttendance, "Sheet1", 0, 7, pTrainingEndDate.replaceAll("-", "/"));
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
     		LoginPage lp=new LoginPage(driver);
     		lp.clickLogin();
@@ -2289,9 +2290,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
     		//Checking Download Template
     		tVp.clickToDownloadAttendanceTemplate();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
-    		Thread.sleep(6000);
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		tVp.clickToBrowseForAttendanceFile();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         	UploadFile.upload(platformJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceFile();
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
