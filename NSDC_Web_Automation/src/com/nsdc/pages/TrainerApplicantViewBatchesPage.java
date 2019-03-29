@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nsdc.generic.SelectDropDownList;
 
@@ -70,6 +72,9 @@ public class TrainerApplicantViewBatchesPage
 	//TC Enrolled Batch Applicant
 	public void clickToGetEnrolledBatchActionMenu(String batchID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")));
 		driver.findElement(By.xpath("(//tr[td[text()='"+batchID+"']]//a)[1]")).click();
 	}
 	public void selectViewDetailsForEnrolledBatchOption(String batchID)
