@@ -1529,10 +1529,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
         		}
         		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
         		tDp.clickToGetTrainerDashboard();
+        		WebDriverWait wait=new WebDriverWait(driver, 60);
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		tDp.clickAllBatches();
+          	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
         		tVp.clickToGoToAcceptedBatchesSection();
-        		WebDriverWait wait=new WebDriverWait(driver, 60);
           	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		JavascriptExecutor js=(JavascriptExecutor)driver;
         		js.executeScript("window.scrollBy(0,200)", "");
@@ -1629,10 +1631,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
             elp.performlogin(domainMasterTrainerID, domainMasterTrainerPassword);
     		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
     		tDp.clickToGetTrainerDashboard();
+    		WebDriverWait wait=new WebDriverWait(driver, 60);
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		tDp.clickAllBatches();
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
     		tVp.clickToGoToAcceptedBatchesSection();
-    		WebDriverWait wait=new WebDriverWait(driver, 60);
       	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		JavascriptExecutor js=(JavascriptExecutor)driver;
     		js.executeScript("window.scrollBy(0,200)", "");
@@ -1644,6 +1648,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		tVp.clickToSelectViewDetailsOption(batchID);
       	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		tVp.clickToGoToBatchDetailsSection();
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), batchStartDate+" to "+batchEndDate);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector & Sub Sector')]]/td[3]")).getText().trim(), batchSector+" | "+batchSubSector);
@@ -1668,6 +1673,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
             Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[4]")).getText().trim(), mobile);
        	 	tVp.clickToGetApplicantActionMenu(trainerID);
        	 	tVp.selectViewDetailsOfApplicantOption(trainerID);
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
        	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
        	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
        	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
