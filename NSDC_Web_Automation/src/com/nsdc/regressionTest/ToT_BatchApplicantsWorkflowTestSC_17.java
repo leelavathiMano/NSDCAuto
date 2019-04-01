@@ -1944,6 +1944,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
       	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
     		maVp.clickToGoToAcceptedBatchesSection();
+      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		maVp.enterBatchIDToSearch(batchID);
     		maVp.clickToGetSearchResult();
       	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
