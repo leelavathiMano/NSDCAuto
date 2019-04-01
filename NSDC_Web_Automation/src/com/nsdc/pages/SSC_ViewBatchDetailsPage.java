@@ -707,6 +707,8 @@ public class SSC_ViewBatchDetailsPage
 	}
 	public void clickToSelectApplicantToBeApproved(String applicantID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//label[input[@type='checkbox']]/span")));
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//label[input[@type='checkbox']]/span")).click();
 	}
 	public void clickToGetApplicantActionMenu(String applicnatID)
