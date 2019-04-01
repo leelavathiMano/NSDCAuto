@@ -160,6 +160,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
 			sscTbcP.selectDomainJobRole(domainJobRole);
+			driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
 			sscTbcP.selectPlatformJobRole(platformJobRole);
 		}
 		else
