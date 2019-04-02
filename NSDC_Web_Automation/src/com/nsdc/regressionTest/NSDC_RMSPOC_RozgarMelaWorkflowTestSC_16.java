@@ -93,6 +93,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		WebDriverWait wait=new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.urlContains("align-training-centres"));
 		Assert.assertTrue(driver.getCurrentUrl().contains("align-training-centres"),"OMG!!! Navigation to Align Training Centre page is unsuccessful OR Something wrong! ");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickToSelectAllTrainingCentres();
 		rmCp.clickToAlignSelectedTrainingCentres();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
