@@ -18,6 +18,7 @@
      	<class name="com.nsdc.regressionTest.TPSPOCChangeWorkflowTestSC_13"/>
       	<class name="com.nsdc.regressionTest.FeeBased_AddSchemeWorkflowTestSC_14"/>
       	<class name="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_15"/>
+      	<class name="com.nsdc.regressionTest.NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16"/>
       	<class name="com.nsdc.regressionTest.ToT_BatchApplicantsWorkflowTestSC_17"/>
       	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/>
     </classes>
