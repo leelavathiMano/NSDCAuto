@@ -104,6 +104,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		rmCp.clickSaveAndAlignSSCs();
 		wait.until(ExpectedConditions.urlContains("align-ssc"));
 		Assert.assertTrue(driver.getCurrentUrl().contains("align-ssc"),"OMG!!! Navigation to Align SSCs page is unsuccessful OR Something wrong! ");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickToSelectAllSSCs();
 		rmCp.clickToAlignSelectedSSCs();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
