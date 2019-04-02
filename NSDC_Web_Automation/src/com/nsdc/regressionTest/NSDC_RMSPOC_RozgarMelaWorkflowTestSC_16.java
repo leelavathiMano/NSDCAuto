@@ -33,24 +33,17 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(rmspocID, rmspocPassword);
-		Thread.sleep(2000);
 		List<WebElement> ele = driver.findElements(By.xpath("//div[@id='toast-container']/div/div"));
 		while(ele.size()!=0)
 		{
 			Assert.assertFalse(driver.findElement(By.xpath("//div[@id='toast-container']/div/div")).getText().trim().contains("Deactiv"),"OMG!!! RozgarSPOC - "+rmspocID+" Account Deactivated. Kindly contact NSDC Admin! ");
 		}
-		Thread.sleep(4000);
-		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"rozgarmelaspoc","Login Unsuccessfull");
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
 		NSDC_RozgarMelaSPOC_DashboardPage rmDp=new NSDC_RozgarMelaSPOC_DashboardPage(driver);
 		rmDp.clickCreateRozgarMelas();
-		Thread.sleep(2000);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"rozgarmelaspoccreate-rozgar-mela");
 		NSDC_RozgarMelaSPOC_CreateRozgarMelaPage rmCp=new NSDC_RozgarMelaSPOC_CreateRozgarMelaPage(driver);
 		rmCp.enterRozgarMelaName(rozgarMelaName);
-		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.id("typeOfMela")).getAttribute("value").trim(), typeOfRozgarMela);
 		rmCp.selectTargetAudience(targetAudience);
 		Thread.sleep(2000);

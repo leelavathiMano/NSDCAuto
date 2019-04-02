@@ -91,6 +91,8 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	}
 	public void enterRozgarMelaName(String rozgarMelaName)
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(rozgarMelaNameTextField));
 		rozgarMelaNameTextField.clear();
 		rozgarMelaNameTextField.sendKeys(rozgarMelaName);
 	}

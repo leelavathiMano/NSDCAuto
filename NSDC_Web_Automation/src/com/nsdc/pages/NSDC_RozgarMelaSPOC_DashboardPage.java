@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NSDC_RozgarMelaSPOC_DashboardPage
 {
@@ -20,6 +22,9 @@ public class NSDC_RozgarMelaSPOC_DashboardPage
 	}
 	public void clickCreateRozgarMelas()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(createRozgarMelasCard));
+		wait.until(ExpectedConditions.elementToBeClickable(createRozgarMelasCard));
 		createRozgarMelasCard.click();
 	}
 	public void clickViewRozgarMelas()
