@@ -89,8 +89,11 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		rmCp.enterPincode(pincode);
 		Thread.sleep(2000);
 		rmCp.selectState(state);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.selectDistrict(district);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.selectTehsil(tehsil);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.selectVillage(village);
 		rmCp.selectParlimentaryConstituency(parlimentaryConstituency);
 		rmCp.enterAdditionalRemarks(additionalRemarks);
@@ -124,6 +127,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		Assert.assertTrue(driver.getCurrentUrl().contains("create-rozgar-mela-success"),"OMG!!! Navigation to Create Rozgar Mela Success page is unsuccessful OR Something wrong! ");
 		String createdRozgarMelaID=driver.findElement(By.xpath("(//p[contains(text(),'You have successfully created a')]/span)[2]")).getText().trim().replace('"', ' ').replaceAll(" ", "");
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CreateRozgarMela", rowNum, 1, createdRozgarMelaID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickAnnounceToStakeholders();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Notification has been sent to stakeholders");
