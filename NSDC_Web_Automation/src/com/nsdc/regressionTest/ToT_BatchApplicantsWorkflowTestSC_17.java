@@ -1026,7 +1026,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		tDp.clickViewBatches();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		String batchID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 1);
-    		String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 2);
+//    		String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 2);
     		String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 9);
     		String batchEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 10);
     		String domainTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 15);
@@ -1042,7 +1042,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), state+"/"+city);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+") , "+platformJobRole+" ("+platformJobRoleCode+")");
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Enrolled");
-    		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchCreatedDate);
+//    		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchCreatedDate);
     		TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
     		tVp.enterBatchIDTosearch(batchID);
     		tVp.clickToGetSearchResult();

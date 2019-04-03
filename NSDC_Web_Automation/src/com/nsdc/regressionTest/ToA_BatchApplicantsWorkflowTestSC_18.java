@@ -1023,7 +1023,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   aDp.clickViewBatches();
 		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		   String batchID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 1);
-		   String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 2);
+//		   String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 2);
 		   String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 9);
 		   String batchEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 10);
 		   String domainTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 15);
@@ -1039,7 +1039,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), state+"/"+city);
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+") , "+platformJobRole+" ("+platformJobRoleCode+")");
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), "Enrolled");
-		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchCreatedDate);
+//		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchCreatedDate);
 		   AssessorApplicantViewBatchesPage aVp=new AssessorApplicantViewBatchesPage(driver);
 		   aVp.enterBatchIDTosearch(batchID);
 		   aVp.clickToGetSearchResult();

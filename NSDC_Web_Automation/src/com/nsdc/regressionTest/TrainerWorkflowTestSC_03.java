@@ -90,6 +90,7 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         WebDriverWait wait=new WebDriverWait(driver, 60);
        	wait.until(ExpectedConditions.elementToBeClickable(By.id("dob")));
         TrainerRegistrationPage trainer = new TrainerRegistrationPage(driver);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         trainer.selectGender(gender);
         Thread.sleep(2000);

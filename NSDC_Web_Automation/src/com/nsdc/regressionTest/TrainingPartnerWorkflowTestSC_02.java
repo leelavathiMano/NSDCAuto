@@ -1499,7 +1499,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(5000);
         tprp.clickSaveAndNextButton();
         Thread.sleep(4000);
-        if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        if(year_Of_Establishment.equals("2019") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1522,7 +1522,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Company"))
+        else if(year_Of_Establishment.equals("2019") && type_Of_The_Organization.equals("Company"))
         {
         	tprp.enterPANNumber(pan_Number);
           	Thread.sleep(2000);
@@ -1553,7 +1553,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2018") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1578,7 +1578,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Company"))
+        else if(year_Of_Establishment.equals("2018") && type_Of_The_Organization.equals("Company"))
         {
            	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1611,7 +1611,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2016") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if(year_Of_Establishment.equals("2017") && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1646,7 +1646,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if(year_Of_Establishment.equals("2016") && type_Of_The_Organization.equals("Company"))
+        else if(year_Of_Establishment.equals("2017") && type_Of_The_Organization.equals("Company"))
         {
         	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1687,7 +1687,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if((year < 2016) && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        else if((year < 2017) && (type_Of_The_Organization.equals("Proprietorship") || type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
             tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1728,7 +1728,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueToPaymentButton();
             Thread.sleep(2000);
         }
-        else if((year < 2016) && type_Of_The_Organization.equals("Company"))
+        else if((year < 2017) && type_Of_The_Organization.equals("Company"))
         {
            	tprp.enterPANNumber(pan_Number);
             Thread.sleep(2000);
@@ -1909,7 +1909,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     		if(!typeOfOrganization.equals("Government Institute"))
      	   	{
     			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Year of Establishment']")).getAttribute("value").trim(), yearOfEstablishment);
-     			if(yearOfEstablishment.equals("2018"))
+     			if(yearOfEstablishment.equals("2019"))
         		{
         			da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
          		 	Thread.sleep(2000);
@@ -1920,7 +1920,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 //         		 	da_tpr.enterAdditionalCommentForProvisionalCertificate(prvisionalCertificateComment);
          		 	Thread.sleep(2000);
          		}
-         	   	else if(yearOfEstablishment.equals("2017"))
+         	   	else if(yearOfEstablishment.equals("2018"))
          	   	{
          	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
          	   		da_tpr.selectReviewCommentForEstablishmentYear(yearOfEstablishmentReviewcomments);
@@ -1932,7 +1932,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
      		 		da_tpr.enterAdditionalCommentForFirstFinancialYear(financialYear1Comments);
      		 		Thread.sleep(2000);
          	   	}    	   	
-         	   	else if(yearOfEstablishment.equals("2016"))
+         	   	else if(yearOfEstablishment.equals("2017"))
          	   	{
          	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
          	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
@@ -1949,7 +1949,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
      		 		da_tpr.enterAdditionalCommentForSecondFinancialYear(financialYear2Comments);
      		 		Thread.sleep(2000);
      		 	}
-         	   	else if(Integer.parseInt(yearOfEstablishment)<2016)
+         	   	else if(Integer.parseInt(yearOfEstablishment)<2017)
          	   	{
          	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[1]")).getAttribute("value").trim(), turnOver1);
          	   		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[label[contains(text(),'Financial Year')]]]//input)[2]")).getAttribute("value").trim(), turnOver2);
@@ -2073,23 +2073,23 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 	    		{
 	    			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='PAN']")).getAttribute("value").trim(), panCardNumber);
 	    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+panCardComments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for PAN ");
-	    			if(yearOfEstablishment.equals("2018"))
+	    			if(yearOfEstablishment.equals("2019"))
 	    			{
 	    				
 	    			}
-	    			else if(yearOfEstablishment.equals("2017"))
+	    			else if(yearOfEstablishment.equals("2018"))
 	    			{
 	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), turnOver1);
 		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
 	    			}
-	    			else if(yearOfEstablishment.equals("2016"))
+	    			else if(yearOfEstablishment.equals("2017"))
 	    			{
 	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), turnOver1);
 		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");
 		    			Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[2]")).getAttribute("value").trim(), turnOver2);
 		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear2Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for Second Financial Year");
 	    			}
-	    			else if(Integer.parseInt(yearOfEstablishment)<2016)
+	    			else if(Integer.parseInt(yearOfEstablishment)<2017)
 	    			{
 	    				Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='annualTurnover'])[1]")).getAttribute("value").trim(), turnOver1);
 		    			Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'"+financialYear1Comments+"')]")).isDisplayed(), " OMG!!! No show of DA rejection Comments for First Financial Year");

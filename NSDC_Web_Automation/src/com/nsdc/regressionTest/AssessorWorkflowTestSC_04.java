@@ -85,6 +85,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	WebDriverWait wait=new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("dob"))); 
         AssessorRegistrationPage assessor = new AssessorRegistrationPage(driver);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         assessor.selectGender(gender);
         Thread.sleep(2000);
