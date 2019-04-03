@@ -177,7 +177,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(4000);
         tprp.clickSaveAndNextButton();
         
-        if(((year_Of_Establishment.equals("2019")) ||(year_Of_Establishment.equals("2018"))) && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        if((year_Of_Establishment.equals("2019")) && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
@@ -219,7 +219,50 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(((year_Of_Establishment.equals("2019")) || (year_Of_Establishment.equals("2018"))) && (type_Of_The_Organization.equals("Company")))
+        else if((year_Of_Establishment.equals("2018")) && (type_Of_The_Organization.equals("Firm") || type_Of_The_Organization.equals("Society") || type_Of_The_Organization.equals("Trust") || type_Of_The_Organization.equals("Limited Liability Partnership (LLP)")))
+        {
+        	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickOnPANVerify();
+            Thread.sleep(3000);
+            tprp.clickOnOkButton();
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            //tprp.enterGSTAccountNumber(gst_Number);
+            //Thread.sleep(3000);
+            //tprp.clickBrowseButton2();
+            //Thread.sleep(3000);
+            //UploadFile.upload(upload_GST);
+            //Thread.sleep(3000);
+            //tprp.clickUploadButton2();
+            
+            Thread.sleep(3000);
+            tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_provisional);
+            Thread.sleep(3000);
+            tprp.clickUploadButton2();
+            Thread.sleep(3000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if(((year_Of_Establishment.equals("2019"))) && (type_Of_The_Organization.equals("Company")))
         {
         	Thread.sleep(3000);
             tprp.enterPANNumber(pan_Number);
@@ -265,7 +308,55 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(3000);
         }
         
-        else if(((year_Of_Establishment.equals("2019") || (year_Of_Establishment.equals("2018"))) && type_Of_The_Organization.equals("Proprietorship")))
+        else if((year_Of_Establishment.equals("2018")) && (type_Of_The_Organization.equals("Company")))
+        {
+        	Thread.sleep(3000);
+            tprp.enterPANNumber(pan_Number);
+            Thread.sleep(3000);
+            tprp.clickOnPANVerify();
+            Thread.sleep(3000);
+            tprp.clickOnOkButton();
+            Thread.sleep(3000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            Thread.sleep(3000);
+            tprp.enterGSTAccountNumber(gst_Number);
+            Thread.sleep(3000);
+            tprp.clickOnGST_Verify();
+            Thread.sleep(3000);
+            tprp.clickOnOkButton();
+            Thread.sleep(3000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_GST);
+            Thread.sleep(3000);
+            tprp.clickUploadButton2();
+            
+            Thread.sleep(3000);
+            tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(3000);
+            tprp.clickBrowseButton3();
+            Thread.sleep(3000);  
+            UploadFile.upload(upload_provisional);
+            Thread.sleep(3000);
+            tprp.clickUploadButton3();
+            Thread.sleep(3000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if(((year_Of_Establishment.equals("2019")) && type_Of_The_Organization.equals("Proprietorship")))
         {
         	Thread.sleep(3000);
             //tprp.enterAadharNumber(aadhar_Number);
@@ -288,6 +379,44 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 //            UploadFile.upload(upload_provisional);
 //            Thread.sleep(3000);
 //            tprp.clickUploadButton2();
+            Thread.sleep(3000);
+            
+            tprp.clickSaveAndNextButton();
+            Thread.sleep(4000);
+            
+            tprp.clickIAgreeCheckBox();
+            Thread.sleep(3000);
+            tprp.clickSaveAndContinueToPaymentButton();
+            Thread.sleep(3000);
+            //tprp.clickPaymentOkButton();
+            Thread.sleep(3000);
+        }
+        
+        else if((year_Of_Establishment.equals("2018")) && type_Of_The_Organization.equals("Proprietorship"))
+        {
+        	Thread.sleep(3000);
+            //tprp.enterAadharNumber(aadhar_Number);
+            //tprp.clickToVerifyAadharNumber();
+        	tprp.enterPANNumber(pan_Number);
+            Thread.sleep(5000);
+            tprp.clickOnPANVerify();
+            Thread.sleep(3000);
+            tprp.clickOnOkButton();
+            Thread.sleep(5000);
+            tprp.clickBrowseButton1();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_PAN);
+            Thread.sleep(3000);
+            tprp.clickUploadButton1();
+            
+            Thread.sleep(3000);
+            tprp.enterAnnualTurnOver1(turnover1);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton2();
+            Thread.sleep(3000);
+            UploadFile.upload(upload_provisional);
+            Thread.sleep(3000);
+            tprp.clickUploadButton2();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -332,6 +461,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             UploadFile.upload(upload_turnover1);
             Thread.sleep(4000);
             tprp.clickUploadButton2();
+            Thread.sleep(3000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton3();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(4000);
+            tprp.clickUploadButton3();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -381,6 +518,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(4000);
             tprp.clickUploadButton3();
             Thread.sleep(3000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton4();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(4000);
+            tprp.clickUploadButton4();
+            Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
             Thread.sleep(4000);
@@ -409,6 +554,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             UploadFile.upload(upload_PAN);
             Thread.sleep(4000);
             tprp.clickUploadButton1();
+            
             Thread.sleep(5000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(4000);
@@ -417,6 +563,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             UploadFile.upload(upload_turnover1);
             Thread.sleep(4000);
             tprp.clickUploadButton2();
+            Thread.sleep(5000);
+            tprp.enterAnnualTurnOver2(turnover2);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton3();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover2);
+            Thread.sleep(4000);
+            tprp.clickUploadButton3();
             Thread.sleep(3000);
             
             tprp.clickSaveAndNextButton();
@@ -470,6 +624,15 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(4000);
             tprp.clickUploadButton3();
             Thread.sleep(4000);
+            tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton4();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover3);
+            Thread.sleep(4000);
+            tprp.clickUploadButton4();
+            Thread.sleep(5000);
+            
             
             tprp.clickSaveAndNextButton();
             Thread.sleep(4000);
@@ -526,6 +689,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             Thread.sleep(4000);
             tprp.clickUploadButton4();
             Thread.sleep(4000);
+            tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton5();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover3);
+            Thread.sleep(4000);
+            tprp.clickUploadButton5();
+            Thread.sleep(4000);
             
             tprp.clickSaveAndNextButton();
             Thread.sleep(4000);
@@ -570,6 +741,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             UploadFile.upload(upload_turnover2);
             Thread.sleep(4000);
             tprp.clickUploadButton3();
+            Thread.sleep(4000);
+            tprp.enterAnnualTurnOver3(turnover3);
+            Thread.sleep(4000);
+            tprp.clickBrowseButton4();
+            Thread.sleep(4000);
+            UploadFile.upload(upload_turnover3);
+            Thread.sleep(4000);
+            tprp.clickUploadButton4();
             Thread.sleep(4000);
             
             tprp.clickSaveAndNextButton();
