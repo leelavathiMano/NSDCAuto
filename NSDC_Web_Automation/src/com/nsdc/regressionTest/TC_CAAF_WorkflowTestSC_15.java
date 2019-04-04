@@ -166,10 +166,10 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		atc.enterEmailOTP(emailOTP);
 		Thread.sleep(3000);
 		atc.clickOnVerifyOTP();
-//		Thread.sleep(3000);
-//		atc.clickOnCancelOTP();
 		js.executeScript("scroll(0, 1200)");
 		Thread.sleep(5000);
+		atc.clickOnIAgree();
+		Thread.sleep(3000);
 		atc.clickOnSubmit();
 		Thread.sleep(3000);
 		atc.clickOnYesAddTrainingCentre();
@@ -317,38 +317,38 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterFirst_BriefAboutTheAffiliation(firstAboutAffiliation);
 		Thread.sleep(3000);
 		caaf.clickOnAddAnotherAffiliation();
-//		Thread.sleep(3000);
-//		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
-//		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
-//		caaf.enterFirst_Affiliation_StartDate();
-//		caaf.enterFirst_Affiliation_EndDate();
-//		caaf.enterFirst_BriefAboutTheAffiliation(secondAboutAffiliation);
-//		Thread.sleep(3000);
-//		caaf.clickOnAddAnotherAffiliation();
-//		Thread.sleep(3000);
-//		caaf.enterFirst_NameofAffiliation(thirdAffiliationName);
-//		caaf.selectFirst_TypeOfAffiliation(thirdAffiliationType);
-//		caaf.enterFirst_Affiliation_StartDate();
-//		caaf.enterFirst_Affiliation_EndDate();
-//		caaf.enterFirst_BriefAboutTheAffiliation(thirdAboutAffiliation);
-//		Thread.sleep(3000);
-//		caaf.clickOnAddAnotherAffiliation();
-//		Thread.sleep(3000);
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("scroll(0, 900)");
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationName+"']")).getText(), firstAffiliationName);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationType+"']")).getText(), firstAffiliationType);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAboutAffiliation+"']")).getText(), firstAboutAffiliation);
-//		
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationName+"']")).getText(), secondAffiliationName);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationType+"']")).getText(), secondAffiliationType);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAboutAffiliation+"']")).getText(), secondAboutAffiliation);
-//
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationName+"']")).getText(), thirdAffiliationName);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationType+"']")).getText(), thirdAffiliationType);
-//		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAboutAffiliation+"']")).getText(), thirdAboutAffiliation);
-//		Thread.sleep(2000);
-//		caaf.clickOnRemove_ThirdAffiliation();
+		Thread.sleep(3000);
+		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
+		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
+		caaf.enterFirst_Affiliation_StartDate();
+		caaf.enterFirst_Affiliation_EndDate();
+		caaf.enterFirst_BriefAboutTheAffiliation(secondAboutAffiliation);
+		Thread.sleep(3000);
+		caaf.clickOnAddAnotherAffiliation();
+		Thread.sleep(3000);
+		caaf.enterFirst_NameofAffiliation(thirdAffiliationName);
+		caaf.selectFirst_TypeOfAffiliation(thirdAffiliationType);
+		caaf.enterFirst_Affiliation_StartDate();
+		caaf.enterFirst_Affiliation_EndDate();
+		caaf.enterFirst_BriefAboutTheAffiliation(thirdAboutAffiliation);
+		Thread.sleep(3000);
+		caaf.clickOnAddAnotherAffiliation();
+		Thread.sleep(3000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("scroll(0, 900)");
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationName+"']")).getText(), firstAffiliationName);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAffiliationType+"']")).getText(), firstAffiliationType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+firstAboutAffiliation+"']")).getText(), firstAboutAffiliation);
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationName+"']")).getText(), secondAffiliationName);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAffiliationType+"']")).getText(), secondAffiliationType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+secondAboutAffiliation+"']")).getText(), secondAboutAffiliation);
+
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationName+"']")).getText(), thirdAffiliationName);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAffiliationType+"']")).getText(), thirdAffiliationType);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+thirdAboutAffiliation+"']")).getText(), thirdAboutAffiliation);
+		Thread.sleep(2000);
+		caaf.clickOnRemove_ThirdAffiliation();
 
 		
 		caaf.selectMen_ResidentialAreaAvailable(menResidentialArea);
@@ -2184,9 +2184,11 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 					elp.performlogin(tc_ID, password);
 					Thread.sleep(8000);
 					tcd.clickOnMyCAAFSubmit();
-					Thread.sleep(8000);
-					tcm.clickOnAcceptInspectionDate();
 					Thread.sleep(3000);
+					tcm.clickOnOK();
+					Thread.sleep(8000);
+//					tcm.clickOnAcceptInspectionDate();
+//					Thread.sleep(3000);
 					Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", "").replace("-", "/"), inspectionDate);
 					Thread.sleep(3000);
 					tcm.clickOnAcceptProposedInspectionDate();
@@ -2644,9 +2646,11 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 					elp.performlogin(tc_ID, password);
 					Thread.sleep(8000);
 					tcd.clickOnMyCAAFSubmit();
-					Thread.sleep(8000);
-					tcm.clickOnAcceptInspectionDate();
 					Thread.sleep(3000);
+					tcm.clickOnOK();
+					Thread.sleep(8000);
+//					tcm.clickOnAcceptInspectionDate();
+//					Thread.sleep(3000);
 					Assert.assertEquals(driver.findElement(By.xpath("(//div[div[h5[contains(text(),'Accept/Reject Inspection Date')]]]//h5)[2]")).getText().replace("Proposed Inspection Date - ", ""), inspectionDate);
 					Thread.sleep(3000);
 					tcm.clickOnAcceptProposedInspectionDate();
@@ -3077,7 +3081,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			}
 			
 			
-		}
+}
 	
 		
 		

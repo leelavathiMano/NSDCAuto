@@ -86,6 +86,8 @@ public class AddTrainingCentrePage
 	private WebElement cancel_AddTCButton;
 	@FindBy(xpath="//button[text()='Close']")
 	private WebElement close_Button;
+	@FindBy(xpath="//label[input[@type='checkbox']]/span")
+	private WebElement iAgreeCheckbox;
 	
 	
 	public AddTrainingCentrePage(WebDriver driver)
@@ -278,6 +280,11 @@ public class AddTrainingCentrePage
 	public void clickOnClose()
 	{
 		close_Button.click();
+	}
+	
+	public void clickOnIAgree()
+	{
+		iAgreeCheckbox.click();
 	}
 	
 	
