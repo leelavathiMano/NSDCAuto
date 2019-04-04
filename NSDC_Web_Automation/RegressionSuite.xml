@@ -3,7 +3,6 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-    	<class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
     	<class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
     	<class name="com.nsdc.regressionTest.TrainerWorkflowTestSC_03"/>
     	<class name="com.nsdc.regressionTest.AssessorWorkflowTestSC_04"/>
@@ -21,6 +20,7 @@
       	<class name="com.nsdc.regressionTest.NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16"/>
       	<class name="com.nsdc.regressionTest.ToT_BatchApplicantsWorkflowTestSC_17"/>
       	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/>
+      	<class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
