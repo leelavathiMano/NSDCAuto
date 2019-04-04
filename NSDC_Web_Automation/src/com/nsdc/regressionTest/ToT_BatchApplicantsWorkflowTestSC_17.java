@@ -330,7 +330,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		PostLoginPage plp=new PostLoginPage(driver);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		plp.clickOnLogout();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 		//Assigned Master Trainer Login To Accept the Batch
