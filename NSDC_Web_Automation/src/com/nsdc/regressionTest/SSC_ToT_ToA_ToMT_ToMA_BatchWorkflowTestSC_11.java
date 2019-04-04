@@ -1809,26 +1809,26 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 17, domainAssessmentStartDate);
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 18, domainAssessmentEndDate);
 		//Platform QP
-		sscTbcP.clickToChooserPlatformQP();
+		sscTbcP.clickToChoosePlatformQP();
 		Thread.sleep(2000);
-		sscTbcP.selectrPlatformTrainingStartDate(configPlatformTrainingStartDate);
+		sscTbcP.selectPlatformTrainingStartDate(configPlatformTrainingStartDate);
 		Thread.sleep(2000);
 		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
 		{
-			sscTbcP.selectrPlatformTrainingEndDateForNewBatch(configPlatformTrainingEndDate);
+			sscTbcP.selectPlatformTrainingEndDateForNewBatch(configPlatformTrainingEndDate);
 			Thread.sleep(2000);
-			sscTbcP.selectrPlatformAssessmentStartDateForNewBatch(configPlatformAssessemntStartDate);
+			sscTbcP.selectPlatformAssessmentStartDateForNewBatch(configPlatformAssessemntStartDate);
 			Thread.sleep(2000);
-			sscTbcP.selectrPlatformAssessmentEndDateForNewBatch(configPlatformAssessemntEndDate);
+			sscTbcP.selectPlatformAssessmentEndDateForNewBatch(configPlatformAssessemntEndDate);
 			Thread.sleep(2000);
 		}
 		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
 		{
-			sscTbcP.selectrPlatformTrainingEndDateForExistingBatch(configPlatformTrainingEndDate);
+			sscTbcP.selectPlatformTrainingEndDateForExistingBatch(configPlatformTrainingEndDate);
 			Thread.sleep(2000);
-			sscTbcP.selectrPlatformAssessmentStartDateForExistingBatch(configPlatformAssessemntStartDate);
+			sscTbcP.selectPlatformAssessmentStartDateForExistingBatch(configPlatformAssessemntStartDate);
 			Thread.sleep(2000);
-			sscTbcP.selectrPlatformAssessmentEndDateForExistingBatch(configPlatformAssessemntEndDate);
+			sscTbcP.selectPlatformAssessmentEndDateForExistingBatch(configPlatformAssessemntEndDate);
 			Thread.sleep(2000);
 		}
 		String platformTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
