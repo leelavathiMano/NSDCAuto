@@ -1242,7 +1242,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("(//div[span[strong[contains(text(),'Proposed Dates')]]]/label)[2]")).getText().trim(), pAssessmentStartDate+" To "+pAssessmentEndDate);
 			aVp.selectMasterAssessorForDomain1(dmasterAssessorName+"("+dmasterAssessorID+")");
 			Thread.sleep(2000);
-			aVp.selectMasterAssessorForPlatform(pmasterAssessorName+"("+pmasterAssessorID+")");
+			aVp.selectMasterAssessorForDomain2(pmasterAssessorName+"("+pmasterAssessorID+")");
 			Thread.sleep(2000);
 			aVp.clickToSubmitMasterAssessors();
 			Thread.sleep(4000);
