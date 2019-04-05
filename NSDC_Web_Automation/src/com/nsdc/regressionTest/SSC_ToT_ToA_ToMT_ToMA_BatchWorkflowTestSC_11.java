@@ -522,7 +522,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
 				tDp.clickToGetTrainerDashboard();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));				tDp.clickAllBatches();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+				tDp.clickAllBatches();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
 				tVp.clicktoGoPendingBatchesSection();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -1134,6 +1136,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[3]")).getText().trim(), "NA");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[4]")).getText().trim(), pAssessmentStartDate+" to "+pAssessmentEndDate);
 			js.executeScript("window.scrollBy(0,-1000)", "");
+			Thread.sleep(2000);
 			aVp.clickToGoBack();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aVp.enterBatchIdToSearch(batchID);
@@ -1216,13 +1219,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.id("tcUserName")).getAttribute("value").trim(), tcID);
 			Assert.assertEquals(driver.findElement(By.id("tpName")).getAttribute("value").trim(), tpName);
 			Assert.assertEquals(driver.findElement(By.id("tpUserName")).getAttribute("value").trim(), "");
-			Assert.assertEquals(driver.findElement(By.id("address")).getAttribute("value").trim(), tcAddress);
+//			Assert.assertEquals(driver.findElement(By.id("address")).getAttribute("value").trim(), tcAddress);
 			Assert.assertEquals(driver.findElement(By.id("landmark")).getAttribute("value").trim(), tcLandmark);
 			Assert.assertEquals(driver.findElement(By.id("pincode")).getAttribute("value").trim(), pincode);
 			Assert.assertEquals(driver.findElement(By.id("state")).getAttribute("value").trim(), state);
 			Assert.assertEquals(driver.findElement(By.id("district")).getAttribute("value").trim(), district);
-			Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
-			Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
+//			Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
+//			Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
 			Assert.assertEquals(driver.findElement(By.id("parliamentaryConstituency")).getAttribute("value").trim(), constituency);
 			Assert.assertEquals(driver.findElement(By.id("spocName")).getAttribute("value").trim(), tcSPOCName);
 			Assert.assertEquals(driver.findElement(By.id("email")).getAttribute("value").trim(), tcSPOCEmail);
@@ -1957,12 +1960,14 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
 					Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().equalsIgnoreCase("Cannot Assign Training Centre"));
 					sVbP.clickToCancel();
+					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				}
 				else
 				{
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
 					Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(),"Training Centre Assigned\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")\nis successfully assigned to   "+tcName+"\nState : "+state+"\nDistrict : "+district);	
 					sVbP.clickOk();
+					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 					Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcID+"')]")).getText().trim(), tcID);
 					Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'"+tcName+"')]")).getText().trim(), tcName);
 					Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[4]")).getText().trim(), tpName);
@@ -2192,7 +2197,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				Assert.assertTrue(driver.findElements(By.xpath("//td[text()='"+batchID+"']")).size()==1,"OMG!!! The Batch - "+batchID+" is not found in Accepted Section of - "+dassessmentAgencyID+" !!! ");
-				String rejectedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 71);
+				String rejectedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 61);
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[9]")).getText().trim(), "Rejected");
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[10]")).getText().trim(), rejectedDate);
 				if(i==1)
@@ -2404,8 +2409,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
 				Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of batch - "+batchID+" in Master Assessor - "+dmasterAssessorID+" Rejected Section!");
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "For Assessment");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[9]")).getText().trim(), "Rejected");
 				String rejectedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 68);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[9]")).getText().trim(), rejectedDate);
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[10]")).getText().trim(), rejectedDate);
 				//View Batch Details - Rejected Status for Master Assessor
 				maVp.clickToGetActionMenuOptions(batchID);
 				maVp.clickToSelectViewBatchDetailsOption(batchID);
