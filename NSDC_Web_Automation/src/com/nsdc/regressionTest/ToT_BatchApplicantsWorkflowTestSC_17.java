@@ -1242,7 +1242,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	sVp.clickGoBack(); 
  	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
    	 	sVp.clickToGoToEnrolledApplicantsSection();
-   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 //   	 	if(serialNum.equals("1"))
 //   	 	{
    	 		sVp.clickToSelectApplicantToBeApproved(trainerID);

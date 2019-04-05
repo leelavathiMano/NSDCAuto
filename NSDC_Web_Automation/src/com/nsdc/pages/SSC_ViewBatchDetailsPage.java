@@ -58,6 +58,8 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement searchFilterButton1;
 	@FindBy(xpath="(//input[@type='radio'])[5]")
 	private WebElement resultedTrainingCentreradioButton;
+	@FindBy(xpath="(//input[@type='radio'])[1]")
+	private WebElement reAssignTrainingCentreradioButton;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
 	private WebElement submitSelectedTrainingCentreButton;	
 	//Assign Master Trainer
@@ -266,6 +268,14 @@ public class SSC_ViewBatchDetailsPage
 		wait.until(ExpectedConditions.elementToBeClickable(resultedTrainingCentreradioButton));
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", resultedTrainingCentreradioButton);
+	}
+	public void clickToChooseResultedTCToReAssign()
+	{
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(reAssignTrainingCentreradioButton));
+		wait.until(ExpectedConditions.elementToBeClickable(reAssignTrainingCentreradioButton));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", reAssignTrainingCentreradioButton);
 	}
 	public void clickToSubmitSelectedTrainingCentre()
 	{
