@@ -68,8 +68,10 @@ public class AssessmentAgencyViewBatchesPage
 	private WebElement viewCommentsOptionText;
 	@FindBy(xpath="(//span[contains(text(),'Re-Assign')])[1]")
 	private WebElement reAssignAssessorOptionText;
-	@FindBy(xpath="//angular2-multiselect[@formcontrolname='assessor']/div")
-	private WebElement reAssignMasterAssessorList;
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='assessor']/div)[1]")
+	private WebElement reAssignMasterAssessorList1;
+	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='assessor']/div)[2]")
+	private WebElement reAssignMasterAssessorList2;
 	@FindBy(xpath="(//button[contains(text(),'Submit')])[1]")
 	private WebElement submitReAssignedMasterAssessorButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel')]")
@@ -237,9 +239,14 @@ public class AssessmentAgencyViewBatchesPage
 	{
 		driver.findElement(By.xpath("(//button[@class='close'])[1]")).click();
 	}
-	public void selectReAssignMasterAssessorForDomain(String dmasterAssessorName, String dmasterAssessorID)
+	public void selectReAssignMasterAssessorForDomain1(String dmasterAssessorName, String dmasterAssessorID)
 	{
-		reAssignMasterAssessorList.click();
+		reAssignMasterAssessorList1.click();
+		driver.findElement(By.xpath("//label[contains(text(),'"+dmasterAssessorName+" ( "+dmasterAssessorID+" )')]")).click();
+	}
+	public void selectReAssignMasterAssessorForDomain2(String dmasterAssessorName, String dmasterAssessorID)
+	{
+		reAssignMasterAssessorList2.click();
 		driver.findElement(By.xpath("//label[contains(text(),'"+dmasterAssessorName+" ( "+dmasterAssessorID+" )')]")).click();
 	}
 	public void clickToSubmitReAssignedMasterAssessor()
@@ -267,8 +274,6 @@ public class AssessmentAgencyViewBatchesPage
 	{
 		driver.findElement(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]//a[contains(text(),'View Details')]")).click();
 	}
-	
-	
 	public void clickOnSubmit_ForAssessor()
 	{
 		submit_ForAssessorButton.click();

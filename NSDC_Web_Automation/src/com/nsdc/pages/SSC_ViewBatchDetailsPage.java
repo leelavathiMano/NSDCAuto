@@ -158,17 +158,17 @@ public class SSC_ViewBatchDetailsPage
 	private WebElement reAssignDomainAssessmentAgencyRadioButton;
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
 	private WebElement reAssignSelectedDomainAssessmentAgencyButton;
-	//Domain JobRole 2 ReAssign Assessment Agency elements
+	//Domain JobRole ReAssign Assessment Agency elements
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='state']/div)[1]")
-	private WebElement reAssignDomainJobRole2AssesmentAgencyStateFilterList;
+	private WebElement reAssignDomainJobRoleAssesmentAgencyStateFilterList;
 	@FindBy(xpath="(//angular2-multiselect[@formcontrolname='district']/div)[1]")
-	private WebElement reAssignDomainJobRole2AssesmentAgencyDistrictFilterList;
+	private WebElement reAssignDomainJobRoleAssesmentAgencyDistrictFilterList;
 	@FindBy(xpath="(//button[contains(text(),'Search')])[1]")
 	private WebElement searchFilterButton4;
 	@FindBy(xpath="(//input[@type='radio'])[1]")
-	private WebElement reAssignDomainJobRole2AssesmentAgencyRadioButton;
+	private WebElement reAssignDomainJobRoleAssesmentAgencyRadioButton;
 	@FindBy(xpath="(//button[contains(text(),'Assign')])[1]")
-	private WebElement reAssignSelectedDomainJobRole2AssesmentAgencyButton;
+	private WebElement reAssignSelectedDomainJobRoleAssesmentAgencyButton;
 	//Approving Applicants
 	@FindBy(xpath="//a[h5[contains(text(),'Batch Details')]]")
 	private WebElement batchDetailsSectionText;
@@ -658,34 +658,33 @@ public class SSC_ViewBatchDetailsPage
 	{
 		reAssignDomainAssessmentAgencyRadioButton.click();
 	}
-	//Domain Job Role 2 Assessment Agency - View Comments option will disappear after reassigning aa for domain job role 1, as same aa for both job role
-	public void selectReAssignAssessmentAgencyOptionForDomainJobRole2(String domainJobRoleCode2) throws InterruptedException
+	public void selectReAssignAssessmentAgencyOptionForDomainJobRole(String domainJobRoleCode) throws InterruptedException
 	{
-		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//a)[1]")).click();
+		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]//a)[1]")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode2+"')]])[2]//span[contains(text(),'Reassign Assessment Agency')]")).click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]//span[contains(text(),'Reassign Assessment Agency')]")).click();
 	}
-	public void selectReAssignDomainJobRole2AssessmentAgencyState(String state) throws InterruptedException
+	public void selectReAssignDomainJobRoleAssessmentAgencyState(String state) throws InterruptedException
 	{
-		reAssignDomainJobRole2AssesmentAgencyStateFilterList.click();
+		reAssignDomainJobRoleAssesmentAgencyStateFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("(//label[contains(text(),'"+state+"')])[1]")).click();
 	}
-	public void selectReAssignDomainJobRole2AssessmentAgencyDistrict(String district) throws InterruptedException
+	public void selectReAssignDomainJobRoleAssessmentAgencyDistrict(String district) throws InterruptedException
 	{
-		reAssignDomainJobRole2AssesmentAgencyDistrictFilterList.click();
+		reAssignDomainJobRoleAssesmentAgencyDistrictFilterList.click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//label[contains(text(),'"+district+"')]")).click();
 	}
-	public void clickToChooseReAssignDomainJobrole2AssessmentAgency()
+	public void clickToChooseReAssignDomainJobroleAssessmentAgency()
 	{
-		reAssignDomainJobRole2AssesmentAgencyRadioButton.click();
+		reAssignDomainJobRoleAssesmentAgencyRadioButton.click();
 	}
-	public void clickToFinallyReAsssignSelectedDomainJobRole2AssessmentAgency()
+	public void clickToFinallyReAsssignSelectedDomainJobRoleAssessmentAgency()
 	{
-		reAssignSelectedDomainJobRole2AssesmentAgencyButton.click();
+		reAssignSelectedDomainJobRoleAssesmentAgencyButton.click();
 	}
-	public void clickToGetDomainJobRole2AssessmentAgencyFilterResult()
+	public void clickToGetDomainJobRoleAssessmentAgencyFilterResult()
 	{
 		searchFilterButton4.click();
 	}
