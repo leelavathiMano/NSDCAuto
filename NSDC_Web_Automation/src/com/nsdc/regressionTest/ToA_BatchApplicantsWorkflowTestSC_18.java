@@ -601,8 +601,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			maDp.clickToGetAssessorDashboard();
 			js.executeScript("window.scrollBy(0,500)", "");
 			maDp.clickBatchAssessmentRequests();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 			maVp.clicktoGoToPendingRequestsSection();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			maVp.enterBatchIDToSearch(batchID);
 			maVp.clickToGetSearchResult();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
