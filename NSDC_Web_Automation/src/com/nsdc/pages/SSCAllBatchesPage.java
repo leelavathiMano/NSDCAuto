@@ -62,6 +62,8 @@ public class SSCAllBatchesPage
 	}
 	public void enterBatchIDToSearch(String batchID)
 	{
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.visibilityOf(searchByBatchIDTextField));
 		searchByBatchIDTextField.clear();
 		searchByBatchIDTextField.sendKeys(batchID);
 	}
