@@ -391,6 +391,7 @@ public class SSC_ViewBatchDetailsPage
 	public void clickDomainAssessmentAgencyAction(String domainJobRole)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRole+"')]]//a[i[@class='la la-ellipsis-h']])[2]")).click();
 	}
@@ -668,11 +669,11 @@ public class SSC_ViewBatchDetailsPage
 	{
 		reAssignDomainAssessmentAgencyRadioButton.click();
 	}
-	public void selectReAssignAssessmentAgencyOptionForDomainJobRole(String domainJobRoleCode) throws InterruptedException
+	public void selectReAssignAssessmentAgencyOptionForJobRole(String jobRoleCode) throws InterruptedException
 	{
-		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]//a)[1]")).click();
+		driver.findElement(By.xpath("((//tr[td[contains(text(),'"+jobRoleCode+"')]])[2]//a)[1]")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]//span[contains(text(),'Reassign Assessment Agency')]")).click();
+		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+jobRoleCode+"')]])[2]//span[contains(text(),'Reassign Assessment Agency')]")).click();
 	}
 	public void selectReAssignDomainJobRoleAssessmentAgencyState(String state) throws InterruptedException
 	{

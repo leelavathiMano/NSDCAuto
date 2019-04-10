@@ -192,7 +192,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Name')]]]/div[3]")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")");
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[span[contains(text(),'Sector')]]]/div[3])[1]")).getText().trim(), expectedSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Sub Sector')]]]/div[3]")).getText().trim(), subSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Sub Sector')]]]/div[3]")).getText().trim(), subSector);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Type')]]]/div[3]")).getText().trim(), batchType);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Date')]]]/div[3]")).getText().trim(), trainingStartDate+" to "+trainingEndDate);
 		//STEP 2 OF BATCH CREATION -> Assigning Training Centre  and Assigning To Batches
@@ -336,10 +336,12 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			sVbP.clickViewAllBatchesAfterBatchSubmission();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			//After Batch Submission with status Pending For Publish
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending for Publish");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending for Publish");
 			sscTbcP.clickBatchAction(createdBatchID);
 			sscTbcP.clickViewDetailsOption(createdBatchID);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));			//Verifying Batch Details
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
+			//Verifying Batch Details
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch ID')]]/td[3]")).getText().trim(), createdBatchID);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Name')]]/td[3]")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")");
@@ -2249,10 +2251,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				sVbP.selectReAssignDomainAssessmentAgencyOption(domainJobRoleCode);
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-//				sVbP.selectReAssignAssessmentAgencyState(state);
-//				Thread.sleep(2000);
-//				sVbP.selectReAssignAssessmentAgencyDistrict(district);
-//				Thread.sleep(2000);
 				sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
 				sVbP.clickToGetSearchFilterResult();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -2271,13 +2269,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-content")));
 					sBp.clickOk();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
-					//ReAssigning Assessment Agency For Domain Job Role 2
-					sVbP.selectReAssignAssessmentAgencyOptionForDomainJobRole(domainJobRoleCode);
+					//ReAssigning Assessment Agency For platform Job Role
+					sVbP.selectReAssignAssessmentAgencyOptionForJobRole(platformJobRoleCode);
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-//					sVbP.selectReAssignDomainJobRoleAssessmentAgencyState(state);
-//					Thread.sleep(2000);
-//					sVbP.selectReAssignDomainJobRoleAssessmentAgencyDistrict(district);
-//					Thread.sleep(2000);
 					sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
 					sVbP.clickToGetDomainJobRoleAssessmentAgencyFilterResult();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
