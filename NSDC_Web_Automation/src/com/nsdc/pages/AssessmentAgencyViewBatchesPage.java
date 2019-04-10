@@ -227,13 +227,17 @@ public class AssessmentAgencyViewBatchesPage
 		completedBatchesLink.click();
 	}
 	//ReAssign Master Assessors
-	public void selectViewCommentsOfMasterAssessorOption()
+	public void clickToGetJobRoleActionMenu(String jobRole)
 	{
-		viewCommentsOptionText.click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+jobRole+"')]]//a[i[@class='la la-ellipsis-h']]")).click();
 	}
-	public void selectReAssignMasterAssessorOption()
+	public void selectViewCommentsOption(String jobRole)
 	{
-		reAssignAssessorOptionText.click();
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+jobRole+"')]]//span[contains(text(),'View')]")).click();
+	}
+	public void selectReAssignMasterAssessorOption(String jobRole)
+	{
+		driver.findElement(By.xpath("//tr[td[contains(text(),'"+jobRole+"')]]//span[contains(text(),'Re-Assign')]")).click();
 	}
 	public void clickToCloseViewComments()
 	{

@@ -2465,15 +2465,15 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				aVp.clickToSelectViewBatchDetailsOption();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[5]")).getText().trim(), "Rejected");
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[5]")).getText().trim(), "Rejected");
-				aVp.clickToGetActionMenuOptions();
-				aVp.selectViewCommentsOfMasterAssessorOption();
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[5]")).getText().trim(), "Rejected");
+				aVp.clickToGetJobRoleActionMenu(domainJobRole);
+				aVp.selectViewCommentsOption(domainJobRole);
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Comments by Assessor on')]]]]/div[1]")).getText().trim(), "Comments by Assessor on "+rejectedDate+" :");
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Comments by Assessor on')]]]]/div[2]")).getText().trim(), dmaRejectionRemarks);
 				aVp.clickToCloseViewComments();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
-				aVp.clickToGetActionMenuOptions();
-				aVp.selectReAssignMasterAssessorOption();
+				aVp.clickToGetJobRoleActionMenu(domainJobRole);
+				aVp.selectReAssignMasterAssessorOption(domainJobRole);
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
 				//Verifying Batch Details
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Batch ID')]]]]/div[2]/span")).getText().trim(),batchID);
@@ -2484,7 +2484,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+domainJobRoleCode+"')]")).getText().trim(), domainJobRoleCode);
 				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+dAssessmentStartDate+" to')]")).getText().trim(), dAssessmentStartDate+" to "+dAssessmentEndDate);
 				aVp.selectReAssignMasterAssessorForDomain1(dmasterAssessorName, dmasterAssessorID);
-				aVp.selectReAssignMasterAssessorForDomain2(dmasterAssessorName, dmasterAssessorID);
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
 				aVp.clickToSubmitReAssignedMasterAssessor();
 				if(i==3)
