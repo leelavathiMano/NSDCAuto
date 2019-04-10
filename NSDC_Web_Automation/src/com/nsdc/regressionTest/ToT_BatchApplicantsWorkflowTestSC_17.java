@@ -105,7 +105,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sscDbP.clickCreateBatch();
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
-		sscTbcP.selectSubSector(subSector);
+//		sscTbcP.selectSubSector(subSector);
 		sscTbcP.selectBatchType(batchType);
 		sscTbcP.selectBatchCategory(batchCategory);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls");
@@ -143,7 +143,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			sscTbcP.selectSubSector(subSector);
+//			sscTbcP.selectSubSector(subSector);
 			sscTbcP.selectBatchType(batchType);
 			sscTbcP.selectBatchCategory(batchCategory);
 			sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);

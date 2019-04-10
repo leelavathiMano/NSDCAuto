@@ -55,7 +55,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscDbP.clickCreateBatch();
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
-		sscTbcP.selectSubSector(subSector);
+//		sscTbcP.selectSubSector(subSector);
 		sscTbcP.selectBatchType(batchType);
 		sscTbcP.selectBatchCategory(batchCategory);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls");
@@ -93,7 +93,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			sscTbcP.selectSubSector(subSector);
+//			sscTbcP.selectSubSector(subSector);
 			sscTbcP.selectBatchType(batchType);
 			sscTbcP.selectBatchCategory(batchCategory);
 			sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
@@ -1657,7 +1657,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscDbP.clickCreateBatch();
 		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
-		sscTbcP.selectSubSector(subSector);
+//		sscTbcP.selectSubSector(subSector);
 		Thread.sleep(2000);
 		sscTbcP.selectBatchType(batchType);
 		Thread.sleep(2000);
@@ -1701,7 +1701,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			sscTbcP.selectSubSector(subSector);
+//			sscTbcP.selectSubSector(subSector);
 			sscTbcP.selectBatchType(batchType);
 			sscTbcP.selectBatchCategory(batchCategory);
 			sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);

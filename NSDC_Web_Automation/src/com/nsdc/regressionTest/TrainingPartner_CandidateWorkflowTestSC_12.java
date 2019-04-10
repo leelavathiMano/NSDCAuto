@@ -2,7 +2,9 @@ package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -597,10 +599,10 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[contains(text(),'"+jobRole2+"')]]]]//td[5]")).getText().trim(), subSector2);
     	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
        	tpMp.clickGoBack();
-       	Thread.sleep(6000);
-       	Thread.sleep(4000);
+       	WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		tpMp.enterCandidateIDToSearch(registeredCandidateID);
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		tpMp.clickToApplySearchFilters();
 		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,150)", "");
