@@ -224,10 +224,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		//Assigning Master Trainer for Domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
 		sVbP.selectDomainAssignMasterTrainerOption();
-//		sVbP.selectDomainMasterTrainerStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+dmasterTrainerID+" for Domain QP -"+domainJobRoleCode);
@@ -242,10 +238,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		//Assigning Master Trainer for Platform QP
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
 		sVbP.selectPlatformAssignMasterTrainerOption();
-//		sVbP.selectPlatformMasterTrainerStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+pmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+pmasterTrainerID+" for Platform QP -"+platformJobRoleCode);
@@ -260,10 +252,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
-//		sVbP.selectDomainAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dassessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+dassessmentAgencyID+" for Domain QP -"+domainJobRoleCode);
@@ -278,10 +266,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
-//		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
 		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+passessmentAgencyID+"')]")).size()==1,"OMG!!! No show of Searched Assessment Agency  - "+passessmentAgencyID+" for Platform QP -"+platformJobRoleCode);
@@ -680,7 +664,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				plp.clickOnProfileLogo();
 				Thread.sleep(2000);
 				plp.clickOnLogout();
-				Thread.sleep(2000);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			}
 		}
 		else
@@ -1066,7 +1050,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				plp.clickOnProfileLogo();
 				Thread.sleep(2000);
 				plp.clickOnLogout();
-				Thread.sleep(2000);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			}
 		}
 		else
@@ -1159,7 +1143,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", Integer.parseInt(serialNum), 76, formatter.format(date));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Accepted Successfully\nYou have successfully accepted\nBatchId - "+batchID);
 			aVp.clickOk();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0,"OMG!!! Accepted Batch - "+batchID+" should not be shown in pending section of - "+dassessmentAgencyID+" OR something is wrong! ");
 			//verifying accepted batches & assigning assessors
 			aVp.clickToViewAcceptedBatches();
@@ -1198,7 +1182,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-content")));
 			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "You have successfully assigned Assessor for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 			aVp.clickOk();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[9]")).getText().trim(), "Assigned Assessor");
 			aVp.clickToGetActionMenuOptions();
 			//After Assigning Master Assessor
@@ -1249,7 +1233,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
-			Thread.sleep(2000);
 		}		
 	}
 	
@@ -1557,7 +1540,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		sscDbP.clickAllBatches();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"sscall-batches-new","OMG!!! Navigation to All Batches New PAge is unsuccessfull OR its taking too much time to load!!! ");
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.clickToViewAllPublishedBatches();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -2285,7 +2267,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					sBp.clickOk();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 					//after Reassign, batch status should not be rejected
-					js.executeScript("window.scrollBy(0,-500)", "");
+					js.executeScript("window.scrollBy(0,-1000)", "");
 					sDp.clickToTToAToMTToMA();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 					sDp.clickAllBatches();

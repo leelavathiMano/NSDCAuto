@@ -50,19 +50,19 @@ public class SSCAllBatchesPage
 	}
 	public void clickToViewAllPendingBatches()
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Pending Batches")));
 		pendingBatchesSectionLink.click();
 	}
 	public void clickToViewAllPublishedBatches()
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Published Batches")));
 		publishedBatchesSectionLink.click();
 	}
 	public void enterBatchIDToSearch(String batchID)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
+		WebDriverWait wait=new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.visibilityOf(searchByBatchIDTextField));
 		searchByBatchIDTextField.clear();
 		searchByBatchIDTextField.sendKeys(batchID);
@@ -103,6 +103,8 @@ public class SSCAllBatchesPage
 	}
 	public void clickOk()
 	{
+		WebDriverWait wait=new WebDriverWait(driver,20);
+		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	//Batch Reschedule
