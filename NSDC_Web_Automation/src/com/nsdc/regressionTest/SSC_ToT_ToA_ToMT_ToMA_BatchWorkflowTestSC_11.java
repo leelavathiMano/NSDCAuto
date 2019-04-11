@@ -1215,31 +1215,34 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
 			//view Accepted TC details option - data verification
-			aVp.selectThisToViewDetailsOfAcceptedTC();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tcName")));
-			Assert.assertEquals(driver.findElement(By.id("tcName")).getAttribute("value").trim(), tcName);
-			Assert.assertEquals(driver.findElement(By.id("tcUserName")).getAttribute("value").trim(), tcID);
-			Assert.assertEquals(driver.findElement(By.id("tpName")).getAttribute("value").trim(), tpName);
-			Assert.assertEquals(driver.findElement(By.id("tpUserName")).getAttribute("value").trim(), "");
-//			Assert.assertEquals(driver.findElement(By.id("address")).getAttribute("value").trim(), tcAddress);
-			Assert.assertEquals(driver.findElement(By.id("landmark")).getAttribute("value").trim(), tcLandmark);
-			Assert.assertEquals(driver.findElement(By.id("pincode")).getAttribute("value").trim(), pincode);
-			Assert.assertEquals(driver.findElement(By.id("state")).getAttribute("value").trim(), state);
-			Assert.assertEquals(driver.findElement(By.id("district")).getAttribute("value").trim(), district);
-//			Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
-//			Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
-			Assert.assertEquals(driver.findElement(By.id("parliamentaryConstituency")).getAttribute("value").trim(), constituency);
-			Assert.assertEquals(driver.findElement(By.id("spocName")).getAttribute("value").trim(), tcSPOCName);
-			Assert.assertEquals(driver.findElement(By.id("email")).getAttribute("value").trim(), tcSPOCEmail);
-			Assert.assertEquals(driver.findElement(By.id("mobileNumber")).getAttribute("value").trim(), tcSPOCMobile);
-			aVp.clickOkToCloseAcceptedTCDetailsView();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			if(serialNum.equalsIgnoreCase("1"))
+			{
+				aVp.selectThisToViewDetailsOfAcceptedTC();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tcName")));
+				Assert.assertEquals(driver.findElement(By.id("tcName")).getAttribute("value").trim(), tcName);
+				Assert.assertEquals(driver.findElement(By.id("tcUserName")).getAttribute("value").trim(), tcID);
+				Assert.assertEquals(driver.findElement(By.id("tpName")).getAttribute("value").trim(), tpName);
+				Assert.assertEquals(driver.findElement(By.id("tpUserName")).getAttribute("value").trim(), "");
+				Assert.assertEquals(driver.findElement(By.id("address")).getAttribute("value").trim(), tcAddress);
+				Assert.assertEquals(driver.findElement(By.id("landmark")).getAttribute("value").trim(), tcLandmark);
+				Assert.assertEquals(driver.findElement(By.id("pincode")).getAttribute("value").trim(), pincode);
+				Assert.assertEquals(driver.findElement(By.id("state")).getAttribute("value").trim(), state);
+				Assert.assertEquals(driver.findElement(By.id("district")).getAttribute("value").trim(), district);
+				Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
+				Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
+				Assert.assertEquals(driver.findElement(By.id("parliamentaryConstituency")).getAttribute("value").trim(), constituency);
+				Assert.assertEquals(driver.findElement(By.id("spocName")).getAttribute("value").trim(), tcSPOCName);
+				Assert.assertEquals(driver.findElement(By.id("email")).getAttribute("value").trim(), tcSPOCEmail);
+				Assert.assertEquals(driver.findElement(By.id("mobileNumber")).getAttribute("value").trim(), tcSPOCMobile);
+				aVp.clickOkToCloseAcceptedTCDetailsView();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			}
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[2]")).getText().trim(), domainJobRole+"( "+domainJobRoleCode+" )");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[3]")).getText().trim(), dmasterAssessorName+"("+dmasterAssessorID+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[4]")).getText().trim(), dAssessmentStartDate+" to "+dAssessmentEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[5]")).getText().trim(), "Pending");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[2]")).getText().trim(), platformJobRole+"( "+platformJobRoleCode+" )");
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[3]")).getText().replaceAll(" ", ""), pmasterAssessorName+"("+pmasterAssessorID+")");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[3]")).getText().trim(), pmasterAssessorName+"("+pmasterAssessorID+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[4]")).getText().trim(), pAssessmentStartDate+" to "+pAssessmentEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[5]")).getText().trim(), "Pending");
 			PostLoginPage plp=new PostLoginPage(driver);
@@ -2115,12 +2118,12 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-content")));
 					sVbP.clickOk();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
-//					//after Reassign, batch status should not be rejected
-//					js.executeScript("window.scrollBy(0,-1000)", "");
+					//after Reassign, batch status should not be rejected
+					js.executeScript("window.scrollBy(0,-1000)", "");
 //					sDp.clickToTToAToMTToMA();
 //					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 //					sDp.clickAllBatches();
-//					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 					sVbP.clickGoBack();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 					sBp.clickToViewAllPendingBatches();
@@ -2463,6 +2466,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[5]")).getText().trim(), "Rejected");
 				aVp.clickToGetJobRoleActionMenu(domainJobRole);
 				aVp.selectViewCommentsOption(domainJobRole);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Comments by Assessor on')]]]]/div[1]")).getText().trim(), "Comments by Assessor on "+rejectedDate+" :");
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[strong[contains(text(),'Comments by Assessor on')]]]]/div[2]")).getText().trim(), dmaRejectionRemarks);
 				aVp.clickToCloseViewComments();
