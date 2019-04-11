@@ -239,10 +239,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		//Assigning Master Trainer for domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
 		sVbP.selectDomainAssignMasterTrainerOption();
-//		sVbP.selectDomainMasterTrainerStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
 		sVbP.clickToChooseDomainMasterTrainer();
@@ -252,10 +248,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		//Assigning Platform QP Master Trainer
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
 		sVbP.selectPlatformAssignMasterTrainerOption();
-//		sVbP.selectPlatformMasterTrainerStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
 		sVbP.clickToChoosePlatformMasterTrainer();
@@ -265,10 +257,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
-//		sVbP.selectDomainAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
 		sVbP.clickToChooseDomainAssessmentAgency();
@@ -278,10 +266,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
-//		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
 		sVbP.clickToChoosePlatformAssessmentAgency();
@@ -792,7 +776,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), state+"/"+city);
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+") , "+platformJobRole+" ("+platformJobRoleCode+")");  
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Applied");
-	   //Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), formatter.format(date));
 	   //Accepted Batch - View Details Data Verification
 	   aSp.clickToGetAcceptedBatchActionMenu(batchID);
 	   aSp.selectAcceptedBatchViewDetails(batchID);
@@ -1029,7 +1012,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   aDp.clickViewBatches();
 		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		   String batchID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 1);
-//		   String batchCreatedDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 2);
 		   String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 9);
 		   String batchEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 10);
 		   String domainTrainingStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 15);
@@ -1045,7 +1027,6 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), state+"/"+city);
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+") , "+platformJobRole+" ("+platformJobRoleCode+")");
 		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), "Enrolled");
-//		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), batchCreatedDate);
 		   AssessorApplicantViewBatchesPage aVp=new AssessorApplicantViewBatchesPage(driver);
 		   aVp.enterBatchIDTosearch(batchID);
 		   aVp.clickToGetSearchResult();
@@ -1234,7 +1215,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 	{
    	  	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Name of the Bank')]]]/div[2]")).getText().trim(), bankName);
    	 	}
-// 	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
+ 	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Reference No')]]]/div[2]")).getText().trim(), paymentReferenceNumber);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Amount')]]]/div[2]")).getText().trim(), batchFees);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Any Remarks')]]]/div[2]")).getText().trim(), paymentRemarks);
@@ -1375,7 +1356,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 			{
    	 				Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Name of the Bank')]]]/div[2]")).getText().trim(), bankName);
    	 			}
-// 	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
+ 	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Date of Payment')]]]/div[2]")).getText().trim(), paymentDate);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Reference No')]]]/div[2]")).getText().trim(), paymentReferenceNumber);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Amount')]]]/div[2]")).getText().trim(), batchFees);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Any Remarks')]]]/div[2]")).getText().trim(), paymentRemarks);
@@ -1413,7 +1394,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  	   	String pAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 21);
  	   	String pAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 22);
  	   	elp.performlogin(tcID, tcPassword);
- 	   WebDriverWait wait=new WebDriverWait(driver, 60);
+ 	   	WebDriverWait wait=new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;

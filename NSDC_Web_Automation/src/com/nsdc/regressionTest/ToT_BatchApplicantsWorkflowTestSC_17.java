@@ -228,7 +228,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.selectStateFilter(state);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.selectDistrictFilter(district);
-//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sVbP.enterTrainingCentreIDToSearch(tcID);
 		sVbP.clickToGetSearchFilterResult();
 		sVbP.clickToChooseResultedTrainingCentreToAssign();
@@ -238,10 +237,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		//Assigning Master Trainer for domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
 		sVbP.selectDomainAssignMasterTrainerOption();
-//		sVbP.selectDomainMasterTrainerStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainMasterTrainerDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
 		sVbP.clickToChooseDomainMasterTrainer();
@@ -251,10 +246,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		//Assigning Platform QP Master Trainer
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
 		sVbP.selectPlatformAssignMasterTrainerOption();
-//		sVbP.selectPlatformMasterTrainerStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformMasterTrainerDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterPlatformMasterTrainerIDToSearch(pmasterTrainerID);
 		sVbP.clickToGetPlatformMasterSearchFilterResult();
 		sVbP.clickToChoosePlatformMasterTrainer();
@@ -264,10 +255,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
-//		sVbP.selectDomainAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectDomainAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterDomainAssessmentAgencyIDToSearch(dassessmentAgencyID);
 		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
 		sVbP.clickToChooseDomainAssessmentAgency();
@@ -277,10 +264,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
-//		sVbP.selectPlatformAssessmentAgencyStateFilter(state);
-//		Thread.sleep(2000);
-//		sVbP.selectPlatformAssessmentAgencyDistrictFilter(district);
-//		Thread.sleep(2000);
 		sVbP.enterPlatformAssessmentAgencyIDToSearch(passessmentAgencyID);
 		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
 		sVbP.clickToChoosePlatformAssessmentAgency();
