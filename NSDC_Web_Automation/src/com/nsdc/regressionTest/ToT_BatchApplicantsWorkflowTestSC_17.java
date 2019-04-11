@@ -1020,16 +1020,15 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		String platformTrainingEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 20);
     		String platformAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 21);
     		String platformAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 22);
+    		TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
+    		tVp.enterBatchIDTosearch(batchID);
+    		tVp.clickToGetSearchResult();
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[1]")).getText().trim(), batchID);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchType);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), state+"/"+city);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), domainJobRole+" ("+domainJobRoleCode+") , "+platformJobRole+" ("+platformJobRoleCode+")");
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Enrolled");
-//    		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchCreatedDate);
-    		TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
-    		tVp.enterBatchIDTosearch(batchID);
-    		tVp.clickToGetSearchResult();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
     		tVp.clickToGetEnrolledBatchActionMenu(batchID);
     		tVp.selectAddPaymentDetailsForEnrolledBatchOption(batchID);
   	 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -1980,7 +1979,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		elp.performlogin(trainerID, applicantPassword);
  	   		TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
  	   		tDp.clickToGetApplicantDashboard();
- 	   		WebDriverWait wait=new WebDriverWait(driver, 10);
+ 	   		WebDriverWait wait=new WebDriverWait(driver, 20);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   		tDp.clickSearchAndApplyforAvailableBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -2042,13 +2041,15 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			tDp.clickToGetApplicantDashboard();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			tDp.clickViewBatches();
+ 	   		JavascriptExecutor js=(JavascriptExecutor)driver;
+ 	   		js.executeScript("window.scrollBy(0,200)", "");
+ 	   		Thread.sleep(2000);
+ 	   		tDp.clickViewBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
-			plp.clickOnLogout();
  	   	}
     }
         
@@ -2183,12 +2184,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   		tDp.clickToGetApplicantDashboard();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   		js.executeScript("window.scrollBy(0,200)", "");
+	   		Thread.sleep(2000);
 	   		tDp.clickViewBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
 	   		plp.clickOnProfileLogo();
 	   		Thread.sleep(3000);
-	   		plp.clickOnLogout();
 	   	}
     }
     

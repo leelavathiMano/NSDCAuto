@@ -2044,7 +2044,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			tDp.clickToGetApplicantDashboard();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			tDp.clickViewBatches();
+ 	   		JavascriptExecutor js=(JavascriptExecutor)driver;
+	   		js.executeScript("window.scrollBy(0,200)", "");
+	   		Thread.sleep(2000);
+ 	   		tDp.clickViewBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -2186,6 +2189,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   		tDp.clickToGetApplicantDashboard();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   		js.executeScript("window.scrollBy(0,200)", "");
+	   		Thread.sleep(2000);
 	   		tDp.clickViewBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
