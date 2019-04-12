@@ -10,13 +10,13 @@ public class TP_FeeBased_DashboardPage
 	
 	WebDriver driver;
 	
-	@FindBy(xpath="//div[p[text()='View Training Centres']]")
+	@FindBy(xpath="//div[p[text()='Add/View Training Centres']]")
 	private WebElement viewAllTrainingCentreButton;
-	@FindBy(xpath="//div[p[text()='View Sector & Courses']]")
+	@FindBy(xpath="//div[p[text()='Add/View Sector & Courses']]")
 	private WebElement viewSectorAndCoursesButton;
-	@FindBy(xpath="//div[p[text()='View Trainers']]")
+	@FindBy(xpath="//div[p[text()='Add/View Trainers']]")
 	private WebElement viewTrainersButton;
-	@FindBy(xpath="//div[p[text()='View Assessment Agency & Assessors']]")
+	@FindBy(xpath="//div[p[text()='Add/View Assessment Agency & Assessors']]")
 	private WebElement viewAssessmentAgencyButton;
 	
 	public TP_FeeBased_DashboardPage(WebDriver driver) 
