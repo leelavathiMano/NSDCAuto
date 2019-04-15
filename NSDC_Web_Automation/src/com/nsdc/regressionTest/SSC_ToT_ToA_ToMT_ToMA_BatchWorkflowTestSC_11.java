@@ -2712,10 +2712,10 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		lTcVbP.clikToGetBatchActionMenu();
 		lTcVbP.selectAcceptBatchOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		lTcVbP.clickToAcceptBatch();
 		lTcVbP.clickOk();
 		PostLoginPage plp=new PostLoginPage(driver);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		plp.clickOnProfileLogo();
 		Thread.sleep(1000);
@@ -2737,6 +2737,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		tVp.clickToGetActionMenuOptions(batchID);
 		tVp.clickToSelectAcceptBatchOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		tVp.clickToSubmit();
 		tVp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
@@ -2744,6 +2745,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//Assigned Assessment Agency accepting batch
 		lp.clickLogin();
 		elp.performlogin(assessmentAgencyID, assessmentAgencyPassword);
 		AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
@@ -2756,6 +2758,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		aVp.clickToGetActionMenuOptions();
 		aVp.clickToSelectAcceptBatchOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		aVp.clickToSubmitBatchAcceptance();
 		aVp.clickOk();
 		//assigning assessors
@@ -2768,6 +2771,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		aVp.clickToGetActionMenuOptions();
 		aVp.clickToSelectAssignAssessorsOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		aVp.selectMasterAssessorForDomain1(masterAssessorName+"("+masterAssessorID+")");
 		aVp.selectMasterAssessorForDomain2(masterAssessorName+"("+masterAssessorID+")");
 		aVp.clickToSubmitMasterAssessors();
@@ -2793,6 +2797,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		js.executeScript("window.scrollBy(0,200)", "");
 		maVp.clickToGetActionMenuOptions(batchID);
 		maVp.clickToSelectAcceptBatchOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		maVp.clickToSaveAndSubmitBatchAccceptance();
 		maVp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
