@@ -152,13 +152,13 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		closeTrainingEndDateCalenderIcon.click();
 	}
-	public void selectDomainJobRole(String domainJobRole) throws InterruptedException
+	public void selectDomainJobRole(String domainJobRole, String domainJobRoleCode) throws InterruptedException
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(domainJobRoleCheckBoxList));
 		domainJobRoleCheckBoxList.click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[text()='"+domainJobRole+"'])[1]")).click();
+		driver.findElement(By.xpath("(//label[contains(text(),'"+domainJobRole+" - "+domainJobRoleCode+"')])[1]")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//span[contains(text(),'Domain Job Role')]")).click();
 	}
