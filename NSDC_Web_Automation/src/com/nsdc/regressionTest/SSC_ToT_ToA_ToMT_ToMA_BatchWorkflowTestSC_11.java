@@ -3019,7 +3019,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		SSC_BatchReSchedulePage sRp=new SSC_BatchReSchedulePage(driver);
 		sRp.clickToSubmitRescheduledBatch();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
-		Assert.assertEquals(driver.findElement(By.id("swal2-title")), "Batch Rescheduled Successfully!!");
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Rescheduled Successfully!!");
 		sRp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sAp.clickToViewAllPublishedBatches();
