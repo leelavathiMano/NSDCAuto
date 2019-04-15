@@ -2996,9 +2996,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sAp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='sector']")).getAttribute("value").trim(), expectedSector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[1]")).getAttribute("value").trim(), subSector);
-		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[2]")).getAttribute("value").trim(), batchType);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='reAssessmentBatch']")).getAttribute("value").trim(), batchCategory);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[1]")).getAttribute("value").trim(), subSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[2]")).getAttribute("value").trim(), batchType);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='reAssessmentBatch']")).getAttribute("value").trim(), batchCategory);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='batchstart']")).getAttribute("value").trim(), batchStartDate.replaceAll("-", "/"));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='batchendDate']")).getAttribute("value").trim(), batchEndDate.replaceAll("-", "/"));
 		Assert.assertTrue(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+domainJobRoleCode+"')]]]//input[@type='radio']")).isSelected());
@@ -3017,7 +3017,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='assessmentEnd'])[1]")).getAttribute("value").trim(), pAssessmentEndDate.replaceAll("-", "/"));
 		SSC_BatchReSchedulePage sRp=new SSC_BatchReSchedulePage(driver);
 		sRp.clickToSubmitRescheduledBatch();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")), "Batch Rescheduled Successfully!!");
 		sRp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sAp.clickToViewAllPublishedBatches();
