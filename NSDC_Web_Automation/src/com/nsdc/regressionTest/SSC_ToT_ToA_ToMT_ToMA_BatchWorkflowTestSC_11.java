@@ -2965,7 +2965,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
-		//SSC Rejecting Batch Reschedule
+		//SSC Approving Batch Reschedule Request but not changing training dates.
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
    	 	lp.clickLogin();
    	 	elp.performlogin(sscUsername, sscPassword);
@@ -2973,6 +2973,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
    	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
    	 	sDp.clickAllBatches();
 	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
    	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
    	 	sAp.clickToViewAllPublishedBatches();
    	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
