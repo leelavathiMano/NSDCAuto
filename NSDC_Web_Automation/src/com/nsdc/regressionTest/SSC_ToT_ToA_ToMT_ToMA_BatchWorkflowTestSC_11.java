@@ -3317,7 +3317,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lTcVbP.enterCommentsForBatchCancellation(batchCancellationComments);
 		lTcVbP.clickToSubmitBatchCancellation();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
-//		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
@@ -3356,7 +3356,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
 		sAp.clickToRejectBatchCancellationRequest();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
-//		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Rejected\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") "+batchID+" has been rejected");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Rejected\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") "+batchID+" has been rejected");
 		sAp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
@@ -3421,7 +3421,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lTcVbP.enterCommentsForBatchCancellation(batchCancellationComments);
 		lTcVbP.clickToSubmitBatchCancellation();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
-//		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
 		lTcVbP.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
@@ -3460,7 +3460,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
 		sAp.clickToApproveBatchCancellationRequest();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
-//		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Batch Cancelled Successfully!!\n"+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been cancelled");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Batch Cancelled Successfully!!\n"+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been cancelled");
 		sAp.clickOk();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
