@@ -835,8 +835,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
  	   tcVp.clickToViewAllAcceptedBatches();
+ 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   tcVp.enterToSearchForBatchID(batchID);
  	   tcVp.clickToGetSearchResult();
+ 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[2]")).getText().trim(), batchID);
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[3]")).getText().trim(), batchType);
@@ -846,6 +848,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
  	   tcVp.clikToGetBatchActionMenu();
  	   tcVp.selectEnrollApplicantsOption();
+ 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+trainerID+"']]")).size()==1,"OMG!!! No show of Trainer Applicant - "+trainerID+" who has applied for the Batch - "+batchID+" OR Something went wrong! ");
  	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), trainerID);
  	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), name);
@@ -853,6 +856,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[5]")).getText().trim(), mobile);
  	   tcVp.clickToGetApplicantActionMenu(trainerID);
  	   tcVp.selectViewDetailsOfApplicantOption(trainerID);
+ 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 	   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -940,6 +944,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   {
  		   tcVp.clickToGetApplicantActionMenu(trainerID);
  		   tcVp.selectViewDetailsOfApplicantOption(trainerID);
+ 		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
 		   Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -2008,6 +2013,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
  	   		tcVp.clickToViewAllAcceptedBatches();
  			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 			tcVp.enterToSearchForBatchID(batchID);
+ 			tcVp.clickToGetSearchResult();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
  	   		tcVp.clikToGetBatchActionMenu();
  	   		tcVp.selectEnrollApplicantsOption();
@@ -2043,10 +2051,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		Thread.sleep(2000);
  	   		tDp.clickViewBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
+ 	   		TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
+ 	   		tVp.enterBatchIDTosearch(batchID);
+ 	   		tVp.clickToGetSearchResult();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
+			plp.clickOnLogout();
  	   	}
     }
         
@@ -2099,6 +2111,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
  	   		tcVp.clickToViewAllAcceptedBatches();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		tcVp.enterToSearchForBatchID(batchID);
+ 	   		tcVp.clickToGetSearchResult();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
  	   		tcVp.clikToGetBatchActionMenu();
@@ -2183,10 +2198,14 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   		js.executeScript("window.scrollBy(0,200)", "");
 	   		Thread.sleep(2000);
 	   		tDp.clickViewBatches();
+	   		TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
+ 	   		tVp.enterBatchIDTosearch(batchID);
+ 	   		tVp.clickToGetSearchResult();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 	   		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), "Rejected");
 	   		plp.clickOnProfileLogo();
-	   		Thread.sleep(3000);
+	   		Thread.sleep(2000);
+	   		plp.clickOnLogout();
 	   	}
     }
     

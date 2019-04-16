@@ -27,13 +27,15 @@ import com.nsdc.pages.SSC_BatchReSchedulePage;
 import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
 import com.nsdc.pages.SSC_ViewBatchDetailsPage;
+import com.nsdc.pages.TrainerApplicantDashboardPage;
+import com.nsdc.pages.TrainerApplicantSearchAndApplyForAvailableBatchesPage;
 import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerViewBatchesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfiguration
 {
-	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
+	String configBatchSector=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 28);
 	@DataProvider
 	public Object[][] sscBatchCreationData() throws Exception
 	{
@@ -1062,7 +1064,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//strong[contains(text(),'Assessment Requests')])[1]")));
 			JavascriptExecutor js=(JavascriptExecutor)driver;
 			js.executeScript("window.scrollBy(0,200)", "");
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aDp.clickBatchAssessmentRequests();
@@ -3488,5 +3489,84 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
+	}
+	
+	//Batch Full Test Case
+	@DataProvider
+    public Object[][] totApplicantsData()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants");
+    }
+    @Test(dataProvider="totApplicantsData", dependsOnMethods={"masterAssessorBatchApprovalTC_05", "masterTrainerBatchApprovalTC_03"})
+    public void batchFullTC_19(String serialNum, String trainerID, String paymentDate, String userType, String name, String email, String mobile, String applicantPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String paymentMode, String bankName, String paymentReferenceNumber, String paymentRemarks) throws Exception
+    {
+    	if(serialNum.equals("1")||serialNum.equals("2"))
+	   	{
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			String batchID=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", 1, 1);
+			String tcID=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 4);
+			String tcPassword=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 5);
+			String tcState=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 19);
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+ 	   		LoginPage lp=new LoginPage(driver);
+ 	   		lp.clickLogin();
+ 	   		EnterLoginPage elp=new EnterLoginPage(driver);
+ 	   		//Applicant Applying for batch
+ 	   		elp.performlogin(trainerID, applicantPassword);
+ 	   		TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
+ 	   		tDp.clickToGetApplicantDashboard();
+ 	   		WebDriverWait wait=new WebDriverWait(driver, 20);
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		tDp.clickSearchAndApplyforAvailableBatches();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
+ 	   		tSp.selectState(tcState);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			tSp.selectSector(configBatchSector);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			tSp.clickSearch();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
+			tSp.clickToGetBatchActionMenu(batchID);
+			tSp.selectApplyToBatch(batchID);
+			tSp.clickOK();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
+			plp.clickOnLogout();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+ 	   		//TC Approving Applicants
+			lp.clickLogin();
+ 	   		elp.performlogin(tcID, tcPassword);
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
+ 	   		tcDp.clickToViewBatches();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
+ 	   		tcVp.clickToViewAllAcceptedBatches();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+ 	   		tcVp.clikToGetBatchActionMenu();
+ 	   		tcVp.selectEnrollApplicantsOption();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		tcVp.clickToGetApplicantActionMenu(trainerID);
+ 	   		tcVp.selectEnrollApplicantOption(trainerID);
+ 	   		if(serialNum.equals("2"))
+ 	   		{
+ 	   			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
+ 	   			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Can not enroll more candidates than batch size, please check total number of enrolled / approved candidates count");
+ 	   		}
+ 	   		else
+ 	   		{
+ 	   			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+ 	   			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("approved successfully"),"OMG!!! Applicant Enroll Successfull Popup Text not displayed OR Something went wrong! ");
+ 	   			tcVp.clickOk();
+ 	   			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+ 	   		}
+ 	   		plp.clickOnProfileLogo();
+ 	   		Thread.sleep(2000);
+ 	   		plp.clickOnLogout();
+ 	   	}
 	}
 }
