@@ -489,8 +489,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-			js.executeScript("window.scrollBy(0,200)", "");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
 			aVp.clickToGetActionMenuOptions();
 			aVp.clickToSelectAcceptBatchOption();
 			aVp.enterRemarksForAcceptingBatch(daaBatchAcceptanceRemarks);
@@ -504,7 +503,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", Integer.parseInt(serialNo), 61, formatter.format(date));
 			aVp.clickOk();
 			//assigning assessors
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aVp.clickToViewAcceptedBatches();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			aVp.enterBatchIdToSearch(batchID);
