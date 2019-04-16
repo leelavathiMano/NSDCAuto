@@ -937,7 +937,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  		   tcVp.clickOk();
  	 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   tcVp.clickToViewAllAcceptedBatches();
- 	 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+ 	 	   tcVp.enterToSearchForBatchID(batchID);
+ 	 	   tcVp.clickToGetSearchResult();
+ 	 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  		   Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Submitted for Approval");
  	   }
  	   else
@@ -2198,6 +2201,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 	   		js.executeScript("window.scrollBy(0,200)", "");
 	   		Thread.sleep(2000);
 	   		tDp.clickViewBatches();
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	   		TrainerApplicantViewBatchesPage tVp=new TrainerApplicantViewBatchesPage(driver);
  	   		tVp.enterBatchIDTosearch(batchID);
  	   		tVp.clickToGetSearchResult();

@@ -1,7 +1,6 @@
 package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -40,67 +39,45 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
-		sscDbP.clickToTToAToMTToMA();
-		Thread.sleep(3000);
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(2000);
 		sscDbP.clickAllBatches();
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='m-blockui ']"))));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.enterBatchIDToSearch(batchID);
-		Thread.sleep(5000);
 		sAp.clickToGetSearchResult();
-		Thread.sleep(5000);
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sAp.clickToGetBatchActionMenu(batchID);
 		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Assign')]")).click();	
-		Thread.sleep(5000);
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		//Add Exceptional Training Centre
 		SSC_ExceptionalTraningCentreCreationPage eTCp=new SSC_ExceptionalTraningCentreCreationPage(driver);
 		eTCp.clickAddExceptionalTC();
-		Thread.sleep(4000);
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		eTCp.enterTrainingPartnerName(tpName);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreName(exceptionalTCName);
-		Thread.sleep(4000);
 		eTCp.enterWebsite(website);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreCapacity(capacity);
-		Thread.sleep(4000);
 		if(!smartID.equalsIgnoreCase("N/A"))
 		{
 			eTCp.enterSmartIDforExceptionalTC(smartID);
-			Thread.sleep(3000);
 		}
 		eTCp.selectResidentialFacilityAvailableForAll();
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreHeadName(exceptionalTCHeadName);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreHeadMobile(exceptionalTCHeadMobile);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreHeadEmail(exceptionalTCHeadEmail);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreSPOCName(exceptionalTCSPOCName);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreSPOCMobile(exceptionalTCSPOCMobile);
-		Thread.sleep(4000);
 		eTCp.enterExceptionalTrainingCentreSPOCEmail(exceptionalTCSPOCEmail);
-		Thread.sleep(4000);
 		eTCp.clickToBrowseExceptionalTCSPOCIDProof();
-		Thread.sleep(4000);
 		UploadFile.upload(exceptionalTCSPOCID);
-		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTCSPOCIDProof();
-		Thread.sleep(8000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
 		if(!exceptionalTCAddress.equalsIgnoreCase("N/A"))
 		{
 			eTCp.enterExceptionalTCAddress(exceptionalTCAddress);
-			Thread.sleep(4000);
 		}
 		if(!exceptionalTCLandmark.equalsIgnoreCase("N/A"))
 		{
 			eTCp.enterExceptionalTCLandmark(exceptionalTCLandmark);
-			Thread.sleep(4000);
 		}
 		Assert.assertTrue(driver.findElement(By.xpath("//div[span[span[contains(text(),'"+country+"')]]]")).getAttribute("class").contains("disabled"),"OMG!!! Country dropdown is not disabled OR Something went wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+country+"')]")).getText().trim(), country);
@@ -119,26 +96,19 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			Thread.sleep(4000);
 		}
 		eTCp.enterExceptionalTrainingCentreGeoLocation(geoLocation);
-		Thread.sleep(4000);
 		if(!village.equalsIgnoreCase("N/A"))
 		{
 			eTCp.enterExceptionalTrainingCentreVillage(village);
-			Thread.sleep(4000);
 		}
 		eTCp.enterExceptionalTrainingCentrePincode(pincode);
-		Thread.sleep(4000);
 		eTCp.clickToBrowseExceptionalTrainingCentrePhoto();
-		Thread.sleep(4000);
 		UploadFile.uploadingFiveExceptionalTC_Photos(exceptionalTCPhoto);
-		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTrainingCentrePhoto();
-		Thread.sleep(8000);
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		eTCp.clickToBrowseExceptionalTrainingCentreSupportDoc();
-		Thread.sleep(4000);
 		UploadFile.upload(exceptionalTCSupportDoc);
-		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTrainingCentreSupportDoc();
-		Thread.sleep(8000);
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		Assert.assertTrue(driver.findElement(By.xpath("//div[span[span[contains(text(),'"+sector+"')]]]")).getAttribute("class").contains("disabled"),"OMG!!! Sector dropdown is not disabled OR Something went wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//span[span[contains(text(),'"+sector+"')]]")).getText().trim(), sector);
 		eTCp.selectExceptionalTrainingCentreSubSector(subSector);
@@ -174,32 +144,30 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		if(serialNum.equals("1")) //Assigning Created Exceptional TC Directly to a Batch
 		{
 			eTCp.clickToFinallyCreateExceptionalTrainingCentre();
-			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Add - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
-			Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! Something went wrong! After clicking Add Button!");
-			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
+			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"),"OMG!!! Something went wrong! After clicking Add Button!");
 			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
 			SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 			sscTbcP.clickOk();
-			Thread.sleep(4000);
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
-			Thread.sleep(4000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			lp.clickLogin();
 			elp.performlogin(createdExceptionalTCID, "ekaushal");
-			Thread.sleep(4000);
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			RegistrationPage rp = new RegistrationPage(driver);
 			rp.enterOldPassword("ekaushal");
 		    rp.enterNewPassword("Qwerty@123");
 		    rp.enterConfirmPassword("Qwerty@123");
 		    rp.clickResetResubmit();
-		    Thread.sleep(2000);
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		    rp.clickConfirmationOkMessage();
 		    elp.performlogin(createdExceptionalTCID, "Qwerty@123");
-		    Thread.sleep(8000);
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		    plp.clickOnProfileLogo();
 		    Thread.sleep(2000);
 		    plp.clickOnLogout();
@@ -208,13 +176,10 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		else
 		{
 			eTCp.clickToAssignCurrentlyCreatingExceptionalTrainingCentre();
-			Thread.sleep(4000);
-			Assert.assertTrue(driver.findElements(By.xpath("//div[@class='toast-message']")).size()==0,"OMG!!! Assign - Toast Message exists, Either Duplicate SPOC credentials OR Something went wrong! ");
-			Assert.assertTrue(driver.findElements(By.id("swal2-title")).size()!=0,"OMG!!! Something went wrong! After clicking Assign Button!");
-			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("Assigned Successfully"));
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
+			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("Assigned Successfully"),"OMG!!! Something went wrong! After clicking Assign Button!");
 			eTCp.clickOK();
-			Thread.sleep(4000);
-			Assert.assertTrue(driver.getCurrentUrl().replaceAll("/", "").contains("batch-assignment"),"OMG!!! Assign Just Created TC Button is not naviogated to Batch Assignment Page OR Something is wrong! ");
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'EXPTC_')]]/td[span[contains(text(),'Assigned')]]")).getText().trim(), "Assigned");
 			String createdExceptionalTCID=driver.findElement(By.xpath("//td[contains(text(),'EXPTC_')]")).getText().trim();
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1,createdExceptionalTCID);
@@ -222,10 +187,10 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
-			Thread.sleep(4000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			lp.clickLogin();
 			elp.performlogin(createdExceptionalTCID, "ekaushal");
-			Thread.sleep(4000);
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			RegistrationPage rp = new RegistrationPage(driver);
 			rp.enterOldPassword("ekaushal");
 			rp.enterNewPassword("Qwerty@123");
@@ -234,7 +199,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			Thread.sleep(2000);
 			rp.clickConfirmationOkMessage();
 			elp.performlogin(createdExceptionalTCID, "Qwerty@123");
-			Thread.sleep(8000);
+		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
