@@ -80,7 +80,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	String platformMasterAssessorID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 38); 
 	String platformMasterAssessorName=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 39); 
    	String platformMasterAssessorPassword=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 40);
-   
+   	String batchDomainJobRoleVersion=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 51);
+	String batchPlatformJobRoleVersion=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 52);
+   	
 	@DataProvider()
     public Object[][] toaBatchData() throws Exception
     {
@@ -133,7 +135,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
-		sscTbcP.selectDomainJobRole(domainJobRole);
+		sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
 		//Sometimes platform job role will not be available
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")));
 		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
@@ -160,7 +162,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
 			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 			ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
-			sscTbcP.selectDomainJobRole(domainJobRole);
+			sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
 			driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
 			sscTbcP.selectPlatformJobRole(platformJobRole);
 		}
@@ -713,7 +715,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 // 		   aSp.selectSubSector(batchSubSector);
 // 		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
- 		   aSp.selectjobRole(domainJobRole);
+ 		   aSp.selectjobRole(domainJobRole, domainJobRoleCode, batchDomainJobRoleVersion);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   aSp.selectBatchType(batchType);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));

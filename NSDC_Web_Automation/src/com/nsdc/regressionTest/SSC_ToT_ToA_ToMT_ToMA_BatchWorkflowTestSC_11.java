@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AssessmentAgencyDashboardPage;
 import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
 import com.nsdc.pages.AssessorDashboardPage;
@@ -22,16 +23,19 @@ import com.nsdc.pages.LocationBasedTC_ViewBatchesPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.SSCAllBatchesPage;
+import com.nsdc.pages.SSC_BatchReSchedulePage;
 import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
 import com.nsdc.pages.SSC_ViewBatchDetailsPage;
+import com.nsdc.pages.TrainerApplicantDashboardPage;
+import com.nsdc.pages.TrainerApplicantSearchAndApplyForAvailableBatchesPage;
 import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerViewBatchesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfiguration
 {
-	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
+	String configBatchSector=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 28);
 	@DataProvider
 	public Object[][] sscBatchCreationData() throws Exception
 	{
@@ -46,7 +50,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		WebDriverWait wait=new WebDriverWait(driver,120);
+		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -82,7 +86,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 9, trainingStartDate);
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 10, trainingEndDate);
-		sscTbcP.selectDomainJobRole(domainJobRole);
+		sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
 		//Sometimes platform job role will not be available
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")));
 		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
@@ -109,7 +113,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 9, trainingStartDate);
 			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 10, trainingEndDate);
-			sscTbcP.selectDomainJobRole(domainJobRole);
+			sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
 			driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
 			sscTbcP.selectPlatformJobRole(platformJobRole);
 		}
@@ -321,7 +325,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			//After Batch Submission with status Pending For Publish
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending for Publish");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending to be Publish");
 			sscTbcP.clickBatchAction(createdBatchID);
 			sscTbcP.clickViewDetailsOption(createdBatchID);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));	
@@ -536,7 +540,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), tcName+" ("+tcID+")");
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), state );
 				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), district);
-				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Pending for Publish");
+				Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Pending to be Publish");
 				if(serialNum.equals("1"))
 				{
 					tVp.clickToGetActionMenuOptions(batchID);
@@ -692,7 +696,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[4]")).getText().trim(), tcName+" ("+tcID+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[5]")).getText().trim(), state );
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), district);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Pending for Publish");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Pending to be Publish");
 			tVp.clickToGetActionMenuOptions(batchID);
 			tVp.clickToSelectViewDetailsOption(batchID);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -1060,7 +1064,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//strong[contains(text(),'Assessment Requests')])[1]")));
 			JavascriptExecutor js=(JavascriptExecutor)driver;
 			js.executeScript("window.scrollBy(0,200)", "");
-			Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"assessmentagency","Login Unsuccessful!!! ");
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aDp.clickBatchAssessmentRequests();
@@ -1226,7 +1229,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[4]")).getText().trim(), dAssessmentStartDate+" to "+dAssessmentEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRole+"')]]/td[5]")).getText().trim(), "Pending");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[2]")).getText().trim(), platformJobRole+"( "+platformJobRoleCode+" )");
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[3]")).getText().trim(), pmasterAssessorName+"("+pmasterAssessorID+")");
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[3]")).getText().trim(), pmasterAssessorName+" ("+pmasterAssessorID+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[4]")).getText().trim(), pAssessmentStartDate+" to "+pAssessmentEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[5]")).getText().trim(), "Pending");
 			PostLoginPage plp=new PostLoginPage(driver);
@@ -1677,7 +1680,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 9, trainingStartDate);
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 10, trainingEndDate);
-		sscTbcP.selectDomainJobRole(domainJobRole);
+		sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
 		//Sometimes platform job role will not be available
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")));
 		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
@@ -1704,7 +1707,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 9, trainingStartDate);
 			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 10, trainingEndDate);
-			sscTbcP.selectDomainJobRole(domainJobRole);
+			sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
 			driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
 			sscTbcP.selectPlatformJobRole(platformJobRole);
 		}
@@ -1820,7 +1823,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
@@ -2078,9 +2081,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				sVbP.selectReAssignDomainMasterTrainerOption(domainJobRoleCode);
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-//				sVbP.selectReAssignMasterTrainerState(state);
-//				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-//				sVbP.selectReAssignMasterTrainerDistrict(district);
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 				sVbP.clickToGetSearchFilterResult();
@@ -2102,9 +2102,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 					//after Reassign, batch status should not be rejected
 					js.executeScript("window.scrollBy(0,-1000)", "");
-//					sDp.clickToTToAToMTToMA();
-//					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-//					sDp.clickAllBatches();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 					sVbP.clickGoBack();
 					wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -2156,7 +2153,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				}
 				else
 				{
-					String reAssignedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 101);
+					String reAssignedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 91);
 					Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[10]")).getText().trim(), reAssignedDate);
 				}
 				aVp.clickToGetActionMenuOptions();
@@ -2195,7 +2192,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				}
 				else
 				{
-					String reAssignedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 101);
+					String reAssignedDate=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection", Integer.parseInt(serialNum), 91);
 					Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[11]")).getText().trim(), reAssignedDate);
 				}
 				PostLoginPage plp=new PostLoginPage(driver);
@@ -2472,6 +2469,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
 					Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Cannot Assign Assessor");
 					aVp.clickToCancel();
+					Thread.sleep(6000);
 				}
 				else
 				{
@@ -2488,5 +2486,1087 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			}
 		}
+	}
+	
+	//Re-Shedule Cancel
+	@DataProvider
+	public Object[][] rescheduleCancelBatchData()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel");
+	}
+	@Test(dataProvider="rescheduleCancelBatchData")
+	public void rescheduleCancelBatchCreationTC_12(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(sscUsername, sscPassword);
+		WebDriverWait wait=new WebDriverWait(driver,60);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
+		sscDbP.clickToTToAToMTToMA();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,150)", "");
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]"))));
+		sscDbP.clickCreateBatch();
+		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
+		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
+//		sscTbcP.selectSubSector(subSector);
+		sscTbcP.selectBatchType(batchType);
+		sscTbcP.selectBatchCategory(batchCategory);
+		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls");
+		String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 58);
+		String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 59);
+		String configDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 60);
+		String configDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 61);
+		String configDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 62);
+		String configDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 63);
+		String configPlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 64);
+		String configPlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 65);
+		String configPlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 66);
+		String configPlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 67);
+		sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
+		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+		{
+			sscTbcP.selectTrainingEndDateForNewBatch(configBatchEndDate);
+		}
+		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+		{
+			sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
+		}
+		String trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 9, trainingStartDate);
+		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 10, trainingEndDate);
+		sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
+		//Sometimes platform job role will not be available
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")));
+		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
+		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
+		{
+			js.executeScript("window.scrollBy(0,-1000)", "");
+			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+//			sscTbcP.selectSubSector(subSector);
+			sscTbcP.selectBatchType(batchType);
+			sscTbcP.selectBatchCategory(batchCategory);
+			sscTbcP.selectTrainingStartDateForBatch(configBatchStartDate);
+			if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+			{
+				sscTbcP.selectTrainingEndDateForNewBatch(configBatchEndDate);
+			}
+			else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+			{
+				sscTbcP.selectTrainingEndDateForExistingBatch(configBatchEndDate);
+			}
+			trainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
+			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 9, trainingStartDate);
+			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
+			ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 10, trainingEndDate);
+			sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
+			driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
+			sscTbcP.selectPlatformJobRole(platformJobRole);
+		}
+		else
+		{
+			sscTbcP.selectPlatformJobRole(platformJobRole);
+		}
+		//Domain QP
+		sscTbcP.clickToChooseDomainQP();
+		sscTbcP.selectDomainTrainingStartDate(configDomainTrainingStartDate);
+		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+		{
+			sscTbcP.selectDomainTrainingEndDateForNewBatch(configDomainTrainingEndDate);
+			sscTbcP.selectDomainAssessmentStartDateForNewBatch(configDomainAssessmentStartDate);
+			sscTbcP.selectDomainAssessmentEndDateForNewBatch(configDomainAssessmentEndDate);
+		}
+		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+		{
+			sscTbcP.selectDomainTrainingEndDateForExistingBatch(configDomainTrainingEndDate);
+			sscTbcP.selectDomainAssessmentStartDateForExistingBatch(configDomainAssessmentStartDate);
+			sscTbcP.selectDomainAssessmentEndDateForExistingBatch(configDomainAssessmentEndDate);
+		}
+		String domainTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		String domainTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		String domainAssessmentStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		String domainAssessmentEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 15, domainTrainingStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 16, domainTrainingEndDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 17, domainAssessmentStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 18, domainAssessmentEndDate);
+		//Platform QP
+		sscTbcP.clickToChoosePlatformQP();
+		sscTbcP.selectPlatformTrainingStartDate(configPlatformTrainingStartDate);
+		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+		{
+			sscTbcP.selectPlatformTrainingEndDateForNewBatch(configPlatformTrainingEndDate);
+			sscTbcP.selectPlatformAssessmentStartDateForNewBatch(configPlatformAssessemntStartDate);
+			sscTbcP.selectPlatformAssessmentEndDateForNewBatch(configPlatformAssessemntEndDate);
+		}
+		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+		{
+			sscTbcP.selectPlatformTrainingEndDateForExistingBatch(configPlatformTrainingEndDate);
+			sscTbcP.selectPlatformAssessmentStartDateForExistingBatch(configPlatformAssessemntStartDate);
+			sscTbcP.selectPlatformAssessmentEndDateForExistingBatch(configPlatformAssessemntEndDate);
+		}
+		String platformTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		String platformTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		String platformAssessmentStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		String platformAssessmentEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 19, platformTrainingStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 20, platformTrainingEndDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 21, platformAssessmentStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 22, platformAssessmentEndDate);
+		sscTbcP.selectBatchSize(batchSize);
+		sscTbcP.clickToCreateBatch();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
+		String bacthCreationsuccessfulURL=driver.getCurrentUrl();
+		String[]parts=bacthCreationsuccessfulURL.split("/");
+		String createdBatchID=parts[parts.length-1];
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 1, createdBatchID);
+		sscTbcP.clickOk();
+		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
+		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
+		js.executeScript("window.scrollBy(0,500)", "");
+		sVbP.selectStateFilter(tcState);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sVbP.selectDistrictFilter(tcDistrict);
+		sVbP.enterTrainingCentreIDToSearch(tcID);
+		sVbP.clickToGetSearchFilterResult();
+		sVbP.clickToChooseResultedTrainingCentreToAssign();
+		sVbP.clickToSubmitSelectedTrainingCentre();
+		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Master Trainer for domain QP
+		sVbP.clickDomainMasterTrainerAction(domainJobRole);
+		sVbP.selectDomainAssignMasterTrainerOption();
+		sVbP.enterDomainMasterTrainerIDToSearch(masterTrainerID);
+		sVbP.clickToGetDomainMasterSearchFilterResult();
+		sVbP.clickToChooseDomainMasterTrainer();
+		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
+		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Platform QP Master Trainer
+		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
+		sVbP.selectPlatformAssignMasterTrainerOption();
+		sVbP.enterPlatformMasterTrainerIDToSearch(masterTrainerID);
+		sVbP.clickToGetPlatformMasterSearchFilterResult();
+		sVbP.clickToChoosePlatformMasterTrainer();
+		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
+		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Domain QP Assessment Agency
+		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
+		sVbP.selectDomainAssignAssessmentAgencyOption();
+		sVbP.enterDomainAssessmentAgencyIDToSearch(assessmentAgencyID);
+		sVbP.clickToGetDomainAssessmentAgencySearchFilterResult();
+		sVbP.clickToChooseDomainAssessmentAgency();
+		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
+		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Assigning Platform QP Assessment Agency
+		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
+		sVbP.selectPlatformAssignAssessmentAgencyOption();
+		sVbP.enterPlatformAssessmentAgencyIDToSearch(assessmentAgencyID);
+		sVbP.clickToGetPlatformAssessmentAgencySearchFilterResult();
+		sVbP.clickToChoosePlatformAssessmentAgency();
+		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
+		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,500)", "");
+		sVbP.clickConfirmation();
+		sVbP.clickToSubmitBatch();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");  
+		Date date = new Date();  
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel", Integer.parseInt(serialNum), 2,formatter.format(date));
+		sVbP.clickOkForBatchSubmission();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	
+	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="rescheduleCancelBatchCreationTC_12")
+	public void rescheduleCancelBatchApprovalTC_13(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		//Assigned TC Login to Accept Batch
+    	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(tcID, tcPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectAcceptBatchOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clickToAcceptBatch();
+		lTcVbP.clickOk();
+		PostLoginPage plp=new PostLoginPage(driver);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		plp.clickOnProfileLogo();
+		Thread.sleep(1000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//Assigned Master Trainer Login To Accept the Batch
+		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
+		TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		lp.clickLogin();
+		elp.performlogin(masterTrainerID, masterTrainerPassword);
+		tDp.clickToGetTrainerDashboard();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		tDp.clickAllBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		tVp.enterBatchIDToSearch(batchID);
+		tVp.clickToGetSearchFilterResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		tVp.clickToGetActionMenuOptions(batchID);
+		tVp.clickToSelectAcceptBatchOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		tVp.clickToSubmit();
+		tVp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//Assigned Assessment Agency accepting batch
+		lp.clickLogin();
+		elp.performlogin(assessmentAgencyID, assessmentAgencyPassword);
+		AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
+		aDp.clickBatchAssessmentRequests();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
+		aVp.enterBatchIdToSearch(batchID);
+		aVp.clickToApplySelectedSearchFilters();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		aVp.clickToGetActionMenuOptions();
+		aVp.clickToSelectAcceptBatchOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		aVp.clickToSubmitBatchAcceptance();
+		aVp.clickOk();
+		//assigning assessors
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		aVp.clickToViewAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		aVp.enterBatchIdToSearch(batchID);
+		aVp.clickToApplySelectedSearchFilters();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		aVp.clickToGetActionMenuOptions();
+		aVp.clickToSelectAssignAssessorsOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		aVp.selectMasterAssessorForDomain1(masterAssessorName+"("+masterAssessorID+")");
+		aVp.selectMasterAssessorForDomain2(masterAssessorName+"("+masterAssessorID+")");
+		aVp.clickToSubmitMasterAssessors();
+		aVp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//Master Assessor Login to Accept Batches
+		lp.clickLogin();
+		elp.performlogin(masterAssessorID, masterAssessorPassword);
+		AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
+		maDp.clickToGetAssessorDashboard();
+		js.executeScript("window.scrollBy(0,500)", "");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		maDp.clickBatchAssessmentRequests();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
+		maVp.enterBatchIDToSearch(batchID);
+		maVp.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		maVp.clickToGetActionMenuOptions(batchID);
+		maVp.clickToSelectAcceptBatchOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		maVp.clickToSaveAndSubmitBatchAccceptance();
+		maVp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="rescheduleCancelBatchApprovalTC_13")
+	public void sscRejectingBatchRescheduleRequestTC_14(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(tcID, tcPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectRaiseRescheduleRequestOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clickToBrowseForBatchRescheduleSupportingDocument();
+		Thread.sleep(2000);
+		UploadFile.upload(batchRescheduleSupportingDocument);
+		Thread.sleep(2000);
+		lTcVbP.clickToUploadBatchRescheduleSupportingDocument();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+		lTcVbP.enterCommentsForBatchReschedule(batchRescheduleComments);
+		lTcVbP.clickToSubmitBatchreschedule();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule request Raised");
+		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC.");
+		lTcVbP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Requested for Reschedule");
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//SSC Rejecting Batch Reschedule
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+   	 	lp.clickLogin();
+   	 	elp.performlogin(sscUsername, sscPassword);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+   	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+   	 	sDp.clickAllBatches();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+   	 	sAp.clickToViewAllPublishedBatches();
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), domainJobRole+"/"+domainJobRoleCode+", "+platformJobRole+"/"+platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), tcState);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), tcDistrict);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), batchStartDate+" - "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Requested for Reschedule");
+		sAp.clickToGetBatchActionMenu(batchID);
+		sAp.selectApproveOrRejectRescheduleRequestOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchRescheduleSupportingDocument+"')])[1]")).isDisplayed());
+		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[1]")).getText().trim(), batchRescheduleComments);
+		sAp.clickToRejectBatchRescheduleRequest();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Request Rejected");
+		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") "+batchID+" has been rejected");
+		sAp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), batchStartDate+" - "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Published");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//TC checking status of Batch
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		lp.clickLogin();
+		elp.performlogin(tcID, tcPassword);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	
+	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscRejectingBatchRescheduleRequestTC_14")
+	public void sscApprovingBatchRescheduleRequestButNotUpdatingBatchDurationTC_15(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(tcID, tcPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectRaiseRescheduleRequestOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clickToBrowseForBatchRescheduleSupportingDocument();
+		Thread.sleep(2000);
+		UploadFile.upload(batchRescheduleSupportingDocument);
+		Thread.sleep(2000);
+		lTcVbP.clickToUploadBatchRescheduleSupportingDocument();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+		lTcVbP.enterCommentsForBatchReschedule(batchRescheduleComments);
+		lTcVbP.clickToSubmitBatchreschedule();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule request Raised");
+		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Reschedule request for the "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") has been sent to SSC.");
+		lTcVbP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Requested for Reschedule");
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//SSC Approving Batch Reschedule Request but not changing training dates.
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+   	 	lp.clickLogin();
+   	 	elp.performlogin(sscUsername, sscPassword);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+   	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+   	 	sDp.clickAllBatches();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
+   	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+   	 	sAp.clickToViewAllPublishedBatches();
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), domainJobRole+"/"+domainJobRoleCode+", "+platformJobRole+"/"+platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), tcState);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), tcDistrict);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), batchStartDate+" - "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Requested for Reschedule");
+		sAp.clickToGetBatchActionMenu(batchID);
+		sAp.selectApproveOrRejectRescheduleRequestOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchRescheduleSupportingDocument+"')])[1]")).isDisplayed());
+		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[1]")).getText().trim(), batchRescheduleComments);
+		sAp.clickToApproveBatchRescheduleRequest();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sAp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='sector']")).getAttribute("value").trim(), expectedSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[1]")).getAttribute("value").trim(), subSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='subSector'])[2]")).getAttribute("value").trim(), batchType);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='reAssessmentBatch']")).getAttribute("value").trim(), batchCategory);
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='batchstart']")).getAttribute("value").trim(), batchStartDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("//input[@name='batchendDate']")).getAttribute("value").trim(), batchEndDate.replaceAll("-", "/"));
+		Assert.assertTrue(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+domainJobRoleCode+"')]]]//input[@type='radio']")).isSelected());
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+domainJobRoleCode+"')]]]/td[2]")).getText().trim(), domainJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+domainJobRoleCode+"')]]]/td[3]")).getText().trim(), domainJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='trainingStart'])[1]")).getAttribute("value").trim(), dTrainingStartDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='trainingEnd'])[1]")).getAttribute("value").trim(), dTrainingEndDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='assesmentStart'])[1]")).getAttribute("value").trim(), dAssessmentStartDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='assesmentEnd'])[1]")).getAttribute("value").trim(), dAssessmentEndDate.replaceAll("-", "/"));
+		Assert.assertTrue(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+platformJobRoleCode+"')]]]//input[@type='radio']")).isSelected());
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+platformJobRoleCode+"')]]]/td[2]")).getText().trim(), platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+platformJobRoleCode+"')]]]/td[3]")).getText().trim(), platformJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='trainingStart'])[2]")).getAttribute("value").trim(), pTrainingStartDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='trainingEnd'])[2]")).getAttribute("value").trim(), pTrainingEndDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='assessmentStart'])[1]")).getAttribute("value").trim(), pAssessmentStartDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("(//input[@name='assessmentEnd'])[1]")).getAttribute("value").trim(), pAssessmentEndDate.replaceAll("-", "/"));
+		SSC_BatchReSchedulePage sRp=new SSC_BatchReSchedulePage(driver);
+		sRp.clickToSubmitRescheduledBatch();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Rescheduled Successfully!!");
+		sRp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sAp.clickToViewAllPublishedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), batchStartDate+" - "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Rescheduled");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//TC checking status of ReScheduled Batch
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		lp.clickLogin();
+		elp.performlogin(tcID, tcPassword);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	
+	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscApprovingBatchRescheduleRequestButNotUpdatingBatchDurationTC_15")
+	public void sscApprovingBatchRescheduleRequestAndUpdatingBatchDurationTC_16(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(tcID, tcPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectRaiseRescheduleRequestOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clickToBrowseForBatchRescheduleSupportingDocument();
+		Thread.sleep(2000);
+		UploadFile.upload(batchRescheduleSupportingDocument);
+		Thread.sleep(2000);
+		lTcVbP.clickToUploadBatchRescheduleSupportingDocument();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+		lTcVbP.enterCommentsForBatchReschedule(batchRescheduleComments);
+		lTcVbP.clickToSubmitBatchreschedule();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Reschedule request Raised");
+		lTcVbP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//Now SSC Will Approve Reschedule request and Changes the batch dates
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+   	 	lp.clickLogin();
+   	 	elp.performlogin(sscUsername, sscPassword);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+   	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+   	 	sDp.clickAllBatches();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
+   	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+   	 	sAp.clickToViewAllPublishedBatches();
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Requested for Reschedule");
+		sAp.clickToGetBatchActionMenu(batchID);
+		sAp.selectApproveOrRejectRescheduleRequestOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchRescheduleSupportingDocument+"')])[1]")).isDisplayed());
+		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[1]")).getText().trim(), batchRescheduleComments);
+		sAp.clickToApproveBatchRescheduleRequest();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sAp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		SSC_BatchReSchedulePage sRp=new SSC_BatchReSchedulePage(driver);
+		String configRescheduleBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 68);
+		String configRescheduleBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 69);
+		String configRescheduleDomainTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 70);
+		String configRescheduleDomainTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 71);
+		String configRescheduleDomainAssessmentStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 72);
+		String configRescheduleDomainAssessmentEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 73);
+		String configReschedulePlatformTrainingStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 74);
+		String configReschedulePlatformTrainingEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 75);
+		String configReschedulePlatformAssessemntStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 76);
+		String configReschedulePlatformAssessemntEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 77);
+		sRp.selectTrainingStartDateForBatch(configRescheduleBatchStartDate);
+		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+		{
+			sRp.selectTrainingEndDateForNewBatch(configRescheduleBatchEndDate);
+		}
+		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+		{
+			sRp.selectTrainingEndDateForExistingBatch(configRescheduleBatchEndDate);
+		}
+		String rTrainingStartDate=driver.findElement(By.xpath("//input[@formcontrolname='startDate']")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 38, rTrainingStartDate);
+		String rTrainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 39, rTrainingEndDate);
+		//Domain QP		
+		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode+"')]")).isDisplayed(),"OMG!!! DomainJobRoleCode not displayed OR Something is wrong! ");
+		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+domainJobRole+"')]")).getText().trim(), domainJobRole);
+		sRp.selectDomainTrainingStartDate(configRescheduleDomainTrainingStartDate);
+		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+		{
+			sRp.selectDomainTrainingEndDateForNewBatch(configRescheduleDomainTrainingEndDate);
+			sRp.selectDomainAssessmentStartDateForNewBatch(configRescheduleDomainAssessmentStartDate);
+			sRp.selectDomainAssessmentEndDateForNewBatch(configRescheduleDomainAssessmentEndDate);
+		}		
+		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+		{
+			sRp.selectDomainTrainingEndDateForExistingBatch(configRescheduleDomainTrainingEndDate);
+			sRp.selectDomainAssessmentStartDateForExistingBatch(configRescheduleDomainAssessmentStartDate);
+			sRp.selectDomainAssessmentEndDateForExistingBatch(configRescheduleDomainAssessmentEndDate);
+		}
+		String rDomainTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		String rDomainTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		String rDomainAssessmentStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentStartDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		String rDomainAssessmentEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentEndDate'])[1]")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 40, rDomainTrainingStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 41, rDomainTrainingEndDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 42, rDomainAssessmentStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 43, rDomainAssessmentEndDate);
+		//Platform QP
+		Assert.assertTrue(driver.findElement(By.xpath("//td/b[contains(text(),'"+domainJobRoleCode+"')]")).isDisplayed(),"OMG!!! DomainJobRoleCode not displayed OR Something is wrong! ");
+		Assert.assertEquals(driver.findElement(By.xpath("//td/span/b[contains(text(),'"+platformJobRole+"')]")).getText().trim(), platformJobRole);
+		sRp.selectPlatformTrainingStartDate(configReschedulePlatformTrainingStartDate);
+		if(batchType.equalsIgnoreCase("Training of Trainer-New")||batchType.equalsIgnoreCase("Training of Assessor-New")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - NEW")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - NEW"))
+		{
+			sRp.selectPlatformTrainingEndDateForNewBatch(configReschedulePlatformTrainingEndDate);
+			sRp.selectPlatformAssessmentStartDateForNewBatch(configReschedulePlatformAssessemntStartDate);
+			sRp.selectPlatformAssessmentEndDateForNewBatch(configReschedulePlatformAssessemntEndDate);
+		}		
+		else if(batchType.equalsIgnoreCase("Training of Trainer-Existing")||batchType.equalsIgnoreCase("Training of Master Trainer")||batchType.equalsIgnoreCase("Training of Master Assessor")||batchType.equalsIgnoreCase("Training of Assessor-Existing")||batchType.equalsIgnoreCase("Disability Sensitization Training for Trainers - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Assessors - EXISTING")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Trainers")||batchType.equalsIgnoreCase("Disability Sensitization Training for Master Assessors"))
+		{
+			sRp.selectPlatformTrainingEndDateForExistingBatch(configReschedulePlatformTrainingEndDate);
+			sRp.selectPlatformAssessmentStartDateForExistingBatch(configReschedulePlatformAssessemntStartDate);
+			sRp.selectPlatformAssessmentEndDateForExistingBatch(configReschedulePlatformAssessemntEndDate);
+		}		
+		String rPlatformTrainingStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		String rPlatformTrainingEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='trainingEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		String rPlatformAssessmentStartDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentStartDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		String rPlatformAssessmentEndDate=driver.findElement(By.xpath("(//input[@formcontrolname='assessmentEndDate'])[2]")).getAttribute("value").replaceAll("/", "-");
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 44, rPlatformTrainingStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 45, rPlatformTrainingEndDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 46, rPlatformAssessmentStartDate);
+		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 47, rPlatformAssessmentEndDate);
+		sRp.clickToSubmitRescheduledBatch();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Batch Rescheduled Successfully!!");
+		sRp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sAp.clickToViewAllPublishedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rTrainingStartDate+" - "+rTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Rescheduled");
+		sAp.clickToGetBatchActionMenu(batchID);
+		sAp.selectViewDetailsOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Verifying Batch Details
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch ID')]]/td[3]")).getText().trim(), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Name')]]/td[3]")).getText().trim(), batchType+"/"+rTrainingStartDate+" to "+rTrainingEndDate+"("+batchID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), rTrainingStartDate+" to "+rTrainingEndDate);
+		//Verifying Accepted Training Centre Details
+		Assert.assertEquals(driver.findElement(By.xpath("//div[b[contains(text(),'Status of Training Centre')]]/span")).getText().trim(), "Accepted");
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[2]")).getText().trim(), tcID);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[5]")).getText().trim(), tcState);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), tcDistrict);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
+		//Verifying Accepted Domain Master Trainer Details
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[1]")).getText().trim(), domainJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[2]")).getText().trim(), domainJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[3]")).getText().trim(), rDomainTrainingStartDate+" to "+rDomainTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[1]/td[5]")).getText().trim(), "Accepted");
+		//Verifying Accepted Platform Master Trainer Details
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[1]")).getText().trim(), platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[2]")).getText().trim(), platformJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[3]")).getText().trim(), rPlatformTrainingStartDate+" to "+rPlatformTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[1]/td[5]")).getText().trim(), "Accepted");
+		//Verifying Accepted Domain Assessment Agency And Master Assessor Details
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[1]")).getText().trim(), domainJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[2]")).getText().trim(), domainJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[3]")).getText().trim(), rDomainAssessmentStartDate+" to "+rDomainAssessmentEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+domainJobRoleCode+"')]])[2]/td[5]")).getText().trim(), "Accepted");
+		//Verifying Accepted Platform Assessment Agency And Master Assessor Details
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[1]")).getText().trim(), platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[2]")).getText().trim(), platformJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[3]")).getText().trim(), rPlatformAssessmentStartDate+" to "+rPlatformAssessmentEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'"+platformJobRoleCode+"')]])[2]/td[5]")).getText().trim(), "Accepted");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//TC checking status of ReScheduled Batch
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		lp.clickLogin();
+		elp.performlogin(tcID, tcPassword);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rTrainingStartDate+" to "+rTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectViewBatchDetailsOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		//Asserting view Batch Details
+		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID:')]]]/label[2]")).getText().trim(), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch Name:')]]]/label[2]")).getText().trim(), batchType+"/"+rTrainingStartDate+" to "+rTrainingEndDate+"("+batchID+")");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch Size:')]]]/label[2]")).getText(), batchSize);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch Date')]]]/label[2]")).getText().trim(), rTrainingStartDate.replaceAll("-", "/")+" to "+rTrainingEndDate.replaceAll("-", "/"));
+		Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch Type:')]]]/label[2]")).getText(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleCode+"')]]/td[1]")).getText().trim(), domainJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleCode+"')]]/td[2]")).getText(), domainJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleCode+"')]]/td[3]")).getText(), rDomainTrainingStartDate+" to "+rDomainTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleCode+"')]]/td[4]")).getText(), rDomainAssessmentStartDate+" to "+rDomainAssessmentEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRoleCode+"')]]/td[1]")).getText().trim(), platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[2]")).getText(), platformJobRole);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[3]")).getText(), rPlatformTrainingStartDate+" to "+rPlatformTrainingEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+platformJobRole+"')]]/td[4]")).getText(), rPlatformAssessmentStartDate+" to "+rPlatformAssessmentEndDate);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	
+	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscApprovingBatchRescheduleRequestAndUpdatingBatchDurationTC_16")
+	public void sscRejectingBatchCancellationRequestTC_17(String serialNum, String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String state, String district, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(tcID, tcPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectRaiseCancellationRequest();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clickToBrowseForBatchCancellationSupportingDocument();
+		Thread.sleep(2000);
+		UploadFile.upload(batchCancellationSupportingDocument);
+		Thread.sleep(2000);
+		lTcVbP.clickToUploadBatchCancellationSupportingDocument();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+		lTcVbP.enterCommentsForBatchCancellation(batchCancellationComments);
+		lTcVbP.clickToSubmitBatchCancellation();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
+		lTcVbP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Requested for Cancellation");
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//SSC Rejecting Cancellation Request
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+   	 	lp.clickLogin();
+   	 	elp.performlogin(sscUsername, sscPassword);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+   	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+   	 	sDp.clickAllBatches();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
+   	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+   	 	sAp.clickToViewAllPublishedBatches();
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), domainJobRole+"/"+domainJobRoleCode+", "+platformJobRole+"/"+platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), state);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), district);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Requested for Cancellation");
+		sAp.clickToGetBatchActionMenu(batchID);
+		sAp.selectApproveOrRejectCancellationRequestOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchCancellationSupportingDocument+"')])[2]")).isDisplayed());
+		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
+		sAp.clickToRejectBatchCancellationRequest();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Request Rejected\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") "+batchID+" has been rejected");
+		sAp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Rescheduled");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//TC checking status of Batch
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		lp.clickLogin();
+		elp.performlogin(tcID, tcPassword);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	
+	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscRejectingBatchCancellationRequestTC_17")
+	public void sscApprovingBatchCancellationRequestTC_18(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String state, String district, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(tcID, tcPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clikToGetBatchActionMenu();
+		lTcVbP.selectRaiseCancellationRequest();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.clickToBrowseForBatchCancellationSupportingDocument();
+		Thread.sleep(2000);
+		UploadFile.upload(batchCancellationSupportingDocument);
+		Thread.sleep(2000);
+		lTcVbP.clickToUploadBatchCancellationSupportingDocument();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+		lTcVbP.enterCommentsForBatchCancellation(batchCancellationComments);
+		lTcVbP.clickToSubmitBatchCancellation();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Cancellation Request Raised\nCancellation request for the "+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been sent to SSC");
+		lTcVbP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Requested for Cancellation");
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//SSC Approving Cancellation Request
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+   	 	lp.clickLogin();
+   	 	elp.performlogin(sscUsername, sscPassword);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+   	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+   	 	sDp.clickAllBatches();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
+   	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+   	 	sAp.clickToViewAllPublishedBatches();
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	sAp.enterBatchIDToSearch(batchID);
+	   	sAp.clickToGetSearchResult();
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[1]")).getText().trim(), batchID);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[2]")).getText().trim(), batchType);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[3]")).getText().trim(), domainJobRole+"/"+domainJobRoleCode+", "+platformJobRole+"/"+platformJobRoleCode);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[5]")).getText().trim(), state);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[6]")).getText().trim(), district);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Requested for Cancellation");
+		sAp.clickToGetBatchActionMenu(batchID);
+		sAp.selectApproveOrRejectCancellationRequestOption(batchID);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertTrue(driver.findElement(By.xpath("(//button[contains(text(),'"+batchCancellationSupportingDocument+"')])[2]")).isDisplayed());
+		Assert.assertEquals(driver.findElement(By.xpath("(//div[b[contains(text(),'Rejected Reason')]]/p)[2]")).getText().trim(), batchCancellationComments);
+		sAp.clickToApproveBatchCancellationRequest();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Batch Cancelled Successfully!!\n"+batchType+"/"+rescheduledBatchStartDate+" to "+rescheduledBatchEndDate+"("+batchID+") has been cancelled");
+		sAp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[7]")).getText().trim(), rescheduledBatchStartDate+" - "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Cancelled");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+		//TC checking status of Batch
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		lp.clickLogin();
+		elp.performlogin(tcID, tcPassword);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
+		js.executeScript("window.scrollBy(0,200)", "");
+		lTcDp.clickToViewBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		js.executeScript("window.scrollBy(0,200)","");
+		lTcVbP.clickToViewAllAcceptedBatches();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		lTcVbP.enterToSearchForBatchID(batchID);
+		lTcVbP.clickToGetSearchResult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Cancelled");
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
+	}
+	
+	//Batch Full Test Case
+	@DataProvider
+    public Object[][] totApplicantsData()
+    {
+        return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants");
+    }
+    @Test(dataProvider="totApplicantsData", dependsOnMethods={"masterAssessorBatchApprovalTC_05", "masterTrainerBatchApprovalTC_03"})
+    public void batchFullTC_19(String serialNum, String trainerID, String paymentDate, String userType, String name, String email, String mobile, String applicantPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String paymentMode, String bankName, String paymentReferenceNumber, String paymentRemarks) throws Exception
+    {
+    	if(serialNum.equals("1")||serialNum.equals("2"))
+	   	{
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			String batchID=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation", 1, 1);
+			String tcID=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 4);
+			String tcPassword=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 5);
+			String tcState=ReadWriteData.getData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 19);
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+ 	   		LoginPage lp=new LoginPage(driver);
+ 	   		lp.clickLogin();
+ 	   		EnterLoginPage elp=new EnterLoginPage(driver);
+ 	   		//Applicant Applying for batch
+ 	   		elp.performlogin(trainerID, applicantPassword);
+ 	   		TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
+ 	   		tDp.clickToGetApplicantDashboard();
+ 	   		WebDriverWait wait=new WebDriverWait(driver, 20);
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		tDp.clickSearchAndApplyforAvailableBatches();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		TrainerApplicantSearchAndApplyForAvailableBatchesPage tSp=new TrainerApplicantSearchAndApplyForAvailableBatchesPage(driver);
+ 	   		tSp.selectState(tcState);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			tSp.selectSector(configBatchSector);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			tSp.clickSearch();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! no show of batch - "+batchID+" searching by entering Only Mandatory fields! ");
+			tSp.clickToGetBatchActionMenu(batchID);
+			tSp.selectApplyToBatch(batchID);
+			tSp.clickOK();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
+			plp.clickOnLogout();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+ 	   		//TC Approving Applicants
+			lp.clickLogin();
+ 	   		elp.performlogin(tcID, tcPassword);
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
+ 	   		tcDp.clickToViewBatches();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
+ 	   		tcVp.clickToViewAllAcceptedBatches();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+ 	   		tcVp.clikToGetBatchActionMenu();
+ 	   		tcVp.selectEnrollApplicantsOption();
+ 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+ 	   		tcVp.clickToGetApplicantActionMenu(trainerID);
+ 	   		tcVp.selectEnrollApplicantOption(trainerID);
+ 	   		if(serialNum.equals("2"))
+ 	   		{
+ 	   			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
+ 	   			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Can not enroll more candidates than batch size, please check total number of enrolled / approved candidates count");
+ 	   		}
+ 	   		else
+ 	   		{
+ 	   			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+ 	   			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("approved successfully"),"OMG!!! Applicant Enroll Successfull Popup Text not displayed OR Something went wrong! ");
+ 	   			tcVp.clickOk();
+ 	   			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
+ 	   		}
+ 	   		plp.clickOnProfileLogo();
+ 	   		Thread.sleep(2000);
+ 	   		plp.clickOnLogout();
+ 	   	}
 	}
 }

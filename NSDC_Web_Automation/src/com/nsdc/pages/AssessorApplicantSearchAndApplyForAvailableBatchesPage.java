@@ -109,9 +109,9 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(subSectorDropdownList,subSector);
 	}
-	public void selectjobRole(String jobrole)
+	public void selectjobRole(String jobrole, String jobRoleCode, String jobRoleVersion)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList,jobrole);
+		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobrole+"-"+jobRoleCode+" ("+jobRoleVersion+")");
 	}
 	public void selectBatchType(String batchType)
 	{
@@ -228,9 +228,9 @@ public class AssessorApplicantSearchAndApplyForAvailableBatchesPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestSubSectorDropdownList, subSector);
 	}
-	public void selectAddTrainingRequestsJobRole(String jobrole)
+	public void selectAddTrainingRequestsJobRole(String jobrole, String jobRoleCode, String jobRoleVersion)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestJobRoleDropdownList, jobrole);
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestJobRoleDropdownList, jobrole+"-"+jobRoleCode+" ("+jobRoleVersion+")");
 	}
 	public void selectAddTrainingRequestsState(String state)
 	{
