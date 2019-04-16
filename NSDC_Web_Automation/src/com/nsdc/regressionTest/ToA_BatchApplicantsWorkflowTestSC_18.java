@@ -80,7 +80,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	String platformMasterAssessorID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 38); 
 	String platformMasterAssessorName=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 39); 
    	String platformMasterAssessorPassword=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 40);
-   
+   	String batchDomainJobRoleVersion=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 51);
+	String batchPlatformJobRoleVersion=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "Configurable-Fields", 1, 52);
+   	
 	@DataProvider()
     public Object[][] toaBatchData() throws Exception
     {
@@ -713,7 +715,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 // 		   aSp.selectSubSector(batchSubSector);
 // 		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
- 		   aSp.selectjobRole(domainJobRole);
+ 		   aSp.selectjobRole(domainJobRole, domainJobRoleCode, batchDomainJobRoleVersion);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
  		   aSp.selectBatchType(batchType);
  		   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
