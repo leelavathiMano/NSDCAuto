@@ -67,9 +67,11 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		eTCp.enterExceptionalTrainingCentreSPOCEmail(exceptionalTCSPOCEmail);
 		Thread.sleep(2000);
 		eTCp.clickToBrowseExceptionalTCSPOCIDProof();
+		Thread.sleep(4000);
 		UploadFile.upload(exceptionalTCSPOCID);
+		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTCSPOCIDProof();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		if(!exceptionalTCAddress.equalsIgnoreCase("N/A"))
 		{
 			eTCp.enterExceptionalTCAddress(exceptionalTCAddress);
