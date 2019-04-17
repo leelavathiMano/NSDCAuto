@@ -419,7 +419,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		frp.selectStatus(reviewComments);
 		Thread.sleep(2000);
 		frp.clickOnApply();
-		if(comments.equals("Recommended"))
+		if(comments.equals("Approved"))
 		{
 			Thread.sleep(3000);
 			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='APPROVED'])[1]")).getText(), "APPROVED");
@@ -429,7 +429,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='BLOCKED'])[1]")).getText(), "BLOCKED");
 		}
-		else if(comments.equals("Document Required"))
+		else if(comments.equals("Not Approved"))
 		{
 			Thread.sleep(3000);
 			Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='REJECTED'])[1]")).getText(), "REJECTED");
@@ -461,7 +461,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		tpdp.clickOnMySchemes();
 		TP_MySchemeDashboardPage tpms = new TP_MySchemeDashboardPage(driver);
 		Thread.sleep(3000);
-		if(daComments.equals("Recommended"))
+		if(daComments.equals("Approved"))
 		{
 			Thread.sleep(3000);
 			tpms.clickOnApprovedScheme();
@@ -483,7 +483,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(3000);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//span[text()='Rejected']")).getText(), "Rejected");
 		}
-		else if(daComments.equals("Document Required"))
+		else if(daComments.equals("Not Approved"))
 		{
 			Thread.sleep(3000);
 			tpms.clickOnApprovalInProgress();
@@ -813,7 +813,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				frp.selectStatus(newReviewComments);
 				Thread.sleep(2000);
 				frp.clickOnApply();
-				if(newComments.equals("Recommended"))
+				if(newComments.equals("Approved"))
 				{
 					Thread.sleep(3000);
 					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='APPROVED'])[1]")).getText(), "APPROVED");
@@ -823,7 +823,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 					Thread.sleep(3000);
 					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='BLOCKED'])[1]")).getText(), "BLOCKED");
 				}
-				else if(newComments.equals("Document Required"))
+				else if(newComments.equals("Not Approved"))
 				{
 					Thread.sleep(3000);
 					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='REJECTED'])[1]")).getText(), "REJECTED");
@@ -2002,7 +2002,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 		tpdp.clickOnMySchemes();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
