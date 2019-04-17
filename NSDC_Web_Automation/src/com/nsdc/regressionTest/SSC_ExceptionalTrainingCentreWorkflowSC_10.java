@@ -148,7 +148,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		if(serialNum.equals("1")) //Assigning Created Exceptional TC Directly to a Batch
 		{
 			eTCp.clickToFinallyCreateExceptionalTrainingCentre();
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
+		 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
 			Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"),"OMG!!! Something went wrong! After clicking Add Button!");
 			String createdExceptionalTCID=driver.findElement(By.xpath("//div[@id='swal2-content']/p/b")).getText().trim();
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
@@ -180,7 +180,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		else
 		{
 			eTCp.clickToAssignCurrentlyCreatingExceptionalTrainingCentre();
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
+		 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
 			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("Assigned Successfully"),"OMG!!! Something went wrong! After clicking Assign Button!");
 			eTCp.clickOK();
 		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
