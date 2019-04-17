@@ -111,7 +111,7 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void selectjobRole(String jobrole, String jobRoleCode, String jobRoleVersion)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobrole+"-"+jobRoleCode+" ("+jobRoleVersion+")");
+		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobrole+" ("+jobRoleCode+") - "+jobRoleVersion);
 	}
 	public void selectBatchType(String batchType)
 	{
@@ -233,7 +233,7 @@ public class TrainerApplicantSearchAndApplyForAvailableBatchesPage
 	}
 	public void selectAddTrainingRequestsJobRole(String jobrole, String jobRoleCode, String jobRoleVersion)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestJobRoleDropdownList, jobrole+"-"+jobRoleCode+" ("+jobRoleVersion+")");
+		SelectDropDownList.selectDropDownListByVisibleText(addTrainingRequestJobRoleDropdownList, jobrole+" ("+jobRoleCode+") - "+jobRoleVersion);
 	}
 	public void selectAddTrainingRequestsState(String state)
 	{
