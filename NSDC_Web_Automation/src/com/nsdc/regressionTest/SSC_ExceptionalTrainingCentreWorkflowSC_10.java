@@ -47,7 +47,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 		sAp.clickToGetBatchActionMenu(batchID);
 		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Assign')]")).click();	
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Add Exceptional Training Centre
 		SSC_ExceptionalTraningCentreCreationPage eTCp=new SSC_ExceptionalTraningCentreCreationPage(driver);
 		eTCp.clickAddExceptionalTC();
@@ -67,6 +67,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		eTCp.enterExceptionalTrainingCentreSPOCName(exceptionalTCSPOCName);
 		eTCp.enterExceptionalTrainingCentreSPOCMobile(exceptionalTCSPOCMobile);
 		eTCp.enterExceptionalTrainingCentreSPOCEmail(exceptionalTCSPOCEmail);
+		Thread.sleep(2000);
 		eTCp.clickToBrowseExceptionalTCSPOCIDProof();
 		UploadFile.upload(exceptionalTCSPOCID);
 		eTCp.clickToUploadExceptionalTCSPOCIDProof();
