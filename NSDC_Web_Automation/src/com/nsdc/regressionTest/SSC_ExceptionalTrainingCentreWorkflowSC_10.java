@@ -100,15 +100,19 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			eTCp.enterExceptionalTrainingCentreVillage(village);
 		}
 		eTCp.enterExceptionalTrainingCentrePincode(pincode);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(2000);
 		eTCp.clickToBrowseExceptionalTrainingCentrePhoto();
+		Thread.sleep(2000);
 		UploadFile.uploadingFiveExceptionalTC_Photos(exceptionalTCPhoto);
+		Thread.sleep(2000);
 		eTCp.clickToUploadExceptionalTrainingCentrePhoto();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		eTCp.clickToBrowseExceptionalTrainingCentreSupportDoc();
+		Thread.sleep(2000);
 		UploadFile.upload(exceptionalTCSupportDoc);
+		Thread.sleep(2000);
 		eTCp.clickToUploadExceptionalTrainingCentreSupportDoc();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		Assert.assertTrue(driver.findElement(By.xpath("//div[span[span[contains(text(),'"+sector+"')]]]")).getAttribute("class").contains("disabled"),"OMG!!! Sector dropdown is not disabled OR Something went wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//span[span[contains(text(),'"+sector+"')]]")).getText().trim(), sector);
 		eTCp.selectExceptionalTrainingCentreSubSector(subSector);
