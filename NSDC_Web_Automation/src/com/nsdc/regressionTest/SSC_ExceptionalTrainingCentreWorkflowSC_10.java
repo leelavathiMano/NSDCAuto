@@ -100,17 +100,17 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			eTCp.enterExceptionalTrainingCentreVillage(village);
 		}
 		eTCp.enterExceptionalTrainingCentrePincode(pincode);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		eTCp.clickToBrowseExceptionalTrainingCentrePhoto();
 		Thread.sleep(2000);
 		UploadFile.uploadingFiveExceptionalTC_Photos(exceptionalTCPhoto);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTrainingCentrePhoto();
 		Thread.sleep(5000);
 		eTCp.clickToBrowseExceptionalTrainingCentreSupportDoc();
 		Thread.sleep(2000);
 		UploadFile.upload(exceptionalTCSupportDoc);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		eTCp.clickToUploadExceptionalTrainingCentreSupportDoc();
 		Thread.sleep(5000);
 		Assert.assertTrue(driver.findElement(By.xpath("//div[span[span[contains(text(),'"+sector+"')]]]")).getAttribute("class").contains("disabled"),"OMG!!! Sector dropdown is not disabled OR Something went wrong! ");
