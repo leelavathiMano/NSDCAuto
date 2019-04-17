@@ -36,8 +36,6 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		elp.performlogin(sscUsername, sscPassword);
 		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ToT, ToA, ToMT,ToMA")));
-		String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"ssc","!!! Login Unsuccessfull OR its taking too much time to load!!! ");
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickAllBatches();
 	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -71,7 +69,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		eTCp.clickToBrowseExceptionalTCSPOCIDProof();
 		UploadFile.upload(exceptionalTCSPOCID);
 		eTCp.clickToUploadExceptionalTCSPOCIDProof();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'uploaded successfully')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		if(!exceptionalTCAddress.equalsIgnoreCase("N/A"))
 		{
 			eTCp.enterExceptionalTCAddress(exceptionalTCAddress);
@@ -102,14 +100,15 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			eTCp.enterExceptionalTrainingCentreVillage(village);
 		}
 		eTCp.enterExceptionalTrainingCentrePincode(pincode);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		eTCp.clickToBrowseExceptionalTrainingCentrePhoto();
 		UploadFile.uploadingFiveExceptionalTC_Photos(exceptionalTCPhoto);
 		eTCp.clickToUploadExceptionalTrainingCentrePhoto();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		eTCp.clickToBrowseExceptionalTrainingCentreSupportDoc();
 		UploadFile.upload(exceptionalTCSupportDoc);
 		eTCp.clickToUploadExceptionalTrainingCentreSupportDoc();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertTrue(driver.findElement(By.xpath("//div[span[span[contains(text(),'"+sector+"')]]]")).getAttribute("class").contains("disabled"),"OMG!!! Sector dropdown is not disabled OR Something went wrong! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//span[span[contains(text(),'"+sector+"')]]")).getText().trim(), sector);
 		eTCp.selectExceptionalTrainingCentreSubSector(subSector);
