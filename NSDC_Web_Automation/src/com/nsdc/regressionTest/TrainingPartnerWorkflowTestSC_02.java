@@ -992,7 +992,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         
         
         //tprp.clickDownloadButton();
-        Thread.sleep(15000);
+        Thread.sleep(20000);
         tprp.clcikOnGoToDashboard();
         //tprp.clickLogOutButton();
         Thread.sleep(3000);
