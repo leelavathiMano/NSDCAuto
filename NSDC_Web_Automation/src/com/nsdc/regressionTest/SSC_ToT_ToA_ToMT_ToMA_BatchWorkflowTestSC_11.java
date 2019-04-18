@@ -1846,7 +1846,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		sVbP.clickConfirmation();
 		Thread.sleep(2000);
 		sVbP.clickToSubmitBatch();
