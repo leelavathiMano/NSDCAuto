@@ -1713,6 +1713,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     @Test(dataProvider="totApplicantsData", dependsOnMethods="sscApprovingToT_ApplicantsTC_06")
     public void assessmentAgencyVerifyingSSCApprovedBatchAndApplicantsTC_09(String serialNum, String trainerID, String paymentDate, String userType, String name, String email, String mobile, String applicantPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String paymentMode, String bankName, String paymentReferenceNumber, String paymentRemarks) throws Exception
     {
+    	if(serialNum.equals("1")) {
     	String batchID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 1);
     	String batchSize=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 24);
     	String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 9);
@@ -1829,16 +1830,33 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     		Thread.sleep(2000);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), name);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), trainerID);
+    		String applicantID_2=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 2, 4);
+       	 	String applicantName_2=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 2, 4);
+       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_2+"']]/td[2]")).getText().trim(), applicantName_2);
+    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_2+"']]/td[3]")).getText().trim(), applicantID_2);
+       	 	String applicantID_3=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 3, 4);
+       	 	String applicantName_3=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 3, 4);
+       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_3+"']]/td[2]")).getText().trim(), applicantName_3);
+       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_3+"']]/td[3]")).getText().trim(), applicantID_3);
+       	 	String applicantID_4=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 4, 4);
+       	 	String applicantName_4=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 4, 4);
+          	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_4+"']]/td[2]")).getText().trim(), applicantName_4);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_4+"']]/td[3]")).getText().trim(), applicantID_4);
+       	 	String applicantID_5=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 5, 4);
+       	 	String applicantName_5=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 5, 4);
+          	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_5+"']]/td[2]")).getText().trim(), applicantName_5);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_5+"']]/td[3]")).getText().trim(), applicantID_5);
        	 	PostLoginPage plp=new PostLoginPage(driver);
     		plp.clickOnProfileLogo();
     		Thread.sleep(2000);
     		plp.clickOnLogout();
-    	}
+    	}}
     }
     
     @Test(dataProvider="totApplicantsData", dependsOnMethods="sscApprovingToT_ApplicantsTC_06")
     public void masterAssessorVerifyingSSCApprovedBatchAndApplicantsTC_10(String serialNum, String trainerID, String paymentDate, String userType, String name, String email, String mobile, String applicantPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String paymentMode, String bankName, String paymentReferenceNumber, String paymentRemarks) throws Exception
     {
+    	if(serialNum.equals("1")) {
     	String batchID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 1);
     	String batchSize=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 24);
     	String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 9);
@@ -1961,14 +1979,30 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    			//Applicants Details Verification
        		maVp.clickToGoToApprovedApplicantsSection();
       	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-       		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), trainerID);
+      	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), trainerID);
        	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), name);
-    	 	PostLoginPage plp=new PostLoginPage(driver);
+       	 	String applicantID_2=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 2, 4);
+       	 	String applicantName_2=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 2, 4);
+       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_2+"']]/td[2]")).getText().trim(), applicantID_2);
+    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_2+"']]/td[3]")).getText().trim(), applicantName_2);
+       	 	String applicantID_3=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 3, 4);
+       	 	String applicantName_3=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 3, 4);
+       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_3+"']]/td[2]")).getText().trim(), applicantID_3);
+       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_3+"']]/td[3]")).getText().trim(), applicantName_3);
+       	 	String applicantID_4=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 4, 4);
+       	 	String applicantName_4=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 4, 4);
+          	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_4+"']]/td[2]")).getText().trim(), applicantID_4);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_4+"']]/td[3]")).getText().trim(), applicantName_4);
+       	 	String applicantID_5=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 5, 4);
+       	 	String applicantName_5=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 5, 4);
+          	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_5+"']]/td[2]")).getText().trim(), applicantID_5);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID_5+"']]/td[3]")).getText().trim(), applicantName_5);
+       	 	PostLoginPage plp=new PostLoginPage(driver);
     	 	plp.clickOnProfileLogo();
     	 	Thread.sleep(2000);
     	 	plp.clickOnLogout();
     	}
-    }
+    }}
          
     @Test(dataProvider="totApplicantsData", dependsOnMethods="totBatchApprovalTC_02")
     public void tcRejectingToT_ApplicantsTC_11(String serialNum, String trainerID, String paymentDate, String userType, String name, String email, String mobile, String applicantPassword, String gender, String dob, String language, String religion, String category, String disability, String disabilityFile, String aadhaarOrPAN, String idNumber, String uploadPanDocument, String photoFile, String applicant_Category, String address, String landmark, String pincode, String state, String city, String mandal, String parliamentaryConstituency, String education1, String edu_details1, String edu_document1, String education2, String edu_details2, String edu_document2, String industrial_sector1, String industrial_years1, String industrial_months1, String industrialExperienceDetails1, String industriesDetails1, String industrialDocument1, String industrial_sector2, String industrial_years2, String industrial_months2, String industrialExperienceDetails2, String industriesDetails2, String industrialDocument2, String training_sector1, String trainingExperienceYears1, String trainingExperienceMonths1, String trainingExperienceDetails1, String trainingDocument1, String training_sector2, String trainingExperienceYears2, String trainingExperienceMonths2, String trainingExperienceDetails2, String trainingDocument2, String resume, String preferredSector1, String preferredSubSector1, String preferredJobRole1, String preferredJobRoleCode1, String preferredState1, String preferredDistrict1, String preferredSubDistrict1, String preferredSector2, String preferredSubSector2, String preferredJobRole2, String preferredJobRoleCode2, String preferredState2, String preferredDistrict2, String preferredSubDistrict2, String paymentMode, String bankName, String paymentReferenceNumber, String paymentRemarks) throws Exception
@@ -2218,7 +2252,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     {
     	if(serialNo.equals("1"))
     	{
-//    		batchID="833";
     		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+domainJobRoleAttendance, "Sheet1", 0, 2, dTrainingStartDate.replaceAll("-", "/"));
     		ReadWriteData.setAttendanceExcelData("./UploadFiles/"+domainJobRoleAttendance, "Sheet1", 0, 3, dTrainingEndDate.replaceAll("-", "/"));
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
@@ -2321,7 +2354,6 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
     {
     	if(serialNo.equals("1"))
     	{
-//   		batchID="833";
     		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");   
     		Calendar cal = Calendar.getInstance();    
     		cal.setTime(dateFormat.parse(pTrainingStartDate));
