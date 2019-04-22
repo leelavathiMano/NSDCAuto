@@ -2898,26 +2898,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
-		//TC checking status of Batch
-		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-		lp.clickLogin();
-		elp.performlogin(tcID, tcPassword);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
-		js.executeScript("window.scrollBy(0,200)", "");
-		lTcDp.clickToViewBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		js.executeScript("window.scrollBy(0,200)","");
-		lTcVbP.clickToViewAllAcceptedBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		lTcVbP.enterToSearchForBatchID(batchID);
-		lTcVbP.clickToGetSearchResult();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
-		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
-		plp.clickOnLogout();
 	}
 	
 	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscRejectingBatchRescheduleRequestTC_14")
@@ -2942,6 +2922,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lTcVbP.enterToSearchForBatchID(batchID);
 		lTcVbP.clickToGetSearchResult();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Published");
 		lTcVbP.clikToGetBatchActionMenu();
 		lTcVbP.selectRaiseRescheduleRequestOption();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -3036,26 +3017,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
-		//TC checking status of ReScheduled Batch
-		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-		lp.clickLogin();
-		elp.performlogin(tcID, tcPassword);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
-		js.executeScript("window.scrollBy(0,200)", "");
-		lTcDp.clickToViewBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		js.executeScript("window.scrollBy(0,200)","");
-		lTcVbP.clickToViewAllAcceptedBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		lTcVbP.enterToSearchForBatchID(batchID);
-		lTcVbP.clickToGetSearchResult();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), batchStartDate+" to "+batchEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
-		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
-		plp.clickOnLogout();
 	}
 	
 	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscApprovingBatchRescheduleRequestButNotUpdatingBatchDurationTC_15")
@@ -3080,6 +3041,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lTcVbP.enterToSearchForBatchID(batchID);
 		lTcVbP.clickToGetSearchResult();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
 		lTcVbP.clikToGetBatchActionMenu();
 		lTcVbP.selectRaiseRescheduleRequestOption();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
@@ -3368,26 +3330,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
 		plp.clickOnLogout();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
-		//TC checking status of Batch
-		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-		lp.clickLogin();
-		elp.performlogin(tcID, tcPassword);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
-		js.executeScript("window.scrollBy(0,200)", "");
-		lTcDp.clickToViewBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		js.executeScript("window.scrollBy(0,200)","");
-		lTcVbP.clickToViewAllAcceptedBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		lTcVbP.enterToSearchForBatchID(batchID);
-		lTcVbP.clickToGetSearchResult();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[6]")).getText().trim(), rescheduledBatchStartDate+" to "+rescheduledBatchEndDate);
-		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
-		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
-		plp.clickOnLogout();
 	}
 	
 	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="sscRejectingBatchCancellationRequestTC_17")
@@ -3412,6 +3354,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lTcVbP.enterToSearchForBatchID(batchID);
 		lTcVbP.clickToGetSearchResult();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Rescheduled");
 		lTcVbP.clikToGetBatchActionMenu();
 		lTcVbP.selectRaiseCancellationRequest();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
