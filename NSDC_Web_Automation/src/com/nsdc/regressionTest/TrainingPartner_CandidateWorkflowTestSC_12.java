@@ -600,9 +600,9 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
     	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
        	tpMp.clickGoBack();
        	WebDriverWait wait=new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.enterCandidateIDToSearch(registeredCandidateID);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToApplySearchFilters();
 		Thread.sleep(4000);
 		js.executeScript("window.scrollBy(0,150)", "");
