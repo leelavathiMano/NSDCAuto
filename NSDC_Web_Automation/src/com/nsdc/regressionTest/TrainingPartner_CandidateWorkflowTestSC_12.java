@@ -51,7 +51,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpMp.clickToChooseBulkExcelSheetUpload();
 		Thread.sleep(2000);
 		tpMp.clickForExcelFileBrowse();
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		UploadFile.upload(bulkExcelFile);
 		Thread.sleep(4000);
 		tpMp.clickRegister();
