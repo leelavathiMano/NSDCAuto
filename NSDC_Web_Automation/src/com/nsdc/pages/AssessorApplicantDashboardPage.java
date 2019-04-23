@@ -38,6 +38,8 @@ public class AssessorApplicantDashboardPage
 	}
 	public void clickViewBatches()
 	{
+		WebDriverWait wait= new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.visibilityOf(viewBatchesCardText));
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click()", viewBatchesCardText);
 	}
