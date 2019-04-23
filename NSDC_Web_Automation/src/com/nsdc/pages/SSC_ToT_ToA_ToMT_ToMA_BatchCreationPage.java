@@ -158,7 +158,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 		wait.until(ExpectedConditions.elementToBeClickable(domainJobRoleCheckBoxList));
 		domainJobRoleCheckBoxList.click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+domainJobRole+" - "+domainJobRoleCode+"')])[1]")).click();
+		driver.findElement(By.xpath("(//label[contains(text(),'"+domainJobRole+" ("+domainJobRoleCode+"')])[1]")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//span[contains(text(),'Domain Job Role')]")).click();
 	}
