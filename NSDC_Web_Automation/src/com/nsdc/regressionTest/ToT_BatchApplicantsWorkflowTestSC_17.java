@@ -222,18 +222,19 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),1,createdBatchID);
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		js.executeScript("window.scrollBy(0,500)", "");
 		sVbP.selectStateFilter(state);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		sVbP.selectDistrictFilter(district);
 		sVbP.enterTrainingCentreIDToSearch(tcID);
 		sVbP.clickToGetSearchFilterResult();
 		sVbP.clickToChooseResultedTrainingCentreToAssign();
 		sVbP.clickToSubmitSelectedTrainingCentre();
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Assigning Master Trainer for domain QP
 		sVbP.clickDomainMasterTrainerAction(domainJobRole);
 		sVbP.selectDomainAssignMasterTrainerOption();
@@ -1527,6 +1528,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
           	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         		JavascriptExecutor js=(JavascriptExecutor)driver;
         		js.executeScript("window.scrollBy(0,200)", "");
+        		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockMsg.blockPage")));
         		tVp.enterBatchIDToSearch(batchID);
         		tVp.clickToGetSearchFilterResult();
           	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));

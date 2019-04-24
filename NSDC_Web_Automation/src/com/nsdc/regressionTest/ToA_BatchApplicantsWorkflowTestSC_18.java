@@ -225,6 +225,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches",Integer.parseInt(serialNo),1,createdBatchID);
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		js.executeScript("window.scrollBy(0,500)", "");
