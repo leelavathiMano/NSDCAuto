@@ -72,9 +72,9 @@ public class TP_Candidates_TestData extends TestConfiguration
 		Thread.sleep(2000);
 		tpCrp.selectMaritalStatus(maritalStatus);
 		Thread.sleep(2000);
-		tpCrp.selectBirthState(cState);
+		tpCrp.selectBirthState(birthState);
 		Thread.sleep(2000);
-		tpCrp.selectBirthDistrict(cSubDistrict);
+		tpCrp.selectBirthDistrict(birthDistrict);
 //		tpCrp.enterPlaceOfBirth(placeOfBirth);
 //		Thread.sleep(2000);
 		tpCrp.selectCast(cast);
