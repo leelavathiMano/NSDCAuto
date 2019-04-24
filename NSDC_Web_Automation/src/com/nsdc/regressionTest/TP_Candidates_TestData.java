@@ -2,6 +2,8 @@ package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -109,7 +111,9 @@ public class TP_Candidates_TestData extends TestConfiguration
 		Thread.sleep(2000);
 		tpCrp.enterLocationSPOC(locationSPOC);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(10000);
+		tpCrp.clickSaveAndContinue();
+		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Contact Details Page
 		String candidateIDUrl=driver.getCurrentUrl();
 		String parts[]=candidateIDUrl.split("/");
@@ -136,7 +140,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 //		tpCrp.enterBankAddress(bankAddress);
 		tpCrp.selectBoardingAndLodging(boardingAndLodging);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Education
 		tpCrp.selectEducation(education1);
 		Thread.sleep(2000);
@@ -156,10 +160,10 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.selectCandidateExperienceJobRole(jobRole1, jobRoleCode1);
 		Thread.sleep(2000);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Course Preferences Page
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToAgreeAndSubmit();
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
