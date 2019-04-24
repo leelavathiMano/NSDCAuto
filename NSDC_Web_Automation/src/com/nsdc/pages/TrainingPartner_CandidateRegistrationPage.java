@@ -28,7 +28,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement calenderIconButton;
 	@FindBy(xpath="//select[@formcontrolname='relationWithGuardian']")
 	private WebElement guardianRelationDropDownList;
-	@FindBy(xpath="//input[@formcontrolname='guardianName']")
+	@FindBy(xpath="//input[@placeholder='Enter Name']")
 	private WebElement guardianNameTextbox;
 	@FindBy(xpath="//select[@formcontrolname='maritialStatus']")
 	private WebElement maritalStatusDropdownList;
@@ -133,6 +133,31 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement reviewBeforeSubmissionLink;
 	@FindBy(xpath="//button[contains(text(),'OK')]")
 	private WebElement okButton;
+	//New Fields
+	@FindBy(xpath="//input[@formcontrolname='locationSpoc']")
+	private WebElement locationSPOCTextField;
+	@FindBy(xpath="//select[@formcontrolname='placebirthstate']")
+	private WebElement birthStateDropdownList;
+	@FindBy(xpath="//select[@formcontrolname='placebirthdistrict']")
+	private WebElement birthDistrictDropdownList;
+	//Bank Details
+	@FindBy(xpath="//input[@formcontrolname='accountHolderName']")
+	private WebElement accountHolderNameTextField;
+	@FindBy(xpath="//input[@formcontrolname='accountNumber']")
+	private WebElement accountNumberTextField;
+	@FindBy(xpath="//input[@formcontrolname='ifscCode']")
+	private WebElement ifscTextField;
+	@FindBy(xpath="//input[@formcontrolname='bankName']")
+	private WebElement bankNameTextField;
+	@FindBy(xpath="//textarea[@formcontrolname='bankAddress']")
+	private WebElement bankAddressTextField;
+	@FindBy(xpath="//select[@formcontrolname='boardingLodging']")
+	private WebElement boardingAndLodgingDropdownList;
+	//Candidate Experiencd
+	@FindBy(xpath="//select[@formcontrolname='sectorId']")
+	private WebElement candidateExperienceSectorDropdownList;
+	@FindBy(xpath="//select[@formcontrolname='qpCode']")
+	private WebElement candidateExperienceJobRoleDropdownList;
 	
 	public TrainingPartner_CandidateRegistrationPage(WebDriver driver)
     {
@@ -168,7 +193,19 @@ public class TrainingPartner_CandidateRegistrationPage
 	}
 	public void clickToChooseGender(String gender)
 	{
-		driver.findElement(By.xpath("//label[input[@value='"+gender+"']]")).click();
+		if(gender.equalsIgnoreCase("male"))
+		{
+			driver.findElement(By.xpath("(//label[input[@formcontrolname='gender']])[1]")).click();
+		}
+		else if(gender.equalsIgnoreCase("female"))
+		{
+			driver.findElement(By.xpath("(//label[input[@formcontrolname='gender']])[2]")).click();
+		}
+		else
+		{
+			driver.findElement(By.xpath("(//label[input[@formcontrolname='gender']])[3]")).click();
+		}
+//		driver.findElement(By.xpath("//label[input[@value='"+gender+"']]")).click();
 	}
 	public void clickToSelectDOB() throws InterruptedException
 	{
@@ -423,5 +460,57 @@ public class TrainingPartner_CandidateRegistrationPage
 	public void clickOK()
 	{
 		okButton.click();
+	}
+	//New Fields 
+	public void selectBirthState(String state)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(birthStateDropdownList, state);
+	}
+	public void selectBirthDistrict(String district)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(birthDistrictDropdownList, district);
+	}
+	public void enterLocationSPOC(String locationSPOC)
+	{
+		locationSPOCTextField.clear();
+		locationSPOCTextField.sendKeys(locationSPOC);
+	}
+	public void enterAccountHolderName(String accountHolderName)
+	{
+		accountHolderNameTextField.clear();
+		accountHolderNameTextField.sendKeys(accountHolderName);
+	}
+	public void enterAccountNumber(String accountNumber)
+	{
+		accountNumberTextField.clear();
+		accountNumberTextField.sendKeys(accountNumber);
+	}
+	public void enterIFSC(String ifsc)
+	{
+		ifscTextField.clear();
+		ifscTextField.sendKeys(ifsc);
+	}
+	public void enterBankName(String bankName)
+	{
+		bankNameTextField.clear();
+		bankNameTextField.sendKeys(bankName);
+	}
+	public void enterBankAddress(String bankAddress)
+	{
+		bankAddressTextField.clear();
+		bankAddressTextField.sendKeys(bankAddress);
+	}
+	public void selectBoardingAndLodging(String boardingAndLodging)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(boardingAndLodgingDropdownList, boardingAndLodging);
+	}
+	//Candidate Experience
+	public void selectCandidateExperienceSector(String sector)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceSectorDropdownList, sector);
+	}
+	public void selectCandidateExperienceJobRole(String jobrole, String jobRoleCode)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceJobRoleDropdownList, jobrole+" ("+jobRoleCode+")");
 	}
 }
