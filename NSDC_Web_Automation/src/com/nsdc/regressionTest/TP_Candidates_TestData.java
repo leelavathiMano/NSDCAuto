@@ -67,7 +67,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.clickToSelectDOB();
 		Thread.sleep(4000);
 		String selectedDateOfBirth=driver.findElement(By.id("dob")).getAttribute("value");
-	    ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner_Candidate-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 10, selectedDateOfBirth);
+	    ReadWriteData.setExcelData("./TestData/Workflow/TP_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 10, selectedDateOfBirth);
 	    tpCrp.selectRelationWithGuardian(guardianRelation);
 		Thread.sleep(2000);
 		tpCrp.enterGuardianName(guardianName);
@@ -111,14 +111,15 @@ public class TP_Candidates_TestData extends TestConfiguration
 		Thread.sleep(2000);
 		tpCrp.enterLocationSPOC(locationSPOC);
 		tpCrp.clickSaveAndContinue();
-		tpCrp.clickSaveAndContinue();
 		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		tpCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Contact Details Page
 		String candidateIDUrl=driver.getCurrentUrl();
 		String parts[]=candidateIDUrl.split("/");
 		String registeredCandidateID=parts[parts.length-1];
-		ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner_Candidate-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 1, registeredCandidateID);
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 1, registeredCandidateID);
 		Assert.assertTrue(driver.getCurrentUrl().contains("contact-details"),"OMG!!! navigation to Contact Details page is unsuccessfull OR something is wrong! ");
 		tpCrp.selectIdentificationType(identificationType);
 		Thread.sleep(4000);
@@ -139,13 +140,14 @@ public class TP_Candidates_TestData extends TestConfiguration
 //		tpCrp.enterBankName(bankName);
 //		tpCrp.enterBankAddress(bankAddress);
 		tpCrp.selectBoardingAndLodging(boardingAndLodging);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Education
 		tpCrp.selectEducation(education1);
 		Thread.sleep(2000);
-		tpCrp.enterSpecialisation(specialisation1);
-		Thread.sleep(2000);
+//		tpCrp.enterSpecialisation(specialisation1);
+//		Thread.sleep(2000);
 		tpCrp.selectYearOfPassing(yearOfPassing1);
 		Thread.sleep(2000);
 		tpCrp.clickToBrowseEducationProofDoc();
@@ -158,13 +160,16 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.selectCandidateExperienceSector(sector1);
 		Thread.sleep(2000);
 		tpCrp.selectCandidateExperienceJobRole(jobRole1, jobRoleCode1);
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Course Preferences Page
 		tpCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		tpCrp.clickIAgree();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToAgreeAndSubmit();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		Thread.sleep(4000);

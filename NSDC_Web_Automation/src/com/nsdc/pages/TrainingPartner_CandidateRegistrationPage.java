@@ -158,6 +158,8 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement candidateExperienceSectorDropdownList;
 	@FindBy(xpath="//select[@formcontrolname='qpCode']")
 	private WebElement candidateExperienceJobRoleDropdownList;
+	@FindBy(xpath="//label[input[@name='agree']]")
+	private WebElement iAgreeCheckbox;
 	
 	public TrainingPartner_CandidateRegistrationPage(WebDriver driver)
     {
@@ -512,5 +514,9 @@ public class TrainingPartner_CandidateRegistrationPage
 	public void selectCandidateExperienceJobRole(String jobrole, String jobRoleCode)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceJobRoleDropdownList, jobrole+" ("+jobRoleCode+")");
+	}
+	public void clickIAgree()
+	{
+		iAgreeCheckbox.click();
 	}
 }
