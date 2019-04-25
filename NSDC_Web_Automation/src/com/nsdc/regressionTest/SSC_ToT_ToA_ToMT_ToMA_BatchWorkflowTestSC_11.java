@@ -93,7 +93,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
 		{
 			js.executeScript("window.scrollBy(0,-1000)", "");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("m_header_nav")));
+			wait.until(ExpectedConditions.elementToBeClickable(By.linkText("ToT, ToA, ToMT,ToMA")));
 			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
