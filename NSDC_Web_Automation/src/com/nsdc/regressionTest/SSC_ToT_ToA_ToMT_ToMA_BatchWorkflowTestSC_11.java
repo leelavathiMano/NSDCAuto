@@ -299,7 +299,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 			sAp.enterBatchIDToSearch(createdBatchID);
 			sAp.clickToGetSearchResult();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[1]")).getText().trim(),createdBatchID);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[2]")).getText().trim(), batchType);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[3]")).getText().trim(), domainJobRole+"  ("+domainJobRoleCode+") - "+domainJobRoleVersion+", "+platformJobRole+"  ("+platformJobRoleCode+") - "+platformJobRoleVersion);
