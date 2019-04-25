@@ -35,27 +35,22 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(trainingPartnerID, trainingPartnerPassword);
-		Thread.sleep(10000);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingpartner","Login Unsuccessfull");
+		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		TrainingPartnerDashboardPage tDp=new TrainingPartnerDashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(4000);
 		tDp.clickMyCandidates();
-		Thread.sleep(4000);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingpartnercandidatesregistered","OMG!!! navigation to My Candidates page is unsuccessfull OR something is wrong! ");
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 		tpMp.clickRegisterCandidate();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToChooseBulkExcelSheetUpload();
-		Thread.sleep(2000);
 		tpMp.clickForExcelFileBrowse();
-		Thread.sleep(5000);
 		UploadFile.upload(bulkExcelFile);
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickRegister();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
 		for(int i=4;i<8;i++)
 		{
@@ -83,14 +78,10 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			String bulkCandidateCurrentState=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 23);
 			String bulkCandidateCurrentPinCode=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 22);
 			String bulkCandidateCurrentCountry=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 25);
-			Thread.sleep(4000);
 			tpMp.enterKeywordsToSearch(bulkCandidateName);
-			Thread.sleep(4000);
 			tpMp.clickToApplySearchFilters();
-			Thread.sleep(4000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
 			js.executeScript("window.scrollBy(0,150)", "");
-			Thread.sleep(2000);
-			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]")).size()==1,"OMG!!! No show of bulk registration candidate of name - "+bulkCandidateName+" !! ");
 			Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'CAN_')]")).isDisplayed());
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")).getText().trim(), bulkCandidateName);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[3]")).getText().trim(), bulkCandidateGender);
@@ -120,9 +111,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[28]")).getText().trim(), bulkCandidateCurrentCountry);
 			//Bulk Registered Candidate Action Menu - View Details
 			tpMp.clickToGetRegisteredCandidateActionMenu();
-			Thread.sleep(2000);
 			tpMp.selectRegisteredCandidateViewDetailsOption();
-			Thread.sleep(4000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")).getText().trim(), bulkCandidateName);
 		   	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), bulkCandidateDoB.replaceAll("/", "-"));
 		   	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), bulkCandidateGender);
@@ -136,17 +126,15 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'District')]]/span[2]")).getText().trim(), bulkCandidatePermanentDistrict);
 	       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
 	       	tpMp.clickGoBack();
-	       	Thread.sleep(6000);
+	       	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	       	tpMp.enterKeywordsToSearch(bulkCandidateName);
-			Thread.sleep(4000);
 			tpMp.clickToApplySearchFilters();
-			Thread.sleep(4000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
 			js.executeScript("window.scrollBy(0,150)", "");
-			Thread.sleep(2000);
 			driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/th/label/span")).click();
-			Thread.sleep(2000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tpMp.clickToDownloadReportForSelectedCandidates();
-			Thread.sleep(2000);   
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));  
 		}
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
@@ -168,90 +156,62 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(trainingPartnerID, trainingPartnerPassword);
-		Thread.sleep(10000);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingpartner","Login Unsuccessfull");
+		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		TrainingPartnerDashboardPage tDp=new TrainingPartnerDashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
-		Thread.sleep(4000);
 		tDp.clickMyCandidates();
-		Thread.sleep(4000);
-		Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainingpartnercandidatesregistered","OMG!!! navigation to My Candidates page is unsuccessfull OR something is wrong! ");
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 		tpMp.clickRegisterCandidate();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToChooseIndividualCandidateRegistration();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickRegister();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Personal Details Page
 		Assert.assertTrue(driver.getCurrentUrl().contains("personal-details"),"OMG!!! navigation to Individual Candidate Registration Personal Details page is unsuccessfull OR something is wrong! ");
 		TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 		tpCrp.selectNamePrefix(namePrefix);
-		Thread.sleep(2000);
 		tpCrp.enterFullName(fullName);
-		Thread.sleep(2000);
 		tpCrp.clickToBrowseProfilePicture();
-		Thread.sleep(4000);
 		UploadFile.upload(profilePicture);
-		Thread.sleep(4000);
 		tpCrp.clickToUploadProfilePicture();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterMobileNumber(mobileNumber);
-		Thread.sleep(2000);
 		tpCrp.enterEmailID(emailID);
-		Thread.sleep(2000);
 		tpCrp.clickToChooseGender(gender);
-		Thread.sleep(4000);
 		tpCrp.clickToSelectDOB();
-		Thread.sleep(4000);
 		String selectedDateOfBirth=driver.findElement(By.id("dob")).getAttribute("value");
 	    ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner_Candidate-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 10, selectedDateOfBirth);
 	    tpCrp.selectRelationWithGuardian(guardianRelation);
-		Thread.sleep(2000);
 		tpCrp.enterGuardianName(guardianName);
-		Thread.sleep(2000);
 		tpCrp.selectMaritalStatus(maritalStatus);
-		Thread.sleep(2000);
 		tpCrp.enterPlaceOfBirth(placeOfBirth);
-		Thread.sleep(2000);
 		tpCrp.selectCast(cast);
-		Thread.sleep(4000);
 		tpCrp.selectReligion(religion);
-		Thread.sleep(4000);
 		if(isDisabled.equalsIgnoreCase("yes"))
 		{
 			tpCrp.clickDisabilityYes();
-			Thread.sleep(2000);
 			tpCrp.selectDisablity(disablity);
-			Thread.sleep(2000);
 			tpCrp.clickToBrowsedisabilityProofDoc();
-			Thread.sleep(4000);
 			UploadFile.upload(disabilityProofDoc);
-			Thread.sleep(4000);
 			tpCrp.clickToUploadDisabilityProofDoc();
-			Thread.sleep(8000);
 		}
 		else if(isDisabled.equalsIgnoreCase("no"))
 		{
 			tpCrp.clickDisabilityNo();
 		}
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterAddress(address);
-		Thread.sleep(4000);
 		tpCrp.selectState(state);
-		Thread.sleep(2000);
 		tpCrp.selectDistrict(district);
-		Thread.sleep(2000);
 		tpCrp.selectSubDistrict(subDistrict);
-		Thread.sleep(4000);
 		tpCrp.selectVillage(village);
-		Thread.sleep(4000);
 		tpCrp.enterPincode(pincode);
-		Thread.sleep(2000);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Contact Details Page
 		String candidateIDUrl=driver.getCurrentUrl();
 		String parts[]=candidateIDUrl.split("/");
@@ -259,20 +219,15 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner_Candidate-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 1, registeredCandidateID);
 		Assert.assertTrue(driver.getCurrentUrl().contains("contact-details"),"OMG!!! navigation to Contact Details page is unsuccessfull OR something is wrong! ");
 		tpCrp.selectIdentificationType(identificationType);
-		Thread.sleep(4000);
 		tpCrp.enterIdentificationIDNumber(identificationIDnumber);
-		Thread.sleep(6000);
 		tpCrp.clickToBrowseIdentificationProofDoc();
-		Thread.sleep(4000);
 		UploadFile.upload(identificationProof);
-		Thread.sleep(4000);
 		tpCrp.clickToUploadIdentificationProofDoc();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value").trim(), identificationIDnumber);
 		if(isCommunicationAddressSameAsPermanentAddress.equalsIgnoreCase("yes"))
 		{
 			tpCrp.clickSameAsPermanetAddress();
-			Thread.sleep(2000);
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='address1']")).getAttribute("value").trim(), address);
 			Select selectedVillage=new Select(driver.findElement(By.xpath("//select[@formcontrolname='city']")));
 			Assert.assertEquals(selectedVillage.getFirstSelectedOption().getText().trim(), village);
@@ -287,118 +242,71 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		else if(isCommunicationAddressSameAsPermanentAddress.equalsIgnoreCase("no"))
 		{
 			tpCrp.enterAddress(cAddress);
-			Thread.sleep(4000);
 			tpCrp.selectState(cState);
-			Thread.sleep(2000);
 			tpCrp.selectDistrict(cDistrict);
-			Thread.sleep(2000);
 			tpCrp.selectSubDistrict(cSubDistrict);
-			Thread.sleep(4000);
 			tpCrp.selectVillage(cVillage);
-			Thread.sleep(4000);
 			tpCrp.enterPincode(cPincode);
-			Thread.sleep(2000);
 		}
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Education Details Page
-		Assert.assertTrue(driver.getCurrentUrl().contains("education-details"),"OMG!!! navigation to Education Details page is unsuccessfull OR something is wrong! ");
-		Thread.sleep(2000);
 		tpCrp.selectEducation(education1);
-		Thread.sleep(2000);
 		tpCrp.enterSpecialisation(specialisation1);
-		Thread.sleep(2000);
 		tpCrp.selectYearOfPassing(yearOfPassing1);
-		Thread.sleep(2000);
 		tpCrp.clickToBrowseEducationProofDoc();
-		Thread.sleep(4000);
 		UploadFile.upload(education1Proof);
-		Thread.sleep(4000);
 		tpCrp.clickToUploadEducationProof();
-		Thread.sleep(8000);
 		//Second Education Record
-		Thread.sleep(2000);
 		tpCrp.clickToAddOneMoreEducationRecord();
-		Thread.sleep(4000);
 		tpCrp.seelctSecondEducation(education2);
-		Thread.sleep(4000);
 		tpCrp.enterSecondSpecialisation(specialisation2);
-		Thread.sleep(4000);
 //		tpCrp.enterEducationNameInCaseOFOthers(othersEducationName);
 //		Thread.sleep(4000);
 		tpCrp.selectSecondYearOfPassing(yearOfPassing2);
-		Thread.sleep(4000);
 		tpCrp.clickToBrowseSecondEducationProof();
-		Thread.sleep(4000);
 		UploadFile.upload(education2Proof);
-		Thread.sleep(4000);
 		tpCrp.clickToUploadSecondEducationProof();
-		Thread.sleep(8000);
 		//Third Education Record
 		tpCrp.clickToAddOneMoreEducationRecord();
-		Thread.sleep(4000);
 		tpCrp.selectThirdEducation(education3);
-		Thread.sleep(4000);
 		tpCrp.enterThirdSpecialisation(specialisation3);
-		Thread.sleep(4000);
 		tpCrp.selectThirdYearOfPassing(yearOfPassing3);
-		Thread.sleep(4000);
 		tpCrp.clickToBrowseThirdEducationProof();
-		Thread.sleep(4000);
 		UploadFile.upload(education3Proof);
-		Thread.sleep(8000);
 		tpCrp.clickToUploadThirdEducationProof();
-		Thread.sleep(5000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Removing added third Education record
 		tpCrp.clickToRemoveAddedThirdEducationRecord();
-		Thread.sleep(4000);
 		Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[3]")).size()==0,"OMG!!! Removed third education record fields present OR Something is wrong! ");
 		Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[2]")).size()==1,"OMG!!! Added Second Education Record not present OR Something is wrong! ");
 		Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='education'])[1]")).size()==1,"OMG!!! Added First Education Record not present OR Something is wrong! ");
-		Thread.sleep(2000);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Course Preferences Page
-		Assert.assertTrue(driver.getCurrentUrl().contains("course-preferences"),"OMG!!! navigation to Course Preference page is unsuccessfull OR something is wrong! ");
-		Thread.sleep(2000);
 		tpCrp.selectHearAboutUs(hearAboutUs);
-		Thread.sleep(4000);
 		tpCrp.selectSector(sector1);
-		Thread.sleep(4000);
 		tpCrp.selectSubSector(subSector1);
-		Thread.sleep(4000);
 		tpCrp.selectJobRole(jobRole1);
-		Thread.sleep(4000);
 		//Second Preference
 		tpCrp.clickToAddAnotherPreference();
-		Thread.sleep(4000);
 		tpCrp.selectSecondSector(sector2);
-		Thread.sleep(2000);
 		tpCrp.selectSecondSubSector(subSector2);
-		Thread.sleep(2000);
 		tpCrp.selectSecondJobRole(jobRole2);
-		Thread.sleep(2000);
 		//Third Preference
 		tpCrp.clickToAddAnotherPreference();
-		Thread.sleep(4000);
 		tpCrp.selectThirdSector(sector3);
-		Thread.sleep(2000);
 		tpCrp.selectThirdSubSector(subSector3);
-		Thread.sleep(2000);
 		tpCrp.selectThirdJobRole(jobRole3);
-		Thread.sleep(2000);
 		//Removing Third Preference
 		tpCrp.clickToRemoveAddedThirdPreference();
-		Thread.sleep(2000);
 		Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='sector'])[3]")).size()==0,"OMG!!! Removed Third preference Still Present OR Something is wrong! ");
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
-		Assert.assertTrue(driver.getCurrentUrl().contains("declaration"),"OMG!!! navigation to Declaration page is unsuccessfull OR something is wrong! ");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Declaration Page -> Review Feature -> Verification OF Entered Data
 		tpCrp.clickToReviewBeforeSubmission();
-		Thread.sleep(8000);	
-		//Personal Details Review PAge
-		Assert.assertTrue(driver.getCurrentUrl().contains("personal-details"),"OMG!!! navigation to Personal Details Review Page is unsuccessfull OR something is wrong! ");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));		//Personal Details Review PAge
 		Select selectedNamePrefix=new Select(driver.findElement(By.xpath("//select[@formcontrolname='namePrefix']")));
 		Assert.assertEquals(selectedNamePrefix.getFirstSelectedOption().getText(),namePrefix);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='firstName']")).getAttribute("value"), fullName);
@@ -435,7 +343,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Assert.assertEquals(selectedSubDistrict.getFirstSelectedOption().getText(), subDistrict);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='pinCode']")).getAttribute("value"), pincode);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Contact Details Review Page
 		Assert.assertTrue(driver.getCurrentUrl().contains("contact-details"),"OMG!!! navigation to Contact Details Review page is unsuccessfull OR something is wrong! ");
 		Select selectedIdentificationType=new Select(driver.findElement(By.xpath("//select[@formcontrolname='alternateIdType']")));
@@ -469,7 +377,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='pinCode']")).getAttribute("value"), cPincode);
 		}
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);	
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Education Details Review Page
 		Assert.assertTrue(driver.getCurrentUrl().contains("education-details"),"OMG!!! navigation to Education Details Review page is unsuccessfull OR something is wrong! ");
 		Select selectedEducation1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[1]")));
@@ -487,7 +395,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Assert.assertEquals(selectedYearOfPassing2.getFirstSelectedOption().getText(), yearOfPassing2);
 		Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), education2Proof);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Course Preference Review Page
 		Assert.assertTrue(driver.getCurrentUrl().contains("course-preferences"),"OMG!!! navigation to Course Preferences Review page is unsuccessfull OR something is wrong! ");
 		Select selectedHearedFrom=new Select(driver.findElement(By.xpath("//select[@formcontrolname='heardFrom']")));
@@ -506,23 +414,19 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Select selectedJobRole2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='jobRole'])[2]")));
 		Assert.assertEquals(selectedJobRole2.getFirstSelectedOption().getText(), jobRole2);
 		tpCrp.clickSaveAndContinue();
-		Thread.sleep(8000);	
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Declaration Page after Successful Review
-		Assert.assertTrue(driver.getCurrentUrl().contains("declaration"),"OMG!!! navigation to Declaration page after Review is unsuccessfull OR something is wrong! ");
 		tpCrp.clickToAgreeAndSubmit();
 //		Assert.assertTrue(driver.findElement(By.id("swal2-content")).getText().contains("success"));
 //		String createdCanidate=driver.findElement(By.id("swal2-content")).getText();
 //		String[] parts=createdCanidate.split(" ");
 //		String candidateID=parts[1];
 //		tpCrp.clickOK();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.enterCandidateIDToSearch(registeredCandidateID);
-		Thread.sleep(4000);
 		tpMp.clickToApplySearchFilters();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]")));
 		js.executeScript("window.scrollBy(0,150)", "");
-		Thread.sleep(2000);
-		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]")).size()==1,"OMG!!! No show of TP registered candidate - "+registeredCandidateID+" ! ");
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]/td[1]")).getText().trim(), registeredCandidateID);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]/td[2]")).getText().trim(), fullName);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]/td[3]")).getText().trim(), gender);
@@ -566,9 +470,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		}
 		//Self Registered Candidate Action Menu - View Details
 		tpMp.clickToGetRegisteredCandidateActionMenu();
-		Thread.sleep(2000);
 		tpMp.selectRegisteredCandidateViewDetailsOption();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Name of The Candidate')]]/span[2]")).getText().trim(), fullName);
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Date Of Birth')]]/span[2]")).getText().trim(), selectedDateOfBirth.replaceAll("/", "-"));
        	Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Gender')]]/span[2]")).getText().trim(), gender);
@@ -599,18 +502,15 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
        	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[contains(text(),'"+jobRole2+"')]]]]//td[5]")).getText().trim(), subSector2);
     	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Candidate");
        	tpMp.clickGoBack();
-       	WebDriverWait wait=new WebDriverWait(driver, 30);
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.enterCandidateIDToSearch(registeredCandidateID);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToApplySearchFilters();
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]")));
 		js.executeScript("window.scrollBy(0,150)", "");
-		Thread.sleep(2000);
 		tpMp.clickToSelectCreatedCandidateRecord();
-		Thread.sleep(4000);
 		tpMp.clickToDownloadReportForSelectedCandidates();
-		Thread.sleep(4000);	
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		Thread.sleep(4000);
