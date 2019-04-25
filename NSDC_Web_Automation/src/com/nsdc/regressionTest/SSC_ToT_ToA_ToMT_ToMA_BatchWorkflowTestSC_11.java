@@ -177,7 +177,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		sscTbcP.clickToViewFees();
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='batchFees']")).getAttribute("value"), expectedBatchFees);
 		sscTbcP.clickToGetInDetailBatchFees();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//tr[td[p[contains(text(),'Fee Applicable for Program')]]]/td[2]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[p[contains(text(),'Fee Applicable for Program')]]]/td[2]")));
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'Fee Applicable for Program')]]]/td[2]")).getText().trim(), expectedBatchFees);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'No. Of Additional Technical QP(0) X Rate(800)')]]]/td[2]")).getText().trim(), "0");
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[p[contains(text(),'No. Of Additional Non-Technical QP(0) X Rate(600)')]]]/td[2]")).getText().trim(), "0");
