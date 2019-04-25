@@ -80,7 +80,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			String bulkCandidateCurrentCountry=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 25);
 			tpMp.enterKeywordsToSearch(bulkCandidateName);
 			tpMp.clickToApplySearchFilters();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("window.scrollBy(0,150)", "");
 			Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'CAN_')]")).isDisplayed());
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")).getText().trim(), bulkCandidateName);
@@ -164,13 +164,10 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 		tpMp.clickRegisterCandidate();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToChooseIndividualCandidateRegistration();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickRegister();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Personal Details Page
-		Assert.assertTrue(driver.getCurrentUrl().contains("personal-details"),"OMG!!! navigation to Individual Candidate Registration Personal Details page is unsuccessfull OR something is wrong! ");
 		TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 		tpCrp.selectNamePrefix(namePrefix);
 		tpCrp.enterFullName(fullName);
