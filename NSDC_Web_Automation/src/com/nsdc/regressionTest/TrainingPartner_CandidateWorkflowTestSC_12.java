@@ -50,7 +50,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		UploadFile.upload(bulkExcelFile);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickRegister();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim().contains("Candidates Registered Successfully"), "OMG!!! Toast Message Regarding Successful Candidate Registration does not displayed! ");
 		for(int i=4;i<8;i++)
 		{
@@ -80,7 +80,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			String bulkCandidateCurrentCountry=ReadWriteData.getData("./UploadFiles/"+bulkExcelFile, "Sheet1", i, 25);
 			tpMp.enterKeywordsToSearch(bulkCandidateName);
 			tpMp.clickToApplySearchFilters();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
 			js.executeScript("window.scrollBy(0,150)", "");
 			Assert.assertTrue(driver.findElement(By.xpath("//td[contains(text(),'CAN_')]")).isDisplayed());
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")).getText().trim(), bulkCandidateName);
@@ -129,10 +129,9 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	       	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	       	tpMp.enterKeywordsToSearch(bulkCandidateName);
 			tpMp.clickToApplySearchFilters();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
 			js.executeScript("window.scrollBy(0,150)", "");
 			driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/th/label/span")).click();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tpMp.clickToDownloadReportForSelectedCandidates();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));  
 		}
@@ -176,6 +175,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.selectNamePrefix(namePrefix);
 		tpCrp.enterFullName(fullName);
 		tpCrp.clickToBrowseProfilePicture();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(profilePicture);
 		tpCrp.clickToUploadProfilePicture();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -196,6 +196,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickDisabilityYes();
 			tpCrp.selectDisablity(disablity);
 			tpCrp.clickToBrowsedisabilityProofDoc();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			UploadFile.upload(disabilityProofDoc);
 			tpCrp.clickToUploadDisabilityProofDoc();
 		}
@@ -221,6 +222,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.selectIdentificationType(identificationType);
 		tpCrp.enterIdentificationIDNumber(identificationIDnumber);
 		tpCrp.clickToBrowseIdentificationProofDoc();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(identificationProof);
 		tpCrp.clickToUploadIdentificationProofDoc();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -256,6 +258,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.enterSpecialisation(specialisation1);
 		tpCrp.selectYearOfPassing(yearOfPassing1);
 		tpCrp.clickToBrowseEducationProofDoc();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(education1Proof);
 		tpCrp.clickToUploadEducationProof();
 		//Second Education Record
@@ -266,6 +269,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 //		Thread.sleep(4000);
 		tpCrp.selectSecondYearOfPassing(yearOfPassing2);
 		tpCrp.clickToBrowseSecondEducationProof();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(education2Proof);
 		tpCrp.clickToUploadSecondEducationProof();
 		//Third Education Record
@@ -274,6 +278,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.enterThirdSpecialisation(specialisation3);
 		tpCrp.selectThirdYearOfPassing(yearOfPassing3);
 		tpCrp.clickToBrowseThirdEducationProof();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(education3Proof);
 		tpCrp.clickToUploadThirdEducationProof();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
