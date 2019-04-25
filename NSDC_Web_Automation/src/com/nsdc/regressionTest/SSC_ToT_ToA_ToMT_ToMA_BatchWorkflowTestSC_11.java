@@ -325,7 +325,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			sAp.enterBatchIDToSearch(createdBatchID);
 			sAp.clickToGetSearchResult();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+createdBatchID+"')]]/td[8]")).getText().trim(), "Pending to be Published");
 			sscTbcP.clickBatchAction(createdBatchID);
 			sscTbcP.clickViewDetailsOption(createdBatchID);
@@ -1640,21 +1640,16 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
-		WebDriverWait wait=new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+		WebDriverWait wait=new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ToT, ToA, ToMT,ToMA")));
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]"))));
 		sscDbP.clickCreateBatch();
-		Assert.assertEquals(driver.findElement(By.name("sector")).getAttribute("value").trim(), expectedSector);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
-//		sscTbcP.selectSubSector(subSector);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchType(batchType);
-		Thread.sleep(2000);
 		sscTbcP.selectBatchCategory(batchCategory);
-		Thread.sleep(2000);
 		SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage.fileSave("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls");
 		String configBatchStartDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 58);
 		String configBatchEndDate=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 59);
@@ -1689,6 +1684,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
 		{
 			js.executeScript("window.scrollBy(0,-1000)", "");
+			wait.until(ExpectedConditions.elementToBeClickable(By.linkText("ToT, ToA, ToMT,ToMA")));
 			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
