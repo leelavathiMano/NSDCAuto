@@ -304,6 +304,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(okButton));
+		wait.until(ExpectedConditions.elementToBeClickable(okButton));
 		okButton.click();
 	}
 	public void clickBatchAction(String createdBatchID)
