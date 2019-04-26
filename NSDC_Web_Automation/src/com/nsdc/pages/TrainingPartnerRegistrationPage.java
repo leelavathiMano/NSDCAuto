@@ -153,6 +153,19 @@ public class TrainingPartnerRegistrationPage
     @FindBy(xpath="//button[text()='Continue']")
     private WebElement continueButton;
     
+    @FindBy(xpath="(//label[input[@formcontrolname='approvalstatus']]/span)[1]")
+    private WebElement aa_ApprovalProcessRadioButton;
+    @FindBy(xpath="(//label[input[@formcontrolname='approvalstatus']]/span)[2]")
+    private WebElement nonaa_ApprovalProcessRadioButton;
+    @FindBy(xpath="//select[@formcontrolname='scheme']")
+    private WebElement schemeDropDownList;
+    @FindBy(xpath="//input[@formcontrolname='projectID']")
+    private WebElement proposalIDTextbox;
+    @FindBy(xpath="//button[contains(text(),'Submit')]")
+    private WebElement submit_Button;
+    @FindBy(xpath="//button[contains(text(),'Save As Draft')]")
+    private WebElement saveAsDraftButton;
+    
     public TrainingPartnerRegistrationPage(WebDriver driver)
     {
         this.driver = driver;
@@ -507,5 +520,35 @@ public class TrainingPartnerRegistrationPage
     	continueButton.click();
     }
     
+    public void clickOnAA_ApprovalProcess()
+    {
+    	aa_ApprovalProcessRadioButton.click();
+    }
+    
+    public void clickOnNonAA_ApprovalProcess()
+    {
+    	nonaa_ApprovalProcessRadioButton.click();
+    }
+    
+    public void selectScheme(String scheme)
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(schemeDropDownList, scheme);
+    }
+    
+    public void enterProposalID(String proposaID)
+    {
+    	proposalIDTextbox.clear();
+    	proposalIDTextbox.sendKeys(proposaID);
+    }
+    
+    public void clickOnSubmit()
+    {
+    	submit_Button.click();
+    }
+    
+    public void clickOnSaveAsDraft()
+    {
+    	saveAsDraftButton.click();
+    }
 }
 

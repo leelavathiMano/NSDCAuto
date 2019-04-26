@@ -33,7 +33,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     }
     
     @Test(dataProvider="tpProfileData")
-    public void tpRegistrationsTC_01(String sno, String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String tpid, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional, String city1, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName) throws Exception
+    public void tpRegistrationsTC_01(String sno, String userType, String spocName, String email, String mobile, String emailOTP, String mobileOTP, String tpid, String oldPassword, String newPassword, String confirmPassword, String name_Of_Organization, String type_Of_The_Organization, String year_Of_Establishment, String uploadFilePath, String landLine, String website, String name_Of_Ceo, String email_Of_Ceo, String mobile_Number_Of_Ceo, String authorized_Signatory_Name1, String authorized_Signatory_Email1, String authorized_Signatory_Mobile1, String authorized_Signatory_Name2, String authorized_Signatory_Email2, String authorized_Signatory_Mobile2, String addresss_Of_Organization, String near_By_Landmark, String pin_Code, String state, String district, String tehsil, String city, String geo_Location, String parliamentary_constituency, String address_proof, String uploadFile, String pan_Number, String upload_PAN, String gst_Number, String upload_GST, String turnover1, String upload_turnover1, String turnover2, String upload_turnover2, String turnover3, String upload_turnover3, String aadhar_Number, String upload_provisional, String approvalProcess, String scheme, String proposalID, String city1, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName) throws Exception
     {
         String year_Establishment = year_Of_Establishment;
         int year = Integer.parseInt(year_Establishment);
@@ -990,6 +990,22 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 //			
 //        }
         
+        Thread.sleep(5000);
+        if(approvalProcess.equals("NonA&A"))
+        {
+        	tprp.clickOnNonAA_ApprovalProcess();
+        	tprp.selectScheme(scheme);
+        	tprp.clickOnOkButton();
+        	tprp.enterProposalID(proposalID);
+        }
+        else
+        {
+        	tprp.clickOnAA_ApprovalProcess();
+        }
+        Thread.sleep(3000);
+        tprp.clickOnSubmit();
+        Thread.sleep(3000);
+        tprp.clickOnOkButton();
         
         //tprp.clickDownloadButton();
         Thread.sleep(20000);
