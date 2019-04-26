@@ -647,351 +647,411 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_BillPaymentSC15TC03");
 	}
 	
-	@Test(dataProvider="tc_CAAF_BillPayment",enabled=false)
+	@Test(dataProvider="tc_CAAF_BillPayment")
 	public void tc_CAAF_MobileUploadTC_03(String sno, String tcUsername, String tcPassword, String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,  String tcType) throws Exception
 	{
-//        appDriver = CreateAppiumDriver.getDriverInstance();
-//		
-//		int srno = Integer.parseInt(sno);
-//		
-//		//String emailID = "TC_003787";//ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 1);
-//		//String password = ReadWriteData.getData("./TestData/Workflow/TC_CAAF-Workflow.xls", "AddTrainingCentreSC15TC01", srno, 2);
-//		
-//		//UsersScreen us = new UsersScreen(appDriver);
-//		//us.getTrainingCentreButton().click();
-//		
-//		Thread.sleep(8000);
-//		((AppiumDriver)appDriver).runAppInBackground(Duration.ofSeconds(2));
-//        ((StartsActivity)appDriver).currentActivity();
-//		LoginScreen ls = new LoginScreen(appDriver);
-//		RemoteWebElement number = (RemoteWebElement)driver.findElement(By.id("lb-0")); 
-//	    number.sendKeys("TCjhjdfjdsf");
-//        //ls.getEmailTextbox().clear();
-//       // Thread.sleep(3000);
-//		ls.getEmailTextbox().sendKeys(tcUsername);
-//		Thread.sleep(3000);
-//		ls.getPasswordTextbox().clear();
-//		ls.getPasswordTextbox().click();
-//		ls.getPasswordTextbox().sendKeys(tcPassword);
-//		ls.getLoginButton().click();
-//		
-//		TC_CAAF_DashboardScreen sd = new TC_CAAF_DashboardScreen(appDriver);
-//		sd.getGeneralDeatilsButton().click();
-//		sd.getEnableGPSButton().click();
-//		
-//		TC_CAAF_GeneralDetails_UploadImagesScreen gd_uis = new TC_CAAF_GeneralDetails_UploadImagesScreen(appDriver);
-//		List <WebElement> elements = gd_uis.getUpLoadFileButtons();
-//		for(int i=0; i<elements.size(); i++)
-//		{
-//			WebElement e1 = elements.get(i);
-//			if(i==0)
-//			{
-//				e1.click();
-//				gd_uis.getDeviceStorageAccessButton().click();
-//				MobileHandlers.clickPicture(appDriver);
-//			}
-//			else if(i==9)
-//			{
-//				MobileHandlers.scrollScreen(appDriver);
-//				MobileHandlers.scrollScreen(appDriver);
-//				e1.click();
-//				MobileHandlers.clickPicture(appDriver);
-//			}
-//			else
-//			{
-//				e1.click();
-//				MobileHandlers.clickPicture(appDriver);
-//			}
-//					
-//		}		
-//		gd_uis.getSubmitButton().click();
-//		gd_uis.getOkButton().click();
-//		
-//		sd.getTrainersButton().click();
-//		
-//		TC_CAAF_Trainers_UploadImagesScreen trainer_uis = new TC_CAAF_Trainers_UploadImagesScreen(appDriver);
-//		List <WebElement> trainerButtons = trainer_uis.getTrainerButtons();
-//		
-//		for(int i=1; i<trainerButtons.size(); i++)
-//		{
-//			WebElement e1 = trainerButtons.get(i);
-//			e1.click();
-//			
-//			trainer_uis.getProfilePicButton().click();
-//			MobileHandlers.clickPicture(appDriver);	
-//			
-//			List <WebElement> uploadButtons = trainer_uis.getUploadFileButtons();
-//			for(int j=0; j<uploadButtons.size(); j++)
-//			{
-//				WebElement e2 = uploadButtons.get(j);
-//				e2.click();
-//				if(j==2)
-//				{
-//					MobileHandlers.scrollScreen(appDriver);
-//					MobileHandlers.scrollScreen(appDriver);
-//					MobileHandlers.scrollScreen(appDriver);
-//					trainer_uis.getHighestQualificationButton().click();
-//					MobileHandlers.clickPicture(appDriver);	
-//					e2.click();
-//				}
-//				MobileHandlers.clickPicture(appDriver);	
-//			}
-//			
-//			trainer_uis.getSubmitButton().click();
-//			trainer_uis.getOkButton().click();
-//			
-//			if(i<trainerButtons.size()-1)
-//			{
-//				sd.getTrainersButton().click();
-//			}
-//		}
-//		
-//		sd.getClassroomButton().click();
-//		
-//		TC_CAAF_Clasroom_UploadImagesScreen classroom_uis = new TC_CAAF_Clasroom_UploadImagesScreen(appDriver);
-//		List <WebElement> classroomButtons = classroom_uis.getClassroomButtons();
-//		
-//		for(int i=1; i<classroomButtons.size(); i++)
-//		{
-//			WebElement e1 = classroomButtons.get(i);
-//			e1.click();
-//			MobileHandlers.scrollScreen(appDriver);
-//			
-//			List <WebElement> uploadButtons = classroom_uis.getUploadFileButtons();
-//			for(int j=0; j<uploadButtons.size(); j++)
-//			{
-//				WebElement e2 = uploadButtons.get(j);
-//				e2.click();
-//				MobileHandlers.clickPicture(appDriver);	
-//			}
-//			
-//			List <WebElement> uploadVideoButtons = classroom_uis.getUploadVideoButtons();
-//			for(int k=0; k<uploadVideoButtons.size(); k++)
-//			{
-//				WebElement e3 = uploadVideoButtons.get(k);
-//				e3.click();
-//				MobileHandlers.recordVideo(appDriver);
-//				MobileHandlers.scrollScreen(appDriver);
-//			}
-//			
-//			classroom_uis.getSubmitButton().click();
-//			classroom_uis.getOkButton().click();
-//			
-//			if(i<classroomButtons.size()-1)
-//			{
-//				sd.getClassroomButton().click();
-//			}
-//		}
-//		
-//		sd.getLaboratoryDetailsButton().click();
-//		
-//		TC_CAAF_Lab_UploadImagesScreen lab_uis = new TC_CAAF_Lab_UploadImagesScreen(appDriver);
-//		List <WebElement> labButtons = lab_uis.getLabButtons();
-//		
-//		for(int i=1; i<labButtons.size(); i++)
-//		{
-//			WebElement e1 = labButtons.get(i);
-//			e1.click();
-//			MobileHandlers.scrollScreen(appDriver);
-//			
-//			List <WebElement> uploadButtons = lab_uis.getUploadFileButtons();
-//			for(int j=0; j<uploadButtons.size(); j++)
-//			{
-//				WebElement e2 = uploadButtons.get(j);
-//				e2.click();
-//				MobileHandlers.clickPicture(appDriver);	
-//			}
-//			
-//			List <WebElement> uploadVideoButtons = lab_uis.getUploadVideoButtons();
-//			for(int k=0; k<uploadVideoButtons.size(); k++)
-//			{
-//				WebElement e3 = uploadVideoButtons.get(k);
-//				e3.click();
-//				MobileHandlers.recordVideo(appDriver);
-//				MobileHandlers.scrollScreen(appDriver);
-//			}
-//			
-//			lab_uis.getSubmitButton().click();
-//			lab_uis.getOkButton().click();
-//			
-//			if(i<labButtons.size()-1)
-//			{
-//				sd.getLaboratoryDetailsButton().click();
-//			}
-//		}
-//		
-//		sd.getCentreAreaButton().click();
-//		
-//		TC_CAAF_CentreArea_UploadImagesScreen centreArea_uis = new TC_CAAF_CentreArea_UploadImagesScreen(appDriver);
-//		List <WebElement> facilitiesButtons = centreArea_uis.getFacilitiesButtons();
-//		
-//		for(int i=1; i<facilitiesButtons.size(); i++)
-//		{
-//			WebElement e1 = facilitiesButtons.get(i);
-//			e1.click();
-//			MobileHandlers.scrollScreen(appDriver);
-//			
-//			List <WebElement> uploadButtons = centreArea_uis.getUploadFileButtons();
-//			for(int j=0; j<uploadButtons.size(); j++)
-//			{
-//				WebElement e2 = uploadButtons.get(j);
-//				e2.click();
-//				MobileHandlers.clickPicture(appDriver);	
-//			}
-//			
-//			List <WebElement> uploadVideoButtons = centreArea_uis.getUploadVideoButtons();
-//			for(int k=0; k<uploadVideoButtons.size(); k++)
-//			{
-//				WebElement e3 = uploadVideoButtons.get(k);
-//				e3.click();
-//				MobileHandlers.recordVideo(appDriver);
-//				MobileHandlers.scrollScreen(appDriver);
-//			}
-//			
-//			centreArea_uis.getSubmitButton().click();
-//			centreArea_uis.getOkButton().click();
-//			
-//			if(i<facilitiesButtons.size()-1)
-//			{
-//				sd.getCentreAreaButton().click();
-//			}
-//		}
-//		
-//		sd.getResidentialFacilitiesButton().click();
-//		
-//		TC_CAAF_Residential_UploadImagesScreen residential_uis = new TC_CAAF_Residential_UploadImagesScreen(appDriver);
-//		residential_uis.getOkButton().click();
-//		residential_uis.getAddButton().click();
-//		residential_uis.getFacilityDecriptionTextbox().clear();
-//		residential_uis.getFacilityDecriptionTextbox().sendKeys("Facility description");
-//		
-//		List <WebElement> uploadButtons1 = residential_uis.getUploadFileButtons();
-//		for(int i=0; i<uploadButtons1.size(); i++)
-//		{
-//			WebElement e1 = uploadButtons1.get(i);
-//			e1.click();
-//			MobileHandlers.clickPicture(appDriver);
-//		}
-//		
-//		MobileHandlers.scrollScreen(appDriver);
-//		MobileHandlers.scrollScreen(appDriver);
-//		
-//		List <WebElement> uploadVideoButtons1 = residential_uis.getUploadVideoButtons();
-//		for(int j=0; j<uploadVideoButtons1.size(); j++)
-//		{
-//			WebElement e2 = uploadVideoButtons1.get(j);
-//			e2.click();
-//			MobileHandlers.recordVideo(appDriver);
-//			MobileHandlers.scrollScreen(appDriver);
-//		}
-//		
-//		residential_uis.getSubmitButton().click();
-//		residential_uis.getOkButton().click();
-//		
-//		sd.getFacilitiesButton().click();
-//		
-//		TC_CAAF_Facilities_UploadImagesScreen facilities_uis = new TC_CAAF_Facilities_UploadImagesScreen(appDriver);
-//		
-//		List <WebElement> uploadButtons2 = facilities_uis.getUploadFileButtons();
-//		for(int i=0; i<uploadButtons2.size(); i++)
-//		{
-//			if(i==3)
-//			{
-//				MobileHandlers.scrollScreen(appDriver);
-//				MobileHandlers.scrollScreen(appDriver);
-//				MobileHandlers.scrollScreen(appDriver);
-//			}
-//			WebElement e1 = uploadButtons2.get(i);
-//			e1.click();
-//			MobileHandlers.clickPicture(appDriver);	
-//		}
-//		
-//		facilities_uis.getSubmitButton().click();
-//		facilities_uis.getOkButton().click();
+		appDriver = CreateAppiumDriver.getDriverInstance();
+
+		int srno = Integer.parseInt(sno);
+        Thread.sleep(8000);
+        
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(4));
+		((StartsActivity) appDriver).currentActivity();
+		LoginScreen ls = new LoginScreen(appDriver);
+		ls.getEmailTextbox().clear();
+		ls.getEmailTextbox().sendKeys(tcUsername);
+		Thread.sleep(3000);
+		ls.getPasswordTextbox().clear();
+		ls.getPasswordTextbox().click();
+		ls.getPasswordTextbox().sendKeys(tcPassword);
+		ls.getLoginButton().click();
+		Thread.sleep(4000);
+		TC_CAAF_DashboardScreen sd = new TC_CAAF_DashboardScreen(appDriver);
+		//Thread.sleep(4000);
+		appDriver.findElement(By.id("com.android.packageinstaller:id/permission_allow_button")).click();
+		Thread.sleep(10000);
+		 ((AppiumDriver)appDriver).runAppInBackground(Duration.ofSeconds(2));
+		  ((StartsActivity)appDriver).currentActivity(); 
+		 sd.getGeneralDeatilsButton().click(); 
+		  Thread.sleep(14000);
+		  TC_CAAF_GeneralDetails_UploadImagesScreen gd_uis = new TC_CAAF_GeneralDetails_UploadImagesScreen(appDriver);
+		  ((AppiumDriver)appDriver).runAppInBackground(Duration.ofSeconds(2));
+		  ((StartsActivity)appDriver).currentActivity(); 
+		  List <WebElement> elements = gd_uis.getUpLoadFileButtons(); 
+		  for(int i=0; i<elements.size(); i++)
+		  {
+		  WebElement e1 = elements.get(i);
+		  ((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(4));
+			((StartsActivity) appDriver).currentActivity();
+		  if(i==0) { 
+		  e1.click(); 
+		  MobileHandlers.scrollScreen(appDriver);
+		  ((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+			((StartsActivity) appDriver).currentActivity();
+			appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+		Thread.sleep(3000);
+		appDriver.findElement(By.id("com.android.packageinstaller:id/permission_allow_button")).click();
+         
+			MobileHandlers.scrollScreen(appDriver);
+		  MobileHandlers.clickPicture(appDriver); 
+		  } 
+		  else if(i==9) {
+		  MobileHandlers.scrollScreen(appDriver); 
+		  e1.click();
+		  MobileHandlers.scrollScreen(appDriver);
+		  ((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+			((StartsActivity) appDriver).currentActivity();
+			appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+			Thread.sleep(3000);
+			MobileHandlers.scrollScreen(appDriver);
+		  MobileHandlers.clickPicture(appDriver); 
+		  } 
+		  else 
+		  { 
+		  e1.click();
+		  MobileHandlers.scrollScreen(appDriver);
+		  ((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+			((StartsActivity) appDriver).currentActivity();
+			appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+			Thread.sleep(3000);
+		  MobileHandlers.clickPicture(appDriver); }
+		  
+		  } //gd_uis.getSubmitButton().click(); 
+		//  gd_uis.getOkButton().click();
+		 
+	/*	((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		sd.getTrainersButton().click();
+
+		TC_CAAF_Trainers_UploadImagesScreen trainer_uis = new TC_CAAF_Trainers_UploadImagesScreen(appDriver);
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		List<WebElement> trainerButtons = trainer_uis.getTrainerButtons();
+		for (int i = 1; i < trainerButtons.size(); i++) {
+			WebElement e1 = trainerButtons.get(i);
+			e1.click();
+			Thread.sleep(3000);
+			// trainer_uis.getAllowButton().click();
+			// ((AppiumDriver)appDriver).runAppInBackground(Duration.ofSeconds(2));
+			// ((StartsActivity)appDriver).currentActivity();
+			trainer_uis.getProfilePicButton().click();
+			Thread.sleep(3000);
+
+			  //MobileHandlers.scrollScreen(appDriver);
+			  MobileHandlers.scrollScreen(appDriver);
+			  ((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+				((StartsActivity) appDriver).currentActivity();
+			appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+			MobileHandlers.scrollScreen(appDriver);
+			Thread.sleep(3000);
+		//	 trainer_uis.getAllowButton().click();
+			// trainer_uis.getOkButton().click();
+			// trainer_uis.getProfilePicButton().click();
+
+			//  MobileHandlers.scrollScreen(appDriver);
+			//  MobileHandlers.scrollScreen(appDriver);
+			//	appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+				//MobileHandlers.scrollScreen(appDriver);
+				Thread.sleep(3000);
+			MobileHandlers.clickPicture(appDriver);
+		//	MobileHandlers.scrollScreen(appDriver);
+			List<WebElement> uploadButtons = trainer_uis.getUploadFileButtons();
+			for (int j = 0; j < uploadButtons.size(); j++) {
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				if (j == 2) {
+					//MobileHandlers.scrollScreen(appDriver);
+					 MobileHandlers.scrollScreen(appDriver);
+					trainer_uis.getHighestQualificationButton().click();
+					MobileHandlers.scrollScreen(appDriver);
+					((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+					((StartsActivity) appDriver).currentActivity();
+					
+					//changes
+					
+					
+					
+					trainer_uis.getHighestQualificationButton().click();
+					appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+					//MobileHandlers.scrollScreen(appDriver);
+					Thread.sleep(3000);
+					MobileHandlers.clickPicture(appDriver);
+					//MobileHandlers.scrollScreen(appDriver);
+					MobileHandlers.scrollScreen(appDriver);
+					e2.click();
+				}
+				// MobileHandlers.scrollScreen(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+				((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+				((StartsActivity) appDriver).currentActivity();
+				appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+				//MobileHandlers.scrollScreen(appDriver);
+				Thread.sleep(3000);
+				MobileHandlers.clickPicture(appDriver);
+			}
+			// MobileHandlers.scrollScreen(appDriver);
+			/*
+			 * trainer_uis.getSubmitButton().click(); trainer_uis.getOkButton().click();
+			 */
+/*
+			if (i < trainerButtons.size() - 1) {
+				sd.getTrainersButton().click();
+			}
+		}*/
+
+		sd.getClassroomButton().click();
+		// sd.getEnableGPSButton().click();
+		TC_CAAF_Clasroom_UploadImagesScreen classroom_uis = new TC_CAAF_Clasroom_UploadImagesScreen(appDriver);
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		List<WebElement> classroomButtons = classroom_uis.getClassroomButtons();
+
+		for (int i = 1; i < classroomButtons.size(); i++) {
+			WebElement e1 = classroomButtons.get(i);
+			e1.click();
+			// MobileHandlers.scrollScreen(appDriver);
+
+			List<WebElement> uploadButtons = classroom_uis.getUploadFileButtons();
+			for (int j = 0; j < uploadButtons.size(); j++) {
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				MobileHandlers.scrollScreen(appDriver);
+				((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+				((StartsActivity) appDriver).currentActivity();
+				appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+				//MobileHandlers.scrollScreen(appDriver);
+				Thread.sleep(3000);
+				MobileHandlers.clickPicture(appDriver);
+			}
+
+			List<WebElement> uploadVideoButtons = classroom_uis.getUploadVideoButtons();
+			((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+			((StartsActivity) appDriver).currentActivity();
+			for (int k = 0; k < uploadVideoButtons.size(); k++) {
+				WebElement e3 = uploadVideoButtons.get(k);
+				e3.click();
+				MobileHandlers.scrollScreen(appDriver);
+			
+				Thread.sleep(3000);
+				MobileHandlers.recordVideo(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+
+			/*
+			 * classroom_uis.getSubmitButton().click(); classroom_uis.getOkButton().click();
+			 */
+
+			if (i < classroomButtons.size() - 1) {
+				sd.getClassroomButton().click();
+			}
+		}
+
+		sd.getLaboratoryDetailsButton().click();
+
+		TC_CAAF_Lab_UploadImagesScreen lab_uis = new TC_CAAF_Lab_UploadImagesScreen(appDriver);
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		List<WebElement> labButtons = lab_uis.getLabButtons();
+
+		for (int i = 1; i < labButtons.size(); i++) {
+			WebElement e1 = labButtons.get(i);
+			e1.click();
+			MobileHandlers.scrollScreen(appDriver);
+
+			List<WebElement> uploadButtons = lab_uis.getUploadFileButtons();
+			for (int j = 0; j < uploadButtons.size(); j++) {
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				MobileHandlers.scrollScreen(appDriver);
+				((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+				((StartsActivity) appDriver).currentActivity();
+				appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+				//MobileHandlers.scrollScreen(appDriver);
+				Thread.sleep(3000);
+				MobileHandlers.clickPicture(appDriver);
+			}
+
+			List<WebElement> uploadVideoButtons = lab_uis.getUploadVideoButtons();
+			for (int k = 0; k < uploadVideoButtons.size(); k++) {
+				WebElement e3 = uploadVideoButtons.get(k);
+				e3.click();
+				MobileHandlers.scrollScreen(appDriver);
+			
+				Thread.sleep(3000);
+				MobileHandlers.recordVideo(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+
+			/*
+			 * lab_uis.getSubmitButton().click(); lab_uis.getOkButton().click();
+			 */
+
+			if (i < labButtons.size() - 1) {
+				sd.getLaboratoryDetailsButton().click();
+			}
+		}
+
+		sd.getCentreAreaButton().click();
+
+		TC_CAAF_CentreArea_UploadImagesScreen centreArea_uis = new TC_CAAF_CentreArea_UploadImagesScreen(appDriver);
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		List<WebElement> facilitiesButtons = centreArea_uis.getFacilitiesButtons();
+
+		for (int i = 1; i < facilitiesButtons.size(); i++) {
+			WebElement e1 = facilitiesButtons.get(i);
+			e1.click();
+			MobileHandlers.scrollScreen(appDriver);
+
+			List<WebElement> uploadButtons = centreArea_uis.getUploadFileButtons();
+			for (int j = 0; j < uploadButtons.size(); j++) {
+				WebElement e2 = uploadButtons.get(j);
+				e2.click();
+				MobileHandlers.scrollScreen(appDriver);
+				((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+				((StartsActivity) appDriver).currentActivity();
+				appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+				//MobileHandlers.scrollScreen(appDriver);
+				Thread.sleep(3000);
+				MobileHandlers.clickPicture(appDriver);
+			}
+
+			List<WebElement> uploadVideoButtons = centreArea_uis.getUploadVideoButtons();
+			for (int k = 0; k < uploadVideoButtons.size(); k++) {
+				WebElement e3 = uploadVideoButtons.get(k);
+				e3.click();
+			
+				MobileHandlers.recordVideo(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+
+			/*
+			 * centreArea_uis.getSubmitButton().click();
+			 * centreArea_uis.getOkButton().click();
+			 */
+
+			if (i < facilitiesButtons.size() - 1) {
+				sd.getCentreAreaButton().click();
+			}
+		}
+
+		sd.getResidentialFacilitiesButton().click();
+
+		TC_CAAF_Residential_UploadImagesScreen residential_uis = new TC_CAAF_Residential_UploadImagesScreen(appDriver);
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		residential_uis.getOkButton().click();
+		residential_uis.getAddButton().click();
+		residential_uis.getFacilityDecriptionTextbox().clear();
+		residential_uis.getFacilityDecriptionTextbox().sendKeys("Facility description");
+
+		List<WebElement> uploadButtons1 = residential_uis.getUploadFileButtons();
+		for (int i = 0; i < uploadButtons1.size(); i++) {
+			WebElement e1 = uploadButtons1.get(i);
+			e1.click();
+			((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+			((StartsActivity) appDriver).currentActivity();
+			appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+			//MobileHandlers.scrollScreen(appDriver);
+			Thread.sleep(3000);
+			MobileHandlers.clickPicture(appDriver);
+		}
+
+		MobileHandlers.scrollScreen(appDriver);
+		MobileHandlers.scrollScreen(appDriver);
+
+		List<WebElement> uploadVideoButtons1 = residential_uis.getUploadVideoButtons();
+		for (int j = 0; j < uploadVideoButtons1.size(); j++) {
+			WebElement e2 = uploadVideoButtons1.get(j);
+			e2.click();
 		
+			MobileHandlers.recordVideo(appDriver);
+			MobileHandlers.scrollScreen(appDriver);
+		}
+
+		/*
+		 * residential_uis.getSubmitButton().click();
+		 * residential_uis.getOkButton().click();
+		 */
+
+		sd.getFacilitiesButton().click();
+
+		TC_CAAF_Facilities_UploadImagesScreen facilities_uis = new TC_CAAF_Facilities_UploadImagesScreen(appDriver);
+		((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+		((StartsActivity) appDriver).currentActivity();
+		List<WebElement> uploadButtons2 = facilities_uis.getUploadFileButtons();
+		for (int i = 0; i < uploadButtons2.size(); i++) {
+			if (i == 3) {
+				MobileHandlers.scrollScreen(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+				MobileHandlers.scrollScreen(appDriver);
+			}
+			WebElement e1 = uploadButtons2.get(i);
+			e1.click();
+			((AppiumDriver) appDriver).runAppInBackground(Duration.ofSeconds(2));
+			((StartsActivity) appDriver).currentActivity();
+			appDriver.findElement(By.xpath("//android.widget.Button[contains(@text,'Capture Image')]")).click();
+			//MobileHandlers.scrollScreen(appDriver);
+			Thread.sleep(3000);
+			MobileHandlers.clickPicture(appDriver);
+		}
+
+		/*
+		 * facilities_uis.getSubmitButton().click();
+		 * facilities_uis.getOkButton().click();
+		 */
+
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tcUsername, tcPassword);
 		TrainingCentre_CAAF_Page caaf = new TrainingCentre_CAAF_Page(driver);
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		caaf.clickOnSaveAndNext();
 		Thread.sleep(3000);
-		//caaf.clickOnOK();
+		caaf.clickOnSaveAndContinueToPayment();
 		Thread.sleep(3000);
-		caaf.clickOnIAgree();
-		if(tcType.equals("Government"))
-		{
-			Thread.sleep(3000);
-			caaf.clickOnSaveAndContinue();
-			Thread.sleep(3000);
-//			caaf.clickOnLogOut();
-			caaf.clcikOnGoToDashboard();
-			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//button[contains(text(),'Under Assessment-1st Time')]")).getText(), "Under Assessment-1st Time");
-		}
-		else
-		{
-			Thread.sleep(3000);
-			caaf.clickOnSaveAndContinueToPayment();
-			Thread.sleep(3000);
-			caaf.clickOnOK();
-			TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
-			Thread.sleep(3000);
-			tcbi.enterCity(city);
-			tcbi.selectCountry(Country);
-			Thread.sleep(3000);
-			if(paymentMethod.equals("Credit Card"))
-			{
-				tcbi.clickOnCreditCard();
-				Thread.sleep(3000);
-				tcbi.enterCreditCardNumber(creditCardNumber);
-				tcbi.selectMonth_ForCreditCard(month_CreditCard);
-				tcbi.selectYear_ForCreditCard(year_CreditCard);
-				tcbi.enterCVVForCreditCard(cvv_CreditCard);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForCreditCard();
-			}
-			else if(paymentMethod.equals("Debit Card"))
-			{
-				tcbi.clickOnDebitCard();
-				Thread.sleep(3000);
-				tcbi.enterDebitCardNumber(debitCardNumber);
-				tcbi.selectMonth_ForDebitCard(month_DebitCard);
-				tcbi.selectYear_ForDebitCard(year_DebitCard);
-				tcbi.enterCVVForDebitCard(cvv_DebitCard);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForDebitCard();
-			}
-			else if(paymentMethod.equals("Net Banking"))
-			{
-				tcbi.clickOnNetBanking();
-				Thread.sleep(3000);
-				tcbi.selectBankName(bankName);
-				Thread.sleep(3000);
-				tcbi.clickOnMakePaymentForNetBanking();
-			}
-			Thread.sleep(3000);
-			tcbi.clickOnReturnToTheMerchantSite();
-			
-			Thread.sleep(5000);
-			caaf.clickOnContinue();
-			Thread.sleep(3000);
-			caaf.clickOnOK();
-			Thread.sleep(3000);
-//			caaf.clickOnLogOut();
-			caaf.clcikOnGoToDashboard();
-			Thread.sleep(3000);
-			Assert.assertEquals(driver.findElement(By.xpath("//button[contains(text(),'Under Assessment-1st Time')]")).getText(), "Under Assessment-1st Time");
-		}
-		
-		
-		
-		PostLoginPage plp = new PostLoginPage(driver);
+		caaf.clickOnOK();
+		TC_CAAF_BillingInformationPage tcbi = new TC_CAAF_BillingInformationPage(driver);
 		Thread.sleep(3000);
-		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
-		
+		tcbi.enterCity(city);
+		tcbi.selectCountry(Country);
+		Thread.sleep(3000);
+		if (paymentMethod.equals("Credit Card")) {
+			tcbi.clickOnCreditCard();
+			Thread.sleep(3000);
+			tcbi.enterCreditCardNumber(creditCardNumber);
+			tcbi.selectMonth_ForCreditCard(month_CreditCard);
+			tcbi.selectYear_ForCreditCard(year_CreditCard);
+			tcbi.enterCVVForCreditCard(cvv_CreditCard);
+			Thread.sleep(3000);
+			tcbi.clickOnMakePaymentForCreditCard();
+		} else if (paymentMethod.equals("Debit Card")) {
+			tcbi.clickOnDebitCard();
+			Thread.sleep(3000);
+			tcbi.enterDebitCardNumber(debitCardNumber);
+			tcbi.selectMonth_ForDebitCard(month_DebitCard);
+			tcbi.selectYear_ForDebitCard(year_DebitCard);
+			tcbi.enterCVVForDebitCard(cvv_DebitCard);
+			Thread.sleep(3000);
+			tcbi.clickOnMakePaymentForDebitCard();
+		} else if (paymentMethod.equals("Net Banking")) {
+			tcbi.clickOnNetBanking();
+			Thread.sleep(3000);
+			tcbi.selectBankName(bankName);
+			Thread.sleep(3000);
+			tcbi.clickOnMakePaymentForNetBanking();
+		}
+		Thread.sleep(3000);
+		tcbi.clickOnReturnToTheMerchantSite();
+
+		Thread.sleep(5000);
+		caaf.clickOnContinue();
+		Thread.sleep(3000);
+		caaf.clickOnOK();
+		Thread.sleep(3000);
+		caaf.clickOnLogOut();
+
 	}
 	
 	
