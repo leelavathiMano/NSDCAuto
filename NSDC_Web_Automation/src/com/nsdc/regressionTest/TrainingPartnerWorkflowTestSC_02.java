@@ -1851,7 +1851,16 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             tprp.clickSaveAndContinueButton();
             Thread.sleep(2000);
         }
-        Thread.sleep(10000);
+        tprp.clickOnAA_ApprovalProcess();
+        tprp.clickOnSubmit();
+        Thread.sleep(3000);
+        tprp.clickOnOkButton();
+        Thread.sleep(20000);
+        PostLoginPage plp = new PostLoginPage(driver);
+        plp.clickOnProfileLogo();
+        plp.clickOnLogout();
+        Thread.sleep(3000);
+        Assert.assertEquals(driver.findElement(By.xpath("//li[contains(text(),'LOGIN')]")).getText(), "LOGIN");
      }
     
     @DataProvider
