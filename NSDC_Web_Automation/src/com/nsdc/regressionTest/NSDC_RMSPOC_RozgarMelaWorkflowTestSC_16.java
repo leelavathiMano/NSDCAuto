@@ -70,18 +70,34 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CreateRozgarMela", rowNum, 11, startDateHipen);
 		String endDateHipen=driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CreateRozgarMela", rowNum, 12, endDateHipen);
-		rmCp.enterLandmark(landmark);
+		if(landmark.equalsIgnoreCase("n/a"))
+		{
+			rmCp.enterLandmark(landmark);
+		}
 		rmCp.enterPincode(pincode);
 		rmCp.selectState(state);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.selectDistrict(district);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-		rmCp.selectTehsil(tehsil);
+		if(tehsil.equalsIgnoreCase("n/a"))
+		{
+			rmCp.selectTehsil(tehsil);
+		}
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-		rmCp.selectVillage(village);
-		rmCp.selectParlimentaryConstituency(parlimentaryConstituency);
-		rmCp.enterAdditionalRemarks(additionalRemarks);
-		Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Next')]")).isEnabled(), "OMG!!! CreateMelaAndAlignTrainingCentre Button is disabled, something is wrong!!! ");
+		if(village.equalsIgnoreCase("n/a"))
+		{
+			rmCp.selectVillage(village);
+		}
+		if(parlimentaryConstituency.equalsIgnoreCase("n/a"))
+		{
+			rmCp.selectParlimentaryConstituency(parlimentaryConstituency);
+		}
+		
+		if(additionalRemarks.equalsIgnoreCase("n/a"))
+		{
+			rmCp.enterAdditionalRemarks(additionalRemarks);
+		}
+		Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Next')]")).isEnabled(), "OMG!!! Next Button is disabled, something is wrong!!! ");
 		rmCp.clickToCreateMelaAndAlignTrainingCentre();
 		wait.until(ExpectedConditions.urlContains("align-training-centres"));
 		Assert.assertTrue(driver.getCurrentUrl().contains("align-training-centres"),"OMG!!! Navigation to Align Training Centre page is unsuccessful OR Something wrong! ");
