@@ -76,18 +76,23 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		}
 		rmCp.enterPincode(pincode);
 		rmCp.selectState(state);
+		Thread.sleep(1000);
 		rmCp.selectDistrict(district);
+		Thread.sleep(1000);
 		if(tehsil.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectTehsil(tehsil);
+			Thread.sleep(1000);
 		}
 		if(village.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectVillage(village);
+			Thread.sleep(1000);
 		}
 		if(parlimentaryConstituency.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectParlimentaryConstituency(parlimentaryConstituency);
+			Thread.sleep(1000);
 		}
 		
 		if(additionalRemarks.equalsIgnoreCase("N/A"))

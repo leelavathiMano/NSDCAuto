@@ -185,26 +185,18 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	}
 	public void selectDistrict(String district)
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(districtDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(districtDropdownList, district);
 	}
 	public void selectTehsil(String tehsil)
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(tehsilDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(tehsilDropdownList, tehsil);
 	}
 	public void selectVillage(String village)
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(cityVillageDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(cityVillageDropdownList, village);
 	}
 	public void selectParlimentaryConstituency(String parlimentaryConstituency)
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(parliamentaryConstituencyDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(parliamentaryConstituencyDropdownList, parlimentaryConstituency);
 	}
 	public void enterGeoLocation(String geoLocation)
@@ -236,45 +228,45 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	//Align TC
 	public void clickToSelectAllTrainingCentres()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(selectAllTrainingCentreCheckbox));
 		selectAllTrainingCentreCheckbox.click();
 	}
 	public void clickToAlignSelectedTrainingCentres()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(alignSelectedTrainingCentresButton));
 		alignSelectedTrainingCentresButton.click();
 	}
 	public void clickOK()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(okButton));
 		okButton.click();
 	}
 	public void clickSaveAndAlignSSCs()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(saveAndAlignSSCsButton));
 		saveAndAlignSSCsButton.click();
 	}
 	//Align SSCs
 	public void clickToSelectAllSSCs()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//th[label[input[@type='checkbox']]]")));
 		selectAllSSCsCheckbox.click();
 	}
 	public void clickToAlignSelectedSSCs()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Align Selected SSCs')]")));
 		alignSelectedSSCsButton.click();
 	}
 	//finally creating rozgar mela
 	public void clickToSaveAndCreateRozgarMela()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(saveAndCreateRozgarMelaButton));
 		saveAndCreateRozgarMelaButton.click();
 	}
