@@ -95,6 +95,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rmCp.enterAdditionalRemarks(additionalRemarks);
 		}
 		Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Next')]")).isEnabled(), "OMG!!! Next Button is disabled, something is wrong!!! ");
+		Thread.sleep(2000);
 		rmCp.clickToCreateMelaAndAlignTrainingCentre();
 		wait.until(ExpectedConditions.urlContains("align-training-centres"));
 		Assert.assertTrue(driver.getCurrentUrl().contains("align-training-centres"),"OMG!!! Navigation to Align Training Centre page is unsuccessful OR Something wrong! ");
