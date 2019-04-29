@@ -215,6 +215,8 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	}
 	public void clickToCreateMelaAndAlignTrainingCentre()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(createMelaAndAlignTrainingCentreButton));
 		createMelaAndAlignTrainingCentreButton.click();
 	}
 	public void clickToCancel()
