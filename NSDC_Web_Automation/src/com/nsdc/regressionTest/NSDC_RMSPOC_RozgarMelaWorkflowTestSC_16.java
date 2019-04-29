@@ -70,27 +70,27 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CreateRozgarMela", rowNum, 11, startDateHipen);
 		String endDateHipen=driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CreateRozgarMela", rowNum, 12, endDateHipen);
-		if(landmark.equalsIgnoreCase("n/a"))
+		if(landmark.equalsIgnoreCase("N/A"))
 		{
 			rmCp.enterLandmark(landmark);
 		}
 		rmCp.enterPincode(pincode);
 		rmCp.selectState(state);
 		rmCp.selectDistrict(district);
-		if(tehsil.equalsIgnoreCase("n/a"))
+		if(tehsil.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectTehsil(tehsil);
 		}
-		if(village.equalsIgnoreCase("n/a"))
+		if(village.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectVillage(village);
 		}
-		if(parlimentaryConstituency.equalsIgnoreCase("n/a"))
+		if(parlimentaryConstituency.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectParlimentaryConstituency(parlimentaryConstituency);
 		}
 		
-		if(additionalRemarks.equalsIgnoreCase("n/a"))
+		if(additionalRemarks.equalsIgnoreCase("N/A"))
 		{
 			rmCp.enterAdditionalRemarks(additionalRemarks);
 		}
