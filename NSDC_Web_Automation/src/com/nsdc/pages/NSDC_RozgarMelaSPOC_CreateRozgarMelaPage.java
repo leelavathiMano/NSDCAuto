@@ -186,25 +186,25 @@ public class NSDC_RozgarMelaSPOC_CreateRozgarMelaPage
 	public void selectDistrict(String district)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("district")));
+		wait.until(ExpectedConditions.elementSelectionStateToBe(districtDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(districtDropdownList, district);
 	}
 	public void selectTehsil(String tehsil)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("tehsil")));
+		wait.until(ExpectedConditions.elementSelectionStateToBe(tehsilDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(tehsilDropdownList, tehsil);
 	}
 	public void selectVillage(String village)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("city")));
+		wait.until(ExpectedConditions.elementSelectionStateToBe(cityVillageDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(cityVillageDropdownList, village);
 	}
 	public void selectParlimentaryConstituency(String parlimentaryConstituency)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("parliamentaryConstituency")));
+		wait.until(ExpectedConditions.elementSelectionStateToBe(parliamentaryConstituencyDropdownList, true));
 		SelectDropDownList.selectDropDownListByVisibleText(parliamentaryConstituencyDropdownList, parlimentaryConstituency);
 	}
 	public void enterGeoLocation(String geoLocation)
