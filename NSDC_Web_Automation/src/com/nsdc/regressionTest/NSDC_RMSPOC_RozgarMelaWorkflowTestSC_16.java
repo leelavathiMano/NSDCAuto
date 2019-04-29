@@ -76,14 +76,11 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		}
 		rmCp.enterPincode(pincode);
 		rmCp.selectState(state);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.selectDistrict(district);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		if(tehsil.equalsIgnoreCase("n/a"))
 		{
 			rmCp.selectTehsil(tehsil);
 		}
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		if(village.equalsIgnoreCase("n/a"))
 		{
 			rmCp.selectVillage(village);
