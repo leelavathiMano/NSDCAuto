@@ -76,23 +76,18 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		}
 		rmCp.enterPincode(pincode);
 		rmCp.selectState(state);
-		Thread.sleep(1000);
 		rmCp.selectDistrict(district);
-		Thread.sleep(1000);
 		if(!tehsil.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectTehsil(tehsil);
-			Thread.sleep(1000);
 		}
 		if(!village.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectVillage(village);
-			Thread.sleep(1000);
 		}
 		if(!parlimentaryConstituency.equalsIgnoreCase("N/A"))
 		{
 			rmCp.selectParlimentaryConstituency(parlimentaryConstituency);
-			Thread.sleep(1000);
 		}
 		
 		if(!additionalRemarks.equalsIgnoreCase("N/A"))
@@ -103,7 +98,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		rmCp.clickToCreateMelaAndAlignTrainingCentre();
 		wait.until(ExpectedConditions.urlContains("align-training-centres"));
 		Assert.assertTrue(driver.getCurrentUrl().contains("align-training-centres"),"OMG!!! Navigation to Align Training Centre page is unsuccessful OR Something wrong! ");
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickToSelectAllTrainingCentres();
 		rmCp.clickToAlignSelectedTrainingCentres();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
@@ -114,7 +109,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		rmCp.clickSaveAndAlignSSCs();
 		wait.until(ExpectedConditions.urlContains("align-ssc"));
 		Assert.assertTrue(driver.getCurrentUrl().contains("align-ssc"),"OMG!!! Navigation to Align SSCs page is unsuccessful OR Something wrong! ");
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickToSelectAllSSCs();
 		rmCp.clickToAlignSelectedSSCs();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
@@ -123,13 +118,13 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save & Create Rozgar Mela')]")));
 		js.executeScript("window.scrollBy(0,-1000)", "");
 		Assert.assertTrue(driver.findElement(By.xpath("//button[contains(text(),'Save & Create Rozgar Mela')]")).isEnabled(),"OMG!!! Save & Create Rozgar Mela, button should be enabled after selecting SSCs! ");
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickToSaveAndCreateRozgarMela();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//p[contains(text(),'You have successfully created a')]/span)[2]")));
 		Assert.assertTrue(driver.getCurrentUrl().contains("create-rozgar-mela-success"),"OMG!!! Navigation to Create Rozgar Mela Success page is unsuccessful OR Something wrong! ");
 		String createdRozgarMelaID=driver.findElement(By.xpath("(//p[contains(text(),'You have successfully created a')]/span)[2]")).getText().trim().replace('"', ' ').replaceAll(" ", "");
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CreateRozgarMela", rowNum, 1, createdRozgarMelaID);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickAnnounceToStakeholders();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Notification has been sent to stakeholders");
