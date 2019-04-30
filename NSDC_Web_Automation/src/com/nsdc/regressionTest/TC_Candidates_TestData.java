@@ -37,23 +37,29 @@ public class TC_Candidates_TestData extends TestConfiguration
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
 		tcCrp.clickMyCandidates();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		TC_MyCandidatesPage tcMp=new TC_MyCandidatesPage(driver);
 		tcMp.clickRegisterCandidate();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(2000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcMp.clickToChooseIndividualCandidateRegistration();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
 		tcMp.clickRegister();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Personal Details Page
 		tcCrp.selectNamePrefix(namePrefix);
 		tcCrp.enterFullName(fullName);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(2000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.clickToBrowseProfilePicture();
 		UploadFile.upload(profilePicture);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.clickToUploadProfilePicture();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.enterMobileNumber(mobileNumber);
 		tcCrp.enterEmailID(emailID);
 		tcCrp.clickToChooseGender(gender);
@@ -71,28 +77,33 @@ public class TC_Candidates_TestData extends TestConfiguration
 		{
 			tcCrp.clickDisabilityYes();
 			tcCrp.selectDisablity(disablity);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Thread.sleep(2000);
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tcCrp.clickToBrowsedisabilityProofDoc();
 			UploadFile.upload(disabilityProofDoc);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Thread.sleep(4000);
+//			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tcCrp.clickToUploadDisabilityProofDoc();
 		}
 		else if(isDisabled.equalsIgnoreCase("no"))
 		{
 			tcCrp.clickDisabilityNo();
 		}
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.enterAddress(address);
 		tcCrp.selectState(state);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(2000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.selectDistrict(district);	
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(2000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.enterPincode(pincode);
-		tcCrp.enterLocationSPOC(locationSPOC);
+//		tcCrp.enterLocationSPOC(locationSPOC);
 		tcCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-		tcCrp.clickSaveAndContinue();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		tcCrp.clickSaveAndContinue();
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Contact Details Page
 		String candidateIDUrl=driver.getCurrentUrl();
 		String parts[]=candidateIDUrl.split("/");
@@ -100,12 +111,15 @@ public class TC_Candidates_TestData extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/TC_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 1, registeredCandidateID);
 		tcCrp.selectIdentificationType(identificationType);
 		tcCrp.enterIdentificationIDNumber(identificationIDnumber);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(2000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.clickToBrowseIdentificationProofDoc();
 		UploadFile.upload(identificationProof);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.clickToUploadIdentificationProofDoc();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value").trim(), identificationIDnumber);
 		tcCrp.clickSameAsPermanetAddress();
 		tcCrp.enterAccountHolderName(fullName);	
