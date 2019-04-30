@@ -46,6 +46,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpMp.clickRegisterCandidate();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToChooseBulkExcelSheetUpload();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickForExcelFileBrowse();
 		UploadFile.upload(bulkExcelFile);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'BulkCandidatesRegist')]")));
@@ -205,9 +206,13 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterAddress(address);
 		tpCrp.selectState(state);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.selectDistrict(district);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.selectSubDistrict(subDistrict);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.selectVillage(village);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterPincode(pincode);
 		tpCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
