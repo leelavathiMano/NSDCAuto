@@ -38,61 +38,41 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
     	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
-        Thread.sleep(5000);
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);
-        Thread.sleep(2000);
         rp.enterSPOCName(name);
-        Thread.sleep(2000);
         rp.enterEmail(email);
-        Thread.sleep(2000);
         rp.enterMobile(mobile);
-        Thread.sleep(2000);
         rp.clickIagree();
-        Thread.sleep(2000);
+        WebDriverWait wait=new WebDriverWait(driver, 15);
+    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Register')]")));
         rp.clickRegister();
-        Thread.sleep(2000);
-        List<WebElement> ele = driver.findElements(By.xpath("//div[@id='toast-container']/div/div"));
-		if(ele.size()!=0)
-		{
-			Assert.assertTrue(driver.findElement(By.xpath("//div[@id='toast-container']/div/div")).getText().trim().startsWith("Duplicate"),"new assessor credentials only");
-			Thread.sleep(2000);
-			Assert.assertFalse(driver.findElement(By.xpath("//button[contains(text(),'Register')]")).isDisplayed(), "Assessor Registration:Duplicate Email OR Mobile Number!!! ");
-		}
-		else
-		{
-			Thread.sleep(2000);
-			rp.enterEmailOTP(emailOTP);
-			rp.enterMobileOTP(mobileOTP);
-        	Thread.sleep(2000);
-        	rp.clickVerify();
-		}
-        Thread.sleep(2000);
+        rp.enterEmailOTP(emailOTP);
+		rp.enterMobileOTP(mobileOTP);
+        rp.clickVerify();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='m-login__signin']/h3/span")));
         String createdAssessor=driver.findElement(By.xpath("//div[@class='m-login__signin']/h3/span")).getText();
         ReadWriteData.setExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 1, createdAssessor);
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
         rp.clickGoToLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, "ekaushal");
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='oldpassword']")));
         rp.enterOldPassword(oldPassword);
         rp.enterNewPassword(newPassword);
         rp.enterConfirmPassword(confirmPassword);
         rp.clickResetResubmit();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='OK']")));
         rp.clickConfirmationOkMessage();
         elp.performlogin(username, confirmPassword);
-    	WebDriverWait wait=new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("dob"))); 
         AssessorRegistrationPage assessor = new AssessorRegistrationPage(driver);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
         Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter full name']")).getAttribute("value"), name);
         assessor.selectGender(gender);
-        Thread.sleep(2000);
         JavascriptExecutor js=(JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,150)", "");
         assessor.selectDateOfBirth();
-        Thread.sleep(4000);
         String selectedDateOfBirth=driver.findElement(By.id("dob")).getAttribute("value");
         ReadWriteData.setExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 12, selectedDateOfBirth);
          
@@ -108,11 +88,8 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         {
             assessor.selectAnyKnownLanguage(language);
         }
-        Thread.sleep(4000);
         assessor.selectReligion(religion);
-        Thread.sleep(2000);
         assessor.selectCategory(category);
-        Thread.sleep(2000);
         if(disability.equals("None"))
         {
             assessor.selectDisability(disability);
