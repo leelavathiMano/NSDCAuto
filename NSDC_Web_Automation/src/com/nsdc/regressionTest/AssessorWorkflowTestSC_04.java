@@ -55,6 +55,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         String createdAssessor=driver.findElement(By.xpath("//div[@class='m-login__signin']/h3/span")).getText();
         ReadWriteData.setExcelData("./TestData/Workflow/Assessor-Workflow.xls", "AssessorRegistration", Integer.parseInt(serialNum), 1, createdAssessor);
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
+        Thread.sleep(2000);
         rp.clickGoToLogin();
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, "ekaushal");
