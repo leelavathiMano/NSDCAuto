@@ -647,7 +647,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TC_CAAF-Workflow.xls", "TC_CAAF_BillPaymentSC15TC03");
 	}
 	
-	@Test(dataProvider="tc_CAAF_BillPayment")
+	@Test(dataProvider="tc_CAAF_BillPayment", enabled=false)
 	public void tc_CAAF_MobileUploadTC_03(String sno, String tcUsername, String tcPassword, String city, String Country, String paymentMethod, String creditCardNumber, String month_CreditCard, String year_CreditCard, String cvv_CreditCard, String debitCardNumber, String month_DebitCard, String year_DebitCard, String cvv_DebitCard, String bankName,  String tcType) throws Exception
 	{
 		appDriver = CreateAppiumDriver.getDriverInstance();
