@@ -126,6 +126,7 @@ public class TC_Candidates_TestData extends TestConfiguration
 //		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value").trim(), identificationIDnumber);
 		tcCrp.clickSameAsPermanetAddress();
+		Thread.sleep(4000);
 		tcCrp.enterAccountHolderName(fullName);	
 		tcCrp.enterAccountNumber(accountNumber);
 		tcCrp.enterIFSC(ifsc);
