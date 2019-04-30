@@ -48,7 +48,9 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.enterFullName(fullName);
 		tpCrp.clickToBrowseProfilePicture();
 		UploadFile.upload(profilePicture);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToUploadProfilePicture();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterMobileNumber(mobileNumber);
 		tpCrp.enterEmailID(emailID);
 		tpCrp.clickToChooseGender(gender);
@@ -66,17 +68,22 @@ public class TP_Candidates_TestData extends TestConfiguration
 		{
 			tpCrp.clickDisabilityYes();
 			tpCrp.selectDisablity(disablity);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tpCrp.clickToBrowsedisabilityProofDoc();
 			UploadFile.upload(disabilityProofDoc);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tpCrp.clickToUploadDisabilityProofDoc();
 		}
 		else if(isDisabled.equalsIgnoreCase("no"))
 		{
 			tpCrp.clickDisabilityNo();
 		}
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterAddress(address);
 		tpCrp.selectState(state);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.selectDistrict(district);	
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.enterPincode(pincode);
 		tpCrp.enterLocationSPOC(locationSPOC);
 		tpCrp.clickSaveAndContinue();
@@ -91,9 +98,12 @@ public class TP_Candidates_TestData extends TestConfiguration
 		Assert.assertTrue(driver.getCurrentUrl().contains("contact-details"),"OMG!!! navigation to Contact Details page is unsuccessfull OR something is wrong! ");
 		tpCrp.selectIdentificationType(identificationType);
 		tpCrp.enterIdentificationIDNumber(identificationIDnumber);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToBrowseIdentificationProofDoc();
 		UploadFile.upload(identificationProof);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToUploadIdentificationProofDoc();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value").trim(), identificationIDnumber);
 		tpCrp.clickSameAsPermanetAddress();
 		tpCrp.enterAccountHolderName(fullName);	
@@ -109,8 +119,11 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.selectEducation(education1);
 		tpCrp.selectYearOfPassing(yearOfPassing1);
 		tpCrp.clickToBrowseEducationProofDoc();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(education1Proof);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToUploadEducationProof();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Candidate Experience
 		tpCrp.selectCandidateExperienceSector(sector1);
 		tpCrp.selectCandidateExperienceJobRole(jobRole1, jobRoleCode1);
