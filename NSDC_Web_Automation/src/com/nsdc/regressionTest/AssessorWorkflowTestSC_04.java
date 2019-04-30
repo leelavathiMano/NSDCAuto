@@ -49,6 +49,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         rp.clickRegister();
         rp.enterEmailOTP(emailOTP);
 		rp.enterMobileOTP(mobileOTP);
+		Thread.sleep(2000);
         rp.clickVerify();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='m-login__signin']/h3/span")));
         String createdAssessor=driver.findElement(By.xpath("//div[@class='m-login__signin']/h3/span")).getText();
@@ -61,6 +62,7 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         rp.enterOldPassword(oldPassword);
         rp.enterNewPassword(newPassword);
         rp.enterConfirmPassword(confirmPassword);
+        Thread.sleep(2000);
         rp.clickResetResubmit();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='OK']")));
         rp.clickConfirmationOkMessage();

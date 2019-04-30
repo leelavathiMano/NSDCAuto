@@ -52,23 +52,12 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickRegister();
         Thread.sleep(2000);
-    	List<WebElement> ele = driver.findElements(By.xpath("//div[@id='toast-container']/div/div"));
-		if(ele.size()!=0)
-		{
-			Assert.assertTrue(driver.findElement(By.xpath("//div[@id='toast-container']/div/div")).getText().trim().startsWith("Duplicate"),"new trainer credentials only");
-			Thread.sleep(2000);
-			Assert.assertFalse(driver.findElement(By.xpath("//button[contains(text(),'Register')]")).isDisplayed(), "Trainer Registration:Duplicate Email OR Mobile Number!!! ");
-		}
-		else
-		{
-			Thread.sleep(2000);
-			rp.enterEmailOTP(emailOTP);
-			Thread.sleep(2000);
-			rp.enterMobileOTP(mobileOTP);
-        	Thread.sleep(2000);
-        	rp.clickVerify();
-		}
-        Thread.sleep(4000);
+    	rp.enterEmailOTP(emailOTP);
+		Thread.sleep(2000);
+		rp.enterMobileOTP(mobileOTP);
+        Thread.sleep(2000);
+        rp.clickVerify();
+		Thread.sleep(4000);
         String createdTrainer=driver.findElement(By.xpath("//div[@class='m-login__signin']/h3/span")).getText();
         ReadWriteData.setExcelData("./TestData/Workflow/Trainer-Workflow.xls", "TrainerRegistration", Integer.parseInt(serialNum), 1, createdTrainer);
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
