@@ -229,6 +229,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.clickToBrowseIdentificationProofDoc();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		UploadFile.upload(identificationProof);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToUploadIdentificationProofDoc();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value").trim(), identificationIDnumber);
