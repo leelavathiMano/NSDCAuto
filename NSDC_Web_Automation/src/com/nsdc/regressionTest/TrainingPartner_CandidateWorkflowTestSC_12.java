@@ -130,7 +130,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 	       	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	       	tpMp.enterKeywordsToSearch(bulkCandidateName);
 			tpMp.clickToApplySearchFilters();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/td[2]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("window.scrollBy(0,150)", "");
 			driver.findElement(By.xpath("//tr[td[contains(text(),'"+bulkCandidateName+"')]]/th/label/span")).click();
 			tpMp.clickToDownloadReportForSelectedCandidates();
@@ -197,6 +197,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.clickToBrowsedisabilityProofDoc();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			UploadFile.upload(disabilityProofDoc);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tpCrp.clickToUploadDisabilityProofDoc();
 		}
 		else if(isDisabled.equalsIgnoreCase("no"))

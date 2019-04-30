@@ -556,7 +556,14 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 //     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
 //     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
 //     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
+     	if(applicant_Category.equalsIgnoreCase("Assessor,Master Assessor"))
+     	{
+     	 	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Assessor\nMaster Assessor");
+     	}
+     	else
+     	{
+     	 	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), applicant_Category);
+     	}
     	//Edit Profile
        	aMpP.clickEditProfile();
     	Thread.sleep(2000);
@@ -849,7 +856,14 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
 //     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[3]")).getText().trim(), preferredSubSector2);
 //     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[4]")).getText().trim(), preferredDistrict2);
 //     	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+preferredJobRole2+"')]]/td[5]")).getText().trim(), preferredSubDistrict2);
-       	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), userType);
+       	if(applicant_Category.equalsIgnoreCase("Assessor,Master Assessor"))
+     	{
+     	 	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), "Assessor\nMaster Assessor");
+     	}
+     	else
+     	{
+     	 	Assert.assertEquals(driver.findElement(By.xpath("//div[div[div[h5[contains(text(),'Applicant Type')]]]]/div[4]")).getText().trim(), applicant_Category);
+     	}
     	PostLoginPage plp=new PostLoginPage(driver);
     	plp.clickOnProfileLogo();
     	Thread.sleep(2000);
