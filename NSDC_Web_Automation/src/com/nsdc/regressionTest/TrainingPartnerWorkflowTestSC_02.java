@@ -1546,15 +1546,15 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         {
         	tprp.enterPANNumber(pan_Number);
           	Thread.sleep(2000);
-          	tprp.clickBrowseButton1();
-          	Thread.sleep(2000);
-          	UploadFile.upload(upload_PAN);
-          	Thread.sleep(2000);
           	tprp.clickOnPANVerify();
             Thread.sleep(2000);
             tprp.clickOnOkButton();
             Thread.sleep(2000);
-          	tprp.clickUploadButton1();
+          	tprp.clickBrowseButton1();
+          	Thread.sleep(2000);
+          	UploadFile.upload(upload_PAN);
+          	Thread.sleep(2000);
+           	tprp.clickUploadButton1();
           	Thread.sleep(3000);
           	tprp.enterGSTAccountNumber(gst_Number);
           	Thread.sleep(2000);
@@ -1666,8 +1666,6 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
             UploadFile.upload(upload_PAN);
             Thread.sleep(2000);
             tprp.clickUploadButton1();
-            Thread.sleep(3000);
-            tprp.clickUploadButton2();
             Thread.sleep(3000);
             tprp.enterAnnualTurnOver1(turnover1);
             Thread.sleep(2000);
