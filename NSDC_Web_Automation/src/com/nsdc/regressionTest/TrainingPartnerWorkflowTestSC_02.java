@@ -1853,7 +1853,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.clickOnSubmit();
         Thread.sleep(3000);
         tprp.clickOnOkButton();
-        Thread.sleep(20000);
+        Thread.sleep(30000);
         PostLoginPage plp = new PostLoginPage(driver);
         plp.clickOnProfileLogo();
         plp.clickOnLogout();
