@@ -1853,13 +1853,14 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         tprp.clickOnSubmit();
         Thread.sleep(3000);
         tprp.clickOnOkButton();
-        Thread.sleep(30000);
+        Thread.sleep(20000);
+        tprp.clcikOnGoToDashboard();
+        Thread.sleep(5000);
         PostLoginPage plp = new PostLoginPage(driver);
         plp.clickOnProfileLogo();
+        Thread.sleep(1000);
         plp.clickOnLogout();
-        Thread.sleep(3000);
-        Assert.assertEquals(driver.findElement(By.xpath("//li[contains(text(),'LOGIN')]")).getText(), "LOGIN");
-     }
+    }
     
     @DataProvider
     public Object[][] tpRejectionData()
