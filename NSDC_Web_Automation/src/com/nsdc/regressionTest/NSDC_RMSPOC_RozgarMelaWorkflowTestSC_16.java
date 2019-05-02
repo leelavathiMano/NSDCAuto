@@ -202,7 +202,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("swal2-title")));
 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Are you sure you want to cancel the Rozgar?");
 			rVmp.clickToFinallyCancelRozgarMela();
-			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("swal2-title")));
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("swal2-content")));
 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Rozgar Mela Has Been Cancelled !");
 			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Rozgar Mela has been Cancelled with Mela ID:"+rozgarMelaID);
 			rVmp.clickContinueToViewAllMelas();
