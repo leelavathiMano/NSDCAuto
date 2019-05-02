@@ -58,7 +58,7 @@ public class TC_Candidates_TestData extends TestConfiguration
 		Thread.sleep(1000);
 //		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.clickToUploadProfilePicture();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 //		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.enterMobileNumber(mobileNumber);
 		tcCrp.enterEmailID(emailID);

@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,11 @@ public class NSDC_RozgarMelaSPOC_DashboardPage
 	}
 	public void clickViewRozgarMelas()
 	{
-		viewRozgarMelasCard.click();
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(viewRozgarMelasCard));
+		wait.until(ExpectedConditions.elementToBeClickable(viewRozgarMelasCard));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		js.executeScript("arguments[0].click()", viewRozgarMelasCard);
 	}
 }

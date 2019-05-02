@@ -1,11 +1,9 @@
 package com.nsdc.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.nsdc.generic.SelectDropDownList;
 
 public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
@@ -27,21 +25,21 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	private WebElement startDateFilterTextField;
 	@FindBy(id="fullDate1")
 	private WebElement endDateFilterTextField;
-	@FindBy(xpath="//input[@placeholder='Search by Rozgar Mela Name']")
-	private WebElement searchByRozgarMelaNameTextField;
+	@FindBy(id="Search")
+	private WebElement searchByRozgarMelaIdTextField;
 	@FindBy(xpath="//button[contains(text(),'Apply Filters')]")
 	private WebElement applyFiltersButton;
 	@FindBy(xpath="//button[contains(text(),'Reset')]")
 	private WebElement resetButton;
-	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
 	private WebElement actionMenuDropdown;
-	@FindBy(xpath="(//span[contains(text(),'View Details')])[1]")
+	@FindBy(xpath="//span[contains(text(),'View Details')]")
 	private WebElement viewDetailsOption;
 	@FindBy(xpath="(//span[contains(text(),'Download Report')])[1]")
 	private WebElement downloadReportOption;
-	@FindBy(xpath="(//span[contains(text(),'Re-Schedule Mela')])[1]")
+	@FindBy(xpath="//span[contains(text(),'Re-Schedule Mela')]")
 	private WebElement reScheduleMelaOption;
-	@FindBy(xpath="(//span[contains(text(),'Cancel Mela')])[1]")
+	@FindBy(xpath="//span[contains(text(),'Cancel Mela')]")
 	private WebElement cancelMelaOption;
 	@FindBy(xpath="//button[contains(text(),'Download Report')]")
 	private WebElement downloadReportButton;
@@ -66,6 +64,16 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	private WebElement updatePostPlacementDetailsButton;
 	@FindBy(xpath="//button[contains(text(),'Back')]")
 	private WebElement backButton;
+	@FindBy(xpath="//button[contains(text(),'Cancel Rozgar Mela')]")
+	private WebElement cancelRozgarMelaButton;
+	@FindBy(xpath="//button[contains(text(),'Continue to View All Melas')]")
+	private WebElement continueToViewAllMelasButton;
+//	@FindBy(xpath="")
+//	private WebElement backButton;
+//	@FindBy(xpath="")
+//	private WebElement backButton;
+//	@FindBy(xpath="")
+//	private WebElement backButton;
 	public NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -105,10 +113,10 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 		endDateFilterTextField.clear();
 		endDateFilterTextField.sendKeys(endDate);
 	}
-	public void enterRozgarMelaNameToSearch(String rozgarMelaName)
+	public void enterRozgarMelaIDToSearch(String rozgarMelaID)
 	{
-		searchByRozgarMelaNameTextField.clear();
-		searchByRozgarMelaNameTextField.sendKeys(rozgarMelaName);
+		searchByRozgarMelaIdTextField.clear();
+		searchByRozgarMelaIdTextField.sendKeys(rozgarMelaID);
 	}
 	public void clickToApplyFilters()
 	{
@@ -177,5 +185,13 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	public void clickBack()
 	{
 		backButton.click();
+	}
+	public void clickToFinallyCancelRozgarMela()
+	{
+		cancelRozgarMelaButton.click();
+	}
+	public void clickContinueToViewAllMelas()
+	{
+		continueToViewAllMelasButton.click();
 	}
 }
