@@ -172,7 +172,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 	@Test(dataProvider="createRozgarMelaData")//, dependsOnMethods="createRozgarMelaTC_01")
 	public void cancelRozgarMelaTC_03(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date) throws Exception
 	{
-		if(serialNum.equals("2"))
+		if(serialNum.equals("3"))
 		{
 			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 			LoginPage lp=new LoginPage(driver);
@@ -187,7 +187,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			NSDC_RozgarMelaSPOC_ViewRozgarMelasPage rVmp=new NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(driver);
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
-			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[3]")).getText().trim(), rozgarMelaName);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[4]")).getText().trim(), state);
