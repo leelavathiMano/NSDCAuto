@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,12 +69,23 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	private WebElement cancelRozgarMelaButton;
 	@FindBy(xpath="//button[contains(text(),'Continue to View All Melas')]")
 	private WebElement continueToViewAllMelasButton;
-//	@FindBy(xpath="")
-//	private WebElement backButton;
-//	@FindBy(xpath="")
-//	private WebElement backButton;
-//	@FindBy(xpath="")
-//	private WebElement backButton;
+	@FindBy(xpath="//input[@placeholder='Select Start Date']")
+	private WebElement rozgarMelaRescheduleStartDateTextField;
+	@FindBy(xpath="//input[@placeholder='Select End Date']")
+	private WebElement rozgarMelaRescheduleEndDateTextField;
+	@FindBy(name="startTime")
+	private WebElement rozgarMelaRescheduleStartTimeTextField;
+	@FindBy(name="endTime")
+	private WebElement rozgarMelaRescheduleEndTimeTextField;
+	@FindBy(xpath="//label[contains(text(),'Mela Daily Timing')]")
+	private WebElement melaDailyTimingLabelText;
+	@FindBy(xpath="//button[contains(text(),'Update & Announce')]")
+	private WebElement update_AnnounceButton;
+	@FindBy(xpath="//button[contains(text(),'Announce to Stakeholders')]")
+	private WebElement announceToStakeHoldersButton;
+	@FindBy(xpath="(//button[contains(text(),'Update & Announce')])[2]")
+	private WebElement finalUpdate_AnnounceButton;
+		
 	public NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -193,5 +205,38 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	public void clickContinueToViewAllMelas()
 	{
 		continueToViewAllMelasButton.click();
+	}
+	//Reschedule
+	public void chooseRozgarMelaRescheduleStartDate()
+	{
+		rozgarMelaRescheduleStartDateTextField.sendKeys(Keys.ARROW_RIGHT, Keys.ARROW_RIGHT, Keys.ENTER);
+	}
+	public void chooseRozgarMelaRescheduleEndDate()
+	{
+		rozgarMelaRescheduleEndDateTextField.sendKeys(Keys.ARROW_RIGHT, Keys.ARROW_RIGHT, Keys.ARROW_RIGHT, Keys.ENTER);
+	}
+	public void enterRozgarMelaRescheduleStartTime(String startTime) throws InterruptedException
+	{
+		rozgarMelaRescheduleStartTimeTextField.sendKeys(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE);
+		Thread.sleep(2000);
+		rozgarMelaRescheduleStartTimeTextField.sendKeys(startTime);
+	}
+	public void enterRozgarMelaRescheduleEndTime(String endTime) throws InterruptedException
+	{
+		rozgarMelaRescheduleEndTimeTextField.sendKeys(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE);
+		Thread.sleep(2000);
+		rozgarMelaRescheduleEndTimeTextField.sendKeys(endTime);
+	}
+	public void clickMelaDailyTimingLabelToCloseMelaRescheduleDurationPickers()
+	{
+		melaDailyTimingLabelText.click();
+	}
+	public void clickToUpdateAndAnnounce()
+	{
+		update_AnnounceButton.click();
+	}
+	public void clickToFinallyUpdateAndAnnounceRescheduledMela()
+	{
+		finalUpdate_AnnounceButton.click();
 	}
 }
