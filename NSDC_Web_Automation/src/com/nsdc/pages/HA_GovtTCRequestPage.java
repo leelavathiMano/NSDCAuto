@@ -12,6 +12,12 @@ public class HA_GovtTCRequestPage
 	
 	@FindBy(xpath="//input[@placeholder='Search by keyword']")
 	private WebElement searchByKeywordTextbox;
+	@FindBy(xpath="//input[@placeholder='TC Id']")
+	private WebElement tcIDTextbox;
+	@FindBy(xpath="//input[@placeholder='TP ID']")
+	private WebElement tpIDTextbox;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement applyButton;
 	@FindBy(xpath="//button[text()='Back']")
 	private WebElement backButton;
 	@FindBy(xpath="//label[input[@value='Approved']]/span")
@@ -48,6 +54,23 @@ public class HA_GovtTCRequestPage
 	{
 		searchByKeywordTextbox.clear();
 		searchByKeywordTextbox.sendKeys(searchKeyword);
+	}
+	
+	public void entertcIDForSearch(String tcID)
+	{
+		tcIDTextbox.clear();
+		tcIDTextbox.sendKeys(tcID);
+	}
+	
+	public void entertpIDForSearch(String tpID)
+	{
+		tpIDTextbox.clear();
+		tpIDTextbox.sendKeys(tpID);
+	}
+	
+	public void clickOnApply()
+	{
+		applyButton.click();
 	}
 	
 	public void clickOnBack()
