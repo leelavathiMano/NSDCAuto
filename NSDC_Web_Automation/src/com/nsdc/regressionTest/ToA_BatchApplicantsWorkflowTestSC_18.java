@@ -30,8 +30,6 @@ import com.nsdc.pages.SSCAllBatchesPage;
 import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
 import com.nsdc.pages.SSC_ViewBatchDetailsPage;
-import com.nsdc.pages.TrainerApplicantDashboardPage;
-import com.nsdc.pages.TrainerApplicantSearchAndApplyForAvailableBatchesPage;
 import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerViewBatchesPage;
 import com.nsdc.testConfig.TestConfiguration;
