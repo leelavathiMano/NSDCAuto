@@ -46,7 +46,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpMp.clickRegisterCandidate();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickForExcelFileBrowse();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		UploadFile.upload(bulkExcelFile);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'BulkCandidatesRegist')]")));
 		tpMp.clickRegister();
@@ -305,16 +305,19 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.selectSector(sector1);
 		tpCrp.selectSubSector(subSector1);
 		tpCrp.selectJobRole(jobRole1);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Second Preference
 		tpCrp.clickToAddAnotherPreference();
 		tpCrp.selectSecondSector(sector2);
 		tpCrp.selectSecondSubSector(subSector2);
 		tpCrp.selectSecondJobRole(jobRole2);
 		//Third Preference
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpCrp.clickToAddAnotherPreference();
 		tpCrp.selectThirdSector(sector3);
 		tpCrp.selectThirdSubSector(subSector3);
 		tpCrp.selectThirdJobRole(jobRole3);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Removing Third Preference
 		tpCrp.clickToRemoveAddedThirdPreference();
 		Assert.assertTrue(driver.findElements(By.xpath("(//select[@formcontrolname='sector'])[3]")).size()==0,"OMG!!! Removed Third preference Still Present OR Something is wrong! ");
