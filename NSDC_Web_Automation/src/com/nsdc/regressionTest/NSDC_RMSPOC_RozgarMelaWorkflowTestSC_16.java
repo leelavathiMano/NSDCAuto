@@ -218,6 +218,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.clickToChooseRescheduleMelaOption();
 			rVmp.chooseRozgarMelaRescheduleStartDate();
 			rVmp.clickMelaDailyTimingLabelToCloseMelaRescheduleDurationPickers();
+			Thread.sleep(1000);
 			rVmp.chooseRozgarMelaRescheduleEndDate();
 			rVmp.clickMelaDailyTimingLabelToCloseMelaRescheduleDurationPickers();
 			rVmp.enterRozgarMelaRescheduleStartTime(rescheduledStartTime);
@@ -250,10 +251,10 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.clickActionMenu();
 			rVmp.clickToChooseViewDetailsOption();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Name')]]//span[2]")).getText().trim(), rozgarMelaName);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Type of Rozgar Mela')]]//span[2]")).getText().trim(), typeOfRozgarMela);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Target Audience')]]//span[2]")).getText().trim(), targetAudience);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Chief Guest Expected')]]//span[2]")).getText().trim(), chiefGuestName+" ("+chiefGuestTitle+")");
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Name')]]//span[2]")).getText().trim(), rozgarMelaName.toUpperCase());
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Type of Rozgar Mela')]]//span[2]")).getText().trim(), typeOfRozgarMela.toUpperCase());
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Target Audience')]]//span[2]")).getText().trim(), targetAudience.toUpperCase());
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Chief Guest Expected')]]//span[2]")).getText().trim(), chiefGuestName.toUpperCase()+" ("+chiefGuestTitle.toUpperCase()+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Dates')]]//span[2]")).getText().trim(), rescheduledStartDateHipen+" TO "+rescheduledEndDateHipen);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), rescheduledStartTime+" AM TO "+rescheduledEndTime+" PM");
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Address of Mela')]]//div[2]")).getText().trim(), address);
