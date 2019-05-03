@@ -128,7 +128,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		Thread.sleep(3000);
 		cpp.enterAadharNumber(aadharNumber);
 		cpp.clickOnVerify();
-		Thread.sleep(3000);
+		Thread.sleep(20000);
 		cpp.selectAlternateID_Type(idtype);
 		Thread.sleep(4000);
 		cpp.enterAlternateID_Number(idNumber);
