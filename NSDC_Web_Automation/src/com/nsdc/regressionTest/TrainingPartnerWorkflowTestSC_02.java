@@ -1576,8 +1576,6 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 //            Thread.sleep(3000);
             tprp.clickSaveAndNextButton();
             Thread.sleep(2000);
-            tprp.clickOnOkButton();
-            Thread.sleep(2000);
             tprp.clickIAgreeCheckBox();
             Thread.sleep(2000);
             tprp.clickSaveAndContinueToPaymentButton();
