@@ -94,6 +94,12 @@ public class DA_Assign_TPRegistrationFormPage
 	@FindBy(xpath="(//button[contains(text(),'Preview Attached Proof Document')])[6]")
 	private WebElement attachedProofDocument_Sixth_PreviewButton;
 	
+	//(//label[input[@name='approvalstatus']]/span)[1]
+	@FindBy(xpath="//select[@formcontrolname='approvalProcessReview']")
+	private WebElement approvalProcess_DropDownList;
+	@FindBy(xpath="//textarea[@formcontrolname='approvalProcessComment']")
+	private WebElement approvalProcess_ReviewCommentsTextbox;
+	
 	public DA_Assign_TPRegistrationFormPage(WebDriver driver)
     {
         this.driver = driver;
@@ -292,5 +298,16 @@ public class DA_Assign_TPRegistrationFormPage
 		attachedProofDocument_Sixth_PreviewButton.click();
 		Thread.sleep(3000);
 		FilePreview.closeWindow(driver);
+	}
+	
+	public void selectApprovalProcessReview(String approvalProcess)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(approvalProcess_DropDownList, approvalProcess);
+	}
+	
+	public void enterApprovalProcess_ReviewComments(String comments)
+	{
+		approvalProcess_ReviewCommentsTextbox.clear();
+		approvalProcess_ReviewCommentsTextbox.sendKeys(comments);
 	}
 }
