@@ -45,9 +45,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 		tpMp.clickRegisterCandidate();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-		tpMp.clickToChooseBulkExcelSheetUpload();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickForExcelFileBrowse();
+		Thread.sleep(1000);
 		UploadFile.upload(bulkExcelFile);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'BulkCandidatesRegist')]")));
 		tpMp.clickRegister();
@@ -254,6 +253,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			tpCrp.selectDistrict(cDistrict);
 			tpCrp.selectSubDistrict(cSubDistrict);
 			tpCrp.selectVillage(cVillage);
+			Thread.sleep(2000);
 			tpCrp.enterPincode(cPincode);
 		}
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -264,9 +264,11 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.enterSpecialisation(specialisation1);
 		tpCrp.selectYearOfPassing(yearOfPassing1);
 		tpCrp.clickToBrowseEducationProofDoc();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(1000);
 		UploadFile.upload(education1Proof);
+		Thread.sleep(2000);
 		tpCrp.clickToUploadEducationProof();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Second Education Record
 		tpCrp.clickToAddOneMoreEducationRecord();
 		tpCrp.seelctSecondEducation(education2);
@@ -275,17 +277,20 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 //		Thread.sleep(4000);
 		tpCrp.selectSecondYearOfPassing(yearOfPassing2);
 		tpCrp.clickToBrowseSecondEducationProof();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(1000);
 		UploadFile.upload(education2Proof);
+		Thread.sleep(1000);
 		tpCrp.clickToUploadSecondEducationProof();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Third Education Record
 		tpCrp.clickToAddOneMoreEducationRecord();
 		tpCrp.selectThirdEducation(education3);
 		tpCrp.enterThirdSpecialisation(specialisation3);
 		tpCrp.selectThirdYearOfPassing(yearOfPassing3);
 		tpCrp.clickToBrowseThirdEducationProof();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(1000);
 		UploadFile.upload(education3Proof);
+		Thread.sleep(1000);
 		tpCrp.clickToUploadThirdEducationProof();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Removing added third Education record
