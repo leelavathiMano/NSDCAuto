@@ -245,8 +245,6 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 		String timea="";
 		String parts[]=time.split(":");
 		int hh = Integer.parseInt(parts[0]); 
-//		int h2 = (int)time.charAt(1)- '0'; 
-//		int hh = h1 * 10 + h2;
 		String meridian="";
 		if(hh<12)
 		{
@@ -260,10 +258,14 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 		if (hh == 0)
 		{ 
 			timea="12:"+parts[1]+" "+meridian; 
-		} 
+		}
+		else if(hh == 10)
+		{
+			timea="10:"+parts[1]+" "+meridian; 
+		}
 		else
 		{ 
-			timea=hh+":"+parts[1]+" "+meridian; 
+			timea="0"+hh+":"+parts[1]+" "+meridian; 
 		} 
 		return timea;
 	}
