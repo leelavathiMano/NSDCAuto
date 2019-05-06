@@ -259,6 +259,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Dates')]]//span[2]")).getText().trim(), rVmp.dateFormat(rescheduledStartDateHipen)+" TO "+rVmp.dateFormat(rescheduledEndDateHipen));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), rVmp.timeFormat(rescheduledStartTime)+" TO "+rVmp.timeFormat(rescheduledEndTime));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Address of Mela')]]//div[2]")).getText().trim(), address.toUpperCase());
+			//Presently in case of non-mandatory field data unavailability, "blank space" will be displayed
 			if(landmark.equals("N/A"))
 			{
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Nearby Landmark')]]//div[2]")).getText().trim(), "");
