@@ -140,9 +140,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		{
 			js.executeScript("window.scrollBy(0,-1000)", "");
 			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 //			sscTbcP.selectSubSector(subSector);
 			sscTbcP.selectBatchType(batchType);
 			sscTbcP.selectBatchCategory(batchCategory);
@@ -243,7 +243,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseDomainMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Assigning Platform QP Master Trainer
 		sVbP.clickPlatformMasterTrainerAction(platformJobRole);
 		sVbP.selectPlatformAssignMasterTrainerOption();
@@ -252,7 +252,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChoosePlatformMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedPlatformMasterTrainer();
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Assigning Domain QP Assessment Agency
 		sVbP.clickDomainAssessmentAgencyAction(domainJobRole);
 		sVbP.selectDomainAssignAssessmentAgencyOption();
@@ -261,7 +261,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChooseDomainAssessmentAgency();
 		sVbP.clickToFinallyAssignSelectedDomainAssessmentAgency();
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Assigning Platform QP Assessment Agency
 		sVbP.clickPlatformAssessmentAgencyAction(platformJobRole);
 		sVbP.selectPlatformAssignAssessmentAgencyOption();
@@ -270,7 +270,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		sVbP.clickToChoosePlatformAssessmentAgency();
 		sVbP.clickToFinallyAssignSelectedPlatformAssessmentAgency();
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		js.executeScript("window.scrollBy(0,500)", "");
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		sVbP.clickConfirmation();
@@ -279,7 +279,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		Date date = new Date();  
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),2,formatter.format(date));
 		sVbP.clickOkForBatchSubmission();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		Thread.sleep(2000);
@@ -301,12 +301,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,200)", "");
 		lTcDp.clickToViewBatches();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		js.executeScript("window.scrollBy(0,200)","");
 		LocationBasedTC_ViewBatchesPage lTcVbP=new LocationBasedTC_ViewBatchesPage(driver);
 		lTcVbP.enterToSearchForBatchID(batchID);
 		lTcVbP.clickToGetSearchResult();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		lTcVbP.clikToGetBatchActionMenu();
 		lTcVbP.selectAcceptBatchOption();
 		lTcVbP.enterRemarksForAcceptingBatch(tcBatchAcceptanceRemarks);
@@ -336,13 +336,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 					elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
 				}
 				tDp.clickToGetTrainerDashboard();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tDp.clickAllBatches();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				tVp.enterBatchIDToSearch(batchID);
 				tVp.clickToGetSearchFilterResult();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tVp.clickToGetActionMenuOptions(batchID);
 				tVp.clickToSelectAcceptBatchOption(batchID);
 				if(i==1)
@@ -382,13 +382,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 			tDp.clickToGetTrainerDashboard();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tDp.clickAllBatches();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			tVp.enterBatchIDToSearch(batchID);
 			tVp.clickToGetSearchFilterResult();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			tVp.clickToGetActionMenuOptions(batchID);
 			tVp.clickToSelectAcceptBatchOption(batchID);
 			tVp.enterRemarksForAcceptingBatch(dmtBatchAcceptanceRemarks);
@@ -423,11 +423,11 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				}
 				AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 				aDp.clickBatchAssessmentRequests();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 				aVp.enterBatchIdToSearch(batchID);
 				aVp.clickToApplySelectedSearchFilters();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				aVp.clickToGetActionMenuOptions();
 				aVp.clickToSelectAcceptBatchOption();
@@ -457,10 +457,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 				//assigning assessors
 				aVp.clickToViewAcceptedBatches();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				aVp.enterBatchIdToSearch(batchID);
 				aVp.clickToApplySelectedSearchFilters();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				aVp.clickToGetActionMenuOptions();
 				aVp.clickToSelectAssignAssessorsOption();
@@ -487,7 +487,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 			aDp.clickBatchAssessmentRequests();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			AssessmentAgencyViewBatchesPage aVp=new AssessmentAgencyViewBatchesPage(driver);
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
@@ -507,10 +507,10 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			//assigning assessors
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aVp.clickToViewAcceptedBatches();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aVp.enterBatchIdToSearch(batchID);
 			aVp.clickToApplySelectedSearchFilters();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			aVp.clickToGetActionMenuOptions();
 			aVp.clickToSelectAssignAssessorsOption();
@@ -541,13 +541,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 				AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 				maDp.clickToGetAssessorDashboard();
 				js.executeScript("window.scrollBy(0,500)", "");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				maDp.clickBatchAssessmentRequests();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 				maVp.enterBatchIDToSearch(batchID);
 				maVp.clickToGetSearchResult();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				maVp.clickToGetActionMenuOptions(batchID);
 				maVp.clickToSelectAcceptBatchOption(batchID);
@@ -588,13 +588,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 			maDp.clickToGetAssessorDashboard();
 			js.executeScript("window.scrollBy(0,500)", "");
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			maDp.clickBatchAssessmentRequests();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			AssessorViewBatchesPage maVp=new AssessorViewBatchesPage(driver);
 			maVp.enterBatchIDToSearch(batchID);
 			maVp.clickToGetSearchResult();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("window.scrollBy(0,200)", "");
 			maVp.clickToGetActionMenuOptions(batchID);
 			maVp.clickToSelectAcceptBatchOption(batchID);
@@ -1126,23 +1126,23 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
    	 	JavascriptExecutor js=(JavascriptExecutor)driver;
    	 	sDp.clickAllBatches();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
    	 	sAp.clickToViewAllPublishedBatches();
    	 	String batchID=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 1);
    	 	String batchStartDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 9);
    	 	String batchEndDate=ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches", 1, 10);
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	sAp.enterBatchIDToSearch(batchID);
 	   	sAp.clickToGetSearchResult();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Submitted for Approval");
    	 	sAp.clickToGetBatchActionMenu(batchID);
    	 	sAp.selectApproveApplicantsOption(batchID);
    	 	SSC_ViewBatchDetailsPage sVp=new SSC_ViewBatchDetailsPage(driver);
- 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	sVp.clickToGoToEnrolledApplicantsSection();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+trainerID+"']]")).size()==1,"OMG!!! No show of TC Approved Trainer Applicant - "+trainerID+" in Enrolled Applicants Section, who has applied for the batch - "+batchID+" OR Something went wrong! ");
    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), trainerID);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[3]")).getText().trim(), name);
@@ -1158,7 +1158,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	}
    	 	sVp.clickToGetApplicantActionMenu(trainerID);
    	 	sVp.selectViewDetailsOfApplicantOption(trainerID);
- 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -1212,7 +1212,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	if(!paymentMode.equalsIgnoreCase("N/A"))
    	 	{
    	 	sVp.clickToViewPaymentDetails();
- 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID')]]]/div[2]")).getText().trim(), batchID);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Mode of Payment')]]]/div[2]")).getText().trim(), paymentMode);
    	 	if(!paymentMode.equalsIgnoreCase("cash"))
@@ -1224,12 +1224,12 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Amount')]]]/div[2]")).getText().trim(), batchFees);
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Any Remarks')]]]/div[2]")).getText().trim(), paymentRemarks);
    	 	sVp.clickOk();
- 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	}
    	 	Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Total Fee of the program ')]]//div")).getText().trim(), batchFees);
    	 	js.executeScript("window.scrollBy(0,-1000)", "");
    	 	sVp.clickGoBack(); 
- 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	sVp.clickToGoToEnrolledApplicantsSection();
    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 //   	 	if(serialNum.equals("1"))
@@ -1241,13 +1241,13 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(),"Only paid candidates can be approved");
    	 			sVp.clickToApproveAllSelectedUnpaidApplicants();
-   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
    	 		else
    	 		{
    	 			sVp.clickToApproveAllSelectedApplicants();
-   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+trainerID+"')]]")).size()==0,"OMG!!! SSC Approved Applicant - "+trainerID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
 //   	 	}
@@ -1273,7 +1273,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 //   	 	}
    	 	js.executeScript("window.scrollBy(0,-1000)", "");
    	 	sVp.clickToGoToApprovedApplicantsSection();
-   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	//Verifying SSC Approved Applicants
    	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+trainerID+"']]")).size()==1,"OMG!!! No show of SSC Approved Assessor Applicant - "+trainerID+" in Approved Applicants Section, who has applied for the batch - "+batchID+" OR Something went wrong! ");
    	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+trainerID+"']]/td[2]")).getText().trim(), trainerID);
@@ -1286,9 +1286,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    		 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
  	 		Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("Batch Approved Successfully\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")"));
    	 		sVp.clickOk();
-   	 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		sAp.clickToViewAllPublishedBatches();
-   	 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Approved");
 //   	 	sAp.clickToGetBatchActionMenu(batchID);
 //   	 	sAp.selectViewDetailsOption(batchID);
@@ -1302,7 +1302,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	{
    	 		sVp.clickToGetApplicantActionMenu(trainerID);
    	 		sVp.selectViewDetailsOfApplicantOption(trainerID);
-   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Name of the Applicant')]]/div[1]")).getText().trim(), name);
    	 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Date of Birth')]]/div[2]")).getText().trim(), dob);
    	 		Assert.assertEquals(driver.findElement(By.xpath("//div[label[contains(text(),'Gender')]]/div[1]")).getText().trim(), gender);
@@ -1356,7 +1356,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 		if(!paymentMode.equalsIgnoreCase("N/A"))
    	 		{
    	 			sVp.clickToViewPaymentDetails();
-   	   	 	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID')]]]/div[2]")).getText().trim(), batchID);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Mode of Payment')]]]/div[2]")).getText().trim(), paymentMode);
    	 			if(!paymentMode.equalsIgnoreCase("cash"))
@@ -1368,9 +1368,9 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Amount')]]]/div[2]")).getText().trim(), batchFees);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Any Remarks')]]]/div[2]")).getText().trim(), paymentRemarks);
    	 			sVp.clickOk();
-   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		}
-   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		js.executeScript("window.scrollBy(0,-1000)", "");
    	 	}
    	 	PostLoginPage plp=new PostLoginPage(driver);

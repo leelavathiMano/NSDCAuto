@@ -246,7 +246,6 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[4]")).getText().trim(), state);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[5]")).getText().trim(), district);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[6]")).getText().trim(), rescheduledStartDateHipen+" - "+rescheduledEndDateHipen);
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[6]")).getText().trim(), rescheduledStartDate+" - "+rescheduledEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[7]")).getText().trim(), created_Date);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[8]")).getText().trim(), "To be Conducted");
 			rVmp.clickActionMenu();
