@@ -284,7 +284,9 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Target Audience')]]//span[2]")).getText().trim(), targetAudience.toUpperCase());
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Chief Guest Expected')]]//span[2]")).getText().trim(), chiefGuestName.toUpperCase()+" ("+chiefGuestTitle.toUpperCase()+")");
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Dates')]]//span[2]")).getText().trim(), reformedRescheduledStartDate+" TO "+reformedRescheduledEndDate);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), rescheduledStartTime+" AM TO "+rescheduledEndTime+" PM");
+			String convertedRescheduleStartTime=rVmp.timeFormat(rescheduledStartTime);
+			String convertedRescheduleEndTime=rVmp.timeFormat(rescheduledEndTime);
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), convertedRescheduleStartTime+" TO "+convertedRescheduleEndTime);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Address of Mela')]]//div[2]")).getText().trim(), address);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Nearby Landmark')]]//div[2]")).getText().trim(), landmark);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Pincode')]]//div[2]")).getText().trim(), pincode);

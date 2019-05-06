@@ -239,4 +239,37 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	{
 		finalUpdate_AnnounceButton.click();
 	}
+	public String timeFormat(String time)
+	{
+		String timea="";
+		int h1 = (int)time.charAt(0) - '0'; 
+		int h2 = (int)time.charAt(1)- '0'; 
+		int hh = h1 * 10 + h2;
+		String meridian="";
+		if(hh<12)
+		{
+			meridian="AM";
+		}
+		else
+		{
+			meridian="PM";
+		}
+		hh %= 12; 
+		if (hh == 0)
+		{ 
+			for (int i = 2; i < 5; ++i)
+			{ 
+				timea="12"+String.valueOf(time.charAt(i)+" "+meridian); 
+			} 
+		} 
+		else
+		{ 
+			for (int i = 2; i < 5; ++i)
+			{ 
+				
+				timea=hh+String.valueOf(time.charAt(i)+" "+meridian); 
+			} 
+		} 
+		return timea;
+	}
 }
