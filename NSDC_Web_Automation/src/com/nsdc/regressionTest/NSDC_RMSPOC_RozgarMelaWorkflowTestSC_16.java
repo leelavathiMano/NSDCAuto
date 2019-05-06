@@ -187,10 +187,10 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 		}
 	}
 	
-	@Test(dataProvider="rozgarMelaData")//, dependsOnMethods="createRozgarMelaTC_01")
+	@Test(dataProvider="rozgarMelaData", dependsOnMethods="createRozgarMelaTC_01")
 	public void rescheduleRozgarMelaTC_03(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
 	{
-		if(serialNum.equals("2"))
+		if(!serialNum.equals("1"))
 		{
 			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 			LoginPage lp=new LoginPage(driver);
@@ -205,7 +205,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-/*			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[3]")).getText().trim(), rozgarMelaName);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[4]")).getText().trim(), state);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[5]")).getText().trim(), district);
@@ -241,38 +241,11 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-*/			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[3]")).getText().trim(), rozgarMelaName);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[4]")).getText().trim(), state);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[5]")).getText().trim(), district);
-//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[6]")).getText().trim(), rescheduledStartDateHipen+" - "+rescheduledEndDateHipen);
-			String partsa[]=rescheduledStartDate.split("-");
-			String daya=partsa[0];
-			if(daya.startsWith("0"))
-			{
-				daya=daya.replace("0", "");
-			}
-			String montha=partsa[1];
-			if(montha.startsWith("0"))
-			{
-				montha=montha.replaceAll("0", "");
-			}
-			String yeara=partsa[2];
-			String reformedRescheduledStartDate=daya+"-"+montha+"-"+yeara;
-			//
-			String partsb[]=rescheduledEndDate.split("-");
-			String dayb=partsb[0];
-			if(dayb.startsWith("0"))
-			{
-				dayb=dayb.replace("0", "");
-			}
-			String monthb=partsb[1];
-			if(monthb.startsWith("0"))
-			{
-				monthb=monthb.replaceAll("0", "");
-			}
-			String yearb=partsb[2];
-			String reformedRescheduledEndDate=dayb+"-"+monthb+"-"+yearb;
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[6]")).getText().trim(), rescheduledStartDateHipen+" - "+rescheduledEndDateHipen);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[6]")).getText().trim(), rescheduledStartDate+" - "+rescheduledEndDate);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[7]")).getText().trim(), created_Date);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[8]")).getText().trim(), "To be Conducted");
@@ -283,10 +256,8 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Type of Rozgar Mela')]]//span[2]")).getText().trim(), typeOfRozgarMela.toUpperCase());
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Target Audience')]]//span[2]")).getText().trim(), targetAudience.toUpperCase());
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Chief Guest Expected')]]//span[2]")).getText().trim(), chiefGuestName.toUpperCase()+" ("+chiefGuestTitle.toUpperCase()+")");
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Dates')]]//span[2]")).getText().trim(), reformedRescheduledStartDate+" TO "+reformedRescheduledEndDate);
-			String convertedRescheduleStartTime=rVmp.timeFormat(rescheduledStartTime);
-			String convertedRescheduleEndTime=rVmp.timeFormat(rescheduledEndTime);
-			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), convertedRescheduleStartTime+" TO "+convertedRescheduleEndTime);
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Dates')]]//span[2]")).getText().trim(), rVmp.dateFormat(rescheduledStartDateHipen)+" TO "+rVmp.dateFormat(rescheduledEndDateHipen));
+			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), rVmp.timeFormat(rescheduledStartTime)+" TO "+rVmp.timeFormat(rescheduledEndTime));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Address of Mela')]]//div[2]")).getText().trim(), address);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Nearby Landmark')]]//div[2]")).getText().trim(), landmark);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Pincode')]]//div[2]")).getText().trim(), pincode);

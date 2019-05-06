@@ -239,7 +239,23 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	{
 		finalUpdate_AnnounceButton.click();
 	}
-	
+	public String dateFormat(String date)
+	{
+		String parts[]=date.split("-");
+		String day=parts[0];
+		if(day.startsWith("0"))
+		{
+			day=day.replace("0", "");
+		}
+		String month=parts[1];
+		if(month.startsWith("0"))
+		{
+			month=month.replaceAll("0", "");
+		}
+		String year=parts[2];
+		String reformedRescheduledDate=day+"-"+month+"-"+year;
+		return reformedRescheduledDate;
+	}
 	public String timeFormat(String time)
 	{
 		String timea="";
