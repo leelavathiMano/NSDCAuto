@@ -259,13 +259,41 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 //			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Dates')]]//span[2]")).getText().trim(), rVmp.dateFormat(rescheduledStartDateHipen)+" TO "+rVmp.dateFormat(rescheduledEndDateHipen));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[span[contains(text(),'Mela Daily Timings')]]//span[2]")).getText().trim(), rVmp.timeFormat(rescheduledStartTime)+" TO "+rVmp.timeFormat(rescheduledEndTime));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Address of Mela')]]//div[2]")).getText().trim(), address.toUpperCase());
-			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Nearby Landmark')]]//div[2]")).getText().trim(), landmark.toUpperCase());
+			if(landmark.equals("N/A"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Nearby Landmark')]]//div[2]")).getText().trim(), "");
+			}
+			else
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Nearby Landmark')]]//div[2]")).getText().trim(), landmark.toUpperCase());
+			}
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Pincode')]]//div[2]")).getText().trim(), pincode);
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'State')]]//div[2]")).getText().trim(), state.toUpperCase());
 			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'District')]]//div[2]")).getText().trim(), district.toUpperCase());
-			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Tehsil')]]//div[2]")).getText().trim(), tehsil.toUpperCase());
-			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Parliamentary')]]//div[2]")).getText().trim(), parlimentaryConstituency.toUpperCase());
-			Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Village')]]//div[2]")).getText().trim(), village.toUpperCase());
+			if(tehsil.equals("N/A"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Tehsil')]]//div[2]")).getText().trim(), "");
+			}
+			else
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Tehsil')]]//div[2]")).getText().trim(), tehsil.toUpperCase());
+			}
+			if(parlimentaryConstituency.equals("N/A"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Parliamentary')]]//div[2]")).getText().trim(), "");
+			}
+			else
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Parliamentary')]]//div[2]")).getText().trim(), parlimentaryConstituency.toUpperCase());
+			}
+			if(village.equals("N/A"))
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Village')]]//div[2]")).getText().trim(), "");
+			}
+			else
+			{
+				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Village')]]//div[2]")).getText().trim(), village.toUpperCase());
+			}
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
