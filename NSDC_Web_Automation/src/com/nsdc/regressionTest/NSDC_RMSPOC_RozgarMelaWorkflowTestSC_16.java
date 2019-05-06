@@ -216,9 +216,9 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			js.executeScript("window.scrollBy(0,200)", "");
 			rVmp.clickActionMenu();
 			rVmp.clickToChooseRescheduleMelaOption();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rVmp.chooseRozgarMelaRescheduleStartDate();
 			rVmp.clickMelaDailyTimingLabelToCloseMelaRescheduleDurationPickers();
-			Thread.sleep(1000);
 			rVmp.chooseRozgarMelaRescheduleEndDate();
 			rVmp.clickMelaDailyTimingLabelToCloseMelaRescheduleDurationPickers();
 			rVmp.enterRozgarMelaRescheduleStartTime(rescheduledStartTime);
