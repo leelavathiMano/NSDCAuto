@@ -3467,6 +3467,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
  	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
  	   		tcVp.clickToViewAllAcceptedBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+ 	   		tcVp.enterToSearchForBatchID(batchID);
+ 	   		tcVp.clickToGetSearchResult();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
  	   		tcVp.clikToGetBatchActionMenu();
  	   		tcVp.selectEnrollApplicantsOption();
@@ -3490,4 +3493,117 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
  	   		plp.clickOnLogout();
  	   	}
 	}
+    
+    @Test(dataProvider="sscBatchCreationData", dependsOnMethods="batchFullTC_19")
+    public void sendBackBatchTC_20(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmasterTrainerRemarksDate, String dmasterTrainerRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String dassessmentAgencyRemarksDate, String dassessmentAgencyRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmasterAssessorRemarks, String dmasterAssesorRemarksDate, String dmasterAssessorRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmasterTrainerRemarksDate, String pmasterTrainerRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String passessmentAgencyRemarksDate, String passessmentAgencyRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmasterAssessorRemarks, String pmasterAssesorRemarksDate, String pmasterAssessorRemarksTime) throws Exception
+    {
+    	if(serialNum.equals("1"))
+    	{
+    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+        	LoginPage lp=new LoginPage(driver);
+        	lp.clickLogin();
+     	   	EnterLoginPage elp=new EnterLoginPage(driver);
+	   		elp.performlogin(tcID, tcPassword);
+	   		WebDriverWait wait=new WebDriverWait(driver, 30);
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
+	   		tcDp.clickToViewBatches();
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		LocationBasedTC_ViewBatchesPage tcVp=new LocationBasedTC_ViewBatchesPage(driver);
+	   		tcVp.clickToViewAllAcceptedBatches();
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		tcVp.enterToSearchForBatchID(batchID);
+ 	   		tcVp.clickToGetSearchResult();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+	   		tcVp.clikToGetBatchActionMenu();
+	   		tcVp.selectEnrollApplicantsOption();
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+     	   	String applicantID =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 1);
+     	   	String applicantName =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 3);
+     	   	String applicantEmail =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 4);
+     	   	String applicantMobile =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 5);
+     	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]")).size()==1,"OMG!!! No show of Enrolled Assessor Applicant - "+applicantID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+applicantID+"']")).getText().trim(), applicantID);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantName+"')]")).getText().trim(), applicantName);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantEmail+"')]")).getText().trim(), applicantEmail);
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantMobile+"')]")).getText().trim(), applicantMobile);
+     	   	//Sending Batch To SSC For Approval
+     	   	tcVp.clickToSendBatchForApproval();
+     	   	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+     	   	tcVp.clickOk();
+     	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+     	   	PostLoginPage plp=new PostLoginPage(driver);
+     	   	plp.clickOnProfileLogo();
+	   		plp.clickOnLogout();
+	   		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+     	   	//SSC Sending Back Batch
+     	   	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+      	 	lp.clickLogin();
+      	 	elp.performlogin(sscUsername, sscPassword);
+      	 	wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
+      	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
+      	 	sDp.clickAllBatches();
+      	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
+      	 	sAp.clickToViewAllPublishedBatches();
+      	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	sAp.enterBatchIDToSearch(batchID);
+      	 	sAp.clickToGetSearchResult();
+      	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(), "Submitted for Approval");
+      	 	sAp.clickToGetBatchActionMenu(batchID);
+      	 	sAp.selectApproveApplicantsOption(batchID);
+      	 	SSC_ViewBatchDetailsPage sVp=new SSC_ViewBatchDetailsPage(driver);
+      	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	sVp.clickToGoToEnrolledApplicantsSection();
+      	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantID+"']]")).size()==1,"OMG!!! No show of TC Approved Trainer Applicant - "+applicantID+" in Enrolled Applicants Section, who has applied for the batch - "+batchID+" OR Something went wrong! ");
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[2]")).getText().trim(), applicantID);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[3]")).getText().trim(), applicantName);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[4]")).getText().trim(), applicantEmail);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[5]")).getText().trim(), applicantMobile);
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[6]")).getText().trim(), "Unpaid");
+      	 	sVp.clickToGoToApprovedApplicantsSection();
+      	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	//Send Back
+      	 	sVp.clickToSendBackBatch();
+      	 	sVp.enterRemarksForSendBackBatch("Sending Back This Batch as these applicants are unpaid");
+      	 	sVp.clickToSubmitSendBackBatch();
+      	 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='swal2-contentwrapper']")));
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//div[@class='swal2-contentwrapper']")).getText().trim(), "Batch Sent Back\n"+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+") Batch sent back successfully");
+      	 	sVp.clickOk();
+      		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	sAp.clickToViewAllPublishedBatches();
+      		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      		sAp.enterBatchIDToSearch(batchID);
+      		sAp.clickToGetSearchResult();
+      		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+      	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Sent Back");
+      	 	plp.clickOnProfileLogo();
+      	 	plp.clickOnLogout();
+      	 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
+      	 	//TC Checking Sent Back Batch
+      	 	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+        	lp.clickLogin();
+	   		elp.performlogin(tcID, tcPassword);
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		tcDp.clickToViewBatches();
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		tcVp.clickToViewAllAcceptedBatches();
+	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		tcVp.enterToSearchForBatchID(batchID);
+ 	   		tcVp.clickToGetSearchResult();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+     	   	Assert.assertFalse(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==0, "OMG!!! Batch ID - "+batchID+"  Not Found!!! in Accepted Section of "+tcID+" !!!");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[7]")).getText().trim(), "Sent Back by SSC");
+     	   	tcVp.clikToGetBatchActionMenu();
+     	   	tcVp.selectReEnrollApplicantsOption();
+     	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//div[p[b[contains(text(),'Batch Status')]]]//span")).getText().trim(), "Rejected");
+     	   	Assert.assertEquals(driver.findElement(By.xpath("//div[p[b[contains(text(),'Rejected Reason')]]]//p[3]")).getText().trim(), "Sending Back This Batch as these applicants are unpaid");
+     	   	plp.clickOnProfileLogo();
+     	 	plp.clickOnLogout();
+     	}
+    }
 }
