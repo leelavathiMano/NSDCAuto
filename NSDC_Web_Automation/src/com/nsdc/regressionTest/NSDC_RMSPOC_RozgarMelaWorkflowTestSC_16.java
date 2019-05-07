@@ -188,9 +188,57 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="rozgarMelaData", dependsOnMethods="createRozgarMelaTC_01")
-	public void rescheduleRozgarMelaTC_03(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	public void closeCandidateEnrollmentForRozgarMelaTC_03(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
 	{
-		if(!serialNum.equals("1"))
+		if(serialNum.equals("2"))
+		{
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			LoginPage lp=new LoginPage(driver);
+			lp.clickLogin();
+			EnterLoginPage elp=new EnterLoginPage(driver);
+			elp.performlogin(rmspocID, rmspocPassword);
+			NSDC_RozgarMelaSPOC_DashboardPage rmDp=new NSDC_RozgarMelaSPOC_DashboardPage(driver);
+			rmDp.clickViewRozgarMelas();
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			NSDC_RozgarMelaSPOC_ViewRozgarMelasPage rVmp=new NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(driver);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
+			rVmp.clickToApplyFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[3]")).getText().trim(), rozgarMelaName);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[4]")).getText().trim(), state);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[5]")).getText().trim(), district);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[6]")).getText().trim(), startDate+" - "+endDate);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[7]")).getText().trim(), created_Date);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[8]")).getText().trim(), "To be Conducted");
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+			js.executeScript("window.scrollBy(0,200)", "");
+			rVmp.clickActionMenu();
+			rVmp.clickToChooseCloseCandidateEnrollmentOption();
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("swal2-title")));
+			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Candidate Registration Has Been Closed !!");
+			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Candidate Registration has been closed with Mela ID:"+rozgarMelaID);
+			rVmp.clickContinueToViewAllMelas();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
+			rVmp.clickToApplyFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rVmp.clickToChooseCloseCandidateEnrollmentOption();
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='toast-message']")));
+			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Already The Registration Closed For Candidates");
+			rVmp.clickToChooseViewDetailsOption();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertTrue(driver.findElements(By.xpath("//button[contains(text(),'Upload Candidate Registration List')]")).size()==0, "OMG!!! Upload Candidate Registration List button is available for - candidtae enrollment blocked mela");
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+		}
+	}
+	@Test(dataProvider="rozgarMelaData", dependsOnMethods="createRozgarMelaTC_01")
+	public void rescheduleRozgarMelaTC_04(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	{
+		if(!serialNum.equals("1") && !serialNum.equals("2"))
 		{
 			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 			LoginPage lp=new LoginPage(driver);

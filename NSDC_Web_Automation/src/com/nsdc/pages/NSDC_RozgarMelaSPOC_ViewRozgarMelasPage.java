@@ -42,29 +42,14 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	private WebElement reScheduleMelaOption;
 	@FindBy(xpath="//span[contains(text(),'Cancel Mela')]")
 	private WebElement cancelMelaOption;
+	@FindBy(xpath="//span[contains(text(),'Close Candidate Enrollment')]")
+	private WebElement closeCandidateEnrollmentOption;
 	@FindBy(xpath="//button[contains(text(),'Download Report')]")
 	private WebElement downloadReportButton;
 	@FindBy(xpath="//button[contains(text(),'Create a Rozgar Mela')]")
 	private WebElement createRozgarMelaButton;
 	@FindBy(xpath="//span[contains(text(),'Dashboard')]")
 	private WebElement dashboardTextLink;
-	//View Details Option -> Resulted Page
-	@FindBy(xpath="//button[contains(text(),'Mela Details')]")
-	private WebElement melaDetailsButton;
-	@FindBy(xpath="//button[contains(text(),'Participating Candidates')]")
-	private WebElement participatingCandidatesButton;
-	@FindBy(xpath="//button[contains(text(),'Participating Employers')]")
-	private WebElement participatingEmployersButton;
-	@FindBy(xpath="//button[contains(text(),'Participating Centres')]")
-	private WebElement participatingCentresButton;
-	@FindBy(xpath="//button[contains(text(),'Participation Summary')]")
-	private WebElement participationSummaryButton;
-	@FindBy(xpath="//button[contains(text(),'Offered Job Vacancies')]")
-	private WebElement offeredJobVacanciesButton;
-	@FindBy(xpath="//button[contains(text(),'Update Post Placement Details ')]")
-	private WebElement updatePostPlacementDetailsButton;
-	@FindBy(xpath="//button[contains(text(),'Back')]")
-	private WebElement backButton;
 	@FindBy(xpath="//button[contains(text(),'Cancel Rozgar Mela')]")
 	private WebElement cancelRozgarMelaButton;
 	@FindBy(xpath="//button[contains(text(),'Continue to View All Melas')]")
@@ -158,6 +143,10 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	{
 		cancelMelaOption.click();
 	}
+	public void clickToChooseCloseCandidateEnrollmentOption()
+	{
+		closeCandidateEnrollmentOption.click();
+	}
 	public void clickToDownloadReport()
 	{
 		downloadReportButton.click();
@@ -165,38 +154,6 @@ public class NSDC_RozgarMelaSPOC_ViewRozgarMelasPage
 	public void clickCreateArozgarMela()
 	{
 		createRozgarMelaButton.click();
-	}
-	public void clickToViewMelaDetails()
-	{
-		melaDetailsButton.click();
-	}
-	public void clickToViewParticipatingCandidates()
-	{
-		participatingCandidatesButton.click();
-	}
-	public void clickToViewParticipatingEmployers()
-	{
-		participatingEmployersButton.click();
-	}
-	public void clickToViewParticipatingCentres()
-	{
-		participatingCentresButton.click();
-	}
-	public void clickToViewParticipationSummary()
-	{
-		participationSummaryButton.click();
-	}
-	public void clickToViewOfferedJobVacancies()
-	{
-		offeredJobVacanciesButton.click();
-	}
-	public void clickUpdatePostPlacementDetails()
-	{
-		updatePostPlacementDetailsButton.click();
-	}
-	public void clickBack()
-	{
-		backButton.click();
 	}
 	public void clickToFinallyCancelRozgarMela()
 	{
