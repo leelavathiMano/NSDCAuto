@@ -224,9 +224,11 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rVmp.clickActionMenu();
 			rVmp.clickToChooseCloseCandidateEnrollmentOption();
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='toast-message']")));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Already The Registration Closed For Candidates");
+			rVmp.clickActionMenu();
 			rVmp.clickToChooseViewDetailsOption();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertTrue(driver.findElements(By.xpath("//button[contains(text(),'Upload Candidate Registration List')]")).size()==0, "OMG!!! Upload Candidate Registration List button is available for - candidtae enrollment blocked mela");
