@@ -16,6 +16,7 @@ import com.nsdc.generic.ReadWriteData;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
+import com.nsdc.pages.RozgarMelaDetailSectionsPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_CreateRozgarMelaPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_DashboardPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_ViewRozgarMelasPage;
@@ -231,6 +232,8 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.clickActionMenu();
 			rVmp.clickToChooseViewDetailsOption();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			RozgarMelaDetailSectionsPage rms=new RozgarMelaDetailSectionsPage(driver);
+			rms.clickToGoToParticipatingCandidatesSection();
 			Assert.assertTrue(driver.findElements(By.xpath("//button[contains(text(),'Upload Candidate Registration List')]")).size()==0, "OMG!!! Upload Candidate Registration List button is available for - candidtae enrollment blocked mela");
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
