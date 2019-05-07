@@ -45,15 +45,15 @@ public class RozgarMelaDetailSectionsPage
 	{
 		melaDetailsButton.click();
 	}
-	public void clickToViewParticipatingCandidates()
+	public void clickToGoToParticipatingCandidatesSection()
 	{
 		participatingCandidatesButton.click();
 	}
-	public void clickToViewParticipatingEmployers()
+	public void clickToGoToParticipatingEmployersSection()
 	{
 		participatingEmployersButton.click();
 	}
-	public void clickToViewParticipatingCentres()
+	public void clickToGoToParticipatingCentresSection()
 	{
 		participatingCentresButton.click();
 	}
