@@ -1241,7 +1241,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	sVp.clickToGoToEnrolledApplicantsSection();
    	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-   	 	if(serialNum.equals("1"))
+   	 	if(serialNum.equals("1")||serialNum.equals("2"))
    	 	{
    	 		sVp.clickToSelectApplicantToBeApproved(assessorID);
    	 		if(paymentMode.equalsIgnoreCase("N/A"))
