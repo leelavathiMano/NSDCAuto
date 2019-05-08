@@ -13,10 +13,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RozgarMelaDetailSectionsPage;
+import com.nsdc.pages.RozgarMela_CandidatePage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_CreateRozgarMelaPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_DashboardPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_ViewRozgarMelasPage;
@@ -24,6 +26,9 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 {
+	String candidateListFile=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CandidateEnrollment", 1, 1);
+	String candidateID_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CandidateEnrollment", 1, 2);
+	String candidatePassword_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CandidateEnrollment", 1, 3);
 	@DataProvider
 	public Object[][] rozgarMelaData()
 	{
@@ -348,6 +353,81 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			{
 				Assert.assertEquals(driver.findElement(By.xpath("//div[div[contains(text(),'Village')]]//div[2]")).getText().trim(), village.toUpperCase());
 			}
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+		}
+	}
+	
+	@Test(dataProvider="rozgarMelaData", dependsOnMethods="rescheduleRozgarMelaTC_04")
+	public void candidateEnrollmentByUploadForRozgarMelaTC_05(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	{
+		if(serialNum.equals("3"))
+		{
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			LoginPage lp=new LoginPage(driver);
+			lp.clickLogin();
+			EnterLoginPage elp=new EnterLoginPage(driver);
+			elp.performlogin(rmspocID, rmspocPassword);
+			NSDC_RozgarMelaSPOC_DashboardPage rmDp=new NSDC_RozgarMelaSPOC_DashboardPage(driver);
+			rmDp.clickViewRozgarMelas();
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			NSDC_RozgarMelaSPOC_ViewRozgarMelasPage rVmp=new NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(driver);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
+			rVmp.clickToApplyFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+			js.executeScript("window.scrollBy(0,200)", "");
+			rVmp.clickActionMenu();
+			rVmp.clickToChooseViewDetailsOption();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			RozgarMelaDetailSectionsPage rms=new RozgarMelaDetailSectionsPage(driver);
+			rms.clickToGoToParticipatingCandidatesSection();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rms.clickToGetUploadCandidateRegistrationListWindow();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rms.clickToBrowseCandidateListfile();
+			UploadFile.upload(candidateListFile);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'RozgarMela-Candidate')]")));
+			rms.clickToUploadSelectedCandidateListFile();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
+			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().contains("Candidates Registered Successfully"));
+			PostLoginPage plp=new PostLoginPage(driver);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+		}
+	}
+	
+	@Test(dataProvider="rozgarMelaData", dependsOnMethods="rescheduleRozgarMelaTC_04")
+	public void candidateSelfEnrollmentForRozgarMelaTC_06(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	{
+		if(serialNum.equals("3"))
+		{
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			LoginPage lp=new LoginPage(driver);
+			lp.clickLogin();
+			EnterLoginPage elp=new EnterLoginPage(driver);
+			elp.performlogin(candidateID_SelfEnrollment, candidatePassword_SelfEnrollment);
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			RozgarMela_CandidatePage rcp=new RozgarMela_CandidatePage(driver);
+			rcp.clickToViewAllRozgarMelas();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rcp.clickToGetActionMenu(rozgarMelaName);
+			rcp.selectAttendThisRozgarMelaOption(rozgarMelaName);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Successfully Registered for Rozgar Mela");
+			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Your admit card has been sent on your registered email id\nMela ID: "+rozgarMelaID+"\nMela Name : "+rozgarMelaName);
+			rcp.clickToDownloadAdmitCard();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Your admit card has been downloaded successfully");
+			rcp.clickOK();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rcp.clickToGoToEnrolled_AttendedrozgarMelasection();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]")).isDisplayed(), "OMG!!! No show enrolled rozgar mela");
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
