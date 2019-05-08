@@ -418,6 +418,8 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rcp.clickToGetActionMenu(rozgarMelaName);
 			rcp.selectAttendThisRozgarMelaOption(rozgarMelaName);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rcp.clickToAttendRozgarMela();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Successfully Registered for Rozgar Mela");
 			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Your admit card has been sent on your registered email id\nMela ID: "+rozgarMelaID+"\nMela Name : "+rozgarMelaName);
