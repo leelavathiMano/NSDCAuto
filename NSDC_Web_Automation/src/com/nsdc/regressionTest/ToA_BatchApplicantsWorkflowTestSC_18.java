@@ -1251,12 +1251,13 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(),"Only paid candidates can be approved");
    	 			sVp.clickToApproveAllSelectedUnpaidApplicants();
    	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
    	 		else
    	 		{
    	 			sVp.clickToApproveAllSelectedApplicants();
-   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
    	 	}
    	 	else
@@ -1268,7 +1269,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
    	 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved\nApplicant successfully approved for "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
    	 			sVp.clickOk();
-   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+   	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
    	 		else
    	 		{
@@ -1276,7 +1277,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
    	 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Applicant Approved\nApplicant successfully approved for "+batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")");
 	 			sVp.clickOk();
-	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
+	 			Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+assessorID+"')]]")).size()==0,"OMG!!! SSC Approved Applicant - "+assessorID+" should not be displayed in Enrolled Applicnats Section OR Something went wrong!");
    	 		}
    	 	}
    	 	js.executeScript("window.scrollBy(0,-1000)", "");
