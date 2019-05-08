@@ -395,6 +395,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rms.clickToUploadSelectedCandidateListFile();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
 			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().contains("Candidates Registered Successfully"));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
@@ -428,6 +429,8 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Your admit card has been downloaded successfully");
 			rcp.clickOK();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+			js.executeScript("window.scrollBy(0,-1000)", "");
 			rcp.clickToGoToEnrolled_AttendedrozgarMelasection();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]")).isDisplayed(), "OMG!!! No show enrolled rozgar mela");
