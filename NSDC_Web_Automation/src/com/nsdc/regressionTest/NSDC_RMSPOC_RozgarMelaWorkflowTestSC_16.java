@@ -389,7 +389,6 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rms.clickToGetUploadCandidateRegistrationListWindow();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rms.clickToBrowseCandidateListfile();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			UploadFile.upload(candidateListFile);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'RozgarMela-Candidate')]")));
 			rms.clickToUploadSelectedCandidateListFile();
