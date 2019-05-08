@@ -26,9 +26,9 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 {
-	String candidateListFile=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CandidateEnrollment", 1, 1);
-	String candidateID_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CandidateEnrollment", 1, 2);
-	String candidatePassword_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "CandidateEnrollment", 1, 3);
+	String candidateListFile=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 2);
+	String candidateID_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 3);
+	String candidatePassword_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 4);
 	@DataProvider
 	public Object[][] rozgarMelaData()
 	{
@@ -389,6 +389,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rms.clickToGetUploadCandidateRegistrationListWindow();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rms.clickToBrowseCandidateListfile();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			UploadFile.upload(candidateListFile);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'RozgarMela-Candidate')]")));
 			rms.clickToUploadSelectedCandidateListFile();
