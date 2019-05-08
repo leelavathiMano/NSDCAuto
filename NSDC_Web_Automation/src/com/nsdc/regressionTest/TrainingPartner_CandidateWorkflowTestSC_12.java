@@ -329,7 +329,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Select selectedNamePrefix=new Select(driver.findElement(By.xpath("//select[@formcontrolname='namePrefix']")));
 		Assert.assertEquals(selectedNamePrefix.getFirstSelectedOption().getText(),namePrefix);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='firstName']")).getAttribute("value"), fullName);
-		Assert.assertEquals(driver.findElement(By.xpath("//label[@class='custom-file-label ']/span")).getText().trim(), profilePicture);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='phone']")).getAttribute("value").trim(), mobileNumber);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='email']")).getAttribute("value").trim(), emailID);
 		Assert.assertTrue(driver.findElement(By.xpath("//input[@value='"+gender+"']")).isSelected());
@@ -345,7 +344,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 			Assert.assertTrue(driver.findElement(By.xpath("(//input[@formcontrolname='differentlyAbled'])[1]")).isSelected());
 			Select selectedDisability=new Select(driver.findElement(By.xpath("//select[@formcontrolname='disabilityCategory']")));
 			Assert.assertEquals(selectedDisability.getFirstSelectedOption().getText(), disablity);
-			Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), disabilityProofDoc);
 		}
 		else
 		{	
@@ -368,7 +366,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Select selectedIdentificationType=new Select(driver.findElement(By.xpath("//select[@formcontrolname='alternateIdType']")));
 		Assert.assertEquals(selectedIdentificationType.getFirstSelectedOption().getText(), identificationType);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='alternateIdNumber']")).getAttribute("value"), identificationIDnumber);
-		Assert.assertEquals(driver.findElement(By.xpath("//label[@class='custom-file-label ']/span")).getText().trim(), identificationProof);
 		if(isCommunicationAddressSameAsPermanentAddress.equalsIgnoreCase("yes"))
 		{
 			Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='address1']")).getAttribute("value"), address);
@@ -404,7 +401,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		Assert.assertEquals(driver.findElement(By.xpath("(//input[@formcontrolname='specialization'])[1]")).getAttribute("value").trim(), specialisation1);
 		Select selectedPassingYear1=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[1]")));
 		Assert.assertEquals(selectedPassingYear1.getFirstSelectedOption().getText(), yearOfPassing1);
-		Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[1]")).getText().trim(), education1Proof);
 		//Second Education Record
 		Select selectedEducation2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='education'])[2]")));
 		Assert.assertEquals(selectedEducation2.getFirstSelectedOption().getText(), education2);
@@ -412,7 +408,6 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@formcontrolname='educationName']")).getAttribute("value").trim(), othersEducationName);
 		Select selectedYearOfPassing2=new Select(driver.findElement(By.xpath("(//select[@formcontrolname='passingYear'])[2]")));
 		Assert.assertEquals(selectedYearOfPassing2.getFirstSelectedOption().getText(), yearOfPassing2);
-		Assert.assertEquals(driver.findElement(By.xpath("(//label[@class='custom-file-label ']/span)[2]")).getText().trim(), education2Proof);
 		tpCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Course Preference Review Page
