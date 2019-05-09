@@ -2277,32 +2277,32 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
     		elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
     		tDp.clickToGetTrainerDashboard();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tDp.clickAllBatches();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToGoToAcceptedBatchesSection();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.enterBatchIDToSearch(batchID);
     		tVp.clickToGetSearchFilterResult();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Accepted Section of Master Trainer - "+dmasterTrainerID);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Batch on Going");
     		tVp.clickToGetActionMenuOptions(batchID);
     		tVp.clickToSelectUploadAttendanceOption(batchID);
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.selectDomainJobRole(domainJobRole);
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		//Checking Download Template
     		tVp.clickToDownloadAttendanceTemplate();
- 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToBrowseForAttendanceFile();
- 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
         	UploadFile.upload(domainJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceFile();
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
             Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance uploaded successfully");
     		tVp.clickOk();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		//Verifying Uploaded Attendance Data for each applicant
     		for(int j=1; j<6; j++)
         	{
@@ -2342,16 +2342,16 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
         	Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+domainJobRoleAttendance+"')]]")).isDisplayed());
     		js.executeScript("window.scrollBy(0,-1000)", "");
     		tVp.clickToSubmitBatchAttendanceToSSC();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
     		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
     		tVp.clickOk();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("swal2-title")));
     		//Checking Attendance Submission already done 
     		tVp.clickToSubmitBatchAttendanceToSSC();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
     		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Attendance Already Submitted to SSC");
@@ -2391,32 +2391,32 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			TrainerViewBatchesPage tVp=new TrainerViewBatchesPage(driver);
     		elp.performlogin(pmasterTrainerID, pmasterTrainerPassword);
     		tDp.clickToGetTrainerDashboard();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tDp.clickAllBatches();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToGoToAcceptedBatchesSection();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.enterBatchIDToSearch(batchID);
     		tVp.clickToGetSearchFilterResult();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+batchID+"']]")).size()==1,"OMG!!! No show of Batch - "+batchID+" in Accepted Section of Master Trainer - "+pmasterTrainerID);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+batchID+"']]/td[8]")).getText().trim(), "Batch on Going");
     		tVp.clickToGetActionMenuOptions(batchID);
     		tVp.clickToSelectUploadAttendanceOption(batchID);
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.selectDomainJobRole(platformJobRole);
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		//Checking Download Template
     		tVp.clickToDownloadAttendanceTemplate();
- 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToBrowseForAttendanceFile();
- 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
         	UploadFile.upload(platformJobRoleAttendance);
         	tVp.clickToUploadChoosedAttendanceFile();
         	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
             Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance uploaded successfully");
     		tVp.clickOk();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		//Verifying Uploaded Attendance Data for each applicant
     		for(int j=1; j<6; j++)
         	{
@@ -2437,9 +2437,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
         	     }
         	}
     		tVp.clickToSubmitBatchAttendanceToSSC();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tVp.clickToFinallySubmitBatchAttendanceToSSC();
-    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='blockUI blockOverlay']")));
+    		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
     		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Attendance submitted successfully");
     		tVp.clickOk();
