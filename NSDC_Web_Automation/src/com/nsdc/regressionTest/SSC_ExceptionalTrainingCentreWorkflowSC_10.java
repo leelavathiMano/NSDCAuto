@@ -38,18 +38,18 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ToT, ToA, ToMT,ToMA")));
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
 		sscDbP.clickAllBatches();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		SSCAllBatchesPage sAp=new SSCAllBatchesPage(driver);
 		sAp.enterBatchIDToSearch(batchID);
 		sAp.clickToGetSearchResult();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		sAp.clickToGetBatchActionMenu(batchID);
 		driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]//span[contains(text(),'Assign')]")).click();	
 	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Add Exceptional Training Centre
 		SSC_ExceptionalTraningCentreCreationPage eTCp=new SSC_ExceptionalTraningCentreCreationPage(driver);
 		eTCp.clickAddExceptionalTC();
-	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		eTCp.enterTrainingPartnerName(tpName);
 		eTCp.enterExceptionalTrainingCentreName(exceptionalTCName);
 		eTCp.enterWebsite(website);
@@ -156,7 +156,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1, createdExceptionalTCID);
 			SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage sscTbcP=new SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage(driver);
 			sscTbcP.clickOk();
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
@@ -164,16 +164,16 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			lp.clickLogin();
 			elp.performlogin(createdExceptionalTCID, "ekaushal");
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			RegistrationPage rp = new RegistrationPage(driver);
 			rp.enterOldPassword("ekaushal");
 		    rp.enterNewPassword("Qwerty@123");
 		    rp.enterConfirmPassword("Qwerty@123");
 		    rp.clickResetResubmit();
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		    rp.clickConfirmationOkMessage();
 		    elp.performlogin(createdExceptionalTCID, "Qwerty@123");
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		    plp.clickOnProfileLogo();
 		    Thread.sleep(2000);
 		    plp.clickOnLogout();
@@ -185,7 +185,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
 			Assert.assertTrue(driver.findElement(By.id("swal2-title")).getText().contains("Assigned Successfully"),"OMG!!! Something went wrong! After clicking Assign Button!");
 			eTCp.clickOK();
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'EXPTC_')]]/td[span[contains(text(),'Assigned')]]")).getText().trim(), "Assigned");
 			String createdExceptionalTCID=driver.findElement(By.xpath("//td[contains(text(),'EXPTC_')]")).getText().trim();
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_ExceptionalTrainingCentre-Workflow.xls", "ExceptionalTC-Creation", Integer.parseInt(serialNum), 1,createdExceptionalTCID);
@@ -196,7 +196,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			lp.clickLogin();
 			elp.performlogin(createdExceptionalTCID, "ekaushal");
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			RegistrationPage rp = new RegistrationPage(driver);
 			rp.enterOldPassword("ekaushal");
 			rp.enterNewPassword("Qwerty@123");
@@ -205,7 +205,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 			Thread.sleep(2000);
 			rp.clickConfirmationOkMessage();
 			elp.performlogin(createdExceptionalTCID, "Qwerty@123");
-		 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();

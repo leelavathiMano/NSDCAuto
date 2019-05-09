@@ -46,7 +46,7 @@ public class SSC_ExceptionalTraningCentreCreationPage
 	private WebElement spocIDProofBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement uploadButton1;
-	@FindBy(xpath="//input[@formcontrolname='addressLine']")
+	@FindBy(xpath="//input[@formcontrolname='address1']")
 	private WebElement addressTextField;
 	@FindBy(xpath="//input[@formcontrolname='landmark']")
 	private WebElement landmarkTextField;
