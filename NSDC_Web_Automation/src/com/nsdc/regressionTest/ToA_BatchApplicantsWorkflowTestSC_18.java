@@ -1410,7 +1410,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  	   	String pAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 21);
  	   	String pAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 22);
  	   	elp.performlogin(tcID, tcPassword);
- 	   	WebDriverWait wait=new WebDriverWait(driver, 60);
+ 	   	WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 		LocationBasedTC_DashboardPage lTcDp=new LocationBasedTC_DashboardPage(driver);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -1528,7 +1528,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
         		}
         		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
         		tDp.clickToGetTrainerDashboard();
-        		WebDriverWait wait=new WebDriverWait(driver, 60);
+        		WebDriverWait wait=new WebDriverWait(driver, 30);
         		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
         		tDp.clickAllBatches();
         		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -1548,7 +1548,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
         		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), batchStartDate+" to "+batchEndDate);
-        		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector & Sub Sector')]]/td[3]")).getText().trim(), batchSector+" | "+batchSubSector);
+        		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector')]]/td[3]")).getText().trim(), batchSector);
         		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Type')]]/td[3]")).getText().trim(), batchType);
         		if(i==1)
         		{
@@ -1630,7 +1630,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
             elp.performlogin(domainMasterTrainerID, domainMasterTrainerPassword);
     		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
     		tDp.clickToGetTrainerDashboard();
-    		WebDriverWait wait=new WebDriverWait(driver, 60);
+    		WebDriverWait wait=new WebDriverWait(driver, 30);
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		tDp.clickAllBatches();
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
@@ -1650,7 +1650,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
     		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Size')]]/td[3]")).getText().trim(), batchSize);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Date')]]/td[3]")).getText().trim(), batchStartDate+" to "+batchEndDate);
-    		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector & Sub Sector')]]/td[3]")).getText().trim(), batchSector+" | "+batchSubSector);
+    		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Sector')]]/td[3]")).getText().trim(), batchSector);
     		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'Batch Type')]]/td[3]")).getText().trim(), batchType);		
             Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[1]")).getText().trim(), domainJobRole);
             Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[contains(text(),'Job Role')]]/td[3])[2]")).getText().trim(), domainJobRoleCode);
@@ -1737,7 +1737,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
     	LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
     	if(!platformAssessmentAgencyID.equalsIgnoreCase(domainAssessmentAgencyID))
     	{
     		for(int i=1;i<3;i++)
@@ -1880,7 +1880,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	  	LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 30);
 		if(!platformMasterAssessorID.equalsIgnoreCase(domainMasterAssessorID))
 		{
 			for(int i=1; i<3;i++)
@@ -2031,7 +2031,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  	   		elp.performlogin(assessorID, applicantPassword);
  	   		AssessorApplicantDashboardPage aDp=new AssessorApplicantDashboardPage(driver);
  	   		aDp.clickToGetApplicantDashboard();
- 	   		WebDriverWait wait=new WebDriverWait(driver, 10);
+ 	   		WebDriverWait wait=new WebDriverWait(driver, 30);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		aDp.clickSearchAndApplyforAvailableBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
