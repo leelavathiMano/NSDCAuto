@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.nsdc.generic.Assessor_App_Handling;
 import com.nsdc.generic.MobileHandlers;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
