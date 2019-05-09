@@ -1304,6 +1304,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		sVp.clickToGoToApprovedApplicantsSection();
    	 		sVp.clickToApproveBatch();
+   	 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
    	 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Batch is already approved");
 	 	}
    	 	else
@@ -1364,6 +1365,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 		if(!paymentMode.equalsIgnoreCase("N/A"))
    	 		{
    	 			sVp.clickToViewPaymentDetails();
+   	 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Batch ID')]]]/div[2]")).getText().trim(), batchID);
    	 			Assert.assertEquals(driver.findElement(By.xpath("//div[label[b[contains(text(),'Mode of Payment')]]]/div[2]")).getText().trim(), paymentMode);
    	 			if(!paymentMode.equalsIgnoreCase("cash"))
