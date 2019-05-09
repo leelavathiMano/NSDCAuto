@@ -49,7 +49,7 @@ public class ToT_AssessorAppSC_22
     		Assessor_MyDashboardScreen aMdS=new Assessor_MyDashboardScreen(appDriver);
     		aMdS.getAcceptedRequestsSection().click();
     		Assessor_AcceptedRequestsScreen aArS=new Assessor_AcceptedRequestsScreen(appDriver);
-    		Assessor_App_Handling.scrollToBatch(appDriver, batchID);
+    		aArS.scrollToBatch(appDriver, batchID);
     		Assert.assertEquals(appDriver.findElement(By.xpath("//android.view.View[contains(@text,'("+batchID+")')]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")\n"+tcID+"\nAssessment Pending");
     		aArS.getAcceptedBatchID(batchID).click();
     		Assessor_List_Of_JobRoleScreen aljs=new Assessor_List_Of_JobRoleScreen(appDriver);
@@ -178,7 +178,7 @@ public class ToT_AssessorAppSC_22
     		Assessor_MyDashboardScreen aMdS=new Assessor_MyDashboardScreen(appDriver);
     		aMdS.getAcceptedRequestsSection().click();
     		Assessor_AcceptedRequestsScreen aArS=new Assessor_AcceptedRequestsScreen(appDriver);
-    		Assessor_App_Handling.scrollToBatch(appDriver, batchID);
+    		aArS.scrollToBatch(appDriver, batchID);
     		Assert.assertEquals(appDriver.findElement(By.xpath("//android.view.View[contains(@text,'("+batchID+")')]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")\n"+tcID+"\nAssessment Pending");
     		aArS.getAcceptedBatchID(batchID).click();
     		Assessor_List_Of_JobRoleScreen aljs=new Assessor_List_Of_JobRoleScreen(appDriver);
@@ -306,7 +306,7 @@ public class ToT_AssessorAppSC_22
     		Assessor_MyDashboardScreen aMdS=new Assessor_MyDashboardScreen(appDriver);
     		aMdS.getAcceptedRequestsSection().click();
     		Assessor_AcceptedRequestsScreen aArS=new Assessor_AcceptedRequestsScreen(appDriver);
-    		Assessor_App_Handling.scrollToBatch(appDriver, batchID);
+    		aArS.scrollToBatch(appDriver, batchID);
 //    		Assert.assertEquals(appDriver.findElement(By.xpath("//android.view.View[contains(@text,'("+batchID+")')]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")\n"+tcID+"\nMarks Upload Pending");
     		aArS.getAcceptedBatchID(batchID).click();
     		Assessor_List_Of_JobRoleScreen aljs=new Assessor_List_Of_JobRoleScreen(appDriver);
@@ -548,7 +548,7 @@ public class ToT_AssessorAppSC_22
     		Assessor_MyDashboardScreen aMdS=new Assessor_MyDashboardScreen(appDriver);
     		aMdS.getAcceptedRequestsSection().click();
     		Assessor_AcceptedRequestsScreen aArS=new Assessor_AcceptedRequestsScreen(appDriver);
-    		Assessor_App_Handling.scrollToBatch(appDriver, batchID);
+    		aArS.scrollToBatch(appDriver, batchID);
 //    		Assert.assertEquals(appDriver.findElement(By.xpath("//android.view.View[contains(@text,'("+batchID+")')]")).getText().trim(), batchType+"/"+batchStartDate+" to "+batchEndDate+"("+batchID+")\n"+tcID+"\nMarks Upload Pending");
     		aArS.getAcceptedBatchID(batchID).click();
     		Assessor_List_Of_JobRoleScreen aljs=new Assessor_List_Of_JobRoleScreen(appDriver);
