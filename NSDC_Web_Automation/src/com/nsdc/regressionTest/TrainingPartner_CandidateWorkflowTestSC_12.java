@@ -520,7 +520,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpMp.enterCandidateIDToSearch(registeredCandidateID);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tpMp.clickToApplySearchFilters();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		js.executeScript("window.scrollBy(0,150)", "");
 		tpMp.clickToSelectCreatedCandidateRecord();
 		tpMp.clickToDownloadReportForSelectedCandidates();
