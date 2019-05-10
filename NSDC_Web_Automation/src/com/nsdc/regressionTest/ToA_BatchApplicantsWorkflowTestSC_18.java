@@ -1299,14 +1299,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	 		sAp.clickToViewAllPublishedBatches();
    	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[1][contains(text(),'"+batchID+"')]]/td[8]")).getText().trim(),"Approved");
-   	 		sAp.clickToGetBatchActionMenu(batchID);
-   	 		sAp.selectViewDetailsOption(batchID);
-   	 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-   	 		sVp.clickToGoToApprovedApplicantsSection();
-   	 		sVp.clickToApproveBatch();
-   	 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
-   	 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Batch is already approved");
-	 	}
+   	 	}
    	 	else
    	 	{
    	 		sVp.clickToGetApplicantActionMenu(assessorID);
