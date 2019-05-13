@@ -132,7 +132,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
 		String trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 		ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
-		sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
+		sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode, domainJobRoleVersion);
 		//Sometimes platform job role will not be available
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")));
 		driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
@@ -159,7 +159,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),9,trainingStartDate);
 			trainingEndDate=driver.findElement(By.xpath("//input[@formcontrolname='endDate']")).getAttribute("value").replaceAll("/", "-");
 			ReadWriteData.setExcelData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT-Batches",Integer.parseInt(serialNo),10,trainingEndDate);
-			sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode);
+			sscTbcP.selectDomainJobRole(domainJobRole, domainJobRoleCode, domainJobRoleVersion);
 			driver.findElement(By.xpath("//angular2-multiselect[@formcontrolname='platformJobRole']/div")).click();
 			sscTbcP.selectPlatformJobRole(platformJobRole);
 		}

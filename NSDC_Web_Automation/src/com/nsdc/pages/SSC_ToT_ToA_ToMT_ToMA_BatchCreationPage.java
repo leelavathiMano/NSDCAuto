@@ -152,19 +152,19 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	{
 		closeTrainingEndDateCalenderIcon.click();
 	}
-	public void selectDomainJobRole(String domainJobRole, String domainJobRoleCode) throws InterruptedException
+	public void selectDomainJobRole(String domainJobRole, String domainJobRoleCode, String domainJobRoleVersion) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(domainJobRoleCheckBoxList));
 		domainJobRoleCheckBoxList.click();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//label[contains(text(),'"+domainJobRole+" ("+domainJobRoleCode+"')])[1]")).click();
+		driver.findElement(By.xpath("//label[contains(text(),'"+domainJobRole+" ("+domainJobRoleCode+") - "+domainJobRoleVersion+"')]")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//span[contains(text(),'Domain Job Role')]")).click();
 	}
 	public void selectPlatformJobRole(String platformJobRole) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(platformJobRoleList));
 //		platformJobRoleList.click();
 		Thread.sleep(2000);
@@ -173,7 +173,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	//Domain QP
 	public void clickToChooseDomainQP()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(domainBaseQpRadioButton));
 		domainBaseQpRadioButton.click();
 	}
@@ -226,7 +226,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	//Platform QP
 	public void clickToChoosePlatformQP()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 60);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(platformBaseQpRadioButton));
 		platformBaseQpRadioButton.click();
 	}
@@ -302,14 +302,14 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage
 	}
 	public void clickOk()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 30);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOf(okButton));
 		wait.until(ExpectedConditions.elementToBeClickable(okButton));
 		okButton.click();
 	}
 	public void clickBatchAction(String createdBatchID)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,30);
+		WebDriverWait wait=new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//tr[td[contains(text(),'"+createdBatchID+"')]]//a)[1]")));
 		driver.findElement(By.xpath("(//tr[td[contains(text(),'"+createdBatchID+"')]]//a)[1]")).click();
 	}
