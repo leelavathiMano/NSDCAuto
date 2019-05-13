@@ -2208,6 +2208,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 				SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
 				sDp.clickToTToAToMTToMA();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,200)", "");
 				sDp.clickAllBatches();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));

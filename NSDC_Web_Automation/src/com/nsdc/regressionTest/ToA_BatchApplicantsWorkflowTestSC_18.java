@@ -1133,6 +1133,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
   	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
   	 	sDp.clickToTToAToMTToMA();
+  	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
   	 	JavascriptExecutor js=(JavascriptExecutor)driver;
   	 	js.executeScript("window.scrollBy(0,200)", "");
   	 	sDp.clickAllBatches();
@@ -2193,6 +2194,7 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
  	   		sDp.clickToTToAToMTToMA();
+ 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		js.executeScript("window.scrollBy(0,200)", "");
  	   		sDp.clickAllBatches();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
