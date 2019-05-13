@@ -27,6 +27,8 @@ public class SSC_DashboardPage
 	private WebElement assessmentsAndCertificationButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[6]")
 	private WebElement accrediationAndAffiliationButton;
+	@FindBy(xpath="//strong[contains(text(),'ToT, ToA, ToMT')]")
+	private WebElement totToAToMTToMA_CardText;
 	
 	public SSC_DashboardPage(WebDriver driver)
 	{
@@ -68,5 +70,9 @@ public class SSC_DashboardPage
 	public void clickOnAccrediationAndAffiliation()
 	{
 		accrediationAndAffiliationButton.click();
+	}
+	public void clickToGoTo_ToT_ToA_ToMT_ToMASection()
+	{
+		totToAToMTToMA_CardText.click();
 	}
 }
