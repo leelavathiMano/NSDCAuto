@@ -1111,8 +1111,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.id("pincode")).getAttribute("value").trim(), pincode);
 			Assert.assertEquals(driver.findElement(By.id("state")).getAttribute("value").trim(), state);
 			Assert.assertEquals(driver.findElement(By.id("district")).getAttribute("value").trim(), district);
-			Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
-			Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
+//			Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
+//			Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
 			Assert.assertEquals(driver.findElement(By.id("parliamentaryConstituency")).getAttribute("value").trim(), constituency);
 			Assert.assertEquals(driver.findElement(By.id("spocName")).getAttribute("value").trim(), tcSPOCName);
 			Assert.assertEquals(driver.findElement(By.id("email")).getAttribute("value").trim(), tcSPOCEmail);
@@ -1216,8 +1216,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 				Assert.assertEquals(driver.findElement(By.id("pincode")).getAttribute("value").trim(), pincode);
 				Assert.assertEquals(driver.findElement(By.id("state")).getAttribute("value").trim(), state);
 				Assert.assertEquals(driver.findElement(By.id("district")).getAttribute("value").trim(), district);
-				Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
-				Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
+//				Assert.assertEquals(driver.findElement(By.id("tehsil")).getAttribute("value").trim(), subDistrict);
+//				Assert.assertEquals(driver.findElement(By.id("village")).getAttribute("value").trim(), village);
 				Assert.assertEquals(driver.findElement(By.id("parliamentaryConstituency")).getAttribute("value").trim(), constituency);
 				Assert.assertEquals(driver.findElement(By.id("spocName")).getAttribute("value").trim(), tcSPOCName);
 				Assert.assertEquals(driver.findElement(By.id("email")).getAttribute("value").trim(), tcSPOCEmail);
