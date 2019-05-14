@@ -27,7 +27,7 @@ public class RozgarMelaDetailSectionsPage
 	//Participating Candidates Section
 	@FindBy(xpath="//button[contains(text(),'Upload Candidate Registration List')]")
 	private WebElement uploadCandidateRegistrationListButton;
-	@FindBy(id="customFile")
+	@FindBy(xpath="(//input[@formcontrolname='excelFile'])[1]")
 	private WebElement candidateListFileBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
 	private WebElement candidateListUploadButton;

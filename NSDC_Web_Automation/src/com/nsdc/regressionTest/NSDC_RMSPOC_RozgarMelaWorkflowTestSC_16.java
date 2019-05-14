@@ -230,6 +230,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			js.executeScript("window.scrollBy(0,200)", "");
 			rVmp.clickActionMenu();
 			rVmp.clickToChooseCloseCandidateEnrollmentOption();
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='toast-message']")));
