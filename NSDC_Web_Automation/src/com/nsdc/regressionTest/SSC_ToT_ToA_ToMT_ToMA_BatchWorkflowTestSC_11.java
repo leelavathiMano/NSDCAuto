@@ -42,7 +42,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation");
 	}
 	
-	@Test(dataProvider="sscBatchCreationData")
+/*	@Test(dataProvider="sscBatchCreationData")
 	public void sscBatchCreationTC_01(String serialNum,String createdBatchIDs, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmasterTrainerRemarksDate, String dmasterTrainerRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String dassessmentAgencyRemarksDate, String dassessmentAgencyRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmasterAssessorRemarks, String dmasterAssesorRemarksDate, String dmasterAssessorRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmasterTrainerRemarksDate, String pmasterTrainerRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String passessmentAgencyRemarksDate, String passessmentAgencyRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmasterAssessorRemarks, String pmasterAssesorRemarksDate, String pmasterAssessorRemarksTime, String domainMasterTrainerState, String domainMasterTrainerDistrict, String platformMasterTrainerState, String platformMasterTrainerDistrict, String domainAssessementAgencyState, String domainAssessmentAgencyDistrict, String platformAssessmentAgencyState, String platformAssessemntAgencyDistrict, String domainJobRoleVersion, String platformJobRoleVersion) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
@@ -386,8 +386,8 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
 	}
-	
-	@Test(dataProvider="sscBatchCreationData", dependsOnMethods="sscBatchCreationTC_01")
+*/	
+	@Test(dataProvider="sscBatchCreationData")//, dependsOnMethods="sscBatchCreationTC_01")
 	public void trainingCentreBatchApprovalTC_02(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String tpName, String tcName, String website, String capacity, String tcHeadName, String tcHeadMobile, String tcHeadEmail, String tcSPOCName, String tcSPOCMobile, String tcSPOCEmail, String tcAddress, String tcLandmark, String country, String state, String district, String subDistrict, String constituency, String geoLocation, String village, String pincode, String tcBatchAcceptanceRemarks, String dmasterTrainerID, String dmasterTrainerName, String dmasterTrainerPassword, String dmtBatchAcceptanceRemarks, String dmasterTrainerRemarksDate, String dmasterTrainerRemarksTime, String dassessmentAgencyID, String dassessmentAgencyName, String dassessmentAgencyPassword, String daaBatchAcceptanceRemarks, String dassessmentAgencyRemarksDate, String dassessmentAgencyRemarksTime, String dmasterAssessorID, String dmasterAssessorName, String dmasterAssessorPassword, String dmasterAssessorRemarks, String dmasterAssesorRemarksDate, String dmasterAssessorRemarksTime, String pmasterTrainerID, String pmasterTrainerName, String pmasterTrainerPassword, String pmtBatchAcceptanceRemarks, String pmasterTrainerRemarksDate, String pmasterTrainerRemarksTime, String passessmentAgencyID, String passessmentAgencyName, String passessmentAgencyPassword, String paaBatchAcceptanceRemarks, String passessmentAgencyRemarksDate, String passessmentAgencyRemarksTime, String pmasterAssessorID, String pmasterAssessorName, String pmasterAssessorPassword, String pmasterAssessorRemarks, String pmasterAssesorRemarksDate, String pmasterAssessorRemarksTime, String domainMasterTrainerState, String domainMasterTrainerDistrict, String platformMasterTrainerState, String platformMasterTrainerDistrict, String domainAssessementAgencyState, String domainAssessmentAgencyDistrict, String platformAssessmentAgencyState, String platformAssessemntAgencyDistrict, String domainJobRoleVersion, String platformJobRoleVersion) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
@@ -1625,7 +1625,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
 	}
-		
+/*		
 	//Batch Rejection Flow Test Cases
 	@DataProvider
 	public Object[][] batchRejectionData()
@@ -2490,14 +2490,14 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			}
 		}
 	}
-	
+*/	
 	//Re-Shedule Cancel
 	@DataProvider
 	public Object[][] rescheduleCancelBatchData()
 	{
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel");
 	}
-	@Test(dataProvider="rescheduleCancelBatchData")
+/*	@Test(dataProvider="rescheduleCancelBatchData")
 	public void rescheduleCancelBatchCreationTC_12(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments, String domainJobRoleVersion, String platformJobRoleVersion) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
@@ -2809,7 +2809,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		Thread.sleep(2000);
 		plp.clickOnLogout();
 	}
-	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="rescheduleCancelBatchApprovalTC_13")
+*/	@Test(dataProvider="rescheduleCancelBatchData", dependsOnMethods="rescheduleCancelBatchApprovalTC_13")
 	public void sscRejectingBatchRescheduleRequestTC_14(String serialNum,String batchID, String batchCreatedDate, String sscUsername, String sscPassword, String expectedSector, String subSector, String batchType, String batchCategory, String batchStartDate, String batchEndDate, String domainJobRole, String domainJobRoleCode, String platformJobRole, String platformJobRoleCode, String dTrainingStartDate, String dTrainingEndDate, String dAssessmentStartDate, String dAssessmentEndDate, String pTrainingStartDate, String pTrainingEndDate, String pAssessmentStartDate, String pAssessmentEndDate, String expectedBatchFees, String batchSize, String tcID, String tcPassword, String masterTrainerID, String masterTrainerPassword, String assessmentAgencyID, String assessmentAgencyPassword, String masterAssessorID, String masterAssessorName, String masterAssessorPassword, String tcState, String tcDistrict, String batchRescheduleSupportingDocument, String batchRescheduleComments, String rescheduledBatchStartDate, String rescheduledBatchEndDate, String rescheduledDomainTrainingStartDate, String rescheduledDomainTrainingEndDate, String rescheduledDomainAssessmentStartDate, String rescheduledDomainAssessmentEndDate, String rescheduledPlatformTrainingStartDate, String rescheduledPlatformTrainingEndDate, String rescheduledPlatformAssessmentStartDate, String rescheduledPlatformAssessmentEndDate, String batchCancellationSupportingDocument, String batchCancellationComments, String domainJobRoleVersion, String platformJobRoleVersion) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
