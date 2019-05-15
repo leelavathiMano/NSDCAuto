@@ -39,7 +39,7 @@ public class SSC_DashboardPage
 	{
 		QP_NOS_ModelCurriculumTab.click();
 	}
-	public void clickToTToAToMTToMA()
+	public void click_ToAToMTToMA()
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(totToAToMTToMALink));

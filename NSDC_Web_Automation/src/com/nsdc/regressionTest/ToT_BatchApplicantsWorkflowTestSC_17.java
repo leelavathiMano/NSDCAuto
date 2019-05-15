@@ -97,7 +97,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
 		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
-		sscDbP.clickToTToAToMTToMA();
+		sscDbP.click_ToAToMTToMA();
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,150)", "");
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]"))));
@@ -1123,7 +1123,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
    	 	WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA"))));
    	 	SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
-   	 	sDp.clickToTToAToMTToMA();
+   	 	sDp.click_ToAToMTToMA();
    	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
    	 	JavascriptExecutor js=(JavascriptExecutor)driver;
    	 	sDp.clickAllBatches();
@@ -2191,7 +2191,7 @@ public class ToT_BatchApplicantsWorkflowTestSC_17 extends TestConfiguration
  	   		elp.performlogin(sscID, sscPassword);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
- 	   		sDp.clickToTToAToMTToMA();
+ 	   		sDp.click_ToAToMTToMA();
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		js.executeScript("window.scrollBy(0,200)", "");
  	   		sDp.clickAllBatches();

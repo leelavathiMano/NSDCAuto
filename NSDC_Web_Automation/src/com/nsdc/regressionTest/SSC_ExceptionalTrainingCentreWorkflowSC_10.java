@@ -37,7 +37,7 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguratio
 		WebDriverWait wait=new WebDriverWait(driver,60);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ToT, ToA, ToMT,ToMA")));
 		SSC_DashboardPage sscDbP=new SSC_DashboardPage(driver);
-		sscDbP.clickToTToAToMTToMA();
+		sscDbP.click_ToAToMTToMA();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		sscDbP.clickAllBatches();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
