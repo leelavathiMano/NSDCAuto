@@ -231,9 +231,9 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			js.executeScript("window.scrollBy(0,200)", "");
+			js.executeScript("window.scrollBy(0,1000)", "");
 			rVmp.clickActionMenu();
+			js.executeScript("window.scrollBy(0,200)", "");
 			rVmp.clickToChooseCloseCandidateEnrollmentOption();
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='toast-message']")));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Already The Registration Closed For Candidates");
@@ -392,6 +392,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			rms.clickToGetUploadCandidateRegistrationListWindow();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rms.clickToBrowseCandidateListfile();
+			Thread.sleep(2000);
 			UploadFile.upload(candidateListFile);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'RozgarMela-Candidate')]")));
 			rms.clickToUploadSelectedCandidateListFile();

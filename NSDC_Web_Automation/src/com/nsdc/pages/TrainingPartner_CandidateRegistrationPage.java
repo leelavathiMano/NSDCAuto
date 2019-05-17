@@ -22,7 +22,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement mobileNumberTextField;
 	@FindBy(xpath="//input[@formcontrolname='email']")
 	private WebElement emailTextField;
-	@FindBy(id="dob")
+	@FindBy(id="dobCandidate")
 	private WebElement dobTextbox;
 	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calenderIconButton;

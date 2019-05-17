@@ -3544,15 +3544,14 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 	   		tcVp.clikToGetBatchActionMenu();
 	   		tcVp.selectEnrollApplicantsOption();
 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-     	   	String applicantID =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 1);
+     	   	tcVp.clickToGoToEnrolledApplicantsSection();
+     	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+	   		String applicantID =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 1);
      	   	String applicantName =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 3);
      	   	String applicantEmail =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 4);
      	   	String applicantMobile =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 5);
-     	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]")).size()==1,"OMG!!! No show of Enrolled Assessor Applicant - "+applicantID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
+     	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]")).size()==1,"OMG!!! No show of Enrolled Applicant - "+applicantID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
      	   	Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+applicantID+"']")).getText().trim(), applicantID);
-     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantName+"')]")).getText().trim(), applicantName);
-     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantEmail+"')]")).getText().trim(), applicantEmail);
-     	   	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[contains(text(),'"+applicantMobile+"')]")).getText().trim(), applicantMobile);
      	   	//Sending Batch To SSC For Approval
      	   	tcVp.clickToSendBatchForApproval();
      	   	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
@@ -3585,7 +3584,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
       	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
       	 	sVp.clickToGoToEnrolledApplicantsSection();
       	 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-      	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantID+"']]")).size()==1,"OMG!!! No show of TC Approved Trainer Applicant - "+applicantID+" in Enrolled Applicants Section, who has applied for the batch - "+batchID+" OR Something went wrong! ");
+      	 	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[text()='"+applicantID+"']]")).size()==1,"OMG!!! No show of TC Approved Applicant - "+applicantID+" in Enrolled Applicants Section, who has applied for the batch - "+batchID+" OR Something went wrong! ");
       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[2]")).getText().trim(), applicantID);
       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[3]")).getText().trim(), applicantName);
       	 	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+applicantID+"']]/td[4]")).getText().trim(), applicantEmail);
