@@ -492,9 +492,10 @@ public class TrainingPartner_CandidateRegistrationPage
 		ifscTextField.clear();
 		ifscTextField.sendKeys(ifsc);
 	}
-	public void enterBankName(String bankName)
+	public void enterBankName(String bankName) throws InterruptedException
 	{
 		bankNameTextField.clear();
+		Thread.sleep(2000);
 		bankNameTextField.sendKeys(bankName);
 	}
 	public void enterBankAddress(String bankAddress)

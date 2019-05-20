@@ -118,8 +118,9 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.enterAccountNumber(accountNumber);
 		Thread.sleep(2000);
 		tpCrp.enterIFSC(ifsc);
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		tpCrp.enterBankName(bankName);
+		Thread.sleep(2000);
 		tpCrp.enterBankAddress(bankAddress);
 		tpCrp.selectBoardingAndLodging(boardingAndLodging);
 		Thread.sleep(3000);
