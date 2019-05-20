@@ -440,7 +440,8 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpMp.enterCandidateIDToSearch(registeredCandidateID);
 		tpMp.clickToApplySearchFilters();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-		js.executeScript("window.scrollBy(0,150)", "");
+		js.executeScript("window.scrollBy(0,250)", "");
+		Thread.sleep(2000);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]/td[1]")).getText().trim(), registeredCandidateID);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]/td[2]")).getText().trim(), fullName);
 		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+registeredCandidateID+"')]]/td[3]")).getText().trim(), gender);
