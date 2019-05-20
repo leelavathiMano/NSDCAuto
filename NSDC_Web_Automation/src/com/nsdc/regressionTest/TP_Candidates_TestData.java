@@ -50,27 +50,27 @@ public class TP_Candidates_TestData extends TestConfiguration
 		TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 		tpCrp.selectNamePrefix(namePrefix);
 		tpCrp.enterFullName(fullName);
-		tpCrp.clickToBrowseProfilePicture();
-		UploadFile.upload(profilePicture);
-		Thread.sleep(2000);
-		tpCrp.clickToUploadProfilePicture();
-		Thread.sleep(6000);
+//		tpCrp.clickToBrowseProfilePicture();
+//		UploadFile.upload(profilePicture);
+//		Thread.sleep(2000);
+//		tpCrp.clickToUploadProfilePicture();
+//		Thread.sleep(6000);
 //		tpCrp.enterMobileNumber(mobileNumber);
-		tpCrp.enterEmailID(emailID);
+//		tpCrp.enterEmailID(emailID);
 		tpCrp.clickToChooseGender(gender);
 		tpCrp.clickToSelectDOB();
 		String selectedDateOfBirth=driver.findElement(By.id("dobCandidate")).getAttribute("value");
 	    ReadWriteData.setExcelData("./TestData/Workflow/TP_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 10, selectedDateOfBirth);
 	    tpCrp.selectRelationWithGuardian(guardianRelation);
 		tpCrp.enterGuardianName(guardianName);
-		tpCrp.selectMaritalStatus(maritalStatus);
+//		tpCrp.selectMaritalStatus(maritalStatus);
 		tpCrp.enterPlaceOfBirth(placeOfBirth);
 		tpCrp.selectBirthState(birthState);
 		Thread.sleep(2000);
 		tpCrp.selectBirthDistrict(birthDistrict);
 		Thread.sleep(2000);
-		tpCrp.selectCast(cast);
-		tpCrp.selectReligion(religion);	
+//		tpCrp.selectCast(cast);
+//		tpCrp.selectReligion(religion);	
 		if(isDisabled.equalsIgnoreCase("yes"))
 		{
 			tpCrp.clickDisabilityYes();
