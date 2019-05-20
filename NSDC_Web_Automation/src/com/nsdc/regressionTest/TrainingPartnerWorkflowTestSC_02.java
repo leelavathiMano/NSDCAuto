@@ -1020,6 +1020,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.xpath("//li[contains(text(),'LOGIN')]")).getText(), "LOGIN");
     }
     
+    
     @DataProvider
     public Object[][] tpApproval()
     {
@@ -1027,7 +1028,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     }
     
     @Test(dataProvider="tpApproval", dependsOnMethods="tpRegistrationsTC_01")
-    public void trainingPartnerApprovalTC_02(String srno, String iausername, String password, String tpID, String establishment_Year, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String finalStatusFile, String tpPassword) throws Exception
+    public void trainingPartnerApprovalTC_02(String srno, String iausername, String password, String tpID, String establishment_Year, String assignTo, String statusForRequest, String dausername, String Password, String nameReview, String typeReview, String addressReview,String adharReview,  String panReview, String gstReview, String establishmentReview, String provisionalReview, String firstFinancialYearReview, String secondFinancialYearReview, String thirdFinancialYearReview, String approvalProcess, String approvalProcess_Review, String finalStatusFile, String tpPassword) throws Exception
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
@@ -1322,8 +1323,23 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	//da_tpr.clickOn_First_PreviewAttachedProofDocument();
         	//da_tpr.selectReviewCommentForEstablishmentYear(establishmentReview);
         }
+    	
+    	
 
-
+    	Thread.sleep(5000);
+    	da_tpr.clickForSaveAndContinue();
+    	if(approvalProcess.equals("A&A"))
+    	{
+    		Thread.sleep(3000);
+        	Assert.assertTrue(driver.findElement(By.xpath("(//input[@name='approvalstatus'])[1]")).isSelected());
+    	}
+    	else
+    	{
+    		Thread.sleep(3000);
+        	Assert.assertTrue(driver.findElement(By.xpath("(//input[@name='approvalstatus'])[2]")).isSelected());
+    	}
+    	Thread.sleep(3000);
+    	da_tpr.selectApprovalProcessReview(approvalProcess_Review);
     	Thread.sleep(5000);
     	da_tpr.clickForSaveAndContinue();
     	Thread.sleep(3000);
@@ -1348,6 +1364,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	elp.performlogin(tpID, tpPassword);
     	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Add a Training Centre')]")).getText(), "Add a Training Centre");
     }
+
     
     //TP Rejection Flow
     @DataProvider
