@@ -3547,9 +3547,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
      	   	tcVp.clickToGoToEnrolledApplicantsSection();
      	   	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	   		String applicantID =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 1);
-     	   	String applicantName =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 3);
-     	   	String applicantEmail =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 4);
-     	   	String applicantMobile =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 5);
+     	   	String applicantName =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 4);
+     	   	String applicantEmail =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 5);
+     	   	String applicantMobile =ReadWriteData.getData("./TestData/Workflow/ToT_BatchApplicants-Workflow.xls", "ToT_BatchApplicants", 1, 6);
      	   	Assert.assertTrue(driver.findElements(By.xpath("//tr[td[contains(text(),'"+applicantID+"')]]")).size()==1,"OMG!!! No show of Enrolled Applicant - "+applicantID+" in Enrolled Applicants Section!!! OR Something went wrong! ");
      	   	Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+applicantID+"']")).getText().trim(), applicantID);
      	   	//Sending Batch To SSC For Approval
