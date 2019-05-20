@@ -494,7 +494,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	}
 	public void enterBankName(String bankName) throws InterruptedException
 	{
-		bankNameTextField.clear();
+		bankNameTextField.click();
 		Thread.sleep(2000);
 		bankNameTextField.sendKeys(bankName);
 	}
