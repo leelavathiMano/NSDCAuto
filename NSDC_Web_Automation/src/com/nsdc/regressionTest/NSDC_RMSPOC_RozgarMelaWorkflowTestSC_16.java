@@ -231,9 +231,10 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
 			rVmp.clickToApplyFilters();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			js.executeScript("window.scrollBy(0,1000)", "");
+			Thread.sleep(2000);
 			rVmp.clickActionMenu();
-			js.executeScript("window.scrollBy(0,200)", "");
 			rVmp.clickToChooseCloseCandidateEnrollmentOption();
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='toast-message']")));
 			Assert.assertEquals(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().trim(), "Already The Registration Closed For Candidates");
