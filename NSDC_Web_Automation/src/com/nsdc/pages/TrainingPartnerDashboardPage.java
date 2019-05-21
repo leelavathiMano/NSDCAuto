@@ -22,7 +22,7 @@ public class TrainingPartnerDashboardPage
 	//TP - Candidates
 	@FindBy(xpath="//p[contains(text(),'My Candidates')]")
 	private WebElement myCandidatesCard;
-	@FindBy(xpath="//div[p[text()='Register Candidates']]")
+	@FindBy(xpath="//p[text()='Register Candidates']")
 	private WebElement registerCandidateButton;
 	@FindBy(xpath="(//label[@class='m-radio'])[1]")
 	private WebElement bulkExcelSheetUploadRadioButton;

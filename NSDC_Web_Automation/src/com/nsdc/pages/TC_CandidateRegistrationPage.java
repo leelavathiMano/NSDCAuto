@@ -22,9 +22,11 @@ public class TC_CandidateRegistrationPage
 	private WebElement uploadButton1;
 	@FindBy(xpath="//input[@formcontrolname='phone']")
 	private WebElement mobileNumberTextField;
+	@FindBy(xpath="//select[@formcontrolname='countryCode']")
+	private WebElement countryCodeDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='email']")
 	private WebElement emailTextField;
-	@FindBy(id="dob")
+	@FindBy(xpath="//input[@placeholder='Select Date of Birth']")
 	private WebElement dobTextbox;
 	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calenderIconButton;
@@ -162,6 +164,36 @@ public class TC_CandidateRegistrationPage
 	private WebElement candidateExperienceJobRoleDropdownList;
 	@FindBy(xpath="//label[input[@name='agree']]")
 	private WebElement iAgreeCheckbox;
+	//New Changes
+	@FindBy(xpath="//input[@formcontrolname='motherName']")
+	private WebElement motherNameTextField;
+	@FindBy(xpath="//input[@formcontrolname='fatherName']")
+	private WebElement fatherNameTextField;
+	@FindBy(xpath="//input[@formcontrolname='guardianName']")
+	private WebElement guardianNameTextField;
+	//
+	@FindBy(xpath="(//label[input[@formcontrolname='idType']])[1]")
+	private WebElement alterNateID_RadioButton;
+	@FindBy(xpath="(//label[input[@formcontrolname='idType']])[2]")
+	private WebElement aadhaarRadioButton;;
+	@FindBy(xpath="//select[@formcontrolname='alternateIdType']")
+	private WebElement alternateIdDropdownList;
+	@FindBy(xpath="//input[@formcontrolname='alternateIdNumber']")
+	private WebElement alternateIdNumberTextField;
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	private WebElement alternateIdFileBrowseButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	private WebElement alternateIdUploadButton;
+	@FindBy(xpath="//input[@formcontrolname='aadharNumber']")
+	private WebElement aadhaarNumberTextField;
+	@FindBy(xpath="//button[contains(text(),'Verify')]")
+	private WebElement verifyButton;
+	@FindBy(xpath="//select[@formcontrolname='preTrainingStatus']")
+	private WebElement preTrainingStatusDropdownList;
+	@FindBy(xpath="//select[@formcontrolname='monthOfExperience']")
+	private WebElement candidateExperienceMonthsDropdownList;
+	@FindBy(xpath="//select[@formcontrolname='sectorId']")
+	private WebElement candidateExperienceYearDropdownList;
 	
 	public TC_CandidateRegistrationPage(WebDriver driver)
     {
@@ -501,6 +533,7 @@ public class TC_CandidateRegistrationPage
 	public void enterBankName(String bankName) throws InterruptedException
 	{
 		bankNameTextField.click();
+		bankNameTextField.clear();
 		bankNameTextField.sendKeys(bankName);
 	}
 	public void enterBankAddress(String bankAddress)
@@ -524,5 +557,67 @@ public class TC_CandidateRegistrationPage
 	public void clickIAgree()
 	{
 		iAgreeCheckbox.click();
+	}
+	public void selectCountryCode(String countryCode)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(countryCodeDropdownList, countryCode);
+	}
+	//New Changes
+	public void enterMotherName(String motherName)
+	{
+		motherNameTextField.clear();
+		motherNameTextField.sendKeys(motherName);
+	}
+	public void enterFatherName(String fatherName)
+	{
+		fatherNameTextField.clear();
+		fatherNameTextField.sendKeys(fatherName);
+	}
+	public void enterNameOFGuardian(String guardianName)
+	{
+		guardianNameTextField.clear();
+		guardianNameTextField.sendKeys(guardianName);
+	}
+	public void clickToChooseAlternateId()
+	{
+		alterNateID_RadioButton.click();
+	}
+	public void clickToChooseAadhaar()
+	{
+		aadhaarRadioButton.click();
+	}
+	public void enterAadhaarNumber(String aadhaarNumber)
+	{
+		aadhaarNumberTextField.clear();
+		aadhaarNumberTextField.sendKeys(aadhaarNumber);
+	}
+	public void clickToVerifyAadhaar()
+	{
+		verifyButton.click();
+	}
+	public void selectAlternateIdtype(String alternateType)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(alternateIdDropdownList, alternateType);
+	}
+	public void enterAlternateID(String alternateID)
+	{
+		alternateIdNumberTextField.clear();
+		alternateIdNumberTextField.sendKeys(alternateID);
+	}
+	public void clickToBrowseAlternateIdFile()
+	{
+		alternateIdFileBrowseButton.click();
+	}
+	public void clickToUploadAlternateIdFile()
+	{
+		alternateIdUploadButton.click();
+	}
+	public void selectPreTrainingStatus(String pretrainingStatus)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(preTrainingStatusDropdownList, pretrainingStatus);
+	}
+	public void selectExperienceMonths(String experienceMonths)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceMonthsDropdownList, experienceMonths);
 	}
 }
