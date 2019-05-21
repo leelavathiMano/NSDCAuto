@@ -1,10 +1,12 @@
 package com.nsdc.regressionTest;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
@@ -26,7 +28,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="candidateProfileData")
-	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String aadharNumber, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String landmark, String tehsil, String villageORCity, String parliamentryConstituency, String educationName, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole) throws Exception
+	public void candidateRegistrationTC_01(String sno, String userType, String candidateName, String guardianName, String gender, String email, String mobileNumber, String education, String pincode, String state, String district, String sector, String subSector, String jobRole, String associateProgram, String profilePicture, String cioType, String cioName, String candidateID, String passwordID, String newPassword, String confirmPassword, String prefix, String uploadFilePath, String guardianRelation, String aadharNumber, String idtype, String idNumber, String upload_idFile, String category, String religion, String disablity, String disablityType, String upload_DisablityFile, String address, String landmark, String tehsil, String villageORCity, String parliamentryConstituency, String educationName, String firstPassingYear, String firstSpecialization, String firstEducationFile, String secondEducation, String secondPassingYear, String secondSpecialization, String secondEducationFile, String thirdEducation, String thirdPassingYear, String thirdSpecialization, String thirdEducationFile, String hearFromWhere, String secondSector, String secondSubSector, String secondJobRole, String thirdSector, String thirdSubSector, String thirdJobRole, String identificationType, String otherIdentityType, String accountHolderName, String accountNumber, String ifsc, String bankName, String bankAddress) throws Exception
 	{
 		LoginPage lp = new LoginPage(driver);
 		//lp.clickLogin();
@@ -124,19 +126,20 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//select[@id='gender']")).getAttribute("value").substring(3), gender);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value"), dob);
 		cpp.selectRelationWithGuardian(guardianRelation);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='parentName']")).getAttribute("value"), guardianName);
-		Thread.sleep(3000);
-		cpp.enterAadharNumber(aadharNumber);
-		cpp.clickOnVerify();
-		Thread.sleep(30000);
-		cpp.selectAlternateID_Type(idtype);
-		Thread.sleep(4000);
-		cpp.enterAlternateID_Number(idNumber);
-		cpp.clickOnBrowseFileForIDProofCopy();
-		Thread.sleep(3000);
-		UploadFile.upload(upload_idFile);
-		Thread.sleep(3000);
-		cpp.clickOnUploadFileForIDProofCopy();
+		cpp.enterGuardianName(guardianName);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='parentName']")).getAttribute("value"), guardianName);
+//		Thread.sleep(3000);
+//		cpp.enterAadharNumber(aadharNumber);
+//		cpp.clickOnVerify();
+//		Thread.sleep(30000);
+//		cpp.selectAlternateID_Type(idtype);
+//		Thread.sleep(4000);
+//		cpp.enterAlternateID_Number(idNumber);
+//		cpp.clickOnBrowseFileForIDProofCopy();
+//		Thread.sleep(3000);
+//		UploadFile.upload(upload_idFile);
+//		Thread.sleep(3000);
+//		cpp.clickOnUploadFileForIDProofCopy();
 		cpp.selectCategory(category);
 		cpp.selectReligion(religion);
 		cpp.selectDisablity(disablity);
@@ -144,19 +147,54 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		{
 			cpp.selectDisablityType(disablityType);
 			Thread.sleep(5000);
-			cpp.clickOnBrowseFileForDisablitySupportingDocument();
+//			cpp.clickOnBrowseFileForDisablitySupportingDocument();
+//			Thread.sleep(3000);
+//			UploadFile.upload(upload_DisablityFile);
+//			Thread.sleep(3000);
+//			cpp.clickOnUploadFileForDisblitySupportingDocument();
+			cpp.clickOnBrowseFileDisablitySupportingDocument();
 			Thread.sleep(3000);
 			UploadFile.upload(upload_DisablityFile);
 			Thread.sleep(3000);
-			cpp.clickOnUploadFileForDisblitySupportingDocument();
-			Thread.sleep(5000);
-			cpp.clickOnSaveAndNext();
+			cpp.clickOnUploadFileDisblitySupportingDocument();
+//			Thread.sleep(5000);
+//			cpp.clickOnSaveAndNext();
 		}
-		else 
+		
+//		else 
+//		{
+//			Thread.sleep(5000);
+//			cpp.clickOnSaveAndNext();
+//		}
+		
+		if(identificationType.equals("Aadhar"))
 		{
 			Thread.sleep(5000);
-			cpp.clickOnSaveAndNext();
+			cpp.clickOnAadhar();
+			cpp.enter_AadharNumber(aadharNumber);
+			cpp.clickOnVerify();
+			Thread.sleep(15000);
 		}
+		else
+		{
+			Thread.sleep(5000);
+			cpp.clickOnAlternateID();
+			cpp.selectAlternateIDType(idtype);
+			if(idtype.equals("Other"))
+			{
+				cpp.enterOtherIdentityType(otherIdentityType);
+			}
+			cpp.enterAlternateIDNumber(idNumber);
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("scroll(0, 900)");
+			Thread.sleep(8000);
+			cpp.clickOnBrowseFileForAlternateIDProofCopy();
+			Thread.sleep(3000);
+			UploadFile.upload(upload_idFile);
+			Thread.sleep(3000);
+			cpp.clickOnUploadFileForAlternateIDProofCopy();
+		}
+		
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='phone']")).getAttribute("value"), mobileNumber);
@@ -183,6 +221,14 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='tehsil'])[2]")).getAttribute("value").substring(3).replace(" ", ""), tehsil.replace(" ", ""));
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='city'])[2]")).getAttribute("value").substring(3).replace(" ", "").replace(":", ""), villageORCity.replace(" ", ""));
 		Assert.assertEquals(driver.findElement(By.xpath("(//select[@id='parliamentaryConstituency'])[2]")).getAttribute("value").substring(3).replace(" ", ""), parliamentryConstituency.replace(" ", ""));
+		
+		Thread.sleep(3000);
+		cpp.enterAccountHolderName(accountHolderName);
+		cpp.enterAccountNumber(accountNumber);
+		cpp.enterIFSC(ifsc);
+		cpp.enterBankName(bankName);
+		cpp.enterBankAddress(bankAddress);
+		
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
 		Thread.sleep(3000);
@@ -291,6 +337,10 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		cpp.selectThird_JobRole(thirdJobRole);
 		Thread.sleep(5000);
 		cpp.clickOnSaveAndNext();
+		
+		Thread.sleep(3000);
+		cpp.clickOnIAgree();
+		
 		Thread.sleep(4000);
 		cpp.clickOnAgreeAndSave();
 		Thread.sleep(2000);

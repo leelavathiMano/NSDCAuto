@@ -180,6 +180,42 @@ public class Candidate_ProfilePage
 	@FindBy(xpath="//button[contains(text(),'Close')]")
 	private WebElement closeButton;
 	
+	//for 134 url
+	@FindBy(xpath="//label[input[@value='alternateId']]/span")
+	private WebElement alternateIdRadioButton;
+	@FindBy(xpath="//label[input[@value='aadhar']]/span")
+	private WebElement aadharRadioButton;
+	@FindBy(xpath="//input[@formcontrolname='OtherIdentityType']")
+	private WebElement otherTdentityTypeTextbox;
+	@FindBy(xpath="//select[@formcontrolname='alternateIdType']")
+	private WebElement alternateIDTypeDropDownList;
+	@FindBy(xpath="//input[@formcontrolname='alternateIdNumber']")
+	private WebElement alternateIDNumberTextbox;
+	@FindBy(xpath="(//input[@id='customFile'])[3]")
+	private WebElement idProofCopyBrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
+	private WebElement idProofCopyUploadFileButton;
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	private WebElement supportingDocumentBrowseFileButton;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	private WebElement supportingDocumentUploadFileButton;
+	@FindBy(xpath="//input[@formcontrolname='aadharNumber']")
+	private WebElement aadharNumber_Textbox;
+	//bank details
+	@FindBy(xpath="//input[@id='accountHolderName']")
+	private WebElement accountHolderNameTextField;
+	@FindBy(xpath="//input[@id='accountNumber']")
+	private WebElement accountNumberTextField;
+	@FindBy(xpath="//input[@id='ifscCode']")
+	private WebElement ifscTextField;
+	@FindBy(xpath="//input[@id='bankName']")
+	private WebElement bankNameTextField;
+	@FindBy(xpath="//input[@id='bankAddress']")
+	private WebElement bankAddressTextField;
+	
+	@FindBy(xpath="//label[input[@formcontrolname='iAgree']]/span")
+	private WebElement iAgreeCheckbox;
+	
 	
 	public Candidate_ProfilePage(WebDriver driver)
     {
@@ -610,6 +646,91 @@ public class Candidate_ProfilePage
 	{
 		closeButton.click();
 	}
+	
+	public void clickOnAlternateID()
+	{
+		alternateIdRadioButton.click();
+	}
+	
+	public void clickOnAadhar()
+	{
+		aadharRadioButton.click();
+	}
+	
+	public void selectAlternateIDType(String alternateID)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(alternateIDTypeDropDownList, alternateID);
+	}
+	
+	public void enterOtherIdentityType(String otherIdentityType)
+	{
+		otherTdentityTypeTextbox.clear();
+		otherTdentityTypeTextbox.sendKeys(otherIdentityType);
+	}
+	
+	public void enterAlternateIDNumber(String idNumber)
+	{
+		alternateIDNumberTextbox.clear();
+		alternateIDNumberTextbox.sendKeys(idNumber);
+	}
+	
+	public void clickOnBrowseFileForAlternateIDProofCopy()
+	{
+		idProofCopyBrowseFileButton.click();
+	}
+	
+	public void clickOnUploadFileForAlternateIDProofCopy()
+	{
+		idProofCopyUploadFileButton.click();
+	}
+	
+	public void clickOnBrowseFileDisablitySupportingDocument()
+	{
+		supportingDocumentBrowseFileButton.click();
+	}
+	
+	public void clickOnUploadFileDisblitySupportingDocument()
+	{
+		supportingDocumentUploadFileButton.click();
+	}
+	
+	public void enter_AadharNumber(String aadharNumber)
+	{
+		aadharNumber_Textbox.clear();
+		aadharNumber_Textbox.sendKeys(aadharNumber);
+	}
+	
+	public void enterAccountHolderName(String accountHolderName)
+	{
+		accountHolderNameTextField.clear();
+		accountHolderNameTextField.sendKeys(accountHolderName);
+	}
+	public void enterAccountNumber(String accountNumber)
+	{
+		accountNumberTextField.clear();
+		accountNumberTextField.sendKeys(accountNumber);
+	}
+	public void enterIFSC(String ifsc)
+	{
+		ifscTextField.clear();
+		ifscTextField.sendKeys(ifsc);
+	}
+	public void enterBankName(String bankName)
+	{
+		bankNameTextField.clear();
+		bankNameTextField.sendKeys(bankName);
+	}
+	public void enterBankAddress(String bankAddress)
+	{
+		bankAddressTextField.clear();
+		bankAddressTextField.sendKeys(bankAddress);
+	}
+	
+	public void clickOnIAgree()
+	{
+		iAgreeCheckbox.click();
+	}
+
 
 
 }
