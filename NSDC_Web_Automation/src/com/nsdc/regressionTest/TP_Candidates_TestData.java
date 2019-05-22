@@ -58,7 +58,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.clickToChooseGender(gender);
 		tpCrp.clickToSelectDOB();
 		String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
-	    ReadWriteData.setExcelData("./TestData/Workflow/TP_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 10, selectedDateOfBirth);
+	    ReadWriteData.setExcelData("./TestData/Workflow/TP_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 11, selectedDateOfBirth);
 	  	tpCrp.selectMaritalStatus(maritalStatus);
 		tpCrp.enterPlaceOfBirth(placeOfBirth);
 		tpCrp.selectBirthState(birthState);
