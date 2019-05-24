@@ -1097,9 +1097,9 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[5]")).getText().trim(), state);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[6]")).getText().trim(), district);
 			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+tcID+"')]]/td[7]")).getText().trim(), "Accepted");
-			//view Accepted TC details option - data verification
+			//view TC details option - data verification
 			aVp.selectThisToViewDetailsOfAcceptedTC();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tcName")));
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			Assert.assertEquals(driver.findElement(By.id("tcName")).getAttribute("value").trim(), tcName);
 			Assert.assertEquals(driver.findElement(By.id("tcUserName")).getAttribute("value").trim(), tcID);
 			Assert.assertEquals(driver.findElement(By.id("tpName")).getAttribute("value").trim(), tpName);
@@ -1204,7 +1204,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 			if(serialNum.equalsIgnoreCase("1"))
 			{
 				aVp.selectThisToViewDetailsOfAcceptedTC();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tcName")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				Assert.assertEquals(driver.findElement(By.id("tcName")).getAttribute("value").trim(), tcName);
 				Assert.assertEquals(driver.findElement(By.id("tcUserName")).getAttribute("value").trim(), tcID);
 				Assert.assertEquals(driver.findElement(By.id("tpName")).getAttribute("value").trim(), tpName);
@@ -2544,6 +2544,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfigurat
 		if(driver.findElements(By.xpath("//label[text()='"+platformJobRole+"']")).size()==0)
 		{
 			js.executeScript("window.scrollBy(0,-1000)", "");
+			Thread.sleep(2000);
 			driver.findElement(By.linkText("ToT, ToA, ToMT,ToMA")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[contains(text(),'Please wait...')]")));
 			js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//span[contains(text(),'Create new Batch for ToT, ToA, ToMT, ToMA')]")));
