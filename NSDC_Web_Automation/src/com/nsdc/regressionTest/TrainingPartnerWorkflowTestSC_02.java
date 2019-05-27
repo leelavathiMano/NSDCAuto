@@ -1391,7 +1391,6 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(2000);
         rp.clickRegister();
         Thread.sleep(2000);
-        Assert.assertTrue(driver.findElements(By.xpath("//div[@id='toast-container']/div/div")).size()==0,"!!!Duplicate Mobile/Email OR Something Wrong!!! ");
         rp.enterEmailOTP(emailOTP);
         rp.enterMobileOTP(mobileOTP);
         Thread.sleep(2000);
@@ -1417,17 +1416,15 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         TrainingPartnerRegistrationPage tprp = new TrainingPartnerRegistrationPage(driver);
         //Training Partner Details Section
         tprp.enterNameOfOrganizationTextBox(name_Of_Organization);
-        Thread.sleep(2000);
         tprp.selectTypeOfTheOrganization(type_Of_The_Organization);
-        Thread.sleep(2000);
         if(!type_Of_The_Organization.equals("Government Institute"))
         {
         	tprp.selectYearOfEstablishment(year_Of_Establishment);
         	Thread.sleep(2000);
             tprp.clickBrowseFile();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             UploadFile.upload(uploadFilePath);
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             tprp.clickUploadFile();
             Thread.sleep(6000);
         }
@@ -1441,21 +1438,12 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
              Thread.sleep(5000);
         }
         tprp.enterLandline(landLine);
-        Thread.sleep(2000);
         tprp.enterWebsite(website);
-        Thread.sleep(2000);
         tprp.enterNameOfCeo(name_Of_Ceo);
-        Thread.sleep(2000);
         tprp.enterEmailOfCeo(email_Of_Ceo);
-        Thread.sleep(2000);
         tprp.enterMobileNumberOfCeo(mobile_Number_Of_Ceo);
-        Thread.sleep(2000);
         tprp.clickAuthorizedSignatoryCheckBox();
         Thread.sleep(2000);
-        Assert.assertTrue(driver.findElements(By.xpath("//tr[td[b[contains(text(),'"+email_Of_Ceo+"')]]]")).size()==1,"OMG!!! Added CEO Details as Authorized signatory Record not present OR Something went wrong!");
-        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+email_Of_Ceo+"')]]]/td[2]")).getText().trim(), name_Of_Ceo);
-        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+email_Of_Ceo+"')]]]/td[3]")).getText().trim(), email_Of_Ceo);
-        Assert.assertEquals(driver.findElement(By.xpath("//tr[td[b[contains(text(),'"+email_Of_Ceo+"')]]]/td[4]")).getText().trim(), mobile_Number_Of_Ceo);
         tprp.clickSaveAndNextButton();
         //Address Section
         Thread.sleep(5000);
@@ -1808,11 +1796,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         }
         tprp.clickOnAA_ApprovalProcess();
         tprp.clickOnSubmit();
-        Thread.sleep(3000);
-        tprp.clickOnOkButton();
-        Thread.sleep(20000);
-        tprp.clcikOnGoToDashboard();
         Thread.sleep(5000);
+//      tprp.clickOnOkButton();
         PostLoginPage plp = new PostLoginPage(driver);
         plp.clickOnProfileLogo();
         Thread.sleep(1000);
