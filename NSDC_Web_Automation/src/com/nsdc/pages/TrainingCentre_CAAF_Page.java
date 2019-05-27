@@ -125,7 +125,7 @@ public class TrainingCentre_CAAF_Page
     private WebElement first_Affiliation_EndDateTextbox;
     @FindBy(xpath="(//textarea[@formcontrolname='breifDetails'])[1]")
     private WebElement first_BriefAboutAffiliationTextbox;
-    @FindBy(xpath="//button[contains(text(),'Add Another Affiliation')]")
+    @FindBy(xpath="//button[contains(text(),'Add Affiliation')]")
     private WebElement addAnotherAffiliationButton;
     @FindBy(xpath="(//a[@class='btn btn-outline-metal m-btn m-btn--icon m-btn--icon-only'])[1]")
     private WebElement remove_FirstAffiliationButton;

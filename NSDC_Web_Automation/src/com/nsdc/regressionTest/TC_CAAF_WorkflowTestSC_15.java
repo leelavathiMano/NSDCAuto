@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,7 +24,6 @@ import com.nsdc.mobile.ui.object.TC_CAAF_Facilities_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_GeneralDetails_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_Lab_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_Residential_UploadImagesScreen;
-import com.nsdc.mobile.ui.object.TC_CAAF_Trainers_UploadImagesScreen;
 import com.nsdc.pages.AddTrainingCentrePage;
 import com.nsdc.pages.DA_DashboardPage;
 import com.nsdc.pages.DA_TCRequestPage;
@@ -317,7 +315,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 		caaf.enterFirst_BriefAboutTheAffiliation(firstAboutAffiliation);
 		Thread.sleep(3000);
 		caaf.clickOnAddAnotherAffiliation();
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 //		caaf.enterFirst_NameofAffiliation(secondAffiliationName);
 //		caaf.selectFirst_TypeOfAffiliation(secondAffiliationType);
 //		caaf.enterFirst_Affiliation_StartDate();
@@ -587,6 +585,7 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 //			SelectDropDownList.selectDropDownListByVisibleText(hyb1, first_Hybrid);
 //		}
 		
+		
 		Thread.sleep(3000);
 		List<WebElement> chkbx = driver.findElements(By.xpath("//label[@class='kt-checkbox']"));
 		for(int i=0;i<chkbx.size();i++)
@@ -595,17 +594,22 @@ public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
 			chk_bx.click();
 		}
 		
-		Thread.sleep(5000);
-		if(driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText().equals(firstJobRoleName))
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("scroll(0, 1500)");
+		Thread.sleep(8000);
+		String jobRoleName = driver.findElement(By.xpath("//td[@class='type-name equipment-alignment']")).getText();
+		if(jobRoleName.equals(firstJobRoleName))
 		{
+			
 			Thread.sleep(3000);
-			List<WebElement> eqp = driver.findElements(By.xpath("//input[@formcontrolname='availabilityQuantity']"));
+			List<WebElement> eqp = driver.findElements(By.xpath("//input[@ng-reflect-name='availabilityQuantity']"));
 			for(int i=0;i<eqp.size();i++)
 			{
 				WebElement eqp_qnt = eqp.get(i);
 				eqp_qnt.sendKeys(fourthQuantity);
 			}
 			
+			Thread.sleep(3000);
 			List<WebElement> eqr = driver.findElements(By.xpath("//input[@formcontrolname='remarks']"));
 			for(int i=0;i<eqr.size();i++)
 			{

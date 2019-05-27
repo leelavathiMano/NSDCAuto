@@ -89,7 +89,7 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "Invalid UserName or Password");
     }
     
-    @Test
+ /*   @Test
     public void LoginFailWithoutEnteringCredentialsTC_03() throws Exception
     {
         Thread.sleep(2000);
@@ -100,6 +100,6 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         elp.clickLoginToSubmit();
         Thread.sleep(2000);
         Assert.assertEquals(driver.findElement(By.cssSelector(".toast-message")).getText(), "Username or Password should not be empty");
-    }
+    }*/
 }
 

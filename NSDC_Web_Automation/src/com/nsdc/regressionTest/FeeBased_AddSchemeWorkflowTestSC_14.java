@@ -1200,6 +1200,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		cmat.clickOnOK();
 		cmtc.selectType(tcType);
 		Thread.sleep(3000);
+		cmtc.selectStatus(reviewComments);
+		Thread.sleep(3000);
 		cmtc.clickOnApply();
 		if(review.equals("Recommended"))
 		{
@@ -1725,7 +1727,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpusername, tppassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 		tpdp.clickOnMySchemes();
 		Thread.sleep(10000);
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
@@ -1930,7 +1932,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 		tpdp.clickOnMySchemes();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
@@ -2002,7 +2004,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-		Thread.sleep(12000);
+		Thread.sleep(20000);
 		tpdp.clickOnMySchemes();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
