@@ -310,4 +310,9 @@ public class DA_Assign_TPRegistrationFormPage
 		approvalProcess_ReviewCommentsTextbox.clear();
 		approvalProcess_ReviewCommentsTextbox.sendKeys(comments);
 	}
+	public void enterAdditionalCommentForApprovalProcess(String additionalcomment)
+	{
+		approvalProcess_ReviewCommentsTextbox.clear();
+		approvalProcess_ReviewCommentsTextbox.sendKeys(additionalcomment);
+	}
 }
