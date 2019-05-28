@@ -3675,7 +3675,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		PostLoginPage plp=new PostLoginPage(driver);
  	   		plp.clickOnProfileLogo();
- 	   		Thread.sleep(2000);
  	   		plp.clickOnLogout();
  	   	}
     }

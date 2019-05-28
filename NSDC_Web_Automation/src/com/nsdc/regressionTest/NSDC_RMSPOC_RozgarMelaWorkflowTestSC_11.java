@@ -440,6 +440,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 			Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]")).isDisplayed(), "OMG!!! No show enrolled rozgar mela");
 			PostLoginPage plp=new PostLoginPage(driver);
 			plp.clickOnProfileLogo();
+			Thread.sleep(2000);
 			plp.clickOnLogout();
 		}
 	}

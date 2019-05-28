@@ -211,7 +211,6 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguratio
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
-			Thread.sleep(2000);
 		} 
 	}
 }
