@@ -19,7 +19,7 @@ import com.nsdc.pages.SSC_ExceptionalTraningCentreCreationPage;
 import com.nsdc.pages.SSC_ToT_ToA_ToMT_ToMA_BatchCreationPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class SSC_ExceptionalTrainingCentreWorkflowSC_10 extends TestConfiguration
+public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguration
 {
 	@DataProvider
 	public Object[][] sscTemporaryTrainingCentreCreationData()

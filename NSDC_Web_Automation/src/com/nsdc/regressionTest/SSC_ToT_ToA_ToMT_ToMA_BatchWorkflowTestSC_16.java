@@ -33,7 +33,7 @@ import com.nsdc.pages.TrainerDashboardPage;
 import com.nsdc.pages.TrainerViewBatchesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_11 extends TestConfiguration
+public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfiguration
 {
 	String configBatchSector=ReadWriteData.getToT_ToA_ConfigData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "Configurable-Fields", 1, 28);
 	@DataProvider

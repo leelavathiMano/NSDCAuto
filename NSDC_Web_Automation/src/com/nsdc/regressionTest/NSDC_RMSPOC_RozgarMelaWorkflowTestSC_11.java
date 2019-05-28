@@ -24,7 +24,7 @@ import com.nsdc.pages.NSDC_RozgarMelaSPOC_DashboardPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_ViewRozgarMelasPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_16 extends TestConfiguration
+public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 {
 	String candidateListFile=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 2);
 	String candidateID_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 3);

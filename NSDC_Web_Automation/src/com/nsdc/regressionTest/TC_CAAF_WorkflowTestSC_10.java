@@ -59,7 +59,7 @@ import com.nsdc.testConfig.TestConfiguration;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.StartsActivity;
 
-public class TC_CAAF_WorkflowTestSC_15 extends TestConfiguration
+public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration
 {
 	public  static String  tcID;
 	
