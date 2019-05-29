@@ -38,7 +38,8 @@ public class TP_Candidates_TestData extends TestConfiguration
 		js.executeScript("window.scrollBy(0,500)", "");
 		tDp.clickOnRegisterCandidate();
 		tDp.clickOnRegisterCandidate();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(4000);
 		TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 		tpMp.clickToChooseIndividualCandidateRegistration();
 		tpMp.clickRegister();
