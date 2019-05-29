@@ -451,9 +451,9 @@ public class TC_CandidateRegistrationPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(subSectorDropdownList, subSector);
 	}
-	public void selectJobRole(String jobRole)
+	public void selectJobRole(String jobRole, String jobRoleCode)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobRole);
+		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobRole+" ("+jobRoleCode+")");
 	}
 	public void clickToAddAnotherPreference()
 	{

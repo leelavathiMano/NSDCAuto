@@ -155,7 +155,7 @@ public class TC_Candidates_TestData extends TestConfiguration
 		//hearaboutus and Course Preferences Page
 		tcCrp.selectSector(sector1);
 		tcCrp.selectSubSector(subSector1);
-		tcCrp.selectJobRole(jobRole1);
+		tcCrp.selectJobRole(jobRole1,jobRoleCode1);
 		tcCrp.clickSaveAndContinue();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		tcCrp.clickIAgree();
