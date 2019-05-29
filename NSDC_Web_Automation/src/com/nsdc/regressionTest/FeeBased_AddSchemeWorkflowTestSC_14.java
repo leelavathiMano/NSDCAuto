@@ -886,25 +886,25 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			Thread.sleep(5000);
 			fbad.clickOnFranchiseDocuments_UploadFile();
 			Thread.sleep(3000);
-			fbad.clickOnStartDateForTCDuration();
-			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
-			fbad.clickOnEndDateForTCDuration();
-			endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+//			fbad.clickOnStartDateForTCDuration();
+//			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+//			fbad.clickOnEndDateForTCDuration();
+//			endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
 		}
 		else
 		{
-			fbad.clickOnStartDateForTCDuration();
-			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
-			fbad.clickOnEndDateForTCDuration();
-			endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
-			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+//			fbad.clickOnStartDateForTCDuration();
+//			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+//			fbad.clickOnEndDateForTCDuration();
+//			endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
 		}
 		
 //		fbad.enterNumberOfBatchesPerDay(bathesNumber);
@@ -913,8 +913,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 //		fbad.enterCapacityUtilization(capacityUtilization);
 //		fbad.selectForGovernmentTieUp(governmentTieUp);
 		Thread.sleep(3000);
-		fbad.entreCentreArea(centreArea);
-		fbad.enterCentreCapacity(centreCapacity);
+//		fbad.entreCentreArea(centreArea);
+//		fbad.enterCentreCapacity(centreCapacity);
 		fbad.selectNumberOfTrainingRooms(trainingRooms);
 		fbad.selectNumbersOfLabs(labNumber);
 //		fbad.enterReceptionAreaSize(receptionArea);
@@ -922,9 +922,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		fbad.selectNumberOfMaleWashRooms(maleWashRooms);
 		fbad.selectNumberOfFemaleWashRooms(femaleWashRooms);
 		fbad.selectNumberOfUnisexWashRooms(unisexWashRooms);
-		fbad.enterDistanceFromNearestAirport(airportDistance);
-		fbad.enterDistanceFromNearestTrainStation(trainStationDistance);
-		fbad.enterDistanceFromNearestCityCentre(cityCentreDistance);
+//		fbad.enterDistanceFromNearestAirport(airportDistance);
+//		fbad.enterDistanceFromNearestTrainStation(trainStationDistance);
+//		fbad.enterDistanceFromNearestCityCentre(cityCentreDistance);
 		Thread.sleep(3000);
 		fbad.enterAddressOFTC(tcAddress);
 		Thread.sleep(3000);
@@ -957,7 +957,7 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			{
 				Thread.sleep(3000);
 				WebElement chkbox = ele.get(i);
-				if((i==0) || (i==9) || (i==10) || (i==15) || (i==16) || (i==17))
+				if((i==9) || (i==10) || (i==15) || (i==16) || (i==17))
 				{
 					Thread.sleep(5000);
 					driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
@@ -1112,22 +1112,22 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		if(expectedOwnership.equals("Franchise"))
 		{
 			cmat.clickOnDownloadFranchiseDocuments();
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value"), expectedStartDate);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value"), expectedEndDate);
+//			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value"), expectedStartDate);
+//			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value"), expectedEndDate);
 			
 		}
 		else
 		{
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value"), expectedStartDate);
-			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value"), expectedEndDate);	
+//			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value"), expectedStartDate);
+//			Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value"), expectedEndDate);	
 		}
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='noOfBatchesPerDay']")).getAttribute("value"), expectedBathesNumber);
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='maximumStudentsPerBatch']")).getAttribute("value"), expectedStudentNumber);
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='annualCentreTrainingCapacity']")).getAttribute("value"), expectedAnnualCapacity);
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='capacityUtilization']")).getAttribute("value"), expectedCapacityUtilization);
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='governmentTieUp']")).getAttribute("value"), expectedGovernmentTieUp);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='centreCarpetArea']")).getAttribute("value"), expectedCentreArea);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalCapacity']")).getAttribute("value"), expectedCentreCapacity);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='centreCarpetArea']")).getAttribute("value"), expectedCentreArea);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalCapacity']")).getAttribute("value"), expectedCentreCapacity);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalNumberOfTrainingRooms']")).getAttribute("value"), expectedTrainingRooms);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='totalNumberOfLabs']")).getAttribute("value"), expectedLabNumber);
 		//Assert.assertEquals(driver.findElement(By.xpath("//input[@id='receptionCarpetArea']")).getAttribute("value"), expectedReceptionArea);
@@ -1135,9 +1135,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='numberOfMaleWashRooms']")).getAttribute("value"), expectedMaleWashRooms);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='numberOfFemaleWashRooms']")).getAttribute("value"), expectedFemaleWashRooms);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='numberOfTransGenderWashRooms']")).getAttribute("value"), expectedUnisexWashRooms);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='distanceFromNearestAirport']")).getAttribute("value"), expectedAirportDistance);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='distanceFromNearestTrainStation']")).getAttribute("value"), expectedTrainStationDistance);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='distanceFromNearestCityCenter']")).getAttribute("value"), expectedCityCentreDistance);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='distanceFromNearestAirport']")).getAttribute("value"), expectedAirportDistance);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='distanceFromNearestTrainStation']")).getAttribute("value"), expectedTrainStationDistance);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='distanceFromNearestCityCenter']")).getAttribute("value"), expectedCityCentreDistance);
 //		Thread.sleep(5000);
 //		driver.navigate().refresh();
 //		Thread.sleep(8000);
@@ -1288,21 +1288,21 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 				Thread.sleep(5000);
 				fbad.clickOnFranchiseDocuments_UploadFile();
 				Thread.sleep(3000);
-				fbad.clickOnStartDateForTCDuration();
-				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
-				fbad.clickOnEndDateForTCDuration();
-				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
+//				fbad.clickOnStartDateForTCDuration();
+//				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+//				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
+//				fbad.clickOnEndDateForTCDuration();
+//				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+//				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
 			else
 			{
-				fbad.clickOnStartDateForTCDuration();
-				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
-				fbad.clickOnEndDateForTCDuration();
-				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
+//				fbad.clickOnStartDateForTCDuration();
+//				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+//				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 9, newStartDate);
+//				fbad.clickOnEndDateForTCDuration();
+//				newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+//				ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "ResubmitAndReviewTCSC15TC03", Integer.parseInt(sno), 10, newEndDate);
 			}
 			
 //			fbad.enterNumberOfBatchesPerDay(bathesNumber);
@@ -1311,8 +1311,8 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 //			fbad.enterCapacityUtilization(capacityUtilization);
 //			fbad.selectForGovernmentTieUp(governmentTieUp);
 			Thread.sleep(3000);
-			fbad.entreCentreArea(newCentreArea);
-			fbad.enterCentreCapacity(newCentreCapacity);
+//			fbad.entreCentreArea(newCentreArea);
+//			fbad.enterCentreCapacity(newCentreCapacity);
 			fbad.selectNumberOfTrainingRooms(newTrainingRooms);
 			fbad.selectNumbersOfLabs(newLabNumber);
 //			fbad.enterReceptionAreaSize(receptionArea);
@@ -1320,9 +1320,9 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			fbad.selectNumberOfMaleWashRooms(newMaleWashRooms);
 			fbad.selectNumberOfFemaleWashRooms(newFemaleWashRooms);
 			fbad.selectNumberOfUnisexWashRooms(newUnisexWashRooms);
-			fbad.enterDistanceFromNearestAirport(newAirportDistance);
-			fbad.enterDistanceFromNearestTrainStation(newTrainStationDistance);
-			fbad.enterDistanceFromNearestCityCentre(newCityCentreDistance);
+//			fbad.enterDistanceFromNearestAirport(newAirportDistance);
+//			fbad.enterDistanceFromNearestTrainStation(newTrainStationDistance);
+//			fbad.enterDistanceFromNearestCityCentre(newCityCentreDistance);
 			Thread.sleep(3000);
 			fbad.enterAddressOFTC(newTCAddress);
 			Thread.sleep(3000);

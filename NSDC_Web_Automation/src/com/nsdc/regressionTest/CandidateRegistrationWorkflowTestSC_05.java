@@ -50,6 +50,7 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		crp.enterCandidateMobileNumber(mobileNumber);
 		crp.selectEducationLevel(education);
 		crp.enterLocation_PinCode(pincode);
+		
 		Thread.sleep(3000);
 		crp.selectState_Location(state);
 		crp.selectDistrict_Location(district);
