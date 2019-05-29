@@ -128,8 +128,9 @@ public class TC_Candidates_TestData extends TestConfiguration
 		tcCrp.enterAccountHolderName(fullName);	
 		tcCrp.enterAccountNumber(accountNumber);
 		tcCrp.enterIFSC(ifsc);
-		tcCrp.enterBankName(bankName);
-		tcCrp.enterBankAddress(bankAddress);
+		tcCrp.clickToGetAutopopulatedBankDetails();
+//		tcCrp.enterBankName(bankName);
+//		tcCrp.enterBankAddress(bankAddress);
 //		tpCrp.selectBoardingAndLodging(boardingAndLodging);
 //		Thread.sleep(3000);
 		tcCrp.clickSaveAndContinue();

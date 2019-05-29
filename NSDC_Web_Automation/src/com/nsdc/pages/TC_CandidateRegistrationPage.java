@@ -530,6 +530,10 @@ public class TC_CandidateRegistrationPage
 		ifscTextField.clear();
 		ifscTextField.sendKeys(ifsc);
 	}
+	public void clickToGetAutopopulatedBankDetails()
+	{
+		bankNameTextField.click();
+	}
 	public void enterBankName(String bankName) throws InterruptedException
 	{
 		bankNameTextField.click();
