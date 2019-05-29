@@ -163,6 +163,8 @@ public class TC_Candidates_TestData extends TestConfiguration
 		Thread.sleep(1000);
 		tcCrp.clickToAgreeAndSubmit();
 		Thread.sleep(6000);
+		tcCrp.clickOK();
+		Thread.sleep(6000);
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();	
