@@ -1963,7 +1963,7 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	da_tpr.clickForSaveAndContinue();
     		Thread.sleep(4000);
     		//Final Review things
-    		if(serialNum.equals("1"))
+    		if(i==1)
     		{
     			Select finalreviewStatius=new Select(driver.findElement(By.xpath("//select[@placeholder='Deemed Not Ready']")));
      	   		Assert.assertEquals(finalreviewStatius.getFirstSelectedOption().getText().trim(),"Deemed Not Ready");
