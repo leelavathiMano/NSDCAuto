@@ -156,6 +156,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.selectSector(sector1);
 		tpCrp.selectSubSector(subSector1);
 		tpCrp.selectJobRole(jobRole1, jobRoleCode1);
+		Thread.sleep(2000);
 		tpCrp.clickSaveAndContinue();
 		Thread.sleep(5000);
 		tpCrp.clickIAgree();

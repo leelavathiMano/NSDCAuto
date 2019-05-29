@@ -304,7 +304,7 @@ public class TrainingPartner_CandidateWorkflowTestSC_12 extends TestConfiguratio
 		tpCrp.selectHearAboutUs(hearAboutUs);
 		tpCrp.selectSector(sector1);
 		tpCrp.selectSubSector(subSector1);
-		tpCrp.selectJobRole(jobRole1);
+		tpCrp.selectJobRole(jobRole1, jobRoleCode1);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		//Second Preference
 		tpCrp.clickToAddAnotherPreference();
