@@ -446,9 +446,9 @@ public class TrainingPartner_CandidateRegistrationPage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(subSectorDropdownList, subSector);
 	}
-	public void selectJobRole(String jobRole)
+	public void selectJobRole(String jobRole, String jobRoleCode)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobRole);
+		SelectDropDownList.selectDropDownListByVisibleText(jobRoleDropdownList, jobRole+" ("+jobRoleCode+")");
 	}
 	public void clickToAddAnotherPreference()
 	{
@@ -524,6 +524,10 @@ public class TrainingPartner_CandidateRegistrationPage
 	{
 		ifscTextField.clear();
 		ifscTextField.sendKeys(ifsc);
+	}
+	public void clickToGetAutopopulatedBankDetails()
+	{
+		bankNameTextField.click();
 	}
 	public void enterBankName(String bankName) throws InterruptedException
 	{

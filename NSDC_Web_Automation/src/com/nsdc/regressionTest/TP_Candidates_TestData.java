@@ -119,7 +119,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //		tpCrp.enterLocationSPOC(locationSPOC);
 		tpCrp.clickSaveAndContinue();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		//Contact Details Page
 		String candidateIDUrl=driver.getCurrentUrl();
 		String parts[]=candidateIDUrl.split("/");
@@ -129,11 +129,13 @@ public class TP_Candidates_TestData extends TestConfiguration
 		tpCrp.enterAccountHolderName(fullName);	
 		tpCrp.enterAccountNumber(accountNumber);
 		tpCrp.enterIFSC(ifsc);
-		tpCrp.enterBankName(bankName);
-		tpCrp.enterBankAddress(bankAddress);
+		tpCrp.clickToGetAutopopulatedBankDetails();
+		Thread.sleep(2000);
+//		tpCrp.enterBankName(bankName);
+//		tpCrp.enterBankAddress(bankAddress);
 //		tpCrp.selectBoardingAndLodging(boardingAndLodging);
 		tpCrp.clickSaveAndContinue();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		//Education
 		tpCrp.selectEducation(education1);
 //		tpCrp.selectYearOfPassing(yearOfPassing1);
@@ -149,14 +151,19 @@ public class TP_Candidates_TestData extends TestConfiguration
 			tpCrp.selectExperienceMonths(experienceInMonths);
 		}
 		tpCrp.clickSaveAndContinue();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		//hearaboutus and Course Preferences Page
+		tpCrp.selectSector(sector1);
+		tpCrp.selectSubSector(subSector1);
+		tpCrp.selectJobRole(jobRole1, jobRoleCode1);
 		tpCrp.clickSaveAndContinue();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
 		tpCrp.clickIAgree();
 		Thread.sleep(1000);
 		tpCrp.clickToAgreeAndSubmit();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Thread.sleep(5000);
+		tpCrp.clickOK();
+		Thread.sleep(5000);
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();	
