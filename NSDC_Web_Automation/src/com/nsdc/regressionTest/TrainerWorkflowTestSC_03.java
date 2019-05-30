@@ -25,7 +25,6 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class TrainerWorkflowTestSC_03 extends TestConfiguration
 {
-	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 	@DataProvider
     public Object[][] registrationData()
     {
@@ -867,7 +866,6 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
  	   elp.performlogin(createdTrainerID, "Qwerty@123");
  	   TrainerApplicantDashboardPage tDp=new TrainerApplicantDashboardPage(driver);
  	   Thread.sleep(8000);
-	   Assert.assertEquals(driver.getCurrentUrl().replaceAll("/", ""), configuredURL.replaceAll("/", "")+"trainerapplicant"," Login Unsuccessfull!! OR Its taking too much time to load!!! ");
  	   tDp.clickToGetApplicantDashboard();
 	   JavascriptExecutor js=(JavascriptExecutor)driver;
 	   js.executeScript("window.scrollBy(0,200)", "");

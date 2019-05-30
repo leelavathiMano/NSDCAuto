@@ -25,7 +25,6 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class AssessorWorkflowTestSC_04 extends TestConfiguration
 {
-	String configuredURL=ReadWriteData.getData("./TestData/Configurations.xls", "Config",1,1);
 	@DataProvider
     public Object[][] registrationData()
     {
