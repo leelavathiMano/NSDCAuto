@@ -46,7 +46,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement disabilityNoRadioButton;
 	@FindBy(xpath="//select[@formcontrolname='disabilityCategory']")
 	private WebElement disabilityDropdownList;
-	@FindBy(xpath="(//input[@class='custom-file-input '])[2]")
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement browseButton2;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
 	private WebElement uploadButton2;
