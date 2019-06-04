@@ -25,6 +25,7 @@ import com.nsdc.mobile.ui.object.TC_CAAF_GeneralDetails_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_Lab_UploadImagesScreen;
 import com.nsdc.mobile.ui.object.TC_CAAF_Residential_UploadImagesScreen;
 import com.nsdc.pages.AddTrainingCentrePage;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.DA_DashboardPage;
 import com.nsdc.pages.DA_TCRequestPage;
 import com.nsdc.pages.DA_TC_ContiniousMoniteringPage;
@@ -75,6 +76,10 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration
 		int sno = Integer.parseInt(srno);
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -194,6 +199,10 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
 			lp.clickLogin();
+			Thread.sleep(3000);
+			//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+			bsp.clickToClose();
+			Thread.sleep(3000);
 			elp.performlogin(pmkkSPOC_ID, pmkkSPOC_Password);
 			PMKKSPOC_DashboardPage pmkk = new PMKKSPOC_DashboardPage(driver);
 			Thread.sleep(15000);
@@ -229,6 +238,10 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tcUsername, tcPassword);
         RegistrationPage rp = new RegistrationPage(driver);
@@ -239,6 +252,10 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration
         rp.clickResetResubmit();
         Thread.sleep(2000);
         rp.clickConfirmationOkMessage();
+        Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         
         elp.performlogin(tcUsername, confirmPassword);
 		Thread.sleep(3000);

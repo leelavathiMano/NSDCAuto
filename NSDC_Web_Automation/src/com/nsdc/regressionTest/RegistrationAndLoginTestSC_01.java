@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.RegistrationPage;
@@ -28,6 +29,10 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         LoginPage lp = new LoginPage(driver);
         Thread.sleep(2000);
         lp.clickRegister();
+    	Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);
         rp.enterSPOCName(spocName);
@@ -46,6 +51,10 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         
         String username = driver.findElement(By.xpath("//span[@class='text-bold']")).getText();
         rp.clickGoToLogin();
+        Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, "ekaushal");
         Thread.sleep(2000);
@@ -55,6 +64,10 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         rp.clickResetResubmit();
         Thread.sleep(2000);
         rp.clickConfirmationOkMessage();
+        Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         
         elp.performlogin(username, confirmPassword);
         Thread.sleep(4000);
@@ -83,6 +96,10 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickLogin();
+        Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, password);
         Thread.sleep(2000);

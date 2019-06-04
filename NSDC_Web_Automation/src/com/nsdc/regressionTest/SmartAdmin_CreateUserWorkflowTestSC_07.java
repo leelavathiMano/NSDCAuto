@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
@@ -27,6 +28,10 @@ public class SmartAdmin_CreateUserWorkflowTestSC_07 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(username, password);
 		SmartAdmin_DashboardPage sad = new SmartAdmin_DashboardPage(driver);
@@ -66,6 +71,10 @@ public class SmartAdmin_CreateUserWorkflowTestSC_07 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(userName, passWord);
 		SmartAdmin_DashboardPage sadp = new SmartAdmin_DashboardPage(driver);
@@ -102,6 +111,10 @@ public class SmartAdmin_CreateUserWorkflowTestSC_07 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sdUserName, sdPassword);
 		SmartAdmin_DashboardPage sdp = new SmartAdmin_DashboardPage(driver);

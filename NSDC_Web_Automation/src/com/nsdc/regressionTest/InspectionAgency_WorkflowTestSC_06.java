@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.InspectionAgency_CreateUserPage;
 import com.nsdc.pages.InspectionAgency_DashboardPage;
@@ -30,6 +31,10 @@ public class InspectionAgency_WorkflowTestSC_06  extends TestConfiguration
         LoginPage lp = new LoginPage(driver);
         EnterLoginPage elp = new EnterLoginPage(driver);
         lp.clickLogin();
+    	Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         elp.performlogin(IA_username, IA_password);
         Thread.sleep(4000);
         

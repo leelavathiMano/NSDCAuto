@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.NSDCAdmin_DashboardPage;
@@ -35,6 +36,10 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 		LoginPage lp = new LoginPage(driver);
 		Thread.sleep(2000);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sbUsername, sbPassword);
 		SmartBusiness_DashboardPage sbd = new SmartBusiness_DashboardPage(driver);
@@ -202,6 +207,10 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(sdUsername, sdPassword);
 		SmartAdmin_DashboardPage sad = new SmartAdmin_DashboardPage(driver);
@@ -322,6 +331,10 @@ public class SmartBusiness_TPRegistrationWorkflowTestSC_09 extends TestConfigura
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(nsdcUsername, nsdcPassword);
 		NSDCAdmin_DashboardPage nsd = new NSDCAdmin_DashboardPage(driver);

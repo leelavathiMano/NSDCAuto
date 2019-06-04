@@ -10,6 +10,7 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.CandidateRegistrationPage;
 import com.nsdc.pages.Candidate_DashboardPage;
 import com.nsdc.pages.Candidate_ProfilePage;
@@ -100,6 +101,10 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		crp.clickForClose();
 		Thread.sleep(3000);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(candidateID, passwordID);
 		rp.enterOldPassword(passwordID);
@@ -108,6 +113,9 @@ public class CandidateRegistrationWorkflowTestSC_05 extends TestConfiguration
 		Thread.sleep(3000);
 		rp.clickResetResubmit();
 		rp.clickConfirmationOkMessage();
+		Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
 		Thread.sleep(3000);
 		elp.performlogin(candidateID, confirmPassword);
 		

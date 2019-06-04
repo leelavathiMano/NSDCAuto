@@ -16,6 +16,7 @@ import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.AssessmentAgencyDashboardPage;
 import com.nsdc.pages.AssessmentAgencyViewBatchesPage;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.CMA_AddCourseRequestsPage;
 import com.nsdc.pages.CMA_AddSectorRequestPage;
 import com.nsdc.pages.CMA_CourseInfoPage;
@@ -63,6 +64,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		int srno = Integer.parseInt(sno);
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpd = new TrainingPartnerDashboardPage(driver);
@@ -318,6 +323,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(fDAUsername, fDAPassword);
 		FDA_DashboardPage fdp = new FDA_DashboardPage(driver);
@@ -454,6 +463,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -713,6 +726,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			plp.clickOnLogout();
 				
 				lp.clickLogin();
+				Thread.sleep(3000);
+				//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+				bsp.clickToClose();
+				Thread.sleep(3000);
 				elp.performlogin(fDAUsername, fDAPassword);
 				FDA_DashboardPage fdp = new FDA_DashboardPage(driver);
 				Thread.sleep(5000);
@@ -850,6 +867,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -1088,6 +1109,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(cmaUsername, cmaPassword);
 		CMA_DashboardPage cmad = new CMA_DashboardPage(driver);
@@ -1239,6 +1264,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -1453,6 +1482,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 			
 			lp.clickLogin();
 			Thread.sleep(3000);
+			//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+			bsp.clickToClose();
+			Thread.sleep(3000);
+			Thread.sleep(3000);
 			elp.performlogin(cmaUsername, cmaPassword);
 			CMA_DashboardPage cmad = new CMA_DashboardPage(driver);
 			Thread.sleep(8000);
@@ -1605,6 +1638,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpusername, tppassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -1666,6 +1703,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		LoginPage lp = new LoginPage(driver);
 		Thread.sleep(3000);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(cmaUsername, cmaPassword);
 		CMA_DashboardPage cmad = new CMA_DashboardPage(driver);
@@ -1724,6 +1765,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpusername, tppassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -1845,6 +1890,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 		LoginPage lp = new LoginPage(driver);
 		Thread.sleep(3000);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(cmaUsername, cmaPassword);
 		CMA_DashboardPage cmad = new CMA_DashboardPage(driver);
@@ -1929,6 +1978,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
@@ -2001,6 +2054,10 @@ public class FeeBased_AddSchemeWorkflowTestSC_14 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);

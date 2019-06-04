@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
@@ -25,13 +26,17 @@ public class TPSPOCChangeWorkflowTestSC_13 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		
 		TrainingPartnerDashboardPage tpd = new TrainingPartnerDashboardPage(driver);
 		Thread.sleep(12000);
 		tpd.clickOnChangeMySPOC();
-		
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		TP_SPOCChangePage tpsp = new TP_SPOCChangePage(driver);
 		tpsp.enterTP_SPOCFullName(spocName);
 		tpsp.enterTP_SPOCEmailAddress(spocEmail);
@@ -67,6 +72,10 @@ public class TPSPOCChangeWorkflowTestSC_13 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tPUsername, tPPassword);
 		

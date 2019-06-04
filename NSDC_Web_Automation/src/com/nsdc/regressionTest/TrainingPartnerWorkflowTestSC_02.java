@@ -43,6 +43,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         lp.clickRegister();
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         rp.enterSPOCName(spocName);
         rp.enterEmail(email);
         rp.enterMobile(mobile);
@@ -59,6 +63,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPProfileSC02TC01", Integer.parseInt(sno) , 7, username);
         ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TPApprovalSC02TC02", Integer.parseInt(sno), 3, username);
         rp.clickGoToLogin();
+		Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(username, "ekaushal");
         Thread.sleep(2000);
@@ -68,6 +76,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         rp.clickResetResubmit();
         Thread.sleep(3000);
         rp.clickConfirmationOkMessage();
+		Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
         
         elp.performlogin(username, confirmPassword);
         Thread.sleep(4000);
@@ -1032,6 +1044,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     {
     	LoginPage lp = new LoginPage(driver);
     	lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
     	EnterLoginPage elp = new EnterLoginPage(driver);
     	elp.performlogin(iausername, password);
     	Thread.sleep(4000);
@@ -1060,6 +1076,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	Thread.sleep(2000);
     	
     	lp.clickLogin();
+		Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
     	elp.performlogin(dausername, Password);
     	
     	DA_DashboardPage da = new DA_DashboardPage(driver);
@@ -1361,6 +1381,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	
     	
     	lp.clickLogin();
+		Thread.sleep(3000);
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
     	elp.performlogin(tpID, tpPassword);
     	Assert.assertEquals(driver.findElement(By.xpath("//p[contains(text(),'Add a Training Centre')]")).getText(), "Add a Training Centre");
     }
