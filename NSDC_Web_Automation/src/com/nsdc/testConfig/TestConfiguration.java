@@ -40,6 +40,7 @@ public class TestConfiguration
         zf.zipFolder(Paths.get(folderToZip), Paths.get(zipName));
     }
     
+    
     @BeforeMethod
     public void precondition()
     {
