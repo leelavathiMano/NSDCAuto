@@ -21,6 +21,7 @@ import com.nsdc.pages.AssessorApplicantSearchAndApplyForAvailableBatchesPage;
 import com.nsdc.pages.AssessorApplicantViewBatchesPage;
 import com.nsdc.pages.AssessorDashboardPage;
 import com.nsdc.pages.AssessorViewBatchesPage;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LocationBasedTC_DashboardPage;
 import com.nsdc.pages.LocationBasedTC_ViewBatchesPage;
@@ -95,6 +96,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
     	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
 		WebDriverWait wait=new WebDriverWait(driver,60);
@@ -294,6 +299,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
     	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(tcID, tcPassword);
 		WebDriverWait wait=new WebDriverWait(driver, 60);
@@ -328,6 +337,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			{
 				Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 				lp.clickLogin();
+				Thread.sleep(2000);
+			    bvp.clickToClose();
+			    Thread.sleep(2000);
 				if(i==1)
 				{
 					elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
@@ -380,6 +392,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		{
 			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 			lp.clickLogin();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 			elp.performlogin(dmasterTrainerID, dmasterTrainerPassword);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//strong[text()='View Batches']")));
 			tDp.clickToGetTrainerDashboard();
@@ -414,6 +429,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			for(int i=1;i<3;i++)
 			{
 				lp.clickLogin();
+				Thread.sleep(2000);
+			    bvp.clickToClose();
+			    Thread.sleep(2000);
 				if(i==1)
 				{
 					elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
@@ -483,6 +501,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		else
 		{
 			lp.clickLogin();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 			elp.performlogin(dassessmentAgencyID, dassessmentAgencyPassword);
 			AssessmentAgencyDashboardPage aDp=new AssessmentAgencyDashboardPage(driver);
 			aDp.clickBatchAssessmentRequests();
@@ -530,6 +551,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			for(int i=1; i<3;i++)
 			{
 				lp.clickLogin();
+				Thread.sleep(2000);
+			    bvp.clickToClose();
+			    Thread.sleep(2000);
 				if(i==1)
 				{
 					elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
@@ -583,6 +607,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		else
 		{
 			lp.clickLogin();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 			elp.performlogin(dmasterAssessorID, dmasterAssessorPassword);
 			AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
 			maDp.clickToGetAssessorDashboard();
@@ -639,6 +666,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   String platformAssessmentStartDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 21);
 	   String platformAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 22);
 	   lp.clickLogin();
+	   Thread.sleep(2000);
+	   BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	   bvp.clickToClose();
+	   Thread.sleep(2000);
 	   elp.performlogin(assessorID, applicantPassword);
 	   AssessorApplicantDashboardPage aDp=new AssessorApplicantDashboardPage(driver);
 	   aDp.clickToGetApplicantDashboard();
@@ -826,6 +857,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   LoginPage lp=new LoginPage(driver);
 	   lp.clickLogin();
 	   Thread.sleep(2000);
+	   BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	   bvp.clickToClose();
+	   Thread.sleep(2000);
 	   EnterLoginPage elp=new EnterLoginPage(driver);
 	   String batchID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 1);
 	   String batchSize=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 24);
@@ -1011,6 +1045,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 		   Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		   LoginPage lp=new LoginPage(driver);
 		   lp.clickLogin();
+		   Thread.sleep(2000);
+		   BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+		   bvp.clickToClose();
+		   Thread.sleep(2000);
 		   EnterLoginPage elp=new EnterLoginPage(driver);
 		   elp.performlogin(assessorID, applicantPassword);
 		   WebDriverWait wait=new WebDriverWait(driver, 30);
@@ -1125,6 +1163,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
   	 	LoginPage lp=new LoginPage(driver);
   	 	lp.clickLogin();
+  	 	Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
   	 	EnterLoginPage elp=new EnterLoginPage(driver);
   	 	elp.performlogin(sscID, sscPassword);
   	 	WebDriverWait wait=new WebDriverWait(driver,60);
@@ -1390,6 +1432,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
  	   	LoginPage lp=new LoginPage(driver);
  	   	lp.clickLogin();
+ 	   	Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
  	   	EnterLoginPage elp=new EnterLoginPage(driver);
  	   	String batchID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 1);
  	   	String batchSize=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 24);
@@ -1507,6 +1553,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
 		EnterLoginPage elp=new EnterLoginPage(driver);
     	if(!platformMasterTrainerID.equalsIgnoreCase(domainMasterTrainerID))
     	{
@@ -1519,6 +1569,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
         		else
         		{
         			lp.clickLogin();
+        			Thread.sleep(2000);
+        		    bvp.clickToClose();
+        		    Thread.sleep(2000);
         			elp.performlogin(platformMasterTrainerID, platformMasterTrainerPassword);
         		}
         		TrainerDashboardPage tDp=new TrainerDashboardPage(driver);
@@ -1731,6 +1784,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
     	LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		WebDriverWait wait=new WebDriverWait(driver, 30);
     	if(!platformAssessmentAgencyID.equalsIgnoreCase(domainAssessmentAgencyID))
@@ -1744,6 +1801,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
         		else
         		{
         			lp.clickLogin();
+        			Thread.sleep(2000);
+        		    bvp.clickToClose();
+        		    Thread.sleep(2000);
         			elp.performlogin(platformAssessmentAgencyID, platformAssessmentAgencyPassword);
         		}
         		JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -1874,6 +1934,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
    	  	String pAssessmentEndDate=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 1, 22);
    	  	LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		WebDriverWait wait=new WebDriverWait(driver, 30);
 		if(!platformMasterAssessorID.equalsIgnoreCase(domainMasterAssessorID))
@@ -1888,6 +1952,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 				else
 				{
 					lp.clickLogin();
+					Thread.sleep(2000);
+				    bvp.clickToClose();
+				    Thread.sleep(2000);
 					elp.performlogin(platformMasterAssessorID, platformMasterAssessorPassword);
 				}
 				AssessorDashboardPage maDp=new AssessorDashboardPage(driver);
@@ -2021,6 +2088,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			String batchID=ReadWriteData.getData("./TestData/Workflow/ToA_BatchApplicants-Workflow.xls", "ToA-Batches", 2, 1);
 			LoginPage lp=new LoginPage(driver);
  	   		lp.clickLogin();
+ 	   		Thread.sleep(2000);
+ 	   		BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+ 	   		bvp.clickToClose();
+ 	   		Thread.sleep(2000);
  	   		EnterLoginPage elp=new EnterLoginPage(driver);
  	   		//Applicant Applying for batch
  	   		elp.performlogin(assessorID, applicantPassword);
@@ -2050,6 +2121,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
  	   		//TC Rejecting Applicant
 			lp.clickLogin();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
  	   		elp.performlogin(tcID, tcPassword);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
@@ -2087,6 +2161,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
  	   		//Applicant Verifying Batch Status After TC Rejection
  	   		lp.clickLogin();
+ 	   		Thread.sleep(2000);
+ 	   		bvp.clickToClose();
+ 	   		Thread.sleep(2000);
  	   		elp.performlogin(assessorID, applicantPassword);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			aDp.clickToGetApplicantDashboard();
@@ -2117,6 +2194,10 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 	   		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 	   		LoginPage lp=new LoginPage(driver);
  	   		lp.clickLogin();
+ 	   		Thread.sleep(2000);
+ 	   		BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+ 	   		bvp.clickToClose();
+ 	   		Thread.sleep(2000);
  	   		EnterLoginPage elp=new EnterLoginPage(driver);
  	   		//Applicant Applying for batch
 			elp.performlogin(assessorID, applicantPassword);
@@ -2149,6 +2230,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
     		//TC Submitting Batch For SSC
 	   	 	Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
  	   		lp.clickLogin();
+ 	   		Thread.sleep(2000);
+ 	   		bvp.clickToClose();
+ 	   		Thread.sleep(2000);
  	   		elp.performlogin(tcID, tcPassword);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		LocationBasedTC_DashboardPage tcDp=new LocationBasedTC_DashboardPage(driver);
@@ -2190,6 +2274,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
  	   		//SSC Rejecting Enrolled Applicant
  	   		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
  	   		lp.clickLogin();
+ 	   		Thread.sleep(2000);
+ 	   		bvp.clickToClose();
+ 	   		Thread.sleep(2000);
  	   		elp.performlogin(sscID, sscPassword);
  	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
  	   		SSC_DashboardPage sDp=new SSC_DashboardPage(driver);
@@ -2239,6 +2326,9 @@ public class ToA_BatchApplicantsWorkflowTestSC_18 extends TestConfiguration
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
    	 	 	//Applicant Checking Batch Status after SSC Rejection
    	 	 	lp.clickLogin();
+   	 	 	Thread.sleep(2000);
+   	 	 	bvp.clickToClose();
+   	 	 	Thread.sleep(2000);
 	   		elp.performlogin(assessorID, applicantPassword);
 	   		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 	   		aDp.clickToGetApplicantDashboard();

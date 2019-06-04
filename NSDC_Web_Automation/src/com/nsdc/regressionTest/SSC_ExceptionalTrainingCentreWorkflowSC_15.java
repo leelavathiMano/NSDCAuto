@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
@@ -32,6 +33,10 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguratio
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
 		EnterLoginPage elp=new EnterLoginPage(driver);
 		elp.performlogin(sscUsername, sscPassword);
 		WebDriverWait wait=new WebDriverWait(driver,60);
@@ -165,6 +170,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguratio
 			plp.clickOnLogout();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			lp.clickLogin();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 			elp.performlogin(createdExceptionalTCID, "ekaushal");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			RegistrationPage rp = new RegistrationPage(driver);
@@ -174,6 +182,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguratio
 		    rp.clickResetResubmit();
 		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		    rp.clickConfirmationOkMessage();
+		    Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 		    elp.performlogin(createdExceptionalTCID, "Qwerty@123");
 		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		    plp.clickOnProfileLogo();
@@ -197,6 +208,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguratio
 			plp.clickOnLogout();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@routerlink='login']")));
 			lp.clickLogin();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 			elp.performlogin(createdExceptionalTCID, "ekaushal");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			RegistrationPage rp = new RegistrationPage(driver);
@@ -206,6 +220,9 @@ public class SSC_ExceptionalTrainingCentreWorkflowSC_15 extends TestConfiguratio
 			rp.clickResetResubmit();
 			Thread.sleep(2000);
 			rp.clickConfirmationOkMessage();
+			Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
 			elp.performlogin(createdExceptionalTCID, "Qwerty@123");
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 			plp.clickOnProfileLogo();

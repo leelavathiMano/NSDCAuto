@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.DA_Assign_TPRegistrationFormPage;
 import com.nsdc.pages.DA_DashboardPage;
 import com.nsdc.pages.DesktopAssessor_ViewInspectionPage;
@@ -1401,6 +1402,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         ReadWriteData.setExcelData("./TestData/Workflow/TrainingPartner-Workflow.xls", "TP_Rejection", Integer.parseInt(serialNum), 1, createdRejectionTPID);
         Thread.sleep(4000);
         rp.clickGoToLogin();
+        Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
         EnterLoginPage elp = new EnterLoginPage(driver);
         elp.performlogin(createdRejectionTPID, "ekaushal");
         Thread.sleep(2000);
@@ -1410,6 +1415,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         rp.clickResetResubmit();
         Thread.sleep(2000);
         rp.clickConfirmationOkMessage();
+        Thread.sleep(2000);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
         elp.performlogin(createdRejectionTPID, confirmPassword);
         Thread.sleep(4000);
         TrainingPartnerRegistrationPage tprp = new TrainingPartnerRegistrationPage(driver);
@@ -1818,6 +1826,10 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
      		LoginPage lp = new LoginPage(driver);
           	lp.clickLogin();
+          	Thread.sleep(2000);
+		    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
      	   	EnterLoginPage elp = new EnterLoginPage(driver);
     	  	elp.performlogin(iaUsername, password);
      	   	//viewing all TP requests waiting for IA to assign respected DA
@@ -1851,6 +1863,9 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         	Thread.sleep(6000);
      	   	//DA Rejecting TP
     	   	lp.clickLogin();
+    	   	Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
      	   	elp.performlogin(daUserName, daPassword);
      	   	Thread.sleep(6000);
      	   	DA_DashboardPage da=new DA_DashboardPage(driver);
@@ -1997,6 +2012,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
     	  	//TP Login to check DA Action Comments
       	   	lp.clickLogin();
       	   	Thread.sleep(2000);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
       	   	elp.performlogin(tpID, "Qwerty@123");
       	   	Thread.sleep(10000);
       	   	TrainingPartnerReEditRegistrationPage tpREp=new TrainingPartnerReEditRegistrationPage(driver);
