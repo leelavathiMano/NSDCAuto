@@ -20,6 +20,9 @@ import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.pages.RozgarMelaDetailSectionsPage;
 import com.nsdc.pages.RozgarMela_CandidatePage;
+import com.nsdc.pages.RozgarSTSE_DashboardPage;
+import com.nsdc.pages.RozgarSTSE_ViewRozgarMelaPage;
+import com.nsdc.pages.RozgarSTSE_ViewRozgarMelasPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_CreateRozgarMelaPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_DashboardPage;
 import com.nsdc.pages.NSDC_RozgarMelaSPOC_ViewRozgarMelasPage;
@@ -30,11 +33,16 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 	String candidateListFile=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 2);
 	String candidateID_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 3);
 	String candidatePassword_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 4);
+	String rozgarSTSE_ID=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 5);
+	String rozgarSTSE_Password=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 6);
+	String employerID=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 7);
+	
 	@DataProvider
 	public Object[][] rozgarMelaData()
 	{
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "RozgarMelas");
 	}
+	
 	@Test(dataProvider="rozgarMelaData")
 	public void createRozgarMelaTC_01(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
 	{
@@ -467,6 +475,43 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 			plp.clickOnProfileLogo();
 			Thread.sleep(2000);
 			plp.clickOnLogout();
+		}
+	}
+	
+	@Test(dataProvider="rozgarMelaData", dependsOnMethods={"candidateEnrollmentByUploadForRozgarMelaTC_05", "candidateSelfEnrollmentForRozgarMelaTC_06"})
+	public void linkingEmployerForRozgarMelaTC_07(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	{
+		if(serialNum.equals("3"))
+		{
+			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+			LoginPage lp=new LoginPage(driver);
+			lp.clickLogin();
+			Thread.sleep(2000);
+		    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+		    bvp.clickToClose();
+		    Thread.sleep(2000);
+			EnterLoginPage elp=new EnterLoginPage(driver);
+			elp.performlogin(rozgarSTSE_ID, rozgarSTSE_Password);
+			WebDriverWait wait=new WebDriverWait(driver, 20);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			RozgarSTSE_DashboardPage rstd=new RozgarSTSE_DashboardPage(driver);
+			rstd.clickViewRozgarMelas();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			RozgarSTSE_ViewRozgarMelasPage rvp=new RozgarSTSE_ViewRozgarMelasPage(driver);
+			rvp.enterRozgarMelaIDTosearch(rozgarMelaID);
+			rvp.clickTogetSearchresult();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rvp.clickToGetActionMenu();
+			rvp.clickToChooseViewMelaDetailsOption();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			RozgarSTSE_ViewRozgarMelaPage rsvp=new RozgarSTSE_ViewRozgarMelaPage(driver);
+			rsvp.clickToGoToParticipatingEmployersSection();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			rsvp.clickLinkEmployer();
+			rsvp.enterEmployerIDToSearch(employerID);
+			rsvp.clickSearch();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+			Assert.assertTrue(driver.findElement(By.xpath("//tr[td[text()='"+employerID+"']]")).isDisplayed(),"Link Employer : No show of searched employer ID");
 		}
 	}
 }
