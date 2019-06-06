@@ -45,7 +45,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         rp.selectDropdownList(userType);
 		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-		bsp.clickToClose();
+		Thread.sleep(3000);
+		bsp.clickOnClose_Second();
 		Thread.sleep(3000);
         rp.enterSPOCName(spocName);
         rp.enterEmail(email);
@@ -76,8 +77,8 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         rp.clickResetResubmit();
         Thread.sleep(3000);
         rp.clickConfirmationOkMessage();
-		Thread.sleep(3000);
 		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+        Thread.sleep(3000);
 		bsp.clickToClose();
 		Thread.sleep(3000);
         

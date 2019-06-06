@@ -8,8 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 public class BetaVersionOfSmartPage 
 {
 	WebDriver driver;
-	@FindBy(xpath="//button[text()='Close']")
+	@FindBy(xpath="(//button[text()='Close'])[1]")
 	private WebElement closeButton;
+	@FindBy(xpath="(//button[text()='Close'])[2]")
+	private WebElement close_SecondButton;
+	
+	
 	public BetaVersionOfSmartPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -18,5 +22,10 @@ public class BetaVersionOfSmartPage
 	public void clickToClose()
 	{
 		closeButton.click();
+	}
+	
+	public void clickOnClose_Second()
+	{
+		close_SecondButton.click();
 	}
 }
