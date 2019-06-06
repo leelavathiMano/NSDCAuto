@@ -1404,16 +1404,18 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
         String year_Establishment = year_Of_Establishment;
         int year = Integer.parseInt(year_Establishment);
-        Thread.sleep(2000);
         LoginPage lp = new LoginPage(driver);
         lp.clickRegister();
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);
+        Thread.sleep(2000);
+        BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickOnClose_Second();
+	    Thread.sleep(2000);
         rp.enterSPOCName(spocName);
         rp.enterEmail(email);
         rp.enterMobile(mobile);
         rp.clickIagree();
-        Thread.sleep(2000);
         rp.clickRegister();
         Thread.sleep(2000);
         rp.enterEmailOTP(emailOTP);
@@ -1428,7 +1430,6 @@ public class TrainingPartnerWorkflowTestSC_02 extends TestConfiguration
         Thread.sleep(4000);
         rp.clickGoToLogin();
         Thread.sleep(2000);
-	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
 	    bvp.clickToClose();
 	    Thread.sleep(2000);
         EnterLoginPage elp = new EnterLoginPage(driver);
