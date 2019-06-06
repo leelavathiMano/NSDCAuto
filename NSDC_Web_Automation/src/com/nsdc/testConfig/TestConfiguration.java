@@ -31,9 +31,9 @@ public class TestConfiguration
         Date d = new Date();
         String date = d.toString().replace(":", "_");
         
-        //String folderToZip = "./target/surefire-reports";
+        String folderToZip = "./target/surefire-reports";
         
-        String folderToZip = "./test-output";
+ //       String folderToZip = "./test-output";
         
         String zipName = "./ReportBackup/"+date+".zip";
         
@@ -91,6 +91,6 @@ public class TestConfiguration
         {
             Screenshot.takeScreenshot(driver, result.getName());
         }
-       	driver.close();       	    	
+ //      	driver.close();       	    	
     }
  }
