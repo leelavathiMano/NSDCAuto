@@ -29,12 +29,16 @@ public class RegistrationAndLoginTestSC_01 extends TestConfiguration
         LoginPage lp = new LoginPage(driver);
         Thread.sleep(2000);
         lp.clickRegister();
-    	Thread.sleep(3000);
-		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-		bsp.clickToClose();
 		Thread.sleep(3000);
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);
+     	Thread.sleep(3000);
+  		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+        if(userType.equalsIgnoreCase("Training Provider"))
+        {
+         	Thread.sleep(3000);
+      		bsp.clickOnClose_Second();
+        }
         rp.enterSPOCName(spocName);
         rp.enterEmail(email);
         rp.enterMobile(mobile);
