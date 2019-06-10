@@ -107,9 +107,9 @@ public class AssessorWorkflowTestSC_04 extends TestConfiguration
         else
         {
             assessor.selectDisability(disability);
-            Thread.sleep(2000);
-            assessor.clickOnBrowseForUploadDisabilityDocument();
             Thread.sleep(4000);
+            assessor.clickOnBrowseForUploadDisabilityDocument();
+            Thread.sleep(2000);
             UploadFile.upload(disabilityFile);
             Thread.sleep(4000);
             assessor.clickOnUploadButtonForUploadDisabilityDocument();

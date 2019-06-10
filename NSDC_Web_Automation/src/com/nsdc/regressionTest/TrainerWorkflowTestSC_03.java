@@ -74,11 +74,11 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         rp.enterNewPassword(newPassword);
         Thread.sleep(2000);
         rp.enterConfirmPassword(confirmPassword);
-        Thread.sleep(4000);
-        rp.clickResetResubmit();
-        Thread.sleep(6000);
-        rp.clickConfirmationOkMessage();
         Thread.sleep(2000);
+        rp.clickResetResubmit();
+        Thread.sleep(4000);
+        rp.clickConfirmationOkMessage();
+        Thread.sleep(3000);
 	    bvp.clickToClose();
 	    Thread.sleep(2000);
         elp.performlogin(username, confirmPassword);
@@ -119,9 +119,9 @@ public class TrainerWorkflowTestSC_03 extends TestConfiguration
         else
         {
         	trainer.selectDisability(disability);
-        	Thread.sleep(2000);
-        	trainer.clickOnBrowseForUploadDisabilityDocument();
         	Thread.sleep(4000);
+        	trainer.clickOnBrowseForUploadDisabilityDocument();
+        	Thread.sleep(2000);
         	UploadFile.upload(disabilityFile);
            	Thread.sleep(4000);
            	trainer.clickOnUploadButtonForUploadDisabilityDocument();
