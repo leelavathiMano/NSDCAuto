@@ -390,7 +390,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Enroll_Link_Vacancy");
 	}
 	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods="rescheduleRozgarMelaTC_04")
-	public void candidateEnrollmentByUploadForRozgarMelaTC_05(String rozgarMelaID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String employerPassword) throws Exception
+	public void candidateEnrollmentByUploadForRozgarMelaTC_05(String rozgarMelaID, String jobID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String companyName, String employerPassword, String jobTitle, String jobVacancyCount, String jobSector, String eligibilityCriteria, String jobDescription, String selectionProcess, String monthlyCompensation, String otherMonthlyIncentives, String workingHoursPerDay, String daysOffPerMonth, String jobLocationAddress, String jobLocationPinCode, String jobLocationState, String jobLocationDistrict, String jobFairSpocName, String jobFairSpocEmail, String jobFairSpocMobileNumber) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -434,7 +434,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods="rescheduleRozgarMelaTC_04")
-	public void candidateSelfEnrollmentForRozgarMelaTC_06(String rozgarMelaID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String employerPassword) throws Exception
+	public void candidateSelfEnrollmentForRozgarMelaTC_06(String rozgarMelaID, String jobID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String companyName, String employerPassword, String jobTitle, String jobVacancyCount, String jobSector, String eligibilityCriteria, String jobDescription, String selectionProcess, String monthlyCompensation, String otherMonthlyIncentives, String workingHoursPerDay, String daysOffPerMonth, String jobLocationAddress, String jobLocationPinCode, String jobLocationState, String jobLocationDistrict, String jobFairSpocName, String jobFairSpocEmail, String jobFairSpocMobileNumber) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
@@ -474,7 +474,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 	}
 	
 	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods={"candidateEnrollmentByUploadForRozgarMelaTC_05", "candidateSelfEnrollmentForRozgarMelaTC_06"})
-	public void linkingEmployerForRozgarMelaTC_07(String rozgarMelaID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String employerPassword) throws Exception
+	public void linkingEmployerForRozgarMelaTC_07(String rozgarMelaID, String jobID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String companyName, String employerPassword, String jobTitle, String jobVacancyCount, String jobSector, String eligibilityCriteria, String jobDescription, String selectionProcess, String monthlyCompensation, String otherMonthlyIncentives, String workingHoursPerDay, String daysOffPerMonth, String jobLocationAddress, String jobLocationPinCode, String jobLocationState, String jobLocationDistrict, String jobFairSpocName, String jobFairSpocEmail, String jobFairSpocMobileNumber) throws Exception
 	{
 		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
 		LoginPage lp=new LoginPage(driver);
