@@ -16,6 +16,12 @@ public class RozgarSTSE_ViewRozgarMelaPage
     private WebElement searchByEmployerIDTextField;
     @FindBy(xpath="//button[contains(text(),'Search')]")
     private WebElement searchButton;
+    @FindBy(xpath="(//label[input[@type='checkbox']])[1]")
+    private WebElement searchedEmployerCheckbox;
+    @FindBy(xpath="//span[contains(text(),'Align Selected Employers')]")
+    private WebElement alignSelectedEmployersButton;
+    @FindBy(xpath="//button[contains(text(),'OK')]")
+    private WebElement okButton;
        
     public RozgarSTSE_ViewRozgarMelaPage(WebDriver driver)
     {
@@ -38,5 +44,17 @@ public class RozgarSTSE_ViewRozgarMelaPage
     public void clickSearch()
     {
     	searchButton.click();
+    }
+    public void clickToSelectEmployerToLink()
+    {
+    	searchedEmployerCheckbox.click();
+    }
+    public void clickToAlignSelectedEmployers()
+    {
+    	alignSelectedEmployersButton.click();
+    }
+    public void clickOK()
+    {
+    	okButton.click();
     }
 }

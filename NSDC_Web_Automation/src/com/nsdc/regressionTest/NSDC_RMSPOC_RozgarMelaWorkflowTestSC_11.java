@@ -15,6 +15,8 @@ import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.BetaVersionOfSmartPage;
+import com.nsdc.pages.Employer_JobVacancyCreationPage;
+import com.nsdc.pages.Employer_RozgarMelaPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
@@ -30,13 +32,6 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 {
-	String candidateListFile=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 2);
-	String candidateID_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 3);
-	String candidatePassword_SelfEnrollment=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 4);
-	String rozgarSTSE_ID=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 5);
-	String rozgarSTSE_Password=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 6);
-	String employerID=ReadWriteData.getData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Configurable-Fields", 1, 7);
-	
 	@DataProvider
 	public Object[][] rozgarMelaData()
 	{
@@ -152,6 +147,7 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 		Assert.assertTrue(driver.getCurrentUrl().contains("create-rozgar-mela-success"),"OMG!!! Navigation to Create Rozgar Mela Success page is unsuccessful OR Something wrong! ");
 		String createdRozgarMelaID=driver.findElement(By.xpath("(//p[contains(text(),'You have successfully created a')]/span)[2]")).getText().trim().replace('"', ' ').replaceAll(" ", "");
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "RozgarMelas", rowNum, 1, createdRozgarMelaID);
+		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Enroll_Link_Vacancy", 1, 0, createdRozgarMelaID);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickAnnounceToStakeholders();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
@@ -388,130 +384,195 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 		}
 	}
 	
-	@Test(dataProvider="rozgarMelaData", dependsOnMethods="rescheduleRozgarMelaTC_04")
-	public void candidateEnrollmentByUploadForRozgarMelaTC_05(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	@DataProvider
+	public Object[][] enrolLinkJobVacancyData()
 	{
-		if(serialNum.equals("3"))
-		{
-			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-			LoginPage lp=new LoginPage(driver);
-			lp.clickLogin();
-			Thread.sleep(2000);
-		    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
-		    bvp.clickToClose();
-		    Thread.sleep(2000);
-			EnterLoginPage elp=new EnterLoginPage(driver);
-			elp.performlogin(rmspocID, rmspocPassword);
-			NSDC_RozgarMelaSPOC_DashboardPage rmDp=new NSDC_RozgarMelaSPOC_DashboardPage(driver);
-			rmDp.clickViewRozgarMelas();
-			WebDriverWait wait=new WebDriverWait(driver, 20);
-			NSDC_RozgarMelaSPOC_ViewRozgarMelasPage rVmp=new NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(driver);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
-			rVmp.clickToApplyFilters();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
-			JavascriptExecutor js=(JavascriptExecutor)driver;
-			js.executeScript("window.scrollBy(0,200)", "");
-			rVmp.clickActionMenu();
-			rVmp.clickToChooseViewDetailsOption();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			RozgarMelaDetailSectionsPage rms=new RozgarMelaDetailSectionsPage(driver);
-			rms.clickToGoToParticipatingCandidatesSection();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rms.clickToGetUploadCandidateRegistrationListWindow();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rms.clickToBrowseCandidateListfile();
-			Thread.sleep(2000);
-			UploadFile.upload(candidateListFile);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'RozgarMela-Candidate')]")));
-			rms.clickToUploadSelectedCandidateListFile();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
-			Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().contains("Candidates Registered Successfully"));
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			PostLoginPage plp=new PostLoginPage(driver);
-			plp.clickOnProfileLogo();
-			plp.clickOnLogout();
-		}
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Enroll_Link_Vacancy");
+	}
+	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods="rescheduleRozgarMelaTC_04")
+	public void candidateEnrollmentByUploadForRozgarMelaTC_05(String rozgarMelaID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String employerPassword) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		Thread.sleep(2000);
+		BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+		bvp.clickToClose();
+		Thread.sleep(2000);
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(rmspocID, rmspocPassword);
+		NSDC_RozgarMelaSPOC_DashboardPage rmDp=new NSDC_RozgarMelaSPOC_DashboardPage(driver);
+		rmDp.clickViewRozgarMelas();
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		NSDC_RozgarMelaSPOC_ViewRozgarMelasPage rVmp=new NSDC_RozgarMelaSPOC_ViewRozgarMelasPage(driver);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rVmp.enterRozgarMelaIDToSearch(rozgarMelaID);
+		rVmp.clickToApplyFilters();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]//td[2]")).getText().trim(), rozgarMelaID);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,200)", "");
+		rVmp.clickActionMenu();	
+		rVmp.clickToChooseViewDetailsOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		RozgarMelaDetailSectionsPage rms=new RozgarMelaDetailSectionsPage(driver);
+		rms.clickToGoToParticipatingCandidatesSection();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rms.clickToGetUploadCandidateRegistrationListWindow();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rms.clickToBrowseCandidateListfile();
+		Thread.sleep(2000);
+		UploadFile.upload(candidateListFile);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'RozgarMela-Candidate')]")));
+		rms.clickToUploadSelectedCandidateListFile();	
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='toast-message']")));
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).getText().contains("Candidates Registered Successfully"));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();	
 	}
 	
-	@Test(dataProvider="rozgarMelaData", dependsOnMethods="rescheduleRozgarMelaTC_04")
-	public void candidateSelfEnrollmentForRozgarMelaTC_06(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods="rescheduleRozgarMelaTC_04")
+	public void candidateSelfEnrollmentForRozgarMelaTC_06(String rozgarMelaID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String employerPassword) throws Exception
 	{
-		if(serialNum.equals("3"))
-		{
-			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-			LoginPage lp=new LoginPage(driver);
-			lp.clickLogin();
-			Thread.sleep(2000);
-		    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
-		    bvp.clickToClose();
-		    Thread.sleep(2000);
-			EnterLoginPage elp=new EnterLoginPage(driver);
-			elp.performlogin(candidateID_SelfEnrollment, candidatePassword_SelfEnrollment);
-			WebDriverWait wait=new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			RozgarMela_CandidatePage rcp=new RozgarMela_CandidatePage(driver);
-			rcp.clickToViewAllRozgarMelas();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rcp.clickToGetActionMenu(rozgarMelaName);
-			rcp.selectAttendThisRozgarMelaOption(rozgarMelaName);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rcp.clickToAttendRozgarMela();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Successfully Registered for Rozgar Mela");
-			Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Your admit card has been sent on your registered email id\nMela ID: "+rozgarMelaID+"\nMela Name : "+rozgarMelaName);
-			rcp.clickToDownloadAdmitCard();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Your admit card has been downloaded successfully");
-			rcp.clickOK();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			JavascriptExecutor js=(JavascriptExecutor)driver;
-			js.executeScript("window.scrollBy(0,-1000)", "");
-			rcp.clickToGoToEnrolled_AttendedrozgarMelasection();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]")).isDisplayed(), "OMG!!! No show enrolled rozgar mela");
-			PostLoginPage plp=new PostLoginPage(driver);
-			plp.clickOnProfileLogo();
-			Thread.sleep(2000);
-			plp.clickOnLogout();
-		}
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(candidateID_SelfEnrollment, candidatePassword_SelfEnrollment);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		RozgarMela_CandidatePage rcp=new RozgarMela_CandidatePage(driver);
+		rcp.clickToViewAllRozgarMelas();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rcp.clickToGetActionMenu(rozgarMelaName);
+		rcp.selectAttendThisRozgarMelaOption(rozgarMelaName);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rcp.clickToAttendRozgarMela();	
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Successfully Registered for Rozgar Mela");
+		Assert.assertEquals(driver.findElement(By.id("swal2-content")).getText().trim(), "Your admit card has been sent on your registered email id\nMela ID: "+rozgarMelaID+"\nMela Name : "+rozgarMelaName);
+		rcp.clickToDownloadAdmitCard();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Your admit card has been downloaded successfully");
+		rcp.clickOK();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,-1000)", "");
+		rcp.clickToGoToEnrolled_AttendedrozgarMelasection();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Assert.assertTrue(driver.findElement(By.xpath("//tr[td[contains(text(),'"+rozgarMelaID+"')]]")).isDisplayed(), "OMG!!! No show enrolled rozgar mela");
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();	
 	}
 	
-	@Test(dataProvider="rozgarMelaData", dependsOnMethods={"candidateEnrollmentByUploadForRozgarMelaTC_05", "candidateSelfEnrollmentForRozgarMelaTC_06"})
-	public void linkingEmployerForRozgarMelaTC_07(String serialNum, String rozgarMelaID, String rmspocID, String rmspocPassword, String rozgarMelaName, String typeOfRozgarMela, String targetAudience, String chiefGuestTitle, String chiefGuestSalutation, String chiefGuestName, String eligibilityCriteria, String startDate, String endDate, String startTime, String endTime, String address, String landmark, String pincode, String state, String district, String tehsil, String village, String parlimentaryConstituency, String geoLocation, String additionalRemarks, String alignTC, String alignSSC, String statusFilterOption, String created_Date, String rescheduledStartDate, String rescheduledEndDate, String rescheduledStartTime, String rescheduledEndTime) throws Exception
+	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods={"candidateEnrollmentByUploadForRozgarMelaTC_05", "candidateSelfEnrollmentForRozgarMelaTC_06"})
+	public void linkingEmployerForRozgarMelaTC_07(String rozgarMelaID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String employerPassword) throws Exception
 	{
-		if(serialNum.equals("3"))
-		{
-			Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
-			LoginPage lp=new LoginPage(driver);
-			lp.clickLogin();
-			Thread.sleep(2000);
-		    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
-		    bvp.clickToClose();
-		    Thread.sleep(2000);
-			EnterLoginPage elp=new EnterLoginPage(driver);
-			elp.performlogin(rozgarSTSE_ID, rozgarSTSE_Password);
-			WebDriverWait wait=new WebDriverWait(driver, 20);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			RozgarSTSE_DashboardPage rstd=new RozgarSTSE_DashboardPage(driver);
-			rstd.clickViewRozgarMelas();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			RozgarSTSE_ViewRozgarMelasPage rvp=new RozgarSTSE_ViewRozgarMelasPage(driver);
-			rvp.enterRozgarMelaIDTosearch(rozgarMelaID);
-			rvp.clickTogetSearchresult();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rvp.clickToGetActionMenu();
-			rvp.clickToChooseViewMelaDetailsOption();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			RozgarSTSE_ViewRozgarMelaPage rsvp=new RozgarSTSE_ViewRozgarMelaPage(driver);
-			rsvp.clickToGoToParticipatingEmployersSection();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			rsvp.clickLinkEmployer();
-			rsvp.enterEmployerIDToSearch(employerID);
-			rsvp.clickSearch();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-			Assert.assertTrue(driver.findElement(By.xpath("//tr[td[text()='"+employerID+"']]")).isDisplayed(),"Link Employer : No show of searched employer ID");
-		}
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(rozgarSTSE_ID, rozgarSTSE_Password);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		RozgarSTSE_DashboardPage rstd=new RozgarSTSE_DashboardPage(driver);
+		rstd.clickViewRozgarMelas();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		RozgarSTSE_ViewRozgarMelasPage rvp=new RozgarSTSE_ViewRozgarMelasPage(driver);
+		rvp.enterRozgarMelaIDTosearch(rozgarMelaID);
+		rvp.clickTogetSearchresult();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rvp.clickToGetActionMenu();
+		rvp.clickToChooseViewMelaDetailsOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		RozgarSTSE_ViewRozgarMelaPage rsvp=new RozgarSTSE_ViewRozgarMelaPage(driver);
+		rsvp.clickToGoToParticipatingEmployersSection();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		rsvp.clickLinkEmployer();
+		rsvp.enterEmployerIDToSearch(employerID);
+		rsvp.clickSearch();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Assert.assertTrue(driver.findElement(By.xpath("//tr[td[text()='"+employerID+"']]")).isDisplayed(),"Link Employer : No show of searched employer ID");
+		rsvp.clickToSelectEmployerToLink();
+		rsvp.clickToAlignSelectedEmployers();
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Selected Employers has been Linked to Rozgar Mela: "+rozgarMelaID);
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();	
+	}
+	
+	@Test(dataProvider="enrolLinkJobVacancyData", dependsOnMethods="linkingEmployerForRozgarMelaTC_07")
+	public void jobVacancyCreationForRozgarMelaTC_08(String rozgarMelaID, String jobID, String rozgarMelaName, String rmspocID, String rmspocPassword, String candidateListFile, String candidateID_SelfEnrollment, String candidatePassword_SelfEnrollment, String rozgarSTSE_ID, String rozgarSTSE_Password, String employerID, String companyName, String employerPassword, String jobTitle, String jobVacancyCount, String jobSector, String eligibilityCriteria, String jobDescription, String selectionProcess, String monthlyCompensation, String otherMonthlyIncentives, String workingHoursPerDay, String daysOffPerMonth, String jobLocationAddress, String jobLocationPinCode, String jobLocationState, String jobLocationDistrict, String jobFairSpocName, String jobFairSpocEmail, String jobFairSpocMobileNumber) throws Exception
+	{
+		Assert.assertTrue(driver.getTitle().equalsIgnoreCase("SDMS - Skill Development & Management System"),"Sorry!! Application URL Launch Unsuccessfull!!! ");
+		LoginPage lp=new LoginPage(driver);
+		lp.clickLogin();
+		Thread.sleep(2000);
+	    BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+	    bvp.clickToClose();
+	    Thread.sleep(2000);
+		EnterLoginPage elp=new EnterLoginPage(driver);
+		elp.performlogin(employerID, employerPassword);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Employer_RozgarMelaPage erp=new Employer_RozgarMelaPage(driver);
+		erp.enterRozgarMelaIdTosearch(rozgarMelaID);
+		erp.clickToApplySearchFilters();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		erp.clickToGetActionMenuOptions();
+		erp.chooseCreateJobVacancyOption();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Employer_JobVacancyCreationPage ejp=new Employer_JobVacancyCreationPage(driver);
+		Assert.assertEquals(driver.findElement(By.cssSelector("input#associatedRozgarMela")).getAttribute("value").trim(), rozgarMelaID);	
+		Assert.assertEquals(driver.findElement(By.cssSelector("input#companyName")).getAttribute("value").trim(), companyName);	
+		ejp.enterJobTitle(jobTitle);
+		ejp.enterJobVacancyCount(jobVacancyCount);
+		ejp.selectJobSector(jobSector);
+		ejp.selectEligibilityCriteria(eligibilityCriteria);
+		ejp.enterJobDescription(jobDescription);
+		ejp.enterSelectionProcess(selectionProcess);
+		ejp.enterMonthlyCompensation(monthlyCompensation);
+		ejp.enterOtherMonthlyIncentives(otherMonthlyIncentives);
+		ejp.enterWorkingHoursPerDay(workingHoursPerDay);
+		ejp.enterDaysOffPerMonth(daysOffPerMonth);
+		ejp.enterJobLocationAddress(jobLocationAddress);
+		ejp.enterJobLocationPinCode(jobLocationPinCode);
+		ejp.selectJobLocationState(jobLocationState);
+		ejp.selectJobLocationDistrict(jobLocationDistrict);
+		ejp.clickToSubmitAndProceedForJobFairSpoc();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		ejp.enterJobFairSpocName(jobFairSpocName);
+		ejp.enterJobFairSpocEmail(jobFairSpocEmail);
+		ejp.enterJobFairSpocMobileNumber(jobFairSpocMobileNumber);
+		ejp.clickSubmit();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		ejp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		ejp.clickToGoToOfferedJobVacanciesSection();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		String createdJobID=driver.findElement(By.xpath("//tr[td[contains(text(),'"+employerID+"')]]//td[2]")).getText().trim();
+		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Enroll_Link_Vacancy", 1, 1, createdJobID);
+		ejp.clickPostAndSubmit();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), "Successfully Aligned For  "+rozgarMelaName);
+		ejp.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		PostLoginPage plp=new PostLoginPage(driver);
+		plp.clickOnProfileLogo();
+		Thread.sleep(2000);
+		plp.clickOnLogout();
 	}
 }
