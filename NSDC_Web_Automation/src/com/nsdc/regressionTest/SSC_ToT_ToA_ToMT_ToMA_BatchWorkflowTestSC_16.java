@@ -197,7 +197,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchCreation",Integer.parseInt(serialNum) , 1, createdBatchID);
 		Assert.assertEquals(driver.findElement(By.id("swal2-title")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+") is successfully created");
 		sscTbcP.clickOk();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Name')]]]/div[3]")).getText().trim(), batchType+"/"+trainingStartDate+" to "+trainingEndDate+"("+createdBatchID+")");
 		Assert.assertEquals(driver.findElement(By.xpath("(//div[div[span[contains(text(),'Sector')]]]/div[3])[1]")).getText().trim(), expectedSector);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[div[span[contains(text(),'Batch Type')]]]/div[3]")).getText().trim(), batchType);
@@ -1817,6 +1817,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchRejection",Integer.parseInt(serialNum) , 1, createdBatchID);
 		Thread.sleep(4000);
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		//STEP 2 OF BATCH CREATION -> Assigning Training Centre  and Assigning To Batches
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		js.executeScript("window.scrollBy(0,500)", "");
@@ -2696,6 +2697,7 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 		String createdBatchID=parts[parts.length-1];
 		ReadWriteData.setExcelData("./TestData/Workflow/SSC-ToT-ToA-ToMT-ToMA-Batch-Workflow.xls", "BatchReSchedule-Cancel",Integer.parseInt(serialNum) , 1, createdBatchID);
 		sscTbcP.clickOk();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("swal2-container.swal2-center.swal2-fade.swal2-shown")));
 		//STEP 2 OF BATCH CREATION -> Assigning Location Based Training Centre
 		SSC_ViewBatchDetailsPage sVbP=new SSC_ViewBatchDetailsPage(driver);
 		js.executeScript("window.scrollBy(0,500)", "");

@@ -147,7 +147,10 @@ public class NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11 extends TestConfiguration
 		Assert.assertTrue(driver.getCurrentUrl().contains("create-rozgar-mela-success"),"OMG!!! Navigation to Create Rozgar Mela Success page is unsuccessful OR Something wrong! ");
 		String createdRozgarMelaID=driver.findElement(By.xpath("(//p[contains(text(),'You have successfully created a')]/span)[2]")).getText().trim().replace('"', ' ').replaceAll(" ", "");
 		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "RozgarMelas", rowNum, 1, createdRozgarMelaID);
-		ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Enroll_Link_Vacancy", 1, 0, createdRozgarMelaID);
+		if(serialNum.equals("3"))
+		{
+			ReadWriteData.setExcelData("./TestData/Workflow/NSDC_RMSPOC_RozgarMela-Workflow.xls", "Enroll_Link_Vacancy", 1, 0, createdRozgarMelaID);
+		}
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 		rmCp.clickAnnounceToStakeholders();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("swal2-title")));
