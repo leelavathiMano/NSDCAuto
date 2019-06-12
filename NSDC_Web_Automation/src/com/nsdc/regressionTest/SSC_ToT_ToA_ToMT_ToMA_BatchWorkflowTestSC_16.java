@@ -233,7 +233,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")));
-		Assert.assertTrue(driver.findElements(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")).size()==1,"OMG!!! No show of Searched Master Trainer  - "+dmasterTrainerID+" for Domain QP -"+domainJobRoleCode);
 		sVbP.clickToChooseDomainMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
