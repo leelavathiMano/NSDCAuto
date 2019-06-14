@@ -232,7 +232,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 		sVbP.selectDomainAssignMasterTrainerOption();
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")));
 		sVbP.clickToChooseDomainMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));
@@ -1836,7 +1835,6 @@ public class SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16 extends TestConfigurat
 		sVbP.selectDomainAssignMasterTrainerOption();
 		sVbP.enterDomainMasterTrainerIDToSearch(dmasterTrainerID);
 		sVbP.clickToGetDomainMasterSearchFilterResult();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'"+dmasterTrainerID+"')]")));
 		sVbP.clickToChooseDomainMasterTrainer();
 		sVbP.clickToFinallyAssignSelectedDomainMasterTrainer();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'OK')]")));		
