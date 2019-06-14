@@ -26,7 +26,9 @@ public class TPSPOCChangeWorkflowTestSC_13 extends TestConfiguration
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.clickLogin();
-		
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		Thread.sleep(3000);
+		bsp.clickToClose();
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
 		
@@ -34,8 +36,8 @@ public class TPSPOCChangeWorkflowTestSC_13 extends TestConfiguration
 		Thread.sleep(12000);
 		tpd.clickOnChangeMySPOC();
 		Thread.sleep(3000);
-		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-		bsp.clickToClose();
+		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		//bsp.clickToClose();
 		Thread.sleep(3000);
 		TP_SPOCChangePage tpsp = new TP_SPOCChangePage(driver);
 		tpsp.enterTP_SPOCFullName(spocName);
