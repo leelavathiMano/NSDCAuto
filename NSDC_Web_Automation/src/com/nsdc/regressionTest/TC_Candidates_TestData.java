@@ -59,7 +59,7 @@ public class TC_Candidates_TestData extends TestConfiguration
 		String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
 	    ReadWriteData.setExcelData("./TestData/Workflow/TC_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 11, selectedDateOfBirth);
 	    tcCrp.selectMaritalStatus(maritalStatus);
-		tcCrp.enterPlaceOfBirth(placeOfBirth);
+//		tcCrp.enterPlaceOfBirth(placeOfBirth);
 		tcCrp.selectBirthState(birthState);
 		Thread.sleep(2000);
 		tcCrp.selectBirthDistrict(birthDistrict);
@@ -99,7 +99,7 @@ public class TC_Candidates_TestData extends TestConfiguration
 			tcCrp.clickToChooseAlternateId();
 			tcCrp.selectAlternateIdtype(alternateIdType);
 			tcCrp.enterAlternateID(alternateID);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			tcCrp.clickToBrowseAlternateIdFile();
 			Thread.sleep(1000);
 			UploadFile.upload(alternateIdFile);
@@ -138,10 +138,14 @@ public class TC_Candidates_TestData extends TestConfiguration
 		Thread.sleep(5000);
 		//Education
 		tcCrp.selectEducation(education1);
-//		tcCrp.selectYearOfPassing(yearOfPassing1);
-//		tcCrp.clickToBrowseEducationProofDoc();
-//		UploadFile.upload(education1Proof);
-//		tcCrp.clickToUploadEducationProof();
+		tcCrp.selectYearOfPassing(yearOfPassing1);
+		Thread.sleep(2000);
+		tcCrp.clickToBrowseEducationProofDoc();
+		Thread.sleep(2000);
+		UploadFile.upload(education1Proof);
+		Thread.sleep(2000);
+		tcCrp.clickToUploadEducationProof();
+		Thread.sleep(4000);
 		//Candidate Experience
 		tcCrp.selectPreTrainingStatus(preTrainingStatus);
 		if(preTrainingStatus.equalsIgnoreCase("experienced"))

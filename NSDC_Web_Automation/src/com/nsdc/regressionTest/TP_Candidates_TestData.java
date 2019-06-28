@@ -61,7 +61,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 		String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
 	    ReadWriteData.setExcelData("./TestData/Workflow/TP_CandidateTestData-Workflow.xls", "Individual_Registration", Integer.parseInt(serialNum), 11, selectedDateOfBirth);
 	  	tpCrp.selectMaritalStatus(maritalStatus);
-		tpCrp.enterPlaceOfBirth(placeOfBirth);
+//		tpCrp.enterPlaceOfBirth(placeOfBirth);
 		tpCrp.selectBirthState(birthState);
 		Thread.sleep(2000);
 		tpCrp.selectBirthDistrict(birthDistrict);
@@ -139,10 +139,14 @@ public class TP_Candidates_TestData extends TestConfiguration
 		Thread.sleep(5000);
 		//Education
 		tpCrp.selectEducation(education1);
-//		tpCrp.selectYearOfPassing(yearOfPassing1);
-//		tpCrp.clickToBrowseEducationProofDoc();
-//		UploadFile.upload(education1Proof);
-//		tpCrp.clickToUploadEducationProof();
+		tpCrp.selectYearOfPassing(yearOfPassing1);
+		Thread.sleep(2000);
+		tpCrp.clickToBrowseEducationProofDoc();
+		Thread.sleep(2000);
+		UploadFile.upload(education1Proof);
+		Thread.sleep(2000);
+		tpCrp.clickToUploadEducationProof();
+		Thread.sleep(4000);
 		//Candidate Experience
 		tpCrp.selectPreTrainingStatus(preTrainingStatus);
 		if(preTrainingStatus.equalsIgnoreCase("experienced"))
