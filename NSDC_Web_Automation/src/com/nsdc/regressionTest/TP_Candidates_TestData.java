@@ -27,6 +27,7 @@ public class TP_Candidates_TestData extends TestConfiguration
 	@Test(dataProvider="individualCandidateRegistrationData")
 	public void tpCandidatesRegistrationTC_01(String serialNum, String candidateID, String trainingPartnerID, String trainingPartnerPassword, String namePrefix, String fullName, String profilePicture, String countryCode, String mobileNumber, String emailID, String gender, String dob, String maritalStatus, String placeOfBirth, String birthState, String birthDistrict, String cast, String religion, String isDisabled, String disablity, String disabilityProofDoc, String motherName, String fatherName, String guardianName, String aadhaarOrAlterternateId, String aadhaarNumber, String alternateIdType, String alternateID, String alternateIdFile, String address, String village, String state, String district, String subDistrict, String pincode, String parlimentaryConstituency, String isCommunicationAddressSameAsPermanentAddress, String cAddress, String cVillage, String cState, String cDistrict, String cSubDistrict, String cPincode, String cParlimentaryConstituency, String education1, String specialisation1, String yearOfPassing1, String education1Proof, String education2, String specialisation2, String othersEducationName, String yearOfPassing2, String education2Proof, String preTrainingStatus, String experienceInMonths, String hearAboutUs, String sector1, String subSector1, String jobRole1, String jobRoleCode1, String sector2, String subSector2, String jobRole2, String jobRoleCode2, String locationSPOC, String accountNumber, String ifsc, String bankName, String bankAddress, String boardingAndLodging) throws Exception
 	{
+		if(Integer.parseInt(serialNum)==19) {
 		LoginPage lp=new LoginPage(driver);
 		lp.clickLogin();
 		EnterLoginPage elp=new EnterLoginPage(driver);
@@ -101,12 +102,12 @@ public class TP_Candidates_TestData extends TestConfiguration
 			tpCrp.clickToChooseAlternateId();
 			tpCrp.selectAlternateIdtype(alternateIdType);
 			tpCrp.enterAlternateID(alternateID);
-			Thread.sleep(1000);
-			tpCrp.clickToBrowseAlternateIdFile();
+			Thread.sleep(3000);
+			tpCrp.clickToBrowseAlternateIdFile(isDisabled);
 			Thread.sleep(1000);
 			UploadFile.upload(alternateIdFile);
 			Thread.sleep(1000);
-			tpCrp.clickToUploadAlternateIdFile();
+			tpCrp.clickToUploadAlternateIdFile(isDisabled);
 			Thread.sleep(4000);
 		}
 		tpCrp.enterAddress(address);
@@ -172,6 +173,6 @@ public class TP_Candidates_TestData extends TestConfiguration
 		Thread.sleep(5000);
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
-		plp.clickOnLogout();	
+		plp.clickOnLogout();	}
 	}
 }
