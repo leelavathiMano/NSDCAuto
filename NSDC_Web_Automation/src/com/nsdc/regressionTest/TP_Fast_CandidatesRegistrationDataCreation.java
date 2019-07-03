@@ -90,7 +90,7 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 			tpMp.clickToChooseIndividualCandidateRegistration();
 			tpMp.clickRegister();
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			//Personal Details Page
 			TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 			tpCrp.selectNamePrefix(namePrefix);
@@ -109,7 +109,7 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			tpCrp.clickToSelectDOB();
 			String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
 		    ReadWriteData.setExcelData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 11, selectedDateOfBirth);
-		  	tpCrp.selectMaritalStatus(maritalStatus);
+//		  	tpCrp.selectMaritalStatus(maritalStatus);
 //			tpCrp.enterPlaceOfBirth(placeOfBirth);
 			tpCrp.selectBirthState(birthState);
 			Thread.sleep(2000);
@@ -163,10 +163,10 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			Thread.sleep(2000);
 			tpCrp.selectDistrict(district);	
 			Thread.sleep(2000);
-			tpCrp.selectSubDistrict(subDistrict);
-			Thread.sleep(2000);
+//			tpCrp.selectSubDistrict(subDistrict);
+//			Thread.sleep(2000);
 			tpCrp.enterPincode(pincode);
-			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
+//			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(5000);
