@@ -32,7 +32,7 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			String jobRoleCode1=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 9);
 			String namePrefix=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 4);
 			String fullName=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 5);
-		//	String profilePicture=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 6);
+			String profilePicture=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 6);
 			String countryCode=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 7);
 			String mobileNumber=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 8);
 			String emailID=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 9);
@@ -95,11 +95,13 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 			tpCrp.selectNamePrefix(namePrefix);
 			tpCrp.enterFullName(fullName);
-//			tpCrp.clickToBrowseProfilePicture();
-//			UploadFile.upload(profilePicture);
-//			Thread.sleep(2000);
-//			tpCrp.clickToUploadProfilePicture();
-//			Thread.sleep(6000);
+			Thread.sleep(2000);
+			tpCrp.clickToBrowseProfilePicture();
+			Thread.sleep(2000);
+			UploadFile.upload(profilePicture);
+			Thread.sleep(2000);
+			tpCrp.clickToUploadProfilePicture();
+			Thread.sleep(4000);
 			tpCrp.selectCountryCode(countryCode);
 			tpCrp.enterMobileNumber(mobileNumber);
 			tpCrp.enterEmailID(emailID);
