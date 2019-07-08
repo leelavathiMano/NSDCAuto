@@ -48,7 +48,7 @@ public class TC_CandidateRegistrationPage
 	private WebElement disabilityNoRadioButton;
 	@FindBy(xpath="//select[@formcontrolname='disabilityCategory']")
 	private WebElement disabilityDropdownList;
-	@FindBy(xpath="(//input[@class='custom-file-input '])[2]")
+	@FindBy(xpath="(//input[@id='customFile'])[2]")
 	private WebElement browseButton2;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
 	private WebElement uploadButton2;
@@ -181,9 +181,13 @@ public class TC_CandidateRegistrationPage
 	@FindBy(xpath="//input[@formcontrolname='alternateIdNumber']")
 	private WebElement alternateIdNumberTextField;
 	@FindBy(xpath="(//input[@id='customFile'])[2]")
-	private WebElement alternateIdFileBrowseButton;
+	private WebElement alternateIdFileBrowseButton1;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
-	private WebElement alternateIdUploadButton;
+	private WebElement alternateIdUploadButton1;
+	@FindBy(xpath="(//input[@id='customFile'])[3]")
+	private WebElement alternateIdFileBrowseButton2;
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[3]")
+	private WebElement alternateIdUploadButton2;
 	@FindBy(xpath="//input[@formcontrolname='aadharNumber']")
 	private WebElement aadhaarNumberTextField;
 	@FindBy(xpath="//button[contains(text(),'Verify')]")
@@ -608,13 +612,28 @@ public class TC_CandidateRegistrationPage
 		alternateIdNumberTextField.clear();
 		alternateIdNumberTextField.sendKeys(alternateID);
 	}
-	public void clickToBrowseAlternateIdFile()
+	public void clickToBrowseAlternateIdFile(String isDisabled)
 	{
-		alternateIdFileBrowseButton.click();
+		if(isDisabled.equalsIgnoreCase("yes"))
+		{
+			alternateIdFileBrowseButton2.click();
+		}
+		else
+		{
+			alternateIdFileBrowseButton1.click();
+		}
+		
 	}
-	public void clickToUploadAlternateIdFile()
+	public void clickToUploadAlternateIdFile(String isDisabled)
 	{
-		alternateIdUploadButton.click();
+		if(isDisabled.equalsIgnoreCase("yes"))
+		{
+			alternateIdUploadButton2.click();
+		}
+		else
+		{
+			alternateIdUploadButton1.click();
+		}
 	}
 	public void selectPreTrainingStatus(String pretrainingStatus)
 	{

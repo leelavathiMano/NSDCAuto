@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class TC_MyCandidatesPage
 {
 	WebDriver driver;
-	@FindBy(linkText="Register Candidate")
+	@FindBy(xpath="//span[contains(text(),'Register Candidate')]")
 	private WebElement registerCandidateLink;
 	@FindBy(xpath="(//label[@class='m-radio'])[1]")
 	private WebElement bulkExcelSheetUploadRadioButton;
