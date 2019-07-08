@@ -100,11 +100,11 @@ public class TC_Candidates_TestData extends TestConfiguration
 			tcCrp.selectAlternateIdtype(alternateIdType);
 			tcCrp.enterAlternateID(alternateID);
 			Thread.sleep(2000);
-			tcCrp.clickToBrowseAlternateIdFile();
+			tcCrp.clickToBrowseAlternateIdFile(isDisabled);
 			Thread.sleep(1000);
 			UploadFile.upload(alternateIdFile);
 			Thread.sleep(1000);
-			tcCrp.clickToUploadAlternateIdFile();
+			tcCrp.clickToUploadAlternateIdFile(isDisabled);
 			Thread.sleep(4000);
 		}
 		tcCrp.enterAddress(address);
