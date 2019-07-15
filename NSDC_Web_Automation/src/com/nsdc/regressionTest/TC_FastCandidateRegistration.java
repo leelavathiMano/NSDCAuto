@@ -84,8 +84,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				js.executeScript("window.scrollBy(0,500)", "");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcCrp.clickMyCandidates();
-				Thread.sleep(3000);
-//				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcMp.clickRegisterCandidate();
 				Thread.sleep(1000);
 			}
