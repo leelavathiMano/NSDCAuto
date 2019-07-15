@@ -85,7 +85,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcCrp.clickMyCandidates();
 				Thread.sleep(1000);
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcMp.clickRegisterCandidate();
 				Thread.sleep(1000);
 			}
@@ -148,7 +148,8 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			{
 				tcCrp.clickToChooseAadhaar();
 				tcCrp.enterAadhaarNumber(aadhaarNumber);
-				tcCrp.clickToVerifyAadhaar();
+//				tcCrp.clickToVerifyAadhaar();
+				tcCrp.clickDummyVerify();
 				Thread.sleep(2000);
 			}
 			else
@@ -213,9 +214,9 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			tcCrp.clickSaveAndContinue();
 			Thread.sleep(5000);
 			//hearaboutus and Course Preferences Page
-			tcCrp.selectSector(sector1);
-			tcCrp.selectSubSector(subSector1);
-			tcCrp.selectJobRole(jobRole1, jobRoleCode1);
+//			tcCrp.selectSector(sector1);
+//			tcCrp.selectSubSector(subSector1);
+//			tcCrp.selectJobRole(jobRole1, jobRoleCode1);
 			Thread.sleep(2000);
 			tcCrp.clickSaveAndContinue();
 			Thread.sleep(5000);

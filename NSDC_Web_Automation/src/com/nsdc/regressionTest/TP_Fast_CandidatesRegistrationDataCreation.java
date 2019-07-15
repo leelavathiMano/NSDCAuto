@@ -7,9 +7,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
+import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
+import com.nsdc.pages.TC_CandidateRegistrationPage;
+import com.nsdc.pages.TC_MyCandidatesPage;
 import com.nsdc.pages.TrainingPartnerDashboardPage;
 import com.nsdc.pages.TrainingPartner_CandidateRegistrationPage;
 import com.nsdc.pages.TrainingPartner_MyCandidatesPage;
@@ -73,14 +76,27 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			{
 				LoginPage lp=new LoginPage(driver);
 				lp.clickLogin();
+				Thread.sleep(2000);
+				BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+		        bvp.clickToClose();
+		        Thread.sleep(2000);
 				EnterLoginPage elp=new EnterLoginPage(driver);
 				elp.performlogin(trainingPartnerID, trainingPartnerPassword);
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				JavascriptExecutor js=(JavascriptExecutor)driver;
 				js.executeScript("window.scrollBy(0,500)", "");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+				js.executeScript("window.scrollBy(0,500)", "");
+				Thread.sleep(1000);
 				tDp.clickOnRegisterCandidate();
 				tDp.clickOnRegisterCandidate();
 //				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//				TC_CandidateRegistrationPage tcCrp=new TC_CandidateRegistrationPage(driver);
+//				tcCrp.clickMyCandidates();
+//				Thread.sleep(1000);
+//				TC_MyCandidatesPage tcMp=new TC_MyCandidatesPage(driver);
+//				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
+//				tcMp.clickRegisterCandidate();
+//				Thread.sleep(1000);
 			}
 			if(i!=1)
 			{
@@ -142,7 +158,8 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			{
 				tpCrp.clickToChooseAadhaar();
 				tpCrp.enterAadhaarNumber(aadhaarNumber);
-				tpCrp.clickToVerifyAadhaar();
+//				tpCrp.clickToVerifyAadhaar();
+				tpCrp.clickDummyVerify();
 				Thread.sleep(2000);
 			}
 			else

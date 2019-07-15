@@ -12,7 +12,8 @@ public class TC_CandidateRegistrationPage
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
 	private WebElement myCandidatesLinktext;
-	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+//	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+	@FindBy(id="exampleSelect1")
 	private WebElement namePrefixDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='firstName']")
 	private WebElement fullNameTextbox;
@@ -198,6 +199,8 @@ public class TC_CandidateRegistrationPage
 	private WebElement candidateExperienceMonthsDropdownList;
 	@FindBy(xpath="//select[@formcontrolname='sectorId']")
 	private WebElement candidateExperienceYearDropdownList;
+	@FindBy(xpath="//button[contains(text(),'Dummy Verify')]")
+	private WebElement dummyVerifyButton;
 	
 	public TC_CandidateRegistrationPage(WebDriver driver)
     {
@@ -642,5 +645,9 @@ public class TC_CandidateRegistrationPage
 	public void selectExperienceMonths(String experienceMonths)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceMonthsDropdownList, experienceMonths);
+	}
+	public void clickDummyVerify()
+	{
+		dummyVerifyButton.click();
 	}
 }
