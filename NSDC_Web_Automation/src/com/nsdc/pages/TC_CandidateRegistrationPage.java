@@ -1,10 +1,15 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.nsdc.generic.SelectDropDownList;
 
 public class TC_CandidateRegistrationPage
@@ -222,7 +227,9 @@ public class TC_CandidateRegistrationPage
 	}
 	public void clickToBrowseProfilePicture()
 	{
-		browseButton1.click();
+//		browseButton1.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", browseButton1);
 	}
 	public void clickToUploadProfilePicture()
 	{
@@ -303,7 +310,9 @@ public class TC_CandidateRegistrationPage
 	}
 	public void clickToBrowsedisabilityProofDoc()
 	{
-		browseButton2.click();
+//		browseButton2.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", browseButton2);
 	}
 	public void clickToUploadDisabilityProofDoc()
 	{
@@ -332,7 +341,6 @@ public class TC_CandidateRegistrationPage
 	}
 	public void enterPincode(String pincode)
 	{
-		pincodeTextField.clear();
 		pincodeTextField.sendKeys(pincode);
 	}
 	public void selectParlimentaryConstituency(String parlimentaryConstituency)
@@ -341,6 +349,10 @@ public class TC_CandidateRegistrationPage
 	}
 	public void clickSaveAndContinue()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.elementToBeClickable(saveAndContinueButton));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,150)", "");
 		saveAndContinueButton.click();
 	}
 	//contact details
