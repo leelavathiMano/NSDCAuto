@@ -142,8 +142,8 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			{
 				tcCrp.clickToChooseAadhaar();
 				tcCrp.enterAadhaarNumber(aadhaarNumber);
-				tcCrp.clickToVerifyAadhaar();
-//				tcCrp.clickDummyVerify();
+//				tcCrp.clickToVerifyAadhaar();
+				tcCrp.clickDummyVerify();
 			}
 			else
 			{
@@ -167,7 +167,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
 			//Contact Details Page
@@ -176,6 +176,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			String registeredCandidateID=parts[parts.length-1];
 			ReadWriteData.setExcelData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 1, registeredCandidateID);
 			tcCrp.clickSameAsPermanetAddress();
+			Thread.sleep(2000);
 			tcCrp.enterAccountHolderName(fullName);	
 			tcCrp.enterAccountNumber(accountNumber);
 			tcCrp.enterIFSC(ifsc);
@@ -185,14 +186,14 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(8000);
+			Thread.sleep(2000);
 			//Education
 			tcCrp.selectEducation(education1);
 			tcCrp.selectYearOfPassing(yearOfPassing1);
 			tcCrp.clickToBrowseEducationProofDoc();
 			Thread.sleep(2000);
 			UploadFile.upload(education1Proof);
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			tcCrp.clickToUploadEducationProof();
 			Thread.sleep(4000);
 			//Candidate Experience
@@ -211,7 +212,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 //			tcCrp.selectSubSector(subSector1);
 //			tcCrp.selectJobRole(jobRole1, jobRoleCode1);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			tcCrp.clickIAgree();
 			Thread.sleep(1000);
 			tcCrp.clickToAgreeAndSubmit();
