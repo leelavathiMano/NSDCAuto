@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Qpnos_createpage {
 	WebDriver driver;
 	 //declaration
-	@FindBy(xpath="(//span[@class='m-menu__link-text'])[3]")
+	@FindBy(xpath="(//span[@class='m-menu__link-text'])[2]")
 	private WebElement QPNosmodelCirrculamButton;	
 	@FindBy(xpath="(//div[contains(@class,'card-text')])[1]")
 	private WebElement createnos;
