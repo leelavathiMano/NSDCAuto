@@ -101,6 +101,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			tcCrp.clickToBrowseProfilePicture();
 			Thread.sleep(2000);
 			UploadFile.upload(profilePicture);
+			Thread.sleep(2000);
 			tcCrp.clickToUploadProfilePicture();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
 //			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
