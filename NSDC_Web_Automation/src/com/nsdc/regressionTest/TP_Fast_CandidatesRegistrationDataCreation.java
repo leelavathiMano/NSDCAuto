@@ -82,29 +82,19 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 		        Thread.sleep(2000);
 				EnterLoginPage elp=new EnterLoginPage(driver);
 				elp.performlogin(trainingPartnerID, trainingPartnerPassword);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				JavascriptExecutor js=(JavascriptExecutor)driver;
-				js.executeScript("window.scrollBy(0,500)", "");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,500)", "");
 				Thread.sleep(1000);
 				tDp.clickOnRegisterCandidate();
 				tDp.clickOnRegisterCandidate();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-				TC_CandidateRegistrationPage tcCrp=new TC_CandidateRegistrationPage(driver);
-				tcCrp.clickMyCandidates();
-				Thread.sleep(1000);
-				TC_MyCandidatesPage tcMp=new TC_MyCandidatesPage(driver);
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
-				tcMp.clickRegisterCandidate();
-				Thread.sleep(1000);
 			}
 			if(i!=1)
 			{
-				driver.navigate().refresh();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tDp.clickOnRegisterCandidate_InViewMyCandidate();
 			}
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 			TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 			tpMp.clickToChooseIndividualCandidateRegistration();
 			Thread.sleep(1000);
