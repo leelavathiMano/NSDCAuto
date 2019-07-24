@@ -13,9 +13,6 @@ import com.nsdc.pages.CAMPS_DashboardPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
-import com.nsdc.pages.TrainingPartnerDashboardPage;
-import com.nsdc.pages.TrainingPartner_CandidateRegistrationPage;
-import com.nsdc.pages.TrainingPartner_MyCandidatesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class CAMPS_CandidatesRegistration extends TestConfiguration
@@ -83,7 +80,6 @@ public class CAMPS_CandidatesRegistration extends TestConfiguration
 				EnterLoginPage elp=new EnterLoginPage(driver);
 				elp.performlogin(trainingPartnerID, trainingPartnerPassword);
 				JavascriptExecutor js=(JavascriptExecutor)driver;
-				js.executeScript("window.scrollBy(0,500)", "");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,500)", "");
 				Thread.sleep(1000);
