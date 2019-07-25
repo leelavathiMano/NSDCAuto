@@ -2,6 +2,7 @@ package com.nsdc.regressionTest;
 
 
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -26,9 +27,14 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
 	@Test(dataProvider="createNosdata")
 	public void addCreateNosdata(String username , String password , String sector, String polutry,String occupation, 
 	String credits, String nsqflevel, String nosname, String nosdescripation, String nosscope , 
-	String nextreviewperiod, String elementname,String enterTheperformanceCriteria,String yes,
+	String nextreviewperiod, String elementname,String enterTheperformanceCriteria,String E1pc2,String e2name,
+	String e2pc1,String e2pc2,String yes,
 	String knowledgeAndUnderstaningTextbox,String genericskill,String assessment,String minimumScore,
-	String theoryMarks,String practicalMarks,String projectMarks,String vivamarks,String acronmyskeyword,
+	String theoryMarks,String practicalMarks,String projectMarks,String vivamarks,
+	String e1pc2TheoryMarks,String e1pc2practicalMarks,String e1pc2projectMarks,String e1pc2Vivamarks,
+	String e2pc1TheoryMarks,String e2pc1practicalMarks,String e2pc1projectMarks,String e2pc1Vivamarks,
+	String e2pc2TheoryMarks,String e2pc2practicalMarks,String e2pc2projectMarks,String e2pc2Vivamarks,
+	String acronmyskeyword,
 	String acronmysDescription,String glossaryKeyword,String glossaryDescription,String governmentDoc,
 	String rfpDoc,String aboutsector,String labourMarketCity,String stakeholder,String occupationalmapping,
 	String functionalAnalysis,String approvalQNos,String qfileQcNs,String qrcPresenation,String qrcSummarySheet,
@@ -63,7 +69,7 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
 	qpNos.selectCredits(credits);
 	qpNos.selectNSQFlevel(nsqflevel);
 //	qpNos.setNOsName(nosname);
-	qpNos.setNOsName("suprafhaa");
+	qpNos.setNOsName("pdpSheqers");
 	qpNos.enterNOsDescription(nosdescripation);
 	qpNos.entersetNosScope(nosscope);
 	qpNos.enterSetNextReviewPeriod(nextreviewperiod);
@@ -77,13 +83,29 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
 	//	System.out.println("Nos name should be displyed");
 	//}
 	Thread.sleep(3000);
+	qpNos.clickInsertElement();
 	qpNos.enterTheFirstElement(elementname);
 	qpNos.clickSaveButton();
 	Thread.sleep(3000);
 	qpNos.enterThePerformanceCriteria(enterTheperformanceCriteria);
 	qpNos.clickOnAddPc();
+	qpNos.enterThePC2E1(E1pc2);
+	qpNos.clickAddPc2();
+	JavascriptExecutor js=(JavascriptExecutor)driver;
+	 js.executeScript("window.scrollBy(0,500)");
+	//E2pc1
+	Thread.sleep(2000);
+	qpNos.clickElement2Icon();
+	qpNos.enterTheElement2(e2name);
+	qpNos.enterElement2PC1( e2pc1);
+	qpNos.clickAddPcOfE2pc1();
+	Thread.sleep(2000);
+	//E2Pc2
+	qpNos.enterPC2OfE2(e2pc2);
+	qpNos.clickAddpc2E2();
 	qpNos.clickSaveAndContinouBtton();
 	Thread.sleep(3000);
+	
 	//KU
 	qpNos.enterTheKnowledgeAndUnderstandingTextbox(knowledgeAndUnderstaningTextbox);
 	qpNos.clickOnAddKU();
@@ -99,12 +121,45 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
 	//Assessment
 	qpNos.enterGuidelinesAssessment(assessment);
 	qpNos.enterTheMinimumScore(minimumScore);
+	Thread.sleep(2000);
+	//e1pc1
 	qpNos.enterTheTheoryMarks(theoryMarks);
+	Thread.sleep(1000);
 	qpNos.enterThePracticalMarks(practicalMarks);
+	Thread.sleep(1000);
 	qpNos.enterTheProjectMarks(projectMarks);
+	Thread.sleep(1000);
 	qpNos.enterTheVivaMarks(vivamarks);
-
+	Thread.sleep(3000);
+	//e1pc2
+	qpNos.enterTheTheoryMarksOfE1Pc2(e1pc2TheoryMarks);
+	Thread.sleep(1000);
+	qpNos.enterThePracticalMarksOfE1pc2(e1pc2practicalMarks);
+	Thread.sleep(1000);
+	qpNos.enterTheProjectMarksOfE1pc2(e1pc2projectMarks);
+	Thread.sleep(1000);
+	qpNos.enterTheVivaMarksofE1pc2(e1pc2Vivamarks);
+	//e2pc1
+	Thread.sleep(3000);
+	//qpNos.enterTheElement2(e2name);
+	qpNos.enterTheTheoryMarksOfE2Pc1(e2pc1TheoryMarks);
+	Thread.sleep(1000);
+	qpNos.enterThePracticalMarksOfE2pc1(e2pc1practicalMarks);
+	Thread.sleep(1000);
+	qpNos.enterTheProjectMarksOfE2pc1(e2pc1projectMarks);
+	Thread.sleep(1000);
+	qpNos.enterTheVivaMarksofE2pc1(e2pc1Vivamarks);
+	Thread.sleep(3000);
+	//E2Pc2
+	qpNos.enterTheTheoryMarksOfE2Pc2(e2pc2TheoryMarks);
+	Thread.sleep(1000);
+	qpNos.enterThePracticalMarksOfE2pc2(e2pc2practicalMarks);
+	qpNos.enterTheProjectMarksOfE2pc2(e2pc2projectMarks);
+	Thread.sleep(1000);
+	qpNos.enterTheVivaMarksofE2pc2(e2pc2Vivamarks);
+	Thread.sleep(1000);
 	qpNos.clickSaveAndContinouBtton();
+	
 	//Acronyms
 	Thread.sleep(3000);
 	qpNos.enterAcronymsKeyword(acronmyskeyword);
