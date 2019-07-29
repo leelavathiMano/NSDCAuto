@@ -17,7 +17,7 @@ import com.nsdc.testConfig.TestConfiguration;
 public class TC_FastCandidateRegistration extends TestConfiguration
 {
 	@Test
-	public void tpRegisteringCandidates() throws Exception
+	public void tcRegisteringCandidates() throws Exception
 	{
 		String total_Candidates=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", 1, 1);
 		int totalCandidates=Integer.parseInt(total_Candidates);
@@ -196,7 +196,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			UploadFile.upload(education1Proof);
 			Thread.sleep(3000);
 			tcCrp.clickToUploadEducationProof();
-			Thread.sleep(4000);
+			Thread.sleep(5000);
 			//Candidate Experience
 			tcCrp.selectPreTrainingStatus(preTrainingStatus);
 			if(preTrainingStatus.equalsIgnoreCase("experienced"))
