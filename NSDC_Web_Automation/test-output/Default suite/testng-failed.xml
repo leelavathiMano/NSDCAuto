@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01">
+      <class name="extentReport.Extendreport">
         <methods>
+          <include name="addCreateNosdata" invocation-numbers="0"/>
           <include name="precondition"/>
           <include name="postcondition"/>
-          <include name="verifyLoginFailureTC_03" invocation-numbers="0"/>
-          <include name="LoginFailWithoutEnteringCredentialsTC_04"/>
           <include name="preSuite"/>
         </methods>
-      </class> <!-- com.nsdc.regressionTest.RegistrationAndLoginTestSC_01 -->
+      </class> <!-- extentReport.Extendreport -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

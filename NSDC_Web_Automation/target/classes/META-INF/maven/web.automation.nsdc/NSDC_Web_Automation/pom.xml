@@ -14,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
+    
      <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -43,12 +44,12 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>3.17</version>
+            <version>4.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>3.17</version>
+            <version>4.1.0</version>
         </dependency>
         <dependency>
             <groupId>net.sourceforge.jexcelapi</groupId>
@@ -65,13 +66,18 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.8.2</version>
         </dependency>
+       <dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>3.1.5</version>
+</dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>3.0.0-M3</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>RegressionSuite.xml</suiteXmlFile>
