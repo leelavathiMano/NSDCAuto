@@ -1,7 +1,14 @@
 package com.nsdc.regressionTest;
 
+import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadWriteData;
@@ -67,6 +74,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			String experienceInMonths=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 54);
 			
 			WebDriverWait wait=new WebDriverWait(driver,25);
+			FluentWait<WebDriver> fwait=new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 			TC_CandidateRegistrationPage tcCrp=new TC_CandidateRegistrationPage(driver);
 			TC_MyCandidatesPage tcMp=new TC_MyCandidatesPage(driver);
 			if(i==1)
@@ -99,9 +107,9 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			tcCrp.enterFullName(fullName);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(text(),'Candidate Full Name:')]")));
 			tcCrp.clickToBrowseProfilePicture();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			UploadFile.upload(profilePicture);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tcCrp.clickToUploadProfilePicture();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
 //			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
@@ -124,9 +132,9 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@formcontrolname='disabilityCategory']")));
 				tcCrp.selectDisablity(disablity);
 				tcCrp.clickToBrowsedisabilityProofDoc();
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				UploadFile.upload(disabilityProofDoc);
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				tcCrp.clickToUploadDisabilityProofDoc();
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'1 file uploaded successfully')]")));
 //				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'1 file uploaded successfully')]")));
@@ -152,7 +160,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				tcCrp.selectAlternateIdtype(alternateIdType);
 				tcCrp.enterAlternateID(alternateID);
 				tcCrp.clickToBrowseAlternateIdFile(isDisabled);
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				UploadFile.upload(alternateIdFile);
 				tcCrp.clickToUploadAlternateIdFile(isDisabled);
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
@@ -162,13 +170,13 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			tcCrp.selectState(state);
 			tcCrp.selectDistrict(district);	
 			wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(By.xpath("//select[@formcontrolname='subDistrict']"), By.tagName("option")));
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 //			tcCrp.selectSubDistrict(subDistrict);
 			tcCrp.enterPincode(pincode);
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
 			//Contact Details Page
@@ -177,12 +185,12 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			String registeredCandidateID=parts[parts.length-1];
 			ReadWriteData.setExcelData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 1, registeredCandidateID);
 			tcCrp.clickSameAsPermanetAddress();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tcCrp.enterAccountHolderName(fullName);	
 			tcCrp.enterAccountNumber(accountNumber);
 			tcCrp.enterIFSC(ifsc);
 			tcCrp.clickToGetAutopopulatedBankDetails();
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 //			tpCrp.enterBankName(bankName);
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
@@ -192,11 +200,11 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			tcCrp.selectEducation(education1);
 			tcCrp.selectYearOfPassing(yearOfPassing1);
 			tcCrp.clickToBrowseEducationProofDoc();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			UploadFile.upload(education1Proof);
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			tcCrp.clickToUploadEducationProof();
-			Thread.sleep(5000);
+			Thread.sleep(4000);
 			//Candidate Experience
 			tcCrp.selectPreTrainingStatus(preTrainingStatus);
 			if(preTrainingStatus.equalsIgnoreCase("experienced"))
@@ -205,7 +213,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				tcCrp.selectCandidateExperienceJobRole(jobRole1, jobRoleCode1);
 				tcCrp.selectExperienceMonths(experienceInMonths);
 			}
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			tcCrp.clickSaveAndContinue();
 			Thread.sleep(3000);
 			//hearaboutus and Course Preferences Page
@@ -213,7 +221,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 //			tcCrp.selectSubSector(subSector1);
 //			tcCrp.selectJobRole(jobRole1, jobRoleCode1);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			tcCrp.clickIAgree();
 			Thread.sleep(1000);
 			tcCrp.clickToAgreeAndSubmit();
