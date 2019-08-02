@@ -13,7 +13,7 @@ public class FilePreview
 		 
 		 Set<String> set =driver.getWindowHandles();	
 		 Iterator<String> itr= set.iterator();
-				
+		 
 		 while(itr.hasNext())
 		 {
 			 String childWindow=itr.next();

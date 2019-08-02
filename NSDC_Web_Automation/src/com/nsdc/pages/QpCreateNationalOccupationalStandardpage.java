@@ -65,85 +65,52 @@ public class QpCreateNationalOccupationalStandardpage
 
 	//elements and performance criteria
 	//insertElement
-	@FindBy(xpath="//button[div[text()='Add Another Element']]")
-	private WebElement addAnotherElement;
+	@FindBy(xpath="//button[text()='Insert Element']")
+	private WebElement insertButton;
 	
 	
 	
 	
 	
 	//element1:
-	@FindBy(xpath="(//input[@formcontrolname='element'])")
+	@FindBy(xpath="(//input[@formcontrolname='element'])[1]")
 	private WebElement element1TextBox;
-	@FindBy(xpath="//a[i[@class='la la-save green']]")
-	private WebElement  elementSaveButton;
+	
+	@FindBy(xpath="(//a)[19]")
+	private WebElement saveButton1;
+	
+	
+	
+	
+	
 	@FindBy(xpath="(//textarea[@name='addText'])[1]")
-	private WebElement element1PerformanceCritiriaTextBox;
+	private WebElement enterThePerformanceCritiria1;
+	@FindBy(xpath="//button[text()='+ Add PC']")
+	private WebElement addPC1Button;
+	//pc2
+	@FindBy(xpath="(//textarea[@name='addText'])[1]")
+	private WebElement enterThePerformanceCritiria2;
 	@FindBy(xpath="(//button[text()='+ Add PC'])[1]")
-	private WebElement element1AddPC_Button;
-	//element2
-	@FindBy(xpath="//a[i[@class='la la-save green']]")
-	private WebElement  element2SaveButton;
+	private WebElement addPC2Button;
+	// Element2
+	@FindBy(xpath="(//a[i[@title='Edit details']])[4]")
+	private WebElement editIcon;
+	
+	
+	@FindBy(xpath="(//input[@formcontrolname='element'])[2]")
+	private WebElement element2TextBox;
+	@FindBy(xpath="(//a)[23]")
+	private WebElement saveButton2;
+	//pc1
 	@FindBy(xpath="(//textarea[@name='addText'])[2]")
-	private WebElement element2PerformanceCritiriaTextBox;
+	private WebElement enterThePerformanceCritiria1Element2PC1;
 	@FindBy(xpath="(//button[text()='+ Add PC'])[2]")
-	private WebElement element2AddPC_Button;
-	// Element3
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[3]")
-	private WebElement  element3SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[3]")
-	private WebElement element3PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[3]")
-	private WebElement element3AddPC_Button;
-	//element4
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[4]")
-	private WebElement  element4SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[4]")
-	private WebElement element4PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[4]")
-	private WebElement element4AddPC_Button;
-	//element5
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[5]")
-	private WebElement  element5SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[5]")
-	private WebElement element5PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[5]")
-	private WebElement element5AddPC_Button;
-	//element6
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[6]")
-	private WebElement  element6SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[6]")
-	private WebElement element6PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[6]")
-	private WebElement element6AddPC_Button;
-	//element7
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[7]")
-	private WebElement  element7SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[7]")
-	private WebElement element7PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[7]")
-	private WebElement element7AddPC_Button;
-	//element8
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[8]")
-	private WebElement  element8SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[8]")
-	private WebElement element8PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[8]")
-	private WebElement element8AddPC_Button;
-	//e/ement9
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[9]")
-	private WebElement  element9SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[9]")
-	private WebElement element9PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[9]")
-	private WebElement element9AddPC_Button;
-	//element10
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[10]")
-	private WebElement  element10SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[10]")
-	private WebElement element10PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[10]")
-	private WebElement element10AddPC_Button;
+	private WebElement Element2addPC1Button;
+	//pc2
+	@FindBy(xpath="(//textarea[@name='addText'])[2]")
+	private WebElement enterThePerformanceCritiria1Element2PC2;
+	@FindBy(xpath="(//button[text()='+ Add PC'])[2]")
+	private WebElement Element2addPC2Button;
 	
 	
 	@FindBy(xpath="(//button[@class='pull-right btn btn-outline-info'])[1]")
@@ -173,9 +140,52 @@ public class QpCreateNationalOccupationalStandardpage
 	private WebElement pc1ProjectMarksTextBox ;
 	@FindBy(xpath="(//input[@formcontrolname='viva'])[1]")
 	private WebElement pc1vivaMarksTextBox ;
+	//E1Pc2
+	@FindBy(xpath="(//input[@formcontrolname='theory'])[2]")
+	private WebElement pc2OFE1TheroyMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='practical'])[2]")
+	private WebElement pc2OfE1PracticalMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='ojt'])[2]")
+	private WebElement pc2ofE1ProjectMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='viva'])[2]")
+	private WebElement pc2OfE1vivaMarksTextBox ;
+	
+	//E2pc1
+	@FindBy(xpath="(//input[@formcontrolname='theory'])[3]")
+	private WebElement pc1OFE2TheroyMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='practical'])[3]")
+	private WebElement pc1OfE2PracticalMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='ojt'])[3]")
+	private WebElement pc1ofE2ProjectMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='viva'])[3]")
+	private WebElement pc1OfE2vivaMarksTextBox ;
+	
+	//E2Pc2
+	@FindBy(xpath="(//input[@formcontrolname='theory'])[4]")
+	private WebElement pc2OFE2TheroyMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='practical'])[4]")
+	private WebElement pc2OfE2PracticalMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='ojt'])[4]")
+	private WebElement pc2ofE2ProjectMarksTextBox ;
+	@FindBy(xpath="(//input[@formcontrolname='viva'])[4]")
+	private WebElement pc2OfE2vivaMarksTextBox ;
+	
+	
+	
+	
+	
+	
+	
 	@FindBy(xpath="//input[@formcontrolname='elementTotalMarks']")
 	private WebElement totalMarksTextBox ;
 	
+	//@FindBy(xpath="//input[@formcontrolname='theory']")
+	//private WebElement pcTheoryTextBox ;
+	//@FindBy(xpath="//input[@formcontrolname='practical']")
+	//private WebElement pcPracticalTextBox ;
+	
+	//@FindBy(xpath="//input[@formcontrolname='ojt']")
+	//private WebElement pcProjectTextBox ;
 	
 	//Acronaymadocuments
 	@FindBy(xpath="(//input[@name='keyword'])[1]")
@@ -347,150 +357,72 @@ public class QpCreateNationalOccupationalStandardpage
   	   
        }  
    //element and performance criteria
-   public void clickAddAnotherElement()
+   public void clickInsertElement()
    {
-	   addAnotherElement.click();
+	   insertButton.click();
    }
-   //e1
-   public void enterTheElement(String elementName1) 
+   
+   public void enterTheFirstElement(String elementName1) 
    {
 	   element1TextBox.sendKeys(elementName1);
    }
-  public void clickElementSaveButton()
+   public void clickSaveButton()
    {
-	   elementSaveButton.click();
+	   saveButton1.click();
 	   
-   }
-  
-   public void enterElement1PerformanceCriteria(String name)
-   {
-	   element1PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement1AddPc()
-   {
-	   element1AddPC_Button.click();
    }
    public void clickDeleteButton()
    {
 	   deleteElementButton.click();
    }
-   //E2
-   public void clickElement2SaveButton()
+   public void enterThePerformanceCriteria(String name)
    {
-	   element2SaveButton.click();
+	   enterThePerformanceCritiria1.sendKeys(name);
    }
-   public void enterElement2PerformanceCriteria(String name)
+   public void clickOnAddPc()
    {
-	   element2PerformanceCritiriaTextBox.sendKeys(name);
+	   addPC1Button.click();
    }
-   public void clickElement2AddPc()
+   //E1//PC2
+   public void enterThePC2E1(String name2)
    {
-	   element2AddPC_Button.click();
+	   enterThePerformanceCritiria2.sendKeys(name2); 
    }
-   ////E3
-   public void clickElement3SaveButton()
+   public void clickAddPc2()
    {
-	   element3SaveButton.click();
+	   addPC2Button.click();
    }
-   public void enterElement3PerformanceCriteria(String name)
+   
+   //E2//PC1
+   public void  clickElement2Icon()
    {
-	   element3PerformanceCritiriaTextBox.sendKeys(name);
+	   editIcon.click();
    }
-   public void clickElement3AddPc()
+   public void enterTheElement2(String nameofE2)
    {
-	   element3AddPC_Button.click();
+	   element2TextBox.sendKeys(nameofE2);
    }
-  
- //E4
-   public void clickElement4SaveButton()
+   public void clickE2AddPC1()
    {
-	   element4SaveButton.click();
+	   saveButton2.click();
    }
-   public void enterElement4PerformanceCriteria(String name)
+   public void enterElement2PC1(String nameE2pc1)
    {
-	   element4PerformanceCritiriaTextBox.sendKeys(name);
+	   enterThePerformanceCritiria1Element2PC1.sendKeys(nameE2pc1);
    }
-   public void clickElement4AddPc()
+   public void clickAddPcOfE2pc1()
    {
-	   element4AddPC_Button.click();
+	   Element2addPC1Button.click();
    }
- //E5
-   public void clickElement5SaveButton()
+   //E2//pc2
+   public void enterPC2OfE2(String nameE2Pc2)
    {
-	   element5SaveButton.click();
+	   enterThePerformanceCritiria1Element2PC2.sendKeys(nameE2Pc2);
+	   
    }
-   public void enterElement5PerformanceCriteria(String name)
+   public void clickAddpc2E2()
    {
-	   element5PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement5AddPc()
-   {
-	   element5AddPC_Button.click();
-   }
- //E6
-   public void clickElement6SaveButton()
-   {
-	   element6SaveButton.click();
-   }
-   public void enterElement6PerformanceCriteria(String name)
-   {
-	   element6PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement6AddPc()
-   {
-	   element6AddPC_Button.click();
-   }
- //E7
-   public void clickElement7SaveButton()
-   {
-	   element7SaveButton.click();
-   }
-   public void enterElement7PerformanceCriteria(String name)
-   {
-	   element7PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement7AddPc()
-   {
-	   element7AddPC_Button.click();
-   }
- //E8
-   public void clickElement8SaveButton()
-   {
-	   element8SaveButton.click();
-   }
-   public void enterElement8PerformanceCriteria(String name)
-   {
-	   element8PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement8AddPc()
-   {
-	   element8AddPC_Button.click();
-   }
- //E9
-   public void clickElement9SaveButton()
-   {
-	   element9SaveButton.click();
-   }
-   public void enterElement9PerformanceCriteria(String name)
-   {
-	   element9PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement9AddPc()
-   {
-	   element9AddPC_Button.click();
-   }
- //E10
-   public void clickElement10SaveButton()
-   {
-	   element10SaveButton.click();
-   }
-   public void enterElement10PerformanceCriteria(String name)
-   {
-	   element10PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement10AddPc()
-   {
-	   element10AddPC_Button.click();
+	   Element2addPC2Button.click();
    }
    //KU
      public void enterTheKnowledgeAndUnderstandingTextbox(String knowledgeAndUnderstanding)
@@ -525,35 +457,95 @@ public class QpCreateNationalOccupationalStandardpage
 	   minimumScoreOFNOSTextBOx.sendKeys(minimumScore);
    }
   // e1pc1
- //  public void enterTheTheoryMarks(String theoryMarks)
- //  {
-	//   pc1TheroyMarksTextBox.sendKeys(theoryMarks);
-  // }
-  // public void enterThePracticalMarks(String practicalMarks)
-  // {
-	//   pc1PracticalMarksTextBox.sendKeys(practicalMarks);
- //  }
+   public void enterTheTheoryMarks(String theoryMarks)
+   {
+	   pc1TheroyMarksTextBox.sendKeys(theoryMarks);
+   }
+   public void enterThePracticalMarks(String practicalMarks)
+   {
+	   pc1PracticalMarksTextBox.sendKeys(practicalMarks);
+   }
    
-   //public void enterTheProjectMarks(String projectMarks)
-  // {
-	//   pc1ProjectMarksTextBox.sendKeys(projectMarks);
-  // }
+   public void enterTheProjectMarks(String projectMarks)
+   {
+	   pc1ProjectMarksTextBox.sendKeys(projectMarks);
+   }
   
-  // public void enterTheVivaMarks(String vivaMarks)
-  // {
-	//  pc1vivaMarksTextBox.sendKeys(vivaMarks);
+   public void enterTheVivaMarks(String vivaMarks)
+   {
+	  pc1vivaMarksTextBox.sendKeys(vivaMarks);
 	  //pc1ProjectMarksTextBox.click();//to make pc1 disable
-   //}
+   }
+   //e1pc2
    
+   public void enterTheTheoryMarksOfE1Pc2(String theoryMarksE1pc2)
+   {
+	   pc2OFE1TheroyMarksTextBox.sendKeys(theoryMarksE1pc2);
+   }
+   public void enterThePracticalMarksOfE1pc2(String practicalMarksE1pc2)
+   {
+	   pc2OfE1PracticalMarksTextBox.sendKeys(practicalMarksE1pc2);
+   }
    
+   public void enterTheProjectMarksOfE1pc2(String projectMarksE1pc2)
+   {
+	   pc2ofE1ProjectMarksTextBox.sendKeys(projectMarksE1pc2);
+   }
   
+   public void enterTheVivaMarksofE1pc2(String vivaMarksE1pc2)
+   {
+	   pc2OfE1vivaMarksTextBox.sendKeys(vivaMarksE1pc2);
+	  //pc1ProjectMarksTextBox.click();//to make pc1 disable
+   }
+   //E2pc1
+   
+   public void enterTheTheoryMarksOfE2Pc1(String theoryMarksE2pc1)
+   {
+	   pc1OFE2TheroyMarksTextBox.sendKeys(theoryMarksE2pc1);
+   }
+   public void enterThePracticalMarksOfE2pc1(String practicalMarksE2pc1)
+   {
+	   pc1OfE2PracticalMarksTextBox.sendKeys(practicalMarksE2pc1);
+   }
+   
+   public void enterTheProjectMarksOfE2pc1(String projectMarksE2pc1)
+   {
+	   pc1ofE2ProjectMarksTextBox.sendKeys(projectMarksE2pc1);
+   }
+  
+   public void enterTheVivaMarksofE2pc1(String vivaMarksE2pc1)
+   {
+	   pc1OfE2vivaMarksTextBox.sendKeys(vivaMarksE2pc1);
+	  //pc1ProjectMarksTextBox.click();//to make pc1 disable
+   }
+   //E2pc2
+   public void enterTheTheoryMarksOfE2Pc2(String theoryMarksE2pc2)
+   {
+	   pc2OFE2TheroyMarksTextBox.sendKeys(theoryMarksE2pc2);
+   }
+   public void enterThePracticalMarksOfE2pc2(String practicalMarksE2pc2)
+   {
+	   pc2OfE2PracticalMarksTextBox.sendKeys(practicalMarksE2pc2);
+   }
+   
+   public void enterTheProjectMarksOfE2pc2(String projectMarksE2pc2)
+   {
+	   pc2ofE2ProjectMarksTextBox.sendKeys(projectMarksE2pc2);
+   }
+  
+   public void enterTheVivaMarksofE2pc2(String vivaMarksE2pc2)
+   {
+	   pc2OfE2vivaMarksTextBox.sendKeys(vivaMarksE2pc2);
+	  pc1ProjectMarksTextBox.click();//to make pc1 disable
+   }
    
    
    
- //  public void enterTheTotalMarks(String totalMarks)
-  // {
-	//   totalMarksTextBox.sendKeys(totalMarks);
-  // }
+   
+   public void enterTheTotalMarks(String totalMarks)
+   {
+	   totalMarksTextBox.sendKeys(totalMarks);
+   }
    //Acronomys documents
    public void enterAcronymsKeyword(String acronymsKeyword)
    {
