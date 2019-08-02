@@ -84,7 +84,6 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 				elp.performlogin(trainingPartnerID, trainingPartnerPassword);
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				JavascriptExecutor js=(JavascriptExecutor)driver;
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				js.executeScript("window.scrollBy(0,500)", "");
 				Thread.sleep(1000);
 				tDp.clickOnRegisterCandidate();
@@ -94,23 +93,22 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			{
 				tDp.clickOnRegisterCandidate_InViewMyCandidate();
 			}
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 			tpMp.clickToChooseIndividualCandidateRegistration();
-			Thread.sleep(1000);
 			tpMp.clickRegister();
 			Thread.sleep(3000);
 			//Personal Details Page
 			TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 			tpCrp.selectNamePrefix(namePrefix);
 			tpCrp.enterFullName(fullName);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tpCrp.clickToBrowseProfilePicture();
 			Thread.sleep(2000);
 			UploadFile.upload(profilePicture);
 			Thread.sleep(2000);
 			tpCrp.clickToUploadProfilePicture();
-			Thread.sleep(4000);
+			Thread.sleep(3000);
 			tpCrp.selectCountryCode(countryCode);
 			tpCrp.enterMobileNumber(mobileNumber);
 			tpCrp.enterEmailID(emailID);
@@ -129,21 +127,21 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 			if(isDisabled.equalsIgnoreCase("yes"))
 			{
 				tpCrp.clickDisabilityYes();
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				tpCrp.selectDisablity(disablity);
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 				tpCrp.clickToBrowsedisabilityProofDoc();
 				Thread.sleep(2000);
 				UploadFile.upload(disabilityProofDoc);
 				Thread.sleep(2000);
 				tpCrp.clickToUploadDisabilityProofDoc();
-				Thread.sleep(5000);
+				Thread.sleep(3000);
 			}
-			else if(isDisabled.equalsIgnoreCase("no"))
-			{
-				tpCrp.clickDisabilityNo();
-				Thread.sleep(1000);
-			}
+//			else if(isDisabled.equalsIgnoreCase("no"))
+//			{
+//				tpCrp.clickDisabilityNo();
+//				Thread.sleep(1000);
+//			}
 			tpCrp.enterMotherName(motherName);
 			tpCrp.enterFatherName(fatherName);
 			tpCrp.enterNameOFGuardian(guardianName);
@@ -153,66 +151,65 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 				tpCrp.enterAadhaarNumber(aadhaarNumber);
 //				tpCrp.clickToVerifyAadhaar();
 				tpCrp.clickDummyVerify();
-				Thread.sleep(2000);
+//				Thread.sleep(2000);
 			}
 			else
 			{
 				tpCrp.clickToChooseAlternateId();
 				tpCrp.selectAlternateIdtype(alternateIdType);
 				tpCrp.enterAlternateID(alternateID);
-				Thread.sleep(3000);
+				Thread.sleep(1000);
 				tpCrp.clickToBrowseAlternateIdFile(isDisabled);
 				Thread.sleep(1000);
 				UploadFile.upload(alternateIdFile);
 				Thread.sleep(1000);
 				tpCrp.clickToUploadAlternateIdFile(isDisabled);
-				Thread.sleep(4000);
+				Thread.sleep(3000);
 			}
 			tpCrp.enterAddress(address);
 			tpCrp.selectState(state);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tpCrp.selectDistrict(district);	
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 //			tpCrp.selectSubDistrict(subDistrict);
 //			Thread.sleep(2000);
 			tpCrp.enterPincode(pincode);
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
 			String registeredCandidateID=parts[parts.length-1];
 			ReadWriteData.setExcelData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 1, registeredCandidateID);
 			tpCrp.clickSameAsPermanetAddress();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tpCrp.enterAccountHolderName(fullName);	
 			tpCrp.enterAccountNumber(accountNumber);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tpCrp.enterIFSC(ifsc);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tpCrp.clickToGetAutopopulatedBankDetails();
 			Thread.sleep(2000);
 //			tpCrp.enterBankName(bankName);
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			//Education
 			tpCrp.selectEducation(education1);
-			Thread.sleep(2000);
 			tpCrp.selectYearOfPassing(yearOfPassing1);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			tpCrp.clickToBrowseEducationProofDoc();
 			Thread.sleep(2000);
 			UploadFile.upload(education1Proof);
 			Thread.sleep(2000);
 			tpCrp.clickToUploadEducationProof();
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			//Candidate Experience
 			tpCrp.selectPreTrainingStatus(preTrainingStatus);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			if(preTrainingStatus.equalsIgnoreCase("experienced"))
 			{
 				tpCrp.selectCandidateExperienceSector(sector1);
@@ -220,20 +217,20 @@ public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguratio
 				tpCrp.selectExperienceMonths(experienceInMonths);
 			}
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			//hearaboutus and Course Preferences Page
 //			tpCrp.selectSector(sector1);
 //			tpCrp.selectSubSector(subSector1);
 //			tpCrp.selectJobRole(jobRole1, jobRoleCode1);
 //			Thread.sleep(2000);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			tpCrp.clickIAgree();
 			Thread.sleep(1000);
 			tpCrp.clickToAgreeAndSubmit();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			tpCrp.clickOK();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		}
 		PostLoginPage plp=new PostLoginPage(driver);
 		plp.clickOnProfileLogo();
