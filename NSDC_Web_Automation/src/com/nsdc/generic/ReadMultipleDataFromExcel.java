@@ -64,10 +64,6 @@ public class ReadMultipleDataFromExcel
         }
         return arrayExcelData;
     }
-
-	
-
-	
-			}
     
+}
 
