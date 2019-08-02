@@ -176,7 +176,7 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
 //			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
 			//Contact Details Page
