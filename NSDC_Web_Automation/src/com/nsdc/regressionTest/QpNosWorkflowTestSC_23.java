@@ -56,9 +56,8 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
  	qpNos.selectOccupation(occupation);
  	qpNos.selectCredits(credits);
  	qpNos.selectNSQFlevel(nsqflevel);
-// 	qpNos.setNOsName(nosname);
- 	qpNos.setNOsName("QPNOSPALSABc");
- 	qpNos.enterNOsDescription(nosdescripation);
+ 	qpNos.setNOsName(nosname);
+  	qpNos.enterNOsDescription(nosdescripation);
  	qpNos.entersetNosScope(nosscope);
  	qpNos.enterSetNextReviewPeriod(nextreviewperiod);
  	qpNos.clickSaveAndContinouBtton();
