@@ -44,7 +44,7 @@ public class Qpnos_createpage {
 		 createnos.click();
 	}
 	
-	public void  viewALLNossclick() 
+	public void  clickViewALLNoss() 
 	{
 		viewALLNoss.click();
 	}
