@@ -245,6 +245,8 @@ public class QpCreateNationalOccupationalStandardpage
 	private WebElement okButton;
      @FindBy(xpath="//td[text()='Total:']")
      private WebElement totalText;
+     @FindBy(xpath="//button[text()='Continue to Submit']")
+     private WebElement continueToSubmit;
 
 
 	
@@ -313,7 +315,7 @@ public class QpCreateNationalOccupationalStandardpage
    public void selectCredits(String CreditsName)
   	{
 	   
-     	SelectDropDownList.selectDropDownListByVisibleText(creditDropdownList, CreditsName);;
+     	SelectDropDownList.selectDropDownListByVisibleText(creditDropdownList, CreditsName);
 
        }  
 
@@ -706,6 +708,10 @@ public class QpCreateNationalOccupationalStandardpage
    public void clickTotal()
    {
 	   totalText.click();
+   }
+   public void clickContinueToSubmit()
+   {
+	   continueToSubmit.click();
    }
    }
 
