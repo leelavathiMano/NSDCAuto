@@ -18,10 +18,10 @@ import com.nsdc.pages.TrainingPartner_CandidateRegistrationPage;
 import com.nsdc.pages.TrainingPartner_MyCandidatesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class TP_Fast_CandidatesRegistrationDataCreation extends TestConfiguration
+public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestConfiguration
 {
 	@Test
-	public void tpRegisteringCandidates() throws Exception
+	public void tpRegisteringCandidatesTC01() throws Exception
 	{
 		String total_Candidates=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Configurable-Fields", 1, 1);
 		int totalCandidates=Integer.parseInt(total_Candidates);

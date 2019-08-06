@@ -14,10 +14,10 @@ import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class EMPLOYER_FastCandidateRegist extends TestConfiguration
+public class EMPLOYER_FastCandidateRegistTestSC_25 extends TestConfiguration
 {
 	@Test
-	public void tcRegisteringCandidates() throws Exception
+	public void employerRegisteringCandidatesTC01() throws Exception
 	{
 		String total_Candidates=ReadWriteData.getData("./TestData/Workflow/EMPLOYER_Fast_CanRegist-Workflow.xls", "Configurable-Fields", 1, 1);
 		int totalCandidates=Integer.parseInt(total_Candidates);

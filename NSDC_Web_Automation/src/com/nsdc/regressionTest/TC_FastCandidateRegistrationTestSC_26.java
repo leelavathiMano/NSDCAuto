@@ -21,10 +21,10 @@ import com.nsdc.pages.TC_CandidateRegistrationPage;
 import com.nsdc.pages.TC_MyCandidatesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class TC_FastCandidateRegistration extends TestConfiguration
+public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 {
 	@Test
-	public void tcRegisteringCandidates() throws Exception
+	public void tcRegisteringCandidatesTC01() throws Exception
 	{
 		String total_Candidates=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", 1, 1);
 		int totalCandidates=Integer.parseInt(total_Candidates);
