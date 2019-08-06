@@ -3,6 +3,9 @@ package com.nsdc.regressionTest;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -118,107 +121,196 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
 	qpNos.clickTotal();
 	qpNos.clickSaveAndContinouBtton();
 	//Acronyms
+	qpNos.enterAcronymsKeyword(acronmyskeyword);
+	qpNos.enterAcronymsDescription(acronmysDescription);
+	qpNos.enterGlossaryKeyword(glossaryKeyword);
+	qpNos.enterGlossaryDescription(glossaryDescription);
+	String standalone = driver.findElement(By.xpath("//label[input[@value='standalone']]")).getText();
+	//qpNos.clickStandaloneNos();
+	if(!standalone.equalsIgnoreCase("Make Available for Qualification Pack "))
+	{	
+		
+		qpNos.clickStandaloneNos();
+		Thread.sleep(2000);
+	qpNos.clickGoveranceDocuments();
+	Thread.sleep(2000);
+	UploadFile.upload(governmentDoc);
 	Thread.sleep(3000);
-//	qpNos.enterAcronymsKeyword(acronmyskeyword);
-//	qpNos.enterAcronymsDescription(acronmysDescription);
-//	qpNos.enterGlossaryKeyword(glossaryKeyword);
-//	qpNos.enterGlossaryDescription(glossaryDescription);
+	qpNos.clickGoveranceDocumentsUploadButton();
+	Thread.sleep(4000);
+	qpNos.clickRFPDocuments();
+	Thread.sleep(5000);
+	UploadFile.upload(rfpDoc);
+	Thread.sleep(5000);
+	qpNos.clickRFPDocumentsUploadButton();
+	Thread.sleep(5000);
 	//
-//	Thread.sleep(2000);
-//	qpNos.clickGoveranceDocuments();
-//	Thread.sleep(2000);
-//	UploadFile.upload(governmentDoc);
-//	Thread.sleep(3000);
-//	qpNos.clickGoveranceDocumentsUploadButton();
-//	Thread.sleep(4000);
-//	qpNos.clickRFPDocuments();
-//	Thread.sleep(5000);
-//	UploadFile.upload(rfpDoc);
-//	Thread.sleep(5000);
-//	qpNos.clickRFPDocumentsUploadButton();
-//	Thread.sleep(5000);
-//	//
-//	qpNos.clickAboutSector();
-//	Thread.sleep(2000);
-//	UploadFile.upload(aboutsector);
-//	Thread.sleep(3000);
-//	qpNos.clickAboutSectorUploadButton();
-//	Thread.sleep(5000);
-//	//
-//	qpNos.clickLabourMarketCity();
-//	Thread.sleep(2000);
-//	UploadFile.upload(labourMarketCity);
-//	Thread.sleep(3000);
-//	qpNos.clicklabourMarketCityUploadButton();
-//	Thread.sleep(5000);
-//	//
-//	qpNos.clickStakeHolderEnagged();
-//	Thread.sleep(1000);
-//	UploadFile.upload(stakeholder);
-//	Thread.sleep(3000);
-//	qpNos.clickStakeHolderEnaggeduploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickOccupationalMapping();
-//	Thread.sleep(1000);
-//	UploadFile.upload(occupationalmapping);
-//	Thread.sleep(3000);
-//	qpNos.clickOccupationalMappinguploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickFunctionalAnalysis();
-//	Thread.sleep(1000);
-//	UploadFile.upload(functionalAnalysis);
-//	Thread.sleep(3000);
-//	qpNos.clickFunctionalAnalysisuploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickApprovalForQpNos();
-//	Thread.sleep(1000);
-//	UploadFile.upload(approvalQNos);
-//	Thread.sleep(3000);
-//	qpNos.clickApprovalForQpNosuploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickQfilesNSQC();
-//	Thread.sleep(1000);
-//	UploadFile.upload(qfileQcNs);
-//	Thread.sleep(3000);
-//	qpNos.clickQfilesNSQCuploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickQRCPresentationBrowser();
-//	Thread.sleep(1000);
-//	UploadFile.upload(qrcPresenation);
-//	Thread.sleep(3000);
-//	qpNos.clickQRCPresentationUploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickQRCSummarySheetBrowseButton();
-//	Thread.sleep(1000);
-//	UploadFile.upload(qrcSummarySheet);
-//	Thread.sleep(3000);
-//	qpNos.clickQRCSummarySheetUploadButton();
-//	Thread.sleep(3000);
-//	//
-//	qpNos.clickotherDocumentsBrowseButton();
-//	Thread.sleep(1000);
-//	UploadFile.upload(otherDocument);
-//	Thread.sleep(3000);
-//	qpNos.clickotherDocumentsUploadButton();
-	//Thread.sleep(3000);
+	qpNos.clickAboutSector();
+	Thread.sleep(2000);
+	UploadFile.upload(aboutsector);
+	Thread.sleep(3000);
+	qpNos.clickAboutSectorUploadButton();
+	Thread.sleep(5000);
 	//
-	qpNos.clicksaveAndExitButton();
+	qpNos.clickLabourMarketCity();
+	Thread.sleep(2000);
+	UploadFile.upload(labourMarketCity);
+	Thread.sleep(3000);
+	qpNos.clicklabourMarketCityUploadButton();
+	Thread.sleep(5000);
+	//
+	qpNos.clickStakeHolderEnagged();
 	Thread.sleep(1000);
-	qpNos.clickOkButton();
+	UploadFile.upload(stakeholder);
+	Thread.sleep(3000);
+	qpNos.clickStakeHolderEnaggeduploadButton();
+	Thread.sleep(3000);
+	//
+	qpNos.clickOccupationalMapping();
 	Thread.sleep(1000);
-	qpNos.clickOkButton();
-//	PostLoginPage plp=new PostLoginPage(driver);
-//	Thread.sleep(3000);
-//	plp.clickOnProfileLogo();
-//	Thread.sleep(2000);
-//	plp.clickOnLogout();
+	UploadFile.upload(occupationalmapping);
+	Thread.sleep(3000);
+	qpNos.clickOccupationalMappinguploadButton();
+	Thread.sleep(3000);
+	//
+	qpNos.clickFunctionalAnalysis();
+	Thread.sleep(1000);
+	UploadFile.upload(functionalAnalysis);
+	Thread.sleep(3000);
+	qpNos.clickFunctionalAnalysisuploadButton();
+	Thread.sleep(3000);
+	//
+	qpNos.clickApprovalForQpNos();
+	Thread.sleep(1000);
+	UploadFile.upload(approvalQNos);
+	Thread.sleep(3000);
+	qpNos.clickApprovalForQpNosuploadButton();
+	Thread.sleep(3000);
+	//
+	qpNos.clickQfilesNSQC();
+	Thread.sleep(1000);
+	UploadFile.upload(qfileQcNs);
+	Thread.sleep(3000);
+	qpNos.clickQfilesNSQCuploadButton();
+	Thread.sleep(3000);
+	//
+	qpNos.clickQRCPresentationBrowser();
+	Thread.sleep(1000);
+	UploadFile.upload(qrcPresenation);
+	Thread.sleep(3000);
+	qpNos.clickQRCPresentationUploadButton();
+	Thread.sleep(3000);
+	//
+	qpNos.clickQRCSummarySheetBrowseButton();
+	Thread.sleep(1000);
+	UploadFile.upload(qrcSummarySheet);
+	Thread.sleep(3000);
+	qpNos.clickQRCSummarySheetUploadButton();
+	Thread.sleep(3000);
+
+	qpNos.clickotherDocumentsBrowseButton();
+	Thread.sleep(1000);
+	UploadFile.upload(otherDocument);
+	Thread.sleep(3000);
+	qpNos.clickotherDocumentsUploadButton();
+Thread.sleep(3000);
+qpNos.clickSubmitForApproval();
+qpNos.clickContinueToSubmit();
+qpNos.clickOkButton();
 	
+	}
+	else
+	{
+		qpNos.clicksaveAndExitButton();
+		Thread.sleep(1000);
+		qpNos.clickOkButton();
+		Thread.sleep(1000);
+		qpNos.clickOkButton();
+	}
+	PostLoginPage plp=new PostLoginPage(driver);
+    Thread.sleep(3000);
+   plp.clickOnProfileLogo();
+	Thread.sleep(2000);
+	plp.clickOnLogout();
+ 	}
+	
+	@Test(dataProvider="createNosdata")
+ 	public void viewAllNOssVerification(String username , String password , String sector, String polutry,String occupation, 
+ 	String credits, String nsqflevel, String nosname, String nosdescripation, String nosscope , 
+ 	String nextreviewperiod,
+ 	String acronmyskeyword,
+	String acronmysDescription,String glossaryKeyword,String glossaryDescription,String governmentDoc,
+	String rfpDoc,String aboutsector,String labourMarketCity,String stakeholder,String occupationalmapping,
+	String functionalAnalysis,String approvalQNos,String qfileQcNs,String qrcPresenation,String qrcSummarySheet,
+	String otherDocument)throws Exception
+ 	{
+ 		LoginPage lp = new LoginPage(driver);
+ 		lp.clickLogin();
+ 		Thread.sleep(3000);
+ 		BetaVersionOfSmartPage bvsp=new BetaVersionOfSmartPage(driver);
+ 		bvsp.clickToClose();
+ 		EnterLoginPage ep=new EnterLoginPage(driver);
+ 		ep.performlogin(username, password);
+ 		SSC_DashboardPage sscDp=new SSC_DashboardPage(driver);
+ 		sscDp.clickOn_QP_NOS_ModelCurriculum();
+ 		Thread.sleep(3000);
+ 	Qpnos_createpage qp=new Qpnos_createpage (driver);
+ 	Thread.sleep(3000);	
+qp.clickViewALLNoss();
+Thread.sleep(1000);
+driver.findElement(By.xpath("(//a[i[@class='la la-ellipsis-h']])[1]")).click();
+driver.findElement(By.xpath("( //a[contains(text(),'	View Details')])[1]")).click();
+//verify
+
+Assert.assertEquals(driver.findElement(By.xpath("//div[@class='cuppa-dropdown']")).getText(), polutry);
+   WebElement listOccupation = driver.findElement(By.xpath("//select[@name='option']"));
+	Select sel=new Select(listOccupation);	
+Assert.assertEquals(sel.getFirstSelectedOption().getText(), occupation);
+             WebElement listCredits = driver.findElement(By.xpath("//select[@name='credits']"));
+             Select s=new Select(listCredits);
+Assert.assertEquals(s.getFirstSelectedOption().getText().trim(),credits);
+
+WebElement listnsqfLevel = driver.findElement(By.xpath("//select[@name='nsqf']"));
+
+Select sl=new Select( listnsqfLevel);
+Assert.assertEquals(sl.getFirstSelectedOption().getText().trim(), nsqflevel );
+Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Name']")).getAttribute("value"), nosname );
+Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Description']")).getAttribute("value"), nosdescripation );
+Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Scope']")).getAttribute("value"), nosscope );
+//String version="1.0";
+//Assert.assertEquals(driver.findElement(By.xpath("//input[@name='version']")).getAttribute("vlue"), version );
+Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter Next Review Period in months from the QRC date']")).getAttribute("value"), nextreviewperiod );
+
+QpCreateNationalOccupationalStandardpage qpNos=new QpCreateNationalOccupationalStandardpage(driver);
+	Thread.sleep(3000);
+	qpNos.clickElementandperformancecriteria();
+	String element=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 1);
+	Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'NosS')]")).getText(), element);
+	String pc1=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 3);
+	Assert.assertEquals(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), pc1);
+	Thread.sleep(3000);
+	qpNos.clickknowledgeandunderstanding();
+	Thread.sleep(3000);
+	qpNos.clickGenericskill();
+	Thread.sleep(3000);
+	qpNos.clickAssenmentcriteria();
+	Thread.sleep(3000);
+	qpNos.clickAcronymsanddocuments();
+	Thread.sleep(3000);
+	
+	PostLoginPage plp=new PostLoginPage(driver);
+    Thread.sleep(3000);
+   plp.clickOnProfileLogo();
+	Thread.sleep(2000);
+	plp.clickOnLogout();
+
 	
  	}
- }
+ 	
+
+}
+
+	
+	
+ 	
+ 
