@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class QpCreateNationalOccupationalStandardpage 
+public class CreateNationalOccupationalStandardpage 
 {
 	WebDriver driver;
 	//declaration
@@ -251,7 +251,7 @@ public class QpCreateNationalOccupationalStandardpage
 
 	
 	//
-	public  QpCreateNationalOccupationalStandardpage(WebDriver driver)
+	public  CreateNationalOccupationalStandardpage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -17,12 +17,12 @@ import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LoginPage;
 import com.nsdc.pages.PostLoginPage;
-import com.nsdc.pages.QpCreateNationalOccupationalStandardpage;
+import com.nsdc.pages.CreateNationalOccupationalStandardpage;
 import com.nsdc.pages.Qpnos_createpage;
 import com.nsdc.pages.SSC_DashboardPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class QpNosWorkflowTestSC_23  extends TestConfiguration
+public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 {
 	@DataProvider
 	public Object[][]createNosdata()
@@ -52,7 +52,7 @@ public class QpNosWorkflowTestSC_23  extends TestConfiguration
  	Qpnos_createpage qp=new Qpnos_createpage (driver);
  	Thread.sleep(3000);
  	qp.createNosclick();
- 	QpCreateNationalOccupationalStandardpage qpNos=new QpCreateNationalOccupationalStandardpage(driver);
+ 	CreateNationalOccupationalStandardpage qpNos=new CreateNationalOccupationalStandardpage(driver);
  	Thread.sleep(3000);
  	qpNos.clickSubSector();
  	qpNos.clickSubSectorText(polutry);
@@ -281,7 +281,7 @@ Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter 
 //Assert.assertEquals(driver.findElement(By.xpath("//input[@name='version']")).getAttribute("vlue"), version );
 Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter Next Review Period in months from the QRC date']")).getAttribute("value"), nextreviewperiod );
 
-QpCreateNationalOccupationalStandardpage qpNos=new QpCreateNationalOccupationalStandardpage(driver);
+CreateNationalOccupationalStandardpage qpNos=new CreateNationalOccupationalStandardpage(driver);
 	Thread.sleep(3000);
 	qpNos.clickElementandperformancecriteria();
 	String element=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 1);
