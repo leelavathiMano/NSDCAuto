@@ -26,6 +26,7 @@ public class EnterLoginPage
     {
         usernameTextbox.sendKeys(username);
         passwordTextbox.sendKeys(password);
+        Thread.sleep(2000);
         loginButton.click();
     }
     
