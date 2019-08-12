@@ -12,26 +12,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
 
-	 WebDriver driver;
-	 private WebDriverWait wait;
-	    @FindBy(xpath="//div[@routerlink='./my-schemes']")
-	    private WebElement MySchemesAndPrograms;
-	
-	    public DashboardPage(WebDriver driver)
-	    {
-	        this.driver = driver;
-	        PageFactory.initElements(driver, this);
-	        wait = new WebDriverWait(driver,30);
-	    }
-	    
-	    public void ClickMySchemeOrPrograms() throws Exception
-	{	
-		Thread.sleep(3000);/*
-							 * Actions actions = new Actions(driver);
-							 * actions.moveToElement(MySchemesAndPrograms).click().perform();
-							 */
-   	      wait.until(ExpectedConditions.elementToBeClickable(MySchemesAndPrograms)).click();
-	    }
-	    
-	    
+	WebDriver driver;
+	private WebDriverWait wait;
+	@FindBy(xpath = "//div[@class=\"col-xl-6\"][2]//child::div[1]//child::div[2]//descendant::div[3]")
+	private WebElement MySchemesAndPrograms;
+
+	public DashboardPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		wait = new WebDriverWait(driver, 30);
+	}
+
+	public void ClickMySchemeOrPrograms() throws Exception {
+		Thread.sleep(3000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(MySchemesAndPrograms).click().perform();
+		wait.until(ExpectedConditions.visibilityOf(MySchemesAndPrograms)).click();
+		// wait.until(ExpectedConditions.elementToBeClickable(MySchemesAndPrograms)).click();
+	}
+
 }
