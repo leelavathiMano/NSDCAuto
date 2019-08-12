@@ -3,10 +3,14 @@
 <suite name="Suite">
   <test thread-count="3" name="Test">
     <classes>
-        <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
+    
+    <class name="com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_STT_Project_And_Batch_Creation_Test"/>
+    
+    <!--     <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
 	   	<class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
+	   	
     	<class name="com.nsdc.regressionTest.TrainerWorkflowTestSC_03"/>
-    	<class name="com.nsdc.regressionTest.AssessorWorkflowTestSC_04"/> 
+    	<class name="com.nsdc.regressionTest.AssessorWorkflowTestSC_04"/>
     	<class name="com.nsdc.regressionTest.CandidateRegistrationWorkflowTestSC_05"/>
     	<class name="com.nsdc.regressionTest.InspectionAgency_WorkflowTestSC_06"/>
     	<class name="com.nsdc.regressionTest.SmartAdmin_CreateUserWorkflowTestSC_07"/>
@@ -20,7 +24,8 @@
       	<class name="com.nsdc.regressionTest.SSC_ExceptionalTrainingCentreWorkflowSC_15"/>
 	    <class name="com.nsdc.regressionTest.SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16"/>
       	<class name="com.nsdc.regressionTest.ToT_BatchApplicantsWorkflowTestSC_17"/>
-      	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/>
+      	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/> -->
+   
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

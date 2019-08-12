@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>web.automation.nsdc</groupId>
-    <artifactId>NSDC_Web_Automation</artifactId>
+    <artifactId>NSDC_Web_Automation_PMKVY</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     
-    <name>NSDC_Web_Automation</name>
+    <name>NSDC_Web_Automation_PMKVY</name>
     <url>http://maven.apache.org</url>
     
     <properties>

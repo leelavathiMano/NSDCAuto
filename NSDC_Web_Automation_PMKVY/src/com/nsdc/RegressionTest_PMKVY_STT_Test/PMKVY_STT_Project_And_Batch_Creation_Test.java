@@ -1,4 +1,4 @@
-package com.nsdc.RegressionTest_PMKVY_STT;
+package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,7 +11,7 @@ import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class PMKVY_STT_Project_And_Batch_Creation extends TestConfiguration{
+public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration{
 
 
 	@DataProvider
@@ -33,9 +33,15 @@ public class PMKVY_STT_Project_And_Batch_Creation extends TestConfiguration{
 		elp.performlogin(userType, name);
 		DashboardPage db=new DashboardPage(driver);
 		db.ClickMySchemeOrPrograms();
-		LogOutPage plp = new LogOutPage(driver);
-		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
+		
+		
+		
+		
+		Thread.sleep(3000);
+		
+		//LogOutPage plp = new LogOutPage(driver);
+		//plp.clickOnProfileLogo();
+		//plp.clickOnLogout();
 		
 		
 	}
