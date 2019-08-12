@@ -5,7 +5,7 @@
     <classes>
     
     <class name="com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_STT_Project_And_Batch_Creation_Test"/>
-    
+    <class name="com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_spworkflowTest"/>
     <!--     <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
 	   	<class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
 	   	
