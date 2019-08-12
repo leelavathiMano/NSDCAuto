@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SelectSchemeOrProgram {
+public class SelectSchemeOrProgramPage {
 
 
 		 WebDriver driver;
@@ -13,7 +13,7 @@ public class SelectSchemeOrProgram {
 		    @FindBy(xpath="//a[contains(text(),'4')]")
 		    private WebElement PageNumber4;
 		
-		    public SelectSchemeOrProgram(WebDriver driver)
+		    public SelectSchemeOrProgramPage(WebDriver driver)
 		    {
 		        this.driver = driver;
 		        PageFactory.initElements(driver, this);

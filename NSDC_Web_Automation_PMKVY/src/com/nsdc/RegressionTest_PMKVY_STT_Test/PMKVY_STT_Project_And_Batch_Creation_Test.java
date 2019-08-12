@@ -9,7 +9,7 @@ import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
 import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
 import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
-import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgram;
+import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.testConfig.TestConfiguration;
 
@@ -37,7 +37,7 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		db.ClickMySchemeOrPrograms();
 		MySchemeOrProjectPage msp=new MySchemeOrProjectPage(driver);
 		msp.ClickApplySchemeProgram();
-		SelectSchemeOrProgram ssp= new SelectSchemeOrProgram(driver);
+		SelectSchemeOrProgramPage ssp= new SelectSchemeOrProgramPage(driver);
 		ssp.ClickPageNumber4();
 		
 		
