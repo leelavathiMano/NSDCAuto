@@ -4,13 +4,16 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
 
 	 WebDriver driver;
-	    
+	 private WebDriverWait wait;
 	    @FindBy(xpath="//div[@routerlink='./my-schemes']")
 	    private WebElement MySchemesAndPrograms;
 	
@@ -18,13 +21,16 @@ public class DashboardPage {
 	    {
 	        this.driver = driver;
 	        PageFactory.initElements(driver, this);
-	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	        wait = new WebDriverWait(driver,30);
 	    }
 	    
 	    public void ClickMySchemeOrPrograms() throws Exception
-	    {
-	        
-	    	MySchemesAndPrograms.click();
+	{	
+		Thread.sleep(3000);/*
+							 * Actions actions = new Actions(driver);
+							 * actions.moveToElement(MySchemesAndPrograms).click().perform();
+							 */
+   	      wait.until(ExpectedConditions.elementToBeClickable(MySchemesAndPrograms)).click();
 	    }
 	    
 	    

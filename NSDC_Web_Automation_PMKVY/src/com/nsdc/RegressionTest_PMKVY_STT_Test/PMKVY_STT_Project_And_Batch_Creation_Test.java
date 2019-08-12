@@ -33,7 +33,7 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		//Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(userType, name);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		DashboardPage db=new DashboardPage(driver);
 		db.ClickMySchemeOrPrograms();
 		
