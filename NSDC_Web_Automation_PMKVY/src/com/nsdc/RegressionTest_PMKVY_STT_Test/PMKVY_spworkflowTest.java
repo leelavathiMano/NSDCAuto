@@ -35,9 +35,10 @@ public class PMKVY_spworkflowTest extends TestConfiguration {
 		Thread.sleep(3000);
 		DashboardPage db = new DashboardPage(driver);
 		db.ClickMySchemeOrPrograms();
-
-		MySchemeOrProjectPage msp = new MySchemeOrProjectPage(driver);
+		MySchemeOrProjectPage msp=new MySchemeOrProjectPage(driver);
 		msp.ClickApplySchemeProgram();
+
+		
 
 	}
 
