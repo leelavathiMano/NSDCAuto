@@ -9,7 +9,7 @@ public class DashboardPage {
 
 	 WebDriver driver;
 	    
-	    @FindBy(xpath="//*[contains(text(),'My Scheme/Program')]")
+	    @FindBy(xpath="//div[@routerlink='./my-schemes']")
 	    private WebElement MySchemesAndPrograms;
 	
 	    public DashboardPage(WebDriver driver)
