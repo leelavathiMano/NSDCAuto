@@ -5,24 +5,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DashboardPage {
+public class MySchemeOrProjectPage {
 
 	 WebDriver driver;
 	    
-	    @FindBy(xpath="//*[contains(text(),'My Scheme/Program')]")
-	    private WebElement MySchemesAndPrograms;
+	    @FindBy(xpath="//*[contains(text(),'Apply Scheme/Program')]")
+	    private WebElement ApplySchemeProgram;
 	
-	    public DashboardPage(WebDriver driver)
+	    public MySchemeOrProjectPage(WebDriver driver)
 	    {
 	        this.driver = driver;
 	        PageFactory.initElements(driver, this);
 	    }
-	    
-	    public void ClickMySchemeOrPrograms() throws Exception
+	
+
+	    public void ClickApplySchemeProgram() throws Exception
 	    {
 	        
-	    	MySchemesAndPrograms.click();
+	    	ApplySchemeProgram.click();
 	    }
 	    
 	    
+	
 }
