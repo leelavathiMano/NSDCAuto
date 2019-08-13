@@ -65,16 +65,23 @@ public class SelectSchemeOrProgramPage {
 		    	selectDropDownList.click();
 		    	SelectDropDownList.selectDropDownListByVisibleText(selectDropDownList, value);
 		    }
-		    public void clickOnSpAction()
+		    public void ClickOn_SP_Action()
 		    {
 		    	spActionbutton.click();
 		    }
 		    
-		    public void  ClickSTTActionbutton()
+		    public void  Click_STT_Actionbutton()
 		    {
 		    	STTActionbutton.click();
 		    }
-		    public void clickOnAddProject()
+		    
+		    public void ClickOn_SP_AddProject()
+		    {
+		    	SPAddProjectButton.click();
+		    }
+		    
+		    
+		    public void ClickOn_STT_AddProject()
 		    {
 		    	STTAddProjectButton.click();
 		    }
