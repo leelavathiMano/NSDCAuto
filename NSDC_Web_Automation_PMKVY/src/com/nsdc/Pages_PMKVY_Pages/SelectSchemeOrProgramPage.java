@@ -12,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nsdc.generic.SelectDropDownList;
+
 public class SelectSchemeOrProgramPage {
 
 
@@ -19,10 +21,17 @@ public class SelectSchemeOrProgramPage {
 		 private WebDriverWait wait;  
 		  @FindBy(xpath="//a[contains(text(),'4')]")
 		  private WebElement PageNumber4;
+		  @FindBy(xpath="//a[contains(text(),'3')]")
+		  private WebElement PageNumber3;
+		  
 		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']")
 		  private WebElement TableSelectSchemeOrProgram;
-		    
-		
+		  @FindBy(xpath="//select")
+		  private WebElement selectDropDownList;
+		  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
+		  private WebElement spActionbutton;
+		  @FindBy(xpath="//div//a[contains(text(),'Add Project')]")
+		  private WebElement spAddProjectButton;
 		    public SelectSchemeOrProgramPage(WebDriver driver)
 		    {
 		        this.driver = driver;
@@ -36,9 +45,30 @@ public class SelectSchemeOrProgramPage {
 
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
 				executor.executeScript("arguments[0].click();", PageNumber4);
+				
 		    	//wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
 		    }
-		    
+		    public void ClickPageNumber3() throws Exception
+		    {
+
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", PageNumber3);
+				
+		    	//wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
+		    }
+		    public void selectValue(String value)
+		    {
+		    	selectDropDownList.click();
+		    	SelectDropDownList.selectDropDownListByVisibleText(selectDropDownList, value);
+		    }
+		    public void clickOnSpAction()
+		    {
+		    	spActionbutton.click();
+		    }
+		    public void clickOnSPAddProject()
+		    {
+		    	spAddProjectButton.click();
+		    }
 		    
 		    public void SelectSchemeOrProgram()
 		    {
