@@ -70,20 +70,28 @@ public class SelectSchemeOrProgramPage {
 		    	spActionbutton.click();
 		    }
 		    
-		    public void  Click_STT_Actionbutton()
+		    public void  Click_STT_Actionbutton() throws InterruptedException
 		    {
-		    	STTActionbutton.click();
+		    	
+		    	Thread.sleep(2000);
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", STTActionbutton);
+				
+		    //	wait.until(ExpectedConditions.elementToBeClickable(STTActionbutton)).click();
 		    }
 		    
 		    public void ClickOn_SP_AddProject()
 		    {
-		    	SPAddProjectButton.click();
+		    	wait.until(ExpectedConditions.elementToBeClickable(SPAddProjectButton)).click();
 		    }
 		    
 		    
-		    public void ClickOn_STT_AddProject()
+		    public void ClickOn_STT_AddProject() throws InterruptedException
 		    {
-		    	STTAddProjectButton.click();
+		    	Thread.sleep(2000);
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", STTAddProjectButton);
+//		    	wait.until(ExpectedConditions.elementToBeClickable(STTAddProjectButton)).click();
 		    }
 		    
 		    public void SelectSchemeOrProgram()
