@@ -24,7 +24,7 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
     }
     
     @Test(dataProvider="projectAndBatchCreation")
-    public void Project_And_Batch_Creation(String userType, String name,String ProjectProposalID, String ProjecName, String aggrementDate) throws Exception
+    public void Project_And_Batch_Creation(String userType, String name,String ProjectProposalID, String ProjecName, String aggrementDate, String StartDate, String EndDate) throws Exception
 	{
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -48,6 +48,13 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		ap.ClickProjectType();
 		ap.ClickAggrementDate();
 		ap.SelectAggrementDate(aggrementDate);
+		ap.ClickStartDate();
+		ap.SelectProjectDurationStartDate(StartDate);
+		ap.ClickEndDate();
+		ap.SelectProjectDurationEndDate(EndDate);
+		ap.ClickAddButton();
+		
+		
 		
 		
 		

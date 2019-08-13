@@ -26,13 +26,23 @@ public class STT_AddProject {
 	private WebElement ProjectTypeButton;
 	@FindBy(xpath="//div[input[@placeholder='Select Agreement Date']]")
 	private WebElement AggrementDate;
+	
+	@FindBy(xpath="//div[input[@placeholder='Select Start Date']]")
+	private WebElement ProjectDurationStartDate;
+	
+	@FindBy(xpath="//div[input[@placeholder='Select End Date']]")
+	private WebElement ProjectDurationEndDate;
+	
 	@FindBy(xpath="//div[@class='m-subheader']")
 	private WebElement SubHeader;
 	@FindBy(xpath="//select[@class='custom-select'][1]")
 	private WebElement monthDropdownList;
 	@FindBy(xpath="//select[@class='custom-select'][2]")
 	private WebElement yearDropdownList;
-
+	
+	@FindBy(xpath="//button[@data-target='#AddTrainingCentres']")
+	private WebElement AddButton;
+	
 	public STT_AddProject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -68,5 +78,35 @@ public class STT_AddProject {
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, aggrementDate, AggrementDate, monthDropdownList, yearDropdownList);
 	}
 	
+	public void ClickStartDate() throws InterruptedException 
+	{
+		Thread.sleep(2000);
+		  Actions actions = new Actions(driver); 
+		  actions.moveToElement(ProjectDurationStartDate).click().build().perform();
+	}
+	
+	
+	
+	public void SelectProjectDurationStartDate(String StartDate) throws InterruptedException 
+	{
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, StartDate, ProjectDurationStartDate, monthDropdownList, yearDropdownList);
+	}
+	
+	public void ClickEndDate() throws InterruptedException 
+	{
+		Thread.sleep(2000);
+		  Actions actions = new Actions(driver); 
+		  actions.moveToElement(ProjectDurationEndDate).click().build().perform();
+	}
+	
+	public void SelectProjectDurationEndDate(String EndDate) throws InterruptedException 
+	{
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, EndDate, ProjectDurationEndDate, monthDropdownList, yearDropdownList);
+	}
+	
+	public void ClickAddButton()
+	{
+		AddButton.click();
+	}
 	
 }
