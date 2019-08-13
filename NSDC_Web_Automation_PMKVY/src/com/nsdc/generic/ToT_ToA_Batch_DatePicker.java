@@ -26,8 +26,8 @@ public class ToT_ToA_Batch_DatePicker
 		}
 		String month=parts[1];
 		String year=parts[2];
-		SelectDropDownList.selectDropDownListByVisibleText(yearDropdownList, year);
-		SelectDropDownList.selectDropDownListByVisibleText(monthDropdownList, month);
+		SelectDropDownList.selectDropDownListByValue(yearDropdownList, year);
+		SelectDropDownList.selectDropDownListByValue(monthDropdownList, month);
 		if(driver.findElements(By.xpath("//div[text()='"+day+"']")).size()>1)
 		{
 			if(driver.findElement(By.xpath("(//div[text()='"+day+"'])[1]")).getAttribute("class").contains("mute"))

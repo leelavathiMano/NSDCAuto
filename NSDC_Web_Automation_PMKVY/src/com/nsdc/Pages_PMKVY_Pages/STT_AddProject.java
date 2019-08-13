@@ -22,14 +22,15 @@ public class STT_AddProject {
 	private WebElement ProjectProposalIDEditBox;
 	@FindBy(xpath="//input[@placeholder='Enter project name']")
 	private WebElement ProjecNameTextBox;
-	@FindBy(xpath="(//label[input[@formcontrolname='projectType']])[1]")
+	@FindBy(xpath="//label[input[@formcontrolname='projectType']][1]")
 	private WebElement ProjectTypeButton;
 	@FindBy(xpath="//div[input[@placeholder='Select Agreement Date']]")
 	private WebElement AggrementDate;
-	
-	@FindBy(xpath="(//select[@class='custom-select'][1]")
+	@FindBy(xpath="//div[@class='m-subheader']")
+	private WebElement SubHeader;
+	@FindBy(xpath="//select[@class='custom-select'][1]")
 	private WebElement monthDropdownList;
-	@FindBy(xpath="(//select[@class='custom-select'][2]")
+	@FindBy(xpath="//select[@class='custom-select'][2]")
 	private WebElement yearDropdownList;
 
 	public STT_AddProject(WebDriver driver) {
@@ -53,12 +54,14 @@ public class STT_AddProject {
 		ProjectTypeButton.click();
 	}
 	
-	public void ClickAggrementDate() throws InterruptedException
+	public void ClickAggrementDate() throws InterruptedException 
 	{
-	Thread.sleep(2000);
-	JavascriptExecutor js=(JavascriptExecutor)driver;
-	js.executeScript("arguments[0].click();", AggrementDate);
+		Thread.sleep(2000);
+		  Actions actions = new Actions(driver); 
+		  actions.moveToElement(AggrementDate).click().build().perform();
 	}
+	
+	
 	
 	public void SelectAggrementDate(String aggrementDate) throws InterruptedException 
 	{
