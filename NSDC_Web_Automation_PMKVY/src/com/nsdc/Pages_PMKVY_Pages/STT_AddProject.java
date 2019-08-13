@@ -38,8 +38,9 @@ public class STT_AddProject {
 		wait = new WebDriverWait(driver, 30);
 	}
 
-	public void EnterTheProjectProposalID(String ProjectProposalID) 
+	public void EnterTheProjectProposalID(String ProjectProposalID) throws InterruptedException 
 	{
+		Thread.sleep(2000);
 		ProjectProposalIDEditBox.sendKeys(ProjectProposalID);
 	}
 	public void EnterTheProjecName(String ProjecName)
@@ -50,6 +51,13 @@ public class STT_AddProject {
 	public void ClickProjectType()
 	{
 		ProjectTypeButton.click();
+	}
+	
+	public void ClickAggrementDate() throws InterruptedException
+	{
+	Thread.sleep(2000);
+	JavascriptExecutor js=(JavascriptExecutor)driver;
+	js.executeScript("arguments[0].click();", AggrementDate);
 	}
 	
 	public void SelectAggrementDate(String aggrementDate) throws InterruptedException 

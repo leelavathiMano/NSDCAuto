@@ -44,8 +44,9 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		ssp.ClickOn_STT_AddProject();
 		STT_AddProject ap=new STT_AddProject(driver);
 		ap.EnterTheProjectProposalID(ProjectProposalID);
-		ap.EnterTheProjecName(ProjecName);
+		//ap.EnterTheProjecName(ProjecName);
 		ap.ClickProjectType();
+		ap.ClickAggrementDate();
 		ap.SelectAggrementDate(aggrementDate);
 		
 		

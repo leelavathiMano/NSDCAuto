@@ -11,8 +11,10 @@ public class ToT_ToA_Batch_DatePicker
 {
 	public static void chooseDate(WebDriver driver, String date, WebElement dateTextField, WebElement monthDropdownList, WebElement yearDropdownList ) throws InterruptedException
 	{
-		WebDriverWait wait=new WebDriverWait(driver,60);
-		wait.until(ExpectedConditions.elementToBeClickable(dateTextField));
+		/*
+		 * WebDriverWait wait=new WebDriverWait(driver,60);
+		 * wait.until(ExpectedConditions.elementToBeClickable(dateTextField));
+		 */Thread.sleep(2000);
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", dateTextField);
 		Thread.sleep(2000);
