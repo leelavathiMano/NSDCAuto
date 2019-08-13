@@ -11,7 +11,7 @@ import com.nsdc.pages.EnterLoginPage;
 import com.nsdc.pages.LaunchPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class PMKVY_spworkflowTest extends TestConfiguration {
+public class PMKVY_SP_workflowTest extends TestConfiguration {
 	@DataProvider
 	public Object[][] CreateSpecialProjectData() {
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",

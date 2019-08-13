@@ -9,6 +9,7 @@ import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
 import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
 import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
+import com.nsdc.Pages_PMKVY_Pages.STT_AddProject;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.testConfig.TestConfiguration;
@@ -23,7 +24,7 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
     }
     
     @Test(dataProvider="projectAndBatchCreation")
-    public void Project_And_Batch_Creation(String userType, String name) throws Exception
+    public void Project_And_Batch_Creation(String userType, String name,String ProjectProposalID, String ProjecName, String aggrementDate) throws Exception
 	{
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -41,7 +42,11 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		ssp.ClickPageNumber4();
 		ssp.Click_STT_Actionbutton();
 		ssp.ClickOn_STT_AddProject();
-		
+		STT_AddProject ap=new STT_AddProject(driver);
+		ap.EnterTheProjectProposalID(ProjectProposalID);
+		ap.EnterTheProjecName(ProjecName);
+		ap.ClickProjectType();
+		ap.SelectAggrementDate(aggrementDate);
 		
 		
 		

@@ -24,11 +24,12 @@ public class STT_AddProject {
 	private WebElement ProjecNameTextBox;
 	@FindBy(xpath="(//label[input[@formcontrolname='projectType']])[1]")
 	private WebElement ProjectTypeButton;
+	@FindBy(xpath="//div[input[@placeholder='Select Agreement Date']]")
 	private WebElement AggrementDate;
-	@FindBy(xpath="(//div[@class='input-group-append'])[2]")
-	@FindBy(xpath="(//select[@class='custom-select'])[1]")
+	
+	@FindBy(xpath="(//select[@class='custom-select'][1]")
 	private WebElement monthDropdownList;
-	@FindBy(xpath="(//select[@class='custom-select'])[2]")
+	@FindBy(xpath="(//select[@class='custom-select'][2]")
 	private WebElement yearDropdownList;
 
 	public STT_AddProject(WebDriver driver) {
