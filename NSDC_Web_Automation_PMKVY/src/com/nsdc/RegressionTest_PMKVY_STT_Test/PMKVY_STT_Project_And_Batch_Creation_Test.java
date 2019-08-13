@@ -39,7 +39,10 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		msp.ClickApplySchemeProgram();
 		SelectSchemeOrProgramPage ssp= new SelectSchemeOrProgramPage(driver);
 		ssp.ClickPageNumber4();
+		ssp.ClickSTTActionbutton();
+		ssp.clickOnAddProject();
 		
+		//ssp.SelectSchemeOrProgram();
 		
 		Thread.sleep(3000);
 		

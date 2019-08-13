@@ -31,8 +31,12 @@ public class SelectSchemeOrProgramPage {
 		  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
 		  private WebElement spActionbutton;
 		  @FindBy(xpath="//div//a[contains(text(),'Add Project')]")
-		  private WebElement spAddProjectButton;
-		    public SelectSchemeOrProgramPage(WebDriver driver)
+		  private WebElement SPAddProjectButton;
+		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[7]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
+		  private WebElement STTActionbutton;
+		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[7]//td[8]//a[contains(text(),'Add Project')]") 
+		  private WebElement STTAddProjectButton;
+		  public SelectSchemeOrProgramPage(WebDriver driver)
 		    {
 		        this.driver = driver;
 		        PageFactory.initElements(driver, this);
@@ -65,9 +69,14 @@ public class SelectSchemeOrProgramPage {
 		    {
 		    	spActionbutton.click();
 		    }
-		    public void clickOnSPAddProject()
+		    
+		    public void  ClickSTTActionbutton()
 		    {
-		    	spAddProjectButton.click();
+		    	STTActionbutton.click();
+		    }
+		    public void clickOnAddProject()
+		    {
+		    	STTAddProjectButton.click();
 		    }
 		    
 		    public void SelectSchemeOrProgram()
