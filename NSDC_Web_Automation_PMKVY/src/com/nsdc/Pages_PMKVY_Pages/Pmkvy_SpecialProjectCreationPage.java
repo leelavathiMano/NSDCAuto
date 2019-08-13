@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
 
-public class Pmkvy_spPage {
+public class Pmkvy_SpecialProjectCreationPage {
 	WebDriver driver;
 	//Project Details:
 	@FindBy(xpath="//input[@placeholder='Enter project proposal id']")
@@ -45,7 +45,7 @@ public class Pmkvy_spPage {
 	@FindBy(xpath="//button[text()='Save & Submit']")
 	private WebElement SaveAndSumbitButton;
 	//ini
-	public Pmkvy_spPage (WebDriver driver)
+	public Pmkvy_SpecialProjectCreationPage (WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -67,6 +67,7 @@ public class Pmkvy_spPage {
 	}
 	public void selectRegisteredAslist(String registeredAs)
 	{
+		RegisteredAsDropDownList.click();
 		SelectDropDownList.selectDropDownListByVisibleText(RegisteredAsDropDownList, registeredAs);
 		
 	}
