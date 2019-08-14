@@ -11,9 +11,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nsdc.generic.SelectDropDownList;
 import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
+import com.nsdc.testConfig.TestConfiguration;
 
-public class STT_AddProject {
+public class STT_AddProject extends TestConfiguration {
 
 	WebDriver driver;
 	private WebDriverWait wait;
@@ -42,6 +44,24 @@ public class STT_AddProject {
 	
 	@FindBy(xpath="//button[@data-target='#AddTrainingCentres']")
 	private WebElement AddButton;
+	
+	@FindBy(xpath="//input[@placeholder='Target Value']")
+	private WebElement TargetValue;
+	
+	@FindBy(xpath="//*[@_ngcontent-c16 and @formcontrolname='targetValidity']")
+	private WebElement TargetValidity;
+	
+	@FindBy(xpath="//select[@formcontrolname='sector']")
+	private WebElement SectorList;
+	
+	@FindBy(xpath="//select[@formcontrolname='jobRoleName']")
+	private WebElement JobRoleNameList;
+	
+	@FindBy(xpath="//input[@placeholder='Enter Target']")
+	private WebElement EnterTarget;
+	
+	@FindBy(xpath="//select[@_ngcontent-c19 and @formcontrolname='targetValidity']")
+	private WebElement TargetValidityInMonths;
 	
 	public STT_AddProject(WebDriver driver) {
 		this.driver = driver;
@@ -107,6 +127,35 @@ public class STT_AddProject {
 	public void ClickAddButton()
 	{
 		AddButton.click();
+	}
+	
+	public void EnterTargetValue(String TargetValueInNum)
+	{
+		TargetValue.sendKeys(TargetValueInNum);
+	}
+	public void SelectTargetValidity(String TargetValidityInNum)
+	{	
+		SelectDropDownList.selectDropDownListByValue(TargetValidity,TargetValidityInNum);
+	}
+	
+	public void SelectSector(String Sector)
+	{
+		SelectDropDownList.selectDropDownListByValue(SectorList,Sector);
+	}
+	
+	public void SelectJobRoleName(String JobRoleName)
+	{
+		SelectDropDownList.selectDropDownListByValue(JobRoleNameList ,JobRoleName);
+	}
+	
+	public void EnterTargetValueAgain(String TargetValue)
+	{
+		EnterTarget.sendKeys(TargetValue);
+	}
+	
+	public void SelectTargetValidityInMonths(String TargetValidityInNumInMonths)
+	{	
+		SelectDropDownList.selectDropDownListByValue(TargetValidityInMonths,TargetValidityInNumInMonths);
 	}
 	
 }

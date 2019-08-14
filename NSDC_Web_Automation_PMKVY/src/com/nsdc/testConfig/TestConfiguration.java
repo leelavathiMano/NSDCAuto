@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -62,6 +63,7 @@ public class TestConfiguration
         {
             System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Windows/chromedriver.exe");
             driver = new ChromeDriver();
+        	//DebugMode();
         }
         else if (browsername.equals("Firefox") && osType.equals("Windows"))
         {
@@ -84,7 +86,7 @@ public class TestConfiguration
         driver.get(url);
     }
     
-    @AfterMethod
+   @AfterMethod
     public void postcondition(ITestResult result) throws Exception
     {
         if(ITestResult.FAILURE == result.getStatus())
@@ -93,4 +95,14 @@ public class TestConfiguration
         }
        	//driver.close();       	    	
     }
+    
+    public void DebugMode()
+    {
+    	System.setProperty("webdriver.chrome.driver", "./Browsers-exe/Windows/chromedriver.exe");
+    	ChromeOptions co= new ChromeOptions();
+    	co.setExperimentalOption("debuggerAddress", "localhost:2216");
+    	 driver =new ChromeDriver(co);
+    	
+    }
+    
  }
