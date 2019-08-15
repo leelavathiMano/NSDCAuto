@@ -9,6 +9,7 @@ import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMUpage;
 import com.nsdc.Pages_PMKVY_Pages.Pmkvy_SpecialProjectCreationPage;
 import com.nsdc.Pages_PMKVY_Pages.SPPMU_All_TP_ProjectimplementingAgencypage;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
+import com.nsdc.Pages_PMKVY_Pages.SelectedSchemepage_PMKVY_SP;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.BetaVersionOfSmartPage;
@@ -19,16 +20,20 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class PMKVY_SP_workflowTest extends TestConfiguration {
 	@DataProvider
-	public Object[][] CreateSpecialProjectData() {
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
-				"Sp-workflow-data");
+	public Object[][] CreateSpecialProjectData()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","Sp-workflow-data");
 	}
 
 	@Test(dataProvider = "CreateSpecialProjectData")
 
-	public void addspecialprojectdata(String username, String password, String value, String projectproposalID,
+	public void Addspecialprojectdata_01(String username, String password, String value, String projectproposalID,
 			String projectname, String registeredAs, String proposingorganisationName, String state, String district,
-			String img1, String img2,String loginId,String password2) throws Exception {
+			String img1, String img2,String loginId,String password2, String agrementDate,String StartDate,String endDate,String Adhar,
+			String TrainerCertified,String TypeofTrainingCentre,String PlacementsRequirement,String TypeOfEmployment,String MinimumPercentageplaced,
+			String Disability,String Religion,String Gender,String Category, String DiscountsonBaseRate,String BatchDuration,String NumberofTranches,
+			String Tranche3tobepaidwithoutPlacement,String DualLogoRequired,String TargetBeneficiaries,String Sector,String JobRole,String Target,
+			String locationState,String locationDistrict) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -77,6 +82,7 @@ Thread.sleep(3000);
 LogOutPage plp = new LogOutPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
+		//
 		Thread.sleep(3000);
 		lp.clickLogin();
 		bsp.clickToClose();
@@ -90,11 +96,53 @@ LogOutPage plp = new LogOutPage(driver);
 		allPIA.ClickOnAction();
 		Thread.sleep(3000);
 		allPIA.ClickOnViewDetails();
+		SelectedSchemepage_PMKVY_SP sssp=new SelectedSchemepage_PMKVY_SP(driver);
+		Thread.sleep(3000);
+		sssp.ClickAggrementDate();
+	Thread.sleep(3000);
+	sssp.SelectAggrementDate(agrementDate);
+		Thread.sleep(3000);
+		sssp.ClickStartDate();
+	Thread.sleep(3000);
+	sssp.SelectProjectDurationStartDate(StartDate);
+	Thread.sleep(3000);
+	sssp.ClickEndDate();
+	Thread.sleep(3000);
+		sssp.SelectProjectDurationEndDate(endDate);
+	Thread.sleep(3000);
+		sssp.SelectAdharRequirmentYes(Adhar);
+		sssp.SelectTrainerCertifiedYes(TrainerCertified);
+		sssp.SelectTypeofTrainingCentre(TypeofTrainingCentre);
+		sssp.SelectPlacementsRequirementYes(PlacementsRequirement);
+		sssp.SelectTypeOfEmployment(TypeOfEmployment);
+		sssp.EnterTheMinimumPercentageofCandidatedtobeplacedTextBox(MinimumPercentageplaced);
+		sssp.SelectDisability(Disability);
+		sssp.SelectReligion(Religion);
+		sssp.SelectGender(Gender);
+		sssp.SelectCategory(Category);
+		sssp.EnterTheDiscountsOnBaseRate(DiscountsonBaseRate);
+		sssp.EnterBatchDuration(BatchDuration);
+		sssp.SelectNumberOfTranches(NumberofTranches);
+		sssp.SelecttrancheThreeToBepaid(Tranche3tobepaidwithoutPlacement);
+		sssp.SelectDualLogoRequired(DualLogoRequired);
+		sssp.EnterTheTargetBeneficiaries(TargetBeneficiaries);
+		sssp.SelectSector(Sector);
+		sssp.SelectjobRoleName(JobRole);
+		sssp.EnterSectorAndJobTarget(Target);
+		sssp.ClickOnSectorAndJobRoleAdd();
 		
-
-
 		
-
+		
+		
+		
+		
+		
+		
+		
+		
 	}
+	
+	 
+	
 
 }
