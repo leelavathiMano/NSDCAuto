@@ -63,6 +63,28 @@ public class STT_AddProject extends TestConfiguration {
 	@FindBy(xpath="//select[@_ngcontent-c19 and @formcontrolname='targetValidity']")
 	private WebElement TargetValidityInMonths;
 	
+	@FindBy(xpath="//label[contains(text(),'Signed Termsheet')]//following-sibling::div[1]//input")
+	private WebElement SignedTermSheetBrowseBtn;
+	
+	@FindBy(xpath="//label[contains(text(),'Signed Agreement')]//following-sibling::div[1]//input")
+	private WebElement SignedAgreementBrowseBtn;
+	
+	@FindBy(xpath="//label[contains(text(),'Other Supporting')]//following-sibling::div[1]//input")
+	private WebElement OtherSupportingBrowseBtn;
+	
+	
+	@FindBy(xpath="//label[contains(text(),'Signed Termsheet')]//following-sibling::div[1]//button")
+	private WebElement SignedTermSheetUploadBtn;
+	
+	@FindBy(xpath="//label[contains(text(),'Signed Agreement')]//following-sibling::div[1]//button")
+	private WebElement SignedAgreementUploadBtn;
+	
+	@FindBy(xpath="//label[contains(text(),'Other Supporting')]//following-sibling::div[1]//button")
+	private WebElement OtherSupportingUploadBtn;
+	
+	
+	//label[contains(text(),'Signed Agreement')]//following-sibling::div[1]//input
+	
 	public STT_AddProject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -157,5 +179,51 @@ public class STT_AddProject extends TestConfiguration {
 	{	
 		SelectDropDownList.selectDropDownListByValue(TargetValidityInMonths,TargetValidityInNumInMonths);
 	}
+	
+	public void ClickSignedTermSheetBrowseBtn() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		SignedTermSheetBrowseBtn.click();
+		Thread.sleep(2000);
+	}
+	
+	public void ClickSignedAgreementBrowseBtn() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		SignedAgreementBrowseBtn.click();
+		Thread.sleep(2000);
+	}
+	public void ClickOtherSupportingBrowseBtn() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		OtherSupportingBrowseBtn.click();
+		Thread.sleep(2000);
+	}
+	
+	public void ClickSignedTermSheetUploadBtn() throws InterruptedException
+	{	
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", SignedTermSheetUploadBtn);
+		//SignedTermSheetUploadBtn.click();
+	}
+	
+	public void ClickSignedAgreementUploadBtn() throws InterruptedException
+	{
+		
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", SignedAgreementUploadBtn);
+		//SignedAgreementUploadBtn.click();
+		
+	}
+	public void ClickOtherSupportingUploadBtn() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", OtherSupportingUploadBtn);
+		//OtherSupportingUploadBtn.click();
+	}
+	
 	
 }

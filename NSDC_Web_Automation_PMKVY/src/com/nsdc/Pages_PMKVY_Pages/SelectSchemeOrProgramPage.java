@@ -19,7 +19,7 @@ public class SelectSchemeOrProgramPage {
 
 		 WebDriver driver;
 		 private WebDriverWait wait;  
-		  @FindBy(xpath="//a[contains(text(),'4')]")
+		  @FindBy(xpath="//a[text()='2']")
 		  private WebElement PageNumber4;
 		  @FindBy(xpath="//a[contains(text(),'3')]")
 		  private WebElement PageNumber3;
@@ -32,9 +32,9 @@ public class SelectSchemeOrProgramPage {
 		  private WebElement spActionbutton;
 		  @FindBy(xpath="//div//a[contains(text(),'Add Project')]")
 		  private WebElement SPAddProjectButton;
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[7]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
+		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 		  private WebElement STTActionbutton;
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[7]//td[8]//a[contains(text(),'Add Project')]") 
+		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[contains(text(),'Add Project')]") 
 		  private WebElement STTAddProjectButton;
 		  public SelectSchemeOrProgramPage(WebDriver driver)
 		    {
@@ -46,7 +46,7 @@ public class SelectSchemeOrProgramPage {
 
 		    public void ClickPageNumber4() throws Exception
 		    {
-
+		    	Thread.sleep(2000);
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
 				executor.executeScript("arguments[0].click();", PageNumber4);
 				

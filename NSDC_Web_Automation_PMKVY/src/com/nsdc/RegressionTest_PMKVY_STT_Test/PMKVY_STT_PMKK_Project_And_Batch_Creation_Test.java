@@ -16,9 +16,10 @@ import com.nsdc.Pages_PMKVY_Pages.STT_AddProject;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.UploadFile;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration {
+public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfiguration {
 
 	@DataProvider
 	public Object[][] projectAndBatchCreation() {
@@ -28,7 +29,7 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 
 	@Test(dataProvider = "projectAndBatchCreation")
 	public void Project_And_Batch_Creation(String srno,String userType, String name, String ProjectProposalID, String ProjecName,
-			String aggrementDate, String StartDate, String EndDate, String TC_ID, String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName, String TargetValue, String TargetValidityInNumInMonths) throws Exception {
+			String aggrementDate, String StartDate, String EndDate, String TC_ID, String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName, String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin(); //
@@ -68,6 +69,19 @@ public class PMKVY_STT_Project_And_Batch_Creation_Test extends TestConfiguration
 		ap.SelectJobRoleName(JobRoleName);
 		ap.EnterTargetValueAgain(TargetValue);
 		ap.SelectTargetValidityInMonths(TargetValidityInNumInMonths);
+		
+		ap.ClickSignedTermSheetBrowseBtn();
+		UploadFile.upload(FiletoUpload);
+		ap.ClickSignedTermSheetUploadBtn();
+		
+		ap.ClickSignedAgreementBrowseBtn();
+		UploadFile.upload(FiletoUpload);
+		
+		ap.ClickSignedAgreementUploadBtn();
+		
+		ap.ClickOtherSupportingBrowseBtn();
+		UploadFile.upload(FiletoUpload);
+		ap.ClickOtherSupportingUploadBtn();
 		
 		// LogOutPage plp = new LogOutPage(driver);
 		// plp.clickOnProfileLogo();
