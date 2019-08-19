@@ -13,12 +13,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.nsdc.generic.ReadWriteData;
+
 public class AddTrainingCenterPage {
 
 	WebDriver driver;
 	private WebDriverWait wait;
 	@FindBy(xpath = "//table[@class='table table-striped m-table']//tbody")
-	private WebElement AddTrainingCenter;
+	private WebElement AddTrainingCenterTable;
+	
+	@FindBy(xpath = "//div[@id='AddTrainingCentres']//tbody[@_ngcontent-c16]")
+	private WebElement TableForAddTrainingCenter;
+	
 	@FindBy(xpath = "//button[text()='Save changes']")
 	private WebElement SaveChanges;
 	public AddTrainingCenterPage(WebDriver driver) {
@@ -45,5 +51,35 @@ public class AddTrainingCenterPage {
 		
 	}
 	
+
+	public void SelectTC_FromAddCustomerTable(String SLNo) throws NumberFormatException, Exception {
+
+		List<WebElement> rowstable = AddTrainingCenterTable.findElements(By.tagName("tr"));
+
+		int rows_count = rowstable.size();
+
+		for (int row = 1; row < rows_count; row++) {
+
+			WebElement Columnsrow = driver.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr["+row+"]//td[2]"));
+
+		//	int columnscount = Columnsrow.size();
+
+				String celtext = Columnsrow.getText();
+				String TCid= "TC201844";
+				if (celtext.equals(TCid)) {
+					
+					ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
+							"ProjectAndBatchCreation", Integer.parseInt(SLNo), 8, celtext);
+					WebElement RadionButton1st = driver.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr["+row+"]//td[1]//label[1]//span[1]"));
+
+					Thread.sleep(2000);
+					JavascriptExecutor executor = (JavascriptExecutor) driver;
+					executor.executeScript("arguments[0].click();", RadionButton1st);
+					break;
+				}
+				// celtext.getClass();
+			}
+	}
+
 
 }

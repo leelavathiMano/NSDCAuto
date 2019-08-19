@@ -13,6 +13,7 @@ import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
 import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_STTPMUpage;
+import com.nsdc.Pages_PMKVY_Pages.STTPMU_All_TP_ProjectimplementingAgencyPage;
 import com.nsdc.Pages_PMKVY_Pages.STT_AddProject;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
@@ -40,72 +41,58 @@ public class PMKVY_STT_RFP_Project_And_Batch_Creation_Test extends TestConfigura
 		//
 		/*
 		 * Thread.sleep(3000); BetaVersionOfSmartPage bsp = new
-		 * BetaVersionOfSmartPage(driver); bsp.clickToClose(); // Thread.sleep(3000);
-		 */ EnterLoginPage elp = new EnterLoginPage(driver);
-		elp.performlogin(userType, name);
-		DashboardPage db = new DashboardPage(driver);
-		db.ClickMySchemeOrPrograms();
-		MySchemeOrProjectPage msp = new MySchemeOrProjectPage(driver);
-		msp.ClickApplySchemeProgram();
-		SelectSchemeOrProgramPage ssp = new SelectSchemeOrProgramPage(driver);
-		ssp.ClickPageNumber4();
-		ssp.Click_STT_Actionbutton();
-		ssp.ClickOn_STT_AddProject();
-		STT_AddProject ap = new STT_AddProject(driver);
-		ap.EnterTheProjectProposalID(ProjectProposalID); //
-		// ap.EnterTheProjecName(ProjecName);
-		ap.ClickProjectType();
-		ap.ClickAggrementDate();
-		ap.SelectAggrementDate(aggrementDate);
-		ap.ClickStartDate();
-		ap.SelectProjectDurationStartDate(StartDate);
-		ap.ClickEndDate();
-		ap.SelectProjectDurationEndDate(EndDate);
-		ap.ClickAddButton();
-		AddTrainingCenterPage adc = new AddTrainingCenterPage(driver);
-		adc.ClickOnFirstRadioButton();
-
-		String TrainingCenterID = driver
-				.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr[1]//td[2]")).getText();
-		ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
-				"ProjectAndBatchCreation", Integer.parseInt(srno), 8, TrainingCenterID);
-		adc.ClickOnSaveChanges();
-		ap.EnterTargetValue(TargetValueInNum);
-		ap.SelectTargetValidity(TargetValidityInNum);
-		ap.SelectSector(SectorName);
-		ap.SelectJobRoleName(JobRoleName);
-		ap.EnterTargetValueAgain(TargetValue);
-		ap.SelectTargetValidityInMonths(TargetValidityInNumInMonths);
-
-		ap.ClickSignedTermSheetBrowseBtn();
-		UploadFile.upload(FiletoUpload);
-		ap.ClickSignedTermSheetUploadBtn();
-
-		ap.ClickSignedAgreementBrowseBtn();
-		UploadFile.upload(FiletoUpload);
-
-		ap.ClickSignedAgreementUploadBtn();
-
-		ap.ClickOtherSupportingBrowseBtn();
-		UploadFile.upload(FiletoUpload);
-		ap.ClickOtherSupportingUploadBtn();
+		  BetaVersionOfSmartPage(driver); bsp.clickToClose(); // Thread.sleep(3000);
+		 * EnterLoginPage elp = new EnterLoginPage(driver); elp.performlogin(userType,
+		 * name); DashboardPage db = new DashboardPage(driver);
+		 * db.ClickMySchemeOrPrograms(); MySchemeOrProjectPage msp = new
+		 * MySchemeOrProjectPage(driver); msp.ClickApplySchemeProgram();
+		 * SelectSchemeOrProgramPage ssp = new SelectSchemeOrProgramPage(driver);
+		 * ssp.ClickPageNumber4(); ssp.Click_STT_Actionbutton();
+		 * ssp.ClickOn_STT_AddProject(); STT_AddProject ap = new STT_AddProject(driver);
+		 * ap.EnterTheProjectProposalID(ProjectProposalID); // //
+		 * ap.EnterTheProjecName(ProjecName); ap.ClickProjectType();
+		 * ap.ClickAggrementDate(); ap.SelectAggrementDate(aggrementDate);
+		 * ap.ClickStartDate(); ap.SelectProjectDurationStartDate(StartDate);
+		 * ap.ClickEndDate(); ap.SelectProjectDurationEndDate(EndDate);
+		 * ap.ClickAddButton(); AddTrainingCenterPage adc = new
+		 * AddTrainingCenterPage(driver); adc.SelectTC_FromAddCustomerTable(srno);
+		 * 
+		 * adc.ClickOnSaveChanges(); ap.EnterTargetValue(TargetValueInNum);
+		 * ap.SelectTargetValidity(TargetValidityInNum); ap.SelectSector(SectorName);
+		 * ap.SelectJobRoleName(JobRoleName); ap.EnterTargetValueAgain(TargetValue);
+		 * ap.SelectTargetValidityInMonths(TargetValidityInNumInMonths);
+		 * 
+		 * ap.ClickSignedTermSheetBrowseBtn(); UploadFile.upload(FiletoUpload);
+		 * ap.ClickSignedTermSheetUploadBtn();
+		 * 
+		 * ap.ClickSignedAgreementBrowseBtn(); UploadFile.upload(FiletoUpload);
+		 * 
+		 * ap.ClickSignedAgreementUploadBtn();
+		 * 
+		 * ap.ClickOtherSupportingBrowseBtn(); UploadFile.upload(FiletoUpload);
+		 * ap.ClickOtherSupportingUploadBtn();
+		 */
 		
+		/*
+		 * LogOutPage plp = new LogOutPage(driver); plp.clickOnProfileLogo();
+		 * plp.clickOnLogout();
+		 */
 		
+		// Moving to PMU to approve the created project				
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
 		
-		LogOutPage plp = new LogOutPage(driver);
-		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
-
-		Thread.sleep(3000);
-		lp.clickLogin();
-		// bsp.clickToClose();
+		 bsp.clickToClose();
+		 Thread.sleep(3000);
+		//lp.clickLogin();
+		 Thread.sleep(3000);
+		 EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(PUM_UserID, PMU_Password);
 		PMKVY_STTPMUpage sttpmu = new PMKVY_STTPMUpage(driver);
 		sttpmu.ClickOnViewAllSchemeAddRequests();
+		STTPMU_All_TP_ProjectimplementingAgencyPage allTP=new STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
+		allTP.SelectAllTrainingPartnerTable(ProjectProposalID,srno);
+		allTP.ClickOnViewDetails();
 		
-		
-// Moving to PMU to approve the created project		
-
 		// LogOutPage plp = new LogOutPage(driver);
 		// plp.clickOnProfileLogo();
 		// plp.clickOnLogout();

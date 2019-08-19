@@ -16,111 +16,103 @@ import com.nsdc.generic.SelectDropDownList;
 
 public class SelectSchemeOrProgramPage {
 
+	WebDriver driver;
+	private WebDriverWait wait;
+	@FindBy(xpath = "//a[text()='2']")
+	private WebElement PageNumber4;
+	@FindBy(xpath = "//a[contains(text(),'3')]")
+	private WebElement PageNumber3;
 
-		 WebDriver driver;
-		 private WebDriverWait wait;  
-		  @FindBy(xpath="//a[text()='2']")
-		  private WebElement PageNumber4;
-		  @FindBy(xpath="//a[contains(text(),'3')]")
-		  private WebElement PageNumber3;
-		  
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']")
-		  private WebElement TableSelectSchemeOrProgram;
-		  @FindBy(xpath="//select")
-		  private WebElement selectDropDownList;
-		  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']][3]")
-		  private WebElement spActionbutton;
-		  @FindBy(xpath="//div//a[contains(text(),'Add Project')][2]")
-		  private WebElement SPAddProjectButton;
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[9]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
-		  private WebElement STTActionbutton;
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[9]//td[8]//a[contains(text(),'Add Project')]") 
-		  private WebElement STTAddProjectButton;
-		  public SelectSchemeOrProgramPage(WebDriver driver)
-		    {
-		        this.driver = driver;
-		        PageFactory.initElements(driver, this);
-		        wait = new WebDriverWait(driver, 30);
-		    }
-		
+	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']")
+	private WebElement TableSelectSchemeOrProgram;
+	
+	
+	
+	@FindBy(xpath = "//select")
+	private WebElement selectDropDownList;
+	@FindBy(xpath = "//a[i[@class='la la-ellipsis-h']][3]")
+	private WebElement spActionbutton;
+	@FindBy(xpath = "//div//a[contains(text(),'Add Project')][2]")
+	private WebElement SPAddProjectButton;
+	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
+	private WebElement STTActionbutton;
+	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[contains(text(),'Add Project')]")
+	private WebElement STTAddProjectButton;
 
-		    public void ClickPageNumber4() throws Exception
-		    {
-		    	Thread.sleep(2000);
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", PageNumber4);
-				
-		    	//wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
-		    }
-		    public void ClickPageNumber3() throws Exception
-		    {
+	public SelectSchemeOrProgramPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		wait = new WebDriverWait(driver, 30);
+	}
 
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", PageNumber3);
-				
-		    	//wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
-		    }
-		    public void selectValue(String value)
-		    {
-		    	selectDropDownList.click();
-		    	SelectDropDownList.selectDropDownListByVisibleText(selectDropDownList, value);
-		    }
-		    public void ClickOn_SP_Action()
-		    {
-		    	spActionbutton.click();
-		    }
-		    
-		    public void  Click_STT_Actionbutton() throws InterruptedException
-		    {
-		    	
-		    	Thread.sleep(2000);
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", STTActionbutton);
-				
-		    //	wait.until(ExpectedConditions.elementToBeClickable(STTActionbutton)).click();
-		    }
-		    
-		    public void ClickOn_SP_AddProject()
-		    {
-		    	wait.until(ExpectedConditions.elementToBeClickable(SPAddProjectButton)).click();
-		    }
-		    
-		    
-		    public void ClickOn_STT_AddProject() throws InterruptedException
-		    {
-		    	Thread.sleep(2000);
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", STTAddProjectButton);
+	public void ClickPageNumber4() throws Exception {
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", PageNumber4);
+
+		// wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
+	}
+
+	public void ClickPageNumber3() throws Exception {
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", PageNumber3);
+
+		// wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
+	}
+
+	public void selectValue(String value) {
+		selectDropDownList.click();
+		SelectDropDownList.selectDropDownListByVisibleText(selectDropDownList, value);
+	}
+
+	public void ClickOn_SP_Action() {
+		spActionbutton.click();
+	}
+
+	public void Click_STT_Actionbutton() throws InterruptedException {
+
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", STTActionbutton);
+
+		// wait.until(ExpectedConditions.elementToBeClickable(STTActionbutton)).click();
+	}
+
+	public void ClickOn_SP_AddProject() {
+		wait.until(ExpectedConditions.elementToBeClickable(SPAddProjectButton)).click();
+	}
+
+	public void ClickOn_STT_AddProject() throws InterruptedException {
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", STTAddProjectButton);
 //		    	wait.until(ExpectedConditions.elementToBeClickable(STTAddProjectButton)).click();
-		    }
-		    
-		    public void SelectSchemeOrProgram()
-		    {
-		    	
-				List<WebElement> rowstable = TableSelectSchemeOrProgram.findElements(By.tagName("tr"));
+	}
 
-				int rows_count = rowstable.size();
+	public void SelectSchemeOrProgram() {
 
-				for (int row = 0; row < rows_count; row++) {
+		List<WebElement> rowstable = TableSelectSchemeOrProgram.findElements(By.tagName("tr"));
 
-					List<WebElement> Columnsrow = rowstable.get(row).findElements(By.tagName("td"));
+		int rows_count = rowstable.size();
 
-					int columnscount = Columnsrow.size();
+		for (int row = 0; row < rows_count; row++) {
 
-					for (int column = 0; column < columnscount; column++) {
+			List<WebElement> Columnsrow = rowstable.get(row).findElements(By.tagName("td"));
 
-						String celtext = Columnsrow.get(column).getText();
-						
-						if(celtext.equals("PMKVY-CSCM") && Columnsrow.get(column+2).getText().equals("PMKK"))
-						{
-							Columnsrow.get(8).click();
-						}
-						// celtext.getClass();
-					}
-		    }
-		    }
-		    
-		
+			int columnscount = Columnsrow.size();
+
+			for (int column = 0; column < columnscount; column++) {
+
+				String celtext = Columnsrow.get(column).getText();
+
+				if (celtext.equals("PMKVY-CSCM") && Columnsrow.get(column + 2).getText().equals("PMKK")) {
+					Columnsrow.get(8).click();
+				}
+				// celtext.getClass();
+			}
+		}
 	}
 
 	
+}

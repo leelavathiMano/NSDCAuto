@@ -1,5 +1,6 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,8 +17,11 @@ public class PMKVY_STTPMUpage {
         PageFactory.initElements(driver, this);
     }
 //
-	public void ClickOnViewAllSchemeAddRequests()
+	public void ClickOnViewAllSchemeAddRequests() throws InterruptedException
 	{
-		ViewAllSchemeAddRequestsIcon.click();
+		Thread.sleep(2000);
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", ViewAllSchemeAddRequestsIcon);
 	}
 }
