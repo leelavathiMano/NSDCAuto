@@ -12,6 +12,7 @@ import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
 import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
 import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
+import com.nsdc.Pages_PMKVY_Pages.PMKVY_STTPMUpage;
 import com.nsdc.Pages_PMKVY_Pages.STT_AddProject;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
@@ -28,15 +29,19 @@ public class PMKVY_STT_RFP_Project_And_Batch_Creation_Test extends TestConfigura
 	}
 
 	@Test(dataProvider = "projectAndBatchCreation")
-	public void Project_And_Batch_Creation(String srno,String userType, String name, String ProjectProposalID, String ProjecName,
-			String aggrementDate, String StartDate, String EndDate, String TC_ID, String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName, String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload) throws Exception {
+	public void Project_And_Batch_Creation(String srno, String userType, String name, String ProjectProposalID,
+			String ProjecName, String aggrementDate, String StartDate, String EndDate, String TC_ID,
+			String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName,
+			String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload, String PUM_UserID,
+			String PMU_Password) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
-		lp.clickLogin(); //
-		Thread.sleep(3000);
-		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-		bsp.clickToClose(); // Thread.sleep(3000);
-		EnterLoginPage elp = new EnterLoginPage(driver);
+		lp.clickLogin();
+		//
+		/*
+		 * Thread.sleep(3000); BetaVersionOfSmartPage bsp = new
+		 * BetaVersionOfSmartPage(driver); bsp.clickToClose(); // Thread.sleep(3000);
+		 */ EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(userType, name);
 		DashboardPage db = new DashboardPage(driver);
 		db.ClickMySchemeOrPrograms();
@@ -48,7 +53,7 @@ public class PMKVY_STT_RFP_Project_And_Batch_Creation_Test extends TestConfigura
 		ssp.ClickOn_STT_AddProject();
 		STT_AddProject ap = new STT_AddProject(driver);
 		ap.EnterTheProjectProposalID(ProjectProposalID); //
-		//ap.EnterTheProjecName(ProjecName);
+		// ap.EnterTheProjecName(ProjecName);
 		ap.ClickProjectType();
 		ap.ClickAggrementDate();
 		ap.SelectAggrementDate(aggrementDate);
@@ -60,8 +65,10 @@ public class PMKVY_STT_RFP_Project_And_Batch_Creation_Test extends TestConfigura
 		AddTrainingCenterPage adc = new AddTrainingCenterPage(driver);
 		adc.ClickOnFirstRadioButton();
 
-		String TrainingCenterID = driver.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr[1]//td[2]")).getText();
-		ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls","ProjectAndBatchCreation",Integer.parseInt(srno),8,TrainingCenterID);
+		String TrainingCenterID = driver
+				.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr[1]//td[2]")).getText();
+		ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
+				"ProjectAndBatchCreation", Integer.parseInt(srno), 8, TrainingCenterID);
 		adc.ClickOnSaveChanges();
 		ap.EnterTargetValue(TargetValueInNum);
 		ap.SelectTargetValidity(TargetValidityInNum);
@@ -69,20 +76,36 @@ public class PMKVY_STT_RFP_Project_And_Batch_Creation_Test extends TestConfigura
 		ap.SelectJobRoleName(JobRoleName);
 		ap.EnterTargetValueAgain(TargetValue);
 		ap.SelectTargetValidityInMonths(TargetValidityInNumInMonths);
-		
+
 		ap.ClickSignedTermSheetBrowseBtn();
 		UploadFile.upload(FiletoUpload);
 		ap.ClickSignedTermSheetUploadBtn();
-		
+
 		ap.ClickSignedAgreementBrowseBtn();
 		UploadFile.upload(FiletoUpload);
-		
+
 		ap.ClickSignedAgreementUploadBtn();
-		
+
 		ap.ClickOtherSupportingBrowseBtn();
 		UploadFile.upload(FiletoUpload);
 		ap.ClickOtherSupportingUploadBtn();
 		
+		
+		
+		LogOutPage plp = new LogOutPage(driver);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();
+
+		Thread.sleep(3000);
+		lp.clickLogin();
+		// bsp.clickToClose();
+		elp.performlogin(PUM_UserID, PMU_Password);
+		PMKVY_STTPMUpage sttpmu = new PMKVY_STTPMUpage(driver);
+		sttpmu.ClickOnViewAllSchemeAddRequests();
+		
+		
+// Moving to PMU to approve the created project		
+
 		// LogOutPage plp = new LogOutPage(driver);
 		// plp.clickOnProfileLogo();
 		// plp.clickOnLogout();

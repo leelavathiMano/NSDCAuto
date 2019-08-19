@@ -32,9 +32,9 @@ public class SelectSchemeOrProgramPage {
 		  private WebElement spActionbutton;
 		  @FindBy(xpath="//div//a[contains(text(),'Add Project')]")
 		  private WebElement SPAddProjectButton;
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
+		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[9]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 		  private WebElement STTActionbutton;
-		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[contains(text(),'Add Project')]") 
+		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[9]//td[8]//a[contains(text(),'Add Project')]") 
 		  private WebElement STTAddProjectButton;
 		  public SelectSchemeOrProgramPage(WebDriver driver)
 		    {
