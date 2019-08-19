@@ -28,9 +28,9 @@ public class SelectSchemeOrProgramPage {
 		  private WebElement TableSelectSchemeOrProgram;
 		  @FindBy(xpath="//select")
 		  private WebElement selectDropDownList;
-		  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
+		  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']][3]")
 		  private WebElement spActionbutton;
-		  @FindBy(xpath="//div//a[contains(text(),'Add Project')]")
+		  @FindBy(xpath="//div//a[contains(text(),'Add Project')][2]")
 		  private WebElement SPAddProjectButton;
 		  @FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']//tr[9]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 		  private WebElement STTActionbutton;

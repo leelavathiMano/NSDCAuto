@@ -9,8 +9,9 @@ import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMUpage;
 import com.nsdc.Pages_PMKVY_Pages.Pmkvy_SpecialProjectCreationPage;
 import com.nsdc.Pages_PMKVY_Pages.SPPMU_All_TP_ProjectimplementingAgencypage;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
-import com.nsdc.Pages_PMKVY_Pages.SelectedSchemepage_PMKVY_SP;
+import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMU_SelectedSchemepage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
@@ -33,7 +34,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String TrainerCertified,String TypeofTrainingCentre,String PlacementsRequirement,String TypeOfEmployment,String MinimumPercentageplaced,
 			String Disability,String Religion,String Gender,String Category, String DiscountsonBaseRate,String BatchDuration,String NumberofTranches,
 			String Tranche3tobepaidwithoutPlacement,String DualLogoRequired,String TargetBeneficiaries,String Sector,String JobRole,String Target,
-			String locationState,String locationDistrict) throws Exception {
+			String locationState,String locationDistrict,String jobrole1,String targetvalue1,String Jobrole2,
+			String targetvalue2,String advanceTrancheYes,String advancepayment ) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -49,6 +51,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		MySchemeOrProjectPage msp=new MySchemeOrProjectPage(driver);
 		msp.ClickApplySchemeProgram();
 		SelectSchemeOrProgramPage ssp= new SelectSchemeOrProgramPage(driver);
+		Thread.sleep(3000);
+
 		ssp.ClickPageNumber3();
 //ssp.selectValue(value);
 		Thread.sleep(3000);
@@ -69,12 +73,16 @@ sp.clickAdd();
 sp.clickOnIndemnityBondBrowse();
 Thread.sleep(3000);
 UploadFile.upload(img1);
+Thread.sleep(3000);
+
 sp.clickOnIndemnityBondUploadButton();
 Thread.sleep(3000);
 
-sp.clickOnOtherSupportingDocumentsBrowse();
-Thread.sleep(3000);
-UploadFile.upload(img2);
+//sp.clickOnOtherSupportingDocumentsBrowse();
+//Thread.sleep(3000);
+//UploadFile.upload(img2);
+//Thread.sleep(3000);
+
 sp.clickOnOtherSupportingDocumentsUpload();
 Thread.sleep(3000);
 sp.clickSaveAndSumbit();
@@ -96,7 +104,7 @@ LogOutPage plp = new LogOutPage(driver);
 		allPIA.ClickOnAction();
 		Thread.sleep(3000);
 		allPIA.ClickOnViewDetails();
-		SelectedSchemepage_PMKVY_SP sssp=new SelectedSchemepage_PMKVY_SP(driver);
+		PMKVY_SPPMU_SelectedSchemepage sssp=new PMKVY_SPPMU_SelectedSchemepage(driver);
 		Thread.sleep(3000);
 		sssp.ClickAggrementDate();
 	Thread.sleep(3000);
@@ -126,14 +134,38 @@ LogOutPage plp = new LogOutPage(driver);
 		sssp.SelecttrancheThreeToBepaid(Tranche3tobepaidwithoutPlacement);
 		sssp.SelectDualLogoRequired(DualLogoRequired);
 		sssp.EnterTheTargetBeneficiaries(TargetBeneficiaries);
+		//addsector and job roles
+		String numberofSectors=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "Sp-workflow-data", 1, 28);
+	 	int sectors=Integer.parseInt(numberofSectors);
+		
+		for(int i=1;i<=sectors;i++)
+	{
 		sssp.SelectSector(Sector);
 		sssp.SelectjobRoleName(JobRole);
+		Thread.sleep(3000);
 		sssp.EnterSectorAndJobTarget(Target);
+		Thread.sleep(3000);
 		sssp.ClickOnSectorAndJobRoleAdd();
+		}
 		
 		
 		
+	//////////////	
 		
+		sssp.SelectlocationState(locationState);
+		sssp.Selectlocationdistrict(locationDistrict);
+		Thread.sleep(3000);
+		sssp.ClicklocationAddButton();
+		sssp.SelectJobRoleTargetDistribution1(jobrole1);
+		sssp.EnterTargetDistribution1(targetvalue1);
+		sssp.SelectJobRoleTargetDistribution2(Jobrole2);
+		sssp.EnterTargetDistribution2(targetvalue2);
+		sssp.SelectAdvanceTranche(advanceTrancheYes);
+		sssp.EnterTheMinimumPercentageofCandidatedtobeplacedTextBox(advancepayment);
+		sssp.ClickAmountTobeOfAdvance();
+		Thread.sleep(3000);
+		sssp.ClickAdvanceAdd();
+		sssp.ClickSaveAndSubmitButton();
 		
 		
 		

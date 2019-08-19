@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.nsdc.generic.SelectDropDownList;
 import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
 
-public class SelectedSchemepage_PMKVY_SP {
+public class PMKVY_SPPMU_SelectedSchemepage {
 	WebDriver driver;
 	
 	@FindBy(xpath="//input[@placeholder='Select Agreement Date']")
@@ -72,12 +72,50 @@ public class SelectedSchemepage_PMKVY_SP {
 	private WebElement ProposedTrainingTargetTextBox ;
 	@FindBy(xpath="(//button[text()='Add'])[2]")
 	private WebElement SectorAndJobRoleAddButton;
-	
-	
+	//////////////
+	@FindBy(xpath="//select[@formcontrolname='state']")
+	private WebElement selectlocationStateDropDownlist;
+	@FindBy(xpath="//select[@formcontrolname='district']")
+	private WebElement selectlocationdistrictDropDownlist;
+	@FindBy(xpath="(//button[text()='Add'])[3]")
+	private WebElement locationAddButton;
+	//////////modification(approved location)
+	@FindBy(xpath="(//select[@formcontrolname='qpCode'])[1]")
+	private WebElement JobRoleTargetDistribution1DropDownlist;
+	@FindBy(xpath="(//select[@formcontrolname='adharRequired'])[2]")
+	private WebElement AdharReqTargetDistribution1;
+	@FindBy(xpath="(//select[@formcontrolname='boardingAndLoadgingRequired'])[1]")
+	private WebElement BAndLTargetDistribution1;
+	@FindBy(xpath="(//select[@formcontrolname='convayenceRequired'])[1]")
+	private WebElement TransportReqTargetDistribution1;
+	@FindBy(xpath="(//input[@placeholder='Enter Target'])[2]")
+	private WebElement TargetDistribution1;
+	///////////////////////////////
+	@FindBy(xpath="(//select[@formcontrolname='qpCode'])[2]")
+	private WebElement JobRoleTargetDistribution2;
+	@FindBy(xpath="(//select[@formcontrolname='adharRequired'])[3]")
+	private WebElement AdharReqTargetDistribution2;
+	@FindBy(xpath="(//select[@formcontrolname='boardingAndLoadgingRequired'])[2]")
+	private WebElement BAndLTargetDistribution2;
+	@FindBy(xpath="(//select[@formcontrolname='convayenceRequired'])[2]")
+	private WebElement TransportReqTargetDistribution2;
+	@FindBy(xpath="(//input[@placeholder='Enter Target'])[3]")
+	private WebElement TargetDistribution2;
+	////
+	@FindBy(xpath="//select[@formcontrolname='isAdvancePaymentDone']")
+	private WebElement AdvanceTrancheDrpDownList;
+	@FindBy(xpath="//input[@formcontrolname='percentageOfAdvance']")
+	private WebElement percentageOfAdvanceTextBox;
+	@FindBy(xpath="(//input[@placeholder='Enter Amount'])[2]")
+	private WebElement AmountTobeOfAdvanceTextBox;
+	@FindBy(xpath="(//button[text()='Add'])[6]")
+	private WebElement AdvanceAddButton;
+	@FindBy(xpath="//button[text()='Save & Submit']")
+	private WebElement SaveAndButton;
 	
 	
 	//
-	public SelectedSchemepage_PMKVY_SP (WebDriver driver)
+	public PMKVY_SPPMU_SelectedSchemepage (WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -144,9 +182,9 @@ public class SelectedSchemepage_PMKVY_SP {
 		SelectDropDownList.selectDropDownListByVisibleText(PlacementsRequirementDropDownList,yes);
 	}	
 	
-	public void SelectTypeOfEmployment(String selfEmployeement)
+	public void SelectTypeOfEmployment(String typeOfElement)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(PlacementsRequirementDropDownList,selfEmployeement);
+		SelectDropDownList.selectDropDownListByVisibleText(TypeOfEmploymentDropDownList,typeOfElement);
 	}	
 	public void EnterTheMinimumPercentageofCandidatedtobeplacedTextBox(String percentage)
 	{
@@ -218,8 +256,76 @@ public class SelectedSchemepage_PMKVY_SP {
 	{
 		SectorAndJobRoleAddButton.click();
 	}
+	//////////////////////////////////////////////
+	public void SelectlocationState(String State)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(selectlocationStateDropDownlist, State);
+		
+	}
+	public void Selectlocationdistrict(String district)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(selectlocationdistrictDropDownlist, district);
+		
+	}
 	
+	public void ClicklocationAddButton()
+	{
+		locationAddButton.click();
+		
+	}
+	public void SelectJobRoleTargetDistribution1(String Jobrole1)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(JobRoleTargetDistribution1DropDownlist, Jobrole1);
+		
+	}
+	public void SelectAdharReqTargetDistribution1(String Adhar)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(AdharReqTargetDistribution1, Adhar);
+		
+	}
+	public void SelectBAndLTargetDistribution1(String yes)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(BAndLTargetDistribution1, yes);
+		
+	}
+	public void EnterTargetDistribution1 (String target1)
+	{
+		TargetDistribution1.sendKeys(target1);
+		
+	}
+	public void SelectJobRoleTargetDistribution2(String Jobrole2)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(JobRoleTargetDistribution2, Jobrole2);
+		
+	}
+	public void EnterTargetDistribution2 (String target2)
+	{
+		TargetDistribution2.sendKeys(target2);
+		
+	}
+	public void SelectAdvanceTranche (String yes)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(AdvanceTrancheDrpDownList, yes);
+		
+	}
+	public void EnterpercentageOfAdvanceTextBox (String amount)
+	{
+		percentageOfAdvanceTextBox.sendKeys(amount);
+		
+	}
 	
-	
+	public void ClickAmountTobeOfAdvance()
+	{
+		AmountTobeOfAdvanceTextBox.click();
+		
+	}
+	public void ClickAdvanceAdd()
+	{
+		AdvanceAddButton.click();
+	}
+	public void ClickSaveAndSubmitButton()
+	{
+		SaveAndButton.click();
+	}
 	}
 
