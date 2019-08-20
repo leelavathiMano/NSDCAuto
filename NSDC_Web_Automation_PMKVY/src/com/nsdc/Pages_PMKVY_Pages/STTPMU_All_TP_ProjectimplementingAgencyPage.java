@@ -15,7 +15,8 @@ public class STTPMU_All_TP_ProjectimplementingAgencyPage {
 	WebDriver driver;
 	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
 	private WebElement ActionButton;
-	@FindBy(xpath="(//a[contains(text(),'View Details')])[1]")
+	@FindBy(xpath="//div[contains(@style,'position')]//a[contains(text(),'View Details')]")
+	//@FindBy(xpath="//div[@x-placement='top-end']//a[contains(text(),'View Details')]")
 	private WebElement ViewDetailsIcon;
 	
 	@FindBy(xpath="//div[@id='pending']//tbody[@class='m-datatable__body margin-table ']")
@@ -31,8 +32,9 @@ public class STTPMU_All_TP_ProjectimplementingAgencyPage {
 	{
 		ActionButton.click();
 	}
-	public void ClickOnViewDetails()
+	public void ClickOnViewDetails() throws InterruptedException
 	{
+		Thread.sleep(2000);
 		ViewDetailsIcon.click();
 	}
 	
@@ -52,7 +54,7 @@ public class STTPMU_All_TP_ProjectimplementingAgencyPage {
 
 				String celtext = Columnsrow.getText();
 				String AllTPID="sdfdsf";
-				if (celtext.equals(ProjectProposalID)) {
+				if (celtext.equals(AllTPID)) {
 					
 				/*
 				 * ReadWriteData.setExcelData(

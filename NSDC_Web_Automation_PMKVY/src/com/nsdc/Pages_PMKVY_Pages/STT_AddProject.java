@@ -29,6 +29,9 @@ public class STT_AddProject extends TestConfiguration {
 	@FindBy(xpath="//div[input[@placeholder='Select Agreement Date']]")
 	private WebElement AggrementDate;
 	
+	@FindBy(xpath="//button[text()='Add']")
+	private WebElement SectorAddButton;
+	
 	@FindBy(xpath="//div[input[@placeholder='Select Start Date']]")
 	private WebElement ProjectDurationStartDate;
 	
@@ -82,6 +85,9 @@ public class STT_AddProject extends TestConfiguration {
 	@FindBy(xpath="//label[contains(text(),'Other Supporting')]//following-sibling::div[1]//button")
 	private WebElement OtherSupportingUploadBtn;
 	
+	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	private WebElement SaveAndSubmit;
+	
 	
 	//label[contains(text(),'Signed Agreement')]//following-sibling::div[1]//input
 	
@@ -101,8 +107,9 @@ public class STT_AddProject extends TestConfiguration {
 		ProjecNameTextBox.sendKeys(ProjecName);
 	}
 	
-	public void ClickProjectType()
+	public void ClickProjectType() throws InterruptedException
 	{
+		Thread.sleep(2000);
 		ProjectTypeButton.click();
 	}
 	
@@ -180,6 +187,16 @@ public class STT_AddProject extends TestConfiguration {
 		SelectDropDownList.selectDropDownListByValue(TargetValidityInMonths,TargetValidityInNumInMonths);
 	}
 	
+	public void ClickSectorAddButton() throws InterruptedException
+	{
+		
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", SectorAddButton);
+		//SectorAddButton.click();
+	}
+	
+	
 	public void ClickSignedTermSheetBrowseBtn() throws InterruptedException
 	{
 		Thread.sleep(2000);
@@ -202,7 +219,7 @@ public class STT_AddProject extends TestConfiguration {
 	
 	public void ClickSignedTermSheetUploadBtn() throws InterruptedException
 	{	
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", SignedTermSheetUploadBtn);
 		//SignedTermSheetUploadBtn.click();
@@ -211,7 +228,7 @@ public class STT_AddProject extends TestConfiguration {
 	public void ClickSignedAgreementUploadBtn() throws InterruptedException
 	{
 		
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", SignedAgreementUploadBtn);
 		//SignedAgreementUploadBtn.click();
@@ -219,11 +236,16 @@ public class STT_AddProject extends TestConfiguration {
 	}
 	public void ClickOtherSupportingUploadBtn() throws InterruptedException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", OtherSupportingUploadBtn);
 		//OtherSupportingUploadBtn.click();
 	}
 	
-	
+	public void ClickSaveAndSubmitBtn() throws InterruptedException
+	{
+		Thread.sleep(3000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", SaveAndSubmit);
+}
 }

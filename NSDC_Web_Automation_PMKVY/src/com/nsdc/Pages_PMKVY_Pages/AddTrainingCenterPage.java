@@ -58,7 +58,7 @@ public class AddTrainingCenterPage {
 
 		int rows_count = rowstable.size();
 
-		for (int row = 1; row < rows_count; row++) {
+		for (int row = 1; row <= rows_count; row++) {
 
 			WebElement Columnsrow = driver.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr["+row+"]//td[2]"));
 

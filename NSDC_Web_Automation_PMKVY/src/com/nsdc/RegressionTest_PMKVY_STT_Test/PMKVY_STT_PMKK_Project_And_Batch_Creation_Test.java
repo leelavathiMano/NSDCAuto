@@ -29,7 +29,8 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 
 	@Test(dataProvider = "projectAndBatchCreation")
 	public void Project_And_Batch_Creation(String srno,String userType, String name, String ProjectProposalID, String ProjecName,
-			String aggrementDate, String StartDate, String EndDate, String TC_ID, String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName, String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload) throws Exception {
+			String aggrementDate, String StartDate, String EndDate, String TC_ID, String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName, String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload,String PUM_UserID,
+			String PMU_Password) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin(); //
@@ -58,10 +59,7 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		ap.SelectProjectDurationEndDate(EndDate);
 		ap.ClickAddButton();
 		AddTrainingCenterPage adc = new AddTrainingCenterPage(driver);
-		adc.ClickOnFirstRadioButton();
-
-		String TrainingCenterID = driver.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr[1]//td[2]")).getText();
-		ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls","ProjectAndBatchCreation",Integer.parseInt(srno),8,TrainingCenterID);
+		adc.SelectTC_FromAddCustomerTable(srno);
 		adc.ClickOnSaveChanges();
 		ap.EnterTargetValue(TargetValueInNum);
 		ap.SelectTargetValidity(TargetValidityInNum);
@@ -69,20 +67,41 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		ap.SelectJobRoleName(JobRoleName);
 		ap.EnterTargetValueAgain(TargetValue);
 		ap.SelectTargetValidityInMonths(TargetValidityInNumInMonths);
-		
+
+		Thread.sleep(3000);
 		ap.ClickSignedTermSheetBrowseBtn();
 		UploadFile.upload(FiletoUpload);
 		ap.ClickSignedTermSheetUploadBtn();
 		
 		ap.ClickSignedAgreementBrowseBtn();
 		UploadFile.upload(FiletoUpload);
-		
 		ap.ClickSignedAgreementUploadBtn();
 		
 		ap.ClickOtherSupportingBrowseBtn();
 		UploadFile.upload(FiletoUpload);
 		ap.ClickOtherSupportingUploadBtn();
+		ap.ClickSectorAddButton();
+		ap.ClickSaveAndSubmitBtn();
 		
+		
+		/*
+		 * LogOutPage plp = new LogOutPage(driver); plp.clickOnProfileLogo();
+		 * plp.clickOnLogout();
+		 */
+
+		// Moving to PMU to approve the created project
+		/*
+		 * BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		 * 
+		 * bsp.clickToClose(); Thread.sleep(3000); // lp.clickLogin();
+		 * Thread.sleep(3000); EnterLoginPage elp = new EnterLoginPage(driver);
+		 * elp.performlogin(PUM_UserID, PMU_Password); PMKVY_STTPMUpage sttpmu = new
+		 * PMKVY_STTPMUpage(driver); sttpmu.ClickOnViewAllSchemeAddRequests();
+		 * STTPMU_All_TP_ProjectimplementingAgencyPage allTP = new
+		 * STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
+		 * allTP.SelectAllTrainingPartnerTable(ProjectProposalID, srno);
+		 * allTP.ClickOnViewDetails();
+		 */
 		// LogOutPage plp = new LogOutPage(driver);
 		// plp.clickOnProfileLogo();
 		// plp.clickOnLogout();
