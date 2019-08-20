@@ -1,5 +1,6 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -28,21 +29,21 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 
 	@Test(dataProvider = "CreateSpecialProjectData")
 
-	public void Addspecialprojectdata_01(String username, String password, String value, String projectproposalID,
+	public void Addspecialprojectdata_01(String username, String password, String projectproposalID,
 			String projectname, String registeredAs, String proposingorganisationName, String state, String district,
 			String img1, String img2,String loginId,String password2, String agrementDate,String StartDate,String endDate,String Adhar,
 			String TrainerCertified,String TypeofTrainingCentre,String PlacementsRequirement,String TypeOfEmployment,String MinimumPercentageplaced,
 			String Disability,String Religion,String Gender,String Category, String DiscountsonBaseRate,String BatchDuration,String NumberofTranches,
-			String Tranche3tobepaidwithoutPlacement,String DualLogoRequired,String TargetBeneficiaries,String Sector,String JobRole,String Target,
+			String Tranche3tobepaidwithoutPlacement,String DualLogoRequired,String TargetBeneficiaries,String numberofsectors,String Sector,String JobRole,String Target,
 			String locationState,String locationDistrict,String jobrole1,String targetvalue1,String Jobrole2,
-			String targetvalue2,String advanceTrancheYes,String advancepayment ) throws Exception {
+			String targetvalue2, String tcName,String tcTarget,String advanceTrancheYes,String advancepayment ) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
-		// Thread.sleep(3000);
+		 Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
 		bsp.clickToClose();
-		// Thread.sleep(3000);
+		 Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(username, password);
 		Thread.sleep(3000);
@@ -54,7 +55,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		Thread.sleep(3000);
 
 		ssp.ClickPageNumber3();
-//ssp.selectValue(value);
+
 		Thread.sleep(3000);
    ssp.ClickOn_SP_Action();
    ssp.ClickOn_SP_AddProject();
@@ -107,15 +108,14 @@ LogOutPage plp = new LogOutPage(driver);
 		PMKVY_SPPMU_SelectedSchemepage sssp=new PMKVY_SPPMU_SelectedSchemepage(driver);
 		Thread.sleep(3000);
 		sssp.ClickAggrementDate();
-	Thread.sleep(3000);
+	
 	sssp.SelectAggrementDate(agrementDate);
-		Thread.sleep(3000);
+	
 		sssp.ClickStartDate();
-	Thread.sleep(3000);
 	sssp.SelectProjectDurationStartDate(StartDate);
-	Thread.sleep(3000);
+	
 	sssp.ClickEndDate();
-	Thread.sleep(3000);
+	
 		sssp.SelectProjectDurationEndDate(endDate);
 	Thread.sleep(3000);
 		sssp.SelectAdharRequirmentYes(Adhar);
@@ -134,37 +134,37 @@ LogOutPage plp = new LogOutPage(driver);
 		sssp.SelecttrancheThreeToBepaid(Tranche3tobepaidwithoutPlacement);
 		sssp.SelectDualLogoRequired(DualLogoRequired);
 		sssp.EnterTheTargetBeneficiaries(TargetBeneficiaries);
-		//addsector and job roles
-		String numberofSectors=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "Sp-workflow-data", 1, 28);
-	 	int sectors=Integer.parseInt(numberofSectors);
 		
-		for(int i=1;i<=sectors;i++)
-	{
+			
+			
 		sssp.SelectSector(Sector);
 		sssp.SelectjobRoleName(JobRole);
 		Thread.sleep(3000);
 		sssp.EnterSectorAndJobTarget(Target);
 		Thread.sleep(3000);
 		sssp.ClickOnSectorAndJobRoleAdd();
-		}
+	
 		
-		
-		
-	//////////////	
-		
-		sssp.SelectlocationState(locationState);
-		sssp.Selectlocationdistrict(locationDistrict);
+		//sssp.SelectlocationState(locationState);
+		//sssp.Selectlocationdistrict(locationDistrict);
 		Thread.sleep(3000);
-		sssp.ClicklocationAddButton();
+		//sssp.ClicklocationAddButton();
 		sssp.SelectJobRoleTargetDistribution1(jobrole1);
 		sssp.EnterTargetDistribution1(targetvalue1);
-		sssp.SelectJobRoleTargetDistribution2(Jobrole2);
-		sssp.EnterTargetDistribution2(targetvalue2);
+		sssp.SelectTCName(tcName);
+		sssp.EnterTcTarget(tcTarget);
+		sssp.ClickAddTcTargetButton();
+		Thread.sleep(3000);
+		//sssp.SelectJobRoleTargetDistribution2(Jobrole2);
+		//sssp.EnterTargetDistribution2(targetvalue2);
 		sssp.SelectAdvanceTranche(advanceTrancheYes);
-		sssp.EnterTheMinimumPercentageofCandidatedtobeplacedTextBox(advancepayment);
+		Thread.sleep(3000);
+		sssp.EnterpercentageOfAdvanceTextBox(advancepayment);
+		Thread.sleep(3000);
 		sssp.ClickAmountTobeOfAdvance();
 		Thread.sleep(3000);
 		sssp.ClickAdvanceAdd();
+		Thread.sleep(10000);
 		sssp.ClickSaveAndSubmitButton();
 		
 		

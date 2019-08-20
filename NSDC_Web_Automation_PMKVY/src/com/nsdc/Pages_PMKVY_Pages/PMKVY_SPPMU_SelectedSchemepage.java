@@ -38,6 +38,7 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement  TypeOfEmploymentDropDownList;
 	@FindBy(xpath="//input[@formcontrolname='noOfCandidatesToBePlacedPercentage']")
 	private WebElement  MinimumPercentageofCandidatedtobeplacedTextBox;
+	
 	@FindBy(xpath="(//button[text()='Add'])[1]")
 	private WebElement MinimumPercentageofCandidatedtobeplacedAddButton ;
 	
@@ -101,6 +102,13 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement TransportReqTargetDistribution2;
 	@FindBy(xpath="(//input[@placeholder='Enter Target'])[3]")
 	private WebElement TargetDistribution2;
+	@FindBy(xpath="//select[@formcontrolname='userName']")
+	private WebElement TC_nameDropDownList;
+	@FindBy(xpath="(//input[@formcontrolname='target'])[2]")
+	private WebElement TC_TargetTextBox;
+	@FindBy(xpath="(//button[text()='Add'])[4]")
+	private WebElement Tc_targetAddbutton;
+	
 	////
 	@FindBy(xpath="//select[@formcontrolname='isAdvancePaymentDone']")
 	private WebElement AdvanceTrancheDrpDownList;
@@ -108,7 +116,7 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement percentageOfAdvanceTextBox;
 	@FindBy(xpath="(//input[@placeholder='Enter Amount'])[2]")
 	private WebElement AmountTobeOfAdvanceTextBox;
-	@FindBy(xpath="(//button[text()='Add'])[6]")
+	@FindBy(xpath="(//button[text()='Add'])[5]")
 	private WebElement AdvanceAddButton;
 	@FindBy(xpath="//button[text()='Save & Submit']")
 	private WebElement SaveAndButton;
@@ -302,6 +310,18 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	{
 		TargetDistribution2.sendKeys(target2);
 		
+	}
+	public void SelectTCName(String tcName)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(TC_nameDropDownList, tcName);
+	}
+	public void EnterTcTarget(String tcTarget)
+	{
+		TC_TargetTextBox.sendKeys(tcTarget);
+	}
+	public void ClickAddTcTargetButton()
+	{
+		Tc_targetAddbutton.click();
 	}
 	public void SelectAdvanceTranche (String yes)
 	{
