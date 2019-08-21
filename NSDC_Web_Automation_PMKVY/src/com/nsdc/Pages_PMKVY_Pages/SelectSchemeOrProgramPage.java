@@ -31,13 +31,18 @@ public class SelectSchemeOrProgramPage {
 	@FindBy(xpath = "//select")
 	private WebElement selectDropDownList;
 	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[3]")
-	private WebElement spActionbutton;
+	private WebElement SP_ActionButton;
 	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[2]")
 	private WebElement SPAddProjectButton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 	private WebElement STTActionbutton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[contains(text(),'Add Project')]")
 	private WebElement STTAddProjectButton;
+	/////
+	@FindBy(xpath = "(//a[@data-toggle='dropdown'])[2]")
+	private WebElement ApprovalInProgress_SPActionButton;
+	@FindBy(xpath = "(//a[contains(text(),'View Details')])[2]")
+	private WebElement ApprovalInProgress_SP_ViewDetailsButton;
 
 	public SelectSchemeOrProgramPage(WebDriver driver) {
 		this.driver = driver;
@@ -67,7 +72,7 @@ public class SelectSchemeOrProgramPage {
 	}
 
 	public void ClickOn_SP_Action() {
-		spActionbutton.click();
+		SP_ActionButton.click();
 	}
 
 	public void Click_STT_Actionbutton() throws InterruptedException {
@@ -90,29 +95,41 @@ public class SelectSchemeOrProgramPage {
 //		    	wait.until(ExpectedConditions.elementToBeClickable(STTAddProjectButton)).click();
 	}
 
-	public void SelectSchemeOrProgram() {
+	public void SelectSchemeOrProgram() 
+	{
 
 		List<WebElement> rowstable = TableSelectSchemeOrProgram.findElements(By.tagName("tr"));
 
 		int rows_count = rowstable.size();
 
-		for (int row = 0; row < rows_count; row++) {
+		for (int row = 0; row < rows_count; row++) 
+		{
 
 			List<WebElement> Columnsrow = rowstable.get(row).findElements(By.tagName("td"));
 
 			int columnscount = Columnsrow.size();
 
-			for (int column = 0; column < columnscount; column++) {
+			for (int column = 0; column < columnscount; column++) 
+			{
 
 				String celtext = Columnsrow.get(column).getText();
 
-				if (celtext.equals("PMKVY-CSCM") && Columnsrow.get(column + 2).getText().equals("PMKK")) {
+				if (celtext.equals("PMKVY-CSCM") && Columnsrow.get(column + 2).getText().equals("PMKK")) 
+				{
 					Columnsrow.get(8).click();
 				}
 				// celtext.getClass();
 			}
 		}
 	}
-
+ public void ClickApprovalInProgress_SPAction() throws InterruptedException
+ { 
+	 Thread.sleep(2000);
+	 ApprovalInProgress_SPActionButton.click();
+ }
+ public void ClickApprovalInProgress_SP_ViewDetails()
+ {
+	 ApprovalInProgress_SP_ViewDetailsButton.click();
+ }
 	
 }
