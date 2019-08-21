@@ -32,6 +32,9 @@ import com.nsdc.generic.SelectDropDownList;
 		@FindBy(xpath="//button[contains(text(),'Submit Response')]")
 		private WebElement SubmitBtn;
 		
+		@FindBy(xpath="//p[contains(text(),'View All Batches')]")
+		private WebElement ViewAllBatches;
+		
 		public STTPMU_Pending_ViewDetailsPage(WebDriver driver)
 	    {
 	        this.driver = driver;
@@ -63,6 +66,9 @@ import com.nsdc.generic.SelectDropDownList;
 			Thread.sleep(2000);
 			SubmitBtn.click();
 		}
+		
+		
+		
 
 		public void SelectAllTrainingPartnerTable(String ProjectProposalID, String SLNo) throws NumberFormatException, Exception {
 			Thread.sleep(3000);
@@ -77,8 +83,8 @@ import com.nsdc.generic.SelectDropDownList;
 			//	int columnscount = Columnsrow.size();
 
 					String celtext = Columnsrow.getText();
-					String AllTPID="sdfdsf";
-					if (celtext.equals(AllTPID)) {
+					//String AllTPID="sdfdsf";
+					if (celtext.equals(ProjectProposalID)) {
 						
 					/*
 					 * ReadWriteData.setExcelData(

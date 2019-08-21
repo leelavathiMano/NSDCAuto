@@ -41,7 +41,7 @@ public class STTPMU_All_TP_ProjectimplementingAgencyPage {
 	
 
 	public void SelectAllTrainingPartnerTable(String ProjectProposalID, String SLNo) throws NumberFormatException, Exception {
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		List<WebElement> rowstable = AllTrainingPartnerTable.findElements(By.tagName("tr"));
 
 		int rows_count = rowstable.size();
@@ -53,8 +53,8 @@ public class STTPMU_All_TP_ProjectimplementingAgencyPage {
 		//	int columnscount = Columnsrow.size();
 
 				String celtext = Columnsrow.getText();
-				String AllTPID="sdfdsf";
-				if (celtext.equals(AllTPID)) {
+				//String AllTPID="sdfdsf";
+				if (celtext.equals(ProjectProposalID)) {
 					
 				/*
 				 * ReadWriteData.setExcelData(
