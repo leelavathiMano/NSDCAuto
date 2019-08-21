@@ -1,6 +1,7 @@
 package com.nsdc.generic;
 
 import java.io.File;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.bcel.generic.Select;
@@ -16,16 +17,13 @@ import org.testng.annotations.Test;
 
 public class Sample
 {
-	WebDriver dr;
-	WebElement sr;
+public static void  main(String args[])
+{
 	
- @Test
- public void meth()
-    {
-	
-	
-	
-	}
-
 
 }
+}
+
+
+
+

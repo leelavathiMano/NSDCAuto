@@ -2,6 +2,7 @@ package com.nsdc.generic;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Random;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -26,6 +27,16 @@ public class ReadMultipleDataFromExcel
             {
                 for (int j=0; j < totalNoOfCols; j++)
                 {
+                	
+					/*
+					 * Random rand = new Random();
+					 * 
+					 * // Generate random integers in range 0 to 999 int rand_int1 =
+					 * rand.nextInt(1000); String AutoRand = "Auto_"+rand_int1; // Print random
+					 * integers System.out.println(AutoRand); ReadWriteData.setExcelData(
+					 * "./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
+					 * "ProjectAndBatchCreation", i-1, 8, AutoRand);
+					 */
                     arrayExcelData[i-1][j] = sh.getCell(j, i).getContents();
                 }
             }

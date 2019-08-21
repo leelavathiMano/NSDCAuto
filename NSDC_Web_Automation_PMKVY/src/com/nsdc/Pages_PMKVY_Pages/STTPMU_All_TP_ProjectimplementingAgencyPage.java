@@ -41,7 +41,7 @@ public class STTPMU_All_TP_ProjectimplementingAgencyPage {
 	
 
 	public void SelectAllTrainingPartnerTable(String ProjectProposalID, String SLNo) throws NumberFormatException, Exception {
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		List<WebElement> rowstable = AllTrainingPartnerTable.findElements(By.tagName("tr"));
 
 		int rows_count = rowstable.size();

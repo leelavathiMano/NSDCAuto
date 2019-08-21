@@ -53,7 +53,7 @@ public class AddTrainingCenterPage {
 	
 
 	public void SelectTC_FromAddCustomerTable(String SLNo) throws NumberFormatException, Exception {
-
+		Thread.sleep(3000);
 		List<WebElement> rowstable = AddTrainingCenterTable.findElements(By.tagName("tr"));
 
 		int rows_count = rowstable.size();
