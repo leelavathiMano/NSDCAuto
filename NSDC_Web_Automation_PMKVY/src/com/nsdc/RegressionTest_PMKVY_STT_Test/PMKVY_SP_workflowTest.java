@@ -7,9 +7,12 @@ import org.testng.annotations.Test;
 import com.nsdc.Pages_PMKVY_Pages.DashboardPage;
 import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMUpage;
+import com.nsdc.Pages_PMKVY_Pages.PMKVY_SP_ApprovalInprogress_Additionaldetails_Page;
 import com.nsdc.Pages_PMKVY_Pages.Pmkvy_SpecialProjectCreationPage;
 import com.nsdc.Pages_PMKVY_Pages.SPPMU_All_TP_ProjectimplementingAgencypage;
+import com.nsdc.Pages_PMKVY_Pages.STTPMU_All_TP_ProjectimplementingAgencyPage;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
+import com.nsdc.Pages_PMKVY_Pages.TP_SP_AdditionalRequiredPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMU_SelectedSchemepage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
@@ -36,7 +39,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String Disability,String Religion,String Gender,String Category, String DiscountsonBaseRate,String BatchDuration,String NumberofTranches,
 			String Tranche3tobepaidwithoutPlacement,String DualLogoRequired,String TargetBeneficiaries,String numberofsectors,String Sector,String JobRole,String Target,
 			String locationState,String locationDistrict,String jobrole1,String targetvalue1,String Jobrole2,
-			String targetvalue2, String tcName,String tcTarget,String advanceTrancheYes,String advancepayment ) throws Exception {
+			String targetvalue2, String tcName,String tcTarget,String advanceTrancheYes,String advancepayment,String duallogoImg,String review ) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -147,30 +150,73 @@ LogOutPage plp = new LogOutPage(driver);
 		
 		//sssp.SelectlocationState(locationState);
 		//sssp.Selectlocationdistrict(locationDistrict);
-		Thread.sleep(3000);
 		//sssp.ClicklocationAddButton();
 		sssp.SelectJobRoleTargetDistribution1(jobrole1);
+		Thread.sleep(3000);
 		sssp.EnterTargetDistribution1(targetvalue1);
 		sssp.SelectTCName(tcName);
 		sssp.EnterTcTarget(tcTarget);
-		sssp.ClickAddTcTargetButton();
 		Thread.sleep(3000);
+		sssp.ClickAddTcTargetButton();
+		
 		//sssp.SelectJobRoleTargetDistribution2(Jobrole2);
 		//sssp.EnterTargetDistribution2(targetvalue2);
 		sssp.SelectAdvanceTranche(advanceTrancheYes);
-		Thread.sleep(3000);
+	
 		sssp.EnterpercentageOfAdvanceTextBox(advancepayment);
-		Thread.sleep(3000);
+		
 		sssp.ClickAmountTobeOfAdvance();
 		Thread.sleep(3000);
 		sssp.ClickAdvanceAdd();
-		Thread.sleep(10000);
+		
 		sssp.ClickSaveAndSubmitButton();
+		Thread.sleep(3000);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();
 		
+		///////////////////
+		lp.clickLogin();
+		bsp.clickToClose();
+		elp.performlogin(username, password);
+		db.ClickMySchemeOrPrograms();
+		ssp.ClickApprovalInProgress_SPAction();
+		ssp.ClickApprovalInProgress_SP_ViewDetails();
+		PMKVY_SP_ApprovalInprogress_Additionaldetails_Page  addtionalpage=new PMKVY_SP_ApprovalInprogress_Additionaldetails_Page(driver);	
+		Thread.sleep(3000);
+		addtionalpage.ClickOn_Action();
+		addtionalpage.Click_AdditionalDetailsRequried_Action();
+		////////addtionalreqDetails
 		
+		TP_SP_AdditionalRequiredPage addR=new TP_SP_AdditionalRequiredPage(driver);
+		Thread.sleep(3000);
+		addR.ClickOnDual_logoBrowse();
+		Thread.sleep(3000);
+		UploadFile.upload(duallogoImg);
+		Thread.sleep(3000);
+		addR.ClickOnDual_logoUpLoad();
+		Thread.sleep(3000);
+		addR.ClickSigned_TermSheetBrowse();
+		Thread.sleep(3000);
+		UploadFile.upload(img1);
+		Thread.sleep(3000);
+		addR.clickSigned_TermSheetUpLoad();
+		Thread.sleep(3000);
+		addR.SelectReview(review);
+		addR.ClickSaveAndSubmit();
 		
-		
-		
+		Thread.sleep(3000);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();
+		///
+		lp.clickLogin();
+		bsp.clickToClose();
+		elp.performlogin(loginId, password2);
+		Thread.sleep(3000);
+		sppmu.ClickOnViewAllSchemeAddRequests();
+		STTPMU_All_TP_ProjectimplementingAgencyPage iap= new STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
+		Thread.sleep(3000);
+		iap.ClickOnAction();
+		iap.ClickOnViewDetails();
 		
 	}
 	
