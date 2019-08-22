@@ -49,7 +49,9 @@ public class STTPMKVY_TC_DashBoard {
 	public void ClickViewAllBatches() throws InterruptedException
 	{
 		Thread.sleep(2000);
-		ViewAllBatches.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", ViewAllBatches);
+		//ViewAllBatches.click();
 	}
 	
 	public void ClickCreateBatchBtn() throws InterruptedException

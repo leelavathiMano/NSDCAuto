@@ -38,7 +38,8 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 			String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName,
 			String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload, String PUM_UserID,
 			String PMU_Password, String Comments, String CommentsTextArea, String TC_Password, String BatchSize, 
-			String AssociatedQP_JobRole, String TrainingHoursPerHour, String BatchInTiming, String BatchOutTiming) throws Exception {
+			String AssociatedQP_JobRole, String TrainingHoursPerHour, String BatchInTiming, String BatchOutTiming
+			,String BatchStartDate, String BatchEndDate, String Classroom,String Trainer,String AssesmentDate) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin(); //
@@ -123,10 +124,22 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		  bdp.EnterBatchSize(BatchSize);
 		  bdp.SelectAssociatedQP(AssociatedQP_JobRole);
 		  bdp.SelectTrainingHours(TrainingHoursPerHour);
-		  bdp.ClickBatchInTime();
+		  bdp.TAB_FromTrainingHours();
 		  bdp.EnterBatchInTime(BatchInTiming);
-		  bdp.ClickBatchOutTime();
+		  bdp.TAB_FromBatchUpTime();
 		  bdp.EnterBatchOutTime(BatchOutTiming);
+		  bdp.ClickAddBatchTiming();
+		  bdp.ClickStartDate();
+		  bdp.SelectBatchStartDate(BatchStartDate);
+		 // bdp.ClickEndDate();
+		 // bdp.SelectBatchEndDate(BatchEndDate);
+		  bdp.SelectClassRoom(Classroom);
+		  bdp.SelectTrainerName(Trainer);
+		 // bdp.ClickAssessmentDate();
+		 // bdp.SelectAssessemntDate(AssesmentDate);
+		  bdp.ClickAssessmentLang();
+		  bdp.ClickDisclaimer();
+		  
 		  
 		// LogOutPage plp = new LogOutPage(driver);
 		// plp.clickOnProfileLogo();

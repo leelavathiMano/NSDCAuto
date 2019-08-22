@@ -21,7 +21,6 @@ import com.nsdc.generic.SelectDropDownList;
 		
 		@FindBy(xpath="//div[@id='pending']//tbody[@class='m-datatable__body margin-table ']")
 		private WebElement AllTrainingPartnerTable;
-		//
 		
 		@FindBy(xpath="//select[@formcontrolname='status']")
 		private WebElement Comments;
