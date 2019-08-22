@@ -1,6 +1,6 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
-import org.openqa.selenium.By;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -15,7 +15,7 @@ import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.Pages_PMKVY_Pages.TP_SP_AdditionalRequiredPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMU_SelectedSchemepage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
-import com.nsdc.generic.ReadWriteData;
+
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
@@ -39,7 +39,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String Disability,String Religion,String Gender,String Category, String DiscountsonBaseRate,String BatchDuration,String NumberofTranches,
 			String Tranche3tobepaidwithoutPlacement,String DualLogoRequired,String TargetBeneficiaries,String numberofsectors,String Sector,String JobRole,String Target,
 			String locationState,String locationDistrict,String jobrole1,String targetvalue1,String Jobrole2,
-			String targetvalue2, String tcName,String tcTarget,String advanceTrancheYes,String advancepayment,String duallogoImg,String review ) throws Exception {
+			String targetvalue2, String tcName,String tcTarget,String advanceTrancheYes,String advancepayment,String duallogoImg,String review ,String comments) throws Exception {
 
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -103,7 +103,7 @@ LogOutPage plp = new LogOutPage(driver);
 		Thread.sleep(3000);
 		sppmu.ClickOnViewAllSchemeAddRequests();
 		
-		SPPMU_All_TP_ProjectimplementingAgencypage allPIA=new SPPMU_All_TP_ProjectimplementingAgencypage(driver);
+		STTPMU_All_TP_ProjectimplementingAgencyPage allPIA=new STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
 		Thread.sleep(3000);
 		allPIA.ClickOnAction();
 		Thread.sleep(3000);
@@ -202,7 +202,11 @@ LogOutPage plp = new LogOutPage(driver);
 		addR.clickSigned_TermSheetUpLoad();
 		Thread.sleep(3000);
 		addR.SelectReview(review);
+		Thread.sleep(3000);
+		addR.ClickOnDownloadTermsheet();
+		Thread.sleep(3000);
 		addR.ClickSaveAndSubmit();
+		
 		
 		Thread.sleep(3000);
 		plp.clickOnProfileLogo();
@@ -213,11 +217,28 @@ LogOutPage plp = new LogOutPage(driver);
 		elp.performlogin(loginId, password2);
 		Thread.sleep(3000);
 		sppmu.ClickOnViewAllSchemeAddRequests();
-		STTPMU_All_TP_ProjectimplementingAgencyPage iap= new STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
+		//for Sp and STT SAME PAGE ACTION BUTTON AND VIEW DETAILS
+		SPPMU_All_TP_ProjectimplementingAgencypage iap= new SPPMU_All_TP_ProjectimplementingAgencypage(driver);
 		Thread.sleep(3000);
 		iap.ClickOnAction();
 		iap.ClickOnViewDetails();
-		
+		///FOR tP AND SPPMU BOTH ADDTIONAL REQ SAME PAGE AND XPATH ALSO SAME(TP_SP_AdditionalRequiredPage)
+		Thread.sleep(3000);
+		addR.ClickSigned_TermSheetBrowse();
+		Thread.sleep(3000);
+		UploadFile.upload(img1);
+		Thread.sleep(3000);
+		addR.clickSigned_TermSheetUpLoad();
+		Thread.sleep(3000);
+		addR.SelectComments(comments);
+		addR.ClickSaveAndSubmit();
+		//Thread.sleep(3000);
+		//iap.ClickOnAction();
+		//Thread.sleep(3000);
+		//iap.ClickOnViewGeneratedTermSheet();
+		Thread.sleep(3000);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();
 	}
 	
 	 

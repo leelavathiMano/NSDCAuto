@@ -20,6 +20,8 @@ public class TP_SP_AdditionalRequiredPage {
     
     @FindBy(xpath="//select[@formcontrolname='status']")
     private WebElement   ReviewDropDownList;
+    @FindBy(xpath="//button[text()='Download Termsheet']")
+    private WebElement  DownloadTermsheetButton;
     
     @FindBy(xpath="//button[text()='Save & Submit']")
     private WebElement   SaveAndSubmitButton;
@@ -52,6 +54,15 @@ public class TP_SP_AdditionalRequiredPage {
     {
     	SelectDropDownList.selectDropDownListByVisibleText(ReviewDropDownList, review);
     }
+ public void SelectComments(String comments)
+    
+    {
+    	SelectDropDownList.selectDropDownListByVisibleText(ReviewDropDownList, comments);
+    }
+ public void ClickOnDownloadTermsheet()
+ {
+	 DownloadTermsheetButton.click();
+ }
     public void ClickSaveAndSubmit()
     {
     	SaveAndSubmitButton.click();

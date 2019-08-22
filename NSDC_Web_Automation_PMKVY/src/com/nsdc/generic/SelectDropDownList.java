@@ -2,6 +2,7 @@ package com.nsdc.generic;
 
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -31,6 +32,27 @@ public class SelectDropDownList
         String ddl1 = options.get(1).getText();
 		return ddl1;
     }
+    public static  void selectmultipleoptions(WebElement ddl)
+    {
+   	Select select = new Select(ddl);
+   	List<WebElement> allOptions = select.getOptions();
+   	ddl.sendKeys(Keys.CONTROL); // to hold CTRL button once and then click on all options
+  	for (WebElement webElement : allOptions) {
+   	    webElement.click();
+  	}
+//    if (select.isMultiple())
+//    {
+//        List<WebElement> options = select.getOptions();  
+//        for (WebElement webEle : options) 
+//        {   
+//        	 String text = webEle.getText();
+//          ((Select) webEle).selectByVisibleText(text);
+//          webEle.click();
+//        }
+    }
+   
     
-}
+    } 
+    
+
 
