@@ -1,15 +1,26 @@
 package com.nsdc.generic;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TrainingCalenderPage {
 
 	WebDriver driver;
+
+	public TrainingCalenderPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		//wait = new WebDriverWait(driver, 30);
+	}
+
+	
 	@FindBy(xpath="(//button[@class='btn btn-outline-secondary calendar input-group-append'])[1]")
 	private WebElement DateAndDay;
 	
@@ -34,16 +45,66 @@ public class TrainingCalenderPage {
 	@FindBy(xpath = "//button[contains(text(),'Add Session')]")
 	private WebElement AddSession;
 	
+	@FindBy(xpath = "//a[i[@class='la la-ellipsis-h']]")
+	private WebElement ThreeDots;
 
+	@FindBy(xpath = "//a[contains(text(),'Update')]")
+	private WebElement UpdateTrainingCalender;
+	
 	public void ClickDayAndDate() throws InterruptedException {
 		Thread.sleep(2000);
 		Actions actions = new Actions(driver);
 		actions.moveToElement(DateAndDay).click().build().perform();
 	}
+	public void ClickTrainingCalender() throws InterruptedException {
+		Thread.sleep(2000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(UpdateTrainingCalender).click().build().perform();
+	}
 	
 	public void SelectDayAndDate(String DayDate) throws InterruptedException {
 		Thread.sleep(2000);
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, DayDate, DateAndDay, monthDropdownList, yearDropdownList);
+	}
+	
+	public void ClickThreeDots() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		ThreeDots.click();
+	}
+	
+	public void SelectSessionPlanned(String SessionPlan) {
+		SelectDropDownList.selectDropDownListByVisibleText(SessionPlanned, SessionPlan);
+	}
+	
+	public void SelectNOSTaught(String NOSTaught) {
+		SelectDropDownList.selectDropDownListByVisibleText(NOS, NOSTaught);
+	}
+	
+	public void EnterStartTime(String StartTime) {
+		BatchIntime.sendKeys(StartTime);
+	}
+	
+	public void EnterEndTime(String EndTiming) {
+		BatchOutTime.sendKeys(EndTiming);
+	}
+	
+	public void TAB_FromNOSTaught() throws InterruptedException {
+		Thread.sleep(2000);
+		NOS.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+	}
+	
+	public void TAB_BatchIntime() throws InterruptedException {
+		Thread.sleep(2000);
+		BatchIntime.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+	}
+	
+	public void ClickAddSession() throws InterruptedException {
+		Thread.sleep(2000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(AddSession).click().build().perform();
 	}
 	
 	@DataProvider
@@ -53,13 +114,21 @@ public class TrainingCalenderPage {
 	}
 
 	@Test(dataProvider = "TrainingCalenderData")
-	public void TrainingCalenderComplete() throws Exception {
+	public void TrainingCalenderComplete(String DayAndDate, String SessionPlan, String NOSTaught, String StartTime, String EndTime ) throws Exception {
 		
-		TrainingCalenderPage tcp= new TrainingCalenderPage();
+		TrainingCalenderPage tcp= new TrainingCalenderPage(driver);
+		tcp.ClickThreeDots();
 		tcp.ClickDayAndDate();
-		tcp.SelectBatchStartDate(BatchStartDate);
+		tcp.SelectDayAndDate(DayAndDate);
+		tcp.SelectSessionPlanned(SessionPlan);
+		tcp.SelectNOSTaught(NOSTaught);
+		tcp.TAB_FromNOSTaught();
+		tcp.EnterStartTime(StartTime);
+		tcp.TAB_BatchIntime();
+		tcp.EnterEndTime(EndTime);
+		tcp.ClickAddSession();
+		tcp.ClickTrainingCalender();
 		
-
 		
 	}
 	
