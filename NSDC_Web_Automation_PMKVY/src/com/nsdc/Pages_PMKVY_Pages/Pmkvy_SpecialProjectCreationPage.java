@@ -76,7 +76,7 @@ public class Pmkvy_SpecialProjectCreationPage {
 		ProposingOrganisationNameTextBox.sendKeys(ProposingOrganisationName);
 		
 	}
-	//location
+	
 	public void selectState(String State)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(selectStateDropDownList, State);
@@ -90,8 +90,8 @@ public class Pmkvy_SpecialProjectCreationPage {
 	public void clickAdd()
 	{
 		AddButton.click();
-	}
 	
+	}
 	////Upload Supporting Documents:
 	public void clickOnIndemnityBondBrowse()
 	{

@@ -56,7 +56,7 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement EnterTheDiscountsOnBaseRateTestBox ;
 	@FindBy(xpath="//input[@formcontrolname='batchDuration']")
 	private WebElement EnterBatchDurationTextBox ;
-	@FindBy(xpath="//select[@formcontrolname='numberofTranches']")
+	@FindBy(xpath="//select[@formcontrolname='numberOfTranches']")
 	private WebElement  NumberOfTranchesDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='trancheThreeToBePaidWithoutPlacement']")
 	private WebElement trancheThreeToBepaidDropDownList ;
@@ -211,17 +211,31 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	
 	
 	
-	public void SelectReligion(String Hindu)
+
+	
+	public void SelectReligion(String religion)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(ReligionDropDownList, Hindu);
-	}
-	public void SelectGender(String male)
+		//SelectDropDownList.selectDropDownListByVisibleText(ReligionDropDownList, religion);
+
+		SelectDropDownList.selectmultipleoptions(ReligionDropDownList);
+     }
+	
+	
+	
+	
+	public void SelectGender(String gender)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(GenderDropDownList, male);
-	}
-	public void SelectCategory(String General)
+		//SelectDropDownList.selectDropDownListByVisibleText(GenderDropDownList, male);
+		SelectDropDownList.selectmultipleoptions(GenderDropDownList);
+		
+      }
+	
+	
+	
+	public void SelectCategory(String Category)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(CategoryDropDownLIst, General);
+		//SelectDropDownList.selectDropDownListByVisibleText(CategoryDropDownLIst, General);
+		SelectDropDownList.selectmultipleoptions(CategoryDropDownLIst);
 	}
 	public void EnterTheDiscountsOnBaseRate(String DiscountPer)
 	{

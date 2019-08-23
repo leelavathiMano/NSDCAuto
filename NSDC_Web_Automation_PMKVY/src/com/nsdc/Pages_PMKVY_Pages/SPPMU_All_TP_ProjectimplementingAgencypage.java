@@ -11,6 +11,8 @@ public class SPPMU_All_TP_ProjectimplementingAgencypage {
 	private WebElement ActionButton;
 	@FindBy(xpath="(//a[contains(text(),'View Details')])[1]")
 	private WebElement ViewDetailsIcon;
+	@FindBy(xpath="(//a[contains(text(),'View Generated Termsheet')])[1]")
+	private WebElement ViewGeneratedTermSheet;
 	//
 	public SPPMU_All_TP_ProjectimplementingAgencypage (WebDriver driver)
     {
@@ -18,13 +20,20 @@ public class SPPMU_All_TP_ProjectimplementingAgencypage {
         PageFactory.initElements(driver, this);
     }
 //
-	public void ClickOnAction()
+	public void ClickOnAction() throws InterruptedException
+	
 	{
+		Thread.sleep(3000);
 		ActionButton.click();
 	}
 	public void ClickOnViewDetails()
 	{
 		ViewDetailsIcon.click();
+	}
+	public void ClickOnViewGeneratedTermSheet() throws InterruptedException
+	{
+		Thread.sleep(3000);
+		ViewGeneratedTermSheet.click();
 	}
 
 }
