@@ -39,7 +39,7 @@ public class SP_TC_ViewDetailsPage {
 	}
 	 public void ClickOnCreateBatch() throws InterruptedException
 	 {
-		 Thread.sleep(2000);
+		 Thread.sleep(3000);
 		 CreateBatchaButton.click();
 	 }
 }

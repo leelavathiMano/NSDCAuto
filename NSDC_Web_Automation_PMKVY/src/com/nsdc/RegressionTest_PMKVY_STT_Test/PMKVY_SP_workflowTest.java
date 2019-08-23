@@ -272,6 +272,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		pst.ClickOnSPAction();
 		pst.CLickOnViewDetails();
 		pst.ClickOnView_All_Batches();
+		
 		pst.ClickOnCreateBatch();
 		
 	}
