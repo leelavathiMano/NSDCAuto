@@ -68,6 +68,7 @@ public class STT_BatchDetailPage {
 	
 	@FindBy(xpath = "//button[contains(text(),'Add')]")
 	private WebElement AddBatchTime;
+	
 
 	public STT_BatchDetailPage(WebDriver driver) {
 		this.driver = driver;
@@ -135,6 +136,7 @@ public class STT_BatchDetailPage {
 
 	public void SelectTrainerName(String Trainer) {
 		SelectDropDownList.selectDropDownListByVisibleText(TrainerName, Trainer);
+	
 	}
 
 	public void ClickAssessmentDate() throws InterruptedException {

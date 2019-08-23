@@ -131,8 +131,8 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		  bdp.ClickAddBatchTiming();
 		  bdp.ClickStartDate();
 		  bdp.SelectBatchStartDate(BatchStartDate);
-		 // bdp.ClickEndDate();
-		 // bdp.SelectBatchEndDate(BatchEndDate);
+		  bdp.ClickEndDate();
+		  bdp.SelectBatchEndDate(BatchEndDate);
 		  bdp.SelectClassRoom(Classroom);
 		  bdp.SelectTrainerName(Trainer);
 		 // bdp.ClickAssessmentDate();
