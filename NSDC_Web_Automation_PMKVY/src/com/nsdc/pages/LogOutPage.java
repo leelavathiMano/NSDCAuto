@@ -25,8 +25,10 @@ public class LogOutPage
 		profileLogoButton.click();
 	}
 	
-	public void clickOnLogout()
+	public void clickOnLogout() throws InterruptedException
 	{
+		Thread.sleep(2000);
+		
 		logoutButton.click();
 	}
 }

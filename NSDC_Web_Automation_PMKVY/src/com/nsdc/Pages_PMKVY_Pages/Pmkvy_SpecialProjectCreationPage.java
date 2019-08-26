@@ -61,8 +61,10 @@ public class Pmkvy_SpecialProjectCreationPage {
 		ProjecNameTextBox.sendKeys(ProjecName);
 	}
 	
-	public void ClickProjectType()
+	public void ClickProjectType() throws InterruptedException
+	
 	{
+		Thread.sleep(2000);
 		ProjectTypeButton.click();
 	}
 	public void selectRegisteredAslist(String registeredAs)

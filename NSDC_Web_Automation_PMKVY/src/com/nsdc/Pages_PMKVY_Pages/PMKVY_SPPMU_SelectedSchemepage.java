@@ -21,9 +21,9 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	
 	@FindBy(xpath="//div[input[@placeholder='Select End Date']]")
 	private WebElement ProjectDurationEndDate;
-	@FindBy(xpath="//select[@class='custom-select'][1]")
+	@FindBy(xpath="(//select[@class='custom-select'])[1]")
 	private WebElement monthDropdownList;
-	@FindBy(xpath="//select[@class='custom-select'][2]")
+	@FindBy(xpath="(//select[@class='custom-select'])[2]")
 	private WebElement yearDropdownList;
 	//
 	@FindBy(xpath="(//select[@formcontrolname='adharRequired'])[1]")
@@ -139,6 +139,7 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	
 	public void SelectAggrementDate(String aggrementDate) throws InterruptedException 
 	{
+		Thread.sleep(3000);
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, aggrementDate, AggrementDate, monthDropdownList, yearDropdownList);
 		
 	}
@@ -295,8 +296,10 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 		locationAddButton.click();
 		
 	}
-	public void SelectJobRoleTargetDistribution1(String Jobrole1)
+	public void SelectJobRoleTargetDistribution1(String Jobrole1) throws InterruptedException
+	
 	{
+		Thread.sleep(3000);
 		SelectDropDownList.selectDropDownListByVisibleText(JobRoleTargetDistribution1DropDownlist, Jobrole1);
 		
 	}
@@ -329,8 +332,9 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(TC_nameDropDownList, tcName);
 	}
-	public void EnterTcTarget(String tcTarget)
+	public void EnterTcTarget(String tcTarget) throws InterruptedException
 	{
+		Thread.sleep(3000);
 		TC_TargetTextBox.sendKeys(tcTarget);
 	}
 	public void ClickAddTcTargetButton()
