@@ -21,14 +21,14 @@ public class SP_TC_Batch_CreatePage
 	@FindBy(xpath = "//select[@formcontrolname='qpCode']")
 	private WebElement AssociatedQP;
 
-	@FindBy(xpath = "//input[@formcontrolname='trainingHoursPerDay']")
+	@FindBy(xpath = "//div[@class='col-lg-3']")
 	private WebElement TrainingHours;
 
 	@FindBy(xpath = "//input[@placeholder='Select Start Time']")
 	private WebElement BatchIntime;
 
-//	@FindBy(xpath = "//input[@placeholder='Select End Time']")
-//	private WebElement BatchOutTime;
+	@FindBy(xpath = "//input[@placeholder='Select End Time']")
+	private WebElement BatchOutTime;
 
 	@FindBy(xpath = "//div[input[@placeholder='Select Start Date']]")
 	private WebElement BatchStartDate;
@@ -50,12 +50,13 @@ public class SP_TC_Batch_CreatePage
 	@FindBy(xpath = "(//button[@_ngcontent-c30])[3]")
 	private WebElement AssessmentDate;
 
-	@FindBy(xpath = "//option[contains(text(),'English')]")
+	@FindBy(xpath = "//select[@formcontrolname='preferredAssessmentLanguage']")
 	private WebElement AssessmentLang;
 
 	@FindBy(xpath = "//input[@type='checkbox']")
 	private WebElement Disclaimer;
-
+	@FindBy(xpath = "//button[text()='Save & Next']")
+	private WebElement SaveAndNextButton;
 	@FindBy(xpath = "(//div[@class='swal2-contentwrapper']//b)[1]")
 	private WebElement BatchCreated;
 	
@@ -78,17 +79,26 @@ public class SP_TC_Batch_CreatePage
 		SelectDropDownList.selectDropDownListByVisibleText(AssociatedQP, AssociatedQP_JobRole);
 	}
 
-	public void SelectTrainingHours(String TrainingHoursPerHour) {
-		SelectDropDownList.selectDropDownListByVisibleText(TrainingHours, TrainingHoursPerHour);
-	}
+//	public void SelectTrainingHours(String TrainingHoursPerHour) {
+//		SelectDropDownList.selectDropDownListByVisibleText(TrainingHours, TrainingHoursPerHour);
+//	}
 
+	public void EnterTrainingHours(String tryingHours) throws InterruptedException
+	{
+		Thread.sleep(3000);
+		TrainingHours.sendKeys(tryingHours);
+	}
+	
+	
+	
+	
 	public void EnterBatchInTime(String BatchInTiming) {
 		BatchIntime.sendKeys(BatchInTiming);
 	}
 
-//	public void EnterBatchOutTime(String BatchOutTiming) {
-//		BatchOutTime.sendKeys(BatchOutTiming);
-//	}
+	public void EnterBatchOutTime(String BatchOutTiming) {
+		BatchOutTime.sendKeys(BatchOutTiming);
+	}
 
 	public void TAB_FromTrainingHours() throws InterruptedException {
 		Thread.sleep(2000);
@@ -124,9 +134,9 @@ public class SP_TC_Batch_CreatePage
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, EndDate, BatchEndDate, monthDropdownList, yearDropdownList);
 	}
 
-	public void SelectClassRoom(String Classroom) {
-		SelectDropDownList.selectDropDownListByVisibleText(ClassRoom, Classroom);
-	}
+//	public void SelectClassRoom(String Classroom) {
+//		SelectDropDownList.selectDropDownListByVisibleText(ClassRoom, Classroom);
+//	}
 
 	public void SelectTrainerName(String Trainer) {
 		SelectDropDownList.selectDropDownListByVisibleText(TrainerName, Trainer);
@@ -142,11 +152,15 @@ public class SP_TC_Batch_CreatePage
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, AssesmentDate, AssessmentDate, monthDropdownList, yearDropdownList);
 	}
 
-	public void ClickAssessmentLang() throws Exception {
-
-		Thread.sleep(2000);
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", AssessmentLang);
+//	public void ClickAssessmentLang() throws Exception {
+//
+//		Thread.sleep(2000);
+//		JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		executor.executeScript("arguments[0].click();", AssessmentLang);
+//	}
+	public void SelectAssessmentLanguage(String Language)
+	{
+		SelectDropDownList.selectmultipleoptions(AssessmentLang);
 	}
 
 	public void ClickDisclaimer() throws Exception {
@@ -167,8 +181,10 @@ public class SP_TC_Batch_CreatePage
 	{
 		String str1=BatchCreated.getText();
 		System.out.println(str1);
+	}public void ClickOnSaveAndNext()
+	{
+		SaveAndNextButton.click();
 	}
-
 
 
 }
