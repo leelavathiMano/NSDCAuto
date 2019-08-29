@@ -27,6 +27,11 @@ public class STTPMKVY_TC_DashBoard {
 	@FindBy(xpath="//button[contains(text(),'Create Batch')]")
 	private WebElement CreateBatchBtn;
 	
+	@FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
+	private WebElement FirstRecordInBatches;
+	
+	@FindBy(xpath="//a[contains(text(),'Update Training')]")
+	private WebElement UpdateTraining;
 	
 	public STTPMKVY_TC_DashBoard (WebDriver driver)
     {
@@ -46,6 +51,12 @@ public class STTPMKVY_TC_DashBoard {
 		ViewDetailsIcon.click();
 	}
 	
+	public void ClickFirstRecordInBatches() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		FirstRecordInBatches.click();
+	}
+	
 	public void ClickViewAllBatches() throws InterruptedException
 	{
 		Thread.sleep(2000);
@@ -62,7 +73,14 @@ public class STTPMKVY_TC_DashBoard {
 		executor.executeScript("arguments[0].click();", CreateBatchBtn);
 	}
 	
-	
+
+	public void ClickUpdateTraining() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", UpdateTraining);
+		
+	}
 	
 	public void SelectProjectIDThatsApproved(String ProjectID) throws NumberFormatException, Exception {
 		Thread.sleep(1000);

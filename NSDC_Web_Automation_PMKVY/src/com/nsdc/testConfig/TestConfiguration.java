@@ -13,6 +13,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.Screenshot;
@@ -43,7 +44,8 @@ public class TestConfiguration
     }
     
     
-    @BeforeMethod
+
+   // @Test
     public void precondition()
     {
         String browsername = ReadWriteData.getData("./TestData/Configurations.xls", "Config", 1, 0);

@@ -1,7 +1,9 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -34,17 +36,19 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 	}
 
 	@Test(dataProvider = "projectAndBatchCreation")
+
 	public void Project_And_Batch_Creation(String srno, String userType, String name, String ProjectProposalID,
 			String ProjecName, String aggrementDate, String StartDate, String EndDate, String TC_ID,
 			String TargetValueInNum, String TargetValidityInNum, String SectorName, String JobRoleName,
 			String TargetValue, String TargetValidityInNumInMonths, String FiletoUpload, String PUM_UserID,
-			String PMU_Password, String Comments, String CommentsTextArea, String TC_Password, String BatchSize, 
+			String PMU_Password, String Comments, String CommentsTextArea, String TC_Password, String BatchSize,
 			String AssociatedQP_JobRole, String TrainingHoursPerHour, String BatchInTiming, String BatchOutTiming,
-			String BatchStartDate, String BatchEndDate, String Classroom,String Trainer,String AssesmentDate) throws Exception {
-
+			String BatchStartDate, String BatchEndDate, String Classroom, String Trainer, String AssesmentDate)
+			throws Exception {
+		precondition();
 		LaunchPage lp = new LaunchPage(driver);
-		lp.clickLogin(); //
-		
+		lp.clickLogin();
+
 		/*
 		 * Thread.sleep(3000); BetaVersionOfSmartPage bsp = new
 		 * BetaVersionOfSmartPage(driver); bsp.clickToClose(); // Thread.sleep(3000);
@@ -106,48 +110,61 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		// plp.clickOnLogout();
 
 		// Login with the TC which you had added
-		
-		  BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-		  bsp.clickToClose(); 
-		  // Thread.sleep(3000); 
-		  EnterLoginPage elp = new  EnterLoginPage(driver); 
-		  //lp.clickLogin(); 
-		  elp.performlogin(TC_ID, PMU_Password); 
-		  STTPMKVY_TC_DashBoard TCdb= new STTPMKVY_TC_DashBoard(driver);
-		  TCdb.ClickMySchemeTab();
-		  TCdb.SelectSchemeOfSTT(); 
-		  TCdb.ClickOnViewDetails();
-		  TCdb.SelectProjectIDThatsApproved(ProjectProposalID);
-		  TCdb.ClickOnViewDetails();
-		  TCdb.ClickViewAllBatches();
-		  TCdb.ClickCreateBatchBtn();
-		  STT_BatchDetailPage bdp=new STT_BatchDetailPage(driver);
-		  bdp.EnterBatchSize(BatchSize);
-		  bdp.SelectAssociatedQP(AssociatedQP_JobRole);
-		  bdp.SelectTrainingHours(TrainingHoursPerHour);
-		  bdp.TAB_FromTrainingHours();
-		  bdp.EnterBatchInTime(BatchInTiming);
-		  bdp.TAB_FromBatchUpTime();
-		  bdp.EnterBatchOutTime(BatchOutTiming);
-		  bdp.ClickAddBatchTiming();
-		  bdp.ClickStartDate();
-		  bdp.SelectBatchStartDate(BatchStartDate);
-		  bdp.ClickEndDate();
-		  bdp.SelectBatchEndDate(BatchEndDate);
-		  bdp.SelectClassRoom(Classroom);
-		  bdp.SelectTrainerName(Trainer);
-		 // bdp.ClickAssessmentDate();
-		 // bdp.SelectAssessemntDate(AssesmentDate);
-		  bdp.ClickAssessmentLang();
-		  bdp.ClickDisclaimer();
-		  
-		  
-		// LogOutPage plp = new LogOutPage(driver);
-		// plp.clickOnProfileLogo();
-		// plp.clickOnLogout();
-		  
-		 TrainingCalenderPage tcp= new TrainingCalenderPage(driver);
-		 tcp.TrainingCalenderComplete();
+
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose(); // Thread.sleep(3000);
+		EnterLoginPage elp = new EnterLoginPage(driver); // lp.clickLogin();
+		elp.performlogin(TC_ID, PMU_Password);
+		STTPMKVY_TC_DashBoard TCdb = new STTPMKVY_TC_DashBoard(driver);
+		TCdb.ClickMySchemeTab();
+		TCdb.SelectSchemeOfSTT();
+		TCdb.ClickOnViewDetails();
+		TCdb.SelectProjectIDThatsApproved(ProjectProposalID);
+		TCdb.ClickOnViewDetails();
+		TCdb.ClickViewAllBatches();
+		TCdb.ClickFirstRecordInBatches();
+		TCdb.ClickUpdateTraining();
+		/*
+		 * TCdb.ClickCreateBatchBtn(); STT_BatchDetailPage bdp = new
+		 * STT_BatchDetailPage(driver); bdp.EnterBatchSize(BatchSize);
+		 * bdp.SelectAssociatedQP(AssociatedQP_JobRole);
+		 * bdp.SelectTrainingHours(TrainingHoursPerHour); bdp.TAB_FromTrainingHours();
+		 * bdp.EnterBatchInTime(BatchInTiming); bdp.TAB_FromBatchUpTime();
+		 * bdp.EnterBatchOutTime(BatchOutTiming); bdp.ClickAddBatchTiming();
+		 * bdp.ClickStartDate(); bdp.SelectBatchStartDate(BatchStartDate);
+		 * bdp.ClickEndDate(); bdp.SelectBatchEndDate(BatchEndDate);
+		 * bdp.SelectClassRoom(Classroom); bdp.SelectTrainerName(Trainer); //
+		 * bdp.ClickAssessmentDate(); // bdp.SelectAssessemntDate(AssesmentDate);
+		 * bdp.ClickAssessmentLang(); bdp.ClickDisclaimer();
+		 */
+		// LogOutPage plp = new LogOutPage(driver); // plp.clickOnProfileLogo(); //
+		// plp.clickOnLogout(); }
 
 	}
+
+	@DataProvider
+	public Object[][] TrainingCalenderData() {
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
+				"TrainingCalender");
+	}
+
+	@Test(dataProvider = "TrainingCalenderData")
+	public void TrainingCalenderComplete(String DayAndDate, String SessionPlan, String NOSTaught, String StartTime,
+			String EndTime, String Description, String Action) throws Exception {
+
+		TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
+		//tcp.ClickThreeDots();
+		tcp.ClickDayAndDate();
+		tcp.SelectDayAndDate(DayAndDate);
+		tcp.SelectSessionPlanned(SessionPlan);
+		tcp.SelectNOSTaught(NOSTaught);
+		tcp.TAB_FromNOSTaught();
+		tcp.EnterStartTime(StartTime);
+		tcp.TAB_BatchIntime();
+		tcp.EnterEndTime(EndTime);
+		tcp.ClickAddSession();
+		tcp.ClickTrainingCalender();
+
+	}
+
 }
