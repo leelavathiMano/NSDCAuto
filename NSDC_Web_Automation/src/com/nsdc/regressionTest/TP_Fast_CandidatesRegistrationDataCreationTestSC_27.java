@@ -85,11 +85,12 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				JavascriptExecutor js=(JavascriptExecutor)driver;
 				js.executeScript("window.scrollBy(0,500)", "");
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 				tDp.clickOnRegisterCandidate();
 				tDp.clickOnRegisterCandidate();
 			}
 			if(i!=1)
+				
 			{
 				tDp.clickOnRegisterCandidate_InViewMyCandidate();
 			}
@@ -166,18 +167,19 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				tpCrp.clickToUploadAlternateIdFile(isDisabled);
 				Thread.sleep(3000);
 			}
+			Thread.sleep(3000);
 			tpCrp.enterAddress(address);
 			tpCrp.selectState(state);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			tpCrp.selectDistrict(district);	
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 //			tpCrp.selectSubDistrict(subDistrict);
 //			Thread.sleep(2000);
 			tpCrp.enterPincode(pincode);
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
@@ -217,7 +219,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				tpCrp.selectExperienceMonths(experienceInMonths);
 			}
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			//hearaboutus and Course Preferences Page
 //			tpCrp.selectSector(sector1);
 //			tpCrp.selectSubSector(subSector1);
