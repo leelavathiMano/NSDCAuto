@@ -1,5 +1,7 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -49,6 +51,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String BatchSize,String AssociatedQP_JobRole,String tryingHours,String BatchInTiming,String batchoutTime,String batchStartDate
 			,String trainerName,String language) throws Exception {
 
+		precondition();
 //		LaunchPage lp = new LaunchPage(driver);
 //		lp.clickLogin();
 //		Thread.sleep(3000);
@@ -74,6 +77,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		Pmkvy_SpecialProjectCreationPage sp = new Pmkvy_SpecialProjectCreationPage(driver);
 //		Thread.sleep(2000);
 //		sp.EnterTheProjectProposalID(projectproposalID);
+//		Thread.sleep(2000);
 //		sp.EnterTheProjecName(projectname);
 //		sp.ClickProjectType();
 //		sp.selectRegisteredAslist(registeredAs);
@@ -107,7 +111,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		PMKVY_SPPMUpage sppmu = new PMKVY_SPPMUpage(driver);
 //		Thread.sleep(3000);
 //		sppmu.ClickOnViewAllSchemeAddRequests();
-
+//
 //		STTPMU_All_TP_ProjectimplementingAgencyPage allPIA = new STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
 //		Thread.sleep(3000);
 //		allPIA.ClickOnAction();
@@ -207,7 +211,9 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		Thread.sleep(3000);
 //		addR.ClickSaveAndSubmit();
 //
-//		// Thread.sleep(3000); plp.clickOnProfileLogo(); plp.clickOnLogout(); ///
+//		// Thread.sleep(3000); 
+//		plp.clickOnProfileLogo();
+//		plp.clickOnLogout(); ///
 //		lp.clickLogin();
 //		bsp.clickToClose();
 //		elp.performlogin(loginId, password2);
@@ -229,12 +235,13 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		Thread.sleep(3000);
 //		addR.SelectComments(comments);
 //		addR.ClickSaveAndSubmit();
-//		Thread.sleep(3000);
+//		
 //		// iap.ClickOnAction();
 //
 //		// iap.ClickOnViewGeneratedTermSheet();
 //
 //		plp.clickOnProfileLogo();
+//		Thread.sleep(3000);
 //		plp.clickOnLogout();
 
 		
@@ -264,28 +271,43 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 
 		pst.ClickOnCreateBatch();
 		SP_TC_Batch_CreatePage tcbc=new SP_TC_Batch_CreatePage(driver);
+		
 		tcbc.EnterBatchSize(BatchSize);
 		tcbc.SelectAssociatedQP(AssociatedQP_JobRole);
-		Thread.sleep(3000);
+		
 		tcbc.EnterTrainingHours(tryingHours);
 		
 		
-		tcbc.TAB_FromTrainingHours();
-		tcbc.EnterBatchInTime(BatchInTiming);
-		tcbc.TAB_FromBatchUpTime();
-		tcbc.EnterBatchOutTime(batchoutTime);
-		tcbc.ClickAddBatchTiming();
-		tcbc.ClickStartDate();
+		
+		
+	tcbc.TAB_FromTrainingHours();
+	Thread.sleep(3000);
+	
+    tcbc.EnterBatchInTime(BatchInTiming);
+   
+	tcbc.TAB_FromBatchUpTime();
+	Thread.sleep(3000);
+	
+   tcbc.EnterBatchOutTime(batchoutTime);
+   Thread.sleep(3000);
+	tcbc.ClickAddBatchTiming();
+	Thread.sleep(3000);
+	
+	
+	
+	tcbc.ClickStartDate();
 		tcbc.SelectBatchStartDate(batchStartDate);
 		tcbc.ClickEndDate();
 		//tcbc.SelectBatchEndDate(batchEndDate);
 		tcbc.SelectTrainerName(trainerName);
 		tcbc.SelectAssessmentLanguage(language);
 		tcbc.ClickDisclaimer();
+		
+		
 		tcbc.ClickOnSaveAndNext();
 
 		
-		//
+		
 		
 	}
 

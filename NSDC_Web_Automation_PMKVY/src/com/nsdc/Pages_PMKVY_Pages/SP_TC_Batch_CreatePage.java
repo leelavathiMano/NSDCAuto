@@ -21,11 +21,13 @@ public class SP_TC_Batch_CreatePage
 	@FindBy(xpath = "//select[@formcontrolname='qpCode']")
 	private WebElement AssociatedQP;
 
-	@FindBy(xpath = "//div[@class='col-lg-3']")
+	@FindBy(xpath = "//input[@formcontrolname='trainingHoursPerDay']")
 	private WebElement TrainingHours;
 
 	@FindBy(xpath = "//input[@placeholder='Select Start Time']")
 	private WebElement BatchIntime;
+	
+	
 
 	@FindBy(xpath = "//input[@placeholder='Select End Time']")
 	private WebElement BatchOutTime;
@@ -41,8 +43,6 @@ public class SP_TC_Batch_CreatePage
 	@FindBy(xpath = "//select[@class='custom-select'][2]")
 	private WebElement yearDropdownList;
 
-	@FindBy(xpath = "//select[@formcontrolname='classRoom']")
-	private WebElement ClassRoom;
 
 	@FindBy(xpath = "//select[@formcontrolname='userName']")
 	private WebElement TrainerName;
@@ -79,43 +79,55 @@ public class SP_TC_Batch_CreatePage
 		SelectDropDownList.selectDropDownListByVisibleText(AssociatedQP, AssociatedQP_JobRole);
 	}
 
-//	public void SelectTrainingHours(String TrainingHoursPerHour) {
-//		SelectDropDownList.selectDropDownListByVisibleText(TrainingHours, TrainingHoursPerHour);
-//	}
+//
 
 	public void EnterTrainingHours(String tryingHours) throws InterruptedException
 	{
 		Thread.sleep(3000);
-		TrainingHours.sendKeys(tryingHours);
+		
+		Actions actions = new Actions(driver);
+		actions.moveToElement(TrainingHours).click().sendKeys(tryingHours).build().perform();
+		
+		
+		
+		
+		
 	}
 	
 	
 	
 	
-	public void EnterBatchInTime(String BatchInTiming) {
+	public void EnterBatchInTime(String BatchInTiming) 
+	{
 		BatchIntime.sendKeys(BatchInTiming);
 	}
 
-	public void EnterBatchOutTime(String BatchOutTiming) {
-		BatchOutTime.sendKeys(BatchOutTiming);
+	public void EnterBatchOutTime(String BatchOutTiming) 
+	{
+	BatchOutTime.sendKeys(BatchOutTiming);
 	}
 
-	public void TAB_FromTrainingHours() throws InterruptedException {
+	public void TAB_FromTrainingHours() throws InterruptedException 
+	{
 		Thread.sleep(2000);
 		TrainingHours.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
-	}
+		
+ 	}	
 
 	public void TAB_FromBatchUpTime() throws InterruptedException {
 		Thread.sleep(2000);
-		BatchIntime.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		
+		BatchIntime.sendKeys(Keys.TAB);	
+		 
+		
 	}
 
-	public void ClickStartDate() throws InterruptedException {
+	public void ClickStartDate() throws InterruptedException
+	{
 		Thread.sleep(2000);
-		Actions actions = new Actions(driver);
-		actions.moveToElement(BatchStartDate).click().build().perform();
+//		Actions actions = new Actions(driver);
+//		actions.moveToElement(BatchStartDate).click().build().perform();
+		BatchStartDate.click();
 	}
 
 	public void SelectBatchStartDate(String StartDate) throws InterruptedException {
@@ -134,9 +146,7 @@ public class SP_TC_Batch_CreatePage
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, EndDate, BatchEndDate, monthDropdownList, yearDropdownList);
 	}
 
-//	public void SelectClassRoom(String Classroom) {
-//		SelectDropDownList.selectDropDownListByVisibleText(ClassRoom, Classroom);
-//	}
+
 
 	public void SelectTrainerName(String Trainer) {
 		SelectDropDownList.selectDropDownListByVisibleText(TrainerName, Trainer);
@@ -181,7 +191,8 @@ public class SP_TC_Batch_CreatePage
 	{
 		String str1=BatchCreated.getText();
 		System.out.println(str1);
-	}public void ClickOnSaveAndNext()
+	}
+	public void ClickOnSaveAndNext()
 	{
 		SaveAndNextButton.click();
 	}
