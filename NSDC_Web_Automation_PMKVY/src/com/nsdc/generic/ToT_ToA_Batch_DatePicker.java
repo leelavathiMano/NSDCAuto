@@ -15,8 +15,8 @@ public class ToT_ToA_Batch_DatePicker
 		 * WebDriverWait wait=new WebDriverWait(driver,60);
 		 * wait.until(ExpectedConditions.elementToBeClickable(dateTextField));
 		 */Thread.sleep(2000);
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", dateTextField);
+		//JavascriptExecutor js=(JavascriptExecutor)driver;
+		//js.executeScript("arguments[0].click();", dateTextField);
 		//Thread.sleep(2000);
 		String parts[]=date.split("-");
 		String day=parts[0];

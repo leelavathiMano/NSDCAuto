@@ -122,6 +122,7 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		TCdb.SelectProjectIDThatsApproved(ProjectProposalID);
 		TCdb.ClickOnViewDetails();
 		TCdb.ClickViewAllBatches();
+		
 		TCdb.ClickFirstRecordInBatches();
 		TCdb.ClickUpdateTraining();
 		/*
@@ -154,16 +155,25 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 
 		TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
 		//tcp.ClickThreeDots();
+		String SP="Other Holiday";
+		Thread.sleep(3000);
 		tcp.ClickDayAndDate();
 		tcp.SelectDayAndDate(DayAndDate);
 		tcp.SelectSessionPlanned(SessionPlan);
-		tcp.SelectNOSTaught(NOSTaught);
-		tcp.TAB_FromNOSTaught();
-		tcp.EnterStartTime(StartTime);
-		tcp.TAB_BatchIntime();
-		tcp.EnterEndTime(EndTime);
+		if(SessionPlan.equals(SP)) {
+		tcp.EnterDescription(Description);
+		}
+		else {
+			tcp.SelectNOSTaught(NOSTaught);
+			tcp.TAB_FromNOSTaught();
+			tcp.EnterStartTime(StartTime);
+			tcp.TAB_BatchIntime();
+			tcp.EnterEndTime(EndTime);
+			tcp.EnterDescription(Description);
+		}
 		tcp.ClickAddSession();
-		tcp.ClickTrainingCalender();
+		Thread.sleep(3000);
+	//	tcp.ClickTrainingCalender();
 
 	}
 

@@ -33,8 +33,6 @@ public class TrainingCalenderPage {
 	@FindBy(xpath="(//select[@formcontrolname='sessionPlanned'])[1]")
 	private WebElement SessionPlanned;
 	
-	@FindBy(xpath="(//select[@formcontrolname='nosTaught'])[1]")
-	private WebElement NOS;
 	
 	@FindBy(xpath = "//input[@placeholder='Select Start Time']")
 	private WebElement BatchIntime;
@@ -50,6 +48,11 @@ public class TrainingCalenderPage {
 
 	@FindBy(xpath = "//a[contains(text(),'Update')]")
 	private WebElement UpdateTrainingCalender;
+	
+	@FindBy(xpath = "(//select[@id='exampleSelect1'])[2]")
+	private WebElement NOSTaught;
+	@FindBy(xpath = "(//textarea[@placeholder='Enter Description'])[1]")
+	private WebElement EnterDescriptionTextArea;
 	
 	public void ClickDayAndDate() throws InterruptedException {
 		Thread.sleep(2000);
@@ -77,9 +80,7 @@ public class TrainingCalenderPage {
 		SelectDropDownList.selectDropDownListByVisibleText(SessionPlanned, SessionPlan);
 	}
 	
-	public void SelectNOSTaught(String NOSTaught) {
-		SelectDropDownList.selectDropDownListByVisibleText(NOS, NOSTaught);
-	}
+
 	
 	public void EnterStartTime(String StartTime) {
 		BatchIntime.sendKeys(StartTime);
@@ -91,7 +92,7 @@ public class TrainingCalenderPage {
 	
 	public void TAB_FromNOSTaught() throws InterruptedException {
 		Thread.sleep(2000);
-		NOS.sendKeys(Keys.TAB);
+		NOSTaught.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 	}
 	
@@ -100,12 +101,21 @@ public class TrainingCalenderPage {
 		BatchIntime.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 	}
+	public void EnterDescription(String Description) throws InterruptedException
+	{
+		Thread.sleep(2000);
+		EnterDescriptionTextArea.sendKeys(Description);
+	}
 	
 	public void ClickAddSession() throws InterruptedException {
 		Thread.sleep(2000);
 		Actions actions = new Actions(driver);
 		actions.moveToElement(AddSession).click().build().perform();
 	}
+	public void SelectNOSTaught(String SessionPlan) {
+		SelectDropDownList.selectDropDownListByValue(NOSTaught, SessionPlan);
+	}
+	
 	
 	@DataProvider
 	public Object[][] TrainingCalenderData() {
@@ -114,7 +124,7 @@ public class TrainingCalenderPage {
 	}
 
 	@Test(dataProvider = "TrainingCalenderData")
-	public void TrainingCalenderComplete(String DayAndDate, String SessionPlan, String NOSTaught, String StartTime, String EndTime ) throws Exception {
+	public void TrainingCalenderComplete(String DayAndDate, String SessionPlan, String NOSTaught, String StartTime, String EndTime ,String Description) throws Exception {
 		
 		TrainingCalenderPage tcp= new TrainingCalenderPage(driver);
 		tcp.ClickThreeDots();
@@ -126,6 +136,7 @@ public class TrainingCalenderPage {
 		tcp.EnterStartTime(StartTime);
 		tcp.TAB_BatchIntime();
 		tcp.EnterEndTime(EndTime);
+		tcp.EnterDescription(Description);
 		tcp.ClickAddSession();
 		tcp.ClickTrainingCalender();
 		
