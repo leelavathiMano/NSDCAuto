@@ -27,7 +27,6 @@ public class SP_TC_Batch_CreatePage
 	@FindBy(xpath = "//input[@placeholder='Select Start Time']")
 	private WebElement BatchIntime;
 	
-	
 
 	@FindBy(xpath = "//input[@placeholder='Select End Time']")
 	private WebElement BatchOutTime;
@@ -40,6 +39,7 @@ public class SP_TC_Batch_CreatePage
 
 	@FindBy(xpath = "//select[@class='custom-select'][1]")
 	private WebElement monthDropdownList;
+	
 	@FindBy(xpath = "//select[@class='custom-select'][2]")
 	private WebElement yearDropdownList;
 
@@ -55,14 +55,17 @@ public class SP_TC_Batch_CreatePage
 
 	@FindBy(xpath = "//input[@type='checkbox']")
 	private WebElement Disclaimer;
+	
 	@FindBy(xpath = "//button[text()='Save & Next']")
 	private WebElement SaveAndNextButton;
+	
 	@FindBy(xpath = "(//div[@class='swal2-contentwrapper']//b)[1]")
 	private WebElement BatchCreated;
 	
 	@FindBy(xpath = "//button[contains(text(),'Add')]")
 	private WebElement AddBatchTime;
-
+	@FindBy(xpath ="//button[text()='OK']")
+	private WebElement OkButton;
 	public SP_TC_Batch_CreatePage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -70,8 +73,9 @@ public class SP_TC_Batch_CreatePage
 	
 	}
 
-	public void EnterBatchSize(String BatchSizeInNumber) 
+	public void EnterBatchSize(String BatchSizeInNumber) throws InterruptedException 
 	{
+		Thread.sleep(2000);
 		BatchSize.sendKeys(BatchSizeInNumber);
 	}
 
@@ -83,43 +87,50 @@ public class SP_TC_Batch_CreatePage
 
 	public void EnterTrainingHours(String tryingHours) throws InterruptedException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		
 		Actions actions = new Actions(driver);
 		actions.moveToElement(TrainingHours).click().sendKeys(tryingHours).build().perform();
-		
-		
-		
-		
-		
+		Thread.sleep(2000);
+	}
+	
+	public void ClickTrainingHours() throws InterruptedException
+	{
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", TrainingHours);
 	}
 	
 	
 	
-	
-	public void EnterBatchInTime(String BatchInTiming) 
+	public void EnterBatchInTime(String BatchInTiming) throws InterruptedException 
 	{
+		
+		
+		//Thread.sleep(2000);
 		BatchIntime.sendKeys(BatchInTiming);
+		//Thread.sleep(2000);
+
 	}
 
-	public void EnterBatchOutTime(String BatchOutTiming) 
+	public void EnterBatchOutTime(String BatchOutTiming) throws InterruptedException 
 	{
-	BatchOutTime.sendKeys(BatchOutTiming);
+		
+		//Thread.sleep(2000);
+	    BatchOutTime.sendKeys(BatchOutTiming);
+	    //Thread.sleep(2000);
 	}
 
 	public void TAB_FromTrainingHours() throws InterruptedException 
 	{
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		TrainingHours.sendKeys(Keys.TAB);
-		
+		Thread.sleep(2000);
  	}	
 
 	public void TAB_FromBatchUpTime() throws InterruptedException {
+		Thread.sleep(5000);
+		BatchIntime.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
-		
-		BatchIntime.sendKeys(Keys.TAB);	
-		 
-		
 	}
 
 	public void ClickStartDate() throws InterruptedException
@@ -196,6 +207,9 @@ public class SP_TC_Batch_CreatePage
 	{
 		SaveAndNextButton.click();
 	}
-
+public void ClickOnOKButton()
+{
+	OkButton.click();
+}
 
 }

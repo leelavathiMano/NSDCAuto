@@ -31,7 +31,7 @@ import com.nsdc.testConfig.TestConfiguration;
 public class PMKVY_SP_workflowTest extends TestConfiguration {
 	@DataProvider
 	public Object[][] CreateSpecialProjectData() {
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow1.xls",
 				"Sp-workflow-data");
 	}
 
@@ -47,9 +47,9 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String numberofsectors, String Sector, String JobRole, String Target, String locationState,
 			String locationDistrict, String jobrole1, String targetvalue1, String Jobrole2, String targetvalue2,
 			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String duallogoImg,
-			String review, String comments, String TCloginId, String TCpassword,
-			String BatchSize,String AssociatedQP_JobRole,String tryingHours,String BatchInTiming,String batchoutTime,String batchStartDate
-			,String trainerName,String language) throws Exception {
+			String review, String comments, String TCloginId, String TCpassword, String BatchSize,
+			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
+			String batchStartDate, String trainerName, String language) throws Exception {
 
 		precondition();
 //		LaunchPage lp = new LaunchPage(driver);
@@ -244,9 +244,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		Thread.sleep(3000);
 //		plp.clickOnLogout();
 
-		
 		LaunchPage lp = new LaunchPage(driver);
-		
+
 		lp.clickLogin();
 		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -264,51 +263,35 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		spApp.CLickOnViewDetails();
 
 		SP_TC_ViewDetailsPage pst = new SP_TC_ViewDetailsPage(driver);
-
 		pst.ClickOnSPAction();
 		pst.CLickOnViewDetails();
 		pst.ClickOnView_All_Batches();
-
+		Thread.sleep(3000);
 		pst.ClickOnCreateBatch();
-		SP_TC_Batch_CreatePage tcbc=new SP_TC_Batch_CreatePage(driver);
-		
+		Thread.sleep(3000);
+		SP_TC_Batch_CreatePage tcbc = new SP_TC_Batch_CreatePage(driver);
 		tcbc.EnterBatchSize(BatchSize);
 		tcbc.SelectAssociatedQP(AssociatedQP_JobRole);
-		
 		tcbc.EnterTrainingHours(tryingHours);
-		
-		
-		
-		
-	tcbc.TAB_FromTrainingHours();
-	Thread.sleep(3000);
-	
-    tcbc.EnterBatchInTime(BatchInTiming);
-   
-	tcbc.TAB_FromBatchUpTime();
-	Thread.sleep(3000);
-	
-   tcbc.EnterBatchOutTime(batchoutTime);
-   Thread.sleep(3000);
-	tcbc.ClickAddBatchTiming();
-	Thread.sleep(3000);
-	
-	
-	
-	tcbc.ClickStartDate();
-		tcbc.SelectBatchStartDate(batchStartDate);
-		tcbc.ClickEndDate();
-		//tcbc.SelectBatchEndDate(batchEndDate);
+		Thread.sleep(3000);
+		 tcbc.TAB_FromTrainingHours();
+		 tcbc.ClickTrainingHours();
+		 tcbc.TAB_FromTrainingHours();
+		 tcbc.EnterBatchInTime(BatchInTiming);
+		tcbc.TAB_FromBatchUpTime();
+		 tcbc.EnterBatchOutTime(batchoutTime);
+		tcbc.ClickAddBatchTiming(); 
+		 Thread.sleep(1000); 
+		 tcbc.ClickStartDate();
+		 tcbc.SelectBatchStartDate(batchStartDate);
+		 tcbc.ClickEndDate(); 
+		 //tcbc.SelectBatchEndDate(batchEndDate);
 		tcbc.SelectTrainerName(trainerName);
 		tcbc.SelectAssessmentLanguage(language);
-		tcbc.ClickDisclaimer();
-		
-		
+		 tcbc.ClickDisclaimer(); 
 		tcbc.ClickOnSaveAndNext();
+		tcbc.ClickOnOKButton();
 
-		
-		
-		
 	}
 
 }
