@@ -46,7 +46,7 @@ public class TrainingCalenderPage {
 	@FindBy(xpath = "//a[i[@class='la la-ellipsis-h']]")
 	private WebElement ThreeDots;
 
-	@FindBy(xpath = "//a[contains(text(),'Update')]")
+	@FindBy(xpath ="//button[contains(text(),'Save & Update Training Calender')]")
 	private WebElement UpdateTrainingCalender;
 	
 	@FindBy(xpath = "(//select[@id='exampleSelect1'])[2]")
