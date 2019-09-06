@@ -122,59 +122,58 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 		TCdb.SelectProjectIDThatsApproved(ProjectProposalID);
 		TCdb.ClickOnViewDetails();
 		TCdb.ClickViewAllBatches();
-		
-		TCdb.ClickFirstRecordInBatches();
-		TCdb.ClickUpdateTraining();
-		/*
-		 * TCdb.ClickCreateBatchBtn(); STT_BatchDetailPage bdp = new
-		 * STT_BatchDetailPage(driver); bdp.EnterBatchSize(BatchSize);
-		 * bdp.SelectAssociatedQP(AssociatedQP_JobRole);
-		 * bdp.SelectTrainingHours(TrainingHoursPerHour); bdp.TAB_FromTrainingHours();
-		 * bdp.EnterBatchInTime(BatchInTiming); bdp.TAB_FromBatchUpTime();
-		 * bdp.EnterBatchOutTime(BatchOutTiming); bdp.ClickAddBatchTiming();
-		 * bdp.ClickStartDate(); bdp.SelectBatchStartDate(BatchStartDate);
-		 * bdp.ClickEndDate(); bdp.SelectBatchEndDate(BatchEndDate);
-		 * bdp.SelectClassRoom(Classroom); bdp.SelectTrainerName(Trainer); //
-		 * bdp.ClickAssessmentDate(); // bdp.SelectAssessemntDate(AssesmentDate);
-		 * bdp.ClickAssessmentLang(); bdp.ClickDisclaimer();
-		 */
+
+		// TCdb.ClickFirstRecordInBatches();
+		// TCdb.ClickUpdateTraining();
+
+		TCdb.ClickCreateBatchBtn();
+		STT_BatchDetailPage bdp = new STT_BatchDetailPage(driver);
+		bdp.EnterBatchSize(BatchSize);
+		bdp.SelectAssociatedQP(AssociatedQP_JobRole);
+		bdp.SelectTrainingHours(TrainingHoursPerHour);
+		bdp.TAB_FromTrainingHours();
+		bdp.EnterBatchInTime(BatchInTiming);
+		bdp.TAB_FromBatchUpTime();
+		bdp.EnterBatchOutTime(BatchOutTiming);
+		bdp.ClickAddBatchTiming();
+		bdp.ClickStartDate();
+		bdp.SelectBatchStartDate(BatchStartDate);
+		bdp.ClickEndDate();
+		bdp.SelectBatchEndDate(BatchEndDate);
+		bdp.SelectClassRoom(Classroom);
+		bdp.SelectTrainerName(Trainer); //
+		bdp.ClickAssessmentDate(); // bdp.SelectAssessemntDate(AssesmentDate);
+		bdp.ClickAssessmentLang();
+		bdp.ClickDisclaimer();
+
 		// LogOutPage plp = new LogOutPage(driver); // plp.clickOnProfileLogo(); //
 		// plp.clickOnLogout(); }
 
 	}
+	/*
+	 * @DataProvider public Object[][] TrainingCalenderData() { return
+	 * ReadMultipleDataFromExcel.getExcelData(
+	 * "./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
+	 * "TrainingCalender"); }
+	 * 
+	 * @Test(dataProvider = "TrainingCalenderData") public void
+	 * TrainingCalenderComplete(String DayAndDate, String SessionPlan, String
+	 * NOSTaught, String StartTime, String EndTime, String Description,String
+	 * Action) throws Exception {
+	 * 
+	 * TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
+	 * //tcp.ClickThreeDots(); String SP="Other Holiday"; Thread.sleep(3000);
+	 * tcp.ClickDayAndDate(); tcp.SelectDayAndDate(DayAndDate);
+	 * tcp.SelectSessionPlanned(SessionPlan); if(SessionPlan.equals(SP)) {
+	 * tcp.EnterDescription(Description); } else { tcp.SelectNOSTaught(NOSTaught);
+	 * tcp.TAB_FromNOSTaught(); tcp.EnterStartTime(StartTime);
+	 * tcp.TAB_BatchIntime(); tcp.EnterEndTime(EndTime);
+	 * tcp.EnterDescription(Description); } tcp.ClickAddSession();
+	 * Thread.sleep(3000); tcp.ClickSaveBtn();
+	 * 
+	 * }
+	 */
 
-	@DataProvider
-	public Object[][] TrainingCalenderData() {
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
-				"TrainingCalender");
-	}
-
-	@Test(dataProvider = "TrainingCalenderData")
-	public void TrainingCalenderComplete(String DayAndDate, String SessionPlan, String NOSTaught, String StartTime,
-			String EndTime, String Description, String Action) throws Exception {
-
-		TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
-		//tcp.ClickThreeDots();
-		String SP="Other Holiday";
-		Thread.sleep(3000);
-		tcp.ClickDayAndDate();
-		tcp.SelectDayAndDate(DayAndDate);
-		tcp.SelectSessionPlanned(SessionPlan);
-		if(SessionPlan.equals(SP)) {
-		tcp.EnterDescription(Description);
-		}
-		else {
-			tcp.SelectNOSTaught(NOSTaught);
-			tcp.TAB_FromNOSTaught();
-			tcp.EnterStartTime(StartTime);
-			tcp.TAB_BatchIntime();
-			tcp.EnterEndTime(EndTime);
-			tcp.EnterDescription(Description);
-		}
-		tcp.ClickAddSession();
-		Thread.sleep(3000);
-	//	tcp.ClickTrainingCalender();
-
-	}
+	// tcp.ClickSaveBtn();
 
 }

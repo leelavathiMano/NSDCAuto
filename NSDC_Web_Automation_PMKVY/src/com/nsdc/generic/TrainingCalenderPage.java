@@ -1,5 +1,6 @@
 package com.nsdc.generic;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,6 +54,10 @@ public class TrainingCalenderPage {
 	private WebElement NOSTaught;
 	@FindBy(xpath = "(//textarea[@placeholder='Enter Description'])[1]")
 	private WebElement EnterDescriptionTextArea;
+	
+	@FindBy(xpath = "//button[contains(text(),'Save & Update')]")
+	private WebElement SaveBtn;
+	
 	
 	public void ClickDayAndDate() throws InterruptedException {
 		Thread.sleep(2000);
@@ -116,6 +121,13 @@ public class TrainingCalenderPage {
 		SelectDropDownList.selectDropDownListByValue(NOSTaught, SessionPlan);
 	}
 	
+	public void ClickSaveBtn() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", SaveBtn);
+		//ViewAllBatches.click();
+	}
 	
 	@DataProvider
 	public Object[][] TrainingCalenderData() {
