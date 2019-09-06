@@ -31,7 +31,7 @@ public class PMKVY_STT_PMKK_Project_And_Batch_Creation_Test extends TestConfigur
 
 	@DataProvider
 	public Object[][] projectAndBatchCreation() {
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
+		return ReadMultipleDataFromExcel.getAllExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xlsx",
 				"ProjectAndBatchCreation");
 	}
 
