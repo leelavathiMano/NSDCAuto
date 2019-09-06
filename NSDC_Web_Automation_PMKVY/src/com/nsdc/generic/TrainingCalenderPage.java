@@ -57,6 +57,8 @@ public class TrainingCalenderPage {
 	
 	@FindBy(xpath = "//button[contains(text(),'Save & Update')]")
 	private WebElement SaveBtn;
+	@FindBy(xpath ="(//button[text()='OK'])[2]")
+	private WebElement OkButton;
 	
 	
 	public void ClickDayAndDate() throws InterruptedException {
@@ -128,7 +130,11 @@ public class TrainingCalenderPage {
 		executor.executeScript("arguments[0].click();", SaveBtn);
 		//ViewAllBatches.click();
 	}
-	
+	public void ClickOnOKButton() throws InterruptedException
+	  {
+		Thread.sleep(3000);
+		OkButton.click();
+	   }
 	@DataProvider
 	public Object[][] TrainingCalenderData() {
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",

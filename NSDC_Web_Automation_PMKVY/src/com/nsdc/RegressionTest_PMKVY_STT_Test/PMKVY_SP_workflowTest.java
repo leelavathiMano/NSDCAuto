@@ -20,7 +20,9 @@ import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.Pages_PMKVY_Pages.TP_SP_AdditionalRequiredPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMU_SelectedSchemepage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
-
+import com.nsdc.generic.ReadWriteData;
+import com.nsdc.generic.SelectDropDownList;
+import com.nsdc.generic.TrainingCalenderPage;
 import com.nsdc.generic.UploadFile;
 import com.nsdc.pages.BetaVersionOfSmartPage;
 import com.nsdc.pages.EnterLoginPage;
@@ -31,7 +33,7 @@ import com.nsdc.testConfig.TestConfiguration;
 public class PMKVY_SP_workflowTest extends TestConfiguration {
 	@DataProvider
 	public Object[][] CreateSpecialProjectData() {
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow1.xls",
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
 				"Sp-workflow-data");
 	}
 
@@ -49,7 +51,9 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String duallogoImg,
 			String review, String comments, String TCloginId, String TCpassword, String BatchSize,
 			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
-			String batchStartDate, String trainerName, String language) throws Exception {
+			String batchStartDate, String trainerName, String language,
+			String DayAndDate, String SessionPlan, String NOSTaught, String StartTime,
+			String EndTime, String Description) throws Exception {
 
 		precondition();
 //		LaunchPage lp = new LaunchPage(driver);
@@ -270,12 +274,16 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		pst.ClickOnCreateBatch();
 		Thread.sleep(3000);
 		SP_TC_Batch_CreatePage tcbc = new SP_TC_Batch_CreatePage(driver);
+		Thread.sleep(2000);
 		tcbc.EnterBatchSize(BatchSize);
+		Thread.sleep(2000);
 		tcbc.SelectAssociatedQP(AssociatedQP_JobRole);
+		//
+		Thread.sleep(2000);
 		tcbc.EnterTrainingHours(tryingHours);
-		Thread.sleep(3000);
-		 tcbc.TAB_FromTrainingHours();
-		 tcbc.ClickTrainingHours();
+		
+		tcbc.TAB_FromTrainingHours();
+		tcbc.ClickTrainingHours();
 		 tcbc.TAB_FromTrainingHours();
 		 tcbc.EnterBatchInTime(BatchInTiming);
 		tcbc.TAB_FromBatchUpTime();
@@ -291,7 +299,64 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		 tcbc.ClickDisclaimer(); 
 		tcbc.ClickOnSaveAndNext();
 		tcbc.ClickOnOKButton();
-
+       
+	
+	
+	
+	
+		Thread.sleep(3000);
+		TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
+		//tcp.ClickThreeDots();
+		String SP="Other Holiday";
+		Thread.sleep(3000);
+		tcp.ClickDayAndDate();
+		Thread.sleep(3000);
+		tcp.SelectDayAndDate(DayAndDate);
+		Thread.sleep(3000);
+		tcp.SelectSessionPlanned(SessionPlan);
+		if(SessionPlan.equals(SP))
+		{
+		tcp.EnterDescription(Description);
+		}
+		else
+		{
+			tcp.SelectNOSTaught(NOSTaught);
+			tcp.TAB_FromNOSTaught();
+			tcp.EnterStartTime(StartTime);
+			Thread.sleep(3000);
+			tcp.TAB_BatchIntime();
+			tcp.EnterEndTime(EndTime);
+			tcp.EnterDescription(Description);
+		}
+		tcp.ClickAddSession();
+		Thread.sleep(3000);
+		tcp.ClickTrainingCalender();
+		Thread.sleep(3000);
+		tcp.ClickOnOKButton();
+		//Thread.sleep(3000);
+		String batch_Size=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow1.xls",
+				"TrainingCalender", 1,0);
+	 	int totalCandiate=Integer.parseInt(batch_Size);
+	 	for(int i=1;i<=totalCandiate;i++)	
+		{    
+			String CandiateId=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+					"TrainingCalender", i,1);
+		driver.findElement( By.xpath("//input[@formcontrolname='candidateId']")).sendKeys(CandiateId);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//button[contains(text(),'Apply')]")).click();
+		
+		driver.findElement(By.xpath("//tbody[@_ngcontent-c7]//tr[1]//td[1]//span[@_ngcontent-c7]")).click();
+		driver.findElement(By.xpath("//tbody[@_ngcontent-c7]//tr[1]//td[13]//span[@_ngcontent-c7]")).click();
+		
+		//driver.findElement(By.xpath("//select[@formcontrolname='modeOfBkl']"));
+		String modelOfBandL="Self";
+		SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@formcontrolname='modeOfBkl']")), modelOfBandL);
+      }
+		
+		
+		
+		
 	}
+
 
 }
