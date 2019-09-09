@@ -5,7 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nsdc.Pages_PMKVY_Pages.BetaVersionOfSmartPage;
 import com.nsdc.Pages_PMKVY_Pages.DashboardPage;
+import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
+import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
+import com.nsdc.Pages_PMKVY_Pages.ListofEligibleCandiatePage;
+import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMUpage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SP_ApprovalInprogress_Additionaldetails_Page;
@@ -24,17 +29,16 @@ import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.SelectDropDownList;
 import com.nsdc.generic.TrainingCalenderPage;
 import com.nsdc.generic.UploadFile;
-import com.nsdc.pages.BetaVersionOfSmartPage;
-import com.nsdc.pages.EnterLoginPage;
-import com.nsdc.pages.LaunchPage;
-import com.nsdc.pages.LogOutPage;
+
+
+
 import com.nsdc.testConfig.TestConfiguration;
 
 public class PMKVY_SP_workflowTest extends TestConfiguration {
 	@DataProvider
 	public Object[][] CreateSpecialProjectData() {
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
-				"Sp-workflow-data");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/SP_WorkflowProject.xls",
+				"SP_WorkfiowData");
 	}
 
 	@Test(dataProvider = "CreateSpecialProjectData")
@@ -105,7 +109,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		Thread.sleep(3000);
 //		sp.clickSaveAndSumbit();
 //		Thread.sleep(3000);
-//		LogOutPage plp = new LogOutPage(driver);
+//       LogOutPage plp = new LogOutPage(driver);
 //		plp.clickOnProfileLogo();
 //		plp.clickOnLogout(); // //
 //		Thread.sleep(3000);
@@ -329,28 +333,30 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			tcp.EnterDescription(Description);
 		}
 		tcp.ClickAddSession();
-		Thread.sleep(3000);
-		tcp.ClickTrainingCalender();
+    	Thread.sleep(3000);
+		tcp.ClickSaveBtn();
 		Thread.sleep(3000);
 		tcp.ClickOnOKButton();
-		//Thread.sleep(3000);
-		String batch_Size=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow1.xls",
+		Thread.sleep(3000);
+		///////////////////////////////////////////
+		
+		ListofEligibleCandiatePage enrollcandite= new ListofEligibleCandiatePage(driver);
+		Thread.sleep(3000);
+		String batch_Size=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/SP_WorkflowProject.xls",
 				"TrainingCalender", 1,0);
 	 	int totalCandiate=Integer.parseInt(batch_Size);
 	 	for(int i=1;i<=totalCandiate;i++)	
 		{    
-			String CandiateId=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+			String CandiateId=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/SP_WorkflowProject.xls",
 					"TrainingCalender", i,1);
-		driver.findElement( By.xpath("//input[@formcontrolname='candidateId']")).sendKeys(CandiateId);
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//button[contains(text(),'Apply')]")).click();
+			enrollcandite.ClickOnCandiateId();
+			enrollcandite.EnterCandiateID(CandiateId);
+			enrollcandite.ClickOnApply();
+			enrollcandite.ClickOnCandiateIdCheckBox();
+			enrollcandite.ClickOnBAndLCheckBox();
+		    String modelOfBandL="Self";
+		    enrollcandite.SelectModelOfBandL(modelOfBandL);
 		
-		driver.findElement(By.xpath("//tbody[@_ngcontent-c7]//tr[1]//td[1]//span[@_ngcontent-c7]")).click();
-		driver.findElement(By.xpath("//tbody[@_ngcontent-c7]//tr[1]//td[13]//span[@_ngcontent-c7]")).click();
-		
-		//driver.findElement(By.xpath("//select[@formcontrolname='modeOfBkl']"));
-		String modelOfBandL="Self";
-		SelectDropDownList.selectDropDownListByVisibleText(driver.findElement(By.xpath("//select[@formcontrolname='modeOfBkl']")), modelOfBandL);
       }
 		
 		
