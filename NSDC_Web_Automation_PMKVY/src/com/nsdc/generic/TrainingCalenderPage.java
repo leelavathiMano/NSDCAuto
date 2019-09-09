@@ -57,14 +57,19 @@ public class TrainingCalenderPage {
 	
 	@FindBy(xpath = "//button[contains(text(),'Save & Update')]")
 	private WebElement SaveBtn;
+	
 	@FindBy(xpath ="(//button[text()='OK'])[2]")
 	private WebElement OkButton;
 	
 	
 	public void ClickDayAndDate() throws InterruptedException {
 		Thread.sleep(2000);
-		Actions actions = new Actions(driver);
-		actions.moveToElement(DateAndDay).click().build().perform();
+//		Actions actions = new Actions(driver);
+//		actions.moveToElement(DateAndDay).click().build().perform();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", DateAndDay);
+		
+		
 	}
 	public void ClickTrainingCalender() throws InterruptedException {
 		Thread.sleep(2000);
