@@ -68,8 +68,7 @@ public class AddTrainingCenterPage {
 				String TCid= "TC201844";
 				if (celtext.equals(TCid)) {
 					
-					ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
-							"ProjectAndBatchCreation", Integer.parseInt(SLNo), 8, celtext);
+				//	ReadWriteData.setExcelDataXLSX("./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xlsx","ProjectAndBatchCreation", Integer.parseInt(SLNo), 8, celtext);
 					WebElement RadionButton1st = driver.findElement(By.xpath("//table[@class='table table-striped m-table']//tbody//tr["+row+"]//td[1]//label[1]//span[1]"));
 
 					Thread.sleep(2000);

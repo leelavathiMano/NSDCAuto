@@ -1,5 +1,6 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,8 +25,9 @@ public class MySchemeOrProjectPage {
 
 	    public void ClickApplySchemeProgram() throws Exception
 	    {
-	    	Thread.sleep(2000);
-	    	wait.until(ExpectedConditions.elementToBeClickable(ApplySchemeProgram)).click();
+			Thread.sleep(2000);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", ApplySchemeProgram);
 	    }
 	    
 	    

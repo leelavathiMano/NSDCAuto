@@ -57,7 +57,7 @@ public class STT_BatchDetailPage {
 	@FindBy(xpath = "(//button[@_ngcontent-c30])[3]")
 	private WebElement AssessmentDate;
 
-	@FindBy(xpath = "//option[contains(text(),'English')]")
+	@FindBy(xpath = "//select[@formcontrolname='preferredAssessmentLanguage']")
 	private WebElement AssessmentLang;
 
 	@FindBy(xpath = "//input[@type='checkbox']")
@@ -69,6 +69,12 @@ public class STT_BatchDetailPage {
 	@FindBy(xpath = "//button[contains(text(),'Add')]")
 	private WebElement AddBatchTime;
 	
+	@FindBy(xpath = "//button[contains(text(),'Save')]")
+	private WebElement SaveBtn; 
+	
+	@FindBy(xpath = "//button[contains(text(),'OK')]")
+	private WebElement Successfull_OK_Btn;
+	
 
 	public STT_BatchDetailPage(WebDriver driver) {
 		this.driver = driver;
@@ -76,7 +82,8 @@ public class STT_BatchDetailPage {
 		wait = new WebDriverWait(driver, 30);
 	}
 
-	public void EnterBatchSize(String BatchSizeInNumber) {
+	public void EnterBatchSize(String BatchSizeInNumber) throws InterruptedException {
+		Thread.sleep(3000);
 		BatchSize.sendKeys(BatchSizeInNumber);
 	}
 
@@ -107,6 +114,21 @@ public class STT_BatchDetailPage {
 		BatchIntime.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 	}
+	
+	public void KeyDown_FromBatchUpTime() throws InterruptedException {
+		Thread.sleep(2000);
+		
+		BatchIntime.sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(2000);
+	}
+	
+	public void KeyDown_FromBatchEndTime() throws InterruptedException {
+		Thread.sleep(2000);
+		BatchEndDate.sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(2000);
+	}
+	
+	
 
 	public void ClickStartDate() throws InterruptedException {
 		Thread.sleep(2000);
@@ -135,7 +157,7 @@ public class STT_BatchDetailPage {
 	}
 
 	public void SelectTrainerName(String Trainer) {
-		SelectDropDownList.selectDropDownListByVisibleText(TrainerName, Trainer);
+		SelectDropDownList.selectDropDownListByValue(TrainerName, Trainer);
 	
 	}
 
@@ -149,11 +171,11 @@ public class STT_BatchDetailPage {
 		ToT_ToA_Batch_DatePicker.chooseDate(driver, AssesmentDate, AssessmentDate, monthDropdownList, yearDropdownList);
 	}
 
-	public void ClickAssessmentLang() throws Exception {
+	public void SelectAssessmentLang(String AssesmentLang) throws Exception {
 
 		Thread.sleep(2000);
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", AssessmentLang);
+		SelectDropDownList.selectDropDownListByVisibleText(AssessmentLang, AssesmentLang);
+		
 	}
 
 	public void ClickDisclaimer() throws Exception {
@@ -161,6 +183,14 @@ public class STT_BatchDetailPage {
 		Thread.sleep(2000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", Disclaimer);
+	}
+	
+	
+	public void ClickSave() throws Exception {
+
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", SaveBtn);
 	}
 	
 	public void ClickAddBatchTiming() throws Exception {
@@ -188,5 +218,34 @@ public class STT_BatchDetailPage {
 
 		// wait.until(ExpectedConditions.elementToBeClickable(MySchemesAndPrograms)).click();
 	}
-
+	
+	public void ClickOkBtn() throws Exception {
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();",Successfull_OK_Btn);
+	}
+	
+	public void TimeSelect(String BatchInTiming) throws InterruptedException
+	{
+		String parts[]=BatchInTiming.split(":");
+		String day=parts[0];
+		int hour=Integer.parseInt(day);
+		//TrainingHours.sendKeys(Keys.TAB);
+		for(int i=1;i<=hour;i++)
+		{
+			Thread.sleep(2000);
+			BatchIntime.sendKeys(Keys.ARROW_DOWN);
+			Thread.sleep(2000);
+		}
+		BatchIntime.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+		BatchIntime.sendKeys(Keys.ARROW_UP);
+		Thread.sleep(2000);
+		BatchIntime.sendKeys(Keys.TAB);
+		if(parts[2].equals("PM"))
+		{
+			BatchEndDate.sendKeys(Keys.ARROW_DOWN);
+		}
+	
+	}
 }

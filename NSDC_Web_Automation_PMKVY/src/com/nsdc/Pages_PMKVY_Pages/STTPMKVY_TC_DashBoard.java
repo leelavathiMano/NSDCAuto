@@ -83,7 +83,7 @@ public class STTPMKVY_TC_DashBoard {
 	}
 	
 	public void SelectProjectIDThatsApproved(String ProjectID) throws NumberFormatException, Exception {
-		Thread.sleep(1000);
+		Thread.sleep(7000);
 		List<WebElement> rowstable = MySchemesListTable.findElements(By.tagName("tr"));
 
 		int rows_count = rowstable.size();
@@ -97,14 +97,14 @@ public class STTPMKVY_TC_DashBoard {
 				String celtext = Columnsrow.getText();
 				//String ProjectID="AutoTest_213";
 				if (celtext.equals(ProjectID)) {
-					
+					Thread.sleep(3000);
 				/*
 				 * ReadWriteData.setExcelData(
 				 * "./TestData/Workflow/PMKVY_STT/ProjectCreationWorkflowExcel.xls",
 				 * "ProjectAndBatchCreation", Integer.parseInt(SLNo), 8, celtext);
 				 */WebElement RadionButton1st = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr["+row+"]//td[10]//span//a[@href='#']"));
 
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 					JavascriptExecutor executor = (JavascriptExecutor) driver;
 					executor.executeScript("arguments[0].click();", RadionButton1st);
 					break;

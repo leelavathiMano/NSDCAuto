@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,7 +27,7 @@ public class STT_AddProject extends TestConfiguration {
 	private WebElement ProjecNameTextBox;
 	@FindBy(xpath="//label[input[@formcontrolname='projectType']][1]")
 	private WebElement ProjectTypeButton;
-	@FindBy(xpath="//div[input[@placeholder='Select Agreement Date']]")
+	@FindBy(xpath="//input[@placeholder='Select Agreement Date']")
 	private WebElement AggrementDate;
 	
 	@FindBy(xpath="//button[text()='Add']")
@@ -57,7 +58,7 @@ public class STT_AddProject extends TestConfiguration {
 	@FindBy(xpath="//select[@formcontrolname='sector']")
 	private WebElement SectorList;
 	
-	@FindBy(xpath="//select[@formcontrolname='jobRoleName']")
+	@FindBy(xpath="//select[@formcontrolname='qpCode']")
 	private WebElement JobRoleNameList;
 	
 	@FindBy(xpath="//input[@placeholder='Enter Target']")
@@ -93,13 +94,15 @@ public class STT_AddProject extends TestConfiguration {
 	
 	public STT_AddProject(WebDriver driver) {
 		this.driver = driver;
+		//AjaxElementLocatorFactory AjaxWait= new AjaxElementLocatorFactory(driver, 30);
 		PageFactory.initElements(driver, this);
 		wait = new WebDriverWait(driver, 30);
 	}
 
 	public void EnterTheProjectProposalID(String ProjectProposalID) throws InterruptedException 
 	{
-		Thread.sleep(2000);
+		//WebElement ProjectIDEditBox=wait.until(ExpectedConditions.elementToBeClickable(ProjectProposalIDEditBox));
+		
 		ProjectProposalIDEditBox.sendKeys(ProjectProposalID);
 	}
 	public void EnterTheProjecName(String ProjecName)
@@ -115,9 +118,9 @@ public class STT_AddProject extends TestConfiguration {
 	
 	public void ClickAggrementDate() throws InterruptedException 
 	{
-		Thread.sleep(2000);
-		  Actions actions = new Actions(driver); 
-		  actions.moveToElement(AggrementDate).click().build().perform();
+		  Thread.sleep(2000);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", AggrementDate);
 	}
 	
 	
