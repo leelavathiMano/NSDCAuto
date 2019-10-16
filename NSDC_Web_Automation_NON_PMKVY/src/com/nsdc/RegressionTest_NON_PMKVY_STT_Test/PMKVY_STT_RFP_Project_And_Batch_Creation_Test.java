@@ -1,21 +1,21 @@
-package com.nsdc.RegressionTest_PMKVY_STT_Test;
+package com.nsdc.RegressionTest_NON_PMKVY_STT_Test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.nsdc.Pages_PMKVY_Pages.AddTrainingCenterPage;
-import com.nsdc.Pages_PMKVY_Pages.BetaVersionOfSmartPage;
-import com.nsdc.Pages_PMKVY_Pages.DashboardPage;
-import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
-import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
-import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
-import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
-import com.nsdc.Pages_PMKVY_Pages.PMKVY_STTPMUpage;
-import com.nsdc.Pages_PMKVY_Pages.STTPMU_All_TP_ProjectimplementingAgencyPage;
-import com.nsdc.Pages_PMKVY_Pages.STT_AddProject;
-import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.AddTrainingCenterPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.BetaVersionOfSmartPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.DashboardPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.EnterLoginPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.LaunchPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.LogOutPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.MySchemeOrProjectPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.PMKVY_STTPMUpage;
+import com.nsdc.Pages_NON_PMKVY_Pages.STTPMU_All_TP_ProjectimplementingAgencyPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.STT_AddProject;
+import com.nsdc.Pages_NON_PMKVY_Pages.SelectSchemeOrProgramPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
 import com.nsdc.generic.ReadWriteData;
 import com.nsdc.generic.UploadFile;

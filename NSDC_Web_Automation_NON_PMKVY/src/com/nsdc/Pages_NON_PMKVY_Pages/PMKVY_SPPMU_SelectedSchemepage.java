@@ -1,4 +1,4 @@
-package com.nsdc.Pages_PMKVY_Pages;
+package com.nsdc.Pages_NON_PMKVY_Pages;
 
 
 import org.openqa.selenium.WebDriver;
