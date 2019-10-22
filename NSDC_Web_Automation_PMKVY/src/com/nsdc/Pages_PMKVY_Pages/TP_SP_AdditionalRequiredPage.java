@@ -13,9 +13,9 @@ public class TP_SP_AdditionalRequiredPage {
     private WebElement Dual_logoBrowseButton;
     @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
     private WebElement Dual_logoUpLoadButton;
-    @FindBy(xpath="(//input[@id='customFile'])[2]")
+    @FindBy(xpath="(//input[@id='customFile'])")
     private WebElement Signed_TermSheetBrowseButton;
-    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+    @FindBy(xpath="(//button[contains(text(),'Upload')])")
     private WebElement Signed_TermSheetUpLoadButton;
     
     @FindBy(xpath="//select[@formcontrolname='status']")
