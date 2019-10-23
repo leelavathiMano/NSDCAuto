@@ -13,10 +13,26 @@ public class TP_SP_AdditionalRequiredPage {
     private WebElement Dual_logoBrowseButton;
     @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
     private WebElement Dual_logoUpLoadButton;
+    @FindBy(xpath="(//input[@id='customFile'])[1]")
+    private WebElement Other_TermSheetBrowseButton;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+    private WebElement Other_TermSheetUpLoadButton;
+    
     @FindBy(xpath="(//input[@id='customFile'])")
-    private WebElement Signed_TermSheetBrowseButton;
+    private WebElement TPSigned_TermSheetBrowseButton;
     @FindBy(xpath="(//button[contains(text(),'Upload')])")
+    private WebElement TPSigned_TermSheetUpLoadButton;
+    
+    
+    
+    
+    
+    @FindBy(xpath="(//input[@id='customFile'])[2]")
+    private WebElement Signed_TermSheetBrowseButton;
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
     private WebElement Signed_TermSheetUpLoadButton;
+    
+    
     
     @FindBy(xpath="//select[@formcontrolname='status']")
     private WebElement   ReviewDropDownList;
@@ -41,14 +57,39 @@ public class TP_SP_AdditionalRequiredPage {
     {
     	Dual_logoUpLoadButton.click();
     }
-    public void ClickSigned_TermSheetBrowse()
+    public void ClickOnOther_TermSheetBrowse()
+    {
+    	Other_TermSheetBrowseButton.click();
+    }
+    public void clickOnOther_TermSheetUpLoad()
+    {
+    	Other_TermSheetBrowseButton.click();
+    }
+    
+    
+    
+    public void ClickOnSigned_TermSheetBrowse()
     {
     	Signed_TermSheetBrowseButton.click();
     }
-    public void clickSigned_TermSheetUpLoad()
+    public void clickOnSigned_TermSheetUpLoad()
     {
-    	Signed_TermSheetUpLoadButton.click();
+    	Signed_TermSheetBrowseButton.click();
     }
+    
+    public void ClickOnTPSigned_TermSheetBrowse()
+    {
+    	TPSigned_TermSheetBrowseButton.click();
+    }
+    public void clickOnTPSigned_TermSheetUpLoad()
+    {
+    	TPSigned_TermSheetUpLoadButton.click();
+    }
+    
+    
+    
+    
+    
     public void SelectReview(String review)
     
     {

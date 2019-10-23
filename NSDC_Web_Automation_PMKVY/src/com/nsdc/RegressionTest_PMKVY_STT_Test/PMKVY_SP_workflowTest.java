@@ -52,8 +52,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String Tranche3tobepaidwithoutPlacement, String DualLogoRequired, String TargetBeneficiaries,
 			String numberofsectors, String Sector, String JobRole, String Target, String locationState,
 			String locationDistrict, String jobrole1, String targetvalue1, String Jobrole2, String targetvalue2,
-			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String duallogoImg,
-			String review, String comments, String TCloginId, String TCpassword, String BatchSize,
+			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String DualImg,
+			String review, String SignedImg, String comments, String TCloginId, String TCpassword, String BatchSize,
 			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
 			String batchStartDate, String trainerName, String language) throws Exception {
 
@@ -207,51 +207,55 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		Thread.sleep(3000);
 //		addR.ClickOnDual_logoUpLoad();
 //		Thread.sleep(3000);
-		addR.ClickSigned_TermSheetBrowse();
+		addR.ClickOnTPSigned_TermSheetBrowse();
 		Thread.sleep(3000);
-		UploadFile.upload(img1);
+		UploadFile.upload(SignedImg);
 		Thread.sleep(3000);
-		addR.clickSigned_TermSheetUpLoad();
+		addR.clickOnTPSigned_TermSheetUpLoad();
 		Thread.sleep(3000);
 		addR.SelectReview(review);
 		Thread.sleep(3000);
 		addR.ClickOnDownloadTermsheet();
 		Thread.sleep(3000);
 		addR.ClickSaveAndSubmit();
-
+         Thread.sleep(10000);
 		// Thread.sleep(3000); 
 		plp.clickOnProfileLogo();
-		plp.clickOnLogout(); ///
+		plp.clickOnLogout(); 
+		///
 		lp.clickLogin();
+		Thread.sleep(3000);
 		bsp.clickToClose();
+		Thread.sleep(3000);
 		elp.performlogin(loginId, password2);
 		Thread.sleep(3000);
 		sppmu.ClickOnViewAllSchemeAddRequests(); // //for Sp andSTT SAME PAGE ACTION BUTTON AND VIEW DETAILS
 		SPPMU_All_TP_ProjectimplementingAgencypage iap = new SPPMU_All_TP_ProjectimplementingAgencypage(driver);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		iap.ClickOnAction();
 		iap.ClickOnViewDetails();
 		/// FOR tP AND SPPMU BOTHADDTIONAL REQ SAME PAGE AND XPATH ALSO
 		/// SAME(TP_SP_AdditionalRequiredPage)
 		Thread.sleep(3000);
-		addR.ClickSigned_TermSheetBrowse();
+		addR.ClickOnOther_TermSheetBrowse();
 		Thread.sleep(3000);
-		UploadFile.upload(img1);
+		UploadFile.upload(SignedImg);
 		Thread.sleep(3000);
-		addR.clickSigned_TermSheetUpLoad();
+		addR.clickOnOther_TermSheetUpLoad();
 		Thread.sleep(3000);
+		
+		addR.ClickOnSigned_TermSheetBrowse();
+		Thread.sleep(3000);
+		UploadFile.upload(SignedImg);
+		Thread.sleep(3000);
+		addR.clickOnSigned_TermSheetUpLoad();
+		Thread.sleep(3000);
+		
+		
 		addR.SelectComments(comments);
 		addR.ClickSaveAndSubmit();
-		
-		// iap.ClickOnAction();
-
-		// iap.ClickOnViewGeneratedTermSheet();
-
-		plp.clickOnProfileLogo();
-		Thread.sleep(3000);
-		plp.clickOnLogout();
-
+		Thread.sleep(10000);		
 		//LaunchPage lp = new LaunchPage(driver);
 
 		lp.clickLogin();
@@ -263,8 +267,10 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		elp.performlogin(TCloginId, TCpassword);
 
 		SP_TC_DashBoardpage tcd = new SP_TC_DashBoardpage(driver);
-
+        Thread.sleep(2000);
 		tcd.ClickOnMyScheme();
+		Thread.sleep(2000);
+		tcd.ClickOnViewScheme();
 		SP_TC_MyApprovedSchemeOrProgramPage spApp = new SP_TC_MyApprovedSchemeOrProgramPage(driver);
 
 		spApp.ClickOnSPAction();
