@@ -12,7 +12,8 @@ WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[3]")
 	private WebElement MySchemeIcon;
 	
-	
+	@FindBy(xpath="//div[p[text()='View Schemes']]")
+	private WebElement ViewSchemeIcon;
 	
 	public SP_TC_DashBoardpage(WebDriver driver) 
 	{
@@ -23,6 +24,10 @@ WebDriver driver;
 	public void ClickOnMyScheme()
 	{
 		MySchemeIcon.click();
+	}
+	public void ClickOnViewScheme()
+	{
+		ViewSchemeIcon.click();
 	}
 	
 
