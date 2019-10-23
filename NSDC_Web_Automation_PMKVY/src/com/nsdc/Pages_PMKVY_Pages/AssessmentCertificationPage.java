@@ -22,7 +22,7 @@ public class AssessmentCertificationPage {
     @FindBy(xpath="//li[a[contains(text(),'Accepted')]]")
     private WebElement AcceptedIcon;
     
-    @FindBy(xpath="(//i[@class='la la-ellipsis-h'])[1]")
+    @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
     private WebElement ActionIcon;
     @FindBy(xpath="(//a[contains(text(),'Assign Assessment Agency')])[1]")
     private WebElement AssignAssessmentAgency;
