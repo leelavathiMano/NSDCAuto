@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import com.nsdc.Pages_PMKVY_Pages.AssessmentAgencyPage;
 import com.nsdc.Pages_PMKVY_Pages.AssessmentCertificationPage;
+import com.nsdc.Pages_PMKVY_Pages.AssessorPage;
 import com.nsdc.Pages_PMKVY_Pages.BetaVersionOfSmartPage;
 import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
 import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
@@ -77,6 +78,13 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 			bsp.clickToClose();
 			elp.performlogin(AR,ARpassword);
 			
+			AssessorPage ap=new AssessorPage(driver);
+			ap.ClickOnAssessor();
+			ap.ClickOnAssessmentRequest();
+			ap.ClickonAction();
+			ap.ClickonAcceptBatch();
+			ap.ClickonYesButton();
+			ap.ClickOnOkButton();
 		
 }
 }
