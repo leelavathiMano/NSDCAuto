@@ -21,7 +21,7 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 	}
 	@Test(dataProvider = "CreateSpecialProjectData")
 
-	public void Addspecialprojectdata_01(String username, String password, String AAID,String AApassword,String AR,String ARpassword) throws Exception {
+	public void Addspecialprojectdata_01(String username, String password,String assignAssessor, String AAID,String AApassword,String assessorName,String AR,String ARpassword) throws Exception {
 
 		precondition();
 		LaunchPage lp = new LaunchPage(driver);
@@ -36,16 +36,21 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 		AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
 		Thread.sleep(3000);
 		acp.ClickOnAssessmentCertification();
+		Thread.sleep(4000);
 		acp.ClickOnBatchAssigned();
 		acp.ClickOnAcceptedIcon();
+		Thread.sleep(3000);
 		acp.ClicKonAction();
+		Thread.sleep(3000);
 		acp.ClickOnAssignAssessmentAgency();
-		acp.SelectAAId(AAID);
+		Thread.sleep(3000);
+		acp.SelectAAId(assignAssessor);
+		Thread.sleep(3000);
 		acp.ClickOnSubmitButton();
 		Thread.sleep(5000);
 		acp.ClickOnOkButton();
 		Thread.sleep(3000);
-	      LogOutPage plp = new LogOutPage(driver);
+      LogOutPage plp = new LogOutPage(driver);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout(); // //
 			Thread.sleep(5000);
@@ -55,17 +60,22 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 			bsp.clickToClose();
 			elp.performlogin(AAID, AApassword);
 			AssessmentAgencyPage aap=new AssessmentAgencyPage(driver);
+			Thread.sleep(10000);
 			aap.ClickonAssessmentRequest();
+			Thread.sleep(2000);
 			aap. ClickonAction();
+			Thread.sleep(2000);
 			aap.ClickonAcceptBatch();
+			Thread.sleep(2000);
 			aap.ClickonYesButton();
+			Thread.sleep(2000);
 			aap.ClickOnOkButton();
 			Thread.sleep(3000);
 			aap.ClickOnAcceptedButton();
-			Thread.sleep(3000);
+		Thread.sleep(3000);
 			aap.ClickOnAcceptedAction();
 			aap.ClickOnAssignAssessorIcon();
-			aap.SelectAssessor(AR);
+			aap.SelectAssessor(assessorName);
 			aap.ClickOnSubmitButton();
 			Thread.sleep(2000);
 			aap.ClickOnOkButton();
@@ -80,11 +90,16 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 			
 			AssessorPage ap=new AssessorPage(driver);
 			ap.ClickOnAssessor();
+			Thread.sleep(5000);
 			ap.ClickOnAssessmentRequest();
+			Thread.sleep(2000);
 			ap.ClickonAction();
+			
 			ap.ClickonAcceptBatch();
+			
 			ap.ClickonYesButton();
+			
 			ap.ClickOnOkButton();
-		
+			Thread.sleep(5000);
 }
 }

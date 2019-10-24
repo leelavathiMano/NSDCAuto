@@ -1,5 +1,6 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -63,18 +64,24 @@ public class TP_SP_AdditionalRequiredPage {
     }
     public void clickOnOther_TermSheetUpLoad()
     {
-    	Other_TermSheetBrowseButton.click();
+    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+	executor.executeScript("arguments[0].click();", Other_TermSheetUpLoadButton);
+    	//Other_TermSheetUpLoadButton.click();
     }
     
     
     
     public void ClickOnSigned_TermSheetBrowse()
     {
+//    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		executor.executeScript("arguments[0].click();", Signed_TermSheetBrowseButton);
     	Signed_TermSheetBrowseButton.click();
     }
     public void clickOnSigned_TermSheetUpLoad()
     {
-    	Signed_TermSheetBrowseButton.click();
+    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", Signed_TermSheetUpLoadButton);
+    	//Signed_TermSheetUpLoadButton.click();
     }
     
     public void ClickOnTPSigned_TermSheetBrowse()

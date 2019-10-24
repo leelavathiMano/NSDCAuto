@@ -1,5 +1,6 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +17,7 @@ public class AssessmentAgencyPage {
 	    }
    @FindBy(xpath="//span[Strong[text()='Assessment Requests']]")
    private WebElement AssessmentRequest;
-   @FindBy(xpath="(//i[@class='la la-ellipsis-h'])[1]")
+   @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
    private WebElement ActionIcon;
    
    @FindBy(xpath="(//span[contains(text(),'Accept Batch')])[1]")
@@ -30,7 +31,7 @@ public class AssessmentAgencyPage {
    @FindBy(xpath="//a[contains(text(),'Accepted')]")
    private WebElement AcceptedButton;
    
-   @FindBy(xpath="(//i[@class='la la-ellipsis-h'])[1]")
+   @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
    private WebElement AccetedActionButton;
    @FindBy(xpath="(//span[contains(text(),'Assign Assessor')])[1]")
    private WebElement AssignAssessorIcon;
@@ -39,11 +40,14 @@ public class AssessmentAgencyPage {
    
    
    
-   @FindBy(xpath="(//button[contains(text(),'Submit')])[19]")
+   @FindBy(xpath="(//button[@class='btn btn-primary bg-color'])[1]")
 	private WebElement submitButton;
    public void ClickonAssessmentRequest()
    {
-	   AssessmentRequest.click();
+	   
+	   JavascriptExecutor js = (JavascriptExecutor)driver;
+	   js.executeScript("arguments[0].click();",AssessmentRequest );
+	   //AssessmentRequest.click();
    }
    public void ClickonAction()
    {
@@ -73,9 +77,9 @@ public class AssessmentAgencyPage {
    {
 	   AssignAssessorIcon.click();
    }
-   public void SelectAssessor(String AR)
+   public void SelectAssessor(String AssessorName)
    {
-	   SelectDropDownList.selectDropDownListByValue(SelectAssessorDropDownlist,AR );
+	   SelectDropDownList.selectDropDownListByVisibleText(SelectAssessorDropDownlist, AssessorName);
    }
    
    

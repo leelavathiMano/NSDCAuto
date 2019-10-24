@@ -1,5 +1,6 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PMKVY_SPPMUpage {
 	WebDriver driver;
-	@FindBy(xpath="//div[div[p[text()='View All Scheme Add Requests']]]")
+	@FindBy(xpath="//div[p[text()='View All Scheme Add Requests']]")
 	private WebElement ViewAllSchemeAddRequestsIcon;
 	//
 	public  PMKVY_SPPMUpage(WebDriver driver)
@@ -18,6 +19,8 @@ public class PMKVY_SPPMUpage {
 //
 	public void ClickOnViewAllSchemeAddRequests()
 	{
-		ViewAllSchemeAddRequestsIcon.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", ViewAllSchemeAddRequestsIcon);
+		//ViewAllSchemeAddRequestsIcon.click();
 	}
 }
