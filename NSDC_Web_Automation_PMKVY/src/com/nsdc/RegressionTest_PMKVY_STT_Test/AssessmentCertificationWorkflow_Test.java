@@ -25,35 +25,35 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 
 		precondition();
 		LaunchPage lp = new LaunchPage(driver);
-//		lp.clickLogin();
-//		Thread.sleep(3000);
+		lp.clickLogin();
+		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-//		bsp.clickToClose();
-//		Thread.sleep(3000);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
-//		elp.performlogin(username, password);
-//		Thread.sleep(3000);
-//		AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
-//		Thread.sleep(3000);
-//		acp.ClickOnAssessmentCertification();
-//		Thread.sleep(4000);
-//		acp.ClickOnBatchAssigned();
-//		acp.ClickOnAcceptedIcon();
-//		Thread.sleep(3000);
-//		acp.ClicKonAction();
-//		Thread.sleep(3000);
-//		acp.ClickOnAssignAssessmentAgency();
-//		Thread.sleep(3000);
-//		acp.SelectAAId(assignAssessor);
-//		Thread.sleep(3000);
-//		acp.ClickOnSubmitButton();
-//		Thread.sleep(5000);
-//		acp.ClickOnOkButton();
-//		Thread.sleep(3000);
+		elp.performlogin(username, password);
+		Thread.sleep(3000);
+		AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
+		Thread.sleep(3000);
+		acp.ClickOnAssessmentCertification();
+		Thread.sleep(4000);
+		acp.ClickOnBatchAssigned();
+		acp.ClickOnAcceptedIcon();
+		Thread.sleep(3000);
+		acp.ClicKonAction();
+		Thread.sleep(3000);
+		acp.ClickOnAssignAssessmentAgency();
+		Thread.sleep(3000);
+		acp.SelectAAId(assignAssessor);
+		Thread.sleep(3000);
+		acp.ClickOnSubmitButton();
+		Thread.sleep(5000);
+		acp.ClickOnOkButton();
+		Thread.sleep(3000);
       LogOutPage plp = new LogOutPage(driver);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout(); // //
-//			Thread.sleep(5000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout(); // //
+			Thread.sleep(5000);
 			
 			
 			lp.clickLogin();
@@ -90,11 +90,16 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 			
 			AssessorPage ap=new AssessorPage(driver);
 			ap.ClickOnAssessor();
+			Thread.sleep(5000);
 			ap.ClickOnAssessmentRequest();
+			Thread.sleep(2000);
 			ap.ClickonAction();
+			
 			ap.ClickonAcceptBatch();
+			
 			ap.ClickonYesButton();
+			
 			ap.ClickOnOkButton();
-		
+			Thread.sleep(5000);
 }
 }

@@ -228,8 +228,9 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		bsp.clickToClose();
 		Thread.sleep(3000);
 		elp.performlogin(loginId, password2);
-		Thread.sleep(3000);
-		sppmu.ClickOnViewAllSchemeAddRequests(); // //for Sp andSTT SAME PAGE ACTION BUTTON AND VIEW DETAILS
+		Thread.sleep(10000);
+		sppmu.ClickOnViewAllSchemeAddRequests(); 
+		Thread.sleep(5000);// //for Sp andSTT SAME PAGE ACTION BUTTON AND VIEW DETAILS
 		SPPMU_All_TP_ProjectimplementingAgencypage iap = new SPPMU_All_TP_ProjectimplementingAgencypage(driver);
 		Thread.sleep(5000);
 
@@ -241,21 +242,29 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		addR.ClickOnOther_TermSheetBrowse();
 		Thread.sleep(3000);
 		UploadFile.upload(SignedImg);
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		addR.clickOnOther_TermSheetUpLoad();
 		Thread.sleep(3000);
 		
 		addR.ClickOnSigned_TermSheetBrowse();
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		UploadFile.upload(SignedImg);
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		addR.clickOnSigned_TermSheetUpLoad();
 		Thread.sleep(3000);
 		
 		
 		addR.SelectComments(comments);
 		addR.ClickSaveAndSubmit();
-		Thread.sleep(10000);		
+		Thread.sleep(10000);
+		
+		 Thread.sleep(3000); 
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout(); 
+		
+		
+		
+		
 		//LaunchPage lp = new LaunchPage(driver);
 
 		lp.clickLogin();
