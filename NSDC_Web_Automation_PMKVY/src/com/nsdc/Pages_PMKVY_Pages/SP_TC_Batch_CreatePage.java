@@ -212,4 +212,59 @@ public void ClickOnOKButton()
 	OkButton.click();
 }
 
+
+
+public void BatchinTimeSelect(String BatchInTiming) throws InterruptedException
+{
+	String parts[]=BatchInTiming.split(":");
+	String day=parts[0];
+	int hour=Integer.parseInt(day);
+	//TrainingHours.sendKeys(Keys.TAB);
+	for(int i=1;i<=hour;i++)
+	{
+		Thread.sleep(2000);
+		BatchIntime.sendKeys(Keys.ARROW_UP);
+		Thread.sleep(2000);
+	}
+	BatchIntime.sendKeys(Keys.TAB);
+	Thread.sleep(1000);
+	BatchIntime.sendKeys(Keys.ARROW_UP);
+	Thread.sleep(1000);
+	BatchIntime.sendKeys(Keys.TAB);
+	if(parts[2].equals("PM"))
+	{
+		BatchIntime.sendKeys(Keys.ARROW_DOWN);
+	}
 }
+public void BatchoutTimeSelect(String Batchouttime) throws InterruptedException
+{
+	String parts[]=Batchouttime.split(":");
+	String day=parts[0];
+	int hour=Integer.parseInt(day);
+	//TrainingHours.sendKeys(Keys.TAB);
+	for(int i=1;i<=hour;i++)
+	{
+		Thread.sleep(1000);
+		BatchOutTime.sendKeys(Keys.ARROW_UP);
+		
+	}
+	BatchOutTime.sendKeys(Keys.TAB);
+	Thread.sleep(1000);
+	BatchOutTime.sendKeys(Keys.ARROW_UP);
+	Thread.sleep(2000);
+	BatchOutTime.sendKeys(Keys.TAB);
+	if(parts[2].equals("PM"))
+	{
+		Thread.sleep(1000);
+		BatchOutTime.sendKeys(Keys.ARROW_DOWN);
+	}
+}
+
+}
+
+
+
+
+
+
+

@@ -17,7 +17,7 @@ public class AssessorPage {
   @FindBy(xpath="//strong[text()=' Assessment Request ']")
   private WebElement AssessmentRequest;
   
-  @FindBy(xpath="//i[@class='la la-ellipsis-h']")
+  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
   private WebElement ActionIcon;
   @FindBy(xpath="(//span[contains(text(),'Accept Batch')])[1]")
   private WebElement AcceptBatchIcon;

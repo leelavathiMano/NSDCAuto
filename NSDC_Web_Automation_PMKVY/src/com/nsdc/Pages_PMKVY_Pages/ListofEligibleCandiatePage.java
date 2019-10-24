@@ -33,6 +33,14 @@ public class ListofEligibleCandiatePage
 	@FindBy(xpath="//select[@formcontrolname='modeOfBkl']")
 	private WebElement ModelofBAndLDropDownList;
 	
+	
+	
+	@FindBy(xpath="//select[@formcontrolname='state']")
+	private WebElement StateDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='district']")
+	private WebElement districtDropDownList;
+	
+	
 	//
 	public void ClickOnCandiateId() throws InterruptedException
 	{
@@ -77,7 +85,13 @@ public class ListofEligibleCandiatePage
 		Thread.sleep(3000);
 		SelectDropDownList.selectDropDownListByVisibleText(ModelofBAndLDropDownList, Self);
 	}
+	public void SelectState(String state)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(StateDropDownList, state);
+	}
 	
-	
-	
+	public void Selectdistric(String distric)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(districtDropDownList, distric);
+	}
 }
