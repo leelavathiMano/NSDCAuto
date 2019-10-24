@@ -98,10 +98,12 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 			tpMp.clickToChooseIndividualCandidateRegistration();
 			tpMp.clickRegister();
-			Thread.sleep(3000);
+			Thread.sleep(6000);
 			//Personal Details Page
 			TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
+			Thread.sleep(2000);
 			tpCrp.selectNamePrefix(namePrefix);
+			Thread.sleep(2000);
 			tpCrp.enterFullName(fullName);
 			Thread.sleep(1000);
 			tpCrp.clickToBrowseProfilePicture();
@@ -117,7 +119,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.clickToSelectDOB();
 			String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
 		    ReadWriteData.setExcelData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 11, selectedDateOfBirth);
-//		  	tpCrp.selectMaritalStatus(maritalStatus);
+		  	tpCrp.selectMaritalStatus(maritalStatus);
 //			tpCrp.enterPlaceOfBirth(placeOfBirth);
 			tpCrp.selectBirthState(birthState);
 			Thread.sleep(2000);
@@ -226,7 +228,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 //			tpCrp.selectJobRole(jobRole1, jobRoleCode1);
 //			Thread.sleep(2000);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(9000);
 			tpCrp.clickIAgree();
 			Thread.sleep(1000);
 			tpCrp.clickToAgreeAndSubmit();
