@@ -1,5 +1,7 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,6 +13,7 @@ import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
 import com.nsdc.Pages_PMKVY_Pages.LaunchPage;
 import com.nsdc.Pages_PMKVY_Pages.LogOutPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
+import com.nsdc.generic.ReadWriteData;
 import com.nsdc.testConfig.TestConfiguration;
 
 public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
@@ -21,85 +24,136 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 	}
 	@Test(dataProvider = "CreateSpecialProjectData")
 
-	public void Addspecialprojectdata_01(String username, String password,String assignAssessor, String AAID,String AApassword,String assessorName,String AR,String ARpassword) throws Exception {
+	public void Addspecialprojectdata_01(String username, String password,String assignAssessor, String AAID,
+			String AApassword,String assessorName,String AR,String ARpassword) throws Exception {
 
 		precondition();
 		LaunchPage lp = new LaunchPage(driver);
-//		lp.clickLogin();
-//		Thread.sleep(3000);
+		lp.clickLogin();
+		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-//		bsp.clickToClose();
-//		Thread.sleep(3000);
+		bsp.clickToClose();
+		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
-//		elp.performlogin(username, password);
-//		Thread.sleep(3000);
-//		AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
-//		Thread.sleep(3000);
-//		acp.ClickOnAssessmentCertification();
-//		Thread.sleep(4000);
-//		acp.ClickOnBatchAssigned();
-//		acp.ClickOnAcceptedIcon();
-//		Thread.sleep(3000);
-//		acp.ClicKonAction();
-//		Thread.sleep(3000);
-//		acp.ClickOnAssignAssessmentAgency();
-//		Thread.sleep(3000);
-//		acp.SelectAAId(assignAssessor);
-//		Thread.sleep(3000);
-//		acp.ClickOnSubmitButton();
-//		Thread.sleep(5000);
-//		acp.ClickOnOkButton();
-//		Thread.sleep(3000);
+		elp.performlogin(username, password);
+		Thread.sleep(3000);
+		AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
+		Thread.sleep(3000);
+		acp.ClickOnAssessmentCertification();
+		Thread.sleep(4000);
+		acp.ClickOnBatchAssigned();
+		acp.ClickOnAcceptedIcon();
+		Thread.sleep(3000);
+		acp.ClicKonAction();
+		Thread.sleep(3000);
+		acp.ClickOnAssignAssessmentAgency();
+		Thread.sleep(3000);
+		acp.SelectAAId(assignAssessor);
+		Thread.sleep(3000);
+		acp.ClickOnSubmitButton();
+		Thread.sleep(5000);
+		acp.ClickOnOkButton();
+		Thread.sleep(3000);
       LogOutPage plp = new LogOutPage(driver);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout(); // //
-//			Thread.sleep(5000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout(); // //
+			Thread.sleep(5000);
 			
 			
-//			lp.clickLogin();
-//			bsp.clickToClose();
-//			elp.performlogin(AAID, AApassword);
-//			AssessmentAgencyPage aap=new AssessmentAgencyPage(driver);
-//			Thread.sleep(10000);
-//			aap.ClickonAssessmentRequest();
-//			Thread.sleep(5000);
-//			aap. ClickonAction();
-//			Thread.sleep(2000);
-//			aap.ClickonAcceptBatch();
-//			Thread.sleep(2000);
-//			aap.ClickonYesButton();
-//			Thread.sleep(2000);
-//			aap.ClickOnOkButton();
-//			Thread.sleep(3000);
-//			aap.ClickOnAcceptedButton();
-//		Thread.sleep(3000);
-//			aap.ClickOnAcceptedAction();
-//			aap.ClickOnAssignAssessorIcon();
-//			aap.SelectAssessor(assessorName);
-//			aap.ClickOnSubmitButton();
-//			Thread.sleep(2000);
-//			aap.ClickOnOkButton();
-//			Thread.sleep(3000);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout(); // //
-//			Thread.sleep(5000);
+			lp.clickLogin();
+			bsp.clickToClose();
+			elp.performlogin(AAID, AApassword);
+			AssessmentAgencyPage aap=new AssessmentAgencyPage(driver);
+			Thread.sleep(10000);
+			aap.ClickonAssessmentRequest();
+			Thread.sleep(5000);
+			aap. ClickonAction();
+			Thread.sleep(2000);
+			aap.ClickonAcceptBatch();
+			Thread.sleep(2000);
+			aap.ClickonYesButton();
+			Thread.sleep(2000);
+			aap.ClickOnOkButton();
+			Thread.sleep(3000);
+			aap.ClickOnAcceptedButton();
+		Thread.sleep(3000);
+			aap.ClickOnAcceptedAction();
+			aap.ClickOnAssignAssessorIcon();
+			aap.SelectAssessor(assessorName);
+			aap.ClickOnSubmitButton();
+			Thread.sleep(2000);
+			aap.ClickOnOkButton();
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout(); // //
+			Thread.sleep(5000);
 			
 			lp.clickLogin();
 			bsp.clickToClose();
 			elp.performlogin(AR,ARpassword);
 			
-			AssessorPage ap=new AssessorPage(driver);
-			ap.ClickOnAssessor();
+			AssessorPage ar=new AssessorPage(driver);
+			ar.ClickOnAssessor();
 			Thread.sleep(5000);
-			ap.ClickOnAssessmentRequest();
+			ar.ClickOnAssessmentRequest();
 			Thread.sleep(2000);
-			ap.ClickonAction();
+			ar.ClickonAction();
 			
-			ap.ClickonAcceptBatch();
+			ar.ClickonAcceptBatch();
 			
-			ap.ClickonYesButton();
+			ar.ClickonYesButton();
 			
-			ap.ClickOnOkButton();
+			ar.ClickOnOkButton();
 			Thread.sleep(5000);
+			////
+			Thread.sleep(3000);
+			ar.ClickonAssessedBatchRequest();
+			Thread.sleep(3000);
+			ar.ClickonARactionIcon();
+			ar.ClickonAR_ViewDetails();
+			Thread.sleep(3000);
+			ar.ClickOnAssessedCandidatesIcon();
+			
+			
+			String TotalCandidates=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 0);
+		 	int NumberOFCandidates=Integer.parseInt(TotalCandidates);
+			for(int i=1;i<=NumberOFCandidates;i++)
+			{
+		 String status = driver.findElement(By.xpath("//tbody//tr["+i+"]//td[4]//span")).getText();
+			
+			if(status.equalsIgnoreCase("Marks Not Uploaded"))
+			{
+				
+				String presentCan=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 1);
+				int Numberofpresentcandidtes=Integer.parseInt(presentCan);
+				for(int k=1;k<=Numberofpresentcandidtes;k++)
+				{
+				driver.findElement(By.xpath("(//span//a[i[@class='la la-ellipsis-h']])["+k+"]")).click();
+				driver.findElement(By.xpath("(//a[span[contains(text(),'Upload Marks')]])["+k+"]")).click();
+				
+				}
+				
+				String NosTypes=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 2);
+				int numberOfNostypes=Integer.parseInt(NosTypes);
+				for(int j=1;j<=numberOfNostypes;j++)
+				   {      
+			        String TheoryMarks=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", j, 3);
+			        String PracticalMarks=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", j, 4);
+			         driver.findElement(By.xpath("(//input[@id='compTheory'])["+j+"]")).sendKeys(TheoryMarks);
+			         Thread.sleep(1000);
+			 	     driver.findElement(By.xpath("(//input[@id='compPractical'])["+j+"]")).sendKeys(PracticalMarks);
+			 	    }
+			      Thread.sleep(3000);
+				driver.findElement(By.xpath("//button[contains(text(),'Save & Upload')]")).click();
+				 Thread.sleep(5000);
+				driver.findElement(By.xpath("//button[text()='OK']")).click();
+				Thread.sleep(1000);
+				driver.findElement(By.xpath("//button[text()='Go Back']")).click();
+				Thread.sleep(3000);
+				ar.ClickOnAssessedCandidatesIcon();
+				Thread.sleep(5000);
+			}
+			
+			}
 }
 }

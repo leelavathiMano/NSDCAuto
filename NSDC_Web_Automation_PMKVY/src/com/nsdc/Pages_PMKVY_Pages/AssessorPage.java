@@ -28,7 +28,19 @@ public class AssessorPage {
   private WebElement OkButton;
   
   
+  @FindBy(xpath="//li[a[contains(text(),'Assessed Batch Request')]]")
+  private WebElement AssessedBatchRequestTAB;
   
+  @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+  private WebElement ARactionIcon;
+  
+  @FindBy(xpath="(//a[span[contains(text(),'View Details')]])[1]")
+  private WebElement AR_ViewDetails;
+  
+  @FindBy(xpath="//a[span[contains(text(),'Assessed Candidates')]]")
+  private WebElement AssessedCandidatesIcon;
+  @FindBy(xpath="//button[contains(text(),'Save & Upload')]")
+  private WebElement UploadButton;
   ////////
   public void ClickOnAssessor()
   {
@@ -53,5 +65,28 @@ public class AssessorPage {
   public void ClickOnOkButton()
   {
   	OkButton.click();
+  }
+  ////////////
+  
+  
+  public void ClickonAssessedBatchRequest()
+  {
+	  AssessedBatchRequestTAB.click();
+  }
+  public void ClickonARactionIcon()
+  {
+	  ARactionIcon.click();
+  }
+  public void ClickonAR_ViewDetails()
+  {
+	  AR_ViewDetails.click();
+  }
+  public void ClickOnAssessedCandidatesIcon()
+  {
+	  AssessedCandidatesIcon.click();
+  }
+  public void ClickOnUploadButton()
+  {
+	  UploadButton.click();
   }
 }
