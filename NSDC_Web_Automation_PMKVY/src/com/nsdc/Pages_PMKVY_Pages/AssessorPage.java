@@ -39,8 +39,8 @@ public class AssessorPage {
   
   @FindBy(xpath="//a[span[contains(text(),'Assessed Candidates')]]")
   private WebElement AssessedCandidatesIcon;
-  @FindBy(xpath="//button[contains(text(),'Save & Upload')]")
-  private WebElement UploadButton;
+  @FindBy(xpath="//button[contains(text(),'Submit for Approval to')]")
+  private WebElement SubmitApprovalToAA_Button;
   ////////
   public void ClickOnAssessor()
   {
@@ -85,8 +85,8 @@ public class AssessorPage {
   {
 	  AssessedCandidatesIcon.click();
   }
-  public void ClickOnUploadButton()
+  public void ClickOnSubmitApprovalToAA_Button()
   {
-	  UploadButton.click();
+	  SubmitApprovalToAA_Button.click();
   }
 }
