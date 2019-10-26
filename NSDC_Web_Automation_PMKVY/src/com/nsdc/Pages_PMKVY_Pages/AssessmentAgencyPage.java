@@ -37,16 +37,34 @@ public class AssessmentAgencyPage {
    private WebElement AssignAssessorIcon;
    @FindBy(xpath="//select[@formcontrolname='assessor']")
    private WebElement SelectAssessorDropDownlist;
-   
-   
-   
    @FindBy(xpath="(//button[@class='btn btn-primary bg-color'])[1]")
 	private WebElement submitButton;
+   
+   ///////////////////////////////saturday
+   @FindBy(xpath="//li[a[contains(text(),'Assessed Batch Request')]]")
+  	private WebElement AssessedBatchRequest;
+   
+   @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+   private WebElement AssessedBatchRequestActionButton;
+   
+   @FindBy(xpath="(//a[span[contains(text(),'View Batch Details')]])[1]")
+   private WebElement  ViewBatchDetailsButton;
+   
+   @FindBy(xpath="//a[contains(text(),'Assessed Candidates')]")
+   private WebElement AA_AssessedCandidatesTab;
+   @FindBy(xpath="//button[text()='Approve']")
+   private WebElement ApproveButton;
+   
+   @FindBy(xpath="//button[text()='Send to SSC']")
+   private WebElement SendToSSCButton;
+   
+//  
+   
    public void ClickonAssessmentRequest()
    {
 	   
 	   JavascriptExecutor js = (JavascriptExecutor)driver;
-	   js.executeScript("arguments[0].click();",AssessmentRequest );
+	   js.executeScript("arguments[0].click();",AssessmentRequest);
 	   //AssessmentRequest.click();
    }
    public void ClickonAction()
@@ -86,5 +104,33 @@ public class AssessmentAgencyPage {
    public void ClickOnSubmitButton()
    {
    	submitButton.click();
+   }
+   
+   ///////////////stuarday
+   
+   public void ClickOnAssessedBatchRequestButton()
+   {
+	   AssessedBatchRequest.click();
+   }
+   
+   public void ClickOnAssessedBatchRequestActionButton()
+   {
+	   AssessedBatchRequestActionButton.click();
+   }
+   public void ClickOnViewBatchDetailsButton()
+   {
+	   ViewBatchDetailsButton.click();
+   }
+   public void ClickOnAA_AssessedCandidatesTab()
+   {
+	   AA_AssessedCandidatesTab.click();
+   }
+   public void ClickOnApproveButton()
+   {
+	   ApproveButton.click();
+   }
+   public void CliCkOnSendToSSC()
+   {
+	   SendToSSCButton.click();
    }
 }
