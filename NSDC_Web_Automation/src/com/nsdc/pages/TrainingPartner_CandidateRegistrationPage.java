@@ -1,8 +1,10 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.nsdc.generic.SelectDropDownList;
@@ -18,6 +20,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	@FindBy(xpath="//input[@class='custom-file-input ']")
 	private WebElement browseButton1;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	
 	private WebElement uploadButton1;
 	@FindBy(xpath="//input[@formcontrolname='phone']")
 	private WebElement mobileNumberTextField;
@@ -200,6 +203,11 @@ public class TrainingPartner_CandidateRegistrationPage
 	@FindBy(xpath="//button[contains(text(),'Dummy Verify')]")
 	private WebElement dummyVerifyButton;
 	
+	@FindBy(xpath="//button[@type='button'and text()='OK']")
+	private WebElement OKButton;
+	
+	@FindBy(xpath="//input[@placeholder='Type here...']")
+	private WebElement SearchBankName;
 	
 	public TrainingPartner_CandidateRegistrationPage(WebDriver driver)
     {
@@ -534,14 +542,37 @@ public class TrainingPartner_CandidateRegistrationPage
 	}
 	public void clickToGetAutopopulatedBankDetails()
 	{
-		bankNameTextField.click();
+		//bankNameTextField.click();
+		ifscTextField.sendKeys(Keys.TAB);
+		
 	}
-	public void enterBankName(String bankName) throws InterruptedException
+	public void enterBankName() throws InterruptedException
 	{
 		bankNameTextField.click();
-		bankNameTextField.clear();
-		bankNameTextField.sendKeys(bankName);
+		//bankNameTextField.clear();
+		//bankNameTextField.sendKeys(bankName);
 	}
+	public void ClickBankName() throws InterruptedException
+	{
+		 Actions builder = new Actions(driver);
+		 builder.moveToElement(bankNameTextField).build().perform();
+		 builder.click(bankNameTextField).build().perform();
+		 builder.clickAndHold(bankNameTextField).build().perform();
+         builder.doubleClick(bankNameTextField).build().perform();
+		//bankNameTextField.clear();
+		//bankNameTextField.sendKeys(bankName);
+	}
+	
+	public void enterSearchBankName(String bankName) throws InterruptedException
+	{
+		SearchBankName.sendKeys(bankName);
+		}
+	
+	public void ClickOKButton () throws InterruptedException
+	{
+		OKButton.click();
+		}
+	
 	public void enterBankAddress(String bankAddress)
 	{
 		bankAddressTextField.clear();
