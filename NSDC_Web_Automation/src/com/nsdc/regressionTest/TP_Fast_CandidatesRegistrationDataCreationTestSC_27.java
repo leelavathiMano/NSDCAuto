@@ -183,7 +183,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(7000);
+			Thread.sleep(20000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
@@ -204,17 +204,17 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(15000);
 			//Education
 			tpCrp.selectEducation(education1);
 			tpCrp.selectYearOfPassing(yearOfPassing1);
 			Thread.sleep(1000);
 			tpCrp.clickToBrowseEducationProofDoc();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			UploadFile.upload(education1Proof);
-			Thread.sleep(2000);
+			Thread.sleep(15000);
 			tpCrp.clickToUploadEducationProof();
-			Thread.sleep(3000);
+			Thread.sleep(10000);
 			//Candidate Experience
 			tpCrp.selectPreTrainingStatus(preTrainingStatus);
 			Thread.sleep(1000);
@@ -225,18 +225,18 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				tpCrp.selectExperienceMonths(experienceInMonths);
 			}
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(4000);
+			Thread.sleep(15000);
 			//hearaboutus and Course Preferences Page
 //			tpCrp.selectSector(sector1);
 //			tpCrp.selectSubSector(subSector1);
 //			tpCrp.selectJobRole(jobRole1, jobRoleCode1);
 //			Thread.sleep(2000);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(9000);
+			Thread.sleep(15000);
 			tpCrp.clickIAgree();
 			Thread.sleep(1000);
 			tpCrp.clickToAgreeAndSubmit();
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			tpCrp.clickOK();
 			Thread.sleep(2000);
 		}
