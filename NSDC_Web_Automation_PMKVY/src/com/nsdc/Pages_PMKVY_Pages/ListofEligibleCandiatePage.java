@@ -25,10 +25,10 @@ public class ListofEligibleCandiatePage
 	@FindBy(xpath = "//button[contains(text(),'Apply')]")
 	private WebElement ApplyClickButton;
 	
-	@FindBy(xpath = "//tbody[@_ngcontent-c39]//tr[1]//td[1]//span[@_ngcontent-c39]")
+	@FindBy(xpath = "//thead//tr//th//label//span")
 	private WebElement CandiateCheckBox;
 	
-	@FindBy(xpath="//tbody[@_ngcontent-c39]//tr[1]//td[13]//span[@_ngcontent-c39]")
+	@FindBy(xpath="//tbody//tr[1]//td[13]//span")
 	private WebElement BAndLCheckBox;
 	@FindBy(xpath="//select[@formcontrolname='modeOfBkl']")
 	private WebElement ModelofBAndLDropDownList;
@@ -39,9 +39,19 @@ public class ListofEligibleCandiatePage
 	private WebElement StateDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='district']")
 	private WebElement districtDropDownList;
+	@FindBy(xpath="//button[contains(text(),'Enroll Candidate')]")
+	private WebElement EnrollCandidateButton;
+	@FindBy(xpath="//button[contains(text(),'Submit to enroll candidates')]")
+	private WebElement SubmitToEnrollcandidatesButton;
+	@FindBy(xpath="//button[contains(text(),'Yes, I am sure')]")
+	private WebElement YesButton;
+	@FindBy(xpath ="(//button[text()='OK'])[2]")
+	private WebElement OkButton;
 	
 	
-	//
+	@FindBy(xpath ="//button//span[contains(text(),'Submit to SSC')]")
+	private WebElement Submit_To_SSC;
+	
 	public void ClickOnCandiateId() throws InterruptedException
 	{
 		Thread.sleep(2000);
@@ -94,4 +104,28 @@ public class ListofEligibleCandiatePage
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(districtDropDownList, distric);
 	}
+	 public void ClickonEnrollCandidates()
+	 {
+		 EnrollCandidateButton.click();
+	 }
+	 public void ClickonSubmitToEnrollcandidatesButton()
+	 {
+		 SubmitToEnrollcandidatesButton.click();
+	 }
+	public void  ClickonYesButton()
+	{
+		YesButton.click();
+	}
+	public void ClickOnOKButton() throws InterruptedException
+	  {
+		
+		OkButton.click();
+	   }
+	public void ClickOnSubmit_To_SSC()
+	  {
+		
+		Submit_To_SSC.click();
+	   }
 }
+
+

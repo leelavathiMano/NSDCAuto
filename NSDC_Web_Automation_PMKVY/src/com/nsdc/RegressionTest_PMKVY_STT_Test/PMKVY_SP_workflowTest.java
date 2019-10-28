@@ -2,6 +2,7 @@ package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -377,30 +378,40 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		enrollcandite.SelectState(canState);
 		enrollcandite.Selectdistric(Candistric);
 		enrollcandite.ClickOnApply();
-		
-		
-		
-		
-		String batch_Size=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/SP_WorkflowProject.xls",
-				"TrainingCalender", 1,0);
-	 	int totalCandiate=Integer.parseInt(batch_Size);
-	 	for(int i=1;i<=totalCandiate;i++)	
+		enrollcandite.ClickOnCandiateIdCheckBox();
+		String modelOfBandL="Self";
+	 	int numberOfcan =Integer.parseInt(BatchSize);
+	 	for(int i=1;i<=numberOfcan;i++)	
 		{    
-			String CandiateId=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/SP_WorkflowProject.xls",
-					"TrainingCalender", i,1);
-			enrollcandite.ClickOnCandiateId();
-			enrollcandite.EnterCandiateID(CandiateId);
-			enrollcandite.ClickOnApply();
-			enrollcandite.ClickOnCandiateIdCheckBox();
-			enrollcandite.ClickOnBAndLCheckBox();
-		    String modelOfBandL="Self";
-		    enrollcandite.SelectModelOfBandL(modelOfBandL);
+	 		driver.findElement(By.xpath("//tbody//tr["+i+"]//td[13]//span")).click();
+		    
+	 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
+	 		  Select sel=new Select(modeofBk);
+	 				  sel.selectByVisibleText(modelOfBandL);
+	 	
 		
       }
-		
-		
-		
-		
+	 	Thread.sleep(3000);
+	 	enrollcandite.ClickonEnrollCandidates();
+	 	Thread.sleep(3000);
+	 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
+	 	Thread.sleep(3000);
+	 	enrollcandite.ClickonYesButton();
+		Thread.sleep(3000);
+	 	enrollcandite.ClickOnOKButton();
+		Thread.sleep(3000);
+		enrollcandite.ClickOnSubmit_To_SSC();
+		Thread.sleep(3000);
+	 	enrollcandite.ClickOnOKButton();
+	 	
+	 	Thread.sleep(3000);
+	 	enrollcandite.ClickOnOKButton();
+	 	Thread.sleep(3000);
+	 	enrollcandite.ClickOnOKButton();
+
+	 	 Thread.sleep(3000); 
+//		plp.clickOnProfileLogo();
+//			plp.clickOnLogout(); 
 	}
 
 
