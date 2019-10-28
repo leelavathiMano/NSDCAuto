@@ -17,7 +17,7 @@ public class AssessorPage {
   @FindBy(xpath="//strong[text()=' Assessment Request ']")
   private WebElement AssessmentRequest;
   
-  @FindBy(xpath="//i[@class='la la-ellipsis-h']")
+  @FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
   private WebElement ActionIcon;
   @FindBy(xpath="(//span[contains(text(),'Accept Batch')])[1]")
   private WebElement AcceptBatchIcon;
@@ -28,7 +28,19 @@ public class AssessorPage {
   private WebElement OkButton;
   
   
+  @FindBy(xpath="//li[a[contains(text(),'Assessed Batch Request')]]")
+  private WebElement AssessedBatchRequestTAB;
   
+  @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+  private WebElement ARactionIcon;
+  
+  @FindBy(xpath="(//a[span[contains(text(),'View Details')]])[1]")
+  private WebElement AR_ViewDetails;
+  
+  @FindBy(xpath="//a[span[contains(text(),'Assessed Candidates')]]")
+  private WebElement AssessedCandidatesIcon;
+  @FindBy(xpath="//button[contains(text(),'Submit for Approval to')]")
+  private WebElement SubmitApprovalToAA_Button;
   ////////
   public void ClickOnAssessor()
   {
@@ -53,5 +65,28 @@ public class AssessorPage {
   public void ClickOnOkButton()
   {
   	OkButton.click();
+  }
+  ////////////
+  
+  
+  public void ClickonAssessedBatchRequest()
+  {
+	  AssessedBatchRequestTAB.click();
+  }
+  public void ClickonARactionIcon()
+  {
+	  ARactionIcon.click();
+  }
+  public void ClickonAR_ViewDetails()
+  {
+	  AR_ViewDetails.click();
+  }
+  public void ClickOnAssessedCandidatesIcon()
+  {
+	  AssessedCandidatesIcon.click();
+  }
+  public void ClickOnSubmitApprovalToAA_Button()
+  {
+	  SubmitApprovalToAA_Button.click();
   }
 }

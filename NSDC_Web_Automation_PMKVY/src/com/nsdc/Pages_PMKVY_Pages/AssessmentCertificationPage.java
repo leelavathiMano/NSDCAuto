@@ -35,8 +35,9 @@ public class AssessmentCertificationPage {
 	private WebElement submitButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement OkButton;
-    
-	
+    ////////////////////////
+	@FindBy(xpath="//div[p[text()='Result Verification']]")
+	private WebElement Result_Verification_Button;
 	
     public void ClickOnAssessmentCertification()
     {
@@ -70,5 +71,10 @@ public class AssessmentCertificationPage {
     public void ClickOnOkButton()
     {
     	OkButton.click();
+    }
+    //////////////////
+    public void ClickOnResult_Verification()
+    {
+    	Result_Verification_Button.click();
     }
 }
