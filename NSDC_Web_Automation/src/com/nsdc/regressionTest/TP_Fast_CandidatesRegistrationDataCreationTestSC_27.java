@@ -64,6 +64,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			String parlimentaryConstituency=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 35);
 			String accountNumber=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 65);
 			String ifsc=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 66);
+			String bankName=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 67);
 			String education1=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 44);
 			String yearOfPassing1=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 46);
 			String education1Proof=ReadWriteData.getData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 47);
@@ -85,7 +86,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				JavascriptExecutor js=(JavascriptExecutor)driver;
 				js.executeScript("window.scrollBy(0,500)", "");
-				Thread.sleep(3000);
+				Thread.sleep(4000);
 				tDp.clickOnRegisterCandidate();
 				tDp.clickOnRegisterCandidate();
 			}
@@ -109,7 +110,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.clickToBrowseProfilePicture();
 			Thread.sleep(2000);
 			UploadFile.upload(profilePicture);
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			tpCrp.clickToUploadProfilePicture();
 			Thread.sleep(3000);
 			tpCrp.selectCountryCode(countryCode);
@@ -174,14 +175,15 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.selectState(state);
 			Thread.sleep(2000);
 			tpCrp.selectDistrict(district);	
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 //			tpCrp.selectSubDistrict(subDistrict);
 //			Thread.sleep(2000);
 			tpCrp.enterPincode(pincode);
+			Thread.sleep(2000);
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			Thread.sleep(7000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
@@ -195,8 +197,10 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.enterIFSC(ifsc);
 			Thread.sleep(1000);
 			tpCrp.clickToGetAutopopulatedBankDetails();
-			Thread.sleep(2000);
-//			tpCrp.enterBankName(bankName);
+			Thread.sleep(3000);
+			//tpCrp.ClickBankName();
+			//tpCrp.enterSearchBankName(bankName);
+			//tpCrp.ClickOKButton();
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tpCrp.clickSaveAndContinue();
