@@ -37,11 +37,11 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 		EnterLoginPage elp = new EnterLoginPage(driver);
 //		elp.performlogin(username, password);
 //		Thread.sleep(3000);
-		AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
+	AssessmentCertificationPage acp=new AssessmentCertificationPage(driver);
 //		Thread.sleep(3000);
 //		acp.ClickOnAssessmentCertification();
 //		Thread.sleep(4000);
-		acp.ClickOnBatchAssigned();
+//		acp.ClickOnBatchAssigned();
 //		acp.ClickOnAcceptedIcon();
 //		Thread.sleep(3000);
 //		acp.ClicKonAction();
@@ -54,7 +54,7 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 //		Thread.sleep(5000);
 //		acp.ClickOnOkButton();
 //		Thread.sleep(3000);
-      LogOutPage plp = new LogOutPage(driver);
+  //    LogOutPage plp = new LogOutPage(driver);
 //			plp.clickOnProfileLogo();
 //			plp.clickOnLogout(); // //
 //			Thread.sleep(5000);
@@ -63,13 +63,13 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 //			lp.clickLogin();
 //			bsp.clickToClose();
 //			elp.performlogin(AAID, AApassword);
-			AssessmentAgencyPage aap=new AssessmentAgencyPage(driver);
+//	AssessmentAgencyPage aap=new AssessmentAgencyPage(driver);
 //			Thread.sleep(10000);
 //			aap.ClickonAssessmentRequest();
 //			Thread.sleep(5000);
 //			aap. ClickonAction();
 //			Thread.sleep(2000);
-			aap.ClickonAcceptBatch();
+//			aap.ClickonAcceptBatch();
 //			Thread.sleep(2000);
 //			aap.ClickonYesButton();
 //			Thread.sleep(2000);
@@ -77,7 +77,7 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 //			Thread.sleep(3000);
 //			aap.ClickOnAcceptedButton();
 //		Thread.sleep(3000);
-		aap.ClickOnAcceptedAction();
+//		aap.ClickOnAcceptedAction();
 //			aap.ClickOnAssignAssessorIcon();
 //			aap.SelectAssessor(assessorName);
 //			aap.ClickOnSubmitButton();
@@ -171,65 +171,87 @@ public class AssessmentCertificationWorkflow_Test extends TestConfiguration {
 //			Thread.sleep(3000);
 		//////////////////////////////////////////////////////////////////////////////////////////////ARuncommittedcode	
 			
-			lp.clickLogin();
-		bsp.clickToClose();
-	elp.performlogin(AAID, AApassword);
-
-	Thread.sleep(10000);
-aap.ClickonAssessmentRequest();
-	////////////////////////////////////saturd
-	aap.ClickOnAssessedBatchRequestButton();
-	aap.ClickOnAssessedBatchRequestActionButton();
-	aap.ClickOnViewBatchDetailsButton();
-	aap.ClickOnAA_AssessedCandidatesTab();
-	
-	
-	String TotalApplicanIds=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 0);
- 	int NumberofApplicationIds=Integer.parseInt(TotalApplicanIds);
-	for(int i=1;i<=NumberofApplicationIds;i++)
-	{
- String statusUPLoadedAssessor = driver.findElement(By.xpath("//tbody//tr[1]//td[3]//span")).getText();
-	
-	if(statusUPLoadedAssessor.equalsIgnoreCase("Uploaded by Assessor"))
-	{
-		
-		String presentCan=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 1);
-		int Numberofpresentcandidtes=Integer.parseInt(presentCan);
-		for(int k=2;k<=Numberofpresentcandidtes;k++)
-		{
-		driver.findElement(By.xpath("(//span//a[i[@class='la la-ellipsis-h']])["+k+"]")).click();
-		driver.findElement(By.xpath("(//a[span[contains(text(),'View Marks')]])["+k+"]")).click();
-		
-		
-		aap.ClickOnApproveButton();
-		
-		 Thread.sleep(5000);
-			driver.findElement(By.xpath("//button[text()='OK']")).click();
-			Thread.sleep(1000);
-		    driver.findElement(By.xpath("//button[text()='Go Back']")).click();
-			Thread.sleep(1000);
-			aap.ClickOnAA_AssessedCandidatesTab();
-			
-		}
-	}
-}
-	
-aap.CliCkOnSendToSSC();
-Thread.sleep(3000);
-aap.ClickonYesButton();
-Thread.sleep(3000);
-aap.ClickOnOkButton();
-Thread.sleep(3000);
-plp.clickOnProfileLogo();
-plp.clickOnLogout(); // //
-Thread.sleep(3000);
+//			lp.clickLogin();
+//		bsp.clickToClose();
+//	elp.performlogin(AAID, AApassword);
+//
+//	Thread.sleep(10000);
+//aap.ClickonAssessmentRequest();
+//	////////////////////////////////////saturd
+//	aap.ClickOnAssessedBatchRequestButton();
+//	aap.ClickOnAssessedBatchRequestActionButton();
+//	aap.ClickOnViewBatchDetailsButton();
+//	aap.ClickOnAA_AssessedCandidatesTab();
+//	
+//	
+//	String TotalApplicanIds=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 0);
+// 	int NumberofApplicationIds=Integer.parseInt(TotalApplicanIds);
+//	for(int i=1;i<=NumberofApplicationIds;i++)
+//	{
+// String statusUPLoadedAssessor = driver.findElement(By.xpath("//tbody//tr[1]//td[3]//span")).getText();
+//	
+//	if(statusUPLoadedAssessor.equalsIgnoreCase("Uploaded by Assessor"))
+//	{
+//		
+//		String presentCan=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "UploadMarksSheet", 1, 1);
+//		int Numberofpresentcandidtes=Integer.parseInt(presentCan);
+//		for(int k=2;k<=Numberofpresentcandidtes;k++)
+//		{
+//		driver.findElement(By.xpath("(//span//a[i[@class='la la-ellipsis-h']])["+k+"]")).click();
+//		driver.findElement(By.xpath("(//a[span[contains(text(),'View Marks')]])["+k+"]")).click();
+//		
+//		
+//		aap.ClickOnApproveButton();
+//		
+//		 Thread.sleep(5000);
+//			driver.findElement(By.xpath("//button[text()='OK']")).click();
+//			Thread.sleep(1000);
+//		    driver.findElement(By.xpath("//button[text()='Go Back']")).click();
+//			Thread.sleep(1000);
+//			aap.ClickOnAA_AssessedCandidatesTab();
+//			
+//		}
+//	}
+//}
+//	
+//aap.CliCkOnSendToSSC();
+//Thread.sleep(3000);
+//aap.ClickonYesButton();
+//Thread.sleep(3000);
+//aap.ClickOnOkButton();
+//Thread.sleep(3000);
+//plp.clickOnProfileLogo();
+//plp.clickOnLogout(); // //
+//Thread.sleep(3000);
 ////////////////////////
 lp.clickLogin();
 bsp.clickToClose();
 elp.performlogin(username, password);
 Thread.sleep(3000);
 acp.ClickOnAssessmentCertification();
+Thread.sleep(3000);
 acp.ClickOnResult_Verification();
+Thread.sleep(3000);
+   String status = driver.findElement(By.xpath("//tbody//tr//td[14]")).getText();
+   if(status.equalsIgnoreCase("Pending for Marks Approval"))
+  {
+	
+	   driver.findElement(By.xpath("//tbody//tr//td[15]//div//a[i[@class='la la-ellipsis-h']]")).click();
+	   Thread.sleep(1000);
+	 driver.findElement(By.xpath("//span[contains(text(),'View Batch Details')]")).click();
+	  Thread.sleep(3000);
+	 driver.findElement(By.xpath("//a[h5[contains(text(),'Assessed Candidates')]]")).click();//assessedcandidates
+	 Thread.sleep(3000); 
+	 driver.findElement(By.xpath("//tbody//tr//th//label//span")).click();//checkbox
+	 Thread.sleep(1000); 
+	 driver.findElement(By.xpath("//div//button[text()='Approve']")).click();//approve button
+	 Thread.sleep(1000); 
+	 driver.findElement(By.xpath("//button[text()='OK']")).click();//ok button
+	 Thread.sleep(2000); 
+	 driver.findElement(By.xpath("//button[text()='Approve for Certification']")).click();
+   }
+
+
 
 }
 	}
