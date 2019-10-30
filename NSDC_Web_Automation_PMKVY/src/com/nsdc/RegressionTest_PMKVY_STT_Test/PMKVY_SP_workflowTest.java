@@ -383,7 +383,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		
 		
 		
-		String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "NumberOFenrollcandidates", 1, 0);
+		String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","NumberOFenrollcandidates", 1, 0);
 	 	int numberOfcan =Integer.parseInt(numCAN);
 	 	for(int i=1;i<=numberOfcan;i++)	
 		{    
@@ -392,10 +392,10 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
 	 		  Select sel=new Select(modeofBk);
 	 				  sel.selectByVisibleText(modelOfBandL);
-	 				 Thread.sleep(2000);
+	 				 Thread.sleep(1000);
 		
-      }
-	 	Thread.sleep(25000);
+		}
+	 	Thread.sleep(3000);
 	 	enrollcandite.ClickonEnrollCandidates();
 	 	Thread.sleep(3000);
 	 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
@@ -414,8 +414,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	 	enrollcandite.ClickOnOKButton();
 
 	 	 Thread.sleep(3000); 
-//		plp.clickOnProfileLogo();
-//			plp.clickOnLogout(); 
+	plp.clickOnProfileLogo();
+			plp.clickOnLogout(); 
 	}
 
 

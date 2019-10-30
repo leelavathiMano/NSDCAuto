@@ -39,7 +39,7 @@ public class ListofEligibleCandiatePage
 	private WebElement StateDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='district']")
 	private WebElement districtDropDownList;
-	@FindBy(xpath="//button[contains(text(),'Enroll Candidate')]")
+	@FindBy(xpath="//span//button[contains(text(),'Enroll Candidate')]")
 	private WebElement EnrollCandidateButton;
 	@FindBy(xpath="//button[contains(text(),'Submit to enroll candidates')]")
 	private WebElement SubmitToEnrollcandidatesButton;
@@ -106,11 +106,15 @@ public class ListofEligibleCandiatePage
 	}
 	 public void ClickonEnrollCandidates()
 	 {
-		 EnrollCandidateButton.click();
+		 JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();",EnrollCandidateButton );
+		// EnrollCandidateButton.click();
 	 }
 	 public void ClickonSubmitToEnrollcandidatesButton()
 	 {
-		 SubmitToEnrollcandidatesButton.click();
+		 JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();",SubmitToEnrollcandidatesButton );
+		// SubmitToEnrollcandidatesButton.click();
 	 }
 	public void  ClickonYesButton()
 	{
@@ -123,8 +127,9 @@ public class ListofEligibleCandiatePage
 	   }
 	public void ClickOnSubmit_To_SSC()
 	  {
-		
-		Submit_To_SSC.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();",Submit_To_SSC );
+		//Submit_To_SSC.click();
 	   }
 }
 

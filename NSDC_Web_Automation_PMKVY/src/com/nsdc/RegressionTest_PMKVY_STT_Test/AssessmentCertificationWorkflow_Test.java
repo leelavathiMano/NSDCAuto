@@ -1,6 +1,9 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -232,14 +235,27 @@ acp.ClickOnAssessmentCertification();
 Thread.sleep(3000);
 acp.ClickOnResult_Verification();
 Thread.sleep(3000);
-   String status = driver.findElement(By.xpath("//tbody//tr//td[14]")).getText();
-   if(status.equalsIgnoreCase("Pending for Marks Approval"))
-  {
+  
+   
+                 List<WebElement> numberofrows = driver.findElements(By.xpath("//tbody//tr"));
+                 
+                 
+                int rows = numberofrows.size();
+  
 	
-	   driver.findElement(By.xpath("//tbody//tr//td[15]//div//a[i[@class='la la-ellipsis-h']]")).click();
+	   for(int i=1;i<=rows;i++)
+	   {
+		   String status1 = driver.findElement(By.xpath("(//tbody//tr//td[14])")).getText();
+		   
+		   
+		   if(status1.equalsIgnoreCase("Pending for Marks Approval"))
+		   {
+		   
+	   driver.findElement(By.xpath("(//a[i[@class='la la-ellipsis-h']])["+i+"]")).click();
 	   Thread.sleep(1000);
-	 driver.findElement(By.xpath("//span[contains(text(),'View Batch Details')]")).click();
+	 driver.findElement(By.xpath("(//span[@class='m-nav__link-text hover-padding'])["+i+"]")).click();
 	  Thread.sleep(3000);
+	   
 	 driver.findElement(By.xpath("//a[h5[contains(text(),'Assessed Candidates')]]")).click();//assessedcandidates
 	 Thread.sleep(3000); 
 	 driver.findElement(By.xpath("//tbody//tr//th//label//span")).click();//checkbox
@@ -249,6 +265,12 @@ Thread.sleep(3000);
 	 driver.findElement(By.xpath("//button[text()='OK']")).click();//ok button
 	 Thread.sleep(2000); 
 	 driver.findElement(By.xpath("//button[text()='Approve for Certification']")).click();
+	 Thread.sleep(2000);
+	 driver.findElement(By.xpath("//button[text()='OK']")).click();
+	 
+		   }
+	 
+	 
    }
 
 
