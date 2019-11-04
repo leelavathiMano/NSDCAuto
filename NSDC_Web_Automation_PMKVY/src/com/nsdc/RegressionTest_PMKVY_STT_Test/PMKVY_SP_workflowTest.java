@@ -289,9 +289,11 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 
 		SP_TC_ViewDetailsPage pst = new SP_TC_ViewDetailsPage(driver);
 		pst.ClickOnSPAction();
-		pst.CLickOnViewDetails();
-		pst.ClickOnView_All_Batches();
 		Thread.sleep(3000);
+		pst.CLickOnViewDetails();
+		Thread.sleep(3000);
+		pst.ClickOnView_All_Batches();
+		Thread.sleep(7000);
 		pst.ClickOnCreateBatch();
 		Thread.sleep(3000);
 		SP_TC_Batch_CreatePage tcbc = new SP_TC_Batch_CreatePage(driver);

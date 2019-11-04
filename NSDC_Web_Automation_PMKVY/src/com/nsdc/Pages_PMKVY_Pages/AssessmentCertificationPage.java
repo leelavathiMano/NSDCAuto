@@ -1,5 +1,9 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +43,32 @@ public class AssessmentCertificationPage {
 	@FindBy(xpath="//div[p[text()='Result Verification']]")
 	private WebElement Result_Verification_Button;
 	
+	
+	@FindBy(xpath="//input[@placeholder='Search by Batch ID']")
+	private WebElement BatchID_TextBox;
+	
+	
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement Apply_Button;
+	
+	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])")
+	private WebElement SSC_ActionIcon;
+	
+	@FindBy(xpath="(//span[@class='m-nav__link-text hover-padding'])[5]")
+	private WebElement View_Batch_Details;
+	
+	@FindBy(xpath="//a[h5[contains(text(),'Assessed Candidates')]]")
+	private WebElement AssessedCandidatesIcon;
+	@FindBy(xpath="//tbody//tr//th//label//span")
+	private WebElement CheckBox;
+	
+	@FindBy(xpath="//div//button[text()='Approve']")
+	private WebElement ApproveButton;
+	@FindBy(xpath="//button[text()='Approve for Certification']")
+	private WebElement ApproveForCertification;
+	
+	
+	
     public void ClickOnAssessmentCertification()
     {
     	AssessmentCertificationIcon.click();
@@ -77,4 +107,42 @@ public class AssessmentCertificationPage {
     {
     	Result_Verification_Button.click();
     }
+    
+   public  void EnterTheBatchId(String batchId)
+   {
+	   BatchID_TextBox.sendKeys(batchId);
+   }
+  
+   public void ClickOnApplyButton()
+   {
+	   Apply_Button.click();
+   }
+   public void ClickOnSSC_Action()
+   {
+	   SSC_ActionIcon.click();
+   }
+public void ClickOnView_Batch_Details()
+{
+	View_Batch_Details.click();
 }
+public  void ClickOnAssessedCandidates()
+{
+	AssessedCandidatesIcon.click();
+}
+  
+public void ClickOnCheckBox()
+{
+	CheckBox.click();
+}
+ public void ClickOnApproveButton()
+ {
+	 ApproveButton.click();
+ }
+public void ClickOnApproveForCertification()
+{
+	ApproveForCertification.click();
+}
+
+
+	}
+
