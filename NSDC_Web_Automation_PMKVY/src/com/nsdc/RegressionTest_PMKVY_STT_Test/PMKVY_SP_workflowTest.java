@@ -125,14 +125,14 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		allPIA.ClickOnAction();
 //		Thread.sleep(3000);
 //		allPIA.ClickOnViewDetails();
-//		PMKVY_SPPMU_SelectedSchemepage sssp = new PMKVY_SPPMU_SelectedSchemepage(driver);
+		PMKVY_SPPMU_SelectedSchemepage sssp = new PMKVY_SPPMU_SelectedSchemepage(driver);
 //		Thread.sleep(3000);
 //		sssp.ClickAggrementDate();
 //		Thread.sleep(3000);
-//		sssp.SelectAggrementDate(agrementDate);
+		sssp.SelectAggrementDate(agrementDate);
 //
 //		sssp.ClickStartDate();
-//		sssp.SelectProjectDurationStartDate(StartDate);
+		sssp.SelectProjectDurationStartDate(StartDate);
 //
 //		sssp.ClickEndDate();
 //		
@@ -148,7 +148,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 //		sssp.EnterTheMinimumPercentageofCandidatedtobeplacedTextBox(MinimumPercentageplaced);
 //		sssp.ClickPercentageAdd();
 //		sssp.SelectDisability(Disability);
-//		sssp.SelectReligion(Religion);
+		sssp.SelectReligion(Religion);
 //		sssp.SelectGender(Gender);
 //		sssp.SelectCategory(Category);
 //		sssp.EnterTheDiscountsOnBaseRate(DiscountsonBaseRate);

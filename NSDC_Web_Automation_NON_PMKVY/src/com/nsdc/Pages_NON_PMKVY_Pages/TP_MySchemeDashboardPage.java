@@ -11,70 +11,84 @@ import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
 
 public class TP_MySchemeDashboardPage 
 {
+WebDriver driver;
 	
-	WebDriver driver;
-	public TP_MySchemeDashboardPage(WebDriver driver) 
-	{
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
+	@FindBy(css=".m-nav__link-icon.la.la-home")
+	private WebElement homeIconButton;
+	@FindBy(xpath="//span[contains(text(),'Dashboard')]")
+	private WebElement dashboardButton;
+	@FindBy(xpath="(//span[@class='m-nav__link-text'])[2]")
+	private WebElement mySchemeButton;
 	@FindBy(css=".btn.m-btn--pill.btn-primary.tab-color-blue")
 	private WebElement addSchemeButton;
-	
+	@FindBy(xpath="//a[contains(text(),'Approved')]")
+	private WebElement approvedSchemeButton;
+	@FindBy(xpath="//a[contains(text(),'Approval in Progress')]")
+	private WebElement approvalInProgressButton;
+	@FindBy(xpath="//a[contains(text(),'Rejected')]")
+	private WebElement rejectedSchemeButton;
+	@FindBy(xpath="(//a[contains(text(),'View Scheme Details')])[1]")
+	private WebElement viewDetailsButton;
+	@FindBy(xpath="//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")
+	private WebElement actionButton;
+	/////////////////////
 	@FindBy(xpath="//tr[td[span[span[text()='NON-PMKVY']]]]//a[i[@class='la la-ellipsis-h']]")
 	private WebElement ActionIcon;
 	
 	@FindBy(xpath="//tr[td[span[span[text()='NON-PMKVY']]]]//a[contains(text(),'Add Program')]")
 	private WebElement Add_program;
-	
-	@FindBy(xpath="//select[option[text()='Select Financial Model Type']]")
-	private WebElement SelectFinancialModelType_dropdownlist;
-	
-	@FindBy(xpath="//input[@placeholder='Select Agreement Date']")
-	private WebElement AggrementDate;
-
-//	@FindBy(xpath="(//tr//th[@class='datepicker-switch'])[1]")
-//	private WebElement monthDropdownList;
-//	@FindBy(xpath="(//tr//th[@class='next'])[1]")
-//	private WebElement yearDropdownList;
-	
-	@FindBy(xpath="//div[@class='datepicker-days']//tr[3]//td[5]")
-	private WebElement selectDate;
-	@FindBy(xpath="//input[@placeholder='Select First Disbursement Date']")
-	private WebElement FirstDisbursementDate;
-	@FindBy(xpath="//input[@placeholder='Enter Project Proposal ID']")
-	private WebElement ProjectProosalID;
+	public TP_MySchemeDashboardPage(WebDriver driver) 
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 	
 	
-	@FindBy(xpath="//input[@placeholder='Enter Project Name']")
-	private WebElement Project_NameTextBox;
-	@FindBy(xpath="//input[@placeholder='Enter Number of people who will be trained']")
-	private WebElement TargetTextbox;
+	public void clickOnHomeIcon()
+	{
+		homeIconButton.click();
+	}
 	
-	@FindBy(xpath="//select[@id='assessmentMode']")
-	private WebElement AssessmentModeDropdownlist;
+	public void clickOnDashboard()
+	{
+		dashboardButton.click();
+	}
 	
-
-	@FindBy(xpath="//input[@placeholder='Enter Sanction Loan Amount(in lakhs)']")
-	private WebElement SanctionLoanAmountTextBox;
-	
-	@FindBy(xpath="//select[@id='moratoriumPeriod']")
-	private WebElement MoratoriumPeriodDropDownlist;
-	//////////////////
-	
-	@FindBy(xpath="//select[@id='loanDuration']")
-	private WebElement LoanDurationDropDownlist;
-	@FindBy(xpath="//select[@id='interestRate']")
-	private WebElement InterestRateDropDownlist;
-	@FindBy(xpath="(//label[@for='customFile'])[1]")
-	private WebElement SignedTermSheetBrowser;
-	
+	public void clickOnMyScheme()
+	{
+		mySchemeButton.click();
+	}
 	
 	public void clickOnAddSchemeOrProgram()
 	{
 		addSchemeButton.click();
 	}
 	
+	public void clickOnApprovedScheme()
+	{
+		approvedSchemeButton.click();
+	}
+	
+	public void clickOnApprovalInProgress()
+	{
+		approvalInProgressButton.click();
+	}
+	
+	public void clickOnRejectedScheme()
+	{
+		rejectedSchemeButton.click();
+	}
+	
+	public void clickOnViewDetails()
+	{
+		viewDetailsButton.click();
+	}
+	
+	public void clickOnAction()
+	{
+		actionButton.click();
+	}
+///////////////////
 	public void ClickOnAction()
 	{
 		ActionIcon.click();
@@ -83,80 +97,6 @@ public class TP_MySchemeDashboardPage
   {
 	  Add_program.click();
   }
-  public void SelectFinancialModelType(String Funded)
-  {
-	  SelectDropDownList.selectDropDownListByVisibleText(SelectFinancialModelType_dropdownlist, Funded);
-  }
-  public void ClickAggrementDate() throws InterruptedException 
-	{
-		Thread.sleep(2000);
-		  Actions actions = new Actions(driver); 
-		  actions.moveToElement(AggrementDate).click().build().perform();
-	}
-
-//  public void SelectAggrementDate(String aggrementDate) throws InterruptedException 
-//	{
-//		Thread.sleep(3000);
-//		ToT_ToA_Batch_DatePicker.chooseDate(driver, aggrementDate, AggrementDate, monthDropdownList, yearDropdownList);
-//		
-//	}
-	
-  public void ClickOnDate()
-  {
-	  selectDate.click();
-  }
-//  
-  
-  
-  
- public void CliCkOnFirstDisbursementDate()
- {
-	 FirstDisbursementDate.click();
- }
-// public void SelectFirstDisbursementDate(String DisbursementDate) throws InterruptedException 
-//	{
-//		
-//		ToT_ToA_Batch_DatePicker.chooseDate(driver, DisbursementDate, FirstDisbursementDate, monthDropdownList, yearDropdownList);
-//		
-//	}
-  public void EnterProjectProosalID(String ProjectID)
-  {
-	  ProjectProosalID.sendKeys(ProjectID);
-  }
-  
-  public void EnterProject_Name(String ProjectName)
-  {
-	  ProjectProosalID.sendKeys(ProjectName);
-  }
-  public void EnterNumberOfTrainedPeople(String trainedPeople)
-  {
-	  TargetTextbox.sendKeys(trainedPeople);
-  }
-   public void SelectAssessmentMode()
-   {
-	   SelectDropDownList.selectmultipleoptions(AssessmentModeDropdownlist);
-   }
-   public void EnterSanctionLoanAmount(String sanctionLoanAmount)
-   {
-	   SanctionLoanAmountTextBox.sendKeys(sanctionLoanAmount);
-   }
-   /////////////////
-    public void SelectMoratoriumPeriod(String moratoriumPeriods)
-    {
-    	SelectDropDownList.selectDropDownListByValue(MoratoriumPeriodDropDownlist, moratoriumPeriods);
-    }
-    public void SelectLoanDurationDropDownlist(String loanduration)
-    {
-    	SelectDropDownList.selectDropDownListByValue(LoanDurationDropDownlist, loanduration);
-    }
-    public void SelectInterestRateDropDownlist(String interestRate)
-    {
-    	SelectDropDownList.selectDropDownListByValue(InterestRateDropDownlist, interestRate);
-    }
-    
-    
-    public void ClickonSignedTermSheet()
-    {
-    	SignedTermSheetBrowser.click();
-    }
 }
+
+	
