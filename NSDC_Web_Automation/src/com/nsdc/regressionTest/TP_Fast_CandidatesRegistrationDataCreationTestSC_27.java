@@ -93,6 +93,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			if(i!=1)
 				
 			{
+				Thread.sleep(2000);
 				tDp.clickOnRegisterCandidate_InViewMyCandidate();
 			}
 			Thread.sleep(1000);
@@ -183,7 +184,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(20000);
+			Thread.sleep(10000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
@@ -195,24 +196,31 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.enterAccountNumber(accountNumber);
 			Thread.sleep(1000);
 			tpCrp.enterIFSC(ifsc);
+			///////////
+			//tpCrp.ClickOnSearchBankName();
+			
 			Thread.sleep(1000);
-			tpCrp.clickToGetAutopopulatedBankDetails();
-			Thread.sleep(3000);
-			//tpCrp.ClickBankName();
-			//tpCrp.enterSearchBankName(bankName);
-			//tpCrp.ClickOKButton();
+			//tpCrp.clickToGetAutopopulatedBankDetails();
+			//Thread.sleep(3000);
+			tpCrp.ClickBankName();
+			Thread.sleep(1000);
+			tpCrp.enterSearchBankName(bankName);
+			Thread.sleep(1000);
+			tpCrp.ChooseBankName();
+			Thread.sleep(1000);
+//			tpCrp.ClickOKButton();
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(15000);
+			Thread.sleep(7000);
 			//Education
 			tpCrp.selectEducation(education1);
 			tpCrp.selectYearOfPassing(yearOfPassing1);
 			Thread.sleep(1000);
 			tpCrp.clickToBrowseEducationProofDoc();
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 			UploadFile.upload(education1Proof);
-			Thread.sleep(15000);
+			Thread.sleep(7000);
 			tpCrp.clickToUploadEducationProof();
 			Thread.sleep(10000);
 			//Candidate Experience
@@ -225,14 +233,14 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				tpCrp.selectExperienceMonths(experienceInMonths);
 			}
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(15000);
+			Thread.sleep(10000);
 			//hearaboutus and Course Preferences Page
 //			tpCrp.selectSector(sector1);
 //			tpCrp.selectSubSector(subSector1);
 //			tpCrp.selectJobRole(jobRole1, jobRoleCode1);
 //			Thread.sleep(2000);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(15000);
+			Thread.sleep(7000);
 			tpCrp.clickIAgree();
 			Thread.sleep(1000);
 			tpCrp.clickToAgreeAndSubmit();

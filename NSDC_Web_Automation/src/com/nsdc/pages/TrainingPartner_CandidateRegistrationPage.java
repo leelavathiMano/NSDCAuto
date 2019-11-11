@@ -42,6 +42,10 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement placeOfBirthTextField;
 	@FindBy(xpath="//select[@formcontrolname='caste']")
 	private WebElement castDropDownList;
+	
+	@FindBy(xpath="//span[contains(text(),'SYNDICATE')]")
+	private WebElement BankNameList;
+	
 	@FindBy(xpath="//select[@formcontrolname='religion']")
 	private WebElement religionDropDownList;
 	@FindBy(xpath="(//label[input[@formcontrolname='differentlyAbled']])[1]")
@@ -153,8 +157,18 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement accountNumberTextField;
 	@FindBy(xpath="//input[@formcontrolname='ifscCode']")
 	private WebElement ifscTextField;
+	//////////
+	@FindBy(xpath="//input[@placeholder='Search Bank Name']")
+	private WebElement SearchBankNameTExtbox;
+	
+	
+	
+	
 	@FindBy(xpath="//input[@formcontrolname='bankName']")
 	private WebElement bankNameTextField;
+	@FindBy(xpath="//small[contains(text(),'Click here')]")
+	private WebElement ClickLinkToAddBankName;
+	
 	@FindBy(xpath="//textarea[@formcontrolname='bankAddress']")
 	private WebElement bankAddressTextField;
 	@FindBy(xpath="//select[@formcontrolname='boardingLodging']")
@@ -554,19 +568,28 @@ public class TrainingPartner_CandidateRegistrationPage
 	}
 	public void ClickBankName() throws InterruptedException
 	{
-		 Actions builder = new Actions(driver);
-		 builder.moveToElement(bankNameTextField).build().perform();
-		 builder.click(bankNameTextField).build().perform();
-		 builder.clickAndHold(bankNameTextField).build().perform();
-         builder.doubleClick(bankNameTextField).build().perform();
-		//bankNameTextField.clear();
-		//bankNameTextField.sendKeys(bankName);
+		/*
+		 * Actions builder = new Actions(driver);
+		 * builder.moveToElement(ClickLinkToAddBankName).build().perform();
+		 * builder.click(bankNameTextField).build().perform();
+		 * builder.clickAndHold(bankNameTextField).build().perform();
+		 * builder.doubleClick(bankNameTextField).build().perform();
+		 * //bankNameTextField.clear();
+		 */		//bankNameTextField.sendKeys(bankName);
+		
+		ClickLinkToAddBankName.click();
 	}
 	
 	public void enterSearchBankName(String bankName) throws InterruptedException
 	{
 		SearchBankName.sendKeys(bankName);
 		}
+	
+	
+	public void ChooseBankName() throws InterruptedException
+	{
+		BankNameList.click();
+	}
 	
 	public void ClickOKButton () throws InterruptedException
 	{
@@ -675,5 +698,10 @@ public class TrainingPartner_CandidateRegistrationPage
 	public void clickDummyVerify()
 	{
 		dummyVerifyButton.click();
+	}
+	//////////
+	public void ClickOnSearchBankName()
+	{
+		SearchBankNameTExtbox.click();
 	}
 }
