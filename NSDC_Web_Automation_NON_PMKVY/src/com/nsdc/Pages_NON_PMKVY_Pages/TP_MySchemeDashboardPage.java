@@ -2,12 +2,9 @@ package com.nsdc.Pages_NON_PMKVY_Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.nsdc.generic.SelectDropDownList;
-import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
 
 public class TP_MySchemeDashboardPage 
 {

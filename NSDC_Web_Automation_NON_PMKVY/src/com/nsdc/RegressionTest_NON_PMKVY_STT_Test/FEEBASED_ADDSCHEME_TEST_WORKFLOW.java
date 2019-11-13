@@ -471,12 +471,15 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 			String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, 
 			String newProjectDuration, String newAgreementDate, String newDisbursementDate, String newProjectID,
 			String newProjectName, String newProposingOrganisation, String newImplementingOrganisation, String newPromoterDetails, 
-			String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newLoanAmount,
-			String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, String newSignedTermsheetFile,
+			String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newProjectReview,String newProjectComments,
+			String newLoanAmount,
+			String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, 
+			String newloanReview,String newloanDetailscomments,String newsupportdocumentReview,String newdocumentReviewcomments,
+			String newSignedTermsheetFile,
 			String newSignedProposalFile, String newOtherSupportingFile, String newSector, String newTrainingTarget, 
 			String newAddSectorUndertakingFile, String newAffiliationCertificate, String newCourseName, String newJobRole, 
 			String NewAssociatedQP,
-		 String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge,
+		    String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge,
 			String newMinimumEducation, String newCourseDuration, String newNumberOfHours, String newCourseFee, String newGradingPrefrences,
 			String newCourseApprovalFile, String newAffiliationFile, String newWorkOrderFile, String newChallanFile, String newStampPaper,
 			String newState, String newDistrict, String fDAUsername, String fDAPassword, String newComments, String newReviewComments) throws Exception
@@ -677,9 +680,6 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 			Thread.sleep(4000);
 			tpfb.clickOnAdd_AddCourse();
 			Thread.sleep(3000);
-	//
-			String addedCourse = driver.findElement(By.xpath("//p[text()='"+newCourseName+"']")).getText();
-			//ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow3.xls", "MySchemeAddSectorSC15TC03", Integer.parseInt(sno), 8, addedCourse);
 			Thread.sleep(3000);
 			tpfb.selectState_LocationForTC(newState);
 			tpfb.selectDistricts_LocationForTC(newDistrict);
@@ -690,17 +690,12 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 			
 			Thread.sleep(5000);
 			tpms.clickOnApprovalInProgress();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+newProjectName+"']]]]//span[text()='Resubmitted']")).getText(), "Resubmitted");
+		
 			LogOutPage plp = new LogOutPage(driver);
 			Thread.sleep(3000);
 			plp.clickOnProfileLogo();
 			plp.clickOnLogout();
-				
+				///////////////////////////
 				lp.clickLogin();
 				Thread.sleep(3000);
 				//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -736,7 +731,7 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 				{
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value"), newFundedBy);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
-					Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='firstDisbursementDate'])[2]")).getAttribute("value"), newDisbursementDate);
+					Assert.assertEquals(driver.findElement(By.xpath("//label[contains(text(),'First Disbursement Date:')]/..//input")).getAttribute("value"), newDisbursementDate);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
@@ -746,10 +741,16 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), newStartDate);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), newEndDate);
+					fss.SelectProjectDetailReviewDropdownlist(newProjectReview);
+				    fss.EnterProjectDetailComment(newProjectComments);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sanctionLoanAmount']")).getAttribute("value"), newLoanAmount);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='moratoriumPeriod']")).getAttribute("value"), newMoratoriumPeriod);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='loanDuration']")).getAttribute("value"), newLoanDuration);
 					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='interestRate']")).getAttribute("value"), newInterestRate);
+					fss.SelectloanDetailsReview(newloanReview);
+					Thread.sleep(1000);
+					fss.EnterloanDetailsCommentDropdownlist(newloanDetailscomments);
+					Thread.sleep(3000);
 				}
 				else
 				{
@@ -773,27 +774,33 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 				Thread.sleep(3000);
 				fss.clickOnDownloadSupportingDocument();
 				
+				fss.SelectSupportDocumentReview(newsupportdocumentReview);
+				fss.EnterSupportDocumentReview(newdocumentReviewcomments);
+			
+				
+				
+				
 				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newSector+"']")).getText(), newSector);
 				Thread.sleep(3000);
-				fss.clickOnSectors_ViewAttachedDocument();
-				Assert.assertEquals(driver.findElement(By.xpath("//p[text()='"+newCourseName+"']")).getText(), newCourseName);
-				Thread.sleep(3000);
-				fss.clickOnCourses_ViewAttachedDocument();
-				if(newJobRole.equals("QP-NOS")) 
-				{
-					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+NewAssociatedQP+"']")).getText(), NewAssociatedQP);
-					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNsqfLevel+"']")).getText(), newNsqfLevel);
-					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
-
-				}
-				else 
-				{
-					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
-				}
-				
-				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newState+"']")).getText(), newState);
-				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+newDistrict+"')]")).getText(), newDistrict);
-				Thread.sleep(3000);
+//s			//s fss.clickOnSectors_ViewAttachedDocument();
+//				Assert.assertEquals(driver.findElement(By.xpath("//p[text()='"+newCourseName+"']")).getText(), newCourseName);
+//				Thread.sleep(3000);
+//			//s	fss.clickOnCourses_ViewAttachedDocument();
+//				if(newJobRole.equals("QP-NOS")) 
+//				{
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+NewAssociatedQP+"']")).getText(), NewAssociatedQP);
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNsqfLevel+"']")).getText(), newNsqfLevel);
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
+//
+//				}
+//				else 
+//				{
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
+//				}
+//				
+//				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newState+"']")).getText(), newState);
+//				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+newDistrict+"')]")).getText(), newDistrict);
+//s				Thread.sleep(3000);
 				fss.selectReviewComments(newComments);
 				fss.enterReviewComments(newReviewComments);
 				Thread.sleep(3000);
@@ -822,259 +829,259 @@ public class FEEBASED_ADDSCHEME_TEST_WORKFLOW extends TestConfiguration {
 					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='REJECTED'])[1]")).getText(), "REJECTED");
 				}
 				
-		}
-				Thread.sleep(5000);
-				LogOutPage plp = new LogOutPage(driver);
+		
+			Thread.sleep(5000);
+			//LogOutPage plp = new LogOutPage(driver);
 				plp.clickOnProfileLogo();
-				plp.clickOnLogout();
+			plp.clickOnLogout();
 		}		
 			
-
-				
-
-@DataProvider
-public Object[][] addTrainingCentre()
-{
-	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01");
-}
-
-@Test(dataProvider="addTrainingCentre")
-public void addTrainingCentreTC04(String sno, String tpUsername, String tpPassword, String projectName, String trainingCentreType, String trainingCentreName, String ownership, String franchiseDocument, String startDate, String endDate, String bathesNumber, String studentNumber, String annualCapacity, String capacityUtilization, String governmentTieUp, String centreCapacity, String centreArea, String trainingRooms, String labNumber, String receptionArea, String waitingArea, String maleWashRooms, String femaleWashRooms, String unisexWashRooms, String airportDistance, String trainStationDistance, String cityCentreDistance, String tcAddress, String landmark, String pincode, String state, String district, String tehsil, String city, String parliamentryConstituency, String geoLocation, String addressProof, String addressProofFile, String facility_Photos, String spocName, String spocEmail, String spocMobile, String spocDesignation, String spocLandLine, String srNo_TCRoom, String tcRoomPhotos, String laboratory_SrNo, String laboratoryPhotos, String maleWashRoom_SrNo, String maleWashRoomPhotos, String femaleWashRoom_SrNo, String femaleWashRoomPhotos, String unisexWashRoom_SrNo, String unisexWashRoomPhotos, String sector, String course, String target) throws Exception
-{
-	LaunchPage lp = new LaunchPage(driver);
-	lp.clickLogin();
-	Thread.sleep(3000);
-	BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-	bsp.clickToClose();
-	Thread.sleep(3000);
-	EnterLoginPage elp = new EnterLoginPage(driver);
-	elp.performlogin(tpUsername, tpPassword);
-	TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-	Thread.sleep(15000);
-	tpdp.clickOnMySchemes();
-	Thread.sleep(5000);
-	driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-	driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-	Thread.sleep(5000);
-	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();
-	TP_FeeBasedProgramPage fbd = new TP_FeeBasedProgramPage(driver);
-	Thread.sleep(5000);
-	//fbd.clickOnViewTrainingCentres();
-	TP_FeeBased_ViewAllTrainingCentrePage fbtc = new TP_FeeBased_ViewAllTrainingCentrePage(driver);
-	Thread.sleep(2000);
-	fbtc.clickOnAddTrainingCentre();
-	Thread.sleep(3000);
-	fbtc.selectTrainingCentreType(trainingCentreType);
-	fbtc.clickOnSaveAndContinue();
-	TP_FeeBased_AddTrainingCentrePage fbad = new TP_FeeBased_AddTrainingCentrePage(driver);
-	Thread.sleep(3000);
-	fbad.enterTrainingCentreName(trainingCentreName);
-	Thread.sleep(3000);
-	fbad.clcikOnRuralLocation();
-	Thread.sleep(3000);
-	fbad.selectForCentreOwnerShip(ownership);
-	if(ownership.equals("Franchise"))
-	{
-		Thread.sleep(5000);
-		fbad.clickOnFranchiseDocuments_BrowseFile();
-		Thread.sleep(5000);
-		UploadFile.upload(franchiseDocument);
-		Thread.sleep(5000);
-		fbad.clickOnFranchiseDocuments_UploadFile();
-		Thread.sleep(3000);
-//		fbad.clickOnStartDateForTCDuration();
-//		startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
-//		fbad.clickOnEndDateForTCDuration();
-//		endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
 	}
-	else
-	{
-//		fbad.clickOnStartDateForTCDuration();
-//		startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
-//		fbad.clickOnEndDateForTCDuration();
-//		endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
-	}
-	
-//	fbad.enterNumberOfBatchesPerDay(bathesNumber);
-//	fbad.enterMaximumNoOfStudentPerBatch(studentNumber);
-//	fbad.enterAnnualCapacityOfTrainingCentre(annualCapacity);
-//	fbad.enterCapacityUtilization(capacityUtilization);
-//	fbad.selectForGovernmentTieUp(governmentTieUp);
-	Thread.sleep(3000);
-	fbad.entreCentreArea(centreArea);
-	fbad.enterCentreCapacity(centreCapacity);
-	fbad.selectNumberOfTrainingRooms(trainingRooms);
-	fbad.selectNumbersOfLabs(labNumber);
-//	fbad.enterReceptionAreaSize(receptionArea);
-//	fbad.enterWaitingAreaCapacity(waitingArea);
-	fbad.selectNumberOfMaleWashRooms(maleWashRooms);
-	fbad.selectNumberOfFemaleWashRooms(femaleWashRooms);
-	fbad.selectNumberOfUnisexWashRooms(unisexWashRooms);
-	fbad.enterDistanceFromNearestAirport(airportDistance);
-	fbad.enterDistanceFromNearestTrainStation(trainStationDistance);
-	fbad.enterDistanceFromNearestCityCentre(cityCentreDistance);
-	Thread.sleep(3000);
-	fbad.enterAddressOFTC(tcAddress);
-	Thread.sleep(3000);
-	fbad.enterNearByLandmark(landmark);
-	Thread.sleep(5000);
-	fbad.enterPincode(pincode);
-	Thread.sleep(3000);
-	fbad.selectState(state);
-	Thread.sleep(2000);
-	fbad.selrctDistrict(district);
-	Thread.sleep(2000);
-	fbad.selectTehsil(tehsil);
-	Thread.sleep(3000);
-	fbad.selectCityOrVillage(city);
-	Thread.sleep(2000);
-	fbad.selectParliamentryConstituency(parliamentryConstituency);
-	fbad.enterGeoLocation(geoLocation);
-	Thread.sleep(3000);
-	fbad.selectAddressProofType(addressProof);
-	Thread.sleep(3000);
-	fbad.clickOnAddressProof_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(addressProofFile);
-	Thread.sleep(3000);
-	fbad.clickOnAddressProof_UploadFile();
-	if(trainingCentreType.equals("Fixed"))
-	{
-		List<WebElement> ele = driver.findElements(By.xpath("//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//label[@class='m-checkbox']"));
-		for(int i=0;i<ele.size();i++)
-		{
-			Thread.sleep(3000);
-			WebElement chkbox = ele.get(i);
-			if((i==9) || (i==10) || (i==15) || (i==16) || (i==17))
-			{
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
-				Thread.sleep(5000);
-				UploadFile.upload(facility_Photos);
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//button[contains(text(),'Upload')])["+(i+1)+"]")).click();
-			}
-			else
-			{
-				Thread.sleep(5000);
-				chkbox.click();
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
-				Thread.sleep(5000);
-				UploadFile.upload(facility_Photos);
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//button[contains(text(),'Upload')])["+(i+1)+"]")).click();
-				
-			}
-		}
+}		
 
-	}
-	else
-	{
-		List<WebElement> ele = driver.findElements(By.xpath("//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//label[@class='m-checkbox']"));
-		for(int i=0;i<ele.size();i++)
-		{
-				Thread.sleep(3000);
-				WebElement chkbox = ele.get(i);
-				Thread.sleep(5000);
-				chkbox.click();
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
-				Thread.sleep(5000);
-				UploadFile.upload(facility_Photos);
-				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//button[contains(text(),'Upload')])["+(i+1)+"]")).click();
-				
-		}
-
-	}
-	
-	
-	
-	Thread.sleep(5000);
-	fbad.enterNameOfSPOC(spocName);
-	fbad.enterEmailAddressOfSPOC(spocEmail);
-	fbad.enterMobileNumberOfSPOC(spocMobile);
-	fbad.enterDesignationOfSPOC(spocDesignation);
-	fbad.enterLandLineNumberOfSPOC(spocLandLine);
-	Thread.sleep(3000);
-	fbad.select_SrNo_TrainingRoomPhotos(srNo_TCRoom);
-	fbad.clickOnTrainingRoomPhotos_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(tcRoomPhotos);
-	Thread.sleep(3000);
-	fbad.clickOnTrainingRoomPhotos_UploadFile();
-	Thread.sleep(3000);
-	fbad.select_SrNo_Laboratory(laboratory_SrNo);
-	fbad.clickOnLaboratoryPhotos_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(laboratoryPhotos);
-	Thread.sleep(3000);
-	fbad.clickOnLaboratoryPhotos_UploadFile();
-	Thread.sleep(3000);
-	fbad.select_SrNo_ForMaleWashRoom(maleWashRoom_SrNo);
-	fbad.clickOnMaleWashRoomPhotos_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(maleWashRoomPhotos);
-	Thread.sleep(3000);
-	fbad.clickOnMaleWashRoomPhotos_UploadFile();
-	Thread.sleep(3000);
-	fbad.select_SrNo_ForFemaleWashRoom(femaleWashRoom_SrNo);
-	fbad.clickOnFemaleWashRoomPhotos_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(femaleWashRoomPhotos);
-	Thread.sleep(3000);
-	fbad.clickOnFemaleWashRoomPhotos_UploadFile();
-	Thread.sleep(3000);
-	fbad.select_SrNo_ForUnisexWashRoom(unisexWashRoom_SrNo);
-	fbad.clickOnUnisexWashRoomPhotos_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(unisexWashRoomPhotos);
-	Thread.sleep(3000);
-	fbad.clickOnUnisexWashRoomPhotos_UploadFile();
-	/*fbad.clickOnCafetariaPhotos_BrowseFile();
-	Thread.sleep(3000);
-	UploadFile.upload(cafetariaPhotos);
-	Thread.sleep(3000);
-	fbad.clickOnCafetariaPhotos_UploadFile();
-	Thread.sleep(10000);*/
-	Thread.sleep(3000);
-	fbad.clickOnAddSectorTarget();
-	Thread.sleep(3000);
-	fbad.selectSector(sector);
-	Thread.sleep(3000);
-	fbad.selectCourse(course);
-	fbad.enterTarget(target);
-	Thread.sleep(3000);
-	fbad.clickOnSubmit_SectorTarget();
-	Thread.sleep(15000);
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	js.executeScript("scroll(0, 900)");
-	fbad.clickOnSubmit();
-	Thread.sleep(3000);
-	fbad.clickOnYesAddTrainingCentre();
-	Thread.sleep(3000);
-	//fbad.clickOnOK();
-	Thread.sleep(8000);
-	fbd.clickOnViewTrainingCentres();
-	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
-	LogOutPage plp = new LogOutPage(driver);
-	Thread.sleep(5000);
-	plp.clickOnProfileLogo();
-	Thread.sleep(2000);
-	plp.clickOnLogout();
-
-}
-}
+//@DataProvider
+//public Object[][] addTrainingCentre()
+//{
+//	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01");
+//}
+//
+//@Test(dataProvider="addTrainingCentre")
+//public void addTrainingCentreTC04(String sno, String tpUsername, String tpPassword, String projectName, String trainingCentreType, String trainingCentreName, String ownership, String franchiseDocument, String startDate, String endDate, String bathesNumber, String studentNumber, String annualCapacity, String capacityUtilization, String governmentTieUp, String centreCapacity, String centreArea, String trainingRooms, String labNumber, String receptionArea, String waitingArea, String maleWashRooms, String femaleWashRooms, String unisexWashRooms, String airportDistance, String trainStationDistance, String cityCentreDistance, String tcAddress, String landmark, String pincode, String state, String district, String tehsil, String city, String parliamentryConstituency, String geoLocation, String addressProof, String addressProofFile, String facility_Photos, String spocName, String spocEmail, String spocMobile, String spocDesignation, String spocLandLine, String srNo_TCRoom, String tcRoomPhotos, String laboratory_SrNo, String laboratoryPhotos, String maleWashRoom_SrNo, String maleWashRoomPhotos, String femaleWashRoom_SrNo, String femaleWashRoomPhotos, String unisexWashRoom_SrNo, String unisexWashRoomPhotos, String sector, String course, String target) throws Exception
+//{
+//	LaunchPage lp = new LaunchPage(driver);
+//	lp.clickLogin();
+//	Thread.sleep(3000);
+//	BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+//	bsp.clickToClose();
+//	Thread.sleep(3000);
+//	EnterLoginPage elp = new EnterLoginPage(driver);
+//	elp.performlogin(tpUsername, tpPassword);
+//	TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
+//	Thread.sleep(15000);
+//	tpdp.clickOnMySchemes();
+//	Thread.sleep(5000);
+//	driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+//	driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+//	Thread.sleep(5000);
+//	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+//	driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();
+//	TP_FeeBasedProgramPage fbd = new TP_FeeBasedProgramPage(driver);
+//	Thread.sleep(5000);
+//	//fbd.clickOnViewTrainingCentres();
+//	TP_FeeBased_ViewAllTrainingCentrePage fbtc = new TP_FeeBased_ViewAllTrainingCentrePage(driver);
+//	Thread.sleep(2000);
+//	fbtc.clickOnAddTrainingCentre();
+//	Thread.sleep(3000);
+//	fbtc.selectTrainingCentreType(trainingCentreType);
+//	fbtc.clickOnSaveAndContinue();
+//	TP_FeeBased_AddTrainingCentrePage fbad = new TP_FeeBased_AddTrainingCentrePage(driver);
+//	Thread.sleep(3000);
+//	fbad.enterTrainingCentreName(trainingCentreName);
+//	Thread.sleep(3000);
+//	fbad.clcikOnRuralLocation();
+//	Thread.sleep(3000);
+//	fbad.selectForCentreOwnerShip(ownership);
+//	if(ownership.equals("Franchise"))
+//	{
+//		Thread.sleep(5000);
+//		fbad.clickOnFranchiseDocuments_BrowseFile();
+//		Thread.sleep(5000);
+//		UploadFile.upload(franchiseDocument);
+//		Thread.sleep(5000);
+//		fbad.clickOnFranchiseDocuments_UploadFile();
+//		Thread.sleep(3000);
+////		fbad.clickOnStartDateForTCDuration();
+////		startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+////		fbad.clickOnEndDateForTCDuration();
+////		endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+//	}
+//	else
+//	{
+////		fbad.clickOnStartDateForTCDuration();
+////		startDate = driver.findElement(By.xpath("//input[@placeholder='Select Effective Date']")).getAttribute("value");
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 8, startDate);
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 8, startDate);
+////		fbad.clickOnEndDateForTCDuration();
+////		endDate = driver.findElement(By.xpath("//input[@placeholder='Select Close Date']")).getAttribute("value");
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddTCSC15TC01", Integer.parseInt(sno), 9, endDate);
+////		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveTCSC15TC02", Integer.parseInt(sno), 9, endDate);
+//	}
+//	
+////	fbad.enterNumberOfBatchesPerDay(bathesNumber);
+////	fbad.enterMaximumNoOfStudentPerBatch(studentNumber);
+////	fbad.enterAnnualCapacityOfTrainingCentre(annualCapacity);
+////	fbad.enterCapacityUtilization(capacityUtilization);
+////	fbad.selectForGovernmentTieUp(governmentTieUp);
+//	Thread.sleep(3000);
+//	fbad.entreCentreArea(centreArea);
+//	fbad.enterCentreCapacity(centreCapacity);
+//	fbad.selectNumberOfTrainingRooms(trainingRooms);
+//	fbad.selectNumbersOfLabs(labNumber);
+////	fbad.enterReceptionAreaSize(receptionArea);
+////	fbad.enterWaitingAreaCapacity(waitingArea);
+//	fbad.selectNumberOfMaleWashRooms(maleWashRooms);
+//	fbad.selectNumberOfFemaleWashRooms(femaleWashRooms);
+//	fbad.selectNumberOfUnisexWashRooms(unisexWashRooms);
+//	fbad.enterDistanceFromNearestAirport(airportDistance);
+//	fbad.enterDistanceFromNearestTrainStation(trainStationDistance);
+//	fbad.enterDistanceFromNearestCityCentre(cityCentreDistance);
+//	Thread.sleep(3000);
+//	fbad.enterAddressOFTC(tcAddress);
+//	Thread.sleep(3000);
+//	fbad.enterNearByLandmark(landmark);
+//	Thread.sleep(5000);
+//	fbad.enterPincode(pincode);
+//	Thread.sleep(3000);
+//	fbad.selectState(state);
+//	Thread.sleep(2000);
+//	fbad.selrctDistrict(district);
+//	Thread.sleep(2000);
+//	fbad.selectTehsil(tehsil);
+//	Thread.sleep(3000);
+//	fbad.selectCityOrVillage(city);
+//	Thread.sleep(2000);
+//	fbad.selectParliamentryConstituency(parliamentryConstituency);
+//	fbad.enterGeoLocation(geoLocation);
+//	Thread.sleep(3000);
+//	fbad.selectAddressProofType(addressProof);
+//	Thread.sleep(3000);
+//	fbad.clickOnAddressProof_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(addressProofFile);
+//	Thread.sleep(3000);
+//	fbad.clickOnAddressProof_UploadFile();
+//	if(trainingCentreType.equals("Fixed"))
+//	{
+//		List<WebElement> ele = driver.findElements(By.xpath("//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//label[@class='m-checkbox']"));
+//		for(int i=0;i<ele.size();i++)
+//		{
+//			Thread.sleep(3000);
+//			WebElement chkbox = ele.get(i);
+//			if((i==9) || (i==10) || (i==15) || (i==16) || (i==17))
+//			{
+//				Thread.sleep(5000);
+//				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
+//				Thread.sleep(5000);
+//				UploadFile.upload(facility_Photos);
+//				Thread.sleep(5000);
+//				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//button[contains(text(),'Upload')])["+(i+1)+"]")).click();
+//			}
+//			else
+//			{
+//				Thread.sleep(5000);
+//				chkbox.click();
+//				Thread.sleep(5000);
+//				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
+//				Thread.sleep(5000);
+//				UploadFile.upload(facility_Photos);
+//				Thread.sleep(5000);
+//				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//button[contains(text(),'Upload')])["+(i+1)+"]")).click();
+//				
+//			}
+//		}
+//
+//	}
+//	else
+//	{
+//		List<WebElement> ele = driver.findElements(By.xpath("//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//label[@class='m-checkbox']"));
+//		for(int i=0;i<ele.size();i++)
+//		{
+//				Thread.sleep(3000);
+//				WebElement chkbox = ele.get(i);
+//				Thread.sleep(5000);
+//				chkbox.click();
+//				Thread.sleep(5000);
+//				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//input[@id='customFile'])["+(i+1)+"]")).click();
+//				Thread.sleep(5000);
+//				UploadFile.upload(facility_Photos);
+//				Thread.sleep(5000);
+//				driver.findElement(By.xpath("(//div[div[div[h4[text()='Facilities Available at the Centre:']]]]//button[contains(text(),'Upload')])["+(i+1)+"]")).click();
+//				
+//		}
+//
+//	}
+//	
+//	
+//	
+//	Thread.sleep(5000);
+//	fbad.enterNameOfSPOC(spocName);
+//	fbad.enterEmailAddressOfSPOC(spocEmail);
+//	fbad.enterMobileNumberOfSPOC(spocMobile);
+//	fbad.enterDesignationOfSPOC(spocDesignation);
+//	fbad.enterLandLineNumberOfSPOC(spocLandLine);
+//	Thread.sleep(3000);
+//	fbad.select_SrNo_TrainingRoomPhotos(srNo_TCRoom);
+//	fbad.clickOnTrainingRoomPhotos_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(tcRoomPhotos);
+//	Thread.sleep(3000);
+//	fbad.clickOnTrainingRoomPhotos_UploadFile();
+//	Thread.sleep(3000);
+//	fbad.select_SrNo_Laboratory(laboratory_SrNo);
+//	fbad.clickOnLaboratoryPhotos_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(laboratoryPhotos);
+//	Thread.sleep(3000);
+//	fbad.clickOnLaboratoryPhotos_UploadFile();
+//	Thread.sleep(3000);
+//	fbad.select_SrNo_ForMaleWashRoom(maleWashRoom_SrNo);
+//	fbad.clickOnMaleWashRoomPhotos_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(maleWashRoomPhotos);
+//	Thread.sleep(3000);
+//	fbad.clickOnMaleWashRoomPhotos_UploadFile();
+//	Thread.sleep(3000);
+//	fbad.select_SrNo_ForFemaleWashRoom(femaleWashRoom_SrNo);
+//	fbad.clickOnFemaleWashRoomPhotos_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(femaleWashRoomPhotos);
+//	Thread.sleep(3000);
+//	fbad.clickOnFemaleWashRoomPhotos_UploadFile();
+//	Thread.sleep(3000);
+//	fbad.select_SrNo_ForUnisexWashRoom(unisexWashRoom_SrNo);
+//	fbad.clickOnUnisexWashRoomPhotos_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(unisexWashRoomPhotos);
+//	Thread.sleep(3000);
+//	fbad.clickOnUnisexWashRoomPhotos_UploadFile();
+//	/*fbad.clickOnCafetariaPhotos_BrowseFile();
+//	Thread.sleep(3000);
+//	UploadFile.upload(cafetariaPhotos);
+//	Thread.sleep(3000);
+//	fbad.clickOnCafetariaPhotos_UploadFile();
+//	Thread.sleep(10000);*/
+//	Thread.sleep(3000);
+//	fbad.clickOnAddSectorTarget();
+//	Thread.sleep(3000);
+//	fbad.selectSector(sector);
+//	Thread.sleep(3000);
+//	fbad.selectCourse(course);
+//	fbad.enterTarget(target);
+//	Thread.sleep(3000);
+//	fbad.clickOnSubmit_SectorTarget();
+//	Thread.sleep(15000);
+//	JavascriptExecutor js = (JavascriptExecutor)driver;
+//	js.executeScript("scroll(0, 900)");
+//	fbad.clickOnSubmit();
+//	Thread.sleep(3000);
+//	fbad.clickOnYesAddTrainingCentre();
+//	Thread.sleep(3000);
+//	//fbad.clickOnOK();
+//	Thread.sleep(8000);
+//	fbd.clickOnViewTrainingCentres();
+//	Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingCentreName+"']]]]//span[text()='Awating Approval']")).getText(), "Awating Approval");
+//	LogOutPage plp = new LogOutPage(driver);
+//	Thread.sleep(5000);
+//	plp.clickOnProfileLogo();
+//	Thread.sleep(2000);
+//	plp.clickOnLogout();
+//
+//}
+//}
 
 	
 	
