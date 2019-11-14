@@ -1,11 +1,10 @@
 package com.nsdc.Pages_NON_PMKVY_Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 public class TP_MySchemeDashboardPage 
 {
 WebDriver driver;
@@ -34,6 +33,13 @@ WebDriver driver;
 	
 	@FindBy(xpath="//tr[td[span[span[text()='NON-PMKVY']]]]//a[contains(text(),'Add Program')]")
 	private WebElement Add_program;
+	
+	
+	@FindBy(xpath="//tbody[@class='m-datatable__body margin-table ']")
+	private WebElement MySchemesListTable;
+	
+	
+	
 	public TP_MySchemeDashboardPage(WebDriver driver) 
 	{
 		this.driver = driver;
@@ -94,6 +100,31 @@ WebDriver driver;
   {
 	  Add_program.click();
   }
-}
+  
+  public void SelectSchemeOfSTT(String mainscheme,String subscheme) throws NumberFormatException, Exception {
+  WebElement MySchemesListTable = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']"));
+	
+	 java.util.List<WebElement> rowstable = MySchemesListTable.findElements(By.tagName("tr"));
 
+	int rows_count = rowstable.size();
+
+	for (int row = 1; row < rows_count; row++) {
+
+String nameofTheScheme = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr["+row+"]//td[2]")).getText();
+
+			String SUBScheme = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr//td[span[span[text()='"+subscheme+"']]]")).getText();
+			
+			if (nameofTheScheme.equals(mainscheme)&& SUBScheme.equals(subscheme))
+			{
+				
+				
+				driver.findElement(By.xpath("//tr[td[span[span[text()='"+subscheme+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			    driver.findElement(By.xpath("//tr[td[span[span[text()='"+subscheme+"']]]]//a[contains(text(),'Add Program')]")).click();
+				
+			break;
+			}
+			
+		}
+  }
+}
 	
