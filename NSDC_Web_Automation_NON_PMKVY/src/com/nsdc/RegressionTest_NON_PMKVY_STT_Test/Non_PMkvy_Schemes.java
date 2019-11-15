@@ -64,7 +64,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration {
 		Thread.sleep(3000);
 		tpms.clickOnAddSchemeOrProgram();
 		Thread.sleep(5000);
-		  //tpms.selectscheme( NameofschemeName,Subscheme);
+		//  tpms.selectscheme( NameofschemeName,Subscheme);
 		
 		////////////////////////////////////////////////////////////////////
 		WebElement MySchemesListTable = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']"));
@@ -91,10 +91,10 @@ public class Non_PMkvy_Schemes extends TestConfiguration {
 				
 			}
 		
-		Assert.assertEquals(driver.findElement(By.xpath("//h3[p[text()='"+SelectedScheme+"']]")).getText(), SelectedScheme);	
+		Assert.assertEquals(driver.findElement(By.xpath("//p[text()='"+SelectedScheme+"']")).getText(), SelectedScheme);	
 		
 //////////////////////////////////////////////////////////////////////////////////////////////
-	    driver.findElement(By.xpath("//tr[td[span[span[text()='"+NameofschemeName+"']]]]//a[contains(text(),'Add Program')]")).click();
+	    
 		TP_FeeBasedProgramPage tpfb = new TP_FeeBasedProgramPage(driver);
 		Thread.sleep(3000);
 		//tpfb.clickOnCloseButton();
@@ -485,384 +485,384 @@ public class Non_PMkvy_Schemes extends TestConfiguration {
 
 //////////////////, dependsOnMethods="daApproveSchemeTC_02"
 
-//	@DataProvider
-//	public Object[][] resubmitAndReviewScheme()
-//	{
-//		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", 
-//				"FeeBasedAddSchemeSC14TC03");
-//	}
+	@DataProvider
+	public Object[][] resubmitAndReviewScheme()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", 
+				"FeeBasedAddSchemeSC14TC03");
+	}
+
+	@Test(dataProvider="resubmitAndReviewScheme")
+	public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String tpPassword, String daComments,
+			String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, 
+			String newProjectDuration, String newAgreementDate, String newDisbursementDate, String newProjectID,
+			String newProjectName, String newProposingOrganisation, String newImplementingOrganisation, String newPromoterDetails, 
+			String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newProjectReview,String newProjectComments,
+			String newLoanAmount,
+			String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, 
+			String newloanReview,String newloanDetailscomments,String newsupportdocumentReview,String newdocumentReviewcomments,
+			String newSignedTermsheetFile,
+			String newSignedProposalFile, String newOtherSupportingFile, String newSector, String newTrainingTarget, 
+			String newAddSectorUndertakingFile, String newAffiliationCertificate, String newCourseName, String newJobRole, 
+			String NewAssociatedQP,
+		    String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge,
+			String newMinimumEducation, String newCourseDuration, String newNumberOfHours, String newCourseFee, String newGradingPrefrences,
+			String newCourseApprovalFile, String newAffiliationFile, String newWorkOrderFile, String newChallanFile, String newStampPaper,
+			String newState, String newDistrict, String fDAUsername, String fDAPassword, String newComments, String newReviewComments) throws Exception
+	{
+		
+		precondition();
+		LaunchPage lp = new LaunchPage(driver);
+		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
+		EnterLoginPage elp = new EnterLoginPage(driver);
+		elp.performlogin(tpUsername, tpPassword);
+		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
+		Thread.sleep(10000);
+		tpdp.clickOnMySchemes();
+		TP_MySchemeDashboardPage tpms = new TP_MySchemeDashboardPage(driver);
+		Thread.sleep(3000);
+		if(daComments.equalsIgnoreCase("Approved"))
+		{
+			Thread.sleep(3000);
+			tpms.clickOnApprovedScheme();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//span[text()='Approved']")).getText(), "Approved");
+		}
+		
+		else if(daComments.equalsIgnoreCase("Not Approved"))
+		{
+			Thread.sleep(3000);
+			tpms.clickOnApprovalInProgress();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//span[text()='Send Back']")).getText(), "Send Back");
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//a[contains(text(),'View Details')]")).click();
+			TP_FeeBasedProgramPage  tpfb = new TP_FeeBasedProgramPage (driver);
+//			Thread.sleep(3000);
+//			tpfb.clickOnCloseButton();
+			Thread.sleep(3000);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='review']")).getAttribute("value"), daComments);//
+			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='comment']")).getAttribute("value"), daReviewComments);
+			Thread.sleep(3000);
+			tpfb.selectFinancialModelType(newFinancialModel);
+			if(newFinancialModel.equals("Funded"))
+			{
+				Thread.sleep(5000);
+				//tpfb.enterProjectFundedBy(fundedBy);
+				newFundedBy = driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 7, newFundedBy);
+				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);				
+				Thread.sleep(3000);
+				tpfb.clickOnSelectAgreementDate();
+				Thread.sleep(3000);
+				newAgreementDate=driver.findElement(By.xpath("//input[@placeholder='Select Agreement Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 9, newAgreementDate);
+				tpfb.clickOnSelectDisbursementDate();
+				newDisbursementDate = driver.findElement(By.xpath("//input[@placeholder='Select First Disbursement Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 10, newDisbursementDate);
+				Thread.sleep(3000);
+				tpfb.enterProjectProposalID(newProjectID);
+				tpfb.enterNameOfProject(newProjectName);
+			
+				newProposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 13, newProposingOrganisation);
+				Thread.sleep(5000);
+				tpfb.enterNameOfImplementingOrganisation(newImplementingOrganisation);
+				tpfb.enterPromoterDetails(newPromoterDetails);
+				tpfb.enterProjectTarget(newTarget);
+				tpfb.selectAssessmentMode(newAssessmentMode);
+				Thread.sleep(3000);
+				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 18, newStartDate);
+				//tpfb.clickOnEndDateOfProject();
+
+				
+				Thread.sleep(3000);
+				tpfb.enterSanctionLoanAmount(newLoanAmount);
+				tpfb.selectMoratoriumPeriod(newMoratoriumPeriod);
+				tpfb.selectForLoanDuration(newLoanDuration);
+				tpfb.selectForInterestRate(newInterestRate);
+				
+			}
+			
+			else
+			{
+				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);				
+				tpfb.clickOnSelectAgreementDate();
+				newAgreementDate= driver.findElement(By.xpath("//input[@placeholder='Select Agreement Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 9, newAgreementDate);
+				Thread.sleep(3000);
+				tpfb.enterProjectProposalID(newProjectID);
+				tpfb.enterNameOfProject(newProjectName);
+		
+				//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
+				newProposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 13, newProposingOrganisation);
+				Thread.sleep(5000);
+				//tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
+				tpfb.enterNameOfImplementingOrganisation(newImplementingOrganisation);
+				tpfb.enterPromoterDetails(newPromoterDetails);
+				tpfb.enterProjectTarget(newTarget);
+				tpfb.selectAssessmentMode(newAssessmentMode);
+				Thread.sleep(3000);
+				tpfb.clickOnStartDateOfProject();
+				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
+				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 18, newStartDate);
+				tpfb.clickOnSanctionLoanAmount();
+
+			}
+			
+			
+			Thread.sleep(3000);
+			newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 19, newEndDate);
+			Thread.sleep(3000);
+			tpfb.clickOnSignedTermsheetBrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(newSignedTermsheetFile);
+			Thread.sleep(3000);
+			tpfb.clickOnSignedTermsheetUploadFile();
+			Thread.sleep(3000);
+			tpfb.clickOnSignedProposalBrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(newSignedProposalFile);
+			Thread.sleep(3000);
+			tpfb.clickOnSignedProposalUploadFile();
+			Thread.sleep(3000);
+			tpfb.clickOnSupportingDocumentBrowseFile();
+			Thread.sleep(3000);
+			UploadFile.upload(newOtherSupportingFile);
+			Thread.sleep(3000);
+			tpfb.clickOnSupportingDocumentUploadFile();
+			Thread.sleep(3000);
+			tpfb.clickOnAddSector();
+			Thread.sleep(2000);
+			tpfb.selectSector(newSector);
+			Thread.sleep(3000);
+			tpfb.enterProposedTrainingTarget(newTrainingTarget);
+			Thread.sleep(2000);
+			tpfb.clickOnAdd_AddSector();
+			String addedSector = driver.findElement(By.xpath("//td[text()='"+newSector+"']")).getText();
+//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow3.xls", "MySchemeAddSectorSC15TC03", Integer.parseInt(sno), 4, addedSector);
+			Thread.sleep(5000);
+			tpfb.clickOnAddCourse();
+			Thread.sleep(8000);
+			
+			
+			tpfb.selectSector_AddCourse(newSector);
+			tpfb.selectJobRoleMappingType(newJobRole);
+			if(newJobRole.equals("QP-NOS"))
+			{
+				Thread.sleep(3000);
+				tpfb.selectAssociatedQP_JobRoleNameI(NewAssociatedQP);
+				tpfb.enterCourseName(newCourseName);
+			tpfb.enterNameOfIssuedCertificate(newCertificateName);
+				
+				
+				
+			
+			}
+			else 
+			{
+				Thread.sleep(4000);
+				tpfb.enterCourseName(newCourseName);
+				tpfb.enterCourseDescription(newCourseDescription);
+				tpfb.enterNameOfIssuedCertificate(newCertificateName);
+				tpfb.selectMinimumAge(newMinimumAge);
+			}
+			
+			tpfb.selectMinimumEducationRequired(newMinimumEducation);
+			tpfb.enterCourseDuration(newCourseDuration);
+			Thread.sleep(2000);
+			tpfb.enterNumberOfHoursPerDay(newNumberOfHours);
+			tpfb.enterCourseFee(newCourseFee);
+			tpfb.selectGradingPrefrences(newGradingPrefrences);
+			Thread.sleep(3000);
+//			
+			
+			
+		
+			tpfb.clickOnStampPapaer_BrowseFile();
+			Thread.sleep(5000);
+			UploadFile.upload(newStampPaper);
+			Thread.sleep(3000);
+			tpfb.clickOnStampPape_UploadFile();
+			Thread.sleep(4000);
+			tpfb.clickOnAdd_AddCourse();
+			Thread.sleep(3000);
+			Thread.sleep(3000);
+			tpfb.selectState_LocationForTC(newState);
+			tpfb.selectDistricts_LocationForTC(newDistrict);
+			Thread.sleep(3000);
+			tpfb.clickOnAddForLocationOfTC();
+			Thread.sleep(3000);
+			tpfb.clickOnResubmitForReviewAgain();
+			
+			Thread.sleep(5000);
+			tpms.clickOnApprovalInProgress();
+		
+			LogOutPage plp = new LogOutPage(driver);
+			Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+				///////////////////////////
+				lp.clickLogin();
+				Thread.sleep(3000);
+				//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+				bsp.clickToClose();
+				Thread.sleep(3000);
+				elp.performlogin(fDAUsername, fDAPassword);
+				FDA_DashboardPage fdp = new FDA_DashboardPage(driver);
+				Thread.sleep(5000);
+				fdp.clickOnViewAllOnboardingRequest();
+				FDA_OnboardingRequestPage frp = new  FDA_OnboardingRequestPage(driver);
+				Thread.sleep(3000);
+				//frp.selectTPID(tpID);
+				frp.selectType(newFinancialModel);
+				frp.selectStatus("RESUBMITTED");
+				Thread.sleep(2000);
+				frp.clickOnApply();
+				Thread.sleep(4000);
+				
+				
+				List <WebElement> button = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpUsername+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+				int size = button.size();
+				WebElement ele = button.get(size-1);
+				ele.click();
+				List <WebElement> ta = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpUsername+"']]]]//a[contains(text(),'Take Action')]"));
+				int size1 = ta.size();
+				WebElement tab = ta.get(size1-1);
+				tab.click();
+				FDA_SelectedSchemePage fss = new FDA_SelectedSchemePage(driver);
+				Thread.sleep(3000);
+
+				Assert.assertEquals(driver.findElement(By.xpath("//input[@id='typeOfPia']")).getAttribute("value"), newFinancialModel);
+				if(newFinancialModel.equals("Funded"))
+				{
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value"), newFundedBy);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
+					Assert.assertEquals(driver.findElement(By.xpath("//label[contains(text(),'First Disbursement Date:')]/..//input")).getAttribute("value"), newDisbursementDate);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
+					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
+					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), newPromoterDetails);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), newTarget);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), newStartDate);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), newEndDate);
+					fss.SelectProjectDetailReviewDropdownlist(newProjectReview);
+				    fss.EnterProjectDetailComment(newProjectComments);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sanctionLoanAmount']")).getAttribute("value"), newLoanAmount);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='moratoriumPeriod']")).getAttribute("value"), newMoratoriumPeriod);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='loanDuration']")).getAttribute("value"), newLoanDuration);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='interestRate']")).getAttribute("value"), newInterestRate);
+					fss.SelectloanDetailsReview(newloanReview);
+					Thread.sleep(1000);
+					fss.EnterloanDetailsCommentDropdownlist(newloanDetailscomments);
+					Thread.sleep(3000);
+				}
+				else
+				{
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
+					Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='agreementDate'])[2]")).getAttribute("value"), newAgreementDate);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
+					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
+					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), newPromoterDetails);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), newTarget);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), newStartDate);
+					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), newEndDate);
+				}
+				
+				Thread.sleep(3000);
+				fss.clickOnDownloadSignedTermsheet();
+				Thread.sleep(3000);
+				fss.clickOnDownloadSignedProposal();
+				Thread.sleep(3000);
+				fss.clickOnDownloadSupportingDocument();
+				
+				fss.SelectSupportDocumentReview(newsupportdocumentReview);
+				fss.EnterSupportDocumentReview(newdocumentReviewcomments);
+			
+				
+				
+				
+				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newSector+"']")).getText(), newSector);
+				Thread.sleep(3000);
+//s			//s fss.clickOnSectors_ViewAttachedDocument();
+//				Assert.assertEquals(driver.findElement(By.xpath("//p[text()='"+newCourseName+"']")).getText(), newCourseName);
+//				Thread.sleep(3000);
+//			//s	fss.clickOnCourses_ViewAttachedDocument();
+//				if(newJobRole.equals("QP-NOS")) 
+//				{
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+NewAssociatedQP+"']")).getText(), NewAssociatedQP);
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNsqfLevel+"']")).getText(), newNsqfLevel);
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
 //
-//	@Test(dataProvider="resubmitAndReviewScheme")
-//	public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String tpPassword, String daComments,
-//			String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, 
-//			String newProjectDuration, String newAgreementDate, String newDisbursementDate, String newProjectID,
-//			String newProjectName, String newProposingOrganisation, String newImplementingOrganisation, String newPromoterDetails, 
-//			String newTarget, String newAssessmentMode, String newStartDate, String newEndDate, String newProjectReview,String newProjectComments,
-//			String newLoanAmount,
-//			String newMoratoriumPeriod, String newLoanDuration, String newInterestRate, 
-//			String newloanReview,String newloanDetailscomments,String newsupportdocumentReview,String newdocumentReviewcomments,
-//			String newSignedTermsheetFile,
-//			String newSignedProposalFile, String newOtherSupportingFile, String newSector, String newTrainingTarget, 
-//			String newAddSectorUndertakingFile, String newAffiliationCertificate, String newCourseName, String newJobRole, 
-//			String NewAssociatedQP,
-//		    String newNsqfLevel, String newCourseDescription, String newCertificateName, String newMinimumAge,
-//			String newMinimumEducation, String newCourseDuration, String newNumberOfHours, String newCourseFee, String newGradingPrefrences,
-//			String newCourseApprovalFile, String newAffiliationFile, String newWorkOrderFile, String newChallanFile, String newStampPaper,
-//			String newState, String newDistrict, String fDAUsername, String fDAPassword, String newComments, String newReviewComments) throws Exception
-//	{
-//		
-//		precondition();
-//		LaunchPage lp = new LaunchPage(driver);
-//		lp.clickLogin();
-//		Thread.sleep(3000);
-//		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-//		bsp.clickToClose();
-//		Thread.sleep(3000);
-//		EnterLoginPage elp = new EnterLoginPage(driver);
-//		elp.performlogin(tpUsername, tpPassword);
-//		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-//		Thread.sleep(10000);
-//		tpdp.clickOnMySchemes();
-//		TP_MySchemeDashboardPage tpms = new TP_MySchemeDashboardPage(driver);
-//		Thread.sleep(3000);
-//		if(daComments.equalsIgnoreCase("Approved"))
-//		{
-//			Thread.sleep(3000);
-//			tpms.clickOnApprovedScheme();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//span[text()='Approved']")).getText(), "Approved");
-//		}
-//		
-//		else if(daComments.equalsIgnoreCase("Not Approved"))
-//		{
-//			Thread.sleep(3000);
-//			tpms.clickOnApprovalInProgress();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//span[text()='Send Back']")).getText(), "Send Back");
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//			Thread.sleep(3000);
-//			driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//a[contains(text(),'View Details')]")).click();
-//			TP_FeeBasedProgramPage  tpfb = new TP_FeeBasedProgramPage (driver);
-////			Thread.sleep(3000);
-////			tpfb.clickOnCloseButton();
-//			Thread.sleep(3000);
-//			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='review']")).getAttribute("value"), daComments);//
-//			Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='comment']")).getAttribute("value"), daReviewComments);
-//			Thread.sleep(3000);
-//			tpfb.selectFinancialModelType(newFinancialModel);
-//			if(newFinancialModel.equals("Funded"))
-//			{
-//				Thread.sleep(5000);
-//				//tpfb.enterProjectFundedBy(fundedBy);
-//				newFundedBy = driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 7, newFundedBy);
-//				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);				
-//				Thread.sleep(3000);
-//				tpfb.clickOnSelectAgreementDate();
-//				Thread.sleep(3000);
-//				newAgreementDate=driver.findElement(By.xpath("//input[@placeholder='Select Agreement Date']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 9, newAgreementDate);
-//				tpfb.clickOnSelectDisbursementDate();
-//				newDisbursementDate = driver.findElement(By.xpath("//input[@placeholder='Select First Disbursement Date']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 10, newDisbursementDate);
-//				Thread.sleep(3000);
-//				tpfb.enterProjectProposalID(newProjectID);
-//				tpfb.enterNameOfProject(newProjectName);
-//			
-//				newProposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 13, newProposingOrganisation);
-//				Thread.sleep(5000);
-//				tpfb.enterNameOfImplementingOrganisation(newImplementingOrganisation);
-//				tpfb.enterPromoterDetails(newPromoterDetails);
-//				tpfb.enterProjectTarget(newTarget);
-//				tpfb.selectAssessmentMode(newAssessmentMode);
-//				Thread.sleep(3000);
-//				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 18, newStartDate);
-//				//tpfb.clickOnEndDateOfProject();
-//
-//				
-//				Thread.sleep(3000);
-//				tpfb.enterSanctionLoanAmount(newLoanAmount);
-//				tpfb.selectMoratoriumPeriod(newMoratoriumPeriod);
-//				tpfb.selectForLoanDuration(newLoanDuration);
-//				tpfb.selectForInterestRate(newInterestRate);
-//				
-//			}
-//			
-//			else
-//			{
-//				newProjectDuration = driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 8, newProjectDuration);				
-//				tpfb.clickOnSelectAgreementDate();
-//				newAgreementDate= driver.findElement(By.xpath("//input[@placeholder='Select Agreement Date']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 9, newAgreementDate);
-//				Thread.sleep(3000);
-//				tpfb.enterProjectProposalID(newProjectID);
-//				tpfb.enterNameOfProject(newProjectName);
-//		
-//				//tpfb.enterNameOfImplementingOrganisation(implementingOrganisation);
-//				newProposingOrganisation = driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 13, newProposingOrganisation);
-//				Thread.sleep(5000);
-//				//tpfb.enterNameOfProposingOrganisation(proposingOrganisation);
-//				tpfb.enterNameOfImplementingOrganisation(newImplementingOrganisation);
-//				tpfb.enterPromoterDetails(newPromoterDetails);
-//				tpfb.enterProjectTarget(newTarget);
-//				tpfb.selectAssessmentMode(newAssessmentMode);
-//				Thread.sleep(3000);
-//				tpfb.clickOnStartDateOfProject();
-//				newStartDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-//				ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 18, newStartDate);
-//				tpfb.clickOnSanctionLoanAmount();
-//
-//			}
-//			
-//			
-//			Thread.sleep(3000);
-//			newEndDate = driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value");
-//			ReadWriteData.setExcelData("./TestData/Workflow/FeeBased_AddScheme-Workflow3.xls", "FeeBasedAddSchemeSC14TC03", Integer.parseInt(sno), 19, newEndDate);
-//			Thread.sleep(3000);
-//			tpfb.clickOnSignedTermsheetBrowseFile();
-//			Thread.sleep(3000);
-//			UploadFile.upload(newSignedTermsheetFile);
-//			Thread.sleep(3000);
-//			tpfb.clickOnSignedTermsheetUploadFile();
-//			Thread.sleep(3000);
-//			tpfb.clickOnSignedProposalBrowseFile();
-//			Thread.sleep(3000);
-//			UploadFile.upload(newSignedProposalFile);
-//			Thread.sleep(3000);
-//			tpfb.clickOnSignedProposalUploadFile();
-//			Thread.sleep(3000);
-//			tpfb.clickOnSupportingDocumentBrowseFile();
-//			Thread.sleep(3000);
-//			UploadFile.upload(newOtherSupportingFile);
-//			Thread.sleep(3000);
-//			tpfb.clickOnSupportingDocumentUploadFile();
-//			Thread.sleep(3000);
-//			tpfb.clickOnAddSector();
-//			Thread.sleep(2000);
-//			tpfb.selectSector(newSector);
-//			Thread.sleep(3000);
-//			tpfb.enterProposedTrainingTarget(newTrainingTarget);
-//			Thread.sleep(2000);
-//			tpfb.clickOnAdd_AddSector();
-//			String addedSector = driver.findElement(By.xpath("//td[text()='"+newSector+"']")).getText();
-////			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow3.xls", "MySchemeAddSectorSC15TC03", Integer.parseInt(sno), 4, addedSector);
-//			Thread.sleep(5000);
-//			tpfb.clickOnAddCourse();
-//			Thread.sleep(8000);
-//			
-//			
-//			tpfb.selectSector_AddCourse(newSector);
-//			tpfb.selectJobRoleMappingType(newJobRole);
-//			if(newJobRole.equals("QP-NOS"))
-//			{
-//				Thread.sleep(3000);
-//				tpfb.selectAssociatedQP_JobRoleNameI(NewAssociatedQP);
-//				tpfb.enterCourseName(newCourseName);
-//			tpfb.enterNameOfIssuedCertificate(newCertificateName);
-//				
-//				
-//				
-//			
-//			}
-//			else 
-//			{
-//				Thread.sleep(4000);
-//				tpfb.enterCourseName(newCourseName);
-//				tpfb.enterCourseDescription(newCourseDescription);
-//				tpfb.enterNameOfIssuedCertificate(newCertificateName);
-//				tpfb.selectMinimumAge(newMinimumAge);
-//			}
-//			
-//			tpfb.selectMinimumEducationRequired(newMinimumEducation);
-//			tpfb.enterCourseDuration(newCourseDuration);
-//			Thread.sleep(2000);
-//			tpfb.enterNumberOfHoursPerDay(newNumberOfHours);
-//			tpfb.enterCourseFee(newCourseFee);
-//			tpfb.selectGradingPrefrences(newGradingPrefrences);
-//			Thread.sleep(3000);
-////			
-//			
-//			
-//		
-//			tpfb.clickOnStampPapaer_BrowseFile();
-//			Thread.sleep(5000);
-//			UploadFile.upload(newStampPaper);
-//			Thread.sleep(3000);
-//			tpfb.clickOnStampPape_UploadFile();
-//			Thread.sleep(4000);
-//			tpfb.clickOnAdd_AddCourse();
-//			Thread.sleep(3000);
-//			Thread.sleep(3000);
-//			tpfb.selectState_LocationForTC(newState);
-//			tpfb.selectDistricts_LocationForTC(newDistrict);
-//			Thread.sleep(3000);
-//			tpfb.clickOnAddForLocationOfTC();
-//			Thread.sleep(3000);
-//			tpfb.clickOnResubmitForReviewAgain();
-//			
-//			Thread.sleep(5000);
-//			tpms.clickOnApprovalInProgress();
-//		
-//			LogOutPage plp = new LogOutPage(driver);
-//			Thread.sleep(3000);
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout();
-//				///////////////////////////
-//				lp.clickLogin();
-//				Thread.sleep(3000);
-//				//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-//				bsp.clickToClose();
-//				Thread.sleep(3000);
-//				elp.performlogin(fDAUsername, fDAPassword);
-//				FDA_DashboardPage fdp = new FDA_DashboardPage(driver);
-//				Thread.sleep(5000);
-//				fdp.clickOnViewAllOnboardingRequest();
-//				FDA_OnboardingRequestPage frp = new  FDA_OnboardingRequestPage(driver);
-//				Thread.sleep(3000);
-//				//frp.selectTPID(tpID);
-//				frp.selectType(newFinancialModel);
-//				frp.selectStatus("RESUBMITTED");
-//				Thread.sleep(2000);
-//				frp.clickOnApply();
-//				Thread.sleep(4000);
-//				
-//				
-//				List <WebElement> button = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpUsername+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-//				int size = button.size();
-//				WebElement ele = button.get(size-1);
-//				ele.click();
-//				List <WebElement> ta = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpUsername+"']]]]//a[contains(text(),'Take Action')]"));
-//				int size1 = ta.size();
-//				WebElement tab = ta.get(size1-1);
-//				tab.click();
-//				FDA_SelectedSchemePage fss = new FDA_SelectedSchemePage(driver);
-//				Thread.sleep(3000);
-//
-//				Assert.assertEquals(driver.findElement(By.xpath("//input[@id='typeOfPia']")).getAttribute("value"), newFinancialModel);
-//				if(newFinancialModel.equals("Funded"))
-//				{
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='fundedBy']")).getAttribute("value"), newFundedBy);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
-//					Assert.assertEquals(driver.findElement(By.xpath("//label[contains(text(),'First Disbursement Date:')]/..//input")).getAttribute("value"), newDisbursementDate);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
-//					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
-//					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), newPromoterDetails);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), newTarget);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), newStartDate);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), newEndDate);
-//					fss.SelectProjectDetailReviewDropdownlist(newProjectReview);
-//				    fss.EnterProjectDetailComment(newProjectComments);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sanctionLoanAmount']")).getAttribute("value"), newLoanAmount);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='moratoriumPeriod']")).getAttribute("value"), newMoratoriumPeriod);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='loanDuration']")).getAttribute("value"), newLoanDuration);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='interestRate']")).getAttribute("value"), newInterestRate);
-//					fss.SelectloanDetailsReview(newloanReview);
-//					Thread.sleep(1000);
-//					fss.EnterloanDetailsCommentDropdownlist(newloanDetailscomments);
-//					Thread.sleep(3000);
 //				}
-//				else
+//				else 
 //				{
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectDuration']")).getAttribute("value"), newProjectDuration);
-//					Assert.assertEquals(driver.findElement(By.xpath("(//input[@ng-reflect-name='agreementDate'])[2]")).getAttribute("value"), newAgreementDate);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='projectProposalId']")).getAttribute("value"), newProjectID);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='name']")).getAttribute("value"), newProjectName);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposingOrganisation']")).getAttribute("value"), newProposingOrganisation);
-//					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='implementingOrganisation']")).getAttribute("value"), newImplementingOrganisation);
-//					Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='promoterDetails']")).getAttribute("value"), newPromoterDetails);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='target']")).getAttribute("value"), newTarget);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@id='assessmentMode']")).getAttribute("value"), newAssessmentMode);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value"), newStartDate);
-//					Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Select End Date']")).getAttribute("value"), newEndDate);
+//					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
 //				}
 //				
-//				Thread.sleep(3000);
-//				fss.clickOnDownloadSignedTermsheet();
-//				Thread.sleep(3000);
-//				fss.clickOnDownloadSignedProposal();
-//				Thread.sleep(3000);
-//				fss.clickOnDownloadSupportingDocument();
-//				
-//				fss.SelectSupportDocumentReview(newsupportdocumentReview);
-//				fss.EnterSupportDocumentReview(newdocumentReviewcomments);
-//			
-//				
-//				
-//				
-//				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newSector+"']")).getText(), newSector);
-//				Thread.sleep(3000);
-////s			//s fss.clickOnSectors_ViewAttachedDocument();
-////				Assert.assertEquals(driver.findElement(By.xpath("//p[text()='"+newCourseName+"']")).getText(), newCourseName);
-////				Thread.sleep(3000);
-////			//s	fss.clickOnCourses_ViewAttachedDocument();
-////				if(newJobRole.equals("QP-NOS")) 
-////				{
-////					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+NewAssociatedQP+"']")).getText(), NewAssociatedQP);
-////					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNsqfLevel+"']")).getText(), newNsqfLevel);
-////					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
-////
-////				}
-////				else 
-////				{
-////					Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newNumberOfHours+"']")).getText(), newNumberOfHours);
-////				}
-////				
-////				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newState+"']")).getText(), newState);
-////				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+newDistrict+"')]")).getText(), newDistrict);
-////s				Thread.sleep(3000);
-//				fss.selectReviewComments(newComments);
-//				fss.enterReviewComments(newReviewComments);
-//				Thread.sleep(3000);
-//				fss.clickOnFirst_SubmitResponse();
-//				Thread.sleep(3000);
-//				fss.clickOnSecond_SubmitResponse();
-//				//fss.clickOnOK();
-//				//frp.selectTPID(tpID);
-//				frp.selectType(newFinancialModel);
-//				frp.selectStatus(newReviewComments);
-//				Thread.sleep(2000);
-//				frp.clickOnApply();
-//				if(newComments.equals("Approved"))
-//				{
-//					Thread.sleep(3000);
-//					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='APPROVED'])[1]")).getText(), "APPROVED");
-//				}
-//				else if(newComments.equals("Not Recommended"))
-//				{
-//					Thread.sleep(3000);
-//					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='BLOCKED'])[1]")).getText(), "BLOCKED");
-//				}
-//				else if(newComments.equals("Not Approved"))
-//				{
-//					Thread.sleep(3000);
-//					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='REJECTED'])[1]")).getText(), "REJECTED");
-//				}
-//				
-//		
-//			Thread.sleep(5000);
-//			//LogOutPage plp = new LogOutPage(driver);
-//				plp.clickOnProfileLogo();
-//			plp.clickOnLogout();
-//		}		
-//			
-//	}
+//				Assert.assertEquals(driver.findElement(By.xpath("//td[text()='"+newState+"']")).getText(), newState);
+//				Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'"+newDistrict+"')]")).getText(), newDistrict);
+//s				Thread.sleep(3000);
+				fss.selectReviewComments(newComments);
+				fss.enterReviewComments(newReviewComments);
+				Thread.sleep(3000);
+				fss.clickOnFirst_SubmitResponse();
+				Thread.sleep(3000);
+				fss.clickOnSecond_SubmitResponse();
+				//fss.clickOnOK();
+				//frp.selectTPID(tpID);
+				frp.selectType(newFinancialModel);
+				frp.selectStatus(newReviewComments);
+				Thread.sleep(2000);
+				frp.clickOnApply();
+				if(newComments.equals("Approved"))
+				{
+					Thread.sleep(3000);
+					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='APPROVED'])[1]")).getText(), "APPROVED");
+				}
+				else if(newComments.equals("Not Recommended"))
+				{
+					Thread.sleep(3000);
+					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='BLOCKED'])[1]")).getText(), "BLOCKED");
+				}
+				else if(newComments.equals("Not Approved"))
+				{
+					Thread.sleep(3000);
+					Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpUsername+"']]]]//span[text()='REJECTED'])[1]")).getText(), "REJECTED");
+				}
+				
+		
+			Thread.sleep(5000);
+		///	LogOutPage plp = new LogOutPage(driver);
+				plp.clickOnProfileLogo();
+			plp.clickOnLogout();
+		}		
+			
+	}
 }		
 
 
