@@ -16,7 +16,7 @@ public class CMA_AddSectorRequestPage
 	private WebElement statusDropDownList;
 	@FindBy(xpath="//button[text()='Apply']")
 	private WebElement applyButton;
-	@FindBy(xpath="//input[@id='generalSearch']")
+	@FindBy(xpath="//input[@placeholder='TP ID']")
 	private WebElement tpIDSearchTextbox;
 	
 	
