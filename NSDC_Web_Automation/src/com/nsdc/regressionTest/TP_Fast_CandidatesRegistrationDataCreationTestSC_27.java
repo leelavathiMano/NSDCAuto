@@ -88,7 +88,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				js.executeScript("window.scrollBy(0,500)", "");
 				Thread.sleep(4000);
 				tDp.clickOnRegisterCandidate();
-				tDp.clickOnRegisterCandidate();
+				//tDp.clickOnRegisterCandidate();
 			}
 			if(i!=1)
 				
@@ -119,8 +119,8 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.enterEmailID(emailID);
 			tpCrp.clickToChooseGender(gender);
 			tpCrp.clickToSelectDOB();
-			String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
-		    ReadWriteData.setExcelData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 11, selectedDateOfBirth);
+		//	String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Choose Date']")).getAttribute("value");
+		//  ReadWriteData.setExcelData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 11, selectedDateOfBirth);
 		  	tpCrp.selectMaritalStatus(maritalStatus);
 //			tpCrp.enterPlaceOfBirth(placeOfBirth);
 			tpCrp.selectBirthState(birthState);
