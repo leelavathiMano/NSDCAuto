@@ -28,7 +28,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement countryCodeDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='email']")
 	private WebElement emailTextField;
-	@FindBy(xpath="//input[@placeholder='Select Date of Birth']")
+	@FindBy(xpath="//input[@placeholder='Choose Date']")
 	private WebElement dobTextbox;
 	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calenderIconButton;
@@ -275,7 +275,8 @@ public class TrainingPartner_CandidateRegistrationPage
 	{
 		dobTextbox.click();
     	Thread.sleep(2000);
-    	driver.findElement(By.xpath("(//div[@class='datepicker-days']/table/tbody/tr/td[text()='1'])[1]")).click();
+    	//driver.findElement(By.xpath("(//div[@class='datepicker-days']/table/tbody/tr/td[text()='1'])[1]")).click();
+    	driver.findElement(By.xpath("//div[@class='btn-light'][text()='1']")).click();
     	Thread.sleep(2000);
         calenderIconButton.click();
         Thread.sleep(2000);
