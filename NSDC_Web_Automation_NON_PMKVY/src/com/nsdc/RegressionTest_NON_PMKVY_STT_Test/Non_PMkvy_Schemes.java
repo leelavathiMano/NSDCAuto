@@ -23,6 +23,7 @@ import com.nsdc.Pages_NON_PMKVY_Pages.FDA_SelectedSchemePage;
 import com.nsdc.Pages_NON_PMKVY_Pages.LaunchPage;
 import com.nsdc.Pages_NON_PMKVY_Pages.LogOutPage;
 import com.nsdc.Pages_NON_PMKVY_Pages.TP_FeeBasedProgramPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.TP_FeeBased_AddCourseToSectorsPage;
 import com.nsdc.Pages_NON_PMKVY_Pages.TP_FeeBased_AddTrainingCentrePage;
 import com.nsdc.Pages_NON_PMKVY_Pages.TP_FeeBased_DashboardPage;
 import com.nsdc.Pages_NON_PMKVY_Pages.TP_FeeBased_ViewAllSectorAndCoursesPage;
@@ -1733,181 +1734,166 @@ public class Non_PMkvy_Schemes extends TestConfiguration {
 //		plp.clickOnLogout();
 //		
 //	}
-
-	@DataProvider
-	public Object[][] approveSector()
-	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", 
-				"CMAApproveSectorSC15TC06");
-	}
-
-	@Test(dataProvider="approveSector")//, dependsOnMethods="addSectorTC07")
-	public void approveSectorTC08(String sno, String cmaUsername, String cmaPassword, String status, 
-			String tpID, String expectedSector, String expectedTrainingTarget,
-			String sectorReviewComments, String sectorComments)throws Exception
-	{
-		precondition();
-		LaunchPage lp = new LaunchPage(driver);
-		Thread.sleep(3000);
-		lp.clickLogin();
-		Thread.sleep(3000);
-		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-		bsp.clickToClose();
-		Thread.sleep(3000);
-		EnterLoginPage elp = new EnterLoginPage(driver);
-		elp.performlogin(cmaUsername, cmaPassword);
-		CMA_DashboardPage cmad = new CMA_DashboardPage(driver);
-		Thread.sleep(8000);
-		cmad.clickOnViewAllSector();
-		CMA_AddSectorRequestPage cmas = new CMA_AddSectorRequestPage(driver);
-		Thread.sleep(3000);
-		cmas.selectStatus(status);
-		cmas.enterTPID(tpID);
-		Thread.sleep(5000);
-		cmas.clickOnApply();
-		Thread.sleep(3000);
-		List <WebElement> button = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
-		int size = button.size();
-		WebElement ele = button.get(size-1);
-		ele.click();
-		Thread.sleep(3000);
-		List<WebElement> sec = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpID+"']]]]//a[contains(text(),'Take Action')]"));
-		int size1 = sec.size();
-		WebElement tab = sec.get(size1-1);
-		tab.click();
-		CMA_SectorInfoPage cmsi = new CMA_SectorInfoPage(driver);
-		Thread.sleep(3000);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedSector);
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposedTrainingTarget']")).getAttribute("value"), expectedTrainingTarget);
-		cmsi.clickOnDownloadSectorApprovalButton();
-		cmsi.clickOnDownloadAffiliationCertificateFromSSC();
-		Thread.sleep(10000);
-		cmsi.selectReviewComments(sectorReviewComments);
-		cmsi.enterReviewComents_ForSector(sectorComments);
-		cmsi.clickOnSubmitResponse();
-		Thread.sleep(3000);
-		cmas.selectStatus(sectorComments);
-		cmas.enterTPID(tpID);
-		Thread.sleep(5000);
-		cmas.clickOnApply();
-		Thread.sleep(3000);
-		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
-		
-		Thread.sleep(2000);
-		LogOutPage plp = new LogOutPage(driver);
-		Thread.sleep(3000);
-		plp.clickOnProfileLogo();
-		plp.clickOnLogout();
-		
-	}
-	
-//	
+/////////// working fine approveSector
 //	@DataProvider
-//	public Object[][] addCourses()
+//	public Object[][] approveSector()
 //	{
-//		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05");
+//		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", 
+//				"CMAApproveSectorSC15TC06");
 //	}
 //
-//	@Test(dataProvider="addCourses",dependsOnMethods="approveSectorTC08")
-//	public void addCourseTC09(String srno, String tpusername, String tppassword, String projectName, String sector, String addedCourse, String jobRole, String jobRoleName, String courseName, String nsqfLevel, String courseDescription, String certificateName, String minimumAge, String minimumEducation, String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String courseApprovalFile, String affiliationFile, String workOrderFile, String challanOfFeePaid, String stampPaper) throws Exception
+//	@Test(dataProvider="approveSector")//, dependsOnMethods="addSectorTC07")
+//	public void approveSectorTC08(String sno, String cmaUsername, String cmaPassword, String status, 
+//			String tpID, String expectedSector, String expectedTrainingTarget,
+//			String sectorReviewComments, String sectorComments)throws Exception
 //	{
-//		LoginPage lp = new LoginPage(driver);
+//		precondition();
+//		LaunchPage lp = new LaunchPage(driver);
+//		Thread.sleep(3000);
 //		lp.clickLogin();
 //		Thread.sleep(3000);
 //		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
 //		bsp.clickToClose();
 //		Thread.sleep(3000);
 //		EnterLoginPage elp = new EnterLoginPage(driver);
-//		elp.performlogin(tpusername, tppassword);
-//		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
-//		Thread.sleep(20000);
-//		tpdp.clickOnMySchemes();
-//		Thread.sleep(10000);
-//		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
-//		Thread.sleep(4000);
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-//		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();		
-//		TP_FeeBased_DashboardPage tpfb = new TP_FeeBased_DashboardPage(driver);
+//		elp.performlogin(cmaUsername, cmaPassword);
+//		CMA_DashboardPage cmad = new CMA_DashboardPage(driver);
+//		Thread.sleep(8000);
+//		cmad.clickOnViewAllSector();
+//		CMA_AddSectorRequestPage cmas = new CMA_AddSectorRequestPage(driver);
 //		Thread.sleep(3000);
-//		tpfb.clickOnViewSectorAndCourses();
-//		TP_FeeBased_ViewAllSectorAndCoursesPage fbsc = new TP_FeeBased_ViewAllSectorAndCoursesPage(driver);
+//		cmas.selectStatus(status);
+//		cmas.enterTPID(tpID);
 //		Thread.sleep(5000);
+//		cmas.clickOnApply();
+//		Thread.sleep(3000);
+//		List <WebElement> button = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']"));
+//		int size = button.size();
+//		WebElement ele = button.get(size-1);
+//		ele.click();
+//		Thread.sleep(3000);
+//		List<WebElement> sec = driver.findElements(By.xpath("//tr[td[span[span[text()='"+tpID+"']]]]//a[contains(text(),'Take Action')]"));
+//		int size1 = sec.size();
+//		WebElement tab = sec.get(size1-1);
+//		tab.click();
+//		CMA_SectorInfoPage cmsi = new CMA_SectorInfoPage(driver);
+//		Thread.sleep(3000);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='sectorName']")).getAttribute("value"), expectedSector);
+//		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='proposedTrainingTarget']")).getAttribute("value"), expectedTrainingTarget);
+//		cmsi.clickOnDownloadSectorApprovalButton();
+//		cmsi.clickOnDownloadAffiliationCertificateFromSSC();
+//		Thread.sleep(10000);
+//		cmsi.selectReviewComments(sectorReviewComments);
+//		cmsi.enterReviewComents_ForSector(sectorComments);
+//		cmsi.clickOnSubmitResponse();
+//		Thread.sleep(3000);
+//		cmas.selectStatus(sectorComments);
+//		cmas.enterTPID(tpID);
+//		Thread.sleep(5000);
+//		cmas.clickOnApply();
+//		Thread.sleep(3000);
+//		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//span[text()='"+sectorComments+"'])[1]")).getText(), sectorComments);
 //		
-//		fbsc.clickOnAddedCourse();
+//		Thread.sleep(2000);
+//		LogOutPage plp = new LogOutPage(driver);
 //		Thread.sleep(3000);
-//		//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+addedCourse+"']]//span[text()='RECOMMENDED']")).getText(), "RECOMMENDED");
-//		Thread.sleep(3000);
-//		fbsc.clickOnAddCourse();
-//		TP_FeeBased_AddCourseToSectorsPage adc = new TP_FeeBased_AddCourseToSectorsPage(driver);
+//		plp.clickOnProfileLogo();
+//		plp.clickOnLogout();
 //		
-//		adc.selectSector(sector);
-//		adc.selectJobRoleMappingType(jobRole);
-//		if(jobRole.equals("QP-NOS"))
-//		{
-//			Thread.sleep(3000);
-//			adc.selectAssociatedQPOrJobRoleName(jobRoleName);
-//			Thread.sleep(3000);
-//			adc.enterCourseName(courseName);
-//			nsqfLevel = driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value");
-//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05", Integer.parseInt(srno), 9, nsqfLevel);
-//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveCourseSC15TC07", Integer.parseInt(srno), 9, nsqfLevel);
-//			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(srno), 16, nsqfLevel);
-//			//adc.enterCourseDescription(courseDescription);
-//			adc.enterNameOfTheCertificateIssued(certificateName);
-//			//adc.selectMinimumAge(minimumAge);
-//		}
-//		else
-//		{
-//			adc.enterCourseName(courseName);
-//			adc.enterCourseDescription(courseDescription);
-//			adc.enterNameOfTheCertificateIssued(certificateName);
-//			adc.selectMinimumAge(minimumAge);
-//		}
-//		
-//		adc.selectMinimumEducationRequired(minimumEducation);
-//		String education = adc.selectFirstMinimumEducation();
-//		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05", Integer.parseInt(srno), 13, education);
-//		adc.enterCourseDuration(courseDuration);
-//		adc.enterNumberOfHours(hourPerDay);
-//		adc.enterCourseFee(courseFee);
-//		adc.selectGradingPrefrences(gradingPreference);
-//		Thread.sleep(3000);
-//		adc.clickOnCourseApprovalDocument_BrowseFile();
-//		Thread.sleep(3000);
-//		UploadFile.upload(courseApprovalFile);
-//		Thread.sleep(3000);
-//		adc.clickOnCourseApprovalDocument_UploadFile();
-//		Thread.sleep(3000);
-//		adc.clickOnAffiliationCertificate_BrowseFile();
-//		Thread.sleep(3000);
-//		UploadFile.upload(affiliationFile);
-//		Thread.sleep(3000);
-//		adc.clickOnAffiliationCertificate_UploadFile();
-//		Thread.sleep(3000);
-//		adc.clickOnWorkOrder_BrowseFile();
-//		Thread.sleep(3000);
-//		UploadFile.upload(workOrderFile);
-//		Thread.sleep(3000);
-//		adc.clickOnWorkOrder_UploadFile();
-//		Thread.sleep(3000);
-//		adc.clickOnChallanOfFeePaid_BrowseFile();
-//		Thread.sleep(3000);
-//		UploadFile.upload(challanOfFeePaid);
-//		Thread.sleep(3000);
-//		adc.clickOnChallanOfFeePaid_UploadFile();
-//		Thread.sleep(3000);
-//		adc.clickOnStampPaper_BrowseFile();
-//		Thread.sleep(3000);
-//		UploadFile.upload(stampPaper);
-//		Thread.sleep(3000);
-//		adc.clickOnStampPaper_UploadFile();
-//		Thread.sleep(3000);
-//		adc.clickOnSubmit();
-//		Thread.sleep(3000);
-//		fbsc.clickOnAddedCourse();
-//		Thread.sleep(3000);
-//		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+courseName+"']]//span[text()='CREATED']")).getText(), "CREATED");
+//	}
+	/////////////add course fine
+//	
+	@DataProvider
+	public Object[][] addCourses()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls",
+				"MySchemeAddCoursSC15TC05");
+	}
+
+	@Test(dataProvider="addCourses")//,dependsOnMethods="approveSectorTC08"
+	public void addCourseTC09(String srno, String tpusername, String tppassword,String projectName, String sector,
+			String addedCourse, String jobRole,String jobRoleName, String courseName, String nsqfLevel, 
+			String courseDescription, String certificateName, String minimumAge, String minimumEducation, 
+			String courseDuration, String hourPerDay, String courseFee, String gradingPreference, String stampPaper) throws Exception
+	{
+		
+		precondition();
+		LaunchPage lp = new LaunchPage(driver);
+	
+		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		bsp.clickToClose();
+		Thread.sleep(3000);
+		EnterLoginPage elp = new EnterLoginPage(driver);
+		elp.performlogin(tpusername, tppassword);
+		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
+		Thread.sleep(10000);
+		tpdp.clickOnMySchemes();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+		Thread.sleep(4000);
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectName+"']]]]//a[contains(text(),'View Details')]")).click();		
+		TP_FeeBased_DashboardPage tpfb = new TP_FeeBased_DashboardPage(driver);
+		Thread.sleep(3000);
+		tpfb.clickOnViewSectorAndCourses();
+		TP_FeeBased_ViewAllSectorAndCoursesPage fbsc = new TP_FeeBased_ViewAllSectorAndCoursesPage(driver);
+		Thread.sleep(5000);
+		
+		fbsc.clickOnAddedCourse();
+		Thread.sleep(3000);
+		//Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+addedCourse+"']]//span[text()='RECOMMENDED']")).getText(), "RECOMMENDED");
+		Thread.sleep(3000);
+		fbsc.clickOnAddCourse();
+		TP_FeeBased_AddCourseToSectorsPage adc = new TP_FeeBased_AddCourseToSectorsPage(driver);
+		
+		adc.selectSector(sector);
+		adc.selectJobRoleMappingType(jobRole);
+		if(jobRole.equals("QP-NOS"))
+		{
+			Thread.sleep(3000);
+			adc.selectAssociatedQPOrJobRoleName(jobRoleName);
+			Thread.sleep(3000);
+			adc.enterCourseName(courseName);
+			nsqfLevel = driver.findElement(By.xpath("//input[@id='nsqfLevel']")).getAttribute("value");
+			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05", Integer.parseInt(srno), 9, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveCourseSC15TC07", Integer.parseInt(srno), 9, nsqfLevel);
+			ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CreateBatch&EnrollCandSC15TC010", Integer.parseInt(srno), 16, nsqfLevel);
+			//adc.enterCourseDescription(courseDescription);
+			adc.enterNameOfTheCertificateIssued(certificateName);
+			//adc.selectMinimumAge(minimumAge);
+		}
+		else
+		{
+			adc.enterCourseName(courseName);
+			adc.enterCourseDescription(courseDescription);
+			adc.enterNameOfTheCertificateIssued(certificateName);
+			adc.selectMinimumAge(minimumAge);
+		}
+		
+		adc.selectMinimumEducationRequired(minimumEducation);
+		String education = adc.selectFirstMinimumEducation();
+		ReadWriteData.setExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "MySchemeAddCoursSC15TC05", Integer.parseInt(srno), 13, education);
+		adc.enterCourseDuration(courseDuration);
+		adc.enterNumberOfHours(hourPerDay);
+		adc.enterCourseFee(courseFee);
+		adc.selectGradingPrefrences(gradingPreference);
+		Thread.sleep(3000);
+	//
+		adc.clickOnStampPaper_BrowseFile();
+		Thread.sleep(3000);
+		UploadFile.upload(stampPaper);
+		Thread.sleep(3000);
+		adc.clickOnStampPaper_UploadFile();
+		Thread.sleep(3000);
+		adc.clickOnSubmit();
+		Thread.sleep(3000);
+		fbsc.clickOnAddedCourse();
+		Thread.sleep(3000);
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+courseName+"']]//span[text()='CREATED']")).getText(), "CREATED");
 //		if(jobRole.equals("QP-NOS"))
 //		{
 //			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+courseName+"']]//td[text()='"+jobRoleName+"']")).getText(), jobRoleName);
@@ -1918,24 +1904,26 @@ public class Non_PMkvy_Schemes extends TestConfiguration {
 //		{
 //			Assert.assertEquals(driver.findElement(By.xpath("//tr[td[text()='"+courseName+"']]//td[text()='"+hourPerDay+"']")).getText(), hourPerDay);
 //		}
-//		
-//		PostLoginPage  plp = new PostLoginPage(driver);
-//		Thread.sleep(5000);
-//		plp.clickOnProfileLogo();
-//		plp.clickOnLogout();
-//		
-//	}
-//	
+		LogOutPage plp = new LogOutPage(driver);
+		  
+		Thread.sleep(5000);
+		plp.clickOnProfileLogo();
+		plp.clickOnLogout();
+		
+	}
+	
 //	@DataProvider
 //	public Object[][] approveCourses()
 //	{
 //		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/TP_MyScheme-Workflow.xls", "CMAApproveCourseSC15TC07");
 //	}
 //
-//	@Test(dataProvider="approveCourses",dependsOnMethods="addCourseTC09")
+//	@Test(dataProvider="approveCourses")//,dependsOnMethods="addCourseTC09"
 //	public void approveCourseTC10(String sno, String cmaUsername, String cmaPassword, String status, String tpID, String expectedSector,String expectedCourseName, String expectedJobRoleMappingType, String expectedJobRoleName, String expectedNSQFLevel, String expectedCourseDescription, String expectedIssuedCertificateName, String expectedMinimumAge, String expectedMinimumEducation, String expectedCourseDuration, String expectedNumberOfHours, String expectedCourseFee, String expectedGradingPrefrences, String qpNosCentre, String courseReviewComments, String courseComments)throws Exception
 //	{
-//		LoginPage lp = new LoginPage(driver);
+//		
+//		precondition();
+//	LaunchPage lp = new LaunchPage(driver);
 //		Thread.sleep(3000);
 //		lp.clickLogin();
 //		Thread.sleep(3000);
@@ -2013,7 +2001,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration {
 //		plp.clickOnProfileLogo();
 //		plp.clickOnLogout();
 //	}
-//
+
 //
 //	@DataProvider
 //	public Object[][] linkTrainer()
