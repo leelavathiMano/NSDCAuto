@@ -1,7 +1,9 @@
 package com.nsdc.Pages_NON_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -27,13 +29,13 @@ public class TP_FeeBased_ViewAllSectorAndCoursesPage
 	private WebElement sectorDropDownList;
 	@FindBy(id="proposedTrainingTarget")
 	private WebElement proposedTrainingTargetTextbox;
-	@FindBy(xpath="(//input[@id='customFile'])[1]")
+	@FindBy(xpath="(//input[@id='customFile'])[5]")//label[contains(text(),'Choose Upload Undertaking Documents')]
 	private WebElement undertakingDocument_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	@FindBy(xpath="//label[contains(text(), 'Upload Undertaking Documents:')]/..//button[contains(text(),'Upload')]")
 	private WebElement undertakingDocument_UploadFileButton;
-	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	@FindBy(xpath="(//input[@id='customFile'])[6]")
 	private WebElement affiliationCertificate_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	@FindBy(xpath="//label[contains(text(), 'Upload Affiliation Certificates from SSC')]/..//button[contains(text(),'Upload')]")
 	private WebElement affiliationCertificate_UploadFileButton;
 	@FindBy(xpath="//button[text()='Cancel']")
 	private WebElement cancelButton;
@@ -93,7 +95,11 @@ public class TP_FeeBased_ViewAllSectorAndCoursesPage
 	
 	public void clickOnUndertakingDocument_BrowseFile()
 	{
-		undertakingDocument_BrowseFileButton.click();
+//		Actions action = new Actions(driver);
+//		action.click(undertakingDocument_BrowseFileButton).perform();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", undertakingDocument_BrowseFileButton);
+		//undertakingDocument_BrowseFileButton.click();
 	}
 	
 	public void clickOnUndertakingDocument_UploadFile()
@@ -103,11 +109,14 @@ public class TP_FeeBased_ViewAllSectorAndCoursesPage
 	
 	public void clickOnAffiliationCertificate_BrowseFile()
 	{
-		affiliationCertificate_BrowseFileButton.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();",affiliationCertificate_BrowseFileButton );
+		//affiliationCertificate_BrowseFileButton.click();
 	}
 	
 	public void clickOnAffiliationCertificate_UploadFile()
 	{
+		
 		affiliationCertificate_UploadFileButton.click();
 	}
 	

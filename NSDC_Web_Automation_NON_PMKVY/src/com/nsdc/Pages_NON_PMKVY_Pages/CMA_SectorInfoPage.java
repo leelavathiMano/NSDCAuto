@@ -12,10 +12,10 @@ public class CMA_SectorInfoPage
 {
 	WebDriver driver;
 	
-	@FindBy(xpath="//button[text()='Download Sector Approval Documents:']")
-	private WebElement downlodSectorApprovalDocumentButton;
-	@FindBy(xpath="//button[text()='Download Upload Affiliation Certificates from SSC:']")
-	private WebElement downloadAffiliationCertificateFromSSCButton;
+	@FindBy(xpath="//button[text()='Download Upload Undertaking Documents']")
+	private WebElement DownloadUploadUndertakingDocumentsButton;
+	@FindBy(xpath="//button[text()='Download Upload Affiliation Certificates from SSC']")
+	private WebElement DownloadUploadAffiliationCertificatesfromSSCButton;
 	@FindBy(xpath="//select[@id='review']")
 	private WebElement reviewCommentsDropDownList;
 	@FindBy(xpath="//textarea[@id='comment']")
@@ -34,14 +34,14 @@ public class CMA_SectorInfoPage
 	
 	public void clickOnDownloadSectorApprovalButton()throws Exception
 	{
-		downlodSectorApprovalDocumentButton.click();
+		DownloadUploadUndertakingDocumentsButton.click();
 		Thread.sleep(2000);
 		FilePreview.closeWindow(driver);
 	}
 	
 	public void clickOnDownloadAffiliationCertificateFromSSC()throws Exception
 	{
-		downloadAffiliationCertificateFromSSCButton.click();
+		DownloadUploadAffiliationCertificatesfromSSCButton.click();
 		Thread.sleep(2000);
 		FilePreview.closeWindow(driver);
 	}
