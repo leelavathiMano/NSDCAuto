@@ -100,7 +100,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
 			tpMp.clickToChooseIndividualCandidateRegistration();
 			tpMp.clickRegister();
-			Thread.sleep(6000);
+			Thread.sleep(3000);
 			//Personal Details Page
 			TrainingPartner_CandidateRegistrationPage tpCrp=new TrainingPartner_CandidateRegistrationPage(driver);
 			Thread.sleep(2000);
@@ -233,8 +233,8 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 				tpCrp.selectExperienceMonths(experienceInMonths);
 			}
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(10000);
-			//hearaboutus and Course Preferences Page
+			Thread.sleep(8000);
+			//Hear about us and Course Preferences Page
 //			tpCrp.selectSector(sector1);
 //			tpCrp.selectSubSector(subSector1);
 //			tpCrp.selectJobRole(jobRole1, jobRoleCode1);
