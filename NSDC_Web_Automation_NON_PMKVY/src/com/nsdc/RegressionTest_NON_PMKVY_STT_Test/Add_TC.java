@@ -224,17 +224,11 @@ public class Add_TC extends TestConfiguration {
 		fbad.clickOnSubmit_SectorTarget();
 		Thread.sleep(3000);
 		
-//		Thread.sleep(5000);
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("scroll(0, 900)");
-//		fbad.clickOnSubmit();
-//		Thread.sleep(3000);
-//
-//		fbad.clickOnYesAddTrainingCentre();
-//		Thread.sleep(3000); 
-//		// fbad.clickOnOK();
 //		
-		fbd.clickOnViewTrainingCentres();
+		fbad.clickOnSaveAndContinue();
+		Thread.sleep(3000);
+
+//	
 
 		Assert.assertEquals(driver.findElement(By.xpath("(//tr[td[span[span[text()='Training Centre 1']]]]//span[text()='Profile Pending'])[1]")).getText(), "Profile Pending");
 		LogOutPage plp = new LogOutPage(driver);
