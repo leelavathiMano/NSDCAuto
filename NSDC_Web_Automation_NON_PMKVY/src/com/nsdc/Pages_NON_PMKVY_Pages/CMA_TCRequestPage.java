@@ -13,8 +13,8 @@ public class CMA_TCRequestPage
 	
 	@FindBy(xpath="//select[option[text()='Select a TP/PIA ID']]")
 	private WebElement tpIDDropDownList;
-	@FindBy(xpath="//select[option[text()='Select a TP/PIA Name']]")
-	private WebElement tpNameDropDownList;
+	@FindBy(xpath="//input[@placeholder='TP ID']")
+	private WebElement TPid_Textbox;
 	@FindBy(xpath="//select[option[text()='Select a Type']]")
 	private WebElement typeDropDownList;
 	@FindBy(xpath="//select[option[text()='Select a Status']]")
@@ -34,9 +34,9 @@ public class CMA_TCRequestPage
 		SelectDropDownList.selectDropDownListByVisibleText(tpIDDropDownList, tpID);
 	}
 	
-	public void selectTPName(String tpName)
+	public void EnterTPid(String tpid)
 	{
-		SelectDropDownList.selectDropDownListByVisibleText(tpNameDropDownList, tpName);
+		TPid_Textbox.sendKeys(tpid);
 	}
 	
 	public void selectType(String type)
