@@ -149,7 +149,7 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 //			}
 			tpCrp.enterMotherName(motherName);
 			tpCrp.enterFatherName(fatherName);
-			tpCrp.enterNameOFGuardian(guardianName);
+			//tpCrp.enterNameOFGuardian(guardianName);
 			if(aadhaarOrAlterternateId.equalsIgnoreCase("aadhaar"))
 			{
 				tpCrp.clickToChooseAadhaar();
@@ -205,9 +205,9 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.ClickBankName();
 			Thread.sleep(1000);
 			tpCrp.enterSearchBankName(bankName);
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			tpCrp.ChooseBankName();
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 //			tpCrp.ClickOKButton();
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
