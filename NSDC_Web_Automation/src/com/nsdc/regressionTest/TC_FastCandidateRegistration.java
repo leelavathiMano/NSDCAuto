@@ -1,14 +1,8 @@
 package com.nsdc.regressionTest;
 
-import java.time.Duration;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import com.nsdc.generic.ReadWriteData;
@@ -21,10 +15,10 @@ import com.nsdc.pages.TC_CandidateRegistrationPage;
 import com.nsdc.pages.TC_MyCandidatesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
-public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
+public class TC_FastCandidateRegistration extends TestConfiguration
 {
 	@Test
-	public void tcRegisteringCandidatesTC01() throws Exception
+	public void tpRegisteringCandidates() throws Exception
 	{
 		String total_Candidates=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", 1, 1);
 		int totalCandidates=Integer.parseInt(total_Candidates);
@@ -32,8 +26,6 @@ public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 		{
 			String trainingPartnerID=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 2);
 			String trainingPartnerPassword=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 3);
-			String mobileNumber=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 4);
-			String emailID=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 5);
 			String sector1=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 6);
 			String subSector1=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 7);
 			String jobRole1=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Configurable-Fields", i, 8);
@@ -42,6 +34,8 @@ public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 			String fullName=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 5);
 			String profilePicture=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 6);
 			String countryCode=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 7);
+			String mobileNumber=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 8);
+			String emailID=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 9);
 			String gender=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 10);
 			String maritalStatus=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 12);
 			String birthState=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 14);
@@ -73,47 +67,54 @@ public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 			String preTrainingStatus=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 53);
 			String experienceInMonths=ReadWriteData.getData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 54);
 			
-			WebDriverWait wait=new WebDriverWait(driver,25);
-			FluentWait<WebDriver> fwait=new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+			WebDriverWait wait=new WebDriverWait(driver,30);
 			TC_CandidateRegistrationPage tcCrp=new TC_CandidateRegistrationPage(driver);
 			TC_MyCandidatesPage tcMp=new TC_MyCandidatesPage(driver);
 			if(i==1)
 			{
 				LoginPage lp=new LoginPage(driver);
 				lp.clickLogin();
-				BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+				Thread.sleep(1000);
+                driver.findElement(By.xpath("(//button[@type='button'])[1]")).click();
+                Thread.sleep(1000);
+				//Thread.sleep(2000);
+				/*BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
 		        bvp.clickToClose();
+		        Thread.sleep(2000);*/
 				EnterLoginPage elp=new EnterLoginPage(driver);
 				elp.performlogin(trainingPartnerID, trainingPartnerPassword);
+				JavascriptExecutor js=(JavascriptExecutor)driver;
+				js.executeScript("window.scrollBy(0,500)", "");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcCrp.clickMyCandidates();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Register Candidate')]")));
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Register Candidate')]")));
+				Thread.sleep(1000);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcMp.clickRegisterCandidate();
+				Thread.sleep(1000);
 			}
 			if(i!=1)
 			{
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Register Candidate')]")));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("blockUI.blockOverlay")));
 				tcMp.clickRegisterCandidate();
 			}
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//label[@class='m-radio'])[2]")));
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//label[@class='m-radio'])[2]")));
+			Thread.sleep(4000);
 			tcMp.clickToChooseIndividualCandidateRegistration();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Register')]")));
 			tcMp.clickRegister();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//label[input[@formcontrolname='gender']])[1]")));
+			Thread.sleep(3000);
 			//Personal Details Page
 			tcCrp.selectNamePrefix(namePrefix);
 			tcCrp.enterFullName(fullName);
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[contains(text(),'Candidate Full Name:')]")));
+			/*Thread.sleep(2000);
 			tcCrp.clickToBrowseProfilePicture();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			UploadFile.upload(profilePicture);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			tcCrp.clickToUploadProfilePicture();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
-//			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
-			tcCrp.selectCountryCode(countryCode);
+			Thread.sleep(4000);*/
+			driver.findElement(By.xpath("//input[@id='customFile'][1]")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+            driver.findElement(By.xpath("(//button[@type='button'])[1]")).click();
+            Thread.sleep(6000);
+			//tcCrp.selectCountryCode(countryCode);
 			tcCrp.enterMobileNumber(mobileNumber);
 			tcCrp.enterEmailID(emailID);
 			tcCrp.clickToChooseGender(gender);
@@ -123,69 +124,74 @@ public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 //		  	tpCrp.selectMaritalStatus(maritalStatus);
 //			tpCrp.enterPlaceOfBirth(placeOfBirth);
 			tcCrp.selectBirthState(birthState);
+			Thread.sleep(2000);
 			tcCrp.selectBirthDistrict(birthDistrict);
+			Thread.sleep(2000);
 			tcCrp.selectCast(cast);
 			tcCrp.selectReligion(religion);	
 			if(isDisabled.equalsIgnoreCase("yes"))
 			{
 				tcCrp.clickDisabilityYes();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@formcontrolname='disabilityCategory']")));
+				Thread.sleep(2000);
 				tcCrp.selectDisablity(disablity);
-				tcCrp.clickToBrowsedisabilityProofDoc();
-				Thread.sleep(1000);
-				UploadFile.upload(disabilityProofDoc);
-				Thread.sleep(1000);
+				Thread.sleep(2000);
+				/*tcCrp.clickToBrowsedisabilityProofDoc();
+				Thread.sleep(2000);
+				UploadFile.upload(disabilityProofDoc);*/
+				driver.findElement(By.xpath("(//input[@id='customFile'])[2]")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+                driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+				Thread.sleep(2000);
 				tcCrp.clickToUploadDisabilityProofDoc();
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'1 file uploaded successfully')]")));
-//				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'1 file uploaded successfully')]")));
+				Thread.sleep(5000);
 			}
-//			else if(isDisabled.equalsIgnoreCase("no"))
-//			{
-//				tcCrp.clickDisabilityNo();
-//			}
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//label[input[@formcontrolname='gender']])[1]")));
+			else if(isDisabled.equalsIgnoreCase("no"))
+			{
+				tcCrp.clickDisabilityNo();
+				Thread.sleep(1000);
+			}
 			tcCrp.enterMotherName(motherName);
 			tcCrp.enterFatherName(fatherName);
-//			tcCrp.enterNameOFGuardian(guardianName);
+			tcCrp.enterNameOFGuardian(guardianName);
 			if(aadhaarOrAlterternateId.equalsIgnoreCase("aadhaar"))
 			{
 				tcCrp.clickToChooseAadhaar();
 				tcCrp.enterAadhaarNumber(aadhaarNumber);
-//				tcCrp.clickToVerifyAadhaar();
-				tcCrp.clickDummyVerify();
+				tcCrp.clickToVerifyAadhaar();
+				Thread.sleep(2000);
 			}
 			else
 			{
 				tcCrp.clickToChooseAlternateId();
 				tcCrp.selectAlternateIdtype(alternateIdType);
 				tcCrp.enterAlternateID(alternateID);
-				tcCrp.clickToBrowseAlternateIdFile(isDisabled);
+				Thread.sleep(3000);
+				/*tcCrp.clickToBrowseAlternateIdFile(isDisabled);
 				Thread.sleep(1000);
 				UploadFile.upload(alternateIdFile);
-				tcCrp.clickToUploadAlternateIdFile(isDisabled);
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
-//				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(text(),'file uploaded successfully')]")));
+				Thread.sleep(1000);
+				tcCrp.clickToUploadAlternateIdFile(isDisabled);*/
+				driver.findElement(By.xpath("//label[contains(text(),'Upload ID Proof Copy:')]/following::input[1]")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+                driver.findElement(By.xpath("//label[contains(text(),'Upload ID Proof Copy:')]/following::button[1]")).click();
+				Thread.sleep(4000);
 			}
 			tcCrp.enterAddress(address);
 			tcCrp.selectState(state);
+			Thread.sleep(2000);
 			tcCrp.selectDistrict(district);	
-			wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(By.xpath("//select[@formcontrolname='subDistrict']"), By.tagName("option")));
-			Thread.sleep(1000);
-//			tcCrp.selectSubDistrict(subDistrict);
+			Thread.sleep(2000);
+//			tpCrp.selectSubDistrict(subDistrict);
+//			Thread.sleep(2000);
 			tcCrp.enterPincode(pincode);
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(4000);
-//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
-//			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[label[contains(text(),'Same as Permanent Address')]]/div/label/span")));
+			Thread.sleep(5000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
 			String registeredCandidateID=parts[parts.length-1];
 			ReadWriteData.setExcelData("./TestData/Workflow/TC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 1, registeredCandidateID);
 			tcCrp.clickSameAsPermanetAddress();
-			Thread.sleep(1000);
 			tcCrp.enterAccountHolderName(fullName);	
 			tcCrp.enterAccountNumber(accountNumber);
 			tcCrp.enterIFSC(ifsc);
@@ -195,15 +201,19 @@ public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			//Education
 			tcCrp.selectEducation(education1);
+			Thread.sleep(1000);
 			tcCrp.selectYearOfPassing(yearOfPassing1);
-			tcCrp.clickToBrowseEducationProofDoc();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
+			/*tcCrp.clickToBrowseEducationProofDoc();
+			Thread.sleep(2000);
 			UploadFile.upload(education1Proof);
-			Thread.sleep(1000);
-			tcCrp.clickToUploadEducationProof();
+			Thread.sleep(2000);
+			tcCrp.clickToUploadEducationProof();*/
+			driver.findElement(By.xpath("//input[@id='customFile']")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+            driver.findElement(By.xpath("(//button[@type='button'])[3]")).click();
 			Thread.sleep(4000);
 			//Candidate Experience
 			tcCrp.selectPreTrainingStatus(preTrainingStatus);
@@ -213,18 +223,19 @@ public class TC_FastCandidateRegistrationTestSC_26 extends TestConfiguration
 				tcCrp.selectCandidateExperienceJobRole(jobRole1, jobRoleCode1);
 				tcCrp.selectExperienceMonths(experienceInMonths);
 			}
-			Thread.sleep(1000);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			//hearaboutus and Course Preferences Page
-//			tcCrp.selectSector(sector1);
-//			tcCrp.selectSubSector(subSector1);
-//			tcCrp.selectJobRole(jobRole1, jobRoleCode1);
+			tcCrp.selectSector(sector1);
+			tcCrp.selectSubSector(subSector1);
+			tcCrp.selectJobRole(jobRole1, jobRoleCode1);
+			Thread.sleep(2000);
 			tcCrp.clickSaveAndContinue();
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			tcCrp.clickIAgree();
 			Thread.sleep(1000);
 			tcCrp.clickToAgreeAndSubmit();
+			Thread.sleep(5000);
 			tcCrp.clickOK();
 			Thread.sleep(5000);
 		}

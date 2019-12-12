@@ -14,13 +14,13 @@ public class CMA_CourseInfoPage
 	
 	@FindBy(xpath="//button[text()='Download Course Approval Documents:']")
 	private WebElement downloadCourseApprovalDocumentButton;
-	@FindBy(xpath="//button[text()='Download Upload Affiliation Certificates from SSC:']")
-	private WebElement downloadAffiliationCertificateFromSSCButton;
-	@FindBy(xpath="//button[text()='Download Upload Work Order:']")
-	private WebElement downloadWorkOrderButton;
-	@FindBy(xpath="//button[text()='Download Upload Challan of the Fee Paid:']")
-	private WebElement downloadChallanOfFeePaidButton;
-	@FindBy(xpath="//button[text()='Download Upload Stamp paper with Self Declaration:']")
+//	@FindBy(xpath="//button[text()='Download Upload Affiliation Certificates from SSC:']")
+//	private WebElement downloadAffiliationCertificateFromSSCButton;
+//	@FindBy(xpath="//button[text()='Download Upload Work Order:']")
+//	private WebElement downloadWorkOrderButton;
+//	@FindBy(xpath="//button[text()='Download Upload Challan of the Fee Paid:']")
+//	private WebElement downloadChallanOfFeePaidButton;
+	@FindBy(xpath="//button[text()='Download Upload Stamp paper with Self Declaration']")
 	private WebElement downloadStampPaperButton;
 	@FindBy(xpath="//select[@id='qpNosAlignedCentre']")
 	private WebElement qpNosAllignedCentreDropDownList;
@@ -47,27 +47,27 @@ public class CMA_CourseInfoPage
 		FilePreview.closeWindow(driver);
 	}
 	
-	public void clickOnDownloadAffiliationCertificateFromSSC()throws Exception
-	{
-		downloadAffiliationCertificateFromSSCButton.click();
-		Thread.sleep(2000);
-		FilePreview.closeWindow(driver);
-	}
-	
-	public void clickOnDownloadWorkOrder()throws Exception
-	{
-		downloadWorkOrderButton.click();
-		Thread.sleep(2000);
-		FilePreview.closeWindow(driver);
-	}
-	
-	public void clciOnDownloadChallanOfFeePaid()throws Exception
-	{
-		downloadChallanOfFeePaidButton.click();
-		Thread.sleep(2000);
-		FilePreview.closeWindow(driver);
-	}
-	
+//	public void clickOnDownloadAffiliationCertificateFromSSC()throws Exception
+//	{
+//		downloadAffiliationCertificateFromSSCButton.click();
+//		Thread.sleep(2000);
+//		FilePreview.closeWindow(driver);
+//	}
+//	
+//	public void clickOnDownloadWorkOrder()throws Exception
+//	{
+//		downloadWorkOrderButton.click();
+//		Thread.sleep(2000);
+//		FilePreview.closeWindow(driver);
+//	}
+//	
+//	public void clciOnDownloadChallanOfFeePaid()throws Exception
+//	{
+//		downloadChallanOfFeePaidButton.click();
+//		Thread.sleep(2000);
+//		FilePreview.closeWindow(driver);
+//	}
+//	
 	public void clickOnDownloadStampPaperWithSelfDeclaration()throws Exception
 	{
 		downloadStampPaperButton.click();

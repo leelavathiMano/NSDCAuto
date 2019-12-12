@@ -1,5 +1,8 @@
 package com.nsdc.Pages_NON_PMKVY_Pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -97,6 +100,32 @@ WebDriver driver;
   {
 	  Add_program.click();
   }
-}
+  public void selectscheme(String NameofschemeName,String Subscheme) throws InterruptedException
+  {
+  WebElement MySchemesListTable = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']"));
+	
+	List<WebElement> rowstable = MySchemesListTable.findElements(By.tagName("tr"));
 
+	int rows_count = rowstable.size();
+
+	for (int row = 1; row < rows_count; row++) {
+
+String nameofTheScheme = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr["+row+"]//td[2]")).getText();
+
+			String SUBScheme = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr//td[span[span[text()='"+Subscheme+"']]]")).getText();
+			
+			if (nameofTheScheme.equals(NameofschemeName)&& SUBScheme.equals(Subscheme))
+			{
+				
+				
+				driver.findElement(By.xpath("//tr[td[span[span[text()='"+Subscheme+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+			    driver.findElement(By.xpath("//tr[td[span[span[text()='"+Subscheme+"']]]]//a[contains(text(),'Add Program')]")).click();
+			    Thread.sleep(3000);
+			break;
+			}
+			
+	}
+  
+  }
+}
 	

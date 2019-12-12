@@ -522,7 +522,7 @@ public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String t
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+oldProjectName+"']]]]//a[contains(text(),'View Details')]")).click();
 		TP_FeeBasedProgramPage tpfb = new TP_FeeBasedProgramPage(driver);
 //		Thread.sleep(3000);
-//		tpfb.clickOnCloseButton();
+		tpfb.clickOnCloseButton();
 		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='review']")).getAttribute("value"), daComments);//
 		Assert.assertEquals(driver.findElement(By.xpath("//textarea[@id='comment']")).getAttribute("value"), daReviewComments);

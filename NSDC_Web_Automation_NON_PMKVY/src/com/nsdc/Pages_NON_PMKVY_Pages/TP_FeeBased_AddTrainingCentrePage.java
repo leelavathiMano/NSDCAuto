@@ -266,8 +266,8 @@ public class TP_FeeBased_AddTrainingCentrePage
     private WebElement submit_SectorTargetButton;
     @FindBy(xpath="//button[text()='Cancel']")
     private WebElement cancel_SectorTargetButton;
-    @FindBy(xpath="(//button[contains(text(),'Submit')])[2]")
-    private WebElement submitButton;
+    @FindBy(xpath="//button[contains(text(),'Save & Continue')]")
+    private WebElement SAveAndContinueButton;
     @FindBy(xpath="(//button[contains(text(),'Cancel')])[2]")
     private WebElement cancelButton;
     @FindBy(xpath="//button[text()='Yes']")
@@ -948,9 +948,9 @@ public class TP_FeeBased_AddTrainingCentrePage
 		 cancel_SectorTargetButton.click();
 	 }
 	 
-	 public void clickOnSubmit()
+	 public void clickOnSaveAndContinue()
 	 {
-		 submitButton.click();
+		 SAveAndContinueButton.click();
 	 }
 	 
 	 public void clickOnCancel()

@@ -33,16 +33,16 @@ public class CMA_TrainingCentreInfoPage
 	private WebElement downloadWahRoomPhotosButton;
 	@FindBy (xpath="//button[text()='Download Cafetaria/Dining Room Photos']")
 	private WebElement downloadCafetariaPhotosButton;
-	@FindBy(id="review")
+	@FindBy(xpath="(//select[@formcontrolname='review'])[1]")
 	private WebElement reviewCommentsDropDownList;
-	@FindBy(id="comment")
+	@FindBy(xpath="(//textarea[@formcontrolname='comment'])[1]")
 	private WebElement enterReviewCommentsTextbox;
-	@FindBy(xpath="//button[text()='Submit Response']")
-	private WebElement submitResponseButton;
+	@FindBy(xpath="//button[contains(text(),'Reviews')]")
+	private WebElement SubmitReviewButton;
 	@FindBy(xpath="//button[text()='Cancel']")
 	private WebElement cancelButton;
-	@FindBy(xpath="//button[text()='OK']")
-	private WebElement oKButton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement yesButton;
 	
 	@FindBy(xpath="(//button[text()='Download'])[1]")
 	private WebElement first_Facility_DownloadButton;
@@ -83,7 +83,7 @@ public class CMA_TrainingCentreInfoPage
 	@FindBy(xpath="//p[text()='Adding a Training Centre']")
 	private WebElement addTCText;
 	
-	@FindBy(xpath="//button[contains(text(),'Download Address Proof:')]")
+	@FindBy(xpath="//button[contains(text(),'Download Address Proof')]")
 	private WebElement downloadAddressProofButton;
 	
 	
@@ -148,6 +148,8 @@ public class CMA_TrainingCentreInfoPage
 	
 	public void selectReview(String review)
 	{
+		
+		
 		SelectDropDownList.selectDropDownListByVisibleText(reviewCommentsDropDownList, review);
 	}
 	
@@ -157,9 +159,9 @@ public class CMA_TrainingCentreInfoPage
 		enterReviewCommentsTextbox.sendKeys(reviewComments);
 	}
 	
-	public void clickOnSubmitResponse()
+	public void clickOnSubmitReview()
 	{
-		submitResponseButton.click();
+		SubmitReviewButton.click();
 	}
 	
 	public void clickOnCancel()
@@ -167,9 +169,9 @@ public class CMA_TrainingCentreInfoPage
 		cancelButton.click();
 	}
 	
-	public void clickOnOK()
+	public void clickOnYES()
 	{
-		oKButton.click();
+		yesButton.click();
 	}
 	
 	public void clickOn_First_Facility_Download()throws Exception

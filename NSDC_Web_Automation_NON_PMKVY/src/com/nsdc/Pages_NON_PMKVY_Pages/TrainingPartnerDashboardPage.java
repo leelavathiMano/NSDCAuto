@@ -17,7 +17,7 @@ public class TrainingPartnerDashboardPage
 	private WebElement changeMySPOCButton;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[1]")
 	private WebElement dashboardButton;
-	@FindBy(xpath="//div[@routerlink='./my-schemes']")
+	@FindBy(xpath="//div[p[text()='My Scheme/Program']]")//div[@routerlink='./my-schemes']
 	private WebElement mySchemesButton;
 	
 	//TP - Candidates
