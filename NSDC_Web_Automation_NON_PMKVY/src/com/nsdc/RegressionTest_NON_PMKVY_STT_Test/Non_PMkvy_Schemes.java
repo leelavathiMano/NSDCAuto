@@ -209,11 +209,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 			tpfb.enterProjectTarget(target);
 			tpfb.selectAssessmentMode(assessmentMode);
 			Thread.sleep(1000);
-//			tpfb.clickOnStartDateOfProject();
-//			startDate = driver.findElement(By.xpath("//input[@placeholder='Select Start Date']")).getAttribute("value");
-//			ReadWriteData.setExcelData("./TestData/Workflow/Non_pmkyy.xls", "FeeBasedAddSchemeSC14TC01", Integer.parseInt(sno), 17, startDate);
-//			ReadWriteData.setExcelData("./TestData/Workflow/Non_pmkyy.xls", "FeeBasedAddSchemeSC14TC02", Integer.parseInt(sno), 16, startDate);
-//			tpfb.clickOnSanctionLoanAmount();
+
 
 		}
 		
