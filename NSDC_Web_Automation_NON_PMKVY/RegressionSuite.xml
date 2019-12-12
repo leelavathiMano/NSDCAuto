@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="3" name="Test">
+    <classes>
+  <!--   
+    <class name="com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_STT_RFP_Project_And_Batch_Creation_Test"/>
+     -->
+    <class name="com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_STT_PMKK_Project_And_Batch_Creation_Test"/>
+    
+   <!--  <class name="com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_spworkflowTest"/>
+    --> <!--     <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
+	   	<class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
+	   	
+    	<class name="com.nsdc.regressionTest.TrainerWorkflowTestSC_03"/>
+    	<class name="com.nsdc.regressionTest.AssessorWorkflowTestSC_04"/>
+    	<class name="com.nsdc.regressionTest.CandidateRegistrationWorkflowTestSC_05"/>
+    	<class name="com.nsdc.regressionTest.InspectionAgency_WorkflowTestSC_06"/>
+    	<class name="com.nsdc.regressionTest.SmartAdmin_CreateUserWorkflowTestSC_07"/>
+    	<class name="com.nsdc.regressionTest.SmartBusiness_TCRegistrationWorkflowTestSC_08"/>
+    	<class name="com.nsdc.regressionTest.SmartBusiness_TPRegistrationWorkflowTestSC_09"/>
+    	<class name="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10"/>
+      	<class name="com.nsdc.regressionTest.NSDC_RMSPOC_RozgarMelaWorkflowTestSC_11"/>
+   		<class name="com.nsdc.regressionTest.TrainingPartner_CandidateWorkflowTestSC_12"/>
+     	<class name="com.nsdc.regressionTest.TPSPOCChangeWorkflowTestSC_13"/>
+      	<class name="com.nsdc.regressionTest.FeeBased_AddSchemeWorkflowTestSC_14"/>
+      	<class name="com.nsdc.regressionTest.SSC_ExceptionalTrainingCentreWorkflowSC_15"/>
+	    <class name="com.nsdc.regressionTest.SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16"/>
+      	<class name="com.nsdc.regressionTest.ToT_BatchApplicantsWorkflowTestSC_17"/>
+      	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/> -->
+   
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

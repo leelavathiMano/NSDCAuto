@@ -1,10 +1,15 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.nsdc.generic.SelectDropDownList;
 
 public class TC_CandidateRegistrationPage
@@ -12,7 +17,8 @@ public class TC_CandidateRegistrationPage
 	WebDriver driver;
 	@FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
 	private WebElement myCandidatesLinktext;
-	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+//	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+	@FindBy(id="exampleSelect1")
 	private WebElement namePrefixDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='firstName']")
 	private WebElement fullNameTextbox;
@@ -198,6 +204,8 @@ public class TC_CandidateRegistrationPage
 	private WebElement candidateExperienceMonthsDropdownList;
 	@FindBy(xpath="//select[@formcontrolname='sectorId']")
 	private WebElement candidateExperienceYearDropdownList;
+	@FindBy(xpath="//button[contains(text(),'Dummy Verify')]")
+	private WebElement dummyVerifyButton;
 	
 	public TC_CandidateRegistrationPage(WebDriver driver)
     {
@@ -219,7 +227,9 @@ public class TC_CandidateRegistrationPage
 	}
 	public void clickToBrowseProfilePicture()
 	{
-		browseButton1.click();
+//		browseButton1.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", browseButton1);
 	}
 	public void clickToUploadProfilePicture()
 	{
@@ -300,7 +310,9 @@ public class TC_CandidateRegistrationPage
 	}
 	public void clickToBrowsedisabilityProofDoc()
 	{
-		browseButton2.click();
+//		browseButton2.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", browseButton2);
 	}
 	public void clickToUploadDisabilityProofDoc()
 	{
@@ -329,7 +341,6 @@ public class TC_CandidateRegistrationPage
 	}
 	public void enterPincode(String pincode)
 	{
-		pincodeTextField.clear();
 		pincodeTextField.sendKeys(pincode);
 	}
 	public void selectParlimentaryConstituency(String parlimentaryConstituency)
@@ -338,6 +349,10 @@ public class TC_CandidateRegistrationPage
 	}
 	public void clickSaveAndContinue()
 	{
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.elementToBeClickable(saveAndContinueButton));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,150)", "");
 		saveAndContinueButton.click();
 	}
 	//contact details
@@ -642,5 +657,9 @@ public class TC_CandidateRegistrationPage
 	public void selectExperienceMonths(String experienceMonths)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceMonthsDropdownList, experienceMonths);
+	}
+	public void clickDummyVerify()
+	{
+		dummyVerifyButton.click();
 	}
 }

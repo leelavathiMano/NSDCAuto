@@ -28,7 +28,12 @@ public class TP_MySchemeDashboardPage
 	private WebElement viewDetailsButton;
 	@FindBy(xpath="//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")
 	private WebElement actionButton;
+	/////////////////////
+	@FindBy(xpath="//tr[td[span[span[text()='NON-PMKVY']]]]//a[i[@class='la la-ellipsis-h']]")
+	private WebElement ActionIcon;
 	
+	@FindBy(xpath="//tr[td[span[span[text()='NON-PMKVY']]]]//a[contains(text(),'Add Program')]")
+	private WebElement Add_program;
 	public TP_MySchemeDashboardPage(WebDriver driver) 
 	{
 		this.driver = driver;
@@ -80,5 +85,13 @@ public class TP_MySchemeDashboardPage
 	{
 		actionButton.click();
 	}
-
+///////////////////
+	public void ClickOnAction()
+	{
+		ActionIcon.click();
+	}
+  public void ClickOnAddProgram()
+  {
+	  Add_program.click();
+  }
 }

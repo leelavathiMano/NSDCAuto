@@ -1,8 +1,10 @@
 package com.nsdc.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.nsdc.generic.SelectDropDownList;
@@ -10,13 +12,15 @@ import com.nsdc.generic.SelectDropDownList;
 public class TrainingPartner_CandidateRegistrationPage
 {
 	WebDriver driver;
-	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+//	@FindBy(xpath="//select[@formcontrolname='namePrefix']")
+	@FindBy(id="exampleSelect1")
 	private WebElement namePrefixDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='firstName']")
 	private WebElement fullNameTextbox;
 	@FindBy(xpath="//input[@class='custom-file-input ']")
 	private WebElement browseButton1;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	
 	private WebElement uploadButton1;
 	@FindBy(xpath="//input[@formcontrolname='phone']")
 	private WebElement mobileNumberTextField;
@@ -24,7 +28,7 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement countryCodeDropdownList;
 	@FindBy(xpath="//input[@formcontrolname='email']")
 	private WebElement emailTextField;
-	@FindBy(xpath="//input[@placeholder='Select Date of Birth']")
+	@FindBy(xpath="//input[@placeholder='Choose Date']")
 	private WebElement dobTextbox;
 	@FindBy(xpath="//span[@class='input-group-text']")
 	private WebElement calenderIconButton;
@@ -38,6 +42,10 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement placeOfBirthTextField;
 	@FindBy(xpath="//select[@formcontrolname='caste']")
 	private WebElement castDropDownList;
+	
+	@FindBy(xpath="//span[contains(text(),'SYNDICATE')]")
+	private WebElement BankNameList;
+	
 	@FindBy(xpath="//select[@formcontrolname='religion']")
 	private WebElement religionDropDownList;
 	@FindBy(xpath="(//label[input[@formcontrolname='differentlyAbled']])[1]")
@@ -149,8 +157,18 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement accountNumberTextField;
 	@FindBy(xpath="//input[@formcontrolname='ifscCode']")
 	private WebElement ifscTextField;
+	//////////
+	@FindBy(xpath="//input[@placeholder='Search Bank Name']")
+	private WebElement SearchBankNameTExtbox;
+	
+	
+	
+	
 	@FindBy(xpath="//input[@formcontrolname='bankName']")
 	private WebElement bankNameTextField;
+	@FindBy(xpath="//small[contains(text(),'Click here')]")
+	private WebElement ClickLinkToAddBankName;
+	
 	@FindBy(xpath="//textarea[@formcontrolname='bankAddress']")
 	private WebElement bankAddressTextField;
 	@FindBy(xpath="//select[@formcontrolname='boardingLodging']")
@@ -196,7 +214,14 @@ public class TrainingPartner_CandidateRegistrationPage
 	private WebElement candidateExperienceMonthsDropdownList;
 	@FindBy(xpath="//select[@formcontrolname='sectorId']")
 	private WebElement candidateExperienceYearDropdownList;
+	@FindBy(xpath="//button[contains(text(),'Dummy Verify')]")
+	private WebElement dummyVerifyButton;
 	
+	@FindBy(xpath="//button[@type='button'and text()='OK']")
+	private WebElement OKButton;
+	
+	@FindBy(xpath="//input[@placeholder='Type here...']")
+	private WebElement SearchBankName;
 	
 	public TrainingPartner_CandidateRegistrationPage(WebDriver driver)
     {
@@ -250,7 +275,8 @@ public class TrainingPartner_CandidateRegistrationPage
 	{
 		dobTextbox.click();
     	Thread.sleep(2000);
-    	driver.findElement(By.xpath("(//div[@class='datepicker-days']/table/tbody/tr/td[text()='1'])[1]")).click();
+    	//driver.findElement(By.xpath("(//div[@class='datepicker-days']/table/tbody/tr/td[text()='1'])[1]")).click();
+    	driver.findElement(By.xpath("//div[@class='btn-light'][text()='1']")).click();
     	Thread.sleep(2000);
         calenderIconButton.click();
         Thread.sleep(2000);
@@ -531,14 +557,46 @@ public class TrainingPartner_CandidateRegistrationPage
 	}
 	public void clickToGetAutopopulatedBankDetails()
 	{
-		bankNameTextField.click();
+		//bankNameTextField.click();
+		ifscTextField.sendKeys(Keys.TAB);
+		
 	}
-	public void enterBankName(String bankName) throws InterruptedException
+	public void enterBankName() throws InterruptedException
 	{
 		bankNameTextField.click();
-		bankNameTextField.clear();
-		bankNameTextField.sendKeys(bankName);
+		//bankNameTextField.clear();
+		//bankNameTextField.sendKeys(bankName);
 	}
+	public void ClickBankName() throws InterruptedException
+	{
+		/*
+		 * Actions builder = new Actions(driver);
+		 * builder.moveToElement(ClickLinkToAddBankName).build().perform();
+		 * builder.click(bankNameTextField).build().perform();
+		 * builder.clickAndHold(bankNameTextField).build().perform();
+		 * builder.doubleClick(bankNameTextField).build().perform();
+		 * //bankNameTextField.clear();
+		 */		//bankNameTextField.sendKeys(bankName);
+		
+		ClickLinkToAddBankName.click();
+	}
+	
+	public void enterSearchBankName(String bankName) throws InterruptedException
+	{
+		SearchBankName.sendKeys(bankName);
+		}
+	
+	
+	public void ChooseBankName() throws InterruptedException
+	{
+		BankNameList.click();
+	}
+	
+	public void ClickOKButton () throws InterruptedException
+	{
+		OKButton.click();
+		}
+	
 	public void enterBankAddress(String bankAddress)
 	{
 		bankAddressTextField.clear();
@@ -637,5 +695,14 @@ public class TrainingPartner_CandidateRegistrationPage
 	public void selectExperienceMonths(String experienceMonths)
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(candidateExperienceMonthsDropdownList, experienceMonths);
+	}
+	public void clickDummyVerify()
+	{
+		dummyVerifyButton.click();
+	}
+	//////////
+	public void ClickOnSearchBankName()
+	{
+		SearchBankNameTExtbox.click();
 	}
 }

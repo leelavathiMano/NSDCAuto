@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,7 +47,9 @@ public class TC_MyCandidatesPage
     }
 	public void clickRegisterCandidate()
 	{
-		registerCandidateLink.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", registerCandidateLink);
+//		registerCandidateLink.click();
 	}
 	public void clickToChooseBulkExcelSheetUpload()
 	{

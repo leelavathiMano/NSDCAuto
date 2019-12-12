@@ -15,7 +15,7 @@ public class TP_FeeBasedProgramPage
 	WebDriver driver;
 	
 	
-	@FindBy(xpath="(//button[@class='close'])[3]")
+	@FindBy(xpath="(//button[@class='close'])[4]")
 	private WebElement closeButton;
 	@FindBy(xpath="//input[@placeholder='Select Agreement Date']")
 	private WebElement agreementDateTextbox;
@@ -51,11 +51,11 @@ public class TP_FeeBasedProgramPage
 	private WebElement assessmentModeDropDownList;
 	@FindBy(id="sanctionLoanAmount")
 	private WebElement sanctionLoanAmountTextbox;
-	@FindBy(xpath="//select[@ng-reflect-name='moratoriumPeriod']")
+	@FindBy(xpath="//select[@id='moratoriumPeriod']")
 	private WebElement moratoriumPeriodDropDownList;
-	@FindBy(id="loanDuration")
+	@FindBy(xpath="//select[@id='loanDuration']")
 	private WebElement loanDurationDropDownList;
-	@FindBy(id="interestRate")
+	@FindBy(xpath="//select[@id='interestRate']")
 	private WebElement interestRateDropDownList;
 	@FindBy(xpath="(//input[@id='customFile'])[1]")
 	private WebElement signedTermsheet_BrowseFileButton;
@@ -81,7 +81,7 @@ public class TP_FeeBasedProgramPage
 	private WebElement sectorDropDownList;
 	@FindBy(id="proposedTrainingTarget")
 	private WebElement proposedTrainingTargetTextbox;
-	@FindBy(xpath="(//input[@id='customFile'])[9]")
+	@FindBy(xpath="(//button[text()='Add'])[3]")
 	private WebElement undertakingDocument_AddSector_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[9]")
 	private WebElement undertakingDocument_AddSector_UploadButton;
@@ -99,13 +99,13 @@ public class TP_FeeBasedProgramPage
 	private WebElement sector_AddCourseDropDownList;
 	@FindBy(id="jobRoleMappingType")
 	private WebElement jobRoleMappingTypeDropDownList;
-	@FindBy(id="jobRoleName")
+	@FindBy(xpath="//select[@id='jobRoleName']")
 	private WebElement associatedQPDropDownList;
 	@FindBy(id="nsqfLevel")
 	private WebElement nsqfLevelTextbox;
 	@FindBy(xpath="//textarea[@placeholder='Enter Course Description']")
 	private WebElement courseDescriptionTextbox;
-	@FindBy(id="issuedCertificateName")
+	@FindBy(xpath="//input[@id='issuedCertificateName']")
 	private WebElement issuedCertificateNameTexbox;
 	@FindBy(id="minimumAge")
 	private WebElement minimumAgeDropDownList;
@@ -135,9 +135,9 @@ public class TP_FeeBasedProgramPage
 	private WebElement challanOfFeePaid_BrowseFileButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[7]")
 	private WebElement challanOfFeePaid_UploadFileButton;
-	@FindBy(xpath="(//input[@id='customFile'])[8]")
+	@FindBy(xpath="(//input[@id='customFile'])[4]")
 	private WebElement stampPaper_BrowseFileButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[8]")
+	@FindBy(xpath="(//button[contains(text(),'Upload')])[4]")
 	private WebElement stampPaper_UploadFileButton;
 	@FindBy(xpath="(//button[text()='Add'])[2]")
 	private WebElement add_AddCourseButton;
@@ -395,7 +395,7 @@ public class TP_FeeBasedProgramPage
 	public void enterCourseName(String courseName)throws Exception
 	{
 		
-		courseNameTextbox.clear();
+		//courseNameTextbox.clear();
 		Thread.sleep(3000);
 		courseNameTextbox.sendKeys(courseName);
 	}
