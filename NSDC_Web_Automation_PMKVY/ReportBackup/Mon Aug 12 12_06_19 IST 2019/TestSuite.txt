@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 3, Time elapsed: 0.949 s <<< FAILURE! - in TestSuite
+preSuite(com.nsdc.RegressionTest_PMKVY_STT_Test.PMKVY_STT_Project_And_Batch_Creation_Test)  Time elapsed: 0.571 s  <<< FAILURE!
+java.nio.file.NoSuchFileException: .\target\surefire-reports
+
