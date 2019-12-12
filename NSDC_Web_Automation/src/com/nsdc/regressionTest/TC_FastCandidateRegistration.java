@@ -74,10 +74,13 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			{
 				LoginPage lp=new LoginPage(driver);
 				lp.clickLogin();
-				Thread.sleep(2000);
-				BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
+				Thread.sleep(1000);
+                driver.findElement(By.xpath("(//button[@type='button'])[1]")).click();
+                Thread.sleep(1000);
+				//Thread.sleep(2000);
+				/*BetaVersionOfSmartPage bvp=new BetaVersionOfSmartPage(driver);
 		        bvp.clickToClose();
-		        Thread.sleep(2000);
+		        Thread.sleep(2000);*/
 				EnterLoginPage elp=new EnterLoginPage(driver);
 				elp.performlogin(trainingPartnerID, trainingPartnerPassword);
 				JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -101,14 +104,17 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			//Personal Details Page
 			tcCrp.selectNamePrefix(namePrefix);
 			tcCrp.enterFullName(fullName);
-			Thread.sleep(2000);
+			/*Thread.sleep(2000);
 			tcCrp.clickToBrowseProfilePicture();
 			Thread.sleep(2000);
 			UploadFile.upload(profilePicture);
 			Thread.sleep(2000);
 			tcCrp.clickToUploadProfilePicture();
-			Thread.sleep(4000);
-			tcCrp.selectCountryCode(countryCode);
+			Thread.sleep(4000);*/
+			driver.findElement(By.xpath("//input[@id='customFile'][1]")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+            driver.findElement(By.xpath("(//button[@type='button'])[1]")).click();
+            Thread.sleep(6000);
+			//tcCrp.selectCountryCode(countryCode);
 			tcCrp.enterMobileNumber(mobileNumber);
 			tcCrp.enterEmailID(emailID);
 			tcCrp.clickToChooseGender(gender);
@@ -129,9 +135,11 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				Thread.sleep(2000);
 				tcCrp.selectDisablity(disablity);
 				Thread.sleep(2000);
-				tcCrp.clickToBrowsedisabilityProofDoc();
+				/*tcCrp.clickToBrowsedisabilityProofDoc();
 				Thread.sleep(2000);
-				UploadFile.upload(disabilityProofDoc);
+				UploadFile.upload(disabilityProofDoc);*/
+				driver.findElement(By.xpath("(//input[@id='customFile'])[2]")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+                driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
 				Thread.sleep(2000);
 				tcCrp.clickToUploadDisabilityProofDoc();
 				Thread.sleep(5000);
@@ -157,11 +165,13 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 				tcCrp.selectAlternateIdtype(alternateIdType);
 				tcCrp.enterAlternateID(alternateID);
 				Thread.sleep(3000);
-				tcCrp.clickToBrowseAlternateIdFile(isDisabled);
+				/*tcCrp.clickToBrowseAlternateIdFile(isDisabled);
 				Thread.sleep(1000);
 				UploadFile.upload(alternateIdFile);
 				Thread.sleep(1000);
-				tcCrp.clickToUploadAlternateIdFile(isDisabled);
+				tcCrp.clickToUploadAlternateIdFile(isDisabled);*/
+				driver.findElement(By.xpath("//label[contains(text(),'Upload ID Proof Copy:')]/following::input[1]")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+                driver.findElement(By.xpath("//label[contains(text(),'Upload ID Proof Copy:')]/following::button[1]")).click();
 				Thread.sleep(4000);
 			}
 			tcCrp.enterAddress(address);
@@ -194,13 +204,16 @@ public class TC_FastCandidateRegistration extends TestConfiguration
 			Thread.sleep(5000);
 			//Education
 			tcCrp.selectEducation(education1);
+			Thread.sleep(1000);
 			tcCrp.selectYearOfPassing(yearOfPassing1);
 			Thread.sleep(2000);
-			tcCrp.clickToBrowseEducationProofDoc();
+			/*tcCrp.clickToBrowseEducationProofDoc();
 			Thread.sleep(2000);
 			UploadFile.upload(education1Proof);
 			Thread.sleep(2000);
-			tcCrp.clickToUploadEducationProof();
+			tcCrp.clickToUploadEducationProof();*/
+			driver.findElement(By.xpath("//input[@id='customFile']")).sendKeys("/Users/apple/Desktop/Screenshot 2019-06-28 at 12.41.50 AM.png");
+            driver.findElement(By.xpath("(//button[@type='button'])[3]")).click();
 			Thread.sleep(4000);
 			//Candidate Experience
 			tcCrp.selectPreTrainingStatus(preTrainingStatus);
