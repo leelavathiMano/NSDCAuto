@@ -214,8 +214,8 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			tpCrp.ClickOKButton();
 			Thread.sleep(3000);
 			}
-			//tpCrp.enterBankAddress(bankAddress);
-			//tpCrp.selectBoardingAndLodging(boardingAndLodging);
+//			tpCrp.enterBankAddress(bankAddress);
+//			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tpCrp.clickSaveAndContinue();
 			Thread.sleep(7000);
 			//Education
