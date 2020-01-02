@@ -38,12 +38,15 @@ public class Pmkvy_SpecialProjectCreationPage {
 	private WebElement IndemnityBondBrowseButton;
 	@FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
 	private WebElement IndemnityBondUploadButton;
-	@FindBy(xpath="(//input[@id='customFile'])[2]")
+	@FindBy(xpath="//input[@id='customFile']")
 	private WebElement OtherSupportingDocumentsBrowseButton;
-	@FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	@FindBy(xpath="//button[contains(text(),'Upload')]")
 	private WebElement OtherSupportingDocumentsUploadButton;
 	@FindBy(xpath="//button[text()='Save & Submit']")
 	private WebElement SaveAndSumbitButton;
+	
+	@FindBy(xpath="//button[text()='OK']")
+	private WebElement OKButton;
 	//ini
 	public Pmkvy_SpecialProjectCreationPage (WebDriver driver)
     {
@@ -116,5 +119,8 @@ public class Pmkvy_SpecialProjectCreationPage {
 	{
 		SaveAndSumbitButton.click();
 	}
-
+  public void ClickonOK()
+  {
+	  OKButton.click();
+  }
 }

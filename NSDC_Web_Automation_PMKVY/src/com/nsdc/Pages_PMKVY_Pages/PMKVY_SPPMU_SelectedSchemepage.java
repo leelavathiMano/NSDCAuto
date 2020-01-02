@@ -1,6 +1,7 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -69,11 +70,20 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement  SectorDropDownList;
 	@FindBy(xpath="//select[@formcontrolname='jobRoleName']")
 	private WebElement jobRoleNameDropDownList ;
+	
+	@FindBy(xpath="//select[@formcontrolname='qpCode']")
+	private WebElement jobRole_QpcodeDropdownlist ;
 	@FindBy(xpath="//input[@formcontrolname='proposedTrainingTarget']")
 	private WebElement ProposedTrainingTargetTextBox ;
 	@FindBy(xpath="(//button[text()='Add'])[2]")
 	private WebElement SectorAndJobRoleAddButton;
-	//////////////
+	@FindBy(xpath="//button[text()='Save']")
+	private WebElement SaveButton;
+	
+	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	private WebElement SaveAndSubmitButton;
+	//button[contains(text(),'Save & Submit')]
+	////////////////button[text()='Save']
 	@FindBy(xpath="//select[@formcontrolname='state']")
 	private WebElement selectlocationStateDropDownlist;
 	@FindBy(xpath="//select[@formcontrolname='district']")
@@ -116,11 +126,17 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement percentageOfAdvanceTextBox;
 	@FindBy(xpath="(//input[@placeholder='Enter Amount'])[2]")
 	private WebElement AmountTobeOfAdvanceTextBox;
-	@FindBy(xpath="(//button[text()='Add'])[5]")
+	@FindBy(xpath="//button[text()='Add']")
 	private WebElement AdvanceAddButton;
 	@FindBy(xpath="//button[text()='Save & Submit']")
 	private WebElement SaveAndButton;
 	
+	@FindBy(xpath="//button[contains(text(), 'Add Sectors & Job Role')]")
+	private WebElement AddSectorsAndjobRoleButton;
+	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+	private WebElement Action_Icon;
+	@FindBy(xpath="(//a[contains(text(),'View Generated Termsheet')])[1]")
+	private WebElement ViewGenerated_Termsheet;
 	
 	//
 	public PMKVY_SPPMU_SelectedSchemepage (WebDriver driver)
@@ -131,8 +147,14 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	public void ClickAggrementDate() throws InterruptedException 
 	{
 		Thread.sleep(2000);
-		  Actions actions = new Actions(driver); 
-		  actions.moveToElement(AggrementDate).click().build().perform();
+		AggrementDate.click();
+//		  Actions actions = new Actions(driver);
+//		  actions.moveToElement(AggrementDate).click().build().perform();
+		
+//		JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		executor.executeScript("arguments[0].click();", AggrementDate);
+//		
+		//AggrementDate.click();
 	}
 	
 	
@@ -147,8 +169,11 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	public void ClickStartDate() throws InterruptedException 
 	{
 		Thread.sleep(2000);
-		  Actions actions = new Actions(driver); 
-		  actions.moveToElement(ProjectDurationStartDate).click().build().perform();
+		ProjectDurationStartDate.click();
+//		JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		executor.executeScript("arguments[0].click();", ProjectDurationStartDate);
+//		  Actions actions = new Actions(driver); 
+//		  actions.moveToElement(ProjectDurationStartDate).click().build().perform();
 	}
 	
 	
@@ -161,8 +186,9 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	public void ClickEndDate() throws InterruptedException 
 	{
 		Thread.sleep(2000);
-		  Actions actions = new Actions(driver); 
-		  actions.moveToElement(ProjectDurationEndDate).click().build().perform();
+		ProjectDurationEndDate.click();
+//		  Actions actions = new Actions(driver); 
+//		  actions.moveToElement(ProjectDurationEndDate).click().build().perform();
 	}
 	
 	public void SelectProjectDurationEndDate(String EndDate) throws InterruptedException 
@@ -271,6 +297,13 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	{
 		SelectDropDownList.selectDropDownListByVisibleText(jobRoleNameDropDownList, jobrole);
 	}
+	
+	
+	public void SelectjobRoleQPCode(String jobrole)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(jobRole_QpcodeDropdownlist, jobrole);
+	}
+	
 	public void EnterSectorAndJobTarget(String EnterTarget1)
 	{
 		ProposedTrainingTargetTextBox.sendKeys(EnterTarget1);
@@ -279,6 +312,18 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	{
 		SectorAndJobRoleAddButton.click();
 	}
+	
+	public void ClickOnSavebutton()
+	{
+		SaveButton.click();
+	}
+	
+	public void ClickOnSaveAndSubmit()
+	{
+		SaveAndSubmitButton.click();
+	}
+	
+	
 	//////////////////////////////////////////////
 	public void SelectlocationState(String State)
 	{
@@ -364,6 +409,21 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	public void ClickSaveAndSubmitButton()
 	{
 		SaveAndButton.click();
+	}
+	
+	
+	public void ClickOnAddSectorsAndjobRole()
+	{
+		AddSectorsAndjobRoleButton.click();
+	}
+	
+	public  void ClickOnAction()
+	{
+		Action_Icon.click();
+	}
+	public void ClickOnViewGenerated_Termsheet()
+	{
+		ViewGenerated_Termsheet.click();
 	}
 	}
 
