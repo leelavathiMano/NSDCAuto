@@ -80,9 +80,9 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	@FindBy(xpath="//button[text()='Save']")
 	private WebElement SaveButton;
 	
-	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	@FindBy(xpath="//button[contains(text(),'Save & Next')]")
 	private WebElement SaveAndSubmitButton;
-	//button[contains(text(),'Save & Submit')]
+	
 	////////////////button[text()='Save']
 	@FindBy(xpath="//select[@formcontrolname='state']")
 	private WebElement selectlocationStateDropDownlist;
@@ -128,7 +128,7 @@ public class PMKVY_SPPMU_SelectedSchemepage {
 	private WebElement AmountTobeOfAdvanceTextBox;
 	@FindBy(xpath="//button[text()='Add']")
 	private WebElement AdvanceAddButton;
-	@FindBy(xpath="//button[text()='Save & Submit']")
+	@FindBy(xpath="//button[text()='Save & Next']")
 	private WebElement SaveAndButton;
 	
 	@FindBy(xpath="//button[contains(text(), 'Add Sectors & Job Role')]")
