@@ -20,7 +20,7 @@ public class SelectSchemeOrProgramPage {
 	private WebDriverWait wait;
 	@FindBy(xpath = "//a[text()='2']")
 	private WebElement PageNumber4;
-	@FindBy(xpath = "//a[contains(text(),'3')]")
+	@FindBy(xpath = "//a[contains(text(),'2')]")
 	private WebElement PageNumber3;
 
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']")
@@ -32,14 +32,14 @@ public class SelectSchemeOrProgramPage {
 	private WebElement selectDropDownList;
 	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[3]")
 	private WebElement SP_ActionButton;
-	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[2]")
+	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[3]")
 	private WebElement SPAddProjectButton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 	private WebElement STTActionbutton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[contains(text(),'Add Project')]")
 	private WebElement STTAddProjectButton;
 	/////
-	@FindBy(xpath = "(//a[@data-toggle='dropdown'])[2]")
+	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[2]")
 	private WebElement ApprovalInProgress_SPActionButton;
 	@FindBy(xpath = "(//a[contains(text(),'View Details')])[2]")
 	private WebElement ApprovalInProgress_SP_ViewDetailsButton;
@@ -84,7 +84,8 @@ public class SelectSchemeOrProgramPage {
 		// wait.until(ExpectedConditions.elementToBeClickable(STTActionbutton)).click();
 	}
 
-	public void ClickOn_SP_AddProject() {
+	public void ClickOn_SP_AddProject() 
+	{
 		wait.until(ExpectedConditions.elementToBeClickable(SPAddProjectButton)).click();
 	}
 

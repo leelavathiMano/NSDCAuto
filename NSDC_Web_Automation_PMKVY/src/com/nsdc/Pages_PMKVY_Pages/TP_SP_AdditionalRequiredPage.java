@@ -19,9 +19,9 @@ public class TP_SP_AdditionalRequiredPage {
     @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
     private WebElement Other_TermSheetUpLoadButton;
     
-    @FindBy(xpath="(//input[@id='customFile'])")
+    @FindBy(xpath="(//input[@id='customFile'])[2]")
     private WebElement TPSigned_TermSheetBrowseButton;
-    @FindBy(xpath="(//button[contains(text(),'Upload')])")
+    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
     private WebElement TPSigned_TermSheetUpLoadButton;
     
     
@@ -29,9 +29,9 @@ public class TP_SP_AdditionalRequiredPage {
     
     
     @FindBy(xpath="(//input[@id='customFile'])[2]")
-    private WebElement Signed_TermSheetBrowseButton;
+    private WebElement    IndemnityBrowseButton;
     @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
-    private WebElement Signed_TermSheetUpLoadButton;
+    private WebElement IndemnityBrowseUpLoadButton;
     
     
     
@@ -71,16 +71,16 @@ public class TP_SP_AdditionalRequiredPage {
     
     
     
-    public void ClickOnSigned_TermSheetBrowse()
+    public void ClickOnIndemnityBrowse()
     {
 //    	JavascriptExecutor executor = (JavascriptExecutor) driver;
 //		executor.executeScript("arguments[0].click();", Signed_TermSheetBrowseButton);
-    	Signed_TermSheetBrowseButton.click();
+    	IndemnityBrowseButton.click();
     }
-    public void clickOnSigned_TermSheetUpLoad()
+    public void ClickOnIndemnityBrowseUpLoad()
     {
     	JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", Signed_TermSheetUpLoadButton);
+		executor.executeScript("arguments[0].click();", IndemnityBrowseUpLoadButton);
     	//Signed_TermSheetUpLoadButton.click();
     }
     
