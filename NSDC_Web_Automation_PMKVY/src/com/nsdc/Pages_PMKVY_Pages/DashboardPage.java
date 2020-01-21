@@ -18,6 +18,10 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@class=\"col-xl-6\"][2]//child::div[1]//child::div[2]//descendant::div[3]")
 	private WebElement MySchemesAndPrograms;
 
+	@FindBy(xpath = "//a[contains(text(),'Approval in Progress')]")
+	private WebElement Approval_IN_Progress_Tab;
+	
+	
 	public DashboardPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -36,6 +40,11 @@ public class DashboardPage {
 		executor.executeScript("arguments[0].click();", MySchemesAndPrograms);
 
 		// wait.until(ExpectedConditions.elementToBeClickable(MySchemesAndPrograms)).click();
+	}
+	
+	public void ClickOnApprovalInProgress()
+	{
+		Approval_IN_Progress_Tab.click();
 	}
 
 }

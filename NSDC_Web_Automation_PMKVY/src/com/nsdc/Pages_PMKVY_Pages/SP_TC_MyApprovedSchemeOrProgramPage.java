@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 public class SP_TC_MyApprovedSchemeOrProgramPage {
 	WebDriver driver;
 
-	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[2]")
+	@FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])")
 	private WebElement SP_ActionButton ;
-	@FindBy(xpath="(//a[contains(text(),'View Details')])[2]")
+	@FindBy(xpath="(//a[contains(text(),'View Details')])")
 	private WebElement ViewDetailsButton ;
 	
 	
