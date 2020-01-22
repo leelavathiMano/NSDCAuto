@@ -57,8 +57,9 @@ public class TrainingCalenderPage {
 	
 	@FindBy(xpath = "//button[contains(text(),'Save & Update')]")
 	private WebElement SaveBtn;
-	
-	@FindBy(xpath ="(//button[text()='OK'])[2]")
+	@FindBy(xpath="//select[@formcontrolname='locationSpoc']")
+	private WebElement  SourceOfRegistrationDropdownlist;
+	@FindBy(xpath ="(//button[text()='OK'])")
 	private WebElement OkButton;
 	
 	
@@ -135,6 +136,12 @@ public class TrainingCalenderPage {
 		executor.executeScript("arguments[0].click();", SaveBtn);
 		//ViewAllBatches.click();
 	}
+	
+	public void SelectSourceOfRegistration(String myTP)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(SourceOfRegistrationDropdownlist, myTP);
+	}
+	
 	public void ClickOnOKButton() throws InterruptedException
 	  {
 		Thread.sleep(3000);
