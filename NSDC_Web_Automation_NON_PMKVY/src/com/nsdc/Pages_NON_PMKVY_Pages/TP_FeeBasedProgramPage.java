@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.nsdc.generic.SelectDropDownList;
+import com.nsdc.generic.ToT_ToA_Batch_DatePicker;
 
 public class TP_FeeBasedProgramPage 
 {
@@ -158,6 +159,18 @@ public class TP_FeeBasedProgramPage
 	@FindBy(xpath="//button[text()='Re-Submit for Review Again']")
 	private WebElement reSubmitForReviewAgainButton;
 	
+	//////
+	@FindBy(xpath = "//div[input[@placeholder='Select Start Date']]")
+	private WebElement AgreementDate;
+	
+	@FindBy(xpath = "(//th[@class='datepicker-switch'])[1]")
+	private WebElement monthDropdownList;
+	
+	@FindBy(xpath = "//select[@class='custom-select'][2]")
+	private WebElement yearDropdownList;
+	
+	
+	
 	
 	public TP_FeeBasedProgramPage(WebDriver driver)
 	{
@@ -173,17 +186,39 @@ public class TP_FeeBasedProgramPage
 		closeButton.click();
 	}
 	
-	public void clickOnSelectAgreementDate()
+	
+	
+	
+	
+	
+	public void clickOnAgreementDate()
 	{
 		agreementDateTextbox.click();
 		agreementDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
 	
-	public void clickOnSelectDisbursementDate()
+	public void SelectAgreementDate(String argreementDate) throws InterruptedException {
+		Thread.sleep(2000);
+		ToT_ToA_Batch_DatePicker.SelectDate(driver, argreementDate, agreementDateTextbox, monthDropdownList);
+	}
+	
+	
+	
+	
+	public void clickOnDisbursementDate()
 	{
 		disbursementDateTextbox.click();
 		disbursementDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
 	}
+	
+	public void SelectDisbursementDate(String DisbursementDate) throws InterruptedException {
+		Thread.sleep(2000);
+		ToT_ToA_Batch_DatePicker.SelectDate(driver, DisbursementDate, disbursementDateTextbox, monthDropdownList); 	
+	
+	
+	}
+	
+	
 	
 	public void clickOnStartDateOfProject()throws Exception
 	{
@@ -561,4 +596,8 @@ public class TP_FeeBasedProgramPage
 		reSubmitForReviewAgainButton.click();
 	}
 
+	
+	
+	
+	
 }

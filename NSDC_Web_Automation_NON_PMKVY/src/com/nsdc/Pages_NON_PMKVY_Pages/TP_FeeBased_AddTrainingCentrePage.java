@@ -46,6 +46,12 @@ public class TP_FeeBased_AddTrainingCentrePage
 	private WebElement governmentTieUpDropDownList;
 	@FindBy(id="totalCapacity")
 	private WebElement centreCapacityTextbox;
+	@FindBy(xpath="//select[@id='type']")
+	private WebElement TypeDropdownlist;
+	
+	@FindBy(xpath="//select[@id='centerOwnershipType']")
+	private WebElement centerOwnershipTypeDropdownlist;
+	
 	@FindBy(id="centreCarpetArea")
 	private WebElement centreAreaTextbox;
 	@FindBy(xpath="//select[@id='totalNumberOfTrainingRooms']")
@@ -382,6 +388,16 @@ public class TP_FeeBased_AddTrainingCentrePage
 		Thread.sleep(2000);
 		centreAreaTextbox.sendKeys(centreArea);
 	}
+	
+	public void SelectType(String type)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(TypeDropdownlist,type);
+	}
+	public void SelectcenterOwnershipType(String centerOwnershipType)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(centerOwnershipTypeDropdownlist,centerOwnershipType);
+	}
+	
 	
 	public void selectNumberOfTrainingRooms(String trainingRooms)
 	{
