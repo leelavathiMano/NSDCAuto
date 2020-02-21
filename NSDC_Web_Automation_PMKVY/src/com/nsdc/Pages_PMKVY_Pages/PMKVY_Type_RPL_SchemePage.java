@@ -1,5 +1,6 @@
 package com.nsdc.Pages_PMKVY_Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,6 +61,41 @@ public class PMKVY_Type_RPL_SchemePage {
 	private WebElement UploadButton;
 	@FindBy(xpath="//button[contains(text(),'Save & Next')]")
 	private WebElement SaveAndNextButton;
+	////////Add job role
+	@FindBy(xpath="//button[contains(text(), 'Add Sectors & Job Role')]")
+	private WebElement AddSectorsAndjobRoleButton;
+	@FindBy(xpath="//select[@formcontrolname='sectorID']")
+	private WebElement  SectorDropDownList;
+	@FindBy(xpath="//select[@formcontrolname='qpCode']")
+	private WebElement jobRoleNameDropDownList ;
+	@FindBy(xpath="//input[@formcontrolname='proposedTrainingTarget']")
+	private WebElement ProposedTrainingTargetTextBox ;
+	@FindBy(xpath="//button[text()='Save']")
+	private WebElement SaveButton;
+	@FindBy(xpath="//button[text()='OK']")
+	private WebElement OKButton;
+	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
+	private WebElement SaveAndSubmitButton;
+	//add location
+	@FindBy(xpath="//select[option[text()='Select State']]")
+	private WebElement selectStateDropDownList;
+	@FindBy(xpath="//select[option[text()='Select District']]")
+	private WebElement selectDistrictDropDownList;
+//	@FindBy(xpath="//button[text()='Add']")
+//	private WebElement AddButton;
+	//target distribution
+	////////upload photos
+	 @FindBy(xpath="(//input[@id='customFile'])[1]")
+	    private WebElement TPSigned_TermSheetBrowseButton;
+	    @FindBy(xpath="(//button[contains(text(),'Upload')])[1]")
+	    private WebElement TPSigned_TermSheetUpLoadButton;
+	    
+	    @FindBy(xpath="(//input[@id='customFile'])[2]")
+	    private WebElement    IndemnityBrowseButton;
+	    @FindBy(xpath="(//button[contains(text(),'Upload')])[2]")
+	    private WebElement IndemnityBrowseUpLoadButton;  
+	    
+	
 	public PMKVY_Type_RPL_SchemePage (WebDriver driver)
     {
         this.driver = driver;
@@ -163,5 +199,74 @@ public void ClickonUploadButton()
 public void ClickOnSaveAndNextButton()
 {
 	SaveAndNextButton.click();
+}
+///add job roles
+
+public void ClickOnAddSectorsAndjobRole()
+{
+	AddSectorsAndjobRoleButton.click();
+}
+public void SelectSector(String sector)
+{
+	SelectDropDownList.selectDropDownListByVisibleText(SectorDropDownList, sector);
+}
+public void SelectjobRoleName(String jobrole)
+{
+	SelectDropDownList.selectDropDownListByVisibleText(jobRoleNameDropDownList, jobrole);
+}
+public void EnterSectorAndJobTarget(String EnterTarget1)
+{
+	ProposedTrainingTargetTextBox.sendKeys(EnterTarget1);
+}
+public void ClickOnSavebutton()
+{
+	SaveButton.click();
+}
+public void ClickOnSaveAndSubmit()
+{
+	SaveAndSubmitButton.click();
+}
+public void ClickonOK()
+{
+	  JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();",OKButton );
+	 // OKButton.click();
+}
+/////////////Add location
+public void selectState(String State)
+{
+	SelectDropDownList.selectDropDownListByVisibleText(selectStateDropDownList, State);
+	
+}
+public void selectDistrict(String District)
+{
+	SelectDropDownList.selectDropDownListByVisibleText(selectDistrictDropDownList, District);
+	
+}
+public void clickAdd()
+{
+	AddButton.click();
+
+}
+public void ClickOnTPSigned_TermSheetBrowse()
+{
+	TPSigned_TermSheetBrowseButton.click();
+}
+public void clickOnTPSigned_TermSheetUpLoad()
+{
+	TPSigned_TermSheetUpLoadButton.click();
+}
+
+public void ClickOnIndemnityBrowse()
+{
+//	JavascriptExecutor executor = (JavascriptExecutor) driver;
+//	executor.executeScript("arguments[0].click();", Signed_TermSheetBrowseButton);
+	IndemnityBrowseButton.click();
+}
+public void ClickOnIndemnityBrowseUpLoad()
+{
+	JavascriptExecutor executor = (JavascriptExecutor) driver;
+	executor.executeScript("arguments[0].click();", IndemnityBrowseUpLoadButton);
+	//Signed_TermSheetUpLoadButton.click();
 }
 }

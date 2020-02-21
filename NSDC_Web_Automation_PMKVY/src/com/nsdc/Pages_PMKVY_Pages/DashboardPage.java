@@ -15,7 +15,7 @@ public class DashboardPage {
 
 	WebDriver driver;
 	private WebDriverWait wait;
-	@FindBy(xpath = "//div[@class=\"col-xl-6\"][2]//child::div[1]//child::div[2]//descendant::div[3]")
+	@FindBy(xpath = "//div[p[text()='My Scheme/Program']]")
 	private WebElement MySchemesAndPrograms;
 
 	@FindBy(xpath = "//a[contains(text(),'Approval in Progress')]")
