@@ -323,8 +323,8 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration {
 		Thread.sleep(3000);
 		caaf.enterWebsiteUrl(websiteurl);
 
-		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='SPOCfirstName']")).getAttribute("value"),
-				spocName);
+	//	Assert.assertEquals(driver.findElement(By.xpath("//input[@id='SPOCfirstName']")).getAttribute("value"),
+	//			spocName);
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='SPOCEmail']")).getAttribute("value"), spocEmail);
 //		Assert.assertEquals(driver.findElement(By.xpath("//input[@id='SPOCmobileNumber']")).getAttribute("value"),
 //				spocMobileNumber);
