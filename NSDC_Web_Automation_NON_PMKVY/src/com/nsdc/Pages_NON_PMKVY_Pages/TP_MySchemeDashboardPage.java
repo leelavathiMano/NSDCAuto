@@ -3,6 +3,7 @@ package com.nsdc.Pages_NON_PMKVY_Pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,7 +23,7 @@ WebDriver driver;
 	private WebElement dashboardButton;
 	@FindBy(xpath="(//span[@class='m-nav__link-text'])[2]")
 	private WebElement mySchemeButton;
-	@FindBy(css=".btn.m-btn--pill.btn-primary.tab-color-blue")
+	@FindBy(xpath="//button[contains(text(),'Apply Scheme/Program')]")
 	private WebElement addSchemeButton;
 	@FindBy(xpath="//a[contains(text(),'Approved')]")
 	private WebElement approvedSchemeButton;
@@ -64,7 +65,10 @@ WebDriver driver;
 	
 	public void clickOnAddSchemeOrProgram()
 	{
-		addSchemeButton.click();
+		
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", addSchemeButton);
+		//addSchemeButton.click();
 	}
 	
 	public void clickOnApprovedScheme()

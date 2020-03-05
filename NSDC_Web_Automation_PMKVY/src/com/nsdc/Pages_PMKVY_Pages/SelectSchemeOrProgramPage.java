@@ -20,9 +20,11 @@ public class SelectSchemeOrProgramPage {
 	private WebDriverWait wait;
 	@FindBy(xpath = "//a[text()='2']")
 	private WebElement PageNumber4;
-	@FindBy(xpath = "//a[contains(text(),'2')]")
+	@FindBy(xpath = "//a[contains(text(),'3')]")
 	private WebElement PageNumber3;
-
+	@FindBy(xpath = "//a[contains(text(),'2')]")
+	private WebElement PageNumber2;
+	
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']")
 	private WebElement TableSelectSchemeOrProgram;
 	
@@ -30,9 +32,9 @@ public class SelectSchemeOrProgramPage {
 	
 	@FindBy(xpath = "//select")
 	private WebElement selectDropDownList;
-	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[3]")
+	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[2]")
 	private WebElement SP_ActionButton;
-	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[3]")
+	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[2]")
 	private WebElement SPAddProjectButton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 	private WebElement STTActionbutton;
@@ -65,7 +67,15 @@ public class SelectSchemeOrProgramPage {
 
 		// wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
 	}
+ public void ClickPageNumber2() throws Exception {
 
+	JavascriptExecutor executor = (JavascriptExecutor) driver;
+	executor.executeScript("arguments[0].click();", PageNumber2);
+
+	// wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
+}
+	
+	
 	public void selectValue(String value) {
 		selectDropDownList.click();
 		SelectDropDownList.selectDropDownListByVisibleText(selectDropDownList, value);
