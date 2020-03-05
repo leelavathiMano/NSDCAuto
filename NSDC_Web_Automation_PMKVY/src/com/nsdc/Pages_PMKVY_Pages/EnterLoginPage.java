@@ -15,7 +15,17 @@ public class EnterLoginPage
     private WebElement passwordTextbox;
     @FindBy(xpath="//button[contains(text(),'Login')]")
     private WebElement loginButton;
+    @FindBy(xpath="//input[@formcontrolname='oldPassword']")
+    private WebElement oldPasswordTextbox;
+    @FindBy(xpath="//input[@formcontrolname='newPassword']")
+    private WebElement newPasswordTextBox;
     
+    @FindBy(xpath="//input[@formcontrolname='confirmPassword']")
+    private WebElement ConfirmPasswordTextBox;
+    @FindBy(xpath="//button[contains(text(),'Reset & Re-login')]")
+    private WebElement ResetAndReloginButton;
+    @FindBy(xpath="//button[text()='OK']")
+    private WebElement OKButton;
     public EnterLoginPage(WebDriver driver)
     {
         this.driver = driver;
@@ -45,6 +55,27 @@ public class EnterLoginPage
     public void clickLoginToSubmit()
     {
         loginButton.click();
+    }
+    
+    public void EnteroldPassword(String oldpassword)
+    {
+    	oldPasswordTextbox.sendKeys(oldpassword);
+    }
+    public void Enternewpassword(String newPassword)
+    {
+    	newPasswordTextBox.sendKeys(newPassword);
+    }
+    public void EnterConfirmPassword(String confirmPassword)
+    {
+    	ConfirmPasswordTextBox.sendKeys(confirmPassword);
+    }
+    public void ClickOnResetAndRelogin()
+    {
+    	ResetAndReloginButton.click();
+    }
+    public void ClickOnOK()
+    {
+    	OKButton.click();
     }
 }
 
