@@ -149,6 +149,10 @@ public void EnterreferenceId(String referenceId)
 {
 	referenceIdTextbox.sendKeys(referenceId);
 }
+public void ClickOnApprovalDate()
+{
+	ApprovalDate.click();
+}
 public void SelectApprovalDate(String approvalDate) throws Exception
 {
 	ToT_ToA_Batch_DatePicker.chooseDate(driver, approvalDate, ApprovalDate, monthDropdownlist, yearDropdownlist);
