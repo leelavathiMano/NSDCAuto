@@ -3,6 +3,7 @@ package com.nsdc.regressionTest;
 import java.time.Duration;
 import java.util.List;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nsdc.androidMobile.CAFF_Mobile;
 import com.nsdc.generic.FilePreview;
 import com.nsdc.generic.MobileHandlers;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
@@ -57,6 +59,7 @@ import com.nsdc.pages.TrainingPartnerDashboardPage;
 import com.nsdc.testConfig.CreateAppiumDriver;
 import com.nsdc.testConfig.TestConfiguration;
 
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.StartsActivity;
 
@@ -73,8 +76,7 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration {
 	public void addTrainingCentreTC_01(String srno, String tpUsername, String tpPassword, String processType,
 			String tcType, String tcName, String tcAddress, String landmark, String pincode, String state,
 			String district, String tehsil, String city, String parliamentryConstituency, String geoLocation,
-			String addressProof, String addressProofFile, String SPOC_Name, String SPOC_EmailAddress,
-			String spoc_MobileNumber, String centreHeadName, String centreHeadEmail, String centreHeadMobile,
+			String addressProof, String addressProofFile, String SPOC_Name, String centreHeadName, String centreHeadEmail, String centreHeadMobile,
 			String pmkkHubID, String mOU_File, String mobileOTP, String emailOTP, String tcID, String pmkkSPOC_ID,
 			String pmkkSPOC_Password, String reviewComment) throws Exception {
 		int sno = Integer.parseInt(srno);
@@ -86,7 +88,18 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration {
 		Thread.sleep(3000);
 		EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(tpUsername, tpPassword);
+		
+		String randomNumbers = RandomStringUtils.randomNumeric(5);
+		String phNo = "49393"+randomNumbers;	
+		System.out.println(phNo);
+		 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890";
+		    String email = "";
+		    String temp = RandomStringUtils.random(17, allowedChars);
+		    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
+		    
+		    
 		TrainingPartnerDashboardPage tpdp = new TrainingPartnerDashboardPage(driver);
+		System.out.println(email);
 		Thread.sleep(20000);
 		tpdp.clickOnAddTrainingCentre();
 		Thread.sleep(5000);
@@ -118,8 +131,8 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration {
 		Thread.sleep(10000);
 		atc.enterNameOfTheSPOC(SPOC_Name);
 		Thread.sleep(3000);
-		atc.enter_SPOC_EmailAddress(SPOC_EmailAddress);
-		atc.enter_SPOC_MobileNumber(spoc_MobileNumber);
+		atc.enter_SPOC_EmailAddress(email);
+		atc.enter_SPOC_MobileNumber(phNo);
 		Thread.sleep(3000);
 		atc.enterCentreHeadName(centreHeadName);
 		atc.enterCentreHeadEmailAddress(centreHeadEmail);
@@ -706,10 +719,6 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration {
 		}
 
 		
-		
-		
-		
-		
 //		Thread.sleep(5000);
 //		caaf.clickOnSaveAndNext();
 
@@ -790,7 +799,7 @@ public class TC_CAAF_WorkflowTestSC_10 extends TestConfiguration {
 		caaf.clickOnSaveAndNext();
 		Thread.sleep(3000);
 		caaf.clickOn_OK_ForMobileApp();
-
+		CAFF_Mobile.MobileMainMethod("CAFF", "TC1500450", "Qwerty@123");
 //		PostLoginPage plp = new PostLoginPage(driver);
 //		Thread.sleep(3000);
 //		plp.clickOnProfileLogo();
