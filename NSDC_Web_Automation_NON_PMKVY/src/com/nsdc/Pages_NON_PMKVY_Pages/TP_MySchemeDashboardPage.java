@@ -25,6 +25,12 @@ WebDriver driver;
 	private WebElement mySchemeButton;
 	@FindBy(xpath="//button[contains(text(),'Apply Scheme/Program')]")
 	private WebElement addSchemeButton;
+	@FindBy(xpath="//div[@class='row ng-star-inserted']//div[2]//div[1]//select[1]")
+	private WebElement pagenumberSelectDropdownlist;
+	@FindBy(xpath="//select[@formcontrolname='schemeName']")
+	private WebElement SchemeDropDownlist;
+	@FindBy(xpath="//button[contains(text(),'Apply')]")
+	private WebElement ApplyButton;
 	@FindBy(xpath="//a[contains(text(),'Approved')]")
 	private WebElement approvedSchemeButton;
 	@FindBy(xpath="//a[contains(text(),'Approval in Progress')]")
@@ -70,6 +76,21 @@ WebDriver driver;
 		executor.executeScript("arguments[0].click();", addSchemeButton);
 		//addSchemeButton.click();
 	}
+	
+	public void Selectpagenumber(String pagenumber)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(pagenumberSelectDropdownlist, pagenumber);
+	}
+	public void SelectSchme(String scheme)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(SchemeDropDownlist, scheme);
+		//SchemeDropDownlist.
+	}
+	public void ClickOnApply()
+	{
+		ApplyButton.click();
+	}
+	
 	
 	public void clickOnApprovedScheme()
 	{
