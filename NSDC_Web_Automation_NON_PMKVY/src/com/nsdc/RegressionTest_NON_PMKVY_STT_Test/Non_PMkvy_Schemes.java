@@ -51,7 +51,7 @@ import com.nsdc.testConfig.TestConfiguration;
 
 public class Non_PMkvy_Schemes extends TestConfiguration 
 {  
-	
+//	
 	@DataProvider    
 	public Object[][] addScheme_FeeBased()
 	{
@@ -91,7 +91,16 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 		TP_MySchemeDashboardPage tpms = new TP_MySchemeDashboardPage(driver);
 		Thread.sleep(3000);
 		tpms.clickOnAddSchemeOrProgram();
+		
 		Thread.sleep(5000);
+		String pagenumber="100";
+		tpms.Selectpagenumber(pagenumber);
+		Thread.sleep(5000);
+		String scheme="NON-PMKVY";
+		tpms. SelectSchme(scheme);
+		Thread.sleep(1000);
+		tpms.ClickOnApply();
+		Thread.sleep(1000);
 		// tpms.selectscheme( NameofschemeName,Subscheme);
 		
 		////////////////////////////////////////////////////////////////////
@@ -125,7 +134,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 	    
 		TP_FeeBasedProgramPage tpfb = new TP_FeeBasedProgramPage(driver);
 		Thread.sleep(3000);
-		tpfb.clickOnCloseButton();
+		//tpfb.clickOnCloseButton();
 		if(tpWithProject.equals("No"))
 		{
 			Thread.sleep(5000);
@@ -415,10 +424,10 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
 	}
-//	
-////////	/////////////////////////////////////////////////////////////////, dependsOnMethods="addSchemeTC_01"
-////
-	
+//////	
+////////////	/////////////////////////////////////////////////////////////////, dependsOnMethods="addSchemeTC_01"
+////////
+////	
 	@DataProvider
 	public Object[][] approveScheme()
 	{
@@ -426,7 +435,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 				"FeeBasedAddSchemeSC14TC02");
 	}
 	
-	@Test(dataProvider="approveScheme", dependsOnMethods="addSchemeTC_01")
+	@Test(dataProvider="approveScheme",dependsOnMethods="addSchemeTC_01")
 	public void daApproveSchemeTC_02(String srno, String fDAUsername, String fDAPassword, String tpID, 
 			String expectedFinancialModelType, String status, String expectedFundedBy, String expectedProjectDuration,
 			String AggrementOrdisbursementDate,  String expectedProjectID, String expectedProjectName,
@@ -463,16 +472,14 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 		Thread.sleep(4000);
 		
 		
-		//List <WebElement> button = 
-				driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill'])[1]")).click();
-//		int size = button.size();
-//		WebElement ele = button.get(size-1);
-//		ele.click();
-		//List <WebElement> ta =
-				driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//a[contains(text(),'Take Action')])[1]")).click();
-//		int size1 = ta.size();
-//		WebElement tab = ta.get(size1-1);
-//		tab.click();
+		List <WebElement> button = driver.findElements(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill'])[1]"));
+		int size = button.size();
+		WebElement ele = button.get(size-1);
+		ele.click();
+		List <WebElement> ta =driver.findElements(By.xpath("(//tr[td[span[span[text()='"+tpID+"']]]]//a[contains(text(),'Take Action')])[1]"));
+		int size1 = ta.size();
+		WebElement tab = ta.get(size1-1);
+		tab.click();
 		FDA_SelectedSchemePage fss = new FDA_SelectedSchemePage(driver);
 		Thread.sleep(3000);
 
@@ -569,22 +576,23 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 		LogOutPage plp = new LogOutPage(driver);
 		plp.clickOnProfileLogo();
 		plp.clickOnLogout();
-		
-		
-		
+//		
+//		
+//		
 	}
 
-////
+//////
 ////////////////////////, dependsOnMethods="daApproveSchemeTC_02"
 ////
 //	@DataProvider
 //	public Object[][] resubmitAndReviewScheme()
+	
 //	{
 //		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/Non_pmkyy.xls", 
 //				"FeeBasedAddSchemeSC14TC03");
 //	}
 //
-//	@Test(dataProvider="resubmitAndReviewScheme")
+//	@Test(dataProvider="resubmitAndReviewScheme",enable="false")
 //	public void resubmitAndReviewSchemeTC_03(String sno, String tpUsername, String tpPassword, String daComments,
 //			String oldProjectName, String daReviewComments, String newFinancialModel, String newFundedBy, 
 //			String newProjectDuration, String newAgreementDate, String newDisbursementDate, String newProjectID,
@@ -963,7 +971,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 				"MySchemeAddTCSC15TC01");
 	}
 
-	@Test(dataProvider = "addTrainingCentre")//,dependsOnMethods="daApproveSchemeTC_02")
+	@Test(dataProvider = "addTrainingCentre",dependsOnMethods="daApproveSchemeTC_02")
 	public void addTrainingCentreTC04(String sno, String tpUsername, String tpPassword, String projectID,
 			String trainingCentreType, String trainingCentreName, String ownership,String type,String CentreFacultyType,String franchiseDocument,
 			String startDate, String endDate, String bathesNumber, String studentNumber, String annualCapacity,
@@ -976,7 +984,7 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 			String spocDesignation, String spocLandLine, String srNo_TCRoom, String tcRoomPhotos,
 			String laboratory_SrNo, String laboratoryPhotos, String maleWashRoom_SrNo, String maleWashRoomPhotos,
 			String femaleWashRoom_SrNo, String femaleWashRoomPhotos, String unisexWashRoom_SrNo,
-			String unisexWashRoomPhotos, String sector, String course, String target) throws Exception {
+			String unisexWashRoomPhotos, String sector, String course, String target,String NameofschemeName,String Subscheme) throws Exception {
 		precondition();
 		LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
@@ -990,8 +998,35 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 		Thread.sleep(15000);
 		tpdp.clickOnMySchemes();
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-		driver.findElement(By.xpath("//a[contains(text(),'View Details')]")).click();
+		////
+//WebElement MySchemesListTable = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']"));
+//		
+//		List<WebElement> rowstable = MySchemesListTable.findElements(By.tagName("tr"));
+//
+//		int rows_count = rowstable.size();
+//
+//		for (int row = 1; row < rows_count; row++) {
+//
+//	 String nameofTheScheme = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr["+row+"]//td[2]")).getText();
+//
+//				String SUBScheme = driver.findElement(By.xpath("//tbody[@class='m-datatable__body margin-table ']//tr//td[span[span[text()='"+Subscheme+"']]]")).getText();
+//				
+//				if (nameofTheScheme.equals(NameofschemeName)&& SUBScheme.equals(Subscheme))
+//				{
+//					Thread.sleep(3000);
+//					
+//					driver.findElement(By.xpath("//tr[td[span[span[text()='"+Subscheme+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+//					Thread.sleep(3000);
+//				    driver.findElement(By.xpath("//tr[td[span[span[text()='"+Subscheme+"']]]]//a[contains(text(),'View Details')]")).click();
+//				    Thread.sleep(3000);
+//				break;
+//				}
+//				
+//			}
+		
+		
+		driver.findElement(By.xpath("(//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill'])")).click();
+		driver.findElement(By.xpath("(//a[contains(text(),'View Details')])")).click();
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectID+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
 		driver.findElement(By.xpath("//tr[td[span[span[text()='"+projectID +"']]]]//a[contains(text(),'View Details')]")).click();
@@ -1082,11 +1117,16 @@ public class Non_PMkvy_Schemes extends TestConfiguration
 		Thread.sleep(3000);
 		fbad.clickOnSaveAndContinue();
 		Thread.sleep(15000);
-		LogOutPage plp = new LogOutPage(driver);
-		Thread.sleep(5000);
-		plp.clickOnProfileLogo();
-		Thread.sleep(2000);
-		plp.clickOnLogout();
+		
+		String Tcloginid=driver.findElement(By.xpath("(//tbody//tr//td[2]//span)[2]")).getText();
+		
+		
+		
+//		LogOutPage plp = new LogOutPage(driver);
+//		Thread.sleep(5000);
+//		plp.clickOnProfileLogo();
+//		Thread.sleep(2000);
+//		plp.clickOnLogout();
 
 	}
 	
