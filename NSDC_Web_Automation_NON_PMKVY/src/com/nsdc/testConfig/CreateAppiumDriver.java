@@ -23,8 +23,8 @@ public class CreateAppiumDriver
 		if(platform.equalsIgnoreCase("aos"))
 		{
 			cap.setCapability("platform", "Android");
-			cap.setCapability("appPackage", "com.transneuron.nsdl");
-			cap.setCapability("appActivity", "com.transneuron.nsdl.MainActivity");
+			cap.setCapability("appPackage", "com.nsdc.tntplt");
+			cap.setCapability("appActivity", "com.nsdc.tntplt.MainActivity");
 			cap.setCapability("deviceName", deviceName);
 			cap.setCapability("platformVersion", platformVersion);			
 			

@@ -65,6 +65,8 @@ public class SSC_Fast_CandidatesRegistrationDataCreationTestSC_28 extends TestCo
 			String parlimentaryConstituency=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 35);
 			String accountNumber=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 65);
 			String ifsc=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 66);
+			String bankName=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 67);
+			
 			String education1=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 44);
 			String yearOfPassing1=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 46);
 			String education1Proof=ReadWriteData.getData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 47);
@@ -92,10 +94,12 @@ public class SSC_Fast_CandidatesRegistrationDataCreationTestSC_28 extends TestCo
 			}
 			if(i!=1)
 			{
+				Thread.sleep(2000);
 				tDp.clickOnRegisterCandidate_InViewMyCandidate();
 			
 			Thread.sleep(1000);
 			TrainingPartner_MyCandidatesPage tpMp=new TrainingPartner_MyCandidatesPage(driver);
+			Thread.sleep(3000);
 			tpMp.clickToChooseIndividualCandidateRegistration();
 			tpMp.clickRegister();
 			Thread.sleep(3000);
@@ -113,13 +117,14 @@ public class SSC_Fast_CandidatesRegistrationDataCreationTestSC_28 extends TestCo
 			tpCrp.clickToUploadProfilePicture();
 			Thread.sleep(3000);
 			tpCrp.selectCountryCode(countryCode);
+			Thread.sleep(1000);
 			tpCrp.enterMobileNumber(mobileNumber);
 			tpCrp.enterEmailID(emailID);
 			tpCrp.clickToChooseGender(gender);
 			tpCrp.clickToSelectDOB();
 			String selectedDateOfBirth=driver.findElement(By.xpath("//input[@placeholder='Select Date of Birth']")).getAttribute("value");
 		    ReadWriteData.setExcelData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 11, selectedDateOfBirth);
-//		  	tpCrp.selectMaritalStatus(maritalStatus);
+		  	tpCrp.selectMaritalStatus(maritalStatus);
 //			tpCrp.enterPlaceOfBirth(placeOfBirth);
 			tpCrp.selectBirthState(birthState);
 			Thread.sleep(2000);
@@ -146,7 +151,7 @@ public class SSC_Fast_CandidatesRegistrationDataCreationTestSC_28 extends TestCo
 //				Thread.sleep(1000);
 //			}
 			tpCrp.enterMotherName(motherName);
-			tpCrp.enterFatherName(fatherName);
+		//	tpCrp.enterFatherName(fatherName);
 			tpCrp.enterNameOFGuardian(guardianName);
 			if(aadhaarOrAlterternateId.equalsIgnoreCase("aadhaar"))
 			{
@@ -180,8 +185,11 @@ public class SSC_Fast_CandidatesRegistrationDataCreationTestSC_28 extends TestCo
 			tpCrp.enterPincode(pincode);
 //			tpCrp.selectParlimentaryConstituency(parlimentaryConstituency);
 //			tpCrp.enterLocationSPOC(locationSPOC);
+//			tpCrp.clickSaveAndContinue();
+//			tpCrp.clickSaveAndContinue();
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(5000);
+			
+			Thread.sleep(10000);
 			//Contact Details Page
 			String candidateIDUrl=driver.getCurrentUrl();
 			String parts[]=candidateIDUrl.split("/");
@@ -189,18 +197,38 @@ public class SSC_Fast_CandidatesRegistrationDataCreationTestSC_28 extends TestCo
 			ReadWriteData.setExcelData("./TestData/Workflow/SSC_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 1, registeredCandidateID);
 			tpCrp.clickSameAsPermanetAddress();
 			Thread.sleep(1000);
-			tpCrp.enterAccountHolderName(fullName);	
-			tpCrp.enterAccountNumber(accountNumber);
+			tpCrp.clickSameAsPermanetAddress();
 			Thread.sleep(1000);
-			tpCrp.enterIFSC(ifsc);
+			tpCrp.clickSameAsPermanetAddress();
+			
 			Thread.sleep(1000);
-			tpCrp.clickToGetAutopopulatedBankDetails();
-			Thread.sleep(2000);
-//			tpCrp.enterBankName(bankName);
+//			if(aadhaarOrAlterternateId.equalsIgnoreCase("Alternate"))
+//			{
+//			tpCrp.enterAccountHolderName(fullName);	
+//			tpCrp.enterAccountNumber(accountNumber);
+//			Thread.sleep(1000);
+//			tpCrp.enterIFSC(ifsc);
+//			///////////
+//			//tpCrp.ClickOnSearchBankName();
+//			
+//			Thread.sleep(1000);
+//			//tpCrp.clickToGetAutopopulatedBankDetails();
+//			//Thread.sleep(3000);
+//			tpCrp.ClickBankName();
+//			Thread.sleep(1000);
+//			tpCrp.enterSearchBankName(bankName);
+//			Thread.sleep(3000);
+//			tpCrp.ChooseBankName();
+//			Thread.sleep(3000);
+//			tpCrp.ClickOKButton();
+//			Thread.sleep(3000);
+//			}
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
 			tpCrp.clickSaveAndContinue();
-			Thread.sleep(2000);
+			
+			Thread.sleep(3000);
+			
 			//Education
 			tpCrp.selectEducation(education1);
 			tpCrp.selectYearOfPassing(yearOfPassing1);

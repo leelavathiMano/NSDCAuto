@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+
+<listeners>
+<!-- 	<listener class-name="extentReport.ExtentReporter"/>
+</listeners>
+ -->
+		<listener class-name="extentReport.TestListener" />
+	</listeners>
+   <!-- <listeners>
+        <listener class-name="com.aventstack.extentreports.adapter.listener.ExtentITestListenerClassAdapter"></listener>
+    </listeners>--> 
+
   <test thread-count="3" name="Test">
     <classes>
-        <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/>
-	   	<class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
+    	<class name="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10"/>
+       <!-- <class name="com.nsdc.regressionTest.RegistrationAndLoginTestSC_01"/> --> 
+	   <!-- 	<class name="com.nsdc.regressionTest.TrainingPartnerWorkflowTestSC_02"/>
     	<class name="com.nsdc.regressionTest.TrainerWorkflowTestSC_03"/>
     	<class name="com.nsdc.regressionTest.AssessorWorkflowTestSC_04"/> 
     	<class name="com.nsdc.regressionTest.CandidateRegistrationWorkflowTestSC_05"/>
@@ -20,7 +32,7 @@
       	<class name="com.nsdc.regressionTest.SSC_ExceptionalTrainingCentreWorkflowSC_15"/>
 	    <class name="com.nsdc.regressionTest.SSC_ToT_ToA_ToMT_ToMA_BatchWorkflowTestSC_16"/>
       	<class name="com.nsdc.regressionTest.ToT_BatchApplicantsWorkflowTestSC_17"/>
-      	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/>
+      	<class name="com.nsdc.regressionTest.ToA_BatchApplicantsWorkflowTestSC_18"/> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

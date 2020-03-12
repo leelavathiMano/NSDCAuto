@@ -1,48 +1,924 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results skipped="0" failed="1" ignored="0" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-07-29T09:31:47Z" name="Default suite" finished-at="2019-07-29T09:44:02Z" duration-ms="734526">
+  <suite name="Default suite" duration-ms="359430" started-at="2020-03-04T16:55:29 IST" finished-at="2020-03-04T17:01:28 IST">
     <groups>
     </groups>
-    <test started-at="2019-07-29T09:31:47Z" name="Default test" finished-at="2019-07-29T09:44:02Z" duration-ms="734526">
-      <class name="com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation">
-        <test-method is-config="true" signature="preSuite()[pri:0, instance:com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation@7fa98a66]" started-at="2019-07-29T09:31:47Z" name="preSuite" finished-at="2019-07-29T09:31:47Z" duration-ms="411" status="PASS">
+    <test name="Default test" duration-ms="359430" started-at="2020-03-04T16:55:29 IST" finished-at="2020-03-04T17:01:28 IST">
+      <class name="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10">
+        <test-method status="PASS" signature="preSuite()[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="preSuite" is-config="true" duration-ms="34" started-at="2020-03-04T16:55:29 IST" finished-at="2020-03-04T16:55:29 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- preSuite -->
-        <test-method is-config="true" signature="precondition()[pri:0, instance:com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation@7fa98a66]" started-at="2019-07-29T09:31:47Z" name="precondition" finished-at="2019-07-29T09:32:04Z" duration-ms="16403" status="PASS">
+        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="precondition" is-config="true" duration-ms="22945" started-at="2020-03-04T16:55:29 IST" finished-at="2020-03-04T16:55:52 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- precondition -->
-        <test-method signature="tpRegisteringCandidates()[pri:0, instance:com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation@7fa98a66]" started-at="2019-07-29T09:32:04Z" name="tpRegisteringCandidates" finished-at="2019-07-29T09:44:01Z" duration-ms="717576" status="FAIL">
-          <exception class="org.openqa.selenium.WebDriverException">
+        <test-method status="PASS" signature="addTrainingCentreTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="addTrainingCentreTC_01" duration-ms="135006" started-at="2020-03-04T16:55:52 IST" data-provider="addTrainingCentre" finished-at="2020-03-04T16:58:07 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TP100120]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[ Accreditation & Affiliation]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[NON PMKK]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Non PMKK Training Centre]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[32, 10th Cross]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[Near Railway Station]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[496221]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[KARNATAKA]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[BAGALKOT]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[Bagalkot]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[Alur]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Bagalkot]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[Bagalkot, Karnataka, India]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[Bank Statement]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[Image.png]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[Tc SPOC]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[First Centre Head]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[centrehd130@gmail.com]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[9685394084]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[TC_000930]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[Image.png]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[999999]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[999999]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[TC001340]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[PMKKSPOC_000001]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[TC001349]]>
+              </value>
+            </param>
+            <param index="28">
+              <value>
+                <![CDATA[Approved]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTrainingCentreTC_01 -->
+        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="postcondition" is-config="true" duration-ms="2" started-at="2020-03-04T16:58:07 IST" finished-at="2020-03-04T16:58:07 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTrainingCentreTC_01 status=SUCCESS method=TC_CAAF_WorkflowTestSC_10.addTrainingCentreTC_01(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postcondition -->
+        <test-method status="PASS" signature="precondition()[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="precondition" is-config="true" duration-ms="23559" started-at="2020-03-04T16:58:07 IST" finished-at="2020-03-04T16:58:31 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- precondition -->
+        <test-method status="FAIL" signature="cAAF_FormFillingTC_02(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="cAAF_FormFillingTC_02" duration-ms="176767" started-at="2020-03-04T16:58:31 IST" data-provider="tc_CAAF_FormFilling" depends-on-methods="com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10.addTrainingCentreTC_01" finished-at="2020-03-04T17:01:27 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TC001350]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[ekaushal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Qwerty@123]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Non PMKK Training Centre]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[TP Owned]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[www.ekaushal.com]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[www.nsdc.com]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Tc SPOC]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[#REF!]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[#REF!]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[07761255371]]>
+              </value>
+            </param>
+            <param index="13">
+              <value>
+                <![CDATA[Mr Harry]]>
+              </value>
+            </param>
+            <param index="14">
+              <value>
+                <![CDATA[harry001@gmail.com]]>
+              </value>
+            </param>
+            <param index="15">
+              <value>
+                <![CDATA[64523748917]]>
+              </value>
+            </param>
+            <param index="16">
+              <value>
+                <![CDATA[32, 10th Cross]]>
+              </value>
+            </param>
+            <param index="17">
+              <value>
+                <![CDATA[Near Railway Station]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[496221]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[KARNATAKA]]>
+              </value>
+            </param>
+            <param index="20">
+              <value>
+                <![CDATA[BAGALKOT]]>
+              </value>
+            </param>
+            <param index="21">
+              <value>
+                <![CDATA[Bagalkot]]>
+              </value>
+            </param>
+            <param index="22">
+              <value>
+                <![CDATA[Bagalkot]]>
+              </value>
+            </param>
+            <param index="23">
+              <value>
+                <![CDATA[Bank Statement]]>
+              </value>
+            </param>
+            <param index="24">
+              <value>
+                <![CDATA[Image.png]]>
+              </value>
+            </param>
+            <param index="25">
+              <value>
+                <![CDATA[Urban]]>
+              </value>
+            </param>
+            <param index="26">
+              <value>
+                <![CDATA[Yes]]>
+              </value>
+            </param>
+            <param index="27">
+              <value>
+                <![CDATA[Stand Alone Building]]>
+              </value>
+            </param>
+            <param index="28">
+              <value>
+                <![CDATA[Prefabricated]]>
+              </value>
+            </param>
+            <param index="29">
+              <value>
+                <![CDATA[0 - 3 km]]>
+              </value>
+            </param>
+            <param index="30">
+              <value>
+                <![CDATA[Railway Station]]>
+              </value>
+            </param>
+            <param index="31">
+              <value>
+                <![CDATA[Glass Cover]]>
+              </value>
+            </param>
+            <param index="32">
+              <value>
+                <![CDATA[100]]>
+              </value>
+            </param>
+            <param index="33">
+              <value>
+                <![CDATA[School]]>
+              </value>
+            </param>
+            <param index="34">
+              <value>
+                <![CDATA[Image.png]]>
+              </value>
+            </param>
+            <param index="35">
+              <value>
+                <![CDATA[Centre Floor is Tiled]]>
+              </value>
+            </param>
+            <param index="36">
+              <value>
+                <![CDATA[TC walls and roof made of Tin / Bamboo Sheets]]>
+              </value>
+            </param>
+            <param index="37">
+              <value>
+                <![CDATA[Speed of 1 MBPS and above]]>
+              </value>
+            </param>
+            <param index="38">
+              <value>
+                <![CDATA[First Affiliation]]>
+              </value>
+            </param>
+            <param index="39">
+              <value>
+                <![CDATA[National]]>
+              </value>
+            </param>
+            <param index="40">
+              <value>
+                <![CDATA[About First Affiliation]]>
+              </value>
+            </param>
+            <param index="41">
+              <value>
+                <![CDATA[Second Affiliation]]>
+              </value>
+            </param>
+            <param index="42">
+              <value>
+                <![CDATA[International]]>
+              </value>
+            </param>
+            <param index="43">
+              <value>
+                <![CDATA[About Second Affiliation]]>
+              </value>
+            </param>
+            <param index="44">
+              <value>
+                <![CDATA[Third Affiliation]]>
+              </value>
+            </param>
+            <param index="45">
+              <value>
+                <![CDATA[National]]>
+              </value>
+            </param>
+            <param index="46">
+              <value>
+                <![CDATA[About Third Affiliation]]>
+              </value>
+            </param>
+            <param index="47">
+              <value>
+                <![CDATA[Yes]]>
+              </value>
+            </param>
+            <param index="48">
+              <value>
+                <![CDATA[1050]]>
+              </value>
+            </param>
+            <param index="49">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="50">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="51">
+              <value>
+                <![CDATA[Available]]>
+              </value>
+            </param>
+            <param index="52">
+              <value>
+                <![CDATA[About Men Residential]]>
+              </value>
+            </param>
+            <param index="53">
+              <value>
+                <![CDATA[Yes]]>
+              </value>
+            </param>
+            <param index="54">
+              <value>
+                <![CDATA[1050]]>
+              </value>
+            </param>
+            <param index="55">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="56">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="57">
+              <value>
+                <![CDATA[About Women Residential]]>
+              </value>
+            </param>
+            <param index="58">
+              <value>
+                <![CDATA[Water Purifier]]>
+              </value>
+            </param>
+            <param index="59">
+              <value>
+                <![CDATA[Available]]>
+              </value>
+            </param>
+            <param index="60">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="61">
+              <value>
+                <![CDATA[About Classroom]]>
+              </value>
+            </param>
+            <param index="62">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="63">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="64">
+              <value>
+                <![CDATA[900]]>
+              </value>
+            </param>
+            <param index="65">
+              <value>
+                <![CDATA[Digital Literacy lab]]>
+              </value>
+            </param>
+            <param index="66">
+              <value>
+                <![CDATA[About Laboratory]]>
+              </value>
+            </param>
+            <param index="67">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="68">
+              <value>
+                <![CDATA[800]]>
+              </value>
+            </param>
+            <param index="69">
+              <value>
+                <![CDATA[900]]>
+              </value>
+            </param>
+            <param index="70">
+              <value>
+                <![CDATA[Sector Specific lab]]>
+              </value>
+            </param>
+            <param index="71">
+              <value>
+                <![CDATA[About Hybrid]]>
+              </value>
+            </param>
+            <param index="72">
+              <value>
+                <![CDATA[Retail]]>
+              </value>
+            </param>
+            <param index="73">
+              <value>
+                <![CDATA[Retail Sales Associate]]>
+              </value>
+            </param>
+            <param index="74">
+              <value>
+                <![CDATA[Retail]]>
+              </value>
+            </param>
+            <param index="75">
+              <value>
+                <![CDATA[Distributor Salesman]]>
+              </value>
+            </param>
+            <param index="76">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="77">
+              <value>
+                <![CDATA[Bonsai Qualification Pack]]>
+              </value>
+            </param>
+            <param index="78">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="79">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="80">
+              <value>
+                <![CDATA[Yes]]>
+              </value>
+            </param>
+            <param index="81">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="82">
+              <value>
+                <![CDATA[About Agricultural study]]>
+              </value>
+            </param>
+            <param index="83">
+              <value>
+                <![CDATA[Yes]]>
+              </value>
+            </param>
+            <param index="84">
+              <value>
+                <![CDATA[600]]>
+              </value>
+            </param>
+            <param index="85">
+              <value>
+                <![CDATA[600]]>
+              </value>
+            </param>
+            <param index="86">
+              <value>
+                <![CDATA[T-00C819]]>
+              </value>
+            </param>
+            <param index="87">
+              <value>
+                <![CDATA[T-00581E]]>
+              </value>
+            </param>
+            <param index="88">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="89">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="90">
+              <value>
+                <![CDATA[Full Time]]>
+              </value>
+            </param>
+            <param index="91">
+              <value>
+                <![CDATA[Shared]]>
+              </value>
+            </param>
+            <param index="92">
+              <value>
+                <![CDATA[CLASS_1]]>
+              </value>
+            </param>
+            <param index="93">
+              <value>
+                <![CDATA[LAB_1]]>
+              </value>
+            </param>
+            <param index="94">
+              <value>
+                <![CDATA[HYBRID_1]]>
+              </value>
+            </param>
+            <param index="95">
+              <value>
+                <![CDATA[CLASS_1]]>
+              </value>
+            </param>
+            <param index="96">
+              <value>
+                <![CDATA[LAB_1]]>
+              </value>
+            </param>
+            <param index="97">
+              <value>
+                <![CDATA[HYBRID_1]]>
+              </value>
+            </param>
+            <param index="98">
+              <value>
+                <![CDATA[100]]>
+              </value>
+            </param>
+            <param index="99">
+              <value>
+                <![CDATA[First Equipment Remark]]>
+              </value>
+            </param>
+            <param index="100">
+              <value>
+                <![CDATA[100]]>
+              </value>
+            </param>
+            <param index="101">
+              <value>
+                <![CDATA[Second Equipment Remark]]>
+              </value>
+            </param>
+            <param index="102">
+              <value>
+                <![CDATA[100]]>
+              </value>
+            </param>
+            <param index="103">
+              <value>
+                <![CDATA[Third Equipment Remark]]>
+              </value>
+            </param>
+            <param index="104">
+              <value>
+                <![CDATA[999]]>
+              </value>
+            </param>
+            <param index="105">
+              <value>
+                <![CDATA[Fourth Equipment Remark]]>
+              </value>
+            </param>
+            <param index="106">
+              <value>
+                <![CDATA[999]]>
+              </value>
+            </param>
+            <param index="107">
+              <value>
+                <![CDATA[Fifth Equipment Remark]]>
+              </value>
+            </param>
+            <param index="108">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="109">
+              <value>
+                <![CDATA[Male]]>
+              </value>
+            </param>
+            <param index="110">
+              <value>
+                <![CDATA[About first Centre Area]]>
+              </value>
+            </param>
+            <param index="111">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="112">
+              <value>
+                <![CDATA[Female]]>
+              </value>
+            </param>
+            <param index="113">
+              <value>
+                <![CDATA[About Second Centre Area]]>
+              </value>
+            </param>
+            <param index="114">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="115">
+              <value>
+                <![CDATA[About Third Centre Area]]>
+              </value>
+            </param>
+            <param index="116">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="117">
+              <value>
+                <![CDATA[About Fourth Centre Area]]>
+              </value>
+            </param>
+            <param index="118">
+              <value>
+                <![CDATA[Pantry]]>
+              </value>
+            </param>
+            <param index="119">
+              <value>
+                <![CDATA[1000]]>
+              </value>
+            </param>
+            <param index="120">
+              <value>
+                <![CDATA[Female]]>
+              </value>
+            </param>
+            <param index="121">
+              <value>
+                <![CDATA[About Fifth Centre Area]]>
+              </value>
+            </param>
+            <param index="122">
+              <value>
+                <![CDATA[Mr. Larry]]>
+              </value>
+            </param>
+            <param index="123">
+              <value>
+                <![CDATA[BA]]>
+              </value>
+            </param>
+            <param index="124">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="125">
+              <value>
+                <![CDATA[Dedicated Resource]]>
+              </value>
+            </param>
+            <param index="126">
+              <value>
+                <![CDATA[About First Centre Staff]]>
+              </value>
+            </param>
+            <param index="127">
+              <value>
+                <![CDATA[Counselor]]>
+              </value>
+            </param>
+            <param index="128">
+              <value>
+                <![CDATA[Mr John]]>
+              </value>
+            </param>
+            <param index="129">
+              <value>
+                <![CDATA[MA]]>
+              </value>
+            </param>
+            <param index="130">
+              <value>
+                <![CDATA[Dedicated Resource]]>
+              </value>
+            </param>
+            <param index="131">
+              <value>
+                <![CDATA[About Second Centre Staff]]>
+              </value>
+            </param>
+            <param index="132">
+              <value>
+                <![CDATA[Mr J K Singh]]>
+              </value>
+            </param>
+            <param index="133">
+              <value>
+                <![CDATA[B.COM]]>
+              </value>
+            </param>
+            <param index="134">
+              <value>
+                <![CDATA[Free Lancer]]>
+              </value>
+            </param>
+            <param index="135">
+              <value>
+                <![CDATA[About Third Centre Staff]]>
+              </value>
+            </param>
+            <param index="136">
+              <value>
+                <![CDATA[Counselor]]>
+              </value>
+            </param>
+            <param index="137">
+              <value>
+                <![CDATA[Mr K L Kumar]]>
+              </value>
+            </param>
+            <param index="138">
+              <value>
+                <![CDATA[BSc]]>
+              </value>
+            </param>
+            <param index="139">
+              <value>
+                <![CDATA[Part Time Resource]]>
+              </value>
+            </param>
+            <param index="140">
+              <value>
+                <![CDATA[About Third Centre Staff]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[unknown error: Element <button _ngcontent-c11="" class="btn btn-outline-info " style="margin-top:11px; " type="button">...</button> is not clickable at point (1276, 591). Other element would receive the click: <div class="blockUI blockOverlay" style="z-index: 10; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); opacity: 0.03; cursor: wait; position: fixed;"></div>
-  (Session info: chrome=75.0.3770.142)
-  (Driver info: chromedriver=2.44.609545 (c2f88692e98ce7233d2df7c724465ecacfe74df5),platform=Mac OS X 10.14.3 x86_64) (WARNING: The server did not provide any stacktrace information)
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Add Classroom']"}
+  (Session info: chrome=80.0.3987.122)
+  (Driver info: chromedriver=2.44.609538 (b655c5a60b0b544917107a59d4153d4bf78e1b90),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'Apples-MacBook-Air.local', ip: 'fe80:0:0:0:c80:dc38:5118:5965%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.3', java.version: '12.0.1'
+System info: host: 'DESKTOP-AQ7DG88', ip: '192.168.2.100', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_31'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609545 (c2f88692e98ce7..., userDataDir: /var/folders/3j/xtp1jbpj41s...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:52977}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.142, webStorageEnabled: true}
-Session ID: 323e178392fd7e0c33f698e66b43c831]]>
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609538 (b655c5a60b0b54..., userDataDir: C:\Users\TNT\AppData\Local\...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:52166}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 80.0.3987.122, webStorageEnabled: true}
+Session ID: 5025acf7f6643425db52d686a6a62778
+*** Element info: {Using=xpath, value=//span[text()='Add Classroom']}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: Element <button _ngcontent-c11="" class="btn btn-outline-info " style="margin-top:11px; " type="button">...</button> is not clickable at point (1276, 591). Other element would receive the click: <div class="blockUI blockOverlay" style="z-index: 10; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); opacity: 0.03; cursor: wait; position: fixed;"></div>
-  (Session info: chrome=75.0.3770.142)
-  (Driver info: chromedriver=2.44.609545 (c2f88692e98ce7233d2df7c724465ecacfe74df5),platform=Mac OS X 10.14.3 x86_64) (WARNING: The server did not provide any stacktrace information)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='Add Classroom']"}
+  (Session info: chrome=80.0.3987.122)
+  (Driver info: chromedriver=2.44.609538 (b655c5a60b0b544917107a59d4153d4bf78e1b90),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'Apples-MacBook-Air.local', ip: 'fe80:0:0:0:c80:dc38:5118:5965%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.3', java.version: '12.0.1'
+System info: host: 'DESKTOP-AQ7DG88', ip: '192.168.2.100', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_31'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609545 (c2f88692e98ce7..., userDataDir: /var/folders/3j/xtp1jbpj41s...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:52977}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.142, webStorageEnabled: true}
-Session ID: 323e178392fd7e0c33f698e66b43c831
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609538 (b655c5a60b0b54..., userDataDir: C:\Users\TNT\AppData\Local\...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:52166}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 80.0.3987.122, webStorageEnabled: true}
+Session ID: 5025acf7f6643425db52d686a6a62778
+*** Element info: {Using=xpath, value=//span[text()='Add Classroom']}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
 at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
 at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
 at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
@@ -51,52 +927,62 @@ at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttp
 at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
-at com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation.tpRegisteringCandidates(TP_Fast_CandidatesRegistrationDataCreation.java:105)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:424)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at com.sun.proxy.$Proxy11.click(Unknown Source)
+at com.nsdc.pages.TrainingCentre_CAAF_Page.clickOnAddClassRoom(TrainingCentre_CAAF_Page.java:1572)
+at com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10.cAAF_FormFillingTC_02(TC_CAAF_WorkflowTestSC_10.java:480)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at org.testng.TestRunner$$Lambda$50/443384617.accept(Unknown Source)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tpRegisteringCandidates -->
-        <test-method is-config="true" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation@7fa98a66]" started-at="2019-07-29T09:44:01Z" name="postcondition" finished-at="2019-07-29T09:44:02Z" duration-ms="523" status="PASS">
+        </test-method> <!-- cAAF_FormFillingTC_02 -->
+        <test-method status="PASS" signature="postcondition(org.testng.ITestResult)[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5]" name="postcondition" is-config="true" duration-ms="703" started-at="2020-03-04T17:01:27 IST" finished-at="2020-03-04T17:01:28 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=tpRegisteringCandidates status=FAILURE method=TP_Fast_CandidatesRegistrationDataCreation.tpRegisteringCandidates()[pri:0, instance:com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation@7fa98a66] output={null}]]]>
+                <![CDATA[[TestResult name=cAAF_FormFillingTC_02 status=FAILURE method=TC_CAAF_WorkflowTestSC_10.cAAF_FormFillingTC_02(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10@79da8dc5] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postcondition -->
-      </class> <!-- com.nsdc.regressionTest.TP_Fast_CandidatesRegistrationDataCreation -->
+      </class> <!-- com.nsdc.regressionTest.TC_CAAF_WorkflowTestSC_10 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

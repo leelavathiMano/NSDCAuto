@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.equinox.internal.p2.ui.dialogs.UpdateWizard.WizardSettings">
-		<item value="871" key="DIALOG_WIDTH"/>
-		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
-		<item value="526" key="DIALOG_HEIGHT"/>
-		<item value="285" key="DIALOG_X_ORIGIN"/>
-		<item value="100" key="DIALOG_Y_ORIGIN"/>
+		<item key="DIALOG_WIDTH" value="871"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+		<item key="DIALOG_HEIGHT" value="526"/>
+		<item key="DIALOG_X_ORIGIN" value="285"/>
+		<item key="DIALOG_Y_ORIGIN" value="100"/>
 	</section>
 	<section name="org.eclipse.equinox.internal.p2.ui.dialogs.InstallWizard.WizardSettings">
-		<item value="910" key="DIALOG_WIDTH"/>
-		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
-		<item value="661" key="DIALOG_HEIGHT"/>
-		<item value="265" key="DIALOG_X_ORIGIN"/>
-		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item key="DIALOG_WIDTH" value="959"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_HEIGHT" value="680"/>
+		<item key="DIALOG_X_ORIGIN" value="265"/>
+		<item key="DIALOG_Y_ORIGIN" value="6"/>
+	</section>
+	<section name="AvailableIUsPage">
+		<item key="AvailableViewType" value="1"/>
+		<item key="ShowLatestVersionsOnly" value="true"/>
+		<item key="HideInstalledContent" value="true"/>
+		<item key="ResolveInstallWithAllSites" value="true"/>
+		<item key="FilterOnEnv" value="false"/>
+		<item key="AvailableNameColumnWidth" value="525"/>
+		<item key="AvailableVersionColumnWidth" value="280"/>
+		<item key="AvailableListSashWeight" value="800"/>
+		<item key="AvailableDetailsSashWeight" value="200"/>
+	</section>
+	<section name="org.eclipse.equinox.internal.p2.ui.dialogs.InstallWizard.SelectableIUsPage">
+		<item key="NameColumnWidth" value="420"/>
+		<item key="VersionColumnWidth" value="140"/>
+		<item key="IDColumnWidth" value="280"/>
+		<item key="ListSashWeight" value="800"/>
+		<item key="DetailsSashWeight" value="200"/>
+	</section>
+	<section name="org.eclipse.equinox.internal.p2.ui.dialogs.InstallWizard.ResolutionResultsPage">
+		<item key="NameColumnWidth" value="400"/>
+		<item key="VersionColumnWidth" value="200"/>
+		<item key="IDColumnWidth" value="200"/>
+		<item key="ListSashWeight" value="800"/>
+		<item key="DetailsSashWeight" value="200"/>
 	</section>
 </section>

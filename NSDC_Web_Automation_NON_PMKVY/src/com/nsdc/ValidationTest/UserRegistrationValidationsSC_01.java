@@ -5,10 +5,11 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nsdc.Pages_NON_PMKVY_Pages.EnterLoginPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.LaunchPage;
+import com.nsdc.Pages_NON_PMKVY_Pages.RegistrationPage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
-import com.nsdc.pages.EnterLoginPage;
-import com.nsdc.pages.LoginPage;
-import com.nsdc.pages.RegistrationPage;
+
 import com.nsdc.testConfig.DatabaseConnection;
 import com.nsdc.testConfig.TestConfiguration;
 
@@ -25,7 +26,7 @@ public class UserRegistrationValidationsSC_01 extends TestConfiguration
     {
         //DatabaseConnection.deleteTrainingPartner(email);
         Thread.sleep(2000);
-        LoginPage lp = new LoginPage(driver);
+        LaunchPage lp = new LaunchPage(driver);
         lp.clickRegister();
         RegistrationPage rp = new RegistrationPage(driver);
         rp.selectDropdownList(userType);

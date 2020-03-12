@@ -18,7 +18,6 @@ import com.nsdc.pages.TrainingPartner_MyCandidatesPage;
 import com.nsdc.testConfig.TestConfiguration;
 
 
-
 public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestConfiguration
 {
 	@Test
@@ -149,8 +148,8 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 //				Thread.sleep(1000);
 //			}
 			tpCrp.enterMotherName(motherName);
-			tpCrp.enterFatherName(fatherName);
-			//tpCrp.enterNameOFGuardian(guardianName);
+			//tpCrp.enterFatherName(fatherName);
+			tpCrp.enterNameOFGuardian(guardianName);
 			if(aadhaarOrAlterternateId.equalsIgnoreCase("aadhaar"))
 			{
 				tpCrp.clickToChooseAadhaar();
@@ -192,7 +191,8 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			String registeredCandidateID=parts[parts.length-1];
 			ReadWriteData.setExcelData("./TestData/Workflow/TP_Fast_CanRegist-Workflow.xls", "Individual_Registration", i, 1, registeredCandidateID);
 			tpCrp.clickSameAsPermanetAddress();
-			Thread.sleep(3000);
+			
+			Thread.sleep(1000);
 			if(aadhaarOrAlterternateId.equalsIgnoreCase("Alternate"))
 			{
 			tpCrp.enterAccountHolderName(fullName);	
@@ -211,8 +211,8 @@ public class TP_Fast_CandidatesRegistrationDataCreationTestSC_27 extends TestCon
 			Thread.sleep(3000);
 			tpCrp.ChooseBankName();
 			Thread.sleep(3000);
-			tpCrp.ClickOKButton();
-			Thread.sleep(3000);
+//			tpCrp.ClickOKButton();
+//			Thread.sleep(3000);
 			}
 //			tpCrp.enterBankAddress(bankAddress);
 //			tpCrp.selectBoardingAndLodging(boardingAndLodging);
