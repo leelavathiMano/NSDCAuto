@@ -26,8 +26,9 @@ public class SP_TC_ViewDetailsPage {
 	
 	public void ClickOnSPAction() throws InterruptedException
 	{
-		Thread.sleep(2000);
-		SP_ActionButton.click();
+		 JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", SP_ActionButton);
+		//SP_ActionButton.click();
 	}
 	public void CLickOnViewDetails()
 	{

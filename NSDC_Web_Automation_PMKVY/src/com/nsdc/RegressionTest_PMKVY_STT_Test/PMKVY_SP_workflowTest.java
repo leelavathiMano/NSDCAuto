@@ -1,11 +1,14 @@
 package com.nsdc.RegressionTest_PMKVY_STT_Test;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.nsdc.Pages_PMKVY_Pages.AddCampsPage;
 import com.nsdc.Pages_PMKVY_Pages.BetaVersionOfSmartPage;
 import com.nsdc.Pages_PMKVY_Pages.DashboardPage;
 import com.nsdc.Pages_PMKVY_Pages.EnterLoginPage;
@@ -16,7 +19,10 @@ import com.nsdc.Pages_PMKVY_Pages.MySchemeOrProjectPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMUpage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SP_ApprovalInprogress_Additionaldetails_Page;
 import com.nsdc.Pages_PMKVY_Pages.Pmkvy_SpecialProjectCreationPage;
+import com.nsdc.Pages_PMKVY_Pages.Rpl_addTrainerpage;
 import com.nsdc.Pages_PMKVY_Pages.SPPMU_All_TP_ProjectimplementingAgencypage;
+import com.nsdc.Pages_PMKVY_Pages.SPPMU_Dashbordpage;
+import com.nsdc.Pages_PMKVY_Pages.SPPMU_TrainingCentreDetaispage;
 import com.nsdc.Pages_PMKVY_Pages.SP_TC_Batch_CreatePage;
 import com.nsdc.Pages_PMKVY_Pages.SP_TC_DashBoardpage;
 import com.nsdc.Pages_PMKVY_Pages.SP_TC_MyApprovedSchemeOrProgramPage;
@@ -24,6 +30,8 @@ import com.nsdc.Pages_PMKVY_Pages.SP_TC_ViewDetailsPage;
 import com.nsdc.Pages_PMKVY_Pages.STTPMU_All_TP_ProjectimplementingAgencyPage;
 import com.nsdc.Pages_PMKVY_Pages.STT_BatchDetailPage;
 import com.nsdc.Pages_PMKVY_Pages.SelectSchemeOrProgramPage;
+
+import com.nsdc.Pages_PMKVY_Pages.Sp_TrainingCentrePage;
 import com.nsdc.Pages_PMKVY_Pages.TP_SP_AdditionalRequiredPage;
 import com.nsdc.Pages_PMKVY_Pages.PMKVY_SPPMU_SelectedSchemepage;
 import com.nsdc.generic.ReadMultipleDataFromExcel;
@@ -57,31 +65,34 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String DualImg,
 			String review, String SignedImg, String comments, String TCloginId, String TCpassword, String BatchSize,
 			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
-			String batchStartDate, String trainerName, String language,String canState,String Candistric) throws Exception {
+			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) throws Exception {
 
 		precondition();
 	LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
 		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
-	bsp.clickToClose();
+	     bsp.clickToClose();
 		Thread.sleep(3000);
-     EnterLoginPage elp = new EnterLoginPage(driver);
+  EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(username, password);
 		Thread.sleep(3000);
-		DashboardPage db = new DashboardPage(driver);
+	DashboardPage db = new DashboardPage(driver);
 		db.ClickMySchemeOrPrograms();
 		MySchemeOrProjectPage msp = new MySchemeOrProjectPage(driver);
 		msp.ClickApplySchemeProgram();
 		SelectSchemeOrProgramPage ssp = new SelectSchemeOrProgramPage(driver);
 		Thread.sleep(3000);
 
-		ssp.ClickPageNumber3();
+		ssp.ClickPageNumber2();
 
 		Thread.sleep(3000);
+		
+		
 		ssp.ClickOn_SP_Action();
+		Thread.sleep(3000);
 		ssp.ClickOn_SP_AddProject();
-////
+//////
 		Pmkvy_SpecialProjectCreationPage sp = new Pmkvy_SpecialProjectCreationPage(driver);
 		Thread.sleep(15000);
 		sp.EnterTheProjectProposalID(projectproposalID);
@@ -124,7 +135,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		sp.ClickonOK();
 		Thread.sleep(3000);
 		sp.ClickonOK();
-    LogOutPage plp = new LogOutPage(driver);
+   LogOutPage plp = new LogOutPage(driver);
      Thread.sleep(3000);
 		plp.clickOnProfileLogo();
 		Thread.sleep(3000);
@@ -149,8 +160,9 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		sssp.SelectAggrementDate(agrementDate);
 
 		sssp.ClickStartDate();
+		Thread.sleep(3000);
 		sssp.SelectProjectDurationStartDate(StartDate);
-
+		Thread.sleep(3000);
 		sssp.ClickEndDate();
 		
 		Thread.sleep(3000);
@@ -275,8 +287,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 				sssp.ClickOnAction();
 				Thread.sleep(3000);
 				sssp.ClickOnViewGenerated_Termsheet();
-////				
-		//	LogOutPage plp = new LogOutPage(driver);
+////////				
+	//LogOutPage plp = new LogOutPage(driver);
 			     Thread.sleep(3000);
 					plp.clickOnProfileLogo();
 					Thread.sleep(3000);
@@ -305,15 +317,15 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					driver.findElement(By.xpath("//button[text()='Next']")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(5000);
+					Thread.sleep(7000);
 					driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(3000);
+					Thread.sleep(8000);
 					driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(3000);
+					Thread.sleep(8000);
 					
 					driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();//next button
 					Thread.sleep(3000);
@@ -350,10 +362,12 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			         Thread.sleep(3000);
 			  	      sp.ClickonOK();
 			  	      
-					
+			  	    Thread.sleep(3000);
 					plp.clickOnProfileLogo();
+					 Thread.sleep(3000);
 					plp.clickOnLogout(); 
 					///
+					 Thread.sleep(3000);
 					lp.clickLogin();
 					Thread.sleep(3000);
 					bsp.clickToClose();
@@ -368,22 +382,24 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					Thread.sleep(3000);
 					iap.ClickOnViewDetails();
 					Thread.sleep(3000);
-					driver.findElement(By.xpath("//button[text()='Save & Next']")).click();
+					WebElement saveButton = driver.findElement(By.xpath("//button[text()='Save & Next']"));
+					JavascriptExecutor executor = (JavascriptExecutor) driver;
+					executor.executeScript("arguments[0].click();",saveButton );
 					Thread.sleep(3000);
 					sp.ClickonOK();
 					Thread.sleep(3000);
 					driver.findElement(By.xpath("//button[contains(text(),'Save & Next')]")).click();
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 					driver.findElement(By.xpath("//button[contains(text(),'Save & Next')]")).click();
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 					driver.findElement(By.xpath("//button[contains(text(),'Save & Next')]")).click();
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 					addR.ClickOnOther_TermSheetBrowse();
 					Thread.sleep(3000);
 					UploadFile.upload(SignedImg);
@@ -391,279 +407,623 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					addR.clickOnOther_TermSheetUpLoad();
 					Thread.sleep(3000);
 					addR.ClickOnTPSigned_TermSheetBrowse();
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 					
 					UploadFile.upload(SignedImg);
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 					addR. clickOnTPSigned_TermSheetUpLoad();
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 					addR.SelectComments(comments);
+					Thread.sleep(3000);
 					addR.ClickSaveAndSubmit();
-					
+					Thread.sleep(3000);
 					sp.ClickonOK();
 					Thread.sleep(5000);
 						plp.clickOnProfileLogo();
+						Thread.sleep(3000);
 						plp.clickOnLogout();
+	}
+					
+	@DataProvider
+	public Object[][] AddTrainingCenter()
+	{
+	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+	"AddTrainingCenterWorkflow_TC_02");
+	}
 						
+	@Test(dataProvider="AddTrainingCenter",dependsOnMethods="Addspecialprojectdata_01")
+	public void AddTC_TC_02(String username, String password,String tcloginid,String trainingType,String processType,
+			String tcName,String address,String landmark,String pincode,String state,String district,String ParliamentaryConsistuency,
+			String geolaction,String Spocname,String sector,String jobrole ,String target,String mobileOtp,String emailOtp)throws Exception
+	{
+	precondition();
+	//int srno = Integer.parseInt(sno);
+	String randomNumbers = RandomStringUtils.randomNumeric(5);
+	String phNo = "49393"+randomNumbers;	
+	System.out.println(phNo);
+	 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+	    String email = "";
+	    String temp = RandomStringUtils.random(17, allowedChars);
+	    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
+	System.out.println(email);						
+    LaunchPage lp = new LaunchPage(driver);
+	lp.clickLogin();
+	Thread.sleep(3000);
+	BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+	bsp.clickToClose();
+	Thread.sleep(3000);
+    EnterLoginPage elp = new EnterLoginPage(driver);
+	elp.performlogin(username, password);
+	Thread.sleep(3000);
+	DashboardPage db = new DashboardPage(driver);
+	db.ClickMySchemeOrPrograms();
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingType+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+    driver.findElement(By.xpath("//tr[td[span[span[text()='"+trainingType+"']]]]//a[contains(text(),'View Details')]")).click();
+    Thread.sleep(3000);
+						    
+	Sp_TrainingCentrePage tc=new Sp_TrainingCentrePage(driver);
+	Thread.sleep(3000);
+	tc.ClickOnSPAction();
+	tc.ClickOnViewDetails();
+	Thread.sleep(3000);
+	 tc.ClickonViewTC();
+	Thread.sleep(3000);
+	tc.ClickOnAdd_TC();
+	Thread.sleep(3000);
+	tc.SelectProcessType(processType);
+	tc.ClickOnSaveAndContinueButton();
+	Thread.sleep(3000);
+	tc.trainingCentreName(tcName);
+	tc.EnterAddress(address);
+	tc.Enterlandmark(landmark);
+	tc.EnterPincode(pincode);
+	tc.SelectState(state);
+	tc.selectDistrict(district);
+	tc.SelectParliamentaryConsistuency(ParliamentaryConsistuency);
+	Thread.sleep(3000);
+	tc.EnterGeolaction(geolaction);
+	Thread.sleep(3000);
+	tc.ClickOncurrentlocation();
+	tc.EnterPrimarySpocName(Spocname);
+	Thread.sleep(1000);
+	tc.EnterEmailid(email);
+	Thread.sleep(2000);
+	tc.EntercontactNumber(phNo);
+	Thread.sleep(2000);
+	tc.ClickOnAddSectorTarget();
+	Thread.sleep(1000);
+	tc.SelectSector(sector);
+	Thread.sleep(1000);
+	tc.SelectJobRole(jobrole);
+	tc.EnterTrainingTarget(target);
+	Thread.sleep(3000);
+	tc.ClickonSubmit();
+	Thread.sleep(3000);
+	tc.ClickOnGenerateOtp();
+	Thread.sleep(3000);
+	tc.EnterMobileOtp(mobileOtp);
+	Thread.sleep(3000);
+	tc.EnterEmailOtp(emailOtp);
+	Thread.sleep(3000);
+	tc.ClickOnVerifyOtp();					    
+	  String Tc_ID = driver.findElement(By.xpath("//h2[@id='swal2-title']")).getText();//h2[@id='swal2-title']
+	  String arr[] = Tc_ID.split(" "); 
+	  String Tc_ID1 = arr[arr.length-1];
+	  String Tc_ID2 = Tc_ID1.replace("(", "");
+	  String TC_loginID =Tc_ID2.replace(")", "");
+	   ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddTrainingCenterWorkflow_TC_02", 1, 2, TC_loginID);
+	   ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "ApproveTrainingCenter_TC_03", 1, 2, TC_loginID);
+	   Thread.sleep(3000);
+	   ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddTrainner_TC_04", 1, 1, TC_loginID);
+	   ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "CreateBatchWorkflow_Tc_04", 1, 0, TC_loginID);
+	   Thread.sleep(3000);
+	   tc.ClickOnClose();
+	   LogOutPage plp = new LogOutPage(driver);
+     Thread.sleep(3000);
+		plp.clickOnProfileLogo();
+		Thread.sleep(3000);
+		plp.clickOnLogout(); 
+	   }
+	
+	@DataProvider
+	public Object[][] approveTrainingCenter()
+	{
+	return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+	"ApproveTrainingCenter_TC_03");
+	}
 						
-					
-					
-					
-	///////////////////////////////////////			
-		
-////		sssp.SelectSector(Sector);
-////		sssp.SelectjobRoleName(JobRole);
-////		Thread.sleep(3000);
-////		sssp.EnterSectorAndJobTarget(Target);
-////		Thread.sleep(3000);
-////		sssp.ClickOnSectorAndJobRoleAdd();
-////
-////		// sssp.SelectlocationState(locationState);
-////		// sssp.Selectlocationdistrict(locationDistrict);
-////		// sssp.ClicklocationAddButton();
-////		sssp.SelectJobRoleTargetDistribution1(jobrole1);
-////
-////		sssp.EnterTargetDistribution1(targetvalue1);
-////		sssp.SelectTCName(tcName);
-////		sssp.EnterTcTarget(tcTarget);
-////
-////		sssp.ClickAddTcTargetButton(); //
-////		// sssp.SelectJobRoleTargetDistribution2(Jobrole2);
-////		// sssp.EnterTargetDistribution2(targetvalue2);
-////		sssp.SelectAdvanceTranche(advanceTrancheYes);
-////
-////		sssp.EnterpercentageOfAdvanceTextBox(advancepayment);
-////
-////		sssp.ClickAmountTobeOfAdvance();
-////		Thread.sleep(3000);
-////		sssp.ClickAdvanceAdd();
-////
-////		sssp.ClickSaveAndSubmitButton();
-////		Thread.sleep(3000);
-////		plp.clickOnProfileLogo();
-////		plp.clickOnLogout(); // // ///////////////////
-//		lp.clickLogin();
-//		bsp.clickToClose();
-//		elp.performlogin(username, password);
-//		db.ClickMySchemeOrPrograms();
-//		ssp.ClickApprovalInProgress_SPAction();
-//		ssp.ClickApprovalInProgress_SP_ViewDetails();
-//		PMKVY_SP_ApprovalInprogress_Additionaldetails_Page addtionalpage = new PMKVY_SP_ApprovalInprogress_Additionaldetails_Page(driver);
-//		Thread.sleep(3000);
-//		addtionalpage.ClickOn_Action();
-//		addtionalpage.Click_AdditionalDetailsRequried_Action(); //
-//		//////// addtionalreqDetails //
-//	//	TP_SP_AdditionalRequiredPage addR = new TP_SP_AdditionalRequiredPage(driver);
-//		Thread.sleep(3000);
-////		addR.ClickOnDual_logoBrowse();
-////		Thread.sleep(3000);
-////		UploadFile.upload(duallogoImg);
-////		Thread.sleep(3000);
-////		addR.ClickOnDual_logoUpLoad();
-////		Thread.sleep(3000);
-//		addR.ClickOnTPSigned_TermSheetBrowse();
-//		Thread.sleep(3000);
-//		UploadFile.upload(SignedImg);
-//		Thread.sleep(3000);
-//		addR.clickOnTPSigned_TermSheetUpLoad();
-//		Thread.sleep(3000);
-//		addR.SelectReview(review);
-//		Thread.sleep(3000);
-//		addR.ClickOnDownloadTermsheet();
-//		Thread.sleep(3000);
-//		addR.ClickSaveAndSubmit();
-//         Thread.sleep(10000);
-//		// Thread.sleep(3000); 
-//		plp.clickOnProfileLogo();
-//		plp.clickOnLogout(); 
-////		///
-//		lp.clickLogin();
-//		Thread.sleep(3000);
-//		bsp.clickToClose();
-//		Thread.sleep(3000);
-//		elp.performlogin(loginId, password2);
-//		Thread.sleep(10000);
-//		sppmu.ClickOnViewAllSchemeAddRequests(); 
-//		Thread.sleep(5000);// //for Sp andSTT SAME PAGE ACTION BUTTON AND VIEW DETAILS
-//	//	SPPMU_All_TP_ProjectimplementingAgencypage iap = new SPPMU_All_TP_ProjectimplementingAgencypage(driver);
-//		Thread.sleep(5000);
-//
-//		iap.ClickOnAction();
-//		iap.ClickOnViewDetails();
-//		/// FOR tP AND SPPMU BOTHADDTIONAL REQ SAME PAGE AND XPATH ALSO
-//		/// SAME(TP_SP_AdditionalRequiredPage)
-//		Thread.sleep(3000);
-//		addR.ClickOnOther_TermSheetBrowse();
-//		Thread.sleep(3000);
-//		UploadFile.upload(SignedImg);
-//		Thread.sleep(10000);
-//		addR.clickOnOther_TermSheetUpLoad();
-//		Thread.sleep(3000);
-//		
-////		addR.ClickOnSigned_TermSheetBrowse();
-////		Thread.sleep(10000);
-////		UploadFile.upload(SignedImg);
-////		Thread.sleep(10000);
-////		addR.clickOnSigned_TermSheetUpLoad();
-////		Thread.sleep(3000);
-////		
-//		
-//		addR.SelectComments(comments);
-//		addR.ClickSaveAndSubmit();
-//		Thread.sleep(10000);
-//		
-//		 Thread.sleep(3000); 
-//			plp.clickOnProfileLogo();
-//			plp.clickOnLogout(); 
-//		
-//		
-//		
-//		///////////////////////////////////////////////
-		//LaunchPage lp = new LaunchPage(driver);
-
+	@Test(dataProvider="approveTrainingCenter",dependsOnMethods="AddTC_TC_02")
+	public void ApproveTrainingCenter_03(String username, String password,String tc_loginId,
+			String status,String comments)throws Exception
+	{
+	precondition();
+	
+	 LaunchPage lp = new LaunchPage(driver);
 		lp.clickLogin();
 		Thread.sleep(3000);
-		//BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
 		bsp.clickToClose();
 		Thread.sleep(3000);
-		//EnterLoginPage elp = new EnterLoginPage(driver);
-		elp.performlogin(TCloginId, TCpassword);
+	    EnterLoginPage elp = new EnterLoginPage(driver);
+		elp.performlogin(username, password);
+		Thread.sleep(3000);
+		SPPMU_Dashbordpage pmu= new SPPMU_Dashbordpage(driver);
+		pmu.ClickOnViewAllTC_addRequest();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//tr[td[span[span[text()='"+tc_loginId+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
+	    driver.findElement(By.xpath("//tr[td[span[span[text()='"+tc_loginId+"']]]]//a[contains(text(),'Take Action')]")).click();
+	    SPPMU_TrainingCentreDetaispage tcPage= new SPPMU_TrainingCentreDetaispage(driver);
+	    Thread.sleep(3000);
+	    tcPage.SelectStatus(status);
+	   tcPage.EnterTheComments(comments);
+	   Thread.sleep(3000);
+	    tcPage.ClickOnSubmit();
+	    Thread.sleep(3000);
+	    tcPage.ClickOnOK();
+	    
+	    LogOutPage plp = new LogOutPage(driver);
+	     Thread.sleep(3000);
+			plp.clickOnProfileLogo();
+			Thread.sleep(3000);
+			plp.clickOnLogout();
+	}
+	
+	/////////////////
+	@DataProvider
+	public Object[][] AddTrainer()
+	{
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddTrainner_TC_04");
+	}
+	
+	@Test(dataProvider="AddTrainer",dependsOnMethods="ApproveTrainingCenter_03")
+	public void addTrainer_TC_04(String sno,String loginid,String oldpassword,String newPassword,
+			String confirmPassword,String trainerName,String trainerEmail,String Phonenumber,String aadharnumber,String img,String fromDate,
+			String toDate,String jobroles,String mobileOtp,String emailOtp)throws Exception
+	{
+		precondition();
+		int srno = Integer.parseInt(sno);
+		String randomNumbers = RandomStringUtils.randomNumeric(5);
+		String phNo = "49393"+randomNumbers;	
+		System.out.println(phNo);
+		 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+		    String email = "";
+		    String temp = RandomStringUtils.random(17, allowedChars);
+		    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
+		System.out.println(email);
+		LaunchPage lp = new LaunchPage(driver);
+		lp.clickLogin();
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+	     bsp.clickToClose();
+	     EnterLoginPage elp = new EnterLoginPage(driver);
+			elp.performlogin(loginid,oldpassword);
+			Thread.sleep(2000);
+			elp.EnteroldPassword(oldpassword);
+			elp.Enternewpassword(newPassword);
+			Thread.sleep(2000);
+			elp.EnterConfirmPassword(confirmPassword);
+			elp.ClickOnResetAndRelogin();
+			Thread.sleep(3000);
+			elp.ClickOnOK();
+			Thread.sleep(3000);
+			 bsp.clickToClose();
+			 elp.performlogin(loginid,newPassword);
+			 Thread.sleep(3000);
+			 
+			 //////////
+			 SP_TC_DashBoardpage tcd = new SP_TC_DashBoardpage(driver);
+		        Thread.sleep(2000);
+				tcd.ClickOnMyScheme();
+				Thread.sleep(5000);
+				tcd.ClickOnViewScheme();
+				SP_TC_MyApprovedSchemeOrProgramPage spApp = new SP_TC_MyApprovedSchemeOrProgramPage(driver);
+				 Thread.sleep(2000);
+				spApp.ClickOnSPAction();
+				 Thread.sleep(2000);
+				spApp.CLickOnViewDetails();
+				 Thread.sleep(2000);
+				SP_TC_ViewDetailsPage pst = new SP_TC_ViewDetailsPage(driver);
+				pst.ClickOnSPAction();
+				Thread.sleep(3000);
+				pst.CLickOnViewDetails();
+			 
+			 /////////////
+			
+				
+				
+				Rpl_addTrainerpage trainer=new Rpl_addTrainerpage(driver);
+				Thread.sleep(5000);
+				trainer.ClickOnViewTrainers();
+				Thread.sleep(5000);
+				trainer.ClickOnAddTrainer();
+				Thread.sleep(3000);
+				trainer.EnterName(trainerName);
+				trainer.EnterEmail(email);
+				trainer.EnterPhoneNumber(phNo);
+				trainer.ClickOnAdhaarRadio();
+				Thread.sleep(2000);
+				trainer.EnterThePanOrAadharNumber(aadharnumber);
+				Thread.sleep(2000);
+				trainer.ClickOnPanUploadBrowser();
+				Thread.sleep(2000);
+				UploadFile.upload(img);
+				Thread.sleep(5000);
+				trainer.ClickOnPanUploadButton();
+				Thread.sleep(5000);
+				trainer.ClickOnFromDate();
+				Thread.sleep(2000);
+				trainer.SelectFromDate(fromDate);
+				trainer.ClickOnToDate();
+				Thread.sleep(2000);
+				trainer.SelectTODate(toDate);
+				trainer.ClickOnassociatedDocumentsBrowser();
+				Thread.sleep(2000);
+				UploadFile.upload(img);
+				Thread.sleep(5000);
+				trainer.ClickOnassociatedDocumentUpload();
+				Thread.sleep(2000);
+				trainer.SelectAssociatedJobRoles(jobroles);
+				Thread.sleep(2000);
+				trainer.ClickOnGenerateOtp();
+				Thread.sleep(2000);
+				trainer.EnterMobileOtp(mobileOtp);
+				Thread.sleep(2000);
+				trainer.EnterEmailOtp(emailOtp);
+				Thread.sleep(2000);
+				trainer. ClickOnVerifyOtp();
+				String trainerID=driver.findElement(By.xpath("(//tbody//tr//td[2]//span)[2]")).getText();
+				
+				 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "CreateBatchWorkflow_Tc_04", 1, 9, trainerID);
+				  //ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "CreateBatchWorkflow_Tc_04", 1, 0, TC_loginID);	
+				
+//				  LogOutPage plp = new LogOutPage(driver);
+//				     Thread.sleep(3000);
+//					plp.clickOnProfileLogo();
+//					 Thread.sleep(3000);
+//					plp.clickOnLogout(); 
+}
 
-		SP_TC_DashBoardpage tcd = new SP_TC_DashBoardpage(driver);
-        Thread.sleep(2000);
-		tcd.ClickOnMyScheme();
-		Thread.sleep(5000);
-		tcd.ClickOnViewScheme();
-		SP_TC_MyApprovedSchemeOrProgramPage spApp = new SP_TC_MyApprovedSchemeOrProgramPage(driver);
-		 Thread.sleep(2000);
-		spApp.ClickOnSPAction();
-		 Thread.sleep(2000);
-		spApp.CLickOnViewDetails();
-		 Thread.sleep(2000);
-		SP_TC_ViewDetailsPage pst = new SP_TC_ViewDetailsPage(driver);
-		pst.ClickOnSPAction();
-		Thread.sleep(3000);
-		pst.CLickOnViewDetails();
-		Thread.sleep(3000);
-		pst.ClickOnView_All_Batches();
-		Thread.sleep(7000);
-		pst.ClickOnCreateBatch();
-		Thread.sleep(3000);
-		SP_TC_Batch_CreatePage tcbc = new SP_TC_Batch_CreatePage(driver);
-		Thread.sleep(2000);
-		tcbc.EnterBatchSize(BatchSize);
-		Thread.sleep(2000);
-		tcbc.SelectAssociatedQP(AssociatedQP_JobRole);
-		//
-		Thread.sleep(2000);
-		tcbc.EnterTrainingHours(tryingHours);
-		Thread.sleep(2000);
-		tcbc.TAB_FromTrainingHours();
-		Thread.sleep(2000);
-		tcbc.ClickTrainingHours();
-	    tcbc.TAB_FromTrainingHours();
-	    
-	    tcbc.BatchinTimeSelect(BatchInTiming);
-	    tcbc.BatchoutTimeSelect(batchoutTime);
-	    
-	    
-		 tcbc.EnterBatchInTime(BatchInTiming);
-		tcbc.TAB_FromBatchUpTime();
-		 tcbc.EnterBatchOutTime(batchoutTime);
-		
-		
-		
-		
-		tcbc.ClickAddBatchTiming(); 
-		 Thread.sleep(1000); 
-		 tcbc.ClickStartDate();
-		 tcbc.SelectBatchStartDate(batchStartDate);
-		// tcbc.ClickEndDate(); 
-		 //tcbc.SelectBatchEndDate(batchEndDate);
-		tcbc.SelectTrainerName(trainerName);
-		tcbc.SelectAssessmentLanguage(language);
-		 tcbc.ClickDisclaimer(); 
-		tcbc.ClickOnSaveAndNext();
-		tcbc.ClickOnOKButton();
-       
-	
-	
+
+//	
 	
 //	
-//		Thread.sleep(3000);
-	TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
-//		//tcp.ClickThreeDots();
-//		String SP="Other Holiday";
-//		Thread.sleep(3000);
-//		tcp.ClickDayAndDate();
-//		Thread.sleep(3000);
-//		tcp.SelectDayAndDate(DayAndDate);
-//		Thread.sleep(3000);
-//		tcp.SelectSessionPlanned(SessionPlan);
-//		if(SessionPlan.equals(SP))
-//		{
-//		tcp.EnterDescription(Description);
-//		}
-//		else
-//		{
-//			tcp.SelectNOSTaught(NOSTaught);
-//			tcp.TAB_FromNOSTaught();
-//			tcp.EnterStartTime(StartTime);
-//			Thread.sleep(3000);
-//			tcp.TAB_BatchIntime();
-//			tcp.EnterEndTime(EndTime);
-//			tcp.EnterDescription(Description);
-//		}
-//		tcp.ClickAddSession();
-	
-	
-	
-    	Thread.sleep(3000);
-		tcp.ClickSaveBtn();
-		Thread.sleep(3000);
-		tcp.ClickOnOKButton();
-		Thread.sleep(3000);
-		ListofEligibleCandiatePage enrollcandite= new ListofEligibleCandiatePage(driver);
-		Thread.sleep(3000);
-		enrollcandite.SelectState(canState);
-		enrollcandite.Selectdistric(Candistric);
-		enrollcandite.ClickOnApply();
-		enrollcandite.ClickOnCandiateIdCheckBox();
-		String modelOfBandL="Self";
-		String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","NumberOFenrollcandidates", 1, 0);
-	 	int numberOfcan =Integer.parseInt(numCAN);
-	 	for(int i=1;i<=numberOfcan;i++)	
-		{    
-	 		driver.findElement(By.xpath("//tbody//tr["+i+"]//td[13]//span")).click();
-	 		Thread.sleep(1000);
-	 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
-	 		  Select sel=new Select(modeofBk);
-	 				  sel.selectByVisibleText(modelOfBandL);
-	 				 Thread.sleep(1000);
-		
-		}
-	 	Thread.sleep(3000);
-	 	enrollcandite.ClickonEnrollCandidates();
-	 	Thread.sleep(3000);
-	 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
-	 	Thread.sleep(3000);
-	 	enrollcandite.ClickonYesButton();
-		Thread.sleep(3000);
-	 	enrollcandite.ClickOnOKButton();
-		Thread.sleep(3000);
-		enrollcandite.ClickOnSubmit_To_SSC();
-		Thread.sleep(3000);
-	 	enrollcandite.ClickOnOKButton();
-	 	
-	 	Thread.sleep(3000);
-	 	enrollcandite.ClickOnOKButton();
-	 	Thread.sleep(3000);
-	 	enrollcandite.ClickOnOKButton();
-
-	 	 Thread.sleep(3000); 
-	plp.clickOnProfileLogo();
-			plp.clickOnLogout(); 
+	@DataProvider
+	public Object[][] CreateBatch() {
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+				"CreateBatchWorkflow_Tc_04");
 	}
 
+	@Test(dataProvider = "CreateBatch",dependsOnMethods="addTrainer_TC_04")
 
+	public void CreateBatch_04(String TCloginId, String oldpassword,String newPassword, String BatchSize,
+			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
+			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) 
+		throws Exception {
+		precondition();
+		LaunchPage lp = new LaunchPage(driver);
+				lp.clickLogin();
+				Thread.sleep(3000);	
+			BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+				bsp.clickToClose();
+				Thread.sleep(3000);
+				EnterLoginPage elp = new EnterLoginPage(driver);
+				
+			elp.performlogin(TCloginId,newPassword);
+				 Thread.sleep(3000);
+				SP_TC_DashBoardpage tcd = new SP_TC_DashBoardpage(driver);
+		        Thread.sleep(2000);
+				tcd.ClickOnMyScheme();
+				Thread.sleep(5000);
+				tcd.ClickOnViewScheme();
+				SP_TC_MyApprovedSchemeOrProgramPage spApp = new SP_TC_MyApprovedSchemeOrProgramPage(driver);
+				 Thread.sleep(2000);
+				spApp.ClickOnSPAction();
+				 Thread.sleep(2000);
+				spApp.CLickOnViewDetails();
+				 Thread.sleep(2000);
+				SP_TC_ViewDetailsPage pst = new SP_TC_ViewDetailsPage(driver);
+				pst.ClickOnSPAction();
+				Thread.sleep(3000);
+				pst.CLickOnViewDetails();
+				Thread.sleep(3000);
+				pst.ClickOnView_All_Batches();
+				Thread.sleep(7000);
+				pst.ClickOnCreateBatch();
+				Thread.sleep(3000);
+				SP_TC_Batch_CreatePage tcbc = new SP_TC_Batch_CreatePage(driver);
+				Thread.sleep(2000);
+				tcbc.EnterBatchSize(BatchSize);
+				Thread.sleep(2000);
+				tcbc.SelectAssociatedQP(AssociatedQP_JobRole);
+				Thread.sleep(2000);
+				tcbc.EnterTrainingHours(tryingHours);
+				Thread.sleep(2000);
+				tcbc.TAB_FromTrainingHours();
+				Thread.sleep(2000);
+				tcbc.ClickTrainingHours();
+			    tcbc.TAB_FromTrainingHours();
+			    tcbc.BatchinTimeSelect(BatchInTiming);
+			    tcbc.BatchoutTimeSelect(batchoutTime);
+			//	 tcbc.EnterBatchInTime(BatchInTiming);
+			//	tcbc.TAB_FromBatchUpTime();
+			//	 tcbc.EnterBatchOutTime(batchoutTime);
+				tcbc.ClickAddBatchTiming(); 
+				 Thread.sleep(1000); 
+				 tcbc.ClickStartDate();
+				 tcbc.SelectBatchStartDate(batchStartDate);
+				// tcbc.ClickEndDate(); 
+				 //tcbc.SelectBatchEndDate(batchEndDate);
+				tcbc.SelectTrainerName(trainerName);
+				tcbc.SelectAssessmentLanguage(language);
+				 tcbc.ClickDisclaimer(); 
+				tcbc.ClickOnSaveAndNext();
+				tcbc.ClickOnOKButton();
+		       
+			
+			
+			
+		//	
+//				Thread.sleep(3000);
+			TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
+//				//tcp.ClickThreeDots();
+//				String SP="Other Holiday";
+//				Thread.sleep(3000);
+//				tcp.ClickDayAndDate();
+//				Thread.sleep(3000);
+//				tcp.SelectDayAndDate(DayAndDate);
+//				Thread.sleep(3000);
+//				tcp.SelectSessionPlanned(SessionPlan);
+//				if(SessionPlan.equals(SP))
+//				{
+//				tcp.EnterDescription(Description);
+//				}
+//				else
+//				{
+//					tcp.SelectNOSTaught(NOSTaught);
+//					tcp.TAB_FromNOSTaught();
+//					tcp.EnterStartTime(StartTime);
+//					Thread.sleep(3000);
+//					tcp.TAB_BatchIntime();
+//					tcp.EnterEndTime(EndTime);
+//					tcp.EnterDescription(Description);
+//				}
+//				tcp.ClickAddSession();
+			
+			
+			
+		    	Thread.sleep(3000);
+				tcp.ClickSaveBtn();
+				Thread.sleep(3000);
+				tcp.ClickOnOKButton();
+				Thread.sleep(3000);
+				
+				tcp.SelectSourceOfRegistration(myTP);
+				
+				
+				ListofEligibleCandiatePage enrollcandite= new ListofEligibleCandiatePage(driver);
+				Thread.sleep(3000);
+				enrollcandite.SelectState(canState);
+				enrollcandite.Selectdistric(Candistric);
+				enrollcandite.ClickOnApply();
+				enrollcandite.ClickOnCandiateIdCheckBox();//up to working fine
+				String modelOfBandL="Self";
+				String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","NumberOFenrollcandidates", 1, 0);
+			 	int numberOfcan =Integer.parseInt(numCAN);
+			 	for(int i=1;i<=numberOfcan;i++)	
+				{    
+			 		Thread.sleep(3000);
+					WebElement BandLOpted = driver.findElement(By.xpath("//tbody//tr["+i+"]//td[14]//span"));
+					JavascriptExecutor executor2= (JavascriptExecutor) driver;
+					executor2.executeScript("arguments[0].click();",BandLOpted );
+			 		
+					
+			 		Thread.sleep(1000);
+			 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
+			 		  Select sel=new Select(modeofBk);
+			 				  sel.selectByVisibleText(modelOfBandL);
+			 				 Thread.sleep(1000);
+				
+				}
+			 	Thread.sleep(3000);
+			 	enrollcandite.ClickonEnrollCandidates();
+			 	Thread.sleep(3000);
+				enrollcandite.ClickOnOKButton();
+				Thread.sleep(3000);
+			 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
+			 	Thread.sleep(3000);
+			 	enrollcandite.ClickonYesButton();
+				Thread.sleep(3000);
+//			 	enrollcandite.ClickOnOKButton();
+//				Thread.sleep(3000);
+				enrollcandite.ClickOnSubmit_To_SSC();
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
+			 	//enrollcandite.ClickOnOKButton();
+			 	
+			 	Thread.sleep(3000);
+			 	driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
+			 	enrollcandite.ClickOnOKButton();
+//			 	Thread.sleep(3000);
+//			 	enrollcandite.ClickOnOKButton();
+		
+//			 	 Thread.sleep(7000); 
+//			plp.clickOnProfileLogo();
+//					plp.clickOnLogout(); 
+	
+	
+	
 }
+	
+	
+} 
+
+
+
+////		LaunchPage lp = new LaunchPage(driver);
+//
+//		lp.clickLogin();
+//		Thread.sleep(3000);
+//	
+//		
+////		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+//		bsp.clickToClose();
+//		Thread.sleep(3000);
+//		//
+//		
+////		EnterLoginPage elp = new EnterLoginPage(driver);
+//		elp.performlogin(TCloginId, TCpassword);
+//
+//		SP_TC_DashBoardpage tcd = new SP_TC_DashBoardpage(driver);
+//        Thread.sleep(2000);
+//		tcd.ClickOnMyScheme();
+//		Thread.sleep(5000);
+//		tcd.ClickOnViewScheme();
+//		SP_TC_MyApprovedSchemeOrProgramPage spApp = new SP_TC_MyApprovedSchemeOrProgramPage(driver);
+//		 Thread.sleep(2000);
+//		spApp.ClickOnSPAction();
+//		 Thread.sleep(2000);
+//		spApp.CLickOnViewDetails();
+//		 Thread.sleep(2000);
+//		SP_TC_ViewDetailsPage pst = new SP_TC_ViewDetailsPage(driver);
+//		pst.ClickOnSPAction();
+//		Thread.sleep(3000);
+//		pst.CLickOnViewDetails();
+//		Thread.sleep(3000);
+//		pst.ClickOnView_All_Batches();
+//		Thread.sleep(7000);
+//		pst.ClickOnCreateBatch();
+//		Thread.sleep(3000);
+//		SP_TC_Batch_CreatePage tcbc = new SP_TC_Batch_CreatePage(driver);
+//		Thread.sleep(2000);
+//		tcbc.EnterBatchSize(BatchSize);
+//		Thread.sleep(2000);
+//		tcbc.SelectAssociatedQP(AssociatedQP_JobRole);
+//		//
+//		Thread.sleep(2000);
+//		tcbc.EnterTrainingHours(tryingHours);
+//		Thread.sleep(2000);
+//		tcbc.TAB_FromTrainingHours();
+//		Thread.sleep(2000);
+//		tcbc.ClickTrainingHours();
+//	    tcbc.TAB_FromTrainingHours();
+//	    
+//	    tcbc.BatchinTimeSelect(BatchInTiming);
+//	    tcbc.BatchoutTimeSelect(batchoutTime);
+//	    
+//	    
+//	//	 tcbc.EnterBatchInTime(BatchInTiming);
+//	//	tcbc.TAB_FromBatchUpTime();
+//	//	 tcbc.EnterBatchOutTime(batchoutTime);
+//		
+//		
+//		
+//		
+//		tcbc.ClickAddBatchTiming(); 
+//		 Thread.sleep(1000); 
+//		 tcbc.ClickStartDate();
+//		 tcbc.SelectBatchStartDate(batchStartDate);
+//		// tcbc.ClickEndDate(); 
+//		 //tcbc.SelectBatchEndDate(batchEndDate);
+//		tcbc.SelectTrainerName(trainerName);
+//		tcbc.SelectAssessmentLanguage(language);
+//		 tcbc.ClickDisclaimer(); 
+//		tcbc.ClickOnSaveAndNext();
+//		tcbc.ClickOnOKButton();
+//       
+//	
+//	
+//	
+////	
+////		Thread.sleep(3000);
+//	TrainingCalenderPage tcp = new TrainingCalenderPage(driver);
+////		//tcp.ClickThreeDots();
+////		String SP="Other Holiday";
+////		Thread.sleep(3000);
+////		tcp.ClickDayAndDate();
+////		Thread.sleep(3000);
+////		tcp.SelectDayAndDate(DayAndDate);
+////		Thread.sleep(3000);
+////		tcp.SelectSessionPlanned(SessionPlan);
+////		if(SessionPlan.equals(SP))
+////		{
+////		tcp.EnterDescription(Description);
+////		}
+////		else
+////		{
+////			tcp.SelectNOSTaught(NOSTaught);
+////			tcp.TAB_FromNOSTaught();
+////			tcp.EnterStartTime(StartTime);
+////			Thread.sleep(3000);
+////			tcp.TAB_BatchIntime();
+////			tcp.EnterEndTime(EndTime);
+////			tcp.EnterDescription(Description);
+////		}
+////		tcp.ClickAddSession();
+//	
+//	
+//	
+//    	Thread.sleep(3000);
+//		tcp.ClickSaveBtn();
+//		Thread.sleep(3000);
+//		tcp.ClickOnOKButton();
+//		Thread.sleep(3000);
+//		
+//		tcp.SelectSourceOfRegistration(myTP);
+//		
+//		
+//		ListofEligibleCandiatePage enrollcandite= new ListofEligibleCandiatePage(driver);
+//		Thread.sleep(3000);
+//		enrollcandite.SelectState(canState);
+//		enrollcandite.Selectdistric(Candistric);
+//		enrollcandite.ClickOnApply();
+//		enrollcandite.ClickOnCandiateIdCheckBox();//up to working fine
+//		String modelOfBandL="Self";
+//		String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","NumberOFenrollcandidates", 1, 0);
+//	 	int numberOfcan =Integer.parseInt(numCAN);
+//	 	for(int i=1;i<=numberOfcan;i++)	
+//		{    
+//	 		Thread.sleep(3000);
+//			WebElement BandLOpted = driver.findElement(By.xpath("//tbody//tr["+i+"]//td[14]//span"));
+//			JavascriptExecutor executor2= (JavascriptExecutor) driver;
+//			executor2.executeScript("arguments[0].click();",BandLOpted );
+//	 		
+//			
+//	 		Thread.sleep(1000);
+//	 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
+//	 		  Select sel=new Select(modeofBk);
+//	 				  sel.selectByVisibleText(modelOfBandL);
+//	 				 Thread.sleep(1000);
+//		
+//		}
+//	 	Thread.sleep(3000);
+//	 	enrollcandite.ClickonEnrollCandidates();
+//	 	Thread.sleep(3000);
+//		enrollcandite.ClickOnOKButton();
+//		Thread.sleep(3000);
+//	 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
+//	 	Thread.sleep(3000);
+//	 	enrollcandite.ClickonYesButton();
+//		Thread.sleep(3000);
+////	 	enrollcandite.ClickOnOKButton();
+////		Thread.sleep(3000);
+//		enrollcandite.ClickOnSubmit_To_SSC();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
+//	 	//enrollcandite.ClickOnOKButton();
+//	 	
+//	 	Thread.sleep(3000);
+//	 	driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
+//	 	enrollcandite.ClickOnOKButton();
+////	 	Thread.sleep(3000);
+////	 	enrollcandite.ClickOnOKButton();
+//
+////	 	 Thread.sleep(7000); 
+////	plp.clickOnProfileLogo();
+////			plp.clickOnLogout(); 
+//	}
+
+	
+
+
+//}
