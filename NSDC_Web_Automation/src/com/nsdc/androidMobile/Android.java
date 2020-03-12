@@ -13,6 +13,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class Android {
 
+	
 	public static  AndroidDriver<AndroidElement> capabilities(String module) throws MalformedURLException {
 //		File appDir = new File("src");
 //		File app = new File(appDir, "FeebasedTC(0.0.9).apk");
