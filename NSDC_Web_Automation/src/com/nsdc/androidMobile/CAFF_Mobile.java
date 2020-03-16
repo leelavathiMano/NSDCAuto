@@ -33,16 +33,16 @@ public class CAFF_Mobile {
 
 //		SDMSTCCI_GeneralDetails gd= new SDMSTCCI_GeneralDetails(driver);
 //		gd.RunGeneralDetails();
-		
+//		
 //		SDMSTCCI_Trainer t=new SDMSTCCI_Trainer(driver);
 //		t.RunTrainer();
-		
-		SDMSTCCI_ClassRoom cr= new SDMSTCCI_ClassRoom(driver);
-		cr.RunClassRoom();
-		
+//		
+//		SDMSTCCI_ClassRoom cr= new SDMSTCCI_ClassRoom(driver);
+//		cr.RunClassRoom();
+//		
 //		SDMSTCCI_LaboratoryDetails ld= new SDMSTCCI_LaboratoryDetails(driver);
 //		ld.RunLaboratoryDetails();
-		
+//		
 //		SDMSTCCI_CenterAreas ca= new SDMSTCCI_CenterAreas(driver);
 //		ca.RunCenterAreas();
 //		
@@ -51,7 +51,10 @@ public class CAFF_Mobile {
 //
 //		SDMSTCCI_Equipment e=new SDMSTCCI_Equipment(driver);
 //		e.RunEquipment();
-		
+//		CAAF_ResidentialFacilities rf= new CAAF_ResidentialFacilities(driver);
+//		rf.RunResidentialFacilities();
+		SDMSTCCI_Hybrid hd= new SDMSTCCI_Hybrid(driver);
+		hd.RunHybridDetails();
 
 // ********************************* ResidentialFacilities ************************************************
 //		driver.findElementByXPath("//*[@text='ResidentialFacilities']").click();
