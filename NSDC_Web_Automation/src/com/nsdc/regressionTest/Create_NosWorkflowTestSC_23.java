@@ -39,6 +39,10 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 	String functionalAnalysis,String approvalQNos,String qfileQcNs,String qrcPresenation,String qrcSummarySheet,
 	String otherDocument)throws Exception
  	{
+ 		Thread.sleep(3000);
+		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+		Thread.sleep(3000);
+ 		
  		LoginPage lp = new LoginPage(driver);
  		lp.clickLogin();
  		Thread.sleep(3000);
@@ -56,13 +60,13 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
  	Thread.sleep(3000);
  	qpNos.clickSubSector();
  	qpNos.clickSubSectorText(polutry);
- 	qpNos.selectOccupation(occupation);
+ 	qpNos.ClickOnOccupation(occupation);
  	qpNos.selectCredits(credits);
  	qpNos.selectNSQFlevel(nsqflevel);
- 	qpNos.setNOsName(nosname);
+ 	qpNos.EnterTheNOsName(nosname);
   	qpNos.enterNOsDescription(nosdescripation);
  	qpNos.entersetNosScope(nosscope);
- 	qpNos.enterSetNextReviewPeriod(nextreviewperiod);
+ 	//qpNos.enterSetNextReviewPeriod(nextreviewperiod);
  	qpNos.clickSaveAndContinouBtton();
  	//
  	String total_element=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 0);
@@ -78,8 +82,8 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 	for(int j=1;j<=totalpc;j++)
 	{      
         String pcName=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", j, 3);
-        driver.findElement(By.xpath("(//textarea[@name='addText'])["+i+"]")).sendKeys(pcName);
-	   driver.findElement(By.xpath("(//button[text()='+ Add PC'])["+i+"]")).click();
+        driver.findElement(By.xpath("(//textarea[@name='pcDescription'])")).sendKeys(pcName);
+	   driver.findElement(By.xpath("//button[contains(text(),'+ Add')]")).click();
         }
 	 if(i<=totalelements-1)
 		{
@@ -90,14 +94,14 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 	Thread.sleep(3000);
 	qpNos.clickSaveAndContinouBtton();
 	Thread.sleep(3000);
-	qpNos.clickOnAddKU();
-	Thread.sleep(3000);
+//	qpNos.clickOnAddKU();
+//	Thread.sleep(3000);
 	
 	qpNos.clickSaveAndContinouBtton();
-	Thread.sleep(3000);
-	qpNos.clickOnAddGS();
+	Thread.sleep(5000);
+//	qpNos.clickOnAddGS();
 	qpNos.clickSaveAndContinouBtton();
-	Thread.sleep(3000);
+	Thread.sleep(5000);
 
 	//assessment
 	 String assessement=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 4);
@@ -123,6 +127,7 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 	//Acronyms
 	qpNos.enterAcronymsKeyword(acronmyskeyword);
 	qpNos.enterAcronymsDescription(acronmysDescription);
+	
 	qpNos.enterGlossaryKeyword(glossaryKeyword);
 	qpNos.enterGlossaryDescription(glossaryDescription);
 	String standalone = driver.findElement(By.xpath("//label[input[@value='standalone']]")).getText();
@@ -233,82 +238,83 @@ qpNos.clickOkButton();
 	Thread.sleep(2000);
 	plp.clickOnLogout();
  	}
-	
-	@Test(dataProvider="createNosdata")
- 	public void viewAllNOssVerification(String username , String password , String sector, String polutry,String occupation, 
- 	String credits, String nsqflevel, String nosname, String nosdescripation, String nosscope , 
- 	String nextreviewperiod,
- 	String acronmyskeyword,
-	String acronmysDescription,String glossaryKeyword,String glossaryDescription,String governmentDoc,
-	String rfpDoc,String aboutsector,String labourMarketCity,String stakeholder,String occupationalmapping,
-	String functionalAnalysis,String approvalQNos,String qfileQcNs,String qrcPresenation,String qrcSummarySheet,
-	String otherDocument)throws Exception
- 	{
- 		LoginPage lp = new LoginPage(driver);
- 		lp.clickLogin();
- 		Thread.sleep(3000);
- 		BetaVersionOfSmartPage bvsp=new BetaVersionOfSmartPage(driver);
- 		bvsp.clickToClose();
- 		EnterLoginPage ep=new EnterLoginPage(driver);
- 		ep.performlogin(username, password);
- 		SSC_DashboardPage sscDp=new SSC_DashboardPage(driver);
- 		sscDp.clickOn_QP_NOS_ModelCurriculum();
- 		Thread.sleep(3000);
- 	Qpnos_createpage qp=new Qpnos_createpage (driver);
- 	Thread.sleep(3000);	
-qp.clickViewALLNoss();
-Thread.sleep(1000);
-driver.findElement(By.xpath("(//a[i[@class='la la-ellipsis-h']])[1]")).click();
-driver.findElement(By.xpath("( //a[contains(text(),'	View Details')])[1]")).click();
-//verify
-
-Assert.assertEquals(driver.findElement(By.xpath("//div[@class='cuppa-dropdown']")).getText(), polutry);
-   WebElement listOccupation = driver.findElement(By.xpath("//select[@name='option']"));
-	Select sel=new Select(listOccupation);	
-Assert.assertEquals(sel.getFirstSelectedOption().getText(), occupation);
-             WebElement listCredits = driver.findElement(By.xpath("//select[@name='credits']"));
-             Select s=new Select(listCredits);
-Assert.assertEquals(s.getFirstSelectedOption().getText().trim(),credits);
-
-WebElement listnsqfLevel = driver.findElement(By.xpath("//select[@name='nsqf']"));
-
-Select sl=new Select( listnsqfLevel);
-Assert.assertEquals(sl.getFirstSelectedOption().getText().trim(), nsqflevel );
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Name']")).getAttribute("value"), nosname );
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Description']")).getAttribute("value"), nosdescripation );
-Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Scope']")).getAttribute("value"), nosscope );
-//String version="1.0";
-//Assert.assertEquals(driver.findElement(By.xpath("//input[@name='version']")).getAttribute("vlue"), version );
-Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter Next Review Period in months from the QRC date']")).getAttribute("value"), nextreviewperiod );
-
-CreateNationalOccupationalStandardpage qpNos=new CreateNationalOccupationalStandardpage(driver);
-	Thread.sleep(3000);
-	qpNos.clickElementandperformancecriteria();
-	String element=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 1);
-	Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'NosS')]")).getText(), element);
-	String pc1=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 3);
-	Assert.assertEquals(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), pc1);
-	Thread.sleep(3000);
-	qpNos.clickknowledgeandunderstanding();
-	Thread.sleep(3000);
-	qpNos.clickGenericskill();
-	Thread.sleep(3000);
-	qpNos.clickAssenmentcriteria();
-	Thread.sleep(3000);
-	qpNos.clickAcronymsanddocuments();
-	Thread.sleep(3000);
-	
-	PostLoginPage plp=new PostLoginPage(driver);
-    Thread.sleep(3000);
-   plp.clickOnProfileLogo();
-	Thread.sleep(2000);
-	plp.clickOnLogout();
-
-	
- 	}
+}
+//	
+//	@Test(dataProvider="createNosdata")
+// 	public void viewAllNOssVerification(String username , String password , String sector, String polutry,String occupation, 
+// 	String credits, String nsqflevel, String nosname, String nosdescripation, String nosscope , 
+// 	String nextreviewperiod,
+// 	String acronmyskeyword,
+//	String acronmysDescription,String glossaryKeyword,String glossaryDescription,String governmentDoc,
+//	String rfpDoc,String aboutsector,String labourMarketCity,String stakeholder,String occupationalmapping,
+//	String functionalAnalysis,String approvalQNos,String qfileQcNs,String qrcPresenation,String qrcSummarySheet,
+//	String otherDocument)throws Exception
+// 	{
+// 		LoginPage lp = new LoginPage(driver);
+// 		lp.clickLogin();
+// 		Thread.sleep(3000);
+// 		BetaVersionOfSmartPage bvsp=new BetaVersionOfSmartPage(driver);
+// 		bvsp.clickToClose();
+// 		EnterLoginPage ep=new EnterLoginPage(driver);
+// 		ep.performlogin(username, password);
+// 		SSC_DashboardPage sscDp=new SSC_DashboardPage(driver);
+// 		sscDp.clickOn_QP_NOS_ModelCurriculum();
+// 		Thread.sleep(3000);
+// 	Qpnos_createpage qp=new Qpnos_createpage (driver);
+// 	Thread.sleep(3000);	
+//qp.clickViewALLNoss();
+//Thread.sleep(1000);
+//driver.findElement(By.xpath("(//a[i[@class='la la-ellipsis-h']])[1]")).click();
+//driver.findElement(By.xpath("( //a[contains(text(),'	View Details')])[1]")).click();
+////verify
+//
+//Assert.assertEquals(driver.findElement(By.xpath("//div[@class='cuppa-dropdown']")).getText(), polutry);
+//   WebElement listOccupation = driver.findElement(By.xpath("//select[@name='option']"));
+//	Select sel=new Select(listOccupation);	
+//Assert.assertEquals(sel.getFirstSelectedOption().getText(), occupation);
+//             WebElement listCredits = driver.findElement(By.xpath("//select[@name='credits']"));
+//             Select s=new Select(listCredits);
+//Assert.assertEquals(s.getFirstSelectedOption().getText().trim(),credits);
+//
+//WebElement listnsqfLevel = driver.findElement(By.xpath("//select[@name='nsqf']"));
+//
+//Select sl=new Select( listnsqfLevel);
+//Assert.assertEquals(sl.getFirstSelectedOption().getText().trim(), nsqflevel );
+//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Name']")).getAttribute("value"), nosname );
+//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Description']")).getAttribute("value"), nosdescripation );
+//Assert.assertEquals(driver.findElement(By.xpath("//textarea[@placeholder='Enter NOS Scope']")).getAttribute("value"), nosscope );
+////String version="1.0";
+////Assert.assertEquals(driver.findElement(By.xpath("//input[@name='version']")).getAttribute("vlue"), version );
+//Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Enter Next Review Period in months from the QRC date']")).getAttribute("value"), nextreviewperiod );
+//
+//CreateNationalOccupationalStandardpage qpNos=new CreateNationalOccupationalStandardpage(driver);
+//	Thread.sleep(3000);
+//	qpNos.clickElementandperformancecriteria();
+//	String element=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 1);
+//	Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'NosS')]")).getText(), element);
+//	String pc1=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 3);
+//	Assert.assertEquals(driver.findElement(By.xpath("//tr[2]//td[2]")).getText(), pc1);
+//	Thread.sleep(3000);
+//	qpNos.clickknowledgeandunderstanding();
+//	Thread.sleep(3000);
+//	qpNos.clickGenericskill();
+//	Thread.sleep(3000);
+//	qpNos.clickAssenmentcriteria();
+//	Thread.sleep(3000);
+//	qpNos.clickAcronymsanddocuments();
+//	Thread.sleep(3000);
+//	
+//	PostLoginPage plp=new PostLoginPage(driver);
+//    Thread.sleep(3000);
+//   plp.clickOnProfileLogo();
+//	Thread.sleep(2000);
+//	plp.clickOnLogout();
+//
+//	
+// 	}
  	
 
-}
+//}
 
 	
 	

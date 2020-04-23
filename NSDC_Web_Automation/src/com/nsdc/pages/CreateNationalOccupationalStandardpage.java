@@ -1,5 +1,6 @@
 package com.nsdc.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,12 +27,12 @@ public class CreateNationalOccupationalStandardpage
 	//
 	@FindBy(xpath="//input[@name='sectorName']")
 	private WebElement sectortextbox;
-	@FindBy(xpath="//div[@class='c-btn']")
+	@FindBy(xpath="//div[@class='selected-list']//span[text()='Select Sub Sector']")
 	private WebElement subSectorList;
 	@FindBy(xpath="//label[text()='Poultry']")
 	private WebElement clickpolutry ;
 	//
-	@FindBy(xpath="//select[@name='option']")
+	@FindBy(xpath="(//div[@class='selected-list']//span[text()='Select Occupation'])[1]")
 	private WebElement occupationDropDownList;
 	@FindBy(xpath="//select[@name='credits']")
 	private WebElement creditDropdownList;
@@ -82,68 +83,7 @@ public class CreateNationalOccupationalStandardpage
 	@FindBy(xpath="(//button[text()='+ Add PC'])[1]")
 	private WebElement element1AddPC_Button;
 	//element2
-	@FindBy(xpath="//a[i[@class='la la-save green']]")
-	private WebElement  element2SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[2]")
-	private WebElement element2PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[2]")
-	private WebElement element2AddPC_Button;
-	// Element3
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[3]")
-	private WebElement  element3SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[3]")
-	private WebElement element3PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[3]")
-	private WebElement element3AddPC_Button;
-	//element4
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[4]")
-	private WebElement  element4SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[4]")
-	private WebElement element4PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[4]")
-	private WebElement element4AddPC_Button;
-	//element5
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[5]")
-	private WebElement  element5SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[5]")
-	private WebElement element5PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[5]")
-	private WebElement element5AddPC_Button;
-	//element6
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[6]")
-	private WebElement  element6SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[6]")
-	private WebElement element6PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[6]")
-	private WebElement element6AddPC_Button;
-	//element7
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[7]")
-	private WebElement  element7SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[7]")
-	private WebElement element7PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[7]")
-	private WebElement element7AddPC_Button;
-	//element8
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[8]")
-	private WebElement  element8SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[8]")
-	private WebElement element8PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[8]")
-	private WebElement element8AddPC_Button;
-	//e/ement9
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[9]")
-	private WebElement  element9SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[9]")
-	private WebElement element9PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[9]")
-	private WebElement element9AddPC_Button;
-	//element10
-	@FindBy(xpath="(//a[i[@class='la la-save green']])[10]")
-	private WebElement  element10SaveButton;
-	@FindBy(xpath="(//textarea[@name='addText'])[10]")
-	private WebElement element10PerformanceCritiriaTextBox;
-	@FindBy(xpath="(//button[text()='+ Add PC'])[10]")
-	private WebElement element10AddPC_Button;
+//
 	
 	
 	@FindBy(xpath="(//button[@class='pull-right btn btn-outline-info'])[1]")
@@ -300,15 +240,18 @@ public class CreateNationalOccupationalStandardpage
 	 
  }  
    
-   public void clickSubSectorText(String polutry )
+   public void clickSubSectorText()
    {
 	   clickpolutry.click();  
 	   }
 
-   public void selectOccupation(String occupationName)
+   public void ClickOnOccupation(String occupationName) throws InterruptedException
   	{
 	   
-     	SelectDropDownList.selectDropDownListByVisibleText(occupationDropDownList,occupationName);
+	   occupationDropDownList.click();
+	   
+     	Thread.sleep(2000);
+     	driver.findElement(By.xpath("(//label[text()='Vegetable Crops Cultivation'])[1]")).click();
 
        }  
    
@@ -325,7 +268,7 @@ public class CreateNationalOccupationalStandardpage
     	SelectDropDownList.selectDropDownListByVisibleText(NsqfLevelDropdownLIst,NSQFLevelName );
 
       }  
-   public void setNOsName(String nosName)
+   public void EnterTheNOsName(String nosName)
 	{
 	   nosNameTextBox.clear();
 	   nosNameTextBox.sendKeys(nosName);
@@ -382,124 +325,7 @@ public class CreateNationalOccupationalStandardpage
    {
 	   deleteElementButton.click();
    }
-   //E2
-   public void clickElement2SaveButton()
-   {
-	   element2SaveButton.click();
-   }
-   public void enterElement2PerformanceCriteria(String name)
-   {
-	   element2PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement2AddPc()
-   {
-	   element2AddPC_Button.click();
-   }
-   ////E3
-   public void clickElement3SaveButton()
-   {
-	   element3SaveButton.click();
-   }
-   public void enterElement3PerformanceCriteria(String name)
-   {
-	   element3PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement3AddPc()
-   {
-	   element3AddPC_Button.click();
-   }
-  
- //E4
-   public void clickElement4SaveButton()
-   {
-	   element4SaveButton.click();
-   }
-   public void enterElement4PerformanceCriteria(String name)
-   {
-	   element4PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement4AddPc()
-   {
-	   element4AddPC_Button.click();
-   }
- //E5
-   public void clickElement5SaveButton()
-   {
-	   element5SaveButton.click();
-   }
-   public void enterElement5PerformanceCriteria(String name)
-   {
-	   element5PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement5AddPc()
-   {
-	   element5AddPC_Button.click();
-   }
- //E6
-   public void clickElement6SaveButton()
-   {
-	   element6SaveButton.click();
-   }
-   public void enterElement6PerformanceCriteria(String name)
-   {
-	   element6PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement6AddPc()
-   {
-	   element6AddPC_Button.click();
-   }
- //E7
-   public void clickElement7SaveButton()
-   {
-	   element7SaveButton.click();
-   }
-   public void enterElement7PerformanceCriteria(String name)
-   {
-	   element7PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement7AddPc()
-   {
-	   element7AddPC_Button.click();
-   }
- //E8
-   public void clickElement8SaveButton()
-   {
-	   element8SaveButton.click();
-   }
-   public void enterElement8PerformanceCriteria(String name)
-   {
-	   element8PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement8AddPc()
-   {
-	   element8AddPC_Button.click();
-   }
- //E9
-   public void clickElement9SaveButton()
-   {
-	   element9SaveButton.click();
-   }
-   public void enterElement9PerformanceCriteria(String name)
-   {
-	   element9PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement9AddPc()
-   {
-	   element9AddPC_Button.click();
-   }
- //E10
-   public void clickElement10SaveButton()
-   {
-	   element10SaveButton.click();
-   }
-   public void enterElement10PerformanceCriteria(String name)
-   {
-	   element10PerformanceCritiriaTextBox.sendKeys(name);
-   }
-   public void clickElement10AddPc()
-   {
-	   element10AddPC_Button.click();
-   }
+// 
    //KU
      public void enterTheKnowledgeAndUnderstandingTextbox(String knowledgeAndUnderstanding)
    {   
