@@ -126,58 +126,13 @@ public class CreateNationalOccupationalStandardpage
 	private WebElement glossaryKeywordTextBox;
 	@FindBy(xpath="(//textarea[@name='addText'])[2]")
 	private WebElement glossaryDescriptionTextBox;
-	@FindBy(xpath=("//label[input[@value='standalone']]	"))
+	@FindBy(xpath=("//label[input[@value='standalone']]"))
 	private WebElement standaloneNosButton;
 	
-	@FindBy(xpath="//label[contains(text(),'Governance Documents')]/..//input")
-	private WebElement governmentDocumentsBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Governance Documents')]/..//button[contains(text(),'Upload')]")
-	private WebElement governmentDocumentsUploadButton;
-	@FindBy(xpath="//label[contains(text(),'RFP Documents')]/..//input")
-	private WebElement RFPDocumentsBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'RFP Documents')]/..//button[contains(text(),'Upload')]")
-	private WebElement RFPDocumentsUploadButton;
-	@FindBy(xpath="//label[contains(text(),'About the Sector')]/..//input")
-	private WebElement aboutSectorBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'About the Sector')]/..//button[contains(text(),'Upload')]")
-	private WebElement aboutSectorUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Labour Market City')]/..//input")
-	private WebElement labourMarketCityBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Labour Market City')]/..//button[contains(text(),'Upload')]")
-	private WebElement labourMarketCityUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Stakeholder Engagement')]/..//input")
-	private WebElement stakeholderEngagementBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Stakeholder Engagement')]/..//button[contains(text(),'Upload')]")
-	private WebElement stakeholderEngagementUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Occupational mapping')]/..//input")
-	private WebElement OccupationalMappingBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Occupational mapping')]/..//button[contains(text(),'Upload')]")
-	private WebElement OccupationalMappingUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Functional Analysis')]/..//input")
-	private WebElement FunctionalAnalysisBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Functional Analysis')]/..//button[contains(text(),'Upload')]")
-	private WebElement FunctionalAnalysisUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Approval for QP-NOS')]/..//input")
-	private WebElement approvalforQPNOSBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Approval for QP-NOS')]/..//button[contains(text(),'Upload')]")
-	private WebElement approvalforQPNOSUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Q-files_NSQC')]/..//input")
-	private WebElement QfilesNSQCBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Q-files_NSQC')]/..//button[contains(text(),'Upload')]")
-	private WebElement  QfilesNSQcUploadButton;
-	@FindBy(xpath="//label[contains(text(),'QRC Presentation')]/..//input")
-	private WebElement QRCPresentationBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'QRC Presentation')]/..//button[contains(text(),'Upload')]")
-	private WebElement QRCPresentationUploadButton;
-	@FindBy(xpath="//label[contains(text(),'QRC Summary Sheet')]/..//input")
-	private WebElement QRCSummarySheetBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'QRC Summary Sheet')]/..//button[contains(text(),'Upload')]")
-	private WebElement QRCSummarySheetUploadButton;
-	@FindBy(xpath="//label[contains(text(),'Other Documents')]/..//input")
-	private WebElement otherDocumentsBrowseButton;
-	@FindBy(xpath="//label[contains(text(),'Other Documents')]/..//button[contains(text(),'Upload')]")
-	private WebElement otherDocumentsUploadButton;
-	@FindBy(xpath="//button[contains(text(),'Submit for Approval')]")
+	
+	
+//
+	@FindBy(xpath="//button[contains(text(),'Submit for Review')]")
 	WebElement submitForApprovalButton;
 	@FindBy(xpath="//button[@id='button']")
 	private WebElement  saveAndExitButton;
@@ -358,26 +313,7 @@ public class CreateNationalOccupationalStandardpage
    {
 	   minimumScoreOFNOSTextBOx.sendKeys(minimumScore);
    }
-  // e1pc1
- //  public void enterTheTheoryMarks(String theoryMarks)
- //  {
-	//   pc1TheroyMarksTextBox.sendKeys(theoryMarks);
-  // }
-  // public void enterThePracticalMarks(String practicalMarks)
-  // {
-	//   pc1PracticalMarksTextBox.sendKeys(practicalMarks);
- //  }
-   
-   //public void enterTheProjectMarks(String projectMarks)
-  // {
-	//   pc1ProjectMarksTextBox.sendKeys(projectMarks);
-  // }
-  
-  // public void enterTheVivaMarks(String vivaMarks)
-  // {
-	//  pc1vivaMarksTextBox.sendKeys(vivaMarks);
-	  //pc1ProjectMarksTextBox.click();//to make pc1 disable
-   //}
+ 
    
    
   
@@ -410,104 +346,8 @@ public class CreateNationalOccupationalStandardpage
    {
 	   standaloneNosButton.click();
    }
-   public void clickGoveranceDocuments()
-   {
-	   governmentDocumentsBrowseButton.click();
-   }
-   public void clickGoveranceDocumentsUploadButton()
-   {
-	   governmentDocumentsUploadButton.click();
-   }
-   public void clickRFPDocuments()
-   {
-	   
-	   RFPDocumentsBrowseButton.click();
-   }
-   public void clickRFPDocumentsUploadButton()
-   {
-	   RFPDocumentsUploadButton.click();
-   }
-   public void clickAboutSector()
-   {
-	   aboutSectorBrowseButton.click();
-   }
-   public void clickAboutSectorUploadButton()
-   {
-	   aboutSectorUploadButton.click();
-   }
-   public void clickLabourMarketCity()
-   {
-	   labourMarketCityBrowseButton.click();
-   }
-   public void clicklabourMarketCityUploadButton()
-   {
-	   labourMarketCityUploadButton.click();
-   }
-   public void clickStakeHolderEnagged()
-   {
-	   stakeholderEngagementBrowseButton.click();
-   }
-   public void clickStakeHolderEnaggeduploadButton()
-   {
-	   stakeholderEngagementUploadButton.click();
-   }
-   public void clickOccupationalMapping()
-   {
-	   OccupationalMappingBrowseButton.click();
-   }
-   public void clickOccupationalMappinguploadButton()
-   {
-	   OccupationalMappingUploadButton.click();
-   }
-   public void clickFunctionalAnalysis()
-   {
-	   FunctionalAnalysisBrowseButton.click();
-   }
-   public void clickFunctionalAnalysisuploadButton()
-   {
-	   FunctionalAnalysisUploadButton.click();
-   }
-   public void clickApprovalForQpNos()
-   {
-	   approvalforQPNOSBrowseButton.click();
-   }
-   public void clickApprovalForQpNosuploadButton()
-   {
-	   approvalforQPNOSUploadButton.click();
-   }
-   public void clickQfilesNSQC()
-   {
-	   QfilesNSQCBrowseButton.click();
-   }
-   public void clickQfilesNSQCuploadButton()
-   {
-	   QfilesNSQcUploadButton.click();
-   }
-   public void clickQRCPresentationBrowser() 
-   {
-	   QRCPresentationBrowseButton.click();
-   }
-   public void clickQRCPresentationUploadButton()
-   {
-	   QRCPresentationUploadButton.click();
-   }
-   public void clickQRCSummarySheetBrowseButton() 
-   {
-	   QRCSummarySheetBrowseButton.click();
-   }
-   public void clickQRCSummarySheetUploadButton()
-   {
-	   QRCSummarySheetUploadButton.click();
-   }
-   public void clickotherDocumentsBrowseButton()
-   {
-	   otherDocumentsBrowseButton.click();
-   }
-   public void clickotherDocumentsUploadButton()
-   {
-	   otherDocumentsUploadButton.click();
-   }
-   public void clickSubmitForApproval()
+//  
+   public void clickSubmitForReview()
    {
 	   submitForApprovalButton.click();
    }

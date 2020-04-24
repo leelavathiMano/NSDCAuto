@@ -2,7 +2,10 @@ package com.nsdc.regressionTest;
 
 
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -59,15 +62,19 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
  	CreateNationalOccupationalStandardpage qpNos=new CreateNationalOccupationalStandardpage(driver);
  	Thread.sleep(3000);
  	qpNos.clickSubSector();
- 	qpNos.clickSubSectorText(polutry);
+ 	qpNos.clickSubSectorText();
+ 	driver.findElement(By.xpath("//div[@class='c-list']")).click();
+ 	Thread.sleep(3000);
  	qpNos.ClickOnOccupation(occupation);
  	qpNos.selectCredits(credits);
  	qpNos.selectNSQFlevel(nsqflevel);
- 	qpNos.EnterTheNOsName(nosname);
+ 	String nosName1="BSNLqdfqaw";
+ 	qpNos.EnterTheNOsName(nosName1);
   	qpNos.enterNOsDescription(nosdescripation);
  	qpNos.entersetNosScope(nosscope);
  	//qpNos.enterSetNextReviewPeriod(nextreviewperiod);
  	qpNos.clickSaveAndContinouBtton();
+	Thread.sleep(3000);
  	//
  	String total_element=ReadWriteData.getData("./TestData/Workflow/QualificationPack_Nos_Workflow.xls", "element_PC", 1, 0);
  	int totalelements=Integer.parseInt(total_element);
@@ -91,7 +98,7 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 		
 		}
 	}
-	Thread.sleep(3000);
+ 	Thread.sleep(3000);
 	qpNos.clickSaveAndContinouBtton();
 	Thread.sleep(3000);
 //	qpNos.clickOnAddKU();
@@ -124,12 +131,14 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 	}
 	qpNos.clickTotal();
 	qpNos.clickSaveAndContinouBtton();
+	Thread.sleep(2000);
 	//Acronyms
 	qpNos.enterAcronymsKeyword(acronmyskeyword);
 	qpNos.enterAcronymsDescription(acronmysDescription);
-	
+	driver.findElement(By.xpath("(//button[text()='+ Add'])[1]")).click();
 	qpNos.enterGlossaryKeyword(glossaryKeyword);
 	qpNos.enterGlossaryDescription(glossaryDescription);
+	driver.findElement(By.xpath("(//button[text()='+ Add'])[2]")).click();
 	String standalone = driver.findElement(By.xpath("//label[input[@value='standalone']]")).getText();
 	//qpNos.clickStandaloneNos();
 	if(!standalone.equalsIgnoreCase("Make Available for Qualification Pack "))
@@ -137,93 +146,39 @@ public class Create_NosWorkflowTestSC_23  extends TestConfiguration
 		
 		qpNos.clickStandaloneNos();
 		Thread.sleep(2000);
-	qpNos.clickGoveranceDocuments();
-	Thread.sleep(2000);
-	UploadFile.upload(governmentDoc);
-	Thread.sleep(3000);
-	qpNos.clickGoveranceDocumentsUploadButton();
-	Thread.sleep(4000);
-	qpNos.clickRFPDocuments();
-	Thread.sleep(5000);
-	UploadFile.upload(rfpDoc);
-	Thread.sleep(5000);
-	qpNos.clickRFPDocumentsUploadButton();
-	Thread.sleep(5000);
-	//
-	qpNos.clickAboutSector();
-	Thread.sleep(2000);
-	UploadFile.upload(aboutsector);
-	Thread.sleep(3000);
-	qpNos.clickAboutSectorUploadButton();
-	Thread.sleep(5000);
-	//
-	qpNos.clickLabourMarketCity();
-	Thread.sleep(2000);
-	UploadFile.upload(labourMarketCity);
-	Thread.sleep(3000);
-	qpNos.clicklabourMarketCityUploadButton();
-	Thread.sleep(5000);
-	//
-	qpNos.clickStakeHolderEnagged();
-	Thread.sleep(1000);
-	UploadFile.upload(stakeholder);
-	Thread.sleep(3000);
-	qpNos.clickStakeHolderEnaggeduploadButton();
-	Thread.sleep(3000);
-	//
-	qpNos.clickOccupationalMapping();
-	Thread.sleep(1000);
-	UploadFile.upload(occupationalmapping);
-	Thread.sleep(3000);
-	qpNos.clickOccupationalMappinguploadButton();
-	Thread.sleep(3000);
-	//
-	qpNos.clickFunctionalAnalysis();
-	Thread.sleep(1000);
-	UploadFile.upload(functionalAnalysis);
-	Thread.sleep(3000);
-	qpNos.clickFunctionalAnalysisuploadButton();
-	Thread.sleep(3000);
-	//
-	qpNos.clickApprovalForQpNos();
-	Thread.sleep(1000);
-	UploadFile.upload(approvalQNos);
-	Thread.sleep(3000);
-	qpNos.clickApprovalForQpNosuploadButton();
-	Thread.sleep(3000);
-	//
-	qpNos.clickQfilesNSQC();
-	Thread.sleep(1000);
-	UploadFile.upload(qfileQcNs);
-	Thread.sleep(3000);
-	qpNos.clickQfilesNSQCuploadButton();
-	Thread.sleep(3000);
-	//
-	qpNos.clickQRCPresentationBrowser();
-	Thread.sleep(1000);
-	UploadFile.upload(qrcPresenation);
-	Thread.sleep(3000);
-	qpNos.clickQRCPresentationUploadButton();
-	Thread.sleep(3000);
-	//
-	qpNos.clickQRCSummarySheetBrowseButton();
-	Thread.sleep(1000);
-	UploadFile.upload(qrcSummarySheet);
-	Thread.sleep(3000);
-	qpNos.clickQRCSummarySheetUploadButton();
-	Thread.sleep(3000);
-
-	qpNos.clickotherDocumentsBrowseButton();
-	Thread.sleep(1000);
-	UploadFile.upload(otherDocument);
-	Thread.sleep(3000);
-	qpNos.clickotherDocumentsUploadButton();
-Thread.sleep(3000);
-qpNos.clickSubmitForApproval();
-qpNos.clickContinueToSubmit();
-qpNos.clickOkButton();
-	
-	}
+		
+		List<WebElement> ListOfBrowser = driver.findElements(By.xpath("//input[@id='customFile']"));
+		
+		int numOFbrowsers=ListOfBrowser.size();
+		
+		for(int i=0;i<=numOFbrowsers-1;i++)
+		{
+			ListOfBrowser.get(i).click();
+			Thread.sleep(2000);
+			UploadFile.upload(governmentDoc);
+			Thread.sleep(3000);
+			
+		}
+		WebElement scrollup = driver.findElement(By.xpath("(//input[@id='customFile'])[1]"));
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,-2500)");
+		// js.executeScript("arguments[0].scrollIntoView();", scrollup);
+		List<WebElement> listOfUploadButtons = driver.findElements(By.xpath("//button[contains(text(),'Upload')]"));
+		
+		int numberOfUPloadButtons = listOfUploadButtons.size();
+		
+		for(int j=0;j<=numberOfUPloadButtons-1;j++)
+		{
+			Thread.sleep(2000);
+			listOfUploadButtons.get(j).click();
+			Thread.sleep(5000);
+		}
+		
+		
+		qpNos.clickSubmitForReview();
+		qpNos.clickContinueToSubmit();
+		qpNos.clickOkButton();
+	}	
 	else
 	{
 		qpNos.clicksaveAndExitButton();
