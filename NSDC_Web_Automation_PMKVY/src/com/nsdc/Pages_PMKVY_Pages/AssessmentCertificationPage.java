@@ -18,7 +18,7 @@ public class AssessmentCertificationPage {
 	   	 this.driver = driver;
 	   	 PageFactory.initElements(driver, this);
 	    }
-    @FindBy(xpath="(//span[@class='m-menu__link-text'])[5]")
+    @FindBy(xpath="//div[@routerlink='./assessments-certifications']//strong[text()=' Assessments & Certifications']")
     private WebElement AssessmentCertificationIcon;
     @FindBy(xpath="//div[p[text()='Batches Assigned']]")
     private WebElement BatchAssignedIcon;
@@ -26,17 +26,19 @@ public class AssessmentCertificationPage {
     @FindBy(xpath="//li[a[contains(text(),'Accepted')]]")
     private WebElement AcceptedIcon;
     
-    @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+    @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[2]")
     private WebElement ActionIcon;
-    @FindBy(xpath="(//a[contains(text(),'Assign Assessment Agency')])[1]")
+    @FindBy(xpath="(//a[contains(text(),'Assign Assessment Agency')])[2]")
     private WebElement AssignAssessmentAgency;
     
     
     
     @FindBy(xpath="(//select[@formcontrolname='aaId'])[1]")
 	private WebElement AAselectDropDownlist;
-	@FindBy(xpath="(//button[text()='Submit'])[2]")
+	@FindBy(xpath="(//button[text()='Submit'])[3]")
 	private WebElement submitButton;
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement YesButton;
 	@FindBy(xpath="//button[text()='OK']")
 	private WebElement OkButton;
     ////////////////////////
@@ -71,7 +73,9 @@ public class AssessmentCertificationPage {
 	
     public void ClickOnAssessmentCertification()
     {
-    	AssessmentCertificationIcon.click();
+    	JavascriptExecutor js=(JavascriptExecutor)driver;
+    	js.executeScript("arguments[0].click();",AssessmentCertificationIcon );
+    	//AssessmentCertificationIcon.click();
     }
     public void ClickOnBatchAssigned()
     {
@@ -97,6 +101,10 @@ public class AssessmentCertificationPage {
     public void ClickOnSubmitButton()
     {
     	submitButton.click();
+    }
+    public void ClickOnYesButton()
+    {
+    	YesButton.click();
     }
     public void ClickOnOkButton()
     {
