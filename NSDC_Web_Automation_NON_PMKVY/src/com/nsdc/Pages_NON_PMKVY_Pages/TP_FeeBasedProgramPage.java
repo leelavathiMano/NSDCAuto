@@ -186,29 +186,27 @@ public class TP_FeeBasedProgramPage
 		closeButton.click();
 	}
 	
-	
-	
-	
-	
-	
 	public void clickOnAgreementDate()
 	{
 		agreementDateTextbox.click();
-		agreementDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
+		agreementDateTextbox.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ENTER, Keys.TAB);
 	}
+	
+//	public void SelectAgreementDate(String argreementDate) throws InterruptedException {
+//		Thread.sleep(2000);
+//		ToT_ToA_Batch_DatePicker.SelectDate(driver, argreementDate, agreementDateTextbox, monthDropdownList);
+//	}
 	
 	public void SelectAgreementDate(String argreementDate) throws InterruptedException {
 		Thread.sleep(2000);
-		ToT_ToA_Batch_DatePicker.SelectDate(driver, argreementDate, agreementDateTextbox, monthDropdownList);
+		ToT_ToA_Batch_DatePicker.chooseDate(driver, argreementDate, agreementDateTextbox, monthDropdownList, yearDropdownList);
 	}
-	
-	
 	
 	
 	public void clickOnDisbursementDate()
 	{
 		disbursementDateTextbox.click();
-		disbursementDateTextbox.sendKeys(Keys.ARROW_RIGHT, Keys.ENTER, Keys.TAB);
+		disbursementDateTextbox.sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.ENTER, Keys.TAB);
 	}
 	
 	public void SelectDisbursementDate(String DisbursementDate) throws InterruptedException {
