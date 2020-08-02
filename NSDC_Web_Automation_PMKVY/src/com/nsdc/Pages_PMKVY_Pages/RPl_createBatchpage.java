@@ -272,7 +272,7 @@ public void BatchoutTimeSelect(String Batchouttime) throws InterruptedException
 	//BatchOutTime.sendKeys(Keys.TAB);
 	Thread.sleep(1000);
 	BatchOutTime.sendKeys(Keys.ARROW_UP);
-	Thread.sleep(3000);
+	Thread.sleep(1000);
 	BatchOutTime.sendKeys(Keys.ARROW_RIGHT);
 	if(parts[2].equals("PM"))
 	{

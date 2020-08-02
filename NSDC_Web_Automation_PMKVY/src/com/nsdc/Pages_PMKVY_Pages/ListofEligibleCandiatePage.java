@@ -25,6 +25,8 @@ public class ListofEligibleCandiatePage
 	@FindBy(xpath = "//button[contains(text(),'Apply')]")
 	private WebElement ApplyClickButton;
 	
+	
+	
 	@FindBy(xpath = "//thead//tr//th//label//span")
 	private WebElement CandiateCheckBox;
 	
@@ -32,7 +34,8 @@ public class ListofEligibleCandiatePage
 	private WebElement BAndLCheckBox;
 	@FindBy(xpath="//select[@formcontrolname='modeOfBkl']")
 	private WebElement ModelofBAndLDropDownList;
-	
+	@FindBy(xpath="//select[@formcontrolname='locationSpoc']")
+	private WebElement sourceofregistrationDropdownlist;
 	
 	
 	@FindBy(xpath="//select[@formcontrolname='state']")
@@ -45,7 +48,7 @@ public class ListofEligibleCandiatePage
 	private WebElement SubmitToEnrollcandidatesButton;
 	@FindBy(xpath="//button[contains(text(),'Yes, I am sure')]")
 	private WebElement YesButton;
-	@FindBy(xpath ="(//button[text()='OK'])[2]")
+	@FindBy(xpath ="//button[text()='OK']")
 	private WebElement OkButton;
 	
 	
@@ -131,6 +134,11 @@ public class ListofEligibleCandiatePage
 		executor.executeScript("arguments[0].click();",Submit_To_SSC );
 		//Submit_To_SSC.click();
 	   }
+	
+	public void SelectSourceofregistration(String tp)
+	{
+		SelectDropDownList.selectDropDownListByVisibleText(sourceofregistrationDropdownlist,tp);
+	}
 }
 
 

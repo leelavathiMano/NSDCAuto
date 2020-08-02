@@ -106,7 +106,9 @@ public class Rpl_addTrainerpage {
 	
 	public void ClickOnAddTrainer()
 	{
-		AddTrainerButton.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();",AddTrainerButton);
+		//AddTrainerButton.click();
 	}
 	public void EnterName(String name)
 	{

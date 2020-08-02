@@ -34,7 +34,7 @@ WebDriver driver;
 	@FindBy(xpath="//input[@formcontrolname='amount']")
 	private WebElement amountTextBox;
 	
-	@FindBy(xpath="//input[@formcontrolname='discountOnCeilingCost']")
+	@FindBy(xpath="(//input[@placeholder='Enter Percentage (%)'])[1]")
 	private WebElement discountOnCeilingCostTextBox;
 	@FindBy(xpath="(//input[@formcontrolname='discountOnAssessmentFee'])[1]")
 	private WebElement discountOnAssessmentFeeTextbox;
@@ -69,7 +69,7 @@ WebDriver driver;
 	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
 	private WebElement SaveAndSubmitButton;
 	
-	@FindBy(xpath="//button[text()='OK']")
+	@FindBy(xpath="(//button[text()='OK'])")
 	private WebElement OKButton;
 	public PMU_RPL_Schmepage( WebDriver driver)
 	{

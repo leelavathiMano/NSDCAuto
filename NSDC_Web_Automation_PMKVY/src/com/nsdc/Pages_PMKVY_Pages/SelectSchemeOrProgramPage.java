@@ -32,18 +32,18 @@ public class SelectSchemeOrProgramPage {
 	
 	@FindBy(xpath = "//select")
 	private WebElement selectDropDownList;
-	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[2]")
+	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[3]")
 	private WebElement SP_ActionButton;
-	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[2]")
+	@FindBy(xpath = "(//a[contains(text(),'Add Project')])[3]")
 	private WebElement SPAddProjectButton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[i[@class='la la-ellipsis-h']][1]")
 	private WebElement STTActionbutton;
 	@FindBy(xpath = "//tbody[@class='m-datatable__body margin-table ']//tr[8]//td[8]//a[contains(text(),'Add Project')]")
 	private WebElement STTAddProjectButton;
 	/////
-	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[2]")
+	@FindBy(xpath = "(//a[i[@class='la la-ellipsis-h']])[1]")
 	private WebElement ApprovalInProgress_SPActionButton;
-	@FindBy(xpath = "(//a[contains(text(),'View Details')])[2]")
+	@FindBy(xpath = "(//a[contains(text(),'View Details')])[1]")
 	private WebElement ApprovalInProgress_SP_ViewDetailsButton;
 
 	public SelectSchemeOrProgramPage(WebDriver driver) {
@@ -75,7 +75,7 @@ public class SelectSchemeOrProgramPage {
 	// wait.until(ExpectedConditions.elementToBeClickable(PageNumber4)).click();
 }
 	
-	
+
 	public void selectValue(String value) {
 		selectDropDownList.click();
 		SelectDropDownList.selectDropDownListByVisibleText(selectDropDownList, value);

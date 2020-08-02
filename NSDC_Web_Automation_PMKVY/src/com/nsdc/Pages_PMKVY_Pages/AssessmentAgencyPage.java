@@ -31,8 +31,10 @@ public class AssessmentAgencyPage {
    @FindBy(xpath="//a[contains(text(),'Accepted')]")
    private WebElement AcceptedButton;
    
-   @FindBy(xpath="(//a[i[@class='la la-ellipsis-h']])[1]")
+   @FindBy(xpath="//a[i[@class='la la-ellipsis-h']]")
    private WebElement AccetedActionButton;
+   @FindBy(xpath="//input[@placeholder='Search by Batch ID']")
+   private WebElement BatchIdTextBox;
    @FindBy(xpath="(//span[contains(text(),'Assign Assessor')])[1]")
    private WebElement AssignAssessorIcon;
    @FindBy(xpath="//select[@formcontrolname='assessor']")
@@ -86,6 +88,10 @@ public class AssessmentAgencyPage {
    public void ClickOnAcceptedButton()
    {
 	   AcceptedButton.click();
+   }
+   public void EnterBatchId(String batchid)
+   {
+	   BatchIdTextBox.sendKeys(batchid);
    }
    public void ClickOnAcceptedAction()
    {
