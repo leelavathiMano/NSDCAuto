@@ -72,7 +72,7 @@ public class PMKVY_Type_RPL_SchemePage {
 	private WebElement ProposedTrainingTargetTextBox ;
 	@FindBy(xpath="//button[text()='Save']")
 	private WebElement SaveButton;
-	@FindBy(xpath="//button[text()='OK']")
+	@FindBy(xpath="(//button[text()='OK'])[2]")
 	private WebElement OKButton;
 	@FindBy(xpath="//button[contains(text(),'Save & Submit')]")
 	private WebElement SaveAndSubmitButton;
