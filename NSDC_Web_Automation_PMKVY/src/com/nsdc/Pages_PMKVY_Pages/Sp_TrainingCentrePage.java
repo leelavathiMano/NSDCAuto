@@ -43,7 +43,7 @@ public class Sp_TrainingCentrePage {
 	private WebElement ParliamentaryConsistuencyDropdownlist;
 	@FindBy(xpath="//input[@id='search_places']")
 	private WebElement geolacation;
-	@FindBy(xpath="(//a[i[@class='custom-icon location-default-icon']])[1]")
+	@FindBy(xpath="//li[@class='currentlocation']/..//a")
 	private WebElement currentlocation;
 	@FindBy(xpath="//input[@placeholder='Enter Name of the SPOC']")
 	private WebElement PrimarySpocNameTextBox;

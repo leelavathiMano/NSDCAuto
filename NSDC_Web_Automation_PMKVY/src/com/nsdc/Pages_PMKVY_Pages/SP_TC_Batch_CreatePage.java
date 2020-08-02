@@ -80,7 +80,8 @@ public class SP_TC_Batch_CreatePage
 	}
 
 	public void SelectAssociatedQP(String AssociatedQP_JobRole) {
-		SelectDropDownList.selectDropDownListByVisibleText(AssociatedQP, AssociatedQP_JobRole);
+		//SelectDropDownList.selectDropDownListByVisibleText(AssociatedQP, AssociatedQP_JobRole);
+		SelectDropDownList.selectDropDownListByValue(AssociatedQP, AssociatedQP_JobRole);
 	}
 
 //

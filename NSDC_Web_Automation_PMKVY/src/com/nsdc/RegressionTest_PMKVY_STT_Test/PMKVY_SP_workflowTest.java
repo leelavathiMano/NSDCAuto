@@ -52,7 +52,6 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	}
 
 	@Test(dataProvider = "CreateSpecialProjectData")
-
 	public void Addspecialprojectdata_01(String username, String password, String projectproposalID, String projectname,
 			String registeredAs, String proposingorganisationName, String state, String district, String img1,
 			String img2, String loginId, String password2, String agrementDate, String StartDate, String endDate,
@@ -66,9 +65,12 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			String review, String SignedImg, String comments, String TCloginId, String TCpassword, String BatchSize,
 			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
 			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) throws Exception {
-
 		precondition();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//		Thread.sleep(3000);
 	LaunchPage lp = new LaunchPage(driver);
+	Thread.sleep(3000);
 		lp.clickLogin();
 		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -85,14 +87,12 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		Thread.sleep(3000);
 
 		ssp.ClickPageNumber2();
-
-		Thread.sleep(3000);
-		
-		
+		//ssp.ClickPageNumber3();
+		Thread.sleep(5000);
 		ssp.ClickOn_SP_Action();
 		Thread.sleep(3000);
 		ssp.ClickOn_SP_AddProject();
-//////
+//////////
 		Pmkvy_SpecialProjectCreationPage sp = new Pmkvy_SpecialProjectCreationPage(driver);
 		Thread.sleep(15000);
 		sp.EnterTheProjectProposalID(projectproposalID);
@@ -125,29 +125,52 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		Thread.sleep(3000);
 		 UploadFile.upload(img2); 
 		Thread.sleep(3000);
-
 		sp.clickOnOtherSupportingDocumentsUpload();
-		Thread.sleep(3000);
-		
+		Thread.sleep(5000);
 		sp.clickSaveAndSumbit();
-		Thread.sleep(3000);
-		
+		Thread.sleep(10000);
 		sp.ClickonOK();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		sp.ClickonOK();
-   LogOutPage plp = new LogOutPage(driver);
-     Thread.sleep(3000);
+		Thread.sleep(5000);
+      LogOutPage plp = new LogOutPage(driver);
+       Thread.sleep(3000);
 		plp.clickOnProfileLogo();
 		Thread.sleep(3000);
 		plp.clickOnLogout(); // //
 		Thread.sleep(3000);
+		
+	}
+//@Test(dataProvider = "CreateSpecialProjectData")
+
+	public void ApproveProject(String username, String password, String projectproposalID, String projectname,
+			String registeredAs, String proposingorganisationName, String state, String district, String img1,
+			String img2, String loginId, String password2, String agrementDate, String StartDate, String endDate,
+			String Adhar, String TrainerCertified, String TypeofTrainingCentre, String PlacementsRequirement,
+			String TypeOfEmployment, String MinimumPercentageplaced, String Disability, String Religion, String Gender,
+			String Category, String DiscountsonBaseRate, String BatchDuration, String NumberofTranches,
+			String Tranche3tobepaidwithoutPlacement, String DualLogoRequired, String TargetBeneficiaries,
+			String numberofsectors, String Sector, String JobRole, String Target, String locationState,
+			String locationDistrict, String jobrole1, String targetvalue1, String Jobrole2, String targetvalue2,
+			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String DualImg,
+			String review, String SignedImg, String comments, String TCloginId, String TCpassword, String BatchSize,
+			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
+			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) throws Exception {
+		precondition();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//		Thread.sleep(3000);
+		
+		LaunchPage lp = new LaunchPage(driver);
+		Thread.sleep(3000);
 		lp.clickLogin();
-		bsp.clickToClose();
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+	     bsp.clickToClose();
+	     EnterLoginPage elp = new EnterLoginPage(driver);
 		elp.performlogin(loginId, password2);
 		PMKVY_SPPMUpage sppmu = new PMKVY_SPPMUpage(driver);
 		Thread.sleep(10000);
 		sppmu.ClickOnViewAllSchemeAddRequests();
-
 		STTPMU_All_TP_ProjectimplementingAgencyPage allPIA = new STTPMU_All_TP_ProjectimplementingAgencyPage(driver);
 		Thread.sleep(10000);
 		allPIA.ClickOnAction();
@@ -172,7 +195,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		sssp.SelectAdharRequirmentYes(Adhar);
 		sssp.SelectTrainerCertifiedYes(TrainerCertified);
 		//sssp.SelectTypeofTrainingCentre(TypeofTrainingCentre);
-	//	sssp.SelectPlacementsRequirementYes(PlacementsRequirement);
+		//sssp.SelectPlacementsRequirementYes(PlacementsRequirement);
 		sssp.SelectTypeOfEmployment(TypeOfEmployment);
 		sssp.EnterTheMinimumPercentageofCandidatedtobeplacedTextBox(MinimumPercentageplaced);
 		sssp.ClickPercentageAdd();
@@ -181,7 +204,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		sssp.SelectGender(Gender);
 		sssp.SelectCategory(Category);
 		sssp.EnterTheDiscountsOnBaseRate(DiscountsonBaseRate);
-		sssp.EnterBatchDuration(BatchDuration);
+		//sssp.EnterBatchDuration(BatchDuration);
 		sssp.SelectNumberOfTranches(NumberofTranches);
 		sssp.SelecttrancheThreeToBepaid(Tranche3tobepaidwithoutPlacement);
 		sssp.SelectDualLogoRequired(DualLogoRequired);
@@ -190,6 +213,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		
 		sssp.ClickSaveAndSubmitButton();
 	    Thread.sleep(2000);
+	    Pmkvy_SpecialProjectCreationPage sp = new Pmkvy_SpecialProjectCreationPage(driver);
 	    sp.ClickonOK();
 		Thread.sleep(2000);
 		String Sno=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow", 1, 0);
@@ -211,19 +235,17 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			sssp.SelectjobRoleName(JobRoles);
 			Thread.sleep(1000);
 			
-			 String Qpcode = driver.findElement(By.xpath("//input[@class='form-control m-input']")).getAttribute("value");
-			 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow",  i, 4, Qpcode);
-			 
-			 
-			 
-			 String NSQfLevel = driver.findElement(By.xpath("//input[@placeholder='NSQF Level']")).getAttribute("value");
-			 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow",  i, 5, NSQfLevel);
-			 
-			 String trainingHours = driver.findElement(By.xpath("//input[@formcontrolname='proposedHours']")).getAttribute("value");
-			 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow",  i, 6, trainingHours);
-			
-			
-			
+//			 String Qpcode = driver.findElement(By.xpath("//input[@class='form-control m-input']")).getAttribute("value");
+//			 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow",  i, 4, Qpcode);
+//			 
+//			 
+//			 
+//			 String NSQfLevel = driver.findElement(By.xpath("//input[@placeholder='NSQF Level']")).getAttribute("value");
+//			 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow",  i, 5, NSQfLevel);
+//			 
+//			 String trainingHours = driver.findElement(By.xpath("//input[@formcontrolname='proposedHours']")).getAttribute("value");
+//			 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow",  i, 6, trainingHours);
+//			
 			String Targets=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow", i, 7);
 			Thread.sleep(2000);
 			sssp.EnterSectorAndJobTarget(Targets);
@@ -233,6 +255,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		}
 		Thread.sleep(5000);
 		sssp.ClickOnSaveAndSubmit();
+		Thread.sleep(3000);
 		sp.ClickonOK();
 		Thread.sleep(5000);
 		
@@ -245,10 +268,11 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			
 			
 		
-			String JobRoles=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow", i, 3);
+			//String Qpcode=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow", i, 4);
 			String Targets=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddsectorsAndJObRole _workflow", i, 7);
 			Thread.sleep(2000);
-			sssp.SelectjobRoleQPCode(JobRoles);
+			String Qpcode="Broadband Technician (TEL/Q0102)";
+			sssp.SelectjobRoleQPCode(Qpcode);
 			Thread.sleep(2000);
 			driver.findElement(By.xpath("//input[@placeholder='Enter Target']")).sendKeys(Targets);
 			
@@ -265,7 +289,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		   sp.ClickonOK();
 		Thread.sleep(5000);
 		sssp.ClickOnSaveAndSubmit();
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		  sp.ClickonOK();
 		  
 		  Thread.sleep(5000);
@@ -281,27 +305,59 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 				sssp.ClickAdvanceAdd();
 		driver.findElement(By.xpath("//button[text()='Save & Submit']")).click();
 			
-				Thread.sleep(3000);
+				Thread.sleep(30000);
 				sp.ClickonOK();
-				Thread.sleep(7000);
+				Thread.sleep(30000);
 				sssp.ClickOnAction();
 				Thread.sleep(3000);
 				sssp.ClickOnViewGenerated_Termsheet();
 ////////				
-	//LogOutPage plp = new LogOutPage(driver);
+	LogOutPage plp = new LogOutPage(driver);
 			     Thread.sleep(3000);
 					plp.clickOnProfileLogo();
 					Thread.sleep(3000);
 					plp.clickOnLogout(); 
 					Thread.sleep(3000);
+					Thread.sleep(3000);
+					
+}		
+	//@Test(dataProvider = "CreateSpecialProjectData")
+
+	public void AdditionalDetailsRequriedTP(String username, String password, String projectproposalID, String projectname,
+			String registeredAs, String proposingorganisationName, String state, String district, String img1,
+			String img2, String loginId, String password2, String agrementDate, String StartDate, String endDate,
+			String Adhar, String TrainerCertified, String TypeofTrainingCentre, String PlacementsRequirement,
+			String TypeOfEmployment, String MinimumPercentageplaced, String Disability, String Religion, String Gender,
+			String Category, String DiscountsonBaseRate, String BatchDuration, String NumberofTranches,
+			String Tranche3tobepaidwithoutPlacement, String DualLogoRequired, String TargetBeneficiaries,
+			String numberofsectors, String Sector, String JobRole, String Target, String locationState,
+			String locationDistrict, String jobrole1, String targetvalue1, String Jobrole2, String targetvalue2,
+			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String DualImg,
+			String review, String SignedImg, String comments, String TCloginId, String TCpassword, String BatchSize,
+			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
+			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) throws Exception 
+	{
+		precondition();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//		Thread.sleep(3000);
 		
+		LaunchPage lp = new LaunchPage(driver);
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+	
+		  EnterLoginPage elp = new EnterLoginPage(driver);
+		  DashboardPage db = new DashboardPage(driver);	
+		  SelectSchemeOrProgramPage ssp = new SelectSchemeOrProgramPage(driver);
+		  Pmkvy_SpecialProjectCreationPage sp = new Pmkvy_SpecialProjectCreationPage(driver);
+			Thread.sleep(3000);
 					lp.clickLogin();
 					bsp.clickToClose();
 					elp.performlogin(username, password);
 					db.ClickMySchemeOrPrograms();
 					Thread.sleep(3000);
 					db.ClickOnApprovalInProgress();
-					
+					Thread.sleep(3000);
 					ssp.ClickApprovalInProgress_SPAction();
 					ssp.ClickApprovalInProgress_SP_ViewDetails();
 					PMKVY_SP_ApprovalInprogress_Additionaldetails_Page addtionalpage = new PMKVY_SP_ApprovalInprogress_Additionaldetails_Page(
@@ -317,20 +373,20 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					driver.findElement(By.xpath("//button[text()='Next']")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(7000);
+					Thread.sleep(30000);
 					driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(8000);
+					Thread.sleep(30000);
 					driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(8000);
+					Thread.sleep(30000);
 					
 					driver.findElement(By.xpath("//button[contains(text(),'Next')]")).click();//next button
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(3000);
+					Thread.sleep(30000);
 					
 //					addR.ClickOnDual_logoBrowse();
 //					Thread.sleep(3000);
@@ -343,12 +399,14 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					driver.findElement(By.xpath("(//input[@id='customFile'])[1]")).click();
 					//addR.ClickOnTPSigned_TermSheetBrowse();
 					Thread.sleep(3000);
+					
 					UploadFile.upload(SignedImg);
 					Thread.sleep(3000);
 					driver.findElement(By.xpath("(//button[contains(text(),'Upload')])[1]")).click();
 					//addR.clickOnTPSigned_TermSheetUpLoad();
 					Thread.sleep(3000);
 					addR.ClickOnIndemnityBrowse();
+					
 					Thread.sleep(3000);
 					UploadFile.upload(SignedImg);
 					Thread.sleep(3000);
@@ -359,21 +417,54 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					addR.ClickOnDownloadTermsheet();
 					Thread.sleep(3000);
 					addR.ClickSaveAndSubmit();
-			         Thread.sleep(3000);
+			         Thread.sleep(5000);
 			  	      sp.ClickonOK();
-			  	      
-			  	    Thread.sleep(3000);
+			  	       Thread.sleep(10000);
+			  		LogOutPage plp = new LogOutPage(driver);
 					plp.clickOnProfileLogo();
 					 Thread.sleep(3000);
 					plp.clickOnLogout(); 
-					///
+					Thread.sleep(3000);
 					 Thread.sleep(3000);
+					 
+					 
+	}
+	
+	//@Test(dataProvider = "CreateSpecialProjectData")
+
+	public void AdditionalDetailsRequriedForPMU(String username, String password, String projectproposalID, String projectname,
+			String registeredAs, String proposingorganisationName, String state, String district, String img1,
+			String img2, String loginId, String password2, String agrementDate, String StartDate, String endDate,
+			String Adhar, String TrainerCertified, String TypeofTrainingCentre, String PlacementsRequirement,
+			String TypeOfEmployment, String MinimumPercentageplaced, String Disability, String Religion, String Gender,
+			String Category, String DiscountsonBaseRate, String BatchDuration, String NumberofTranches,
+			String Tranche3tobepaidwithoutPlacement, String DualLogoRequired, String TargetBeneficiaries,
+			String numberofsectors, String Sector, String JobRole, String Target, String locationState,
+			String locationDistrict, String jobrole1, String targetvalue1, String Jobrole2, String targetvalue2,
+			String tcName, String tcTarget, String advanceTrancheYes, String advancepayment, String DualImg,
+			String review, String SignedImg, String comments, String TCloginId, String TCpassword, String BatchSize,
+			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
+			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) throws Exception {
+		precondition();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//		Thread.sleep(3000);
+		LaunchPage lp = new LaunchPage(driver);
+		Thread.sleep(3000);
+		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
+	
+		  EnterLoginPage elp = new EnterLoginPage(driver);
+		  DashboardPage db = new DashboardPage(driver);	
+		  Pmkvy_SpecialProjectCreationPage sp = new Pmkvy_SpecialProjectCreationPage(driver);
+	
+					 
 					lp.clickLogin();
 					Thread.sleep(3000);
 					bsp.clickToClose();
 					Thread.sleep(3000);
 					elp.performlogin(loginId, password2);
 					Thread.sleep(10000);
+					PMKVY_SPPMUpage sppmu = new PMKVY_SPPMUpage(driver);
 					sppmu.ClickOnViewAllSchemeAddRequests(); 
 					Thread.sleep(5000);// //for Sp andSTT SAME PAGE ACTION BUTTON AND VIEW DETAILS
 					SPPMU_All_TP_ProjectimplementingAgencypage iap = new SPPMU_All_TP_ProjectimplementingAgencypage(driver);
@@ -400,6 +491,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					Thread.sleep(3000);
 					sp.ClickonOK();
 					Thread.sleep(3000);
+					TP_SP_AdditionalRequiredPage addR = new TP_SP_AdditionalRequiredPage(driver);
+					Thread.sleep(10000);
 					addR.ClickOnOther_TermSheetBrowse();
 					Thread.sleep(3000);
 					UploadFile.upload(SignedImg);
@@ -418,12 +511,16 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 					addR.ClickSaveAndSubmit();
 					Thread.sleep(3000);
 					sp.ClickonOK();
-					Thread.sleep(5000);
+					Thread.sleep(20000);
+					LogOutPage plp = new LogOutPage(driver);
 						plp.clickOnProfileLogo();
 						Thread.sleep(3000);
 						plp.clickOnLogout();
 	}
-					
+
+
+
+
 	@DataProvider
 	public Object[][] AddTrainingCenter()
 	{
@@ -431,22 +528,29 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	"AddTrainingCenterWorkflow_TC_02");
 	}
 						
-	@Test(dataProvider="AddTrainingCenter",dependsOnMethods="Addspecialprojectdata_01")
+//	@Test(dataProvider="AddTrainingCenter")//,dependsOnMethods="Addspecialprojectdata_01")
 	public void AddTC_TC_02(String username, String password,String tcloginid,String trainingType,String processType,
 			String tcName,String address,String landmark,String pincode,String state,String district,String ParliamentaryConsistuency,
-			String geolaction,String Spocname,String sector,String jobrole ,String target,String mobileOtp,String emailOtp)throws Exception
+			String geolaction,String Spocname,String emailid,String mobilenumber,String sector,String jobrole ,String target,String mobileOtp,String emailOtp)throws Exception
 	{
 	precondition();
 	//int srno = Integer.parseInt(sno);
-	String randomNumbers = RandomStringUtils.randomNumeric(5);
-	String phNo = "49393"+randomNumbers;	
-	System.out.println(phNo);
-	 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
-	    String email = "";
-	    String temp = RandomStringUtils.random(17, allowedChars);
-	    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
-	System.out.println(email);						
+	
+//	String randomNumbers = RandomStringUtils.randomNumeric(5);
+//	String phNo = "49393"+randomNumbers;	
+//	System.out.println(phNo);
+//	 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+//	    String email = "";
+//	    String temp = RandomStringUtils.random(17, allowedChars);
+//	    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
+//	System.out.println(email);	
+	
+//	Thread.sleep(3000);
+//	driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//	Thread.sleep(3000);
+	
     LaunchPage lp = new LaunchPage(driver);
+    Thread.sleep(3000);
 	lp.clickLogin();
 	Thread.sleep(3000);
 	BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -470,10 +574,10 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	 tc.ClickonViewTC();
 	Thread.sleep(3000);
 	tc.ClickOnAdd_TC();
-	Thread.sleep(3000);
+	Thread.sleep(4000);
 	tc.SelectProcessType(processType);
 	tc.ClickOnSaveAndContinueButton();
-	Thread.sleep(3000);
+	Thread.sleep(7000);
 	tc.trainingCentreName(tcName);
 	tc.EnterAddress(address);
 	tc.Enterlandmark(landmark);
@@ -487,9 +591,9 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	tc.ClickOncurrentlocation();
 	tc.EnterPrimarySpocName(Spocname);
 	Thread.sleep(1000);
-	tc.EnterEmailid(email);
+	tc.EnterEmailid(emailid);
 	Thread.sleep(2000);
-	tc.EntercontactNumber(phNo);
+	tc.EntercontactNumber(mobilenumber);
 	Thread.sleep(2000);
 	tc.ClickOnAddSectorTarget();
 	Thread.sleep(1000);
@@ -525,6 +629,7 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		Thread.sleep(3000);
 		plp.clickOnLogout(); 
 	   }
+
 	
 	@DataProvider
 	public Object[][] approveTrainingCenter()
@@ -533,13 +638,16 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 	"ApproveTrainingCenter_TC_03");
 	}
 						
-	@Test(dataProvider="approveTrainingCenter",dependsOnMethods="AddTC_TC_02")
+	//@Test(dataProvider="approveTrainingCenter")//,dependsOnMethods="AddTC_TC_02")
 	public void ApproveTrainingCenter_03(String username, String password,String tc_loginId,
 			String status,String comments)throws Exception
 	{
 	precondition();
-	
+//	Thread.sleep(3000);
+//	driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//	Thread.sleep(3000);
 	 LaunchPage lp = new LaunchPage(driver);
+	 Thread.sleep(3000);
 		lp.clickLogin();
 		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -551,8 +659,8 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 		SPPMU_Dashbordpage pmu= new SPPMU_Dashbordpage(driver);
 		pmu.ClickOnViewAllTC_addRequest();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//tr[td[span[span[text()='"+tc_loginId+"']]]]//a[@class='btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill']")).click();
-	    driver.findElement(By.xpath("//tr[td[span[span[text()='"+tc_loginId+"']]]]//a[contains(text(),'Take Action')]")).click();
+		driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tc_loginId+"']]]]//a[i[@class='la la-ellipsis-h']])")).click();
+	    driver.findElement(By.xpath("(//tr[td[span[span[text()='"+tc_loginId+"']]]]//a[contains(text(),'Take Action')])")).click();
 	    SPPMU_TrainingCentreDetaispage tcPage= new SPPMU_TrainingCentreDetaispage(driver);
 	    Thread.sleep(3000);
 	    tcPage.SelectStatus(status);
@@ -568,30 +676,35 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 			Thread.sleep(3000);
 			plp.clickOnLogout();
 	}
-	
-	/////////////////
+//	
+//	/////////////////
 	@DataProvider
 	public Object[][] AddTrainer()
 	{
-		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "AddTrainner_TC_04");
+		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
+				"AddTrainner_TC_04");
 	}
 	
-	@Test(dataProvider="AddTrainer",dependsOnMethods="ApproveTrainingCenter_03")
+	//@Test(dataProvider="AddTrainer")//,dependsOnMethods="ApproveTrainingCenter_03")
 	public void addTrainer_TC_04(String sno,String loginid,String oldpassword,String newPassword,
 			String confirmPassword,String trainerName,String trainerEmail,String Phonenumber,String aadharnumber,String img,String fromDate,
 			String toDate,String jobroles,String mobileOtp,String emailOtp)throws Exception
 	{
 		precondition();
 		int srno = Integer.parseInt(sno);
-		String randomNumbers = RandomStringUtils.randomNumeric(5);
-		String phNo = "49393"+randomNumbers;	
-		System.out.println(phNo);
-		 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
-		    String email = "";
-		    String temp = RandomStringUtils.random(17, allowedChars);
-		    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
-		System.out.println(email);
+//		String randomNumbers = RandomStringUtils.randomNumeric(5);
+//		String phNo = "49393"+randomNumbers;	
+//		System.out.println(phNo);
+//		 String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+//		    String email = "";
+//		    String temp = RandomStringUtils.random(17, allowedChars);
+//		    email = temp.substring(0, temp.length() - 9) + "@testdata.com";
+//		System.out.println(email);
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//		Thread.sleep(3000);
 		LaunchPage lp = new LaunchPage(driver);
+		Thread.sleep(3000);
 		lp.clickLogin();
 		Thread.sleep(3000);
 		BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -635,12 +748,12 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 				Rpl_addTrainerpage trainer=new Rpl_addTrainerpage(driver);
 				Thread.sleep(5000);
 				trainer.ClickOnViewTrainers();
-				Thread.sleep(5000);
+				Thread.sleep(10000);
 				trainer.ClickOnAddTrainer();
 				Thread.sleep(3000);
 				trainer.EnterName(trainerName);
-				trainer.EnterEmail(email);
-				trainer.EnterPhoneNumber(phNo);
+				trainer.EnterEmail(trainerEmail);
+				trainer.EnterPhoneNumber(Phonenumber);
 				trainer.ClickOnAdhaarRadio();
 				Thread.sleep(2000);
 				trainer.EnterThePanOrAadharNumber(aadharnumber);
@@ -672,36 +785,35 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 				trainer.EnterEmailOtp(emailOtp);
 				Thread.sleep(2000);
 				trainer. ClickOnVerifyOtp();
+				Thread.sleep(2000);
 				String trainerID=driver.findElement(By.xpath("(//tbody//tr//td[2]//span)[2]")).getText();
-				
+				Thread.sleep(2000);
 				 ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "CreateBatchWorkflow_Tc_04", 1, 9, trainerID);
-				  //ReadWriteData.setExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls", "CreateBatchWorkflow_Tc_04", 1, 0, TC_loginID);	
-				
+				 
 //				  LogOutPage plp = new LogOutPage(driver);
 //				     Thread.sleep(3000);
 //					plp.clickOnProfileLogo();
 //					 Thread.sleep(3000);
 //					plp.clickOnLogout(); 
-}
-
-
-//	
-	
-//	
+}  
 	@DataProvider
 	public Object[][] CreateBatch() {
 		return ReadMultipleDataFromExcel.getExcelData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls",
 				"CreateBatchWorkflow_Tc_04");
 	}
 
-	@Test(dataProvider = "CreateBatch",dependsOnMethods="addTrainer_TC_04")
+//	@Test(dataProvider = "CreateBatch")//,dependsOnMethods="addTrainer_TC_04")
 
 	public void CreateBatch_04(String TCloginId, String oldpassword,String newPassword, String BatchSize,
 			String AssociatedQP_JobRole, String tryingHours, String BatchInTiming, String batchoutTime,
 			String batchStartDate, String trainerName, String language,String myTP,String canState,String Candistric) 
 		throws Exception {
 		precondition();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@role='document' and @style='margin-top: 10.4%;']//button[@class='close']")).click();
+//		Thread.sleep(3000);
 		LaunchPage lp = new LaunchPage(driver);
+		Thread.sleep(3000);
 				lp.clickLogin();
 				Thread.sleep(3000);	
 			BetaVersionOfSmartPage bsp = new BetaVersionOfSmartPage(driver);
@@ -757,9 +869,13 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 				tcbc.SelectTrainerName(trainerName);
 				tcbc.SelectAssessmentLanguage(language);
 				 tcbc.ClickDisclaimer(); 
+					Thread.sleep(5000);
 				tcbc.ClickOnSaveAndNext();
+				Thread.sleep(5000);
 				tcbc.ClickOnOKButton();
-		       
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("//button[text()='OK']")).click();
+//		       
 			
 			
 			
@@ -798,58 +914,58 @@ public class PMKVY_SP_workflowTest extends TestConfiguration {
 				tcp.ClickOnOKButton();
 				Thread.sleep(3000);
 				
-				tcp.SelectSourceOfRegistration(myTP);
+				//tcp.SelectSourceOfRegistration(myTP);
 				
 				
-				ListofEligibleCandiatePage enrollcandite= new ListofEligibleCandiatePage(driver);
-				Thread.sleep(3000);
-				enrollcandite.SelectState(canState);
-				enrollcandite.Selectdistric(Candistric);
-				enrollcandite.ClickOnApply();
-				enrollcandite.ClickOnCandiateIdCheckBox();//up to working fine
-				String modelOfBandL="Self";
-				String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","NumberOFenrollcandidates", 1, 0);
-			 	int numberOfcan =Integer.parseInt(numCAN);
-			 	for(int i=1;i<=numberOfcan;i++)	
-				{    
-			 		Thread.sleep(3000);
-					WebElement BandLOpted = driver.findElement(By.xpath("//tbody//tr["+i+"]//td[14]//span"));
-					JavascriptExecutor executor2= (JavascriptExecutor) driver;
-					executor2.executeScript("arguments[0].click();",BandLOpted );
-			 		
-					
-			 		Thread.sleep(1000);
-			 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
-			 		  Select sel=new Select(modeofBk);
-			 				  sel.selectByVisibleText(modelOfBandL);
-			 				 Thread.sleep(1000);
-				
-				}
-			 	Thread.sleep(3000);
-			 	enrollcandite.ClickonEnrollCandidates();
-			 	Thread.sleep(3000);
-				enrollcandite.ClickOnOKButton();
-				Thread.sleep(3000);
-			 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
-			 	Thread.sleep(3000);
-			 	enrollcandite.ClickonYesButton();
-				Thread.sleep(3000);
-//			 	enrollcandite.ClickOnOKButton();
+//				ListofEligibleCandiatePage enrollcandite= new ListofEligibleCandiatePage(driver);
 //				Thread.sleep(3000);
-				enrollcandite.ClickOnSubmit_To_SSC();
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
-			 	//enrollcandite.ClickOnOKButton();
-			 	
-			 	Thread.sleep(3000);
-			 	driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
-			 	enrollcandite.ClickOnOKButton();
+////				enrollcandite.SelectState(canState);
+////				enrollcandite.Selectdistric(Candistric);
+////				enrollcandite.ClickOnApply();
+//				enrollcandite.ClickOnCandiateIdCheckBox();//up to working fine
+//				String modelOfBandL="Self";
+//				String numCAN=ReadWriteData.getData("./TestData/Workflow/PMKVY_SP/pmkvy-specialproject-workflow.xls","NumberOFenrollcandidates", 1, 0);
+//			 	int numberOfcan =Integer.parseInt(numCAN);
+//			 	for(int i=1;i<=numberOfcan;i++)	
+//				{    
+//			 		Thread.sleep(3000);
+//					WebElement BandLOpted = driver.findElement(By.xpath("//tbody//tr["+i+"]//td[14]//span"));
+//					JavascriptExecutor executor2= (JavascriptExecutor) driver;
+//					executor2.executeScript("arguments[0].click();",BandLOpted );
+//			 		
+//					
+//			 		Thread.sleep(1000);
+//			 	WebElement modeofBk = driver.findElement(By.xpath("(//select[@formcontrolname='modeOfBkl'])["+i+"]"));
+//			 		  Select sel=new Select(modeofBk);
+//			 				  sel.selectByVisibleText(modelOfBandL);
+//			 				 Thread.sleep(1000);
+//				
+//				}
 //			 	Thread.sleep(3000);
+//			 	enrollcandite.ClickonEnrollCandidates();
+//			 	Thread.sleep(3000);
+//				enrollcandite.ClickOnOKButton();
+//				Thread.sleep(3000);
+//			 	enrollcandite.ClickonSubmitToEnrollcandidatesButton();
+//			 	Thread.sleep(3000);
+//			 	enrollcandite.ClickonYesButton();
+//				Thread.sleep(3000);
+////			 	enrollcandite.ClickOnOKButton();
+////				Thread.sleep(3000);
+//				enrollcandite.ClickOnSubmit_To_SSC();
+//				Thread.sleep(3000);
+//				driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
+//			 	//enrollcandite.ClickOnOKButton();
+//			 	
+//			 	Thread.sleep(3000);
+//			 	driver.findElement(By.xpath("(//button[text()='OK'])[2]")).click();
 //			 	enrollcandite.ClickOnOKButton();
-		
-//			 	 Thread.sleep(7000); 
-//			plp.clickOnProfileLogo();
-//					plp.clickOnLogout(); 
+////			 	Thread.sleep(3000);
+////			 	enrollcandite.ClickOnOKButton();
+//		
+////			 	 Thread.sleep(7000); 
+////			plp.clickOnProfileLogo();
+////					plp.clickOnLogout(); 
 	
 	
 	
